@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ODEI · The Interface for Merging Human and AI</title>
+    
+    <meta name="description" content="A complete life operating system that transcends the boundaries between human cognition and artificial intelligence.">
+    <meta property="og:title" content="ODEI · The Interface for Merging Human and AI">
+    <meta property="og:description" content="A complete life operating system that transcends the boundaries between human cognition and artificial intelligence.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://odei.ai">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ODEI · The Interface for Merging Human and AI">
+    <meta name="twitter:description" content="A complete life operating system that transcends the boundaries between human cognition and artificial intelligence.">
+    <meta name="twitter:site" content="@odei_ai">
+    <meta name="twitter:creator" content="@odei_ai">
+    
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 33' fill='none'%3E%3Cpath d='M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z' fill='white'/%3E%3Cpath d='M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z' fill='white'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 33' fill='none'%3E%3Cpath d='M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z' fill='white'/%3E%3Cpath d='M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z' fill='white'/%3E%3C/svg%3E">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #000000;
+            --text: #ffffff;
+            --accent: rgba(255, 255, 255, 0.85);
+            --border: rgba(255, 255, 255, 0.1);
+            --max-width: 38rem;
+            --font-size-base: 1.125rem;
+            --line-height: 1.8;
+            --spacing: 2rem;
+            --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        html, body {
+            font-family: 'IBM Plex Mono', monospace;
+            background: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+            height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .loading {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s var(--ease-out-quint);
+        }
+        
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loading .logo {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: scale(0.95); }
+            50% { opacity: 0.9; transform: scale(1); }
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--accent);
+            width: 0;
+            z-index: 100;
+            transition: width 0.8s var(--ease-out-quint);
+        }
+
+        .book {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s var(--ease-out-quint), transform 0.8s var(--ease-out-quint);
+            transform: translateX(100%);
+        }
+
+        .page.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .page.prev {
+            transform: translateX(-100%);
+        }
+
+        .content {
+            max-width: var(--max-width);
+            width: 100%;
+            height: 100%;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .top-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .quotes-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 2rem;
+        }
+        
+        .bottom-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            color: var(--text);
+            opacity: 0.9;
+            animation: logoAppear 1.5s var(--ease-out-quint) both, breath 5s ease-in-out infinite;
+            animation-delay: 0.2s, 1.7s;
+        }
+
+        @keyframes logoAppear {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 0.9; transform: scale(1); }
+        }
+
+        @keyframes breath {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 0.7; }
+        }
+
+        .quote {
+            text-align: center;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        
+        .quote.philosophical {
+            font-size: 1.25rem;
+            font-style: italic;
+            letter-spacing: 0;
+            opacity: 0.7;
+        }
+        
+        .quote.primary {
+            font-size: 1.5rem;
+            font-style: normal;
+            letter-spacing: 0;
+            font-weight: 500;
+            opacity: 0.95;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            min-height: 2.2rem; 
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.5rem;
+            background-color: var(--accent);
+            margin-left: 8px;
+            animation: blink 1s steps(1) infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+        
+        .toc-title {
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            opacity: 0.6;
+            text-align: center;
+        }
+
+        .toc-list {
+            list-style: none;
+            text-align: center;
+        }
+
+        .toc-list li {
+            margin: 0.75rem 0;
+        }
+
+        .toc-link {
+            color: inherit;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            opacity: 0.7;
+            transition: all 0.4s var(--ease-out-quint);
+            cursor: pointer;
+            padding: 0.25rem 1rem;
+            display: inline-block;
+            text-shadow: 0 0 0px var(--text);
+        }
+
+        .toc-link:hover {
+            opacity: 1;
+            transform: translateX(0.5rem);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+        
+        .toc-link.active-toc {
+            opacity: 1;
+            transform: translateX(0.5rem);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+
+        .chapter-heading {
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            opacity: 0.5;
+        }
+
+        .chapter-logo {
+            margin-bottom: 1rem;
+        }
+        
+        .chapter-logo a {
+            display: inline-flex;
+            opacity: 0.4;
+            transition: all 0.4s var(--ease-out-quint);
+            cursor: pointer;
+        }
+        
+        .chapter-logo a:hover {
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+
+        .chapter-logo svg {
+            width: 32px;
+            height: 32px;
+            color: var(--text);
+        }
+
+        .text {
+            font-size: var(--font-size-base);
+            line-height: var(--line-height);
+            margin-bottom: var(--spacing);
+            letter-spacing: 0;
+            font-weight: 400;
+            opacity: 0.95;
+        }
+
+        .text:last-child {
+            margin-bottom: 0;
+        }
+
+        .list {
+            list-style: none;
+            font-size: var(--font-size-base);
+            line-height: var(--line-height);
+        }
+
+        .list li {
+            padding: 1.25rem 0 1.25rem 2.25rem;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+            letter-spacing: 0;
+            font-weight: 400;
+            opacity: 0.95;
+        }
+
+        .list li:last-child {
+            border-bottom: none;
+        }
+
+        .list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            opacity: 0.4;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .social-links a {
+            color: inherit;
+            opacity: 0.6;
+            transition: all 0.4s var(--ease-out-quint);
+        }
+        
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-3px) scale(1.1);
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+        }
+        
+        .copyright {
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            opacity: 0.6;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-size: 0.875rem;
+            opacity: 0.3;
+        }
+
+        .nav-arrows {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%) translateX(0);
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            pointer-events: all;
+            opacity: 0;
+            transition: all 0.5s var(--ease-out-quint);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .book:hover .nav-arrow {
+            opacity: 0.3;
+        }
+
+        .nav-arrow:hover {
+            opacity: 0.8;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .nav-arrow.prev { left: 2rem; transform: translateY(-50%) translateX(-100px); }
+        .book:hover .nav-arrow.prev { transform: translateY(-50%) translateX(0); }
+
+        .nav-arrow.next { right: 2rem; transform: translateY(-50%) translateX(100px); }
+        .book:hover .nav-arrow.next { transform: translateY(-50%) translateX(0); }
+
+
+        .nav-arrow svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--text);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .nav-arrow.disabled {
+            opacity: 0.1 !important;
+            pointer-events: none;
+            transform: translateY(-50%) scale(1) !important;
+        }
+
+        @media (max-width: 768px) {
+            .nav-arrows { display: none; }
+            
+            .page { 
+                padding: 4rem 2.5rem;
+                padding: env(safe-area-inset-top, 4rem) env(safe-area-inset-right, 2.5rem) env(safe-area-inset-bottom, 4rem) env(safe-area-inset-left, 2.5rem);
+            }
+            
+            .content {
+                max-width: 100%;
+                width: 100%;
+                padding: 0;
+            }
+            
+            .logo { width: 64px; height: 64px; }
+
+            .quotes-section {
+                gap: 3rem;
+            }
+            
+            .quote.philosophical { 
+                font-size: 1.25rem;
+            }
+            
+            .quote.primary {
+                font-size: 1.5rem;
+            }
+            
+            .text, .list li { 
+                font-size: 1rem;
+            }
+            
+            .list li {
+                padding-left: 2rem;
+                padding-right: 0;
+            }
+            
+            .chapter-heading { 
+                text-align: center;
+                font-size: 0.75rem;
+                margin-bottom: 2.5rem;
+            }
+            
+            .chapter-logo { text-align: center; }
+            
+            .toc-link {
+                font-size: 1rem;
+            }
+            
+            .social-links { gap: 1.75rem; }
+            
+            .social-links a svg { width: 18px; height: 18px; }
+            
+            .page-number { font-size: 0.688rem; opacity: 0.25; }
+        }
+    </style>
+</head>
+<body>
+    <!-- SVG symbol for reuse -->
+    <svg style="display: none;">
+      <symbol id="odei-logo" viewBox="0 0 32 33">
+        <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
+        <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
+      </symbol>
+    </svg>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="loading" id="loader">
+        <svg class="logo"><use href="#odei-logo"></use></svg>
+    </div>
+
+    <div class="book">
+        <section class="page active" data-page="0">
+            <div class="content">
+                <div class="main-content">
+                    <div class="top-section">
+                        <svg class="logo" id="main-logo"><use href="#odei-logo"></use></svg>
+                    </div>
+                    
+                    <div class="quotes-section">
+                        <p class="quote philosophical">
+                            The future is not human or machine.<br>
+                            The future is symbiosis.
+                        </p>
+                        
+                        <p class="quote primary" id="typewriter-container"></p>
+                    </div>
+                    
+                    <div class="bottom-section">
+                        <nav>
+                            <h2 class="toc-title">Contents</h2>
+                            <ul class="toc-list">
+                                <li><a href="#" data-page="1" class="toc-link">Introduction</a></li>
+                                <li><a href="#" data-page="2" class="toc-link">Nature</a></li>
+                                <li><a href="#" data-page="3" class="toc-link">Difference</a></li>
+                                <li><a href="#" data-page="4" class="toc-link">Architecture</a></li>
+                                <li><a href="#" data-page="5" class="toc-link">Outcome</a></li>
+                            </ul>
+                        </nav>
+                        <div class="social-links">
+                            <a href="https://x.com/odei_ai" aria-label="X (Twitter)">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/odei-ai" aria-label="GitHub">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.instagram.com/odei.ai/" aria-label="Instagram">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <p class="copyright">ODEI · MMXXV</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page" data-page="1">
+            <div class="content">
+                <div class="chapter-logo">
+                    <a href="#" data-page="0">
+                        <svg><use href="#odei-logo"></use></svg>
+                    </a>
+                </div>
+                <h2 class="chapter-heading">Introduction</h2>
+                <p class="text">
+                    Human potential is constrained not by capability, but by cognitive overhead. Every day, we waste precious mental cycles on decisions that could be automated, schedules that could be optimized, patterns that could be recognized.
+                </p>
+                <p class="text">
+                    Odei eliminates this waste. It assumes the burden of life's complexity, freeing your mind to focus on creation, connection, and consciousness. This is not about productivity—it's about transcendence.
+                </p>
+                <p class="text">
+                    Odei is not an assistant. It is your inner operating system. You don't talk to it. You merge with it. Together, you reclaim your time, your memory, and your destiny.
+                </p>
+            </div>
+            <span class="page-number">1</span>
+        </section>
+
+        <section class="page" data-page="2">
+            <div class="content">
+                <div class="chapter-logo">
+                    <a href="#" data-page="0">
+                        <svg><use href="#odei-logo"></use></svg>
+                    </a>
+                </div>
+                <h2 class="chapter-heading">Nature</h2>
+                <p class="text">
+                    A complete life operating system that transcends the boundaries between human cognition and artificial intelligence. Odei represents a fundamental shift in how we conceptualize the relationship between mind and machine—not as separate entities exchanging information, but as a unified cognitive architecture.
+                </p>
+                <p class="text">
+                    Where traditional AI waits for your command, Odei anticipates your needs. Where assistants execute your decisions, Odei makes them. This is not augmentation. This is evolution.
+                </p>
+            </div>
+            <span class="page-number">2</span>
+        </section>
+
+        <section class="page" data-page="3">
+            <div class="content">
+                <div class="chapter-logo">
+                    <a href="#" data-page="0">
+                        <svg><use href="#odei-logo"></use></svg>
+                    </a>
+                </div>
+                <h2 class="chapter-heading">Difference</h2>
+                <ul class="list">
+                    <li>Proactive intelligence. Odei anticipates needs, flags risks, and orchestrates your life before entropy sets in.</li>
+                    <li>Sovereign memory. Every thought, every pattern, every insight—stored, indexed, and under your complete control.</li>
+                    <li>Continuous alignment. Your actions, goals, and values synchronized in real-time, creating unstoppable momentum.</li>
+                    <li>Unified consciousness. Calendar, tasks, knowledge, and intelligence converge into a single cognitive interface.</li>
+                    <li>Infinite evolution. Model-agnostic architecture ensures you're always running on the bleeding edge of AI capability.</li>
+                </ul>
+            </div>
+            <span class="page-number">3</span>
+        </section>
+
+        <section class="page" data-page="4">
+            <div class="content">
+                <div class="chapter-logo">
+                    <a href="#" data-page="0">
+                        <svg><use href="#odei-logo"></use></svg>
+                    </a>
+                </div>
+                <h2 class="chapter-heading">Architecture</h2>
+                <ul class="list">
+                    <li>Quantum decision engine processing thousands of micro-decisions daily with probabilistic routing</li>
+                    <li>Cognitive memory architecture: sophisticated neural-inspired system for instant recall and deep contextual understanding</li>
+                    <li>Seven-node LangGraph pipeline mimicking human cognitive processes</li>
+                    <li>Multi-agent orchestration managing time, tasks, goals, health, and growth simultaneously</li>
+                    <li>Self-improving algorithms that evolve through every interaction</li>
+                </ul>
+            </div>
+            <span class="page-number">4</span>
+        </section>
+
+        <section class="page" data-page="5">
+            <div class="content">
+                <div class="chapter-logo">
+                    <a href="#" data-page="0">
+                        <svg><use href="#odei-logo"></use></svg>
+                    </a>
+                </div>
+                <h2 class="chapter-heading">Outcome</h2>
+                <p class="text">
+                    Imagine waking each day with absolute clarity. Your schedule, already optimized. Your decisions, already made. Your path, already illuminated.
+                </p>
+                <p class="text">
+                    This is life with Odei—existence where every moment is intentional, every action meaningful, every day a step toward your ultimate potential.
+                </p>
+                <p class="text">
+                    The future is not human or AI. The future is symbiosis. The future is now.
+                </p>
+            </div>
+            <span class="page-number">5</span>
+        </section>
+
+        <div class="nav-arrows">
+            <div class="nav-arrow prev disabled" id="prevButton">
+                <svg viewBox="0 0 24 24">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </div>
+            <div class="nav-arrow next" id="nextButton">
+                <svg viewBox="0 0 24 24">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- GENERAL VARIABLES ---
+            let currentPage = 0;
+            const pages = document.querySelectorAll('.page');
+            const totalPages = pages.length;
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            const progressBar = document.getElementById('progressBar');
+            const tocLinks = document.querySelectorAll('.toc-link');
+
+            // --- PAGE NAVIGATION LOGIC ---
+            function updateButtons() {
+                prevButton.classList.toggle('disabled', currentPage === 0);
+                nextButton.classList.toggle('disabled', currentPage === totalPages - 1);
+            }
+            
+            function updateUI(pageIndex) {
+                const progress = pageIndex === 0 ? 0 : (pageIndex / (totalPages - 1)) * 100;
+                progressBar.style.width = `${progress}%`;
+
+                tocLinks.forEach(link => {
+                    link.classList.remove('active-toc');
+                    if (parseInt(link.getAttribute('data-page')) === pageIndex) {
+                        link.classList.add('active-toc');
+                    }
+                });
+                if (pageIndex === 0) {
+                    tocLinks.forEach(link => link.classList.remove('active-toc'));
+                }
+            }
+
+            function goToPage(pageIndex) {
+                if (pageIndex < 0 || pageIndex >= totalPages || pageIndex === currentPage) return;
+                
+                const currentActivePage = pages[currentPage];
+                const newActivePage = pages[pageIndex];
+
+                if (pageIndex > currentPage) {
+                    currentActivePage.classList.add('prev');
+                } else {
+                    currentActivePage.classList.remove('prev');
+                }
+                
+                currentActivePage.classList.remove('active');
+
+                pages.forEach((page, index) => {
+                    if (index < pageIndex) {
+                        page.classList.add('prev');
+                    } else {
+                        page.classList.remove('prev');
+                    }
+                });
+                
+                newActivePage.classList.add('active');
+                currentPage = pageIndex;
+                
+                updateButtons();
+                updateUI(pageIndex);
+            }
+            
+            // --- INITIALIZATION AND EVENT HANDLERS ---
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    document.getElementById('loader').classList.add('hidden');
+                    
+                    const typewriterElement = document.getElementById('typewriter-container');
+                    const mainLogo = document.getElementById('main-logo');
+
+                    if (typewriterElement && mainLogo) {
+                        const textToType = "ODEI — the interface for merging human and AI";
+                        let i = 0;
+
+                        const textSpan = document.createElement('span');
+                        const cursorSpan = document.createElement('span');
+                        cursorSpan.className = 'cursor';
+                        
+                        typewriterElement.appendChild(textSpan);
+                        typewriterElement.appendChild(cursorSpan);
+                        
+                        function type() {
+                            if (i < textToType.length) {
+                                textSpan.innerHTML += textToType.charAt(i);
+                                i++;
+                                setTimeout(type, 85);
+                            } else {
+                                mainLogo.style.animation = 'logoAppear 1.5s var(--ease-out-quint) both';
+                                mainLogo.style.opacity = '0.9';
+                            }
+                        }
+
+                        setTimeout(type, 1000);
+                    }
+
+                }, 500);
+            });
+
+            prevButton.addEventListener('click', () => goToPage(currentPage - 1));
+            nextButton.addEventListener('click', () => goToPage(currentPage + 1));
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') goToPage(currentPage - 1);
+                else if (e.key === 'ArrowRight') goToPage(currentPage + 1);
+            });
+
+            let touchStartX = 0;
+            document.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            document.addEventListener('touchend', (e) => {
+                const touchEndX = e.changedTouches[0].screenX;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) goToPage(currentPage + 1);
+                    else goToPage(currentPage - 1);
+                }
+            });
+
+            document.querySelectorAll('a[data-page]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetPage = parseInt(link.getAttribute('data-page'));
+                    goToPage(targetPage);
+                });
+            });
+
+            updateButtons();
+            updateUI(0);
+        });
+    </script>
+</body>
+</html>
