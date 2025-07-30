@@ -193,11 +193,11 @@
         
         .quote.philosophical {
             font-size: 1.25rem;
-            font-style: normal; /* ИЗМЕНЕНО */
+            font-style: normal;
             letter-spacing: 0;
             opacity: 0.7;
-            text-align: left; /* ИЗМЕНЕНО */
-            display: inline-block; /* ИЗМЕНЕНО */
+            text-align: left;
+            display: inline-block;
         }
         
         .quote.primary {
@@ -241,10 +241,13 @@
         .toc-list {
             list-style: none;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Aligns items to the left */
         }
 
         .toc-list li {
-            margin: 0.75rem 0;
+            margin: 0.5rem 0; /* Adjusted margin */
         }
 
         .toc-link {
@@ -256,21 +259,37 @@
             opacity: 0.7;
             transition: all 0.4s var(--ease-out-quint);
             cursor: pointer;
-            padding: 0.25rem 1rem;
-            display: inline-block;
+            padding: 0.25rem 0; /* Adjusted padding */
+            display: inline-flex; /* Use flex for alignment */
+            align-items: center;
+            gap: 0.75rem;
             text-shadow: 0 0 0px var(--text);
+        }
+        
+        .toc-prefix {
+            opacity: 0.6;
         }
 
         .toc-link:hover {
             opacity: 1;
-            transform: translateX(0.5rem);
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+        
+        .toc-link:hover .toc-text {
+             transform: translateX(0.5rem);
+        }
+
+        .toc-text {
+            transition: transform 0.4s var(--ease-out-quint);
         }
         
         .toc-link.active-toc {
             opacity: 1;
-            transform: translateX(0.5rem);
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+
+        .toc-link.active-toc .toc-text {
+            transform: translateX(0.5rem);
         }
 
         .chapter-heading {
@@ -434,8 +453,8 @@
             .nav-arrows { display: none; }
             
             .page { 
-                padding: 4rem 2.5rem;
-                padding: env(safe-area-inset-top, 4rem) env(safe-area-inset-right, 2.5rem) env(safe-area-inset-bottom, 4rem) env(safe-area-inset-left, 2.5rem);
+                padding: 4rem 1.5rem;
+                padding: env(safe-area-inset-top, 4rem) env(safe-area-inset-right, 1.5rem) env(safe-area-inset-bottom, 4rem) env(safe-area-inset-left, 1.5rem);
             }
             
             .content {
@@ -523,11 +542,11 @@
                         <nav>
                             <h2 class="toc-title">Contents</h2>
                             <ul class="toc-list">
-                                <li><a href="#" data-page="1" class="toc-link">Introduction</a></li>
-                                <li><a href="#" data-page="2" class="toc-link">Nature</a></li>
-                                <li><a href="#" data-page="3" class="toc-link">Difference</a></li>
-                                <li><a href="#" data-page="4" class="toc-link">Architecture</a></li>
-                                <li><a href="#" data-page="5" class="toc-link">Outcome</a></li>
+                                <li><a href="#" data-page="1" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Introduction</span></a></li>
+                                <li><a href="#" data-page="2" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Nature</span></a></li>
+                                <li><a href="#" data-page="3" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Difference</span></a></li>
+                                <li><a href="#" data-page="4" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Architecture</span></a></li>
+                                <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Outcome</span></a></li>
                             </ul>
                         </nav>
                         <div class="social-links">
