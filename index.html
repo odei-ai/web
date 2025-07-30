@@ -163,7 +163,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 3rem;
+            gap: 1.5rem;
         }
 
         .logo {
@@ -198,6 +198,10 @@
             opacity: 0.7;
             text-align: left;
             display: inline-block;
+        }
+        
+        .quote.philosophical span {
+            display: block;
         }
         
         .quote.primary {
@@ -238,16 +242,24 @@
             text-align: center;
         }
 
+        .toc-nav {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
         .toc-list {
             list-style: none;
-            text-align: center;
+            padding: 0;
+            margin: 0;
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Aligns items to the left */
+            align-items: flex-start;
         }
 
         .toc-list li {
-            margin: 0.5rem 0; /* Adjusted margin */
+            margin: 0.5rem 0;
         }
 
         .toc-link {
@@ -259,8 +271,8 @@
             opacity: 0.7;
             transition: all 0.4s var(--ease-out-quint);
             cursor: pointer;
-            padding: 0.25rem 0; /* Adjusted padding */
-            display: inline-flex; /* Use flex for alignment */
+            padding: 0.25rem 0;
+            display: inline-flex;
             align-items: center;
             gap: 0.75rem;
             text-shadow: 0 0 0px var(--text);
@@ -467,10 +479,13 @@
 
             .quotes-section {
                 gap: 3rem;
+                width: 100%;
+                align-items: center;
             }
             
             .quote.philosophical { 
                 font-size: 1.25rem;
+                text-align: center;
             }
             
             .quote.primary {
@@ -530,23 +545,26 @@
                     </div>
                     
                     <div class="quotes-section">
-                        <p class="quote philosophical">
-                            > The future is not human or machine.<br>
-                            > The future is symbiosis.
-                        </p>
+                        <div class="quote philosophical">
+                            <span>> The future is not human or machine.</span>
+                            <span>> The future is symbiosis.</span>
+                        </div>
                         
                         <p class="quote primary" id="typewriter-container"></p>
                     </div>
                     
                     <div class="bottom-section">
-                        <nav>
-                            <h2 class="toc-title">Contents</h2>
+                        <h2 class="toc-title">Contents</h2>
+                        <nav class="toc-nav">
                             <ul class="toc-list">
                                 <li><a href="#" data-page="1" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Introduction</span></a></li>
                                 <li><a href="#" data-page="2" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Nature</span></a></li>
                                 <li><a href="#" data-page="3" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Difference</span></a></li>
                                 <li><a href="#" data-page="4" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Architecture</span></a></li>
                                 <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Outcome</span></a></li>
+                            </ul>
+                            <ul class="toc-list">
+                                <li><span class="toc-link" style="opacity: 0.5; cursor: default;"><span class="toc-prefix">></span> <span class="toc-text">Cognitive memory</span></span></li>
                             </ul>
                         </nav>
                         <div class="social-links">
