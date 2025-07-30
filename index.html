@@ -138,7 +138,7 @@
         .main-content {
             display: flex;
             flex-direction: column;
-            align-items: center; /* REVERTED */
+            align-items: center;
             justify-content: space-between;
             width: 100%;
             height: 100%;
@@ -156,7 +156,7 @@
         .quotes-section {
             display: flex;
             flex-direction: column;
-            align-items: center; /* REVERTED */
+            align-items: center;
             gap: 4rem;
             margin-bottom: 2rem;
             width: 100%;
@@ -476,8 +476,8 @@
             .nav-arrows { display: none; }
 
             .page { 
-                padding: 4rem 1.5rem;
-                padding: env(safe-area-inset-top, 4rem) env(safe-area-inset-right, 1.5rem) env(safe-area-inset-bottom, 4rem) env(safe-area-inset-left, 1.5rem);
+                padding: 4rem 2.5rem; /* Increased horizontal padding */
+                padding: env(safe-area-inset-top, 4rem) env(safe-area-inset-right, 2.5rem) env(safe-area-inset-bottom, 4rem) env(safe-area-inset-left, 2.5rem);
             }
             
             .content {
@@ -494,7 +494,7 @@
             .quotes-section {
                 gap: 3rem;
                 width: 100%;
-                align-items: center; /* REVERTED */
+                align-items: center;
             }
             
             .quote.philosophical { 
@@ -528,13 +528,14 @@
             .chapter-logo { text-align: center; }
             
             .toc-nav {
-                flex-direction: column;
-                gap: 1.5rem;
-                align-items: center; /* REVERTED */
+                flex-direction: row; /* Changed for 2 columns */
+                gap: 3rem; /* Adjusted gap */
+                justify-content: center;
+                align-items: flex-start;
             }
 
             .toc-list {
-                align-items: center; /* REVERTED */
+                align-items: flex-start; /* Changed */
             }
             
             .toc-link {
@@ -742,6 +743,38 @@
             const progressBar = document.getElementById('progressBar');
             const tocLinks = document.querySelectorAll('.toc-link');
 
+            // --- TYPEWRITER FUNCTION ---
+            function startTypewriter() {
+                const typewriterElement = document.getElementById('typewriter-container');
+                const mainLogo = document.getElementById('main-logo');
+                if (!typewriterElement || !mainLogo) return;
+
+                typewriterElement.innerHTML = ''; // Clear previous content
+                const textToType = "ODEI — the interface for merging human and AI";
+                let i = 0;
+
+                const textSpan = document.createElement('span');
+                const cursorSpan = document.createElement('span');
+                cursorSpan.className = 'cursor';
+                
+                typewriterElement.appendChild(textSpan);
+                typewriterElement.appendChild(cursorSpan);
+                
+                function type() {
+                    if (i < textToType.length) {
+                        textSpan.innerHTML += textToType.charAt(i);
+                        i++;
+                        setTimeout(type, 85);
+                    } else {
+                        // Optional: any logic to run after typing finishes
+                    }
+                }
+                
+                mainLogo.style.animation = 'logoAppear 1.5s var(--ease-out-quint) both';
+                mainLogo.style.opacity = '0.9';
+                setTimeout(type, 500); // Start typing after a short delay
+            }
+
             // --- PAGE NAVIGATION LOGIC ---
             function updateButtons() {
                 prevButton.classList.toggle('disabled', currentPage === 0);
@@ -763,7 +796,7 @@
                 }
             }
 
-            function goToPage(pageIndex) {
+            function goToPage(pageIndex, fromPopState = false) {
                 if (pageIndex < 0 || pageIndex >= totalPages || pageIndex === currentPage) return;
                 
                 const currentActivePage = pages[currentPage];
@@ -786,46 +819,67 @@
                 });
                 
                 newActivePage.classList.add('active');
+                
+                const oldPage = currentPage;
                 currentPage = pageIndex;
                 
                 updateButtons();
                 updateUI(pageIndex);
+
+                // Manage browser history
+                if (!fromPopState) {
+                    history.pushState({ page: pageIndex }, `Page ${pageIndex}`, `#page-${pageIndex}`);
+                }
+
+                // Restart typewriter if navigating to the first page
+                if (currentPage === 0 && oldPage !== 0) {
+                    startTypewriter();
+                }
             }
             
             // --- INITIALIZATION AND EVENT HANDLERS ---
+            function initialize() {
+                // Set initial page based on URL hash
+                const initialHash = window.location.hash.replace('#page-', '');
+                const initialPageIndex = parseInt(initialHash, 10);
+                const startPage = !isNaN(initialPageIndex) && initialPageIndex < totalPages ? initialPageIndex : 0;
+
+                // Set up the initial state without triggering navigation
+                currentPage = startPage;
+                pages.forEach((page, index) => {
+                    page.classList.remove('active', 'prev');
+                    if (index < startPage) {
+                        page.classList.add('prev');
+                    }
+                });
+                pages[startPage].classList.add('active');
+                
+                updateButtons();
+                updateUI(startPage);
+                
+                // Set initial history state
+                history.replaceState({ page: startPage }, `Page ${startPage}`, `#page-${startPage}`);
+
+                // Initial typewriter
+                if (startPage === 0) {
+                    startTypewriter();
+                }
+            }
+
             window.addEventListener('load', () => {
                 setTimeout(() => {
                     document.getElementById('loader').classList.add('hidden');
-                    
-                    const typewriterElement = document.getElementById('typewriter-container');
-                    const mainLogo = document.getElementById('main-logo');
-
-                    if (typewriterElement && mainLogo) {
-                        const textToType = "ODEI — the interface for merging human and AI";
-                        let i = 0;
-
-                        const textSpan = document.createElement('span');
-                        const cursorSpan = document.createElement('span');
-                        cursorSpan.className = 'cursor';
-                        
-                        typewriterElement.appendChild(textSpan);
-                        typewriterElement.appendChild(cursorSpan);
-                        
-                        function type() {
-                            if (i < textToType.length) {
-                                textSpan.innerHTML += textToType.charAt(i);
-                                i++;
-                                setTimeout(type, 85);
-                            } else {
-                                mainLogo.style.animation = 'logoAppear 1.5s var(--ease-out-quint) both';
-                                mainLogo.style.opacity = '0.9';
-                            }
-                        }
-
-                        setTimeout(type, 1000);
-                    }
-
+                    initialize();
                 }, 500);
+            });
+
+            // Handle browser back/forward buttons
+            window.addEventListener('popstate', (e) => {
+                if (e.state && typeof e.state.page !== 'undefined') {
+                    goToPage(e.state.page, true);
+                } else {
+                    goToPage(0, true);
+                }
             });
 
             prevButton.addEventListener('click', () => goToPage(currentPage - 1));
@@ -858,9 +912,6 @@
                     goToPage(targetPage);
                 });
             });
-
-            updateButtons();
-            updateUI(0);
         });
     </script>
 </body>
