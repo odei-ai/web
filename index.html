@@ -104,11 +104,11 @@
             top: 0;
             left: 0;
             height: 2px;
-            background: var(--accent);
+            background: #FFFFFF; /* Changed from var(--accent) to white */
             width: 0;
             z-index: 100;
             transition: width 0.8s var(--ease-out-quint);
-            box-shadow: 0 0 5px var(--accent);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.7); /* Changed from var(--accent) to white glow */
         }
 
         .book {
@@ -529,9 +529,9 @@
             }
 
             .page { 
-                padding: 2rem 1.5rem; /* Adjusted vertical padding */
+                padding: 2rem 2.5rem; /* Increased horizontal padding */
                 /* Handle safe areas for notches on mobile devices */
-                padding: env(safe-area-inset-top, 2rem) env(safe-area-inset-right, 1.5rem) env(safe-area-inset-bottom, 2rem) env(safe-area-inset-left, 1.5rem);
+                padding: env(safe-area-inset-top, 2rem) env(safe-area-inset-right, 2.5rem) env(safe-area-inset-bottom, 2rem) env(safe-area-inset-left, 2.5rem);
             }
             
             .page[data-page="0"] {
@@ -591,6 +591,11 @@
             .social-links a svg { width: 18px; height: 18px; }
             
             .page-number { font-size: 0.688rem; opacity: 0.25; }
+
+            /* Сдвигаем контент на внутренних страницах вниз, чтобы избежать наложения на полосу прокрутки */
+            .page:not([data-page="0"]) .content {
+                margin-top: 2rem;
+            }
         }
     </style>
 </head>
