@@ -201,6 +201,7 @@
             opacity: 0.7;
             display: inline-block;
             text-align: left;
+            min-height: 3.6em; /* Reserve space */
         }
         
         .quote.philosophical span {
@@ -226,10 +227,14 @@
         .cursor {
             display: inline-block;
             width: 10px;
-            height: 1.75rem; 
+            height: 1.125rem; /* Match philosophical font size */
             background-color: var(--accent);
             margin-left: 8px;
             animation: blink 1s steps(1) infinite;
+        }
+        
+        .cursor.large {
+            height: 1.75rem; /* Match primary font size */
         }
 
         @keyframes blink {
@@ -574,9 +579,8 @@
                     </div>
                     
                     <div class="quotes-section">
-                        <div class="quote philosophical">
-                            <span>> The future is not human or machine.</span>
-                            <span>> The future is symbiosis.</span>
+                        <div class="quote philosophical" id="philosophical-quote">
+                            <!-- Content will be typed here by JS -->
                         </div>
                         
                         <p class="quote primary" id="typewriter-container"></p>
@@ -742,38 +746,79 @@
             const nextButton = document.getElementById('nextButton');
             const progressBar = document.getElementById('progressBar');
             const tocLinks = document.querySelectorAll('.toc-link');
+            let typingTimeout; // To control the typing animation
 
             // --- TYPEWRITER FUNCTION ---
-            function startTypewriter() {
-                const typewriterElement = document.getElementById('typewriter-container');
+            function startFullTypewriter() {
+                clearTimeout(typingTimeout); // Clear any existing typing animation
+
+                const philosophicalContainer = document.getElementById('philosophical-quote');
+                const primaryContainer = document.getElementById('typewriter-container');
                 const mainLogo = document.getElementById('main-logo');
-                if (!typewriterElement || !mainLogo) return;
 
-                typewriterElement.innerHTML = ''; // Clear previous content
-                const textToType = "ODEI — the interface for merging human and AI";
-                let i = 0;
+                if (!philosophicalContainer || !primaryContainer || !mainLogo) return;
 
-                const textSpan = document.createElement('span');
-                const cursorSpan = document.createElement('span');
-                cursorSpan.className = 'cursor';
-                
-                typewriterElement.appendChild(textSpan);
-                typewriterElement.appendChild(cursorSpan);
-                
-                function type() {
-                    if (i < textToType.length) {
-                        textSpan.innerHTML += textToType.charAt(i);
-                        i++;
-                        setTimeout(type, 85);
-                    } else {
-                        // Optional: any logic to run after typing finishes
+                // Reset containers
+                philosophicalContainer.innerHTML = '';
+                primaryContainer.innerHTML = '';
+
+                const philosophicalLines = [
+                    "> The future is not human or machine.",
+                    "> The future is symbiosis."
+                ];
+                const primaryText = "ODEI — the interface for merging human and AI";
+
+                let lineIndex = 0;
+                let charIndex = 0;
+
+                function typePhilosophical() {
+                    if (lineIndex >= philosophicalLines.length) {
+                        typePrimary();
+                        return;
                     }
+
+                    const line = philosophicalLines[lineIndex];
+                    if (charIndex === 0) {
+                        const span = document.createElement('span');
+                        philosophicalContainer.appendChild(span);
+                    }
+
+                    const currentSpan = philosophicalContainer.children[lineIndex];
+                    
+                    if (charIndex < line.length) {
+                        currentSpan.innerHTML += line.charAt(charIndex);
+                        charIndex++;
+                        typingTimeout = setTimeout(typePhilosophical, 60);
+                    } else {
+                        lineIndex++;
+                        charIndex = 0;
+                        typingTimeout = setTimeout(typePhilosophical, 300); // Pause between lines
+                    }
+                }
+
+                function typePrimary() {
+                    const textSpan = document.createElement('span');
+                    const cursorSpan = document.createElement('span');
+                    cursorSpan.className = 'cursor large';
+                    primaryContainer.appendChild(textSpan);
+                    primaryContainer.appendChild(cursorSpan);
+
+                    let i = 0;
+                    function type() {
+                        if (i < primaryText.length) {
+                            textSpan.innerHTML += primaryText.charAt(i);
+                            i++;
+                            typingTimeout = setTimeout(type, 85);
+                        }
+                    }
+                    type();
                 }
                 
                 mainLogo.style.animation = 'logoAppear 1.5s var(--ease-out-quint) both';
                 mainLogo.style.opacity = '0.9';
-                setTimeout(type, 500); // Start typing after a short delay
+                typingTimeout = setTimeout(typePhilosophical, 500);
             }
+
 
             // --- PAGE NAVIGATION LOGIC ---
             function updateButtons() {
@@ -826,25 +871,21 @@
                 updateButtons();
                 updateUI(pageIndex);
 
-                // Manage browser history
                 if (!fromPopState) {
                     history.pushState({ page: pageIndex }, `Page ${pageIndex}`, `#page-${pageIndex}`);
                 }
 
-                // Restart typewriter if navigating to the first page
                 if (currentPage === 0 && oldPage !== 0) {
-                    startTypewriter();
+                    startFullTypewriter();
                 }
             }
             
             // --- INITIALIZATION AND EVENT HANDLERS ---
             function initialize() {
-                // Set initial page based on URL hash
                 const initialHash = window.location.hash.replace('#page-', '');
                 const initialPageIndex = parseInt(initialHash, 10);
                 const startPage = !isNaN(initialPageIndex) && initialPageIndex < totalPages ? initialPageIndex : 0;
 
-                // Set up the initial state without triggering navigation
                 currentPage = startPage;
                 pages.forEach((page, index) => {
                     page.classList.remove('active', 'prev');
@@ -857,12 +898,10 @@
                 updateButtons();
                 updateUI(startPage);
                 
-                // Set initial history state
                 history.replaceState({ page: startPage }, `Page ${startPage}`, `#page-${startPage}`);
 
-                // Initial typewriter
                 if (startPage === 0) {
-                    startTypewriter();
+                    startFullTypewriter();
                 }
             }
 
@@ -873,7 +912,6 @@
                 }, 500);
             });
 
-            // Handle browser back/forward buttons
             window.addEventListener('popstate', (e) => {
                 if (e.state && typeof e.state.page !== 'undefined') {
                     goToPage(e.state.page, true);
