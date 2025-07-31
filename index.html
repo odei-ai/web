@@ -137,6 +137,10 @@
             transform: translateX(100%);
             overflow-y: auto;
         }
+        
+        .page:not([data-page="0"]) {
+            justify-content: flex-start;
+        }
 
         .page.active {
             opacity: 1;
@@ -601,9 +605,6 @@
             
             .page-number { font-size: 0.688rem; opacity: 0.25; }
 
-            .page:not([data-page="0"]) .content {
-                margin-top: 2rem;
-            }
         }
     </style>
 </head>
