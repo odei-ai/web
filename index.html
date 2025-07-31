@@ -531,7 +531,10 @@
             .page { 
                 padding: 2rem 3rem; /* Further increased horizontal padding */
                 /* Handle safe areas for notches on mobile devices */
-                padding: env(safe-area-inset-top, 2rem) env(safe-area-inset-right, 3rem) env(safe-area-inset-bottom, 2rem) env(safe-area-inset-left, 3rem);
+                padding-top: env(safe-area-inset-top, 2rem);
+                padding-right: env(safe-area-inset-right, 3rem);
+                padding-bottom: env(safe-area-inset-bottom, 2rem);
+                padding-left: env(safe-area-inset-left, 3rem);
             }
             
             .page[data-page="0"] {
@@ -595,6 +598,12 @@
             /* Сдвигаем контент на внутренних страницах вниз, чтобы избежать наложения на полосу прокрутки */
             .page:not([data-page="0"]) .content {
                 margin-top: 2rem;
+            }
+
+            /* Add padding to the bottom section to avoid overlap with mobile browser UI */
+            .bottom-section {
+                padding-bottom: 1rem; /* A fallback for older browsers */
+                padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
             }
         }
     </style>
