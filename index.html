@@ -38,9 +38,10 @@
 
         :root {
             --bg: #000000;
-            --text: #ffffff;
-            --accent: rgba(255, 255, 255, 0.85);
-            --border: rgba(255, 255, 255, 0.1);
+            --text: #e0e0e0; /* Slightly off-white for terminal feel */
+            --accent: #4CAF50; /* Green accent */
+            --border: rgba(76, 175, 80, 0.2); /* Greenish border */
+            --glow: rgba(76, 175, 80, 0.3); /* Green glow */
             --max-width: 42rem; 
             --font-size-base: 1.25rem; 
             --line-height: 1.8;
@@ -56,6 +57,21 @@
             height: 100vh;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+
+        body::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+            z-index: -1;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            opacity: 0.5;
         }
 
         .loading {
@@ -92,6 +108,7 @@
             width: 0;
             z-index: 100;
             transition: width 0.8s var(--ease-out-quint);
+            box-shadow: 0 0 5px var(--accent);
         }
 
         .book {
@@ -177,6 +194,7 @@
             opacity: 0.9;
             animation: logoAppear 1.5s var(--ease-out-quint) both, breath 5s ease-in-out infinite;
             animation-delay: 0.2s, 1.7s;
+            text-shadow: 0 0 8px var(--glow);
         }
 
         @keyframes logoAppear {
@@ -192,13 +210,23 @@
         .quote {
             line-height: 1.6;
             font-weight: 400;
+            text-shadow: 0 0 5px var(--glow);
+        }
+
+        .boot-sequence {
+            font-size: 0.9rem;
+            color: var(--accent);
+            opacity: 0.8;
+            align-self: flex-start;
+            width: 100%;
         }
         
         .quote.philosophical {
-            font-size: 1.125rem; 
+            /* Fluid typography: scales from 1rem to 1.125rem */
+            font-size: clamp(1rem, 2.5vw, 1.125rem); 
             font-style: normal;
             letter-spacing: 0;
-            opacity: 0.7;
+            opacity: 0.8;
             display: inline-block;
             text-align: left;
             min-height: 3.6em; /* Reserve space */
@@ -210,7 +238,8 @@
         }
         
         .quote.primary {
-            font-size: 1.75rem; 
+            /* Fluid typography: scales from 1.25rem to 1.75rem */
+            font-size: clamp(1.25rem, 4vw, 1.75rem); 
             font-style: normal;
             letter-spacing: 0;
             font-weight: 500;
@@ -228,9 +257,10 @@
             display: inline-block;
             width: 10px;
             height: 1.125rem; /* Match philosophical font size */
-            background-color: var(--accent);
+            background-color: #FFFFFF; /* Changed to white */
             margin-left: 8px;
             animation: blink 1s steps(1) infinite;
+            box-shadow: 0 0 5px var(--accent);
         }
         
         .cursor.large {
@@ -287,7 +317,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            text-shadow: 0 0 0px var(--text);
+            text-shadow: 0 0 5px var(--glow);
         }
         
         .toc-prefix {
@@ -296,7 +326,8 @@
 
         .toc-link:hover {
             opacity: 1;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+            color: var(--accent);
+            text-shadow: 0 0 8px var(--accent);
         }
         
         .toc-link:hover .toc-text {
@@ -309,7 +340,8 @@
         
         .toc-link.active-toc {
             opacity: 1;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+            color: var(--accent);
+            text-shadow: 0 0 8px var(--accent);
         }
 
         .toc-link.active-toc .toc-text {
@@ -323,6 +355,7 @@
             text-transform: uppercase;
             margin-bottom: 2.5rem;
             opacity: 0.5;
+            text-shadow: 0 0 5px var(--glow);
         }
 
         .chapter-logo {
@@ -348,12 +381,14 @@
         }
 
         .text {
-            font-size: var(--font-size-base);
+            /* Fluid typography: scales from 1rem to 1.25rem */
+            font-size: clamp(1rem, 2.5vw, var(--font-size-base));
             line-height: var(--line-height);
             margin-bottom: var(--spacing);
             letter-spacing: 0;
             font-weight: 400;
             opacity: 0.95;
+            text-shadow: 0 0 5px var(--glow);
         }
 
         .text:last-child {
@@ -362,7 +397,8 @@
 
         .list {
             list-style: none;
-            font-size: var(--font-size-base);
+            /* Fluid typography: scales from 1rem to 1.25rem */
+            font-size: clamp(1rem, 2.5vw, var(--font-size-base));
             line-height: var(--line-height);
         }
 
@@ -373,6 +409,7 @@
             letter-spacing: 0;
             font-weight: 400;
             opacity: 0.95;
+            text-shadow: 0 0 5px var(--glow);
         }
 
         .list li:last-child {
@@ -384,6 +421,7 @@
             position: absolute;
             left: 0;
             opacity: 0.4;
+            color: var(--accent);
         }
         
         .social-links {
@@ -402,8 +440,9 @@
         
         .social-links a:hover {
             opacity: 1;
+            color: var(--accent);
             transform: translateY(-3px) scale(1.1);
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+            filter: drop-shadow(0 0 5px var(--accent));
         }
         
         .copyright {
@@ -412,6 +451,7 @@
             opacity: 0.6;
             width: 100%;
             text-align: center;
+            text-shadow: 0 0 5px var(--glow);
         }
 
         .page-number {
@@ -420,6 +460,7 @@
             right: 2rem;
             font-size: 0.875rem;
             opacity: 0.3;
+            text-shadow: 0 0 5px var(--glow);
         }
 
         .nav-arrows {
@@ -454,6 +495,7 @@
         .nav-arrow:hover {
             opacity: 0.8;
             transform: translateY(-50%) scale(1.1);
+            color: var(--accent);
         }
 
         .nav-arrow.prev { left: 2rem; transform: translateY(-50%) translateX(-100px); }
@@ -466,7 +508,7 @@
         .nav-arrow svg {
             width: 24px;
             height: 24px;
-            stroke: var(--text);
+            stroke: currentColor;
             stroke-width: 2;
             fill: none;
         }
@@ -476,15 +518,26 @@
             pointer-events: none;
             transform: translateY(-50%) scale(1) !important;
         }
-
+        
+        /* --- RESPONSIVE DESIGN --- */
+        /* Media query for tablets and mobile devices */
         @media (max-width: 768px) {
             .nav-arrows { display: none; }
+            
+            .main-content {
+                justify-content: space-around; /* Better vertical distribution */
+            }
 
             .page { 
-                padding: 4rem 2.5rem; /* Increased horizontal padding */
-                padding: env(safe-area-inset-top, 4rem) env(safe-area-inset-right, 2.5rem) env(safe-area-inset-bottom, 4rem) env(safe-area-inset-left, 2.5rem);
+                padding: 2rem 1.5rem; /* Adjusted vertical padding */
+                /* Handle safe areas for notches on mobile devices */
+                padding: env(safe-area-inset-top, 2rem) env(safe-area-inset-right, 1.5rem) env(safe-area-inset-bottom, 2rem) env(safe-area-inset-left, 1.5rem);
             }
             
+            .page[data-page="0"] {
+                 justify-content: space-around;
+            }
+
             .content {
                 max-width: 100%;
                 width: 100%;
@@ -497,27 +550,12 @@
             }
 
             .quotes-section {
-                gap: 3rem;
+                gap: 2rem; /* Adjusted gap */
                 width: 100%;
                 align-items: center;
             }
             
-            .quote.philosophical { 
-                font-size: 1rem;
-                text-align: left;
-            }
-            
-            .quote.philosophical span {
-                text-align: left;
-            }
-            
-            .quote.primary {
-                font-size: 1.25rem;
-            }
-            
-            .text, .list li { 
-                font-size: 1rem;
-            }
+            /* No need to change font-size here anymore, clamp() handles it */
             
             .list li {
                 padding-left: 2rem;
@@ -532,15 +570,16 @@
             
             .chapter-logo { text-align: center; }
             
+            /* Keep ToC as two columns on mobile */
             .toc-nav {
-                flex-direction: row; /* Changed for 2 columns */
-                gap: 3rem; /* Adjusted gap */
+                flex-direction: row; /* Keep as two columns */
+                gap: 2rem; /* Adjust gap for mobile */
                 justify-content: center;
-                align-items: flex-start;
             }
 
             .toc-list {
-                align-items: flex-start; /* Changed */
+                align-items: flex-start; /* Align text to the left within columns */
+                gap: 0.5rem;
             }
             
             .toc-link {
@@ -579,6 +618,7 @@
                     </div>
                     
                     <div class="quotes-section">
+                        <div class="boot-sequence" id="boot-sequence"></div>
                         <div class="quote philosophical" id="philosophical-quote">
                             <!-- Content will be typed here by JS -->
                         </div>
@@ -750,23 +790,68 @@
 
             // --- TYPEWRITER FUNCTION ---
             function startFullTypewriter() {
-                clearTimeout(typingTimeout); // Clear any existing typing animation
+                clearTimeout(typingTimeout);
 
+                const bootContainer = document.getElementById('boot-sequence');
                 const philosophicalContainer = document.getElementById('philosophical-quote');
                 const primaryContainer = document.getElementById('typewriter-container');
                 const mainLogo = document.getElementById('main-logo');
 
-                if (!philosophicalContainer || !primaryContainer || !mainLogo) return;
+                if (!bootContainer || !philosophicalContainer || !primaryContainer || !mainLogo) return;
 
                 // Reset containers
+                bootContainer.innerHTML = '';
+                bootContainer.style.display = 'block';
                 philosophicalContainer.innerHTML = '';
+                philosophicalContainer.style.display = 'none';
                 primaryContainer.innerHTML = '';
+                primaryContainer.style.display = 'none';
 
+
+                const bootLines = [
+                    "INITIATING BOOT SEQUENCE...",
+                    "LOADING COGNITIVE KERNEL V2.5...",
+                    "SYSTEM CHECK: OK",
+                    "MOUNTING NEURAL INTERFACE...",
+                    "READY."
+                ];
                 const philosophicalLines = [
                     "> The future is not human or machine.",
                     "> The future is symbiosis."
                 ];
                 const primaryText = "ODEI — the interface for merging human and AI";
+
+                let bootLineIndex = 0;
+
+                function typeBootSequence() {
+                    if (bootLineIndex >= bootLines.length) {
+                        setTimeout(() => {
+                            bootContainer.style.display = 'none';
+                            philosophicalContainer.style.display = 'inline-block';
+                            primaryContainer.style.display = 'inline-flex';
+                            typePhilosophical();
+                        }, 500);
+                        return;
+                    }
+
+                    const line = bootLines[bootLineIndex];
+                    const span = document.createElement('span');
+                    span.style.display = 'block';
+                    bootContainer.appendChild(span);
+                    
+                    let charIndex = 0;
+                    function typeChar() {
+                        if (charIndex < line.length) {
+                            span.innerHTML += line.charAt(charIndex);
+                            charIndex++;
+                            typingTimeout = setTimeout(typeChar, 20);
+                        } else {
+                            bootLineIndex++;
+                            typingTimeout = setTimeout(typeBootSequence, 100);
+                        }
+                    }
+                    typeChar();
+                }
 
                 let lineIndex = 0;
                 let charIndex = 0;
@@ -792,7 +877,7 @@
                     } else {
                         lineIndex++;
                         charIndex = 0;
-                        typingTimeout = setTimeout(typePhilosophical, 300); // Pause between lines
+                        typingTimeout = setTimeout(typePhilosophical, 300);
                     }
                 }
 
@@ -816,7 +901,7 @@
                 
                 mainLogo.style.animation = 'logoAppear 1.5s var(--ease-out-quint) both';
                 mainLogo.style.opacity = '0.9';
-                typingTimeout = setTimeout(typePhilosophical, 500);
+                typingTimeout = setTimeout(typeBootSequence, 500);
             }
 
 
