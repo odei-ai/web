@@ -38,10 +38,10 @@
 
         :root {
             --bg: #000000;
-            --text: #e0e0e0; /* Slightly off-white for terminal feel */
-            --accent: #4CAF50; /* Green accent */
-            --border: rgba(76, 175, 80, 0.2); /* Greenish border */
-            --glow: rgba(76, 175, 80, 0.3); /* Green glow */
+            --text: #e0e0e0;
+            --accent: #FFFFFF; /* Changed to white */
+            --border: rgba(255, 255, 255, 0.2); /* Changed to white */
+            --glow: rgba(255, 255, 255, 0.3); /* Changed to white */
             --max-width: 42rem; 
             --font-size-base: 1.25rem; 
             --line-height: 1.8;
@@ -104,11 +104,11 @@
             top: 0;
             left: 0;
             height: 2px;
-            background: #FFFFFF; /* Changed from var(--accent) to white */
+            background: #FFFFFF;
             width: 0;
             z-index: 100;
             transition: width 0.8s var(--ease-out-quint);
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.7); /* Changed from var(--accent) to white glow */
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
         }
 
         .book {
@@ -130,12 +130,12 @@
             justify-content: center;
             align-items: center;
             padding: 4rem 2rem;
-            padding-bottom: 140px; /* Added padding for the fixed footer */
+            padding-bottom: 140px;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.8s var(--ease-out-quint), transform 0.8s var(--ease-out-quint);
             transform: translateX(100%);
-            overflow-y: auto; /* Allow scrolling on pages if content overflows */
+            overflow-y: auto;
         }
 
         .page.active {
@@ -151,7 +151,6 @@
         .content {
             max-width: var(--max-width);
             width: 100%;
-            /* The height is no longer fixed to 100% to allow content to define its own height */
         }
 
         .main-content {
@@ -160,7 +159,7 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            min-height: 100%; /* Use min-height to ensure it fills the space */
+            min-height: 100%;
             position: relative;
         }
         
@@ -217,21 +216,20 @@
 
         .boot-sequence {
             font-size: 0.9rem;
-            color: var(--accent);
+            color: var(--text); /* Changed to text color */
             opacity: 0.8;
             align-self: flex-start;
             width: 100%;
         }
         
         .quote.philosophical {
-            /* Fluid typography: scales from 1rem to 1.125rem */
             font-size: clamp(1rem, 2.5vw, 1.125rem); 
             font-style: normal;
             letter-spacing: 0;
             opacity: 0.8;
             display: inline-block;
             text-align: left;
-            min-height: 3.6em; /* Reserve space */
+            min-height: 3.6em;
         }
         
         .quote.philosophical span {
@@ -240,7 +238,6 @@
         }
         
         .quote.primary {
-            /* Fluid typography: scales from 1.25rem to 1.75rem */
             font-size: clamp(1.25rem, 4vw, 1.75rem); 
             font-style: normal;
             letter-spacing: 0;
@@ -258,15 +255,15 @@
         .cursor {
             display: inline-block;
             width: 10px;
-            height: 1.125rem; /* Match philosophical font size */
-            background-color: #FFFFFF; /* Changed to white */
+            height: 1.125rem;
+            background-color: #FFFFFF;
             margin-left: 8px;
             animation: blink 1s steps(1) infinite;
             box-shadow: 0 0 5px var(--accent);
         }
         
         .cursor.large {
-            height: 1.75rem; /* Match primary font size */
+            height: 1.75rem;
         }
 
         @keyframes blink {
@@ -287,10 +284,11 @@
 
         .toc-nav {
             display: flex;
-            justify-content: center; 
+            width: -moz-fit-content;
+            width: fit-content;
+            margin: 0 auto;
             gap: 4rem;
             align-items: flex-start;
-            width: 100%;
         }
 
         .toc-list {
@@ -383,7 +381,6 @@
         }
 
         .text {
-            /* Fluid typography: scales from 1rem to 1.25rem */
             font-size: clamp(1rem, 2.5vw, var(--font-size-base));
             line-height: var(--line-height);
             margin-bottom: var(--spacing);
@@ -399,7 +396,6 @@
 
         .list {
             list-style: none;
-            /* Fluid typography: scales from 1rem to 1.25rem */
             font-size: clamp(1rem, 2.5vw, var(--font-size-base));
             line-height: var(--line-height);
         }
@@ -537,18 +533,16 @@
         }
         
         /* --- RESPONSIVE DESIGN --- */
-        /* Media query for tablets and mobile devices */
         @media (max-width: 768px) {
             .nav-arrows { display: none; }
             
             .main-content {
-                justify-content: space-around; /* Better vertical distribution */
+                justify-content: space-around;
             }
 
             .page { 
-                padding: 2rem 0; /* Remove horizontal padding from page */
+                padding: 2rem 0;
                 padding-top: env(safe-area-inset-top, 2rem);
-                /* Adjust bottom padding for the new footer */
                 padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 140px);
             }
             
@@ -559,7 +553,7 @@
             .content {
                 max-width: 100%;
                 width: 100%;
-                padding: 0 2.5rem; /* Add horizontal padding to content */
+                padding: 0 2.5rem;
                 padding-right: calc(env(safe-area-inset-right, 0px) + 2.5rem);
                 padding-left: calc(env(safe-area-inset-left, 0px) + 2.5rem);
             }
@@ -570,7 +564,7 @@
             }
 
             .quotes-section {
-                gap: 2rem; /* Adjusted gap */
+                gap: 2rem;
                 width: 100%;
                 align-items: center;
             }
@@ -589,9 +583,7 @@
             .chapter-logo { text-align: center; }
             
             .toc-nav {
-                flex-direction: row; 
                 gap: 2rem; 
-                justify-content: center;
             }
 
             .toc-list {
