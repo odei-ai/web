@@ -58,7 +58,8 @@
             --accent: #FFFFFF;
             --border: rgba(255, 255, 255, 0.2);
             --glow: rgba(255, 255, 255, 0.3);
-            --max-width: 42rem; 
+            /* Increased max-width for better desktop layout */
+            --max-width: 48rem; 
             --font-size-base: 1.25rem; 
             --line-height: 1.8;
             --spacing: 2rem;
@@ -67,7 +68,7 @@
 
         html, body {
             font-family: 'IBM Plex Mono', monospace;
-            background: var(--bg);
+            background: #000;
             color: var(--text);
             overflow: hidden;
             -webkit-font-smoothing: antialiased;
@@ -75,7 +76,6 @@
         }
 
         /* --- BACKGROUND VIDEO --- */
-        /* High quality "Ink in Water" effect */
         #bg-video {
             position: fixed;
             top: 50%;
@@ -85,9 +85,9 @@
             width: auto;
             height: auto;
             transform: translate(-50%, -50%);
-            z-index: 0;
-            opacity: 0.35; /* Adjusted for readability */
-            filter: grayscale(100%) contrast(1.2); /* Black & white style */
+            z-index: -2;
+            opacity: 0.35;
+            filter: grayscale(100%) contrast(1.2);
             pointer-events: none;
         }
 
@@ -101,7 +101,7 @@
             bottom: 0;
             right: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            z-index: 1;
+            z-index: -1;
             background-size: 100% 3px, 3px 100%;
             pointer-events: none;
             opacity: 0.4;
@@ -124,6 +124,7 @@
         }
         
         .loading .logo {
+            /* Still pulsing only for the loader */
             animation: pulse 1.5s infinite;
         }
         
@@ -202,19 +203,15 @@
             position: relative;
         }
         
-        .top-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            width: 100%;
-            margin-bottom: 3rem; 
-        }
+        /* Top section removed as per logo removal request, 
+           but we keep .quotes-section for spacing */
         
         .quotes-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 4rem;
+            margin-top: 10vh; /* Added space since logo is gone */
             margin-bottom: 2rem;
             width: 100%;
         }
@@ -225,26 +222,16 @@
             align-items: center; 
             gap: 1.5rem;
             width: 100%;
+            margin-bottom: 3rem;
         }
 
+        /* Logo styles kept ONLY for the loader */
         .logo {
             width: 80px;
             height: 80px;
             color: var(--text);
             opacity: 0.9;
-            animation: logoAppear 1.5s var(--ease-out-quint) both, breath 5s ease-in-out infinite;
-            animation-delay: 0.2s, 1.7s;
             text-shadow: 0 0 8px var(--glow);
-        }
-
-        @keyframes logoAppear {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 0.9; transform: scale(1); }
-        }
-
-        @keyframes breath {
-            0%, 100% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.05); opacity: 0.7; }
         }
 
         .quote {
@@ -397,27 +384,7 @@
             text-shadow: 0 0 5px var(--glow);
         }
 
-        .chapter-logo {
-            margin-bottom: 1rem;
-        }
-        
-        .chapter-logo a {
-            display: inline-flex;
-            opacity: 0.4;
-            transition: all 0.4s var(--ease-out-quint);
-            cursor: pointer;
-        }
-        
-        .chapter-logo a:hover {
-            opacity: 0.7;
-            transform: scale(1.1);
-        }
-
-        .chapter-logo svg {
-            width: 32px;
-            height: 32px;
-            color: var(--text);
-        }
+        /* Removed .chapter-logo styles since logos are gone */
 
         .text {
             font-size: clamp(1rem, 2.5vw, var(--font-size-base));
@@ -607,9 +574,10 @@
             .content {
                 max-width: 100%;
                 width: 100%;
-                padding: 0 2rem;
-                padding-right: calc(env(safe-area-inset-right, 0px) + 2rem);
-                padding-left: calc(env(safe-area-inset-left, 0px) + 2rem);
+                /* Less padding on mobile for better width usage */
+                padding: 0 1.5rem; 
+                padding-right: calc(env(safe-area-inset-right, 0px) + 1.5rem);
+                padding-left: calc(env(safe-area-inset-left, 0px) + 1.5rem);
             }
             
             .logo { 
@@ -621,6 +589,7 @@
                 gap: 2.5rem;
                 width: 100%;
                 align-items: center;
+                margin-top: 5vh;
             }
 
             .bottom-section {
@@ -636,11 +605,6 @@
                 text-align: center;
                 font-size: 0.75rem;
                 margin-bottom: 2.5rem;
-            }
-            
-            .chapter-logo { 
-                text-align: center;
-                margin-top: 2rem;
             }
             
             .toc-nav {
@@ -682,17 +646,17 @@
       VIDEO BACKGROUND:
       - Uses a public Pixabay link for the "Ink in Water" effect.
       - Autoplay enabled for iOS/Android (playsinline + muted).
+      - Added a 'poster' attribute with a high-quality static image as a fallback.
     -->
-    <video id="bg-video" autoplay muted loop playsinline>
+    <video id="bg-video" autoplay muted loop playsinline poster="https://cdn.pixabay.com/photo/2020/06/07/04/23/smoke-5268897_1280.jpg">
+        <!-- Using a stable Pixabay CDN link. If this link expires in the far future, replace with any 'ink in water' stock footage. -->
         <source src="https://cdn.pixabay.com/video/2023/10/22/186115-877660724_large.mp4" type="video/mp4">
     </video>
 
     <!-- SVG symbol definition - Hidden but accessible for <use> -->
-    <svg width="0" height="0" style="position: absolute; visibility: hidden;">
+    <svg width="0" height="0" style="position: absolute; display: none;">
       <symbol id="odei-logo" viewBox="0 0 32 33">
-        <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
-        <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
-      </symbol>
+        <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z' fill='white'/%3E%3Cpath d='M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z' fill='white'/%3E%3C/svg%3E">
     </svg>
 
     <div class="progress-bar" id="progressBar"></div>
@@ -705,9 +669,7 @@
         <section class="page active" data-page="0">
             <div class="content">
                 <div class="main-content">
-                    <div class="top-section">
-                        <svg class="logo" id="main-logo"><use href="#odei-logo"></use></svg>
-                    </div>
+                    <!-- Removed top-section with logo -->
                     
                     <div class="quotes-section">
                         <div class="boot-sequence" id="boot-sequence"></div>
@@ -737,11 +699,6 @@
 
         <section class="page" data-page="1">
             <div class="content">
-                <div class="chapter-logo">
-                    <a href="#" data-page="0">
-                        <svg><use href="#odei-logo"></use></svg>
-                    </a>
-                </div>
                 <h2 class="chapter-heading">Introduction</h2>
                 <p class="text">
                     Human potential is constrained not by capability, but by cognitive overhead. Every day, we waste precious mental cycles on decisions that could be automated, schedules that could be optimized, patterns that could be recognized.
@@ -758,11 +715,6 @@
 
         <section class="page" data-page="2">
             <div class="content">
-                <div class="chapter-logo">
-                    <a href="#" data-page="0">
-                        <svg><use href="#odei-logo"></use></svg>
-                    </a>
-                </div>
                 <h2 class="chapter-heading">Nature</h2>
                 <p class="text">
                     A complete life operating system that transcends the boundaries between human cognition and artificial intelligence. ODEI represents a fundamental shift in how we conceptualize the relationship between mind and machine—not as separate entities exchanging information, but as a unified cognitive architecture.
@@ -776,11 +728,6 @@
 
         <section class="page" data-page="3">
             <div class="content">
-                <div class="chapter-logo">
-                    <a href="#" data-page="0">
-                        <svg><use href="#odei-logo"></use></svg>
-                    </a>
-                </div>
                 <h2 class="chapter-heading">Capabilities</h2>
                 <p class="text">
                     ODEI is built on eight mandatory capabilities that transform it from a reactive tool into an operational subject—a system that acts with purpose, refuses when necessary, and learns from every interaction.
@@ -802,11 +749,6 @@
         <!-- NEW LOCATION: SCIENCE (Page 4) -->
         <section class="page" data-page="4">
             <div class="content">
-                <div class="chapter-logo">
-                    <a href="#" data-page="0">
-                        <svg><use href="#odei-logo"></use></svg>
-                    </a>
-                </div>
                 <h2 class="chapter-heading">Science</h2>
                 <p class="text">
                     ODEI is not built on heuristics, but on first principles of intelligence and control theory.
@@ -824,11 +766,6 @@
         <!-- MOVED: Architecture (Page 5) -->
         <section class="page" data-page="5">
             <div class="content">
-                <div class="chapter-logo">
-                    <a href="#" data-page="0">
-                        <svg><use href="#odei-logo"></use></svg>
-                    </a>
-                </div>
                 <h2 class="chapter-heading">Architecture</h2>
                 <p class="text">
                     Three planes work in concert. Memory holds the world model. Control makes decisions. Execution changes reality—transactionally, verifiably, reversibly when possible.
@@ -851,11 +788,6 @@
         <!-- MOVED: Outcome (Page 6) -->
         <section class="page" data-page="6">
             <div class="content">
-                <div class="chapter-logo">
-                    <a href="#" data-page="0">
-                        <svg><use href="#odei-logo"></use></svg>
-                    </a>
-                </div>
                 <h2 class="chapter-heading">Outcome</h2>
                 <p class="text">
                     Imagine waking each day with absolute clarity. Your schedule, already optimized. Your decisions, already made. Your path, already illuminated.
@@ -873,11 +805,6 @@
         <!-- MOVED: Cognitive Memory (Page 7) -->
         <section class="page" data-page="7">
             <div class="content">
-                <div class="chapter-logo">
-                    <a href="#" data-page="0">
-                        <svg><use href="#odei-logo"></use></svg>
-                    </a>
-                </div>
                 <h2 class="chapter-heading">Cognitive Memory</h2>
                 <p class="text">
                     Traditional memory stores data. Cognitive Memory understands it. This is not a static database, but a living system that comprehends, learns, reasons, and adapts—transforming raw information into actionable wisdom. It is a digital extension of your mind.
@@ -1054,7 +981,7 @@
                 const primaryContainer = document.getElementById('typewriter-container');
                 const mainLogo = document.getElementById('main-logo');
 
-                if (!bootContainer || !philosophicalContainer || !primaryContainer || !mainLogo) return;
+                if (!bootContainer || !philosophicalContainer || !primaryContainer) return;
 
                 // Check session storage to skip intro
                 const hasBooted = sessionStorage.getItem('odei_booted');
@@ -1066,7 +993,6 @@
                     philosophicalContainer.style.display = 'inline-block';
                     primaryContainer.innerHTML = '<span>ODEI — the interface for merging human and AI</span>';
                     primaryContainer.style.display = 'inline-flex';
-                    mainLogo.style.opacity = '0.9';
                     // No typing animation needed
                     return;
                 }
@@ -1176,7 +1102,6 @@
                     type();
                 }
                 
-                mainLogo.style.opacity = '0.9';
                 typingTimeout = setTimeout(typeBootSequence, 500);
             }
 
