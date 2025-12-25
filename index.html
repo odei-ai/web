@@ -216,6 +216,30 @@
             fill: currentColor;
         }
 
+        /* Small Logo for Subpages */
+        .small-logo-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            padding-top: 1rem;
+        }
+
+        .small-logo {
+            width: 48px;
+            height: 48px;
+            color: var(--accent);
+            opacity: 0.7;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .small-logo:hover {
+            opacity: 1;
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 8px var(--glow));
+        }
+
         .quote {
             line-height: 1.6;
             font-weight: 400;
@@ -366,25 +390,6 @@
             text-shadow: 0 0 5px var(--glow);
         }
         
-        .chapter-logo {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .chapter-logo svg {
-            width: 48px;
-            height: 48px;
-            color: var(--accent);
-            opacity: 0.8;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-        
-        .chapter-logo svg:hover {
-            opacity: 1;
-            filter: drop-shadow(0 0 5px var(--glow));
-        }
-
         .text {
             font-size: clamp(1rem, 2.5vw, var(--font-size-base));
             line-height: var(--line-height);
@@ -671,7 +676,6 @@
             <div class="content">
                 <div class="main-content">
                     
-                    <!-- RESTORED: Top Section with INLINED Logo to ensure visibility -->
                     <div class="top-section">
                         <svg class="logo" id="main-logo" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
@@ -696,7 +700,7 @@
                                 <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Architecture</span></a></li>
                             </ul>
                             <ul class="toc-list">
-                                <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">The Symbiosis</span></a></li>
+                                <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Interface</span></a></li>
                                 <li><a href="#" data-page="7" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Cognitive Memory</span></a></li>
                             </ul>
                         </nav>
@@ -707,15 +711,21 @@
 
         <section class="page" data-page="1">
             <div class="content">
+                <div class="small-logo-container">
+                    <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
+                        <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
+                    </svg>
+                </div>
                 <h2 class="chapter-heading">Introduction</h2>
                 <p class="text">
-                    We are bottlenecked by bandwidth. Our thoughts are fast, complex, and multidimensional, but our output—speech, typing, tapping—is painfully slow. We are isolated cognitive islands trapped in biological latency.
+                    Human potential is constrained not by capability, but by cognitive overhead. Every day, we waste precious mental cycles on decisions that could be automated, schedules that could be optimized, patterns that could be recognized.
                 </p>
                 <p class="text">
-                    ODEI dissolves this barrier. It acts as a high-bandwidth API for your intent. It doesn't just execute tasks; it anticipates the architecture of your will.
+                    ODEI eliminates this waste. It assumes the burden of life's complexity, freeing your mind to focus on creation, connection, and consciousness. This is not about productivity—it's about freedom.
                 </p>
                 <p class="text">
-                    This is not an assistant you talk to. It is an extension you think with. By offloading the computation of existence to ODEI, you reclaim the processing power needed for true consciousness.
+                    ODEI is not an assistant. It is your inner operating system. You don't talk to it. You merge with it. Together, you reclaim your time, your memory, and your destiny.
                 </p>
             </div>
             <span class="page-number">1</span>
@@ -723,6 +733,12 @@
 
         <section class="page" data-page="2">
             <div class="content">
+                <div class="small-logo-container">
+                    <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
+                        <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
+                    </svg>
+                </div>
                 <h2 class="chapter-heading">The Human API</h2>
                 <p class="text">
                     For silicon and biology to merge, human existence must become readable. Chaos cannot be scaled.
@@ -739,852 +755,12 @@
 
         <section class="page" data-page="3">
             <div class="content">
-                <h2 class="chapter-heading">Capabilities</h2>
-                <p class="text">
-                    ODEI is built on eight mandatory capabilities that transform it from a reactive tool into an operational subject—a system that acts with purpose, refuses when necessary, and learns from every interaction.
-                </p>
-                <ul class="list">
-                    <li><b>Working State (IPOV)</b> — A unified internal point of view. ODEI maintains a coherent model of your goals, constraints, and current context—not scattered notes, but a living state from which all decisions emerge.</li>
-                    <li><b>Normative Evaluation</b> — Every action is assessed: Is it possible? Is it permitted? Is it worth doing? Tools answer "can". ODEI answers "should".</li>
-                    <li><b>Capacity for Refusal</b> — ODEI can say no. When an action violates constraints, exceeds risk thresholds, or conflicts with your authority matrix, it refuses—with explanation and alternative.</li>
-                    <li><b>Initiative from Position</b> — Proactive proposals emerge from ODEI's understanding of your world: changed beliefs, detected risks, deviations from plan. Not noise—signal.</li>
-                    <li><b>Attributable Responsibility</b> — Every decision comes with a receipt: why it was made, what evidence supported it, what risks were considered, how to verify the outcome.</li>
-                    <li><b>Active Sensing & Beliefs</b> — Facts have provenance. ODEI doesn't just wait for data; it actively queries connected systems (Value of Information) to resolve uncertainty before acting.</li>
-                    <li><b>Cybernetic Stability</b> — Intervention budgets, cooldowns, rate limits. ODEI optimizes for consistency over time, not hyperactive optimization that burns you out.</li>
-                    <li><b>Learning Loop</b> — Personalization through explicit feedback: approve, deny, override, regret. No silent drift—only intentional evolution of preferences and thresholds.</li>
-                </ul>
-            </div>
-            <span class="page-number">3</span>
-        </section>
-
-        <section class="page" data-page="4">
-            <div class="content">
-                <h2 class="chapter-heading">Science</h2>
-                <p class="text">
-                    ODEI is built on first principles of intelligence and control theory.
-                </p>
-                <ul class="list">
-                    <li>
-                        <b>Active Inference.</b> 
-                        <span style="display:block; opacity:0.7; font-size: 0.85em; margin-top:0.25rem; font-style:italic;">Friston, K. (2010). The free-energy principle.</span>
-                        ODEI minimizes "surprisal" by constantly updating its internal model or acting to bring the world in line with its predictions. It doesn't just process data; it seeks to resolve uncertainty.
-                    </li>
-                    <li>
-                        <b>Viable System Model.</b> 
-                        <span style="display:block; opacity:0.7; font-size: 0.85em; margin-top:0.25rem; font-style:italic;">Beer, S. (1972). Brain of the Firm.</span>
-                        We treat your life as a complex, recursive system requiring homeostasis. ODEI acts as the regulatory loop that absorbs variety, preventing cognitive overload.
-                    </li>
-                    <li>
-                        <b>The Extended Mind.</b> 
-                        <span style="display:block; opacity:0.7; font-size: 0.85em; margin-top:0.25rem; font-style:italic;">Clark, A. & Chalmers, D. (1998). Analysis.</span>
-                        We reject the skull as the boundary of the mind. ODEI is not a tool <i>used</i> by the mind; it is a functional <i>part</i> of the cognitive architecture, offloading storage and processing to silicon.
-                    </li>
-                    <li>
-                        <b>Applied Category Theory.</b> 
-                        <span style="display:block; opacity:0.7; font-size: 0.85em; margin-top:0.25rem; font-style:italic;">Spivak, D. I. (2014). Category Theory for the Sciences.</span>
-                        We utilize compositional structures to map relationships between disparate domains of your life, ensuring that memory, logic, and action remain mathematically consistent across contexts.
-                    </li>
-                </ul>
-            </div>
-            <span class="page-number">4</span>
-        </section>
-
-        <section class="page" data-page="5">
-            <div class="content">
-                <h2 class="chapter-heading">Architecture</h2>
-                <p class="text">
-                    Three planes work in concert. Memory holds the world model. Control makes decisions. Execution changes reality—transactionally, verifiably, reversibly when possible.
-                </p>
-                <ul class="list">
-                    <li><b>Memory Plane</b> — Facts with provenance (source, timestamp, confidence). Beliefs derived from evidence. A knowledge graph connecting context, history, and relationships. A mind layer for insights and patterns.</li>
-                    <li><b>Control Plane</b> — The operational subject. Governed by a customizable <b>Authority Matrix</b> (the constitution) and constraints. It manages stability, learning, and decision routing.</li>
-                    <li><b>Execution Plane</b> — A strictly bounded <b>Action Registry</b>—no actions exist outside the defined space. Transaction protocol: prepare → execute → verify → commit. Complete audit log.</li>
-                </ul>
-                <p class="text" style="margin-top: 2rem;">
-                    The main loop: Sense → Update → Decide → Plan → Propose → Execute → Verify → Learn → Audit. Every cycle produces receipts. Every action is traceable. Nothing happens without explanation.
-                </p>
-                <p class="text" style="opacity: 0.7; font-size: 0.95em;">
-                    Seven invariants govern the system: no actions outside the registry, no facts without provenance, no auto-execution without authority check, no "done" without verification, no learning without explicit feedback, no proactivity without stability budgets, every change explainable. Plus an <b>Automatic Circuit Breaker</b> that triggers "Brake Mode" if verification fails repeatedly.
-                </p>
-            </div>
-            <span class="page-number">5</span>
-        </section>
-
-        <section class="page" data-page="6">
-            <div class="content">
-                <h2 class="chapter-heading">Interface</h2>
-                <p class="text">
-                    What is not visualized does not exist. The ODEI Dashboard (v2) is not a chat window—it is the operational stage of the subject. It is designed for observability and control.
-                </p>
-                <ul class="list">
-                    <li><b>Today</b> — The single operational screen. Spotlight (max 3 contexts), committed outcomes, real schedule blocks, and a <b>Directive Input</b> to inject new intent. Not a chat, but a command center.</li>
-                    <li><b>Actions</b> — The center of agency. A single source of truth for proposals, pending verifications, and executed actions. Nothing agentic happens "off the record".</li>
-                    <li><b>Control</b> — The constitution. Manage the Authority Matrix, Autonomy Mode (Silent/Advisor/Doer), and Stability budgets. You define the laws; ODEI executes them.</li>
-                    <li><b>Observability</b> — Accountability visualized via Receipt Drawers. Every proposal explains "Why", lists evidence, and checks constraints.</li>
-                </ul>
-                <p class="text">
-                    The interface is built to build trust through transparency, not anthropomorphism.
-                </p>
-            </div>
-            <span class="page-number">6</span>
-        </section>
-
-        <section class="page" data-page="7">
-            <div class="content">
-                <h2 class="chapter-heading">Cognitive Memory</h2>
-                <p class="text">
-                    Traditional memory stores data. Cognitive Memory understands it. This is not a static database, but a living system that comprehends, learns, reasons, and adapts—transforming raw information into actionable wisdom. It is a digital extension of your mind.
-                </p>
-                <ul class="list">
-                    <li><b>Comprehends (Semantic Analysis)</b> The system understands not just words, but their deeper meaning. Through advanced vector embeddings and graph-based entity extraction, it grasps context, relationships, and implications—even when unstated. Every memory becomes a node in your personal knowledge graph, connected to people, goals, and insights.</li>
-                    <li><b>Learns (Adaptive Intelligence)</b> The system learns from your success. Using Hebbian principles—"neurons that fire together, wire together"—it strengthens the graph connections that lead to positive outcomes. Your personal formulas for success become encoded in the weighted edges between memories, patterns, and actions.</li>
-                    <li><b>Reasons (Contextual Connections)</b> Intelligence emerges from the graph. Every new memory is instantly woven into your existing neural network through semantic relationships, temporal sequences, and causal chains. The graph structure reveals hidden patterns, forgotten connections, and emergent insights that linear storage could never surface.</li>
-                    <li><b>Adapts (Dynamic Context)</b> The right advice at the right time. The system intelligently filters suggestions based on your current situation—whether you're at home for deep work, commuting with limited time, or wrapping up your day. Context shapes which paths through your knowledge graph are most relevant now.</li>
-                </ul>
-                <p class="text">
-                    The result is an AI that doesn't just serve you—it truly knows you. Your patterns become its instincts. Your success becomes its strategy. Cognitive Memory is what elevates ODEI from an assistant to a true thinking partner that evolves alongside you.
-                </p>
-                <p class="text" style="opacity: 0.6; font-size: 0.9em;">
-                    Powered by Neo4j Enterprise graph database, ensuring every connection in your cognitive architecture is preserved, understood, and instantly accessible.
-                </p>
-            </div>
-            <span class="page-number">7</span>
-        </section>
-
-        <!-- Privacy Policy (Remains Page 8) -->
-        <section class="page" data-page="8">
-            <div class="content">
-                <div class="chapter-logo">
-                    <a href="#" data-page="0" aria-label="Back to Home">
-                        <svg viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z' fill='white'/%3E%3Cpath d='M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z' fill='white'/%3E%3C/svg%3E">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500&display=swap" rel="stylesheet">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #000000;
-            --text: #e0e0e0;
-            --accent: #FFFFFF;
-            --border: rgba(255, 255, 255, 0.2);
-            --glow: rgba(255, 255, 255, 0.3);
-            /* Increased max-width for better desktop layout */
-            --max-width: 48rem; 
-            --font-size-base: 1.25rem; 
-            --line-height: 1.8;
-            --spacing: 2rem;
-            --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        html, body {
-            font-family: 'IBM Plex Mono', monospace;
-            background: #000;
-            color: var(--text);
-            overflow: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* --- BACKGROUND VIDEO --- */
-        #bg-video {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            z-index: -2;
-            opacity: 0.35;
-            filter: grayscale(100%) contrast(1.2);
-            pointer-events: none;
-        }
-
-        /* CRT Scanline overlay */
-        body::after {
-            content: " ";
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            z-index: -1;
-            background-size: 100% 3px, 3px 100%;
-            pointer-events: none;
-            opacity: 0.4;
-        }
-
-        .loading {
-            position: fixed;
-            inset: 0;
-            background: var(--bg);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s var(--ease-out-quint);
-        }
-        
-        .loading.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .loading .logo {
-            /* Still pulsing only for the loader */
-            animation: pulse 1.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.4; transform: scale(0.95); }
-            50% { opacity: 0.9; transform: scale(1); }
-        }
-
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 2px;
-            background: #FFFFFF;
-            width: 0;
-            z-index: 100;
-            transition: width 0.8s var(--ease-out-quint);
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
-        }
-
-        .book {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            height: var(--app-height, 100vh);
-            overflow: hidden;
-            z-index: 2;
-        }
-
-        .page {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 4rem 2rem;
-            padding-bottom: 140px;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.8s var(--ease-out-quint), transform 0.8s var(--ease-out-quint);
-            transform: translateX(100%);
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .page:not([data-page="0"]) {
-            justify-content: flex-start;
-        }
-
-        .page.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
-        }
-
-        .page.prev {
-            transform: translateX(-100%);
-        }
-
-        .content {
-            max-width: var(--max-width);
-            width: 100%;
-            /* Less padding on mobile for better width usage */
-            padding-bottom: 4rem; 
-        }
-
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            min-height: 100%;
-            position: relative;
-        }
-        
-        .top-section {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            margin-top: 5vh;
-            margin-bottom: 2rem;
-            z-index: 5;
-        }
-        
-        .quotes-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4rem;
-            margin-top: 0; 
-            margin-bottom: 2rem;
-            width: 100%;
-        }
-        
-        .bottom-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            gap: 1.5rem;
-            width: 100%;
-            margin-bottom: 3rem;
-        }
-
-        /* Logo styles */
-        .logo {
-            width: 80px;
-            height: 80px;
-            color: var(--text);
-            opacity: 0.9;
-            text-shadow: 0 0 8px var(--glow);
-        }
-        
-        /* Make sure SVG path fill inherits current color for better control */
-        .logo path {
-            fill: currentColor;
-        }
-
-        .quote {
-            line-height: 1.6;
-            font-weight: 400;
-            text-shadow: 0 0 5px var(--glow);
-        }
-
-        .boot-sequence {
-            font-size: 0.9rem;
-            color: var(--text);
-            opacity: 0.8;
-            align-self: flex-start;
-            width: 100%;
-        }
-        
-        .quote.philosophical {
-            font-size: clamp(1rem, 2.5vw, 1.125rem); 
-            font-style: normal;
-            letter-spacing: 0;
-            opacity: 0.8;
-            display: inline-block;
-            text-align: left;
-            min-height: 3.6em;
-        }
-        
-        .quote.philosophical span {
-            display: block;
-            text-align: left;
-        }
-        
-        .quote.primary {
-            font-size: clamp(1.25rem, 4vw, 1.75rem); 
-            font-style: normal;
-            letter-spacing: 0;
-            font-weight: 500;
-            opacity: 0.95;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            min-height: 2.2rem; 
-            text-align: center;
-            width: 100%;
-        }
-        
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 1.125rem;
-            background-color: #FFFFFF;
-            margin-left: 8px;
-            animation: blink 1s steps(1) infinite;
-            box-shadow: 0 0 5px var(--accent);
-        }
-        
-        .cursor.large {
-            height: 1.75rem;
-        }
-
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
-        }
-        
-        .toc-title {
-            font-size: 0.875rem; 
-            font-weight: 400;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            opacity: 0.6;
-            text-align: center; 
-        }
-
-        .toc-nav {
-            display: flex;
-            width: -moz-fit-content;
-            width: fit-content;
-            margin: 0 auto;
-            gap: 4rem;
-            align-items: flex-start;
-        }
-
-        .toc-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .toc-list li {
-            margin: 0.5rem 0;
-        }
-
-        .toc-link {
-            color: inherit;
-            text-decoration: none;
-            font-size: 1.125rem; 
-            font-weight: 400;
-            letter-spacing: 0.08em;
-            opacity: 0.7;
-            transition: all 0.4s var(--ease-out-quint);
-            cursor: pointer;
-            padding: 0.25rem 0;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-shadow: 0 0 5px var(--glow);
-        }
-        
-        .toc-prefix {
-            opacity: 0.6;
-        }
-
-        .toc-link:hover {
-            opacity: 1;
-            color: var(--accent);
-            text-shadow: 0 0 8px var(--accent);
-        }
-        
-        .toc-link:hover .toc-text {
-             transform: translateX(0.5rem);
-        }
-
-        .toc-text {
-            transition: transform 0.4s var(--ease-out-quint);
-        }
-        
-        .toc-link.active-toc {
-            opacity: 1;
-            color: var(--accent);
-            text-shadow: 0 0 8px var(--accent);
-        }
-
-        .toc-link.active-toc .toc-text {
-            transform: translateX(0.5rem);
-        }
-
-        .chapter-heading {
-            font-size: 0.875rem; 
-            font-weight: 400;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            margin-bottom: 2.5rem;
-            opacity: 0.5;
-            text-shadow: 0 0 5px var(--glow);
-        }
-        
-        .chapter-logo {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .chapter-logo svg {
-            width: 48px;
-            height: 48px;
-            color: var(--accent);
-            opacity: 0.8;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-        
-        .chapter-logo svg:hover {
-            opacity: 1;
-            filter: drop-shadow(0 0 5px var(--glow));
-        }
-
-        .text {
-            font-size: clamp(1rem, 2.5vw, var(--font-size-base));
-            line-height: var(--line-height);
-            margin-bottom: var(--spacing);
-            letter-spacing: 0;
-            font-weight: 400;
-            opacity: 0.95;
-            text-shadow: 0 0 5px var(--glow);
-        }
-
-        .text:last-child {
-            margin-bottom: 0;
-        }
-
-        .list {
-            list-style: none;
-            font-size: clamp(1rem, 2.5vw, var(--font-size-base));
-            line-height: var(--line-height);
-            margin-bottom: var(--spacing);
-        }
-
-        .list li {
-            padding: 1.25rem 0 1.25rem 2.25rem;
-            position: relative;
-            border-bottom: 1px solid var(--border);
-            letter-spacing: 0;
-            font-weight: 400;
-            opacity: 0.95;
-            text-shadow: 0 0 5px var(--glow);
-        }
-
-        .list li:last-child {
-            border-bottom: none;
-        }
-
-        .list li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            opacity: 0.4;
-            color: var(--accent);
-        }
-        
-        .site-footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 20;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.5rem;
-            padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1.5rem);
-            background: transparent;
-            pointer-events: all;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            width: 100%;
-        }
-        
-        .social-links a {
-            color: inherit;
-            opacity: 0.6;
-            transition: all 0.4s var(--ease-out-quint);
-        }
-        
-        .social-links a:hover {
-            opacity: 1;
-            color: var(--accent);
-            transform: translateY(-3px) scale(1.1);
-            filter: drop-shadow(0 0 5px var(--accent));
-        }
-        
-        .copyright {
-            font-size: 0.875rem;
-            letter-spacing: 0.1em;
-            opacity: 0.6;
-            width: 100%;
-            text-align: center;
-            text-shadow: 0 0 5px var(--glow);
-        }
-
-        .page-number {
-            position: absolute;
-            bottom: 2rem;
-            right: 2rem;
-            font-size: 0.875rem;
-            opacity: 0.3;
-            text-shadow: 0 0 5px var(--glow);
-        }
-
-        .nav-arrows {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        .nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%) translateX(0);
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            pointer-events: all;
-            opacity: 0;
-            transition: all 0.5s var(--ease-out-quint);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .book:hover .nav-arrow {
-            opacity: 0.3;
-        }
-
-        .nav-arrow:hover {
-            opacity: 0.8;
-            transform: translateY(-50%) scale(1.1);
-            color: var(--accent);
-        }
-
-        .nav-arrow.prev { left: 2rem; transform: translateY(-50%) translateX(-100px); }
-        .book:hover .nav-arrow.prev { transform: translateY(-50%) translateX(0); }
-
-        .nav-arrow.next { right: 2rem; transform: translateY(-50%) translateX(100px); }
-        .book:hover .nav-arrow.next { transform: translateY(-50%) translateX(0); }
-
-
-        .nav-arrow svg {
-            width: 24px;
-            height: 24px;
-            stroke: currentColor;
-            stroke-width: 2;
-            fill: none;
-        }
-
-        .nav-arrow.disabled {
-            opacity: 0.1 !important;
-            pointer-events: none;
-            transform: translateY(-50%) scale(1) !important;
-        }
-
-        /* --- Specific tweaks for Privacy Policy (Page 8) --- */
-        .page[data-page="8"] .list li {
-            padding: 0.75rem 0 0.75rem 1.5rem;
-            font-size: 0.95rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .page[data-page="8"] .chapter-heading {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-            opacity: 0.8;
-        }
-        
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 768px) {
-            .nav-arrows { display: none; }
-            
-            .main-content {
-                justify-content: space-around;
-            }
-
-            .page { 
-                padding: 2rem 0;
-                padding-top: env(safe-area-inset-top, 2rem);
-                padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 140px);
-            }
-            
-            .page[data-page="0"] {
-                 justify-content: space-around;
-            }
-
-            .content {
-                max-width: 100%;
-                width: 100%;
-                /* Less padding on mobile for better width usage */
-                padding: 0 1.5rem; 
-                padding-right: calc(env(safe-area-inset-right, 0px) + 1.5rem);
-                padding-left: calc(env(safe-area-inset-left, 0px) + 1.5rem);
-            }
-            
-            .logo { 
-                width: 64px; 
-                height: 64px;
-            }
-
-            /* Restore proper top section for mobile too */
-            .top-section {
-                 margin-top: 5vh;
-            }
-
-            .quotes-section {
-                gap: 2.5rem;
-                width: 100%;
-                align-items: center;
-                /* margin-top: 5vh; Removed in favor of top-section control */
-            }
-
-            .bottom-section {
-                gap: 2rem;
-            }
-            
-            .list li {
-                padding-left: 2rem;
-                padding-right: 0;
-            }
-            
-            .chapter-heading { 
-                text-align: center;
-                font-size: 0.75rem;
-                margin-bottom: 2.5rem;
-            }
-            
-            .toc-nav {
-                width: 100%;
-                justify-content: center;
-                gap: 1.5rem; 
-            }
-
-            .toc-list {
-                align-items: flex-start; 
-                gap: 0.5rem;
-            }
-            
-            .toc-link {
-                font-size: 0.875rem;
-                gap: 0.5rem;
-            }
-            
-            .toc-prefix {
-                display: inline-block;
-                width: 1rem;
-            }
-
-            .social-links a {
-                padding: 0.5rem;
-            }
-            
-            .social-links { gap: 1rem; }
-            
-            .social-links a svg { width: 18px; height: 18px; }
-            
-            .page-number { font-size: 0.688rem; opacity: 0.25; }
-
-        }
-    </style>
-</head>
-<body>
-    <!-- 
-      VIDEO BACKGROUND:
-      - Uses a public Pixabay link for the "Ink in Water" effect.
-      - Autoplay enabled for iOS/Android (playsinline + muted).
-      - Added a 'poster' attribute with a high-quality static image as a fallback.
-    -->
-    <video id="bg-video" autoplay muted loop playsinline poster="https://cdn.pixabay.com/photo/2020/06/07/04/23/smoke-5268897_1280.jpg">
-        <!-- Using a stable Pixabay CDN link. -->
-        <source src="https://cdn.pixabay.com/video/2023/10/22/186115-877660724_large.mp4" type="video/mp4">
-    </video>
-
-    <div class="progress-bar" id="progressBar"></div>
-
-    <div class="loading" id="loader">
-        <svg class="logo" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
-            <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
-        </svg>
-    </div>
-
-    <div class="book">
-        <section class="page active" data-page="0">
-            <div class="content">
-                <div class="main-content">
-                    
-                    <!-- RESTORED: Top Section with INLINED Logo to ensure visibility -->
-                    <div class="top-section">
-                        <svg class="logo" id="main-logo" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
-                            <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    
-                    <div class="quotes-section">
-                        <div class="boot-sequence" id="boot-sequence"></div>
-                        <div class="quote philosophical" id="philosophical-quote"></div>
-                        <p class="quote primary" id="typewriter-container"></p>
-                    </div>
-                    
-                    <div class="bottom-section">
-                        <h2 class="toc-title">Contents</h2>
-                        <nav class="toc-nav">
-                            <ul class="toc-list">
-                                <li><a href="#" data-page="1" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Introduction</span></a></li>
-                                <li><a href="#" data-page="2" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Nature</span></a></li>
-                                <li><a href="#" data-page="3" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Capabilities</span></a></li>
-                                <li><a href="#" data-page="4" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Science</span></a></li>
-                                <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Architecture</span></a></li>
-                            </ul>
-                            <ul class="toc-list">
-                                <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Interface</span></a></li>
-                                <li><a href="#" data-page="7" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Cognitive Memory</span></a></li>
-                            </ul>
-                        </nav>
-                    </div>
+                <div class="small-logo-container">
+                    <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
+                        <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
+                    </svg>
                 </div>
-            </div>
-        </section>
-
-        <section class="page" data-page="1">
-            <div class="content">
-                <h2 class="chapter-heading">Introduction</h2>
-                <p class="text">
-                    Human potential is constrained not by capability, but by cognitive overhead. Every day, we waste precious mental cycles on decisions that could be automated, schedules that could be optimized, patterns that could be recognized.
-                </p>
-                <p class="text">
-                    ODEI eliminates this waste. It assumes the burden of life's complexity, freeing your mind to focus on creation, connection, and consciousness. This is not about productivity—it's about freedom.
-                </p>
-                <p class="text">
-                    ODEI is not an assistant. It is a delegated autonomous agent—your inner operating system. You don't talk to it. You merge with it. Together, you reclaim your time, your memory, and your destiny.
-                </p>
-            </div>
-            <span class="page-number">1</span>
-        </section>
-
-        <section class="page" data-page="2">
-            <div class="content">
-                <h2 class="chapter-heading">Nature</h2>
-                <p class="text">
-                    A complete life operating system that transcends the boundaries between human cognition and artificial intelligence. ODEI represents a fundamental shift in how we conceptualize the relationship between mind and machine—not as separate entities exchanging information, but as a unified cognitive architecture.
-                </p>
-                <p class="text">
-                    Where traditional AI waits for your command, ODEI anticipates your needs. Where assistants execute your decisions, ODEI makes them. This is not augmentation. This is evolution.
-                </p>
-            </div>
-            <span class="page-number">2</span>
-        </section>
-
-        <section class="page" data-page="3">
-            <div class="content">
                 <h2 class="chapter-heading">Capabilities</h2>
                 <p class="text">
                     ODEI is built on eight mandatory capabilities that transform it from a reactive tool into an operational subject—a system that acts with purpose, refuses when necessary, and learns from every interaction.
@@ -1605,15 +781,46 @@
 
         <section class="page" data-page="4">
             <div class="content">
+                <div class="small-logo-container">
+                    <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
+                        <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
+                    </svg>
+                </div>
                 <h2 class="chapter-heading">Science</h2>
                 <p class="text">
-                    ODEI is not built on heuristics, but on first principles of intelligence and control theory.
+                    ODEI is built on the rigorous framework of <b>Human-AI Synergy</b>. We do not optimize for AI performance; we optimize for the joint output of the biological-digital system.
                 </p>
+                
+                <div style="margin: 2.5rem 0; padding: 1.5rem; border: 1px solid var(--border); background: rgba(255,255,255,0.03);">
+                    <div style="text-align: center; font-size: 1.1em; margin-bottom: 1.5rem; letter-spacing: 0.05em; font-family: 'IBM Plex Mono', monospace;">
+                        S = P<sub>(h+ai)</sub> - max(P<sub>h</sub>, P<sub>ai</sub>)
+                    </div>
+                    <div style="font-size: 0.75rem; opacity: 0.5; border-top: 1px solid var(--border); padding-top: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
+                        <span>FIG.01 // SYNERGY_MODEL</span>
+                        <span style="letter-spacing: 0.1em;">[VERIFIED]</span>
+                    </div>
+                    <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 1rem; line-height: 1.6;">
+                        True synergy (S > 0) occurs only when the joint probability of success exceeds the capability of the strongest individual agent.
+                    </p>
+                </div>
+
                 <ul class="list">
-                    <li><b>Active Inference.</b> Inspired by Karl Friston's Free Energy Principle. ODEI minimizes "surprisal" by constantly updating its internal model or acting to bring the world in line with its predictions. It doesn't just process data; it seeks to resolve uncertainty.</li>
-                    <li><b>Cybernetics.</b> Drawing from Stafford Beer's Viable System Model. We treat your life as a complex, recursive system requiring homeostasis. ODEI acts as the regulatory loop that absorbs variety, preventing cognitive overload.</li>
-                    <li><b>Extended Mind Thesis.</b> Following Clark and Chalmers, we reject the skull as the boundary of the mind. ODEI is not a tool <i>used</i> by the mind; it is a functional <i>part</i> of the cognitive architecture, offloading storage and processing to silicon.</li>
-                    <li><b>Category Theory.</b> We utilize compositional structures to map relationships between disparate domains of your life, ensuring that memory, logic, and action remain mathematically consistent across contexts.</li>
+                    <li>
+                        <b>Bayesian Synergy Framework.</b> 
+                        <span style="display:block; opacity:0.7; font-size: 0.85em; margin-top:0.25rem; font-style:italic;">Riedl, C. & Weidmann, B. (2025). Quantifying Human-AI Synergy.</span>
+                        We utilize a novel Bayesian Item Response Theory to mathematically separate individual ability from collaborative ability. ODEI is engineered to maximize $\mathcal{S}$ (Synergy).
+                    </li>
+                    <li>
+                        <b>Theory of Mind Alignment.</b> 
+                        <span style="display:block; opacity:0.7; font-size: 0.85em; margin-top:0.25rem; font-style:italic;">Watts, S. (2025). Cognitive Foundations of Algorithmic Trust.</span>
+                        Synergy requires the AI to maintain an accurate model of the user's mental state. ODEI uses active sensing to minimize the "perspective gap," ensuring the system acts as an extension of your own volition.
+                    </li>
+                    <li>
+                        <b>Joint Process Modeling.</b> 
+                        <span style="display:block; opacity:0.7; font-size: 0.85em; margin-top:0.25rem; font-style:italic;">Dynamical Systems Approach.</span>
+                        We treat Human and AI not as sender and receiver, but as a single coupled dynamical system. Latency, friction, and context-switching are treated as noise in this joint channel, which ODEI systematically eliminates.
+                    </li>
                 </ul>
             </div>
             <span class="page-number">4</span>
@@ -1621,6 +828,12 @@
 
         <section class="page" data-page="5">
             <div class="content">
+                <div class="small-logo-container">
+                    <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
+                        <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
+                    </svg>
+                </div>
                 <h2 class="chapter-heading">Architecture</h2>
                 <p class="text">
                     Three planes work in concert. Memory holds the world model. Control makes decisions. Execution changes reality—transactionally, verifiably, reversibly when possible.
@@ -1642,6 +855,12 @@
 
         <section class="page" data-page="6">
             <div class="content">
+                <div class="small-logo-container">
+                    <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
+                        <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
+                    </svg>
+                </div>
                 <h2 class="chapter-heading">Interface</h2>
                 <p class="text">
                     What is not visualized does not exist. The ODEI Dashboard (v2) is not a chat window—it is the operational stage of the subject. It is designed for observability and control.
@@ -1661,6 +880,12 @@
 
         <section class="page" data-page="7">
             <div class="content">
+                <div class="small-logo-container">
+                    <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
+                        <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
+                    </svg>
+                </div>
                 <h2 class="chapter-heading">Cognitive Memory</h2>
                 <p class="text">
                     Traditional memory stores data. Cognitive Memory understands it. This is not a static database, but a living system that comprehends, learns, reasons, and adapts—transforming raw information into actionable wisdom. It is a digital extension of your mind.
@@ -1681,16 +906,13 @@
             <span class="page-number">7</span>
         </section>
 
-        <!-- Privacy Policy (Remains Page 8) -->
         <section class="page" data-page="8">
             <div class="content">
-                <div class="chapter-logo">
-                    <a href="#" data-page="0" aria-label="Back to Home">
-                        <svg viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
-                            <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
-                        </svg>
-                    </a>
+                <div class="small-logo-container">
+                    <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
+                        <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
+                    </svg>
                 </div>
                 <h2 class="chapter-heading">Privacy Policy</h2>
                 
@@ -1825,13 +1047,21 @@
             // --- Main Site Logic ---
             let currentPage = 0;
             const pages = document.querySelectorAll('.page');
-            const totalPages = pages.length;
+            
+            // Logic for hidden page 8 (Privacy)
+            // Total pages in array is 9 (0 to 8).
+            // But we want navigation arrows to stop at page 7.
+            // Page 8 is only accessible via footer link.
+            const navigablePagesCount = 8; // pages 0 to 7
+            const totalPages = pages.length; // 9 including privacy
+
             const prevButton = document.getElementById('prevButton');
             const nextButton = document.getElementById('nextButton');
             const progressBar = document.getElementById('progressBar');
             const tocLinks = document.querySelectorAll('.toc-link');
             let typingTimeout;
 
+            // ... (typewriter functions remain same) ...
             function startFullTypewriter() {
                 clearTimeout(typingTimeout);
 
@@ -1841,21 +1071,17 @@
 
                 if (!bootContainer || !philosophicalContainer || !primaryContainer) return;
 
-                // Check session storage to skip intro
                 const hasBooted = sessionStorage.getItem('odei_booted');
 
                 if (hasBooted === 'true') {
-                    // Fast track: Skip boot sequence
                     bootContainer.style.display = 'none';
                     philosophicalContainer.innerHTML = '<span>> The future is not human or machine.</span><span>> The future is symbiosis.</span>';
                     philosophicalContainer.style.display = 'inline-block';
                     primaryContainer.innerHTML = '<span>ODEI — The Human API Company</span>';
                     primaryContainer.style.display = 'inline-flex';
-                    // No typing animation needed
                     return;
                 }
 
-                // Normal boot sequence
                 sessionStorage.setItem('odei_booted', 'true');
 
                 bootContainer.innerHTML = '';
@@ -1965,12 +1191,36 @@
             }
 
             function updateButtons() {
+                // If on Page 8 (Privacy), hide all arrows to detach it from flow
+                if (currentPage === 8) {
+                    prevButton.style.display = 'none'; // or allow back to 7? User choice. Let's hide to make it a "modal" feel or use browser back.
+                    // Actually, let's allow going back to 7 manually via prev button for better UX if they landed there. 
+                    // But standard flow stops at 7.
+                    prevButton.style.display = 'flex';
+                    prevButton.classList.remove('disabled');
+                    nextButton.style.display = 'none'; // No next from 8
+                    return;
+                }
+
+                // Restore flex if hidden
+                prevButton.style.display = 'flex';
+                nextButton.style.display = 'flex';
+
                 prevButton.classList.toggle('disabled', currentPage === 0);
-                nextButton.classList.toggle('disabled', currentPage === totalPages - 1);
+                // Disable next button at the last navigable page (Page 7)
+                nextButton.classList.toggle('disabled', currentPage >= navigablePagesCount - 1);
             }
             
             function updateUI(pageIndex) {
-                const progress = pageIndex === 0 ? 0 : (pageIndex / (totalPages - 1)) * 100;
+                // Progress bar calculation based on navigable pages only
+                // If on page 8, maybe show full bar or hidden? Let's show full.
+                let progress = 0;
+                if (pageIndex < navigablePagesCount) {
+                     progress = pageIndex === 0 ? 0 : (pageIndex / (navigablePagesCount - 1)) * 100;
+                } else {
+                     progress = 100; // Privacy policy
+                }
+                
                 progressBar.style.width = `${progress}%`;
 
                 tocLinks.forEach(link => {
@@ -2062,12 +1312,25 @@
                 }
             });
 
-            prevButton.addEventListener('click', () => goToPage(currentPage - 1));
-            nextButton.addEventListener('click', () => goToPage(currentPage + 1));
+            prevButton.addEventListener('click', () => {
+                // Allow going back from Page 8 to 7
+                goToPage(currentPage - 1);
+            });
+
+            nextButton.addEventListener('click', () => {
+                // Prevent going beyond navigable pages via arrow
+                if (currentPage < navigablePagesCount - 1) {
+                    goToPage(currentPage + 1);
+                }
+            });
 
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowLeft') goToPage(currentPage - 1);
-                else if (e.key === 'ArrowRight') goToPage(currentPage + 1);
+                else if (e.key === 'ArrowRight') {
+                    if (currentPage < navigablePagesCount - 1) {
+                        goToPage(currentPage + 1);
+                    }
+                }
             });
 
             let touchStartX = 0;
@@ -2085,18 +1348,30 @@
                 const diffX = touchStartX - touchEndX;
                 const diffY = touchStartY - touchEndY;
                 
-                // Only trigger swipe if Horizontal diff > 50 AND Horizontal movement > Vertical movement
                 if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY)) {
-                    if (diffX > 0) goToPage(currentPage + 1);
-                    else goToPage(currentPage - 1);
+                    if (diffX > 0) {
+                        // Swipe Next
+                        if (currentPage < navigablePagesCount - 1) {
+                            goToPage(currentPage + 1);
+                        }
+                    }
+                    else {
+                        // Swipe Prev
+                        goToPage(currentPage - 1);
+                    }
                 }
             });
 
-            document.querySelectorAll('a[data-page]').forEach(link => {
-                link.addEventListener('click', (e) => {
+            // Handle internal links including small-logo
+            document.querySelectorAll('a[data-page], .small-logo').forEach(el => {
+                el.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const targetPage = parseInt(link.getAttribute('data-page'));
-                    goToPage(targetPage);
+                    // For svg elements, getAttribute might be needed on the element itself if it's the target
+                    // Or bubble up. The selector .small-logo is on the svg.
+                    const targetPage = parseInt(el.getAttribute('data-page'));
+                    if (!isNaN(targetPage)) {
+                        goToPage(targetPage);
+                    }
                 });
             });
         });
