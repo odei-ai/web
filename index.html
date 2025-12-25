@@ -27,7 +27,6 @@
             --accent: #FFFFFF;
             --border: rgba(255, 255, 255, 0.2);
             --glow: rgba(255, 255, 255, 0.3);
-            /* Increased max-width for better desktop layout */
             --max-width: 48rem; 
             --font-size-base: 1.25rem; 
             --line-height: 1.8;
@@ -44,7 +43,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* --- BACKGROUND VIDEO --- */
         #bg-video {
             position: fixed;
             top: 50%;
@@ -60,7 +58,6 @@
             pointer-events: none;
         }
 
-        /* CRT Scanline overlay */
         body::after {
             content: " ";
             display: block;
@@ -93,7 +90,6 @@
         }
         
         .loading .logo {
-            /* Still pulsing only for the loader */
             animation: pulse 1.5s infinite;
         }
         
@@ -160,7 +156,6 @@
         .content {
             max-width: var(--max-width);
             width: 100%;
-            /* Less padding on mobile for better width usage */
             padding-bottom: 4rem; 
         }
 
@@ -202,7 +197,6 @@
             margin-bottom: 3rem;
         }
 
-        /* Logo styles */
         .logo {
             width: 80px;
             height: 80px;
@@ -211,12 +205,10 @@
             text-shadow: 0 0 8px var(--glow);
         }
         
-        /* Make sure SVG path fill inherits current color for better control */
         .logo path {
             fill: currentColor;
         }
 
-        /* Small Logo for Subpages */
         .small-logo-container {
             width: 100%;
             display: flex;
@@ -543,21 +535,19 @@
             transform: translateY(-50%) scale(1) !important;
         }
 
-        /* --- Specific tweaks for Privacy Policy (Page 8) --- */
-        .page[data-page="8"] .list li {
+        .page[data-page="7"] .list li {
             padding: 0.75rem 0 0.75rem 1.5rem;
             font-size: 0.95rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .page[data-page="8"] .chapter-heading {
+        .page[data-page="7"] .chapter-heading {
             margin-top: 2rem;
             margin-bottom: 1rem;
             color: var(--accent);
             opacity: 0.8;
         }
         
-        /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 768px) {
             .nav-arrows { display: none; }
             
@@ -578,7 +568,6 @@
             .content {
                 max-width: 100%;
                 width: 100%;
-                /* Less padding on mobile for better width usage */
                 padding: 0 1.5rem; 
                 padding-right: calc(env(safe-area-inset-right, 0px) + 1.5rem);
                 padding-left: calc(env(safe-area-inset-left, 0px) + 1.5rem);
@@ -589,7 +578,6 @@
                 height: 64px;
             }
 
-            /* Restore proper top section for mobile too */
             .top-section {
                  margin-top: 5vh;
             }
@@ -598,7 +586,6 @@
                 gap: 2.5rem;
                 width: 100%;
                 align-items: center;
-                /* margin-top: 5vh; Removed in favor of top-section control */
             }
 
             .bottom-section {
@@ -651,14 +638,7 @@
     </style>
 </head>
 <body>
-    <!-- 
-      VIDEO BACKGROUND:
-      - Uses a public Pixabay link for the "Ink in Water" effect.
-      - Autoplay enabled for iOS/Android (playsinline + muted).
-      - Added a 'poster' attribute with a high-quality static image as a fallback.
-    -->
     <video id="bg-video" autoplay muted loop playsinline poster="https://cdn.pixabay.com/photo/2020/06/07/04/23/smoke-5268897_1280.jpg">
-        <!-- Using a stable Pixabay CDN link. -->
         <source src="https://cdn.pixabay.com/video/2023/10/22/186115-877660724_large.mp4" type="video/mp4">
     </video>
 
@@ -700,8 +680,7 @@
                                 <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Architecture</span></a></li>
                             </ul>
                             <ul class="toc-list">
-                                <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Interface</span></a></li>
-                                <li><a href="#" data-page="7" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Cognitive Memory</span></a></li>
+                                <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Cognitive Memory</span></a></li>
                             </ul>
                         </nav>
                     </div>
@@ -731,6 +710,7 @@
             <span class="page-number">1</span>
         </section>
 
+        <!-- UPDATED PAGE 2: The Human API -->
         <section class="page" data-page="2">
             <div class="content">
                 <div class="small-logo-container">
@@ -741,13 +721,10 @@
                 </div>
                 <h2 class="chapter-heading">The Human API</h2>
                 <p class="text">
-                    For silicon and biology to merge, human existence must become readable. Chaos cannot be scaled.
+                    A complete life operating system that transcends the boundaries between human cognition and artificial intelligence.
                 </p>
                 <p class="text">
-                    ODEI structures the raw data of your life—your memories, physiological state, social graph, and work commitments—into a unified, addressable protocol. We treat your context as a programmable surface.
-                </p>
-                <p class="text">
-                    This standardizes the interface between "You" and "Intelligence." It allows the AI to act not as a separate entity receiving commands, but as a limb receiving nerve impulses.
+                    ODEI represents a fundamental shift in how we conceptualize the relationship between mind and machine—not as separate entities exchanging information, but as a unified cognitive architecture.
                 </p>
             </div>
             <span class="page-number">2</span>
@@ -861,31 +838,6 @@
                         <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
                     </svg>
                 </div>
-                <h2 class="chapter-heading">Interface</h2>
-                <p class="text">
-                    What is not visualized does not exist. The ODEI Dashboard (v2) is not a chat window—it is the operational stage of the subject. It is designed for observability and control.
-                </p>
-                <ul class="list">
-                    <li><b>Today</b> — The single operational screen. Spotlight (max 3 contexts), committed outcomes, real schedule blocks, and a <b>Directive Input</b> to inject new intent. Not a chat, but a command center.</li>
-                    <li><b>Actions</b> — The center of agency. A single source of truth for proposals, pending verifications, and executed actions. Nothing agentic happens "off the record".</li>
-                    <li><b>Control</b> — The constitution. Manage the Authority Matrix, Autonomy Mode (Silent/Advisor/Doer), and Stability budgets. You define the laws; ODEI executes them.</li>
-                    <li><b>Observability</b> — Accountability visualized via Receipt Drawers. Every proposal explains "Why", lists evidence, and checks constraints.</li>
-                </ul>
-                <p class="text">
-                    The interface is built to build trust through transparency, not anthropomorphism.
-                </p>
-            </div>
-            <span class="page-number">6</span>
-        </section>
-
-        <section class="page" data-page="7">
-            <div class="content">
-                <div class="small-logo-container">
-                    <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
-                        <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
-                    </svg>
-                </div>
                 <h2 class="chapter-heading">Cognitive Memory</h2>
                 <p class="text">
                     Traditional memory stores data. Cognitive Memory understands it. This is not a static database, but a living system that comprehends, learns, reasons, and adapts—transforming raw information into actionable wisdom. It is a digital extension of your mind.
@@ -903,10 +855,10 @@
                     Powered by Neo4j Enterprise graph database, ensuring every connection in your cognitive architecture is preserved, understood, and instantly accessible.
                 </p>
             </div>
-            <span class="page-number">7</span>
+            <span class="page-number">6</span>
         </section>
 
-        <section class="page" data-page="8">
+        <section class="page" data-page="7">
             <div class="content">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -993,7 +945,7 @@
                     <li><b>Security issues:</b> <a href="mailto:security@odei.ai" style="color: inherit;">security@odei.ai</a></li>
                 </ul>
             </div>
-            <span class="page-number">8</span>
+            <span class="page-number">7</span>
         </section>
 
         <div class="nav-arrows">
@@ -1027,7 +979,7 @@
                     </svg>
                 </a>
             </div>
-            <p class="copyright">ODEI · MMXXV · <a href="#" data-page="8" style="text-decoration:none; color:inherit;">Privacy</a></p>
+            <p class="copyright">ODEI · MMXXV · <a href="#" data-page="7" style="text-decoration:none; color:inherit;">Privacy</a></p>
         </div>
 
     </div>
@@ -1044,16 +996,11 @@
             });
             setAppHeight();
 
-            // --- Main Site Logic ---
             let currentPage = 0;
             const pages = document.querySelectorAll('.page');
             
-            // Logic for hidden page 8 (Privacy)
-            // Total pages in array is 9 (0 to 8).
-            // But we want navigation arrows to stop at page 7.
-            // Page 8 is only accessible via footer link.
-            const navigablePagesCount = 8; // pages 0 to 7
-            const totalPages = pages.length; // 9 including privacy
+            const navigablePagesCount = 7;
+            const totalPages = pages.length;
 
             const prevButton = document.getElementById('prevButton');
             const nextButton = document.getElementById('nextButton');
@@ -1061,7 +1008,6 @@
             const tocLinks = document.querySelectorAll('.toc-link');
             let typingTimeout;
 
-            // ... (typewriter functions remain same) ...
             function startFullTypewriter() {
                 clearTimeout(typingTimeout);
 
@@ -1191,34 +1137,26 @@
             }
 
             function updateButtons() {
-                // If on Page 8 (Privacy), hide all arrows to detach it from flow
                 if (currentPage === 8) {
-                    prevButton.style.display = 'none'; // or allow back to 7? User choice. Let's hide to make it a "modal" feel or use browser back.
-                    // Actually, let's allow going back to 7 manually via prev button for better UX if they landed there. 
-                    // But standard flow stops at 7.
                     prevButton.style.display = 'flex';
                     prevButton.classList.remove('disabled');
-                    nextButton.style.display = 'none'; // No next from 8
+                    nextButton.style.display = 'none';
                     return;
                 }
 
-                // Restore flex if hidden
                 prevButton.style.display = 'flex';
                 nextButton.style.display = 'flex';
 
                 prevButton.classList.toggle('disabled', currentPage === 0);
-                // Disable next button at the last navigable page (Page 7)
                 nextButton.classList.toggle('disabled', currentPage >= navigablePagesCount - 1);
             }
             
             function updateUI(pageIndex) {
-                // Progress bar calculation based on navigable pages only
-                // If on page 8, maybe show full bar or hidden? Let's show full.
                 let progress = 0;
                 if (pageIndex < navigablePagesCount) {
                      progress = pageIndex === 0 ? 0 : (pageIndex / (navigablePagesCount - 1)) * 100;
                 } else {
-                     progress = 100; // Privacy policy
+                     progress = 100;
                 }
                 
                 progressBar.style.width = `${progress}%`;
@@ -1234,7 +1172,7 @@
                 }
             }
 
-            function goToPage(pageIndex, fromPopState = false) {
+            function goToPage(pageIndex) {
                 if (pageIndex < 0 || pageIndex >= totalPages || pageIndex === currentPage) return;
                 
                 const currentActivePage = pages[currentPage];
@@ -1264,37 +1202,21 @@
                 updateButtons();
                 updateUI(pageIndex);
 
-                if (!fromPopState) {
-                    history.pushState({ page: pageIndex }, `Page ${pageIndex}`, `#page-${pageIndex}`);
-                }
-
                 if (currentPage === 0 && oldPage !== 0) {
                     startFullTypewriter();
                 }
             }
             
             function initialize() {
-                const initialHash = window.location.hash.replace('#page-', '');
-                const initialPageIndex = parseInt(initialHash, 10);
-                const startPage = !isNaN(initialPageIndex) && initialPageIndex < totalPages ? initialPageIndex : 0;
-
-                currentPage = startPage;
+                currentPage = 0;
                 pages.forEach((page, index) => {
                     page.classList.remove('active', 'prev');
-                    if (index < startPage) {
-                        page.classList.add('prev');
-                    }
                 });
-                pages[startPage].classList.add('active');
+                pages[0].classList.add('active');
                 
                 updateButtons();
-                updateUI(startPage);
-                
-                history.replaceState({ page: startPage }, `Page ${startPage}`, `#page-${startPage}`);
-
-                if (startPage === 0) {
-                    startFullTypewriter();
-                }
+                updateUI(0);
+                startFullTypewriter();
             }
 
             window.addEventListener('load', () => {
@@ -1304,21 +1226,11 @@
                 }, 500);
             });
 
-            window.addEventListener('popstate', (e) => {
-                if (e.state && typeof e.state.page !== 'undefined') {
-                    goToPage(e.state.page, true);
-                } else {
-                    goToPage(0, true);
-                }
-            });
-
             prevButton.addEventListener('click', () => {
-                // Allow going back from Page 8 to 7
                 goToPage(currentPage - 1);
             });
 
             nextButton.addEventListener('click', () => {
-                // Prevent going beyond navigable pages via arrow
                 if (currentPage < navigablePagesCount - 1) {
                     goToPage(currentPage + 1);
                 }
@@ -1350,24 +1262,19 @@
                 
                 if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY)) {
                     if (diffX > 0) {
-                        // Swipe Next
                         if (currentPage < navigablePagesCount - 1) {
                             goToPage(currentPage + 1);
                         }
                     }
                     else {
-                        // Swipe Prev
                         goToPage(currentPage - 1);
                     }
                 }
             });
 
-            // Handle internal links including small-logo
             document.querySelectorAll('a[data-page], .small-logo').forEach(el => {
                 el.addEventListener('click', (e) => {
                     e.preventDefault();
-                    // For svg elements, getAttribute might be needed on the element itself if it's the target
-                    // Or bubble up. The selector .small-logo is on the svg.
                     const targetPage = parseInt(el.getAttribute('data-page'));
                     if (!isNaN(targetPage)) {
                         goToPage(targetPage);
