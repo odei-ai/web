@@ -573,7 +573,7 @@
         
         .agency-table {
             width: 100%;
-            min-width: 900px;
+            min-width: 1200px;
             border-collapse: collapse;
             font-size: 0.8rem;
         }
@@ -1092,7 +1092,10 @@
                                 <th>Auto Loop</th>
                                 <th>Action Space</th>
                                 <th>Control</th>
-                                <th>Memory</th>
+                                <th>Persistent Memory</th>
+                                <th>User Model</th>
+                                <th>Policy Update</th>
+                                <th>Audit</th>
                                 <th>Scientific Class</th>
                             </tr>
                         </thead>
@@ -1112,7 +1115,10 @@
                                 <td><span class="status no">✗</span></td>
                                 <td>Only <span class="cell-code">y ∈ Y</span><span class="cell-muted">text/response</span></td>
                                 <td><b>Human-in-control</b></td>
-                                <td><span class="status maybe">◊</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span></td>
                                 <td class="sci-class">Non-agent information systems, decision-support (read-only)</td>
                             </tr>
                             <tr class="l2">
@@ -1130,7 +1136,10 @@
                                 <td><span class="status no">✗</span></td>
                                 <td><span class="cell-code">y</span> + dialog<span class="cell-muted">no execute</span></td>
                                 <td><b>Human-in-control</b></td>
-                                <td><span class="status maybe">◊</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span></td>
                                 <td class="sci-class">Reactive agents (AIMA), interactive assistants</td>
                             </tr>
                             <tr class="l3">
@@ -1149,6 +1158,9 @@
                                 <td><span class="cell-code">suggest</span> <span class="cell-code">ask</span> <span class="cell-code">warn</span><span class="cell-muted">no execute</span></td>
                                 <td><b>Human-in-control</b><span class="cell-muted">human is driver</span></td>
                                 <td><span class="status maybe">◊</span></td>
+                                <td><span class="status maybe">◊</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span></td>
                                 <td class="sci-class">Mixed-initiative interaction (HCI + AI)</td>
                             </tr>
                             <tr class="l4">
@@ -1167,6 +1179,9 @@
                                 <td>Bounded <span class="cell-code">A<sub>env</sub></span><span class="cell-muted">tools/APIs</span></td>
                                 <td><b>Human-on-the-loop</b></td>
                                 <td><span class="status maybe">◊</span></td>
+                                <td><span class="status maybe">◊</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status maybe">◊</span></td>
                                 <td class="sci-class">Goal-based / utility-based agents (AIMA), autonomous agents under supervision</td>
                             </tr>
                             <tr class="l5">
@@ -1184,7 +1199,10 @@
                                 <td><span class="status yes">✓</span></td>
                                 <td><span class="cell-code">A<sub>env</sub></span> + policies<span class="cell-muted">+ reconfiguration</span></td>
                                 <td><b>Human-on-the-loop</b><span class="cell-muted">+ co-adaptation</span></td>
-                                <td><span class="status yes">✓✓</span></td>
+                                <td><span class="status yes">✓</span></td>
+                                <td><span class="status yes">✓</span></td>
+                                <td><span class="status yes">✓</span><span class="cell-muted">by outcomes</span></td>
+                                <td><span class="status yes">✓</span></td>
                                 <td class="sci-class">Co-adaptive systems, human–AI teaming</td>
                             </tr>
                         </tbody>
