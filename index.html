@@ -32,6 +32,16 @@
             --line-height: 1.8;
             --spacing: 2rem;
             --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+            
+            /* Level colors */
+            --l1: #6366f1;
+            --l2: #3b82f6;
+            --l3: #06b6d4;
+            --l4: #10b981;
+            --l5: #f59e0b;
+            --status-yes: #10b981;
+            --status-no: #f43f5e;
+            --status-maybe: #f59e0b;
         }
 
         html, body {
@@ -157,6 +167,10 @@
             max-width: var(--max-width);
             width: 100%;
             padding-bottom: 4rem; 
+        }
+        
+        .content.wide {
+            max-width: 72rem;
         }
 
         .main-content {
@@ -535,17 +549,183 @@
             transform: translateY(-50%) scale(1) !important;
         }
 
-        .page[data-page="7"] .list li {
+        .page[data-page="8"] .list li {
             padding: 0.75rem 0 0.75rem 1.5rem;
             font-size: 0.95rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .page[data-page="7"] .chapter-heading {
+        .page[data-page="8"] .chapter-heading {
             margin-top: 2rem;
             margin-bottom: 1rem;
             color: var(--accent);
             opacity: 0.8;
+        }
+        
+        /* Agency Levels Table Styles */
+        .agency-table-wrapper {
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin: 2rem 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        .agency-table {
+            width: 100%;
+            min-width: 900px;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+        
+        .agency-table th {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.75rem 0.5rem;
+            text-align: left;
+            font-weight: 500;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text);
+            opacity: 0.7;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+        
+        .agency-table td {
+            padding: 0.75rem 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            vertical-align: top;
+            color: var(--text);
+            opacity: 0.9;
+        }
+        
+        .agency-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .agency-table tr:hover td {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        
+        .level-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .level-num {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        
+        .l1 .level-num { background: var(--l1); color: white; }
+        .l2 .level-num { background: var(--l2); color: white; }
+        .l3 .level-num { background: var(--l3); color: white; }
+        .l4 .level-num { background: var(--l4); color: white; }
+        .l5 .level-num { background: var(--l5); color: black; }
+        
+        .level-name {
+            font-weight: 500;
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+        
+        .status {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.75rem;
+        }
+        
+        .status.yes {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--status-yes);
+        }
+        
+        .status.no {
+            background: rgba(244, 63, 94, 0.2);
+            color: var(--status-no);
+        }
+        
+        .status.maybe {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--status-maybe);
+        }
+        
+        .cell-code {
+            font-size: 0.7rem;
+            color: var(--l3);
+            background: rgba(6, 182, 212, 0.1);
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+        }
+        
+        .cell-muted {
+            font-size: 0.65rem;
+            opacity: 0.6;
+            display: block;
+            margin-top: 0.25rem;
+        }
+        
+        .sci-class {
+            font-size: 0.65rem;
+            opacity: 0.5;
+            font-style: italic;
+            line-height: 1.4;
+        }
+        
+        .legend-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            font-size: 0.8rem;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.8;
+        }
+        
+        .legend-symbol {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .legend-symbol.yes { background: rgba(16, 185, 129, 0.2); color: var(--status-yes); }
+        .legend-symbol.no { background: rgba(244, 63, 94, 0.2); color: var(--status-no); }
+        .legend-symbol.maybe { background: rgba(245, 158, 11, 0.2); color: var(--status-maybe); }
+        
+        .table-footer {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            opacity: 0.5;
+            text-align: center;
         }
         
         @media (max-width: 768px) {
@@ -633,7 +813,15 @@
             .social-links a svg { width: 18px; height: 18px; }
             
             .page-number { font-size: 0.688rem; opacity: 0.25; }
-
+            
+            .legend-box {
+                gap: 1rem;
+                padding: 0.75rem 1rem;
+            }
+            
+            .legend-item {
+                font-size: 0.7rem;
+            }
         }
     </style>
 </head>
@@ -677,10 +865,11 @@
                                 <li><a href="#" data-page="2" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">The Human API</span></a></li>
                                 <li><a href="#" data-page="3" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Capabilities</span></a></li>
                                 <li><a href="#" data-page="4" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Science</span></a></li>
-                                <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Architecture</span></a></li>
                             </ul>
                             <ul class="toc-list">
+                                <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Architecture</span></a></li>
                                 <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Cognitive Memory</span></a></li>
+                                <li><a href="#" data-page="7" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Agency Levels</span></a></li>
                             </ul>
                         </nav>
                     </div>
@@ -710,7 +899,6 @@
             <span class="page-number">1</span>
         </section>
 
-        <!-- UPDATED PAGE 2: The Human API -->
         <section class="page" data-page="2">
             <div class="content">
                 <div class="small-logo-container">
@@ -858,7 +1046,159 @@
             <span class="page-number">6</span>
         </section>
 
+        <!-- NEW PAGE: Agency Levels -->
         <section class="page" data-page="7">
+            <div class="content wide">
+                <div class="small-logo-container">
+                    <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
+                        <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h2 class="chapter-heading">5 Levels of AI Agency</h2>
+                <p class="text">
+                    A scientific taxonomy of AI autonomy levels—from informational systems to symbiotic AI. ODEI operates at Level 5: a co-adaptive system where human and AI evolve together.
+                </p>
+                
+                <div class="legend-box">
+                    <div class="legend-item">
+                        <span class="legend-symbol yes">✓</span>
+                        <span>Required feature</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-symbol no">✗</span>
+                        <span>Absent by definition</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-symbol maybe">◊</span>
+                        <span>Possible, not defining</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="cell-code">exec</span>
+                        <span>External action</span>
+                    </div>
+                </div>
+                
+                <div class="agency-table-wrapper">
+                    <table class="agency-table">
+                        <thead>
+                            <tr>
+                                <th>Level</th>
+                                <th>Step Trigger</th>
+                                <th>AI Initiative</th>
+                                <th>Goal g / Utility</th>
+                                <th>Task-state s<sub>t</sub></th>
+                                <th>Execute</th>
+                                <th>Auto Loop</th>
+                                <th>Action Space</th>
+                                <th>Control</th>
+                                <th>Memory</th>
+                                <th>Scientific Class</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="l1">
+                                <td>
+                                    <div class="level-badge">
+                                        <span class="level-num">L1</span>
+                                        <span class="level-name">Informational AI</span>
+                                    </div>
+                                </td>
+                                <td>User</td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td>Only <span class="cell-code">y ∈ Y</span><span class="cell-muted">text/response</span></td>
+                                <td><b>Human-in-control</b></td>
+                                <td><span class="status maybe">◊</span></td>
+                                <td class="sci-class">Non-agent information systems, decision-support (read-only)</td>
+                            </tr>
+                            <tr class="l2">
+                                <td>
+                                    <div class="level-badge">
+                                        <span class="level-num">L2</span>
+                                        <span class="level-name">Reactive AI</span>
+                                    </div>
+                                </td>
+                                <td>User</td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span><span class="cell-muted">h ≠ s<sub>t</sub></span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="cell-code">y</span> + dialog<span class="cell-muted">no execute</span></td>
+                                <td><b>Human-in-control</b></td>
+                                <td><span class="status maybe">◊</span></td>
+                                <td class="sci-class">Reactive agents (AIMA), interactive assistants</td>
+                            </tr>
+                            <tr class="l3">
+                                <td>
+                                    <div class="level-badge">
+                                        <span class="level-num">L3</span>
+                                        <span class="level-name">Mixed-Initiative AI</span>
+                                    </div>
+                                </td>
+                                <td>User + AI alerts</td>
+                                <td><span class="status yes">✓</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="status no">✗</span></td>
+                                <td><span class="cell-code">suggest</span> <span class="cell-code">ask</span> <span class="cell-code">warn</span><span class="cell-muted">no execute</span></td>
+                                <td><b>Human-in-control</b><span class="cell-muted">human is driver</span></td>
+                                <td><span class="status maybe">◊</span></td>
+                                <td class="sci-class">Mixed-initiative interaction (HCI + AI)</td>
+                            </tr>
+                            <tr class="l4">
+                                <td>
+                                    <div class="level-badge">
+                                        <span class="level-num">L4</span>
+                                        <span class="level-name">Delegated / Agentic AI</span>
+                                    </div>
+                                </td>
+                                <td>AI within task<span class="cell-muted">no new request</span></td>
+                                <td><span class="status yes">✓</span></td>
+                                <td><span class="status yes">✓</span></td>
+                                <td><span class="status yes">✓</span></td>
+                                <td><span class="status yes">✓</span></td>
+                                <td><span class="status yes">✓</span></td>
+                                <td>Bounded <span class="cell-code">A<sub>env</sub></span><span class="cell-muted">tools/APIs</span></td>
+                                <td><b>Human-on-the-loop</b></td>
+                                <td><span class="status maybe">◊</span></td>
+                                <td class="sci-class">Goal-based / utility-based agents (AIMA), autonomous agents under supervision</td>
+                            </tr>
+                            <tr class="l5">
+                                <td>
+                                    <div class="level-badge">
+                                        <span class="level-num">L5</span>
+                                        <span class="level-name">Symbiotic AI</span>
+                                    </div>
+                                </td>
+                                <td>Long co-adaptive loop</td>
+                                <td><span class="status yes">✓</span></td>
+                                <td><span class="status yes">✓</span><span class="cell-muted">shared</span></td>
+                                <td><span class="status yes">✓</span></td>
+                                <td><span class="status yes">✓</span></td>
+                                <td><span class="status yes">✓</span></td>
+                                <td><span class="cell-code">A<sub>env</sub></span> + policies<span class="cell-muted">+ reconfiguration</span></td>
+                                <td><b>Human-on-the-loop</b><span class="cell-muted">+ co-adaptation</span></td>
+                                <td><span class="status yes">✓✓</span></td>
+                                <td class="sci-class">Co-adaptive systems, human–AI teaming</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="table-footer">
+                    Based on AIMA (Russell & Norvig), LORA Framework (Beer et al.), Kim et al. 2024, MOSAAIC 2025
+                </div>
+            </div>
+            <span class="page-number">7</span>
+        </section>
+
+        <section class="page" data-page="8">
             <div class="content">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -945,7 +1285,7 @@
                     <li><b>Security issues:</b> <a href="mailto:security@odei.ai" style="color: inherit;">security@odei.ai</a></li>
                 </ul>
             </div>
-            <span class="page-number">7</span>
+            <span class="page-number">8</span>
         </section>
 
         <div class="nav-arrows">
@@ -979,7 +1319,7 @@
                     </svg>
                 </a>
             </div>
-            <p class="copyright">ODEI · MMXXV · <a href="#" data-page="7" style="text-decoration:none; color:inherit;">Privacy</a></p>
+            <p class="copyright">ODEI · MMXXV · <a href="#" data-page="8" style="text-decoration:none; color:inherit;">Privacy</a></p>
         </div>
 
     </div>
@@ -999,7 +1339,7 @@
             let currentPage = 0;
             const pages = document.querySelectorAll('.page');
             
-            const navigablePagesCount = 7;
+            const navigablePagesCount = 8;
             const totalPages = pages.length;
 
             const prevButton = document.getElementById('prevButton');
