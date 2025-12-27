@@ -2177,7 +2177,7 @@
 
     </div>
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             const setAppHeight = () => {
                 const doc = document.documentElement;
@@ -2461,3 +2461,34 @@
                     }
                     else {
                         goToPage(currentPage - 1);
+                                }
+                }
+            }, { passive: true });
+
+            tocLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageIndex = parseInt(link.getAttribute('data-page'));
+                    goToPage(pageIndex);
+                });
+            });
+
+            const smallLogos = document.querySelectorAll('.small-logo');
+            smallLogos.forEach(logo => {
+                logo.addEventListener('click', () => {
+                    goToPage(0);
+                });
+                logo.style.cursor = 'pointer';
+            });
+
+            const privacyLinks = document.querySelectorAll('a[data-page="9"]');
+            privacyLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    goToPage(9);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
