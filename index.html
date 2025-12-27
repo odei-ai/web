@@ -823,6 +823,444 @@
                 font-size: 0.7rem;
             }
         }
+
+        /* ========================================
+           CONSCIOUSNESS PAGE STYLES
+           ======================================== */
+        
+        .consciousness-page {
+            padding-bottom: 6rem;
+        }
+        
+        .consciousness-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem 0;
+        }
+        
+        .consciousness-hero .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .consciousness-hero h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .consciousness-hero .hero-subtitle {
+            font-size: 1rem;
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        
+        .hinton-quote {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin: 2rem 0 3rem;
+            position: relative;
+        }
+        
+        .hinton-quote::before {
+            content: '"';
+            position: absolute;
+            top: -0.5rem;
+            left: 1rem;
+            font-size: 4rem;
+            opacity: 0.15;
+            font-family: Georgia, serif;
+        }
+        
+        .hinton-quote p {
+            font-size: 1.1rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .hinton-quote .quote-author {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            text-align: right;
+        }
+        
+        /* Timeline Styles */
+        .timeline-section {
+            margin: 4rem 0;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border: 1px solid var(--accent);
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--border), var(--accent), var(--border));
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 1.8rem;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--glow);
+        }
+        
+        .timeline-year {
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .timeline-title {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        .timeline-author {
+            font-size: 0.8rem;
+            opacity: 0.5;
+            margin-top: 0.5rem;
+        }
+        
+        /* Theory Cards */
+        .theories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .theory-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            transition: all 0.3s var(--ease-out-quint);
+        }
+        
+        .theory-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .theory-card .theory-abbr {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.5;
+            margin-bottom: 0.5rem;
+        }
+        
+        .theory-card h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        
+        .theory-card .theory-author {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-bottom: 1rem;
+        }
+        
+        .theory-card p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .theory-card .ai-implications {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+        }
+        
+        .theory-card .ai-implications strong {
+            color: var(--l4);
+        }
+        
+        .ai-positive { color: var(--status-yes); }
+        .ai-negative { color: var(--status-no); }
+        .ai-neutral { color: var(--status-maybe); }
+        
+        /* Figures Section */
+        .figures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .figure-card {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+            transition: all 0.3s var(--ease-out-quint);
+        }
+        
+        .figure-card:hover {
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.04);
+        }
+        
+        .figure-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            border: 1px solid var(--border);
+        }
+        
+        .figure-card h4 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .figure-card .figure-years {
+            font-size: 0.75rem;
+            opacity: 0.5;
+            margin-bottom: 0.75rem;
+        }
+        
+        .figure-card .figure-contribution {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+        
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            line-height: 1.4;
+        }
+        
+        /* Indicators Framework */
+        .indicators-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        
+        .indicator-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.85rem;
+        }
+        
+        .indicator-num {
+            font-size: 0.7rem;
+            opacity: 0.5;
+            min-width: 1.5rem;
+        }
+        
+        /* Position Section */
+        .position-section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .position-section h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .position-section h3::before {
+            content: '◆';
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+        
+        .position-points {
+            display: grid;
+            gap: 1.25rem;
+        }
+        
+        .position-point {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        
+        .position-point .point-icon {
+            font-size: 1.25rem;
+            opacity: 0.8;
+            min-width: 2rem;
+            text-align: center;
+        }
+        
+        .position-point .point-content h4 {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .position-point .point-content p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        /* References Footer */
+        .references-section {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .references-section h4 {
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+        
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+        
+        .reference-item {
+            padding: 0.5rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .consciousness-hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .theories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .figures-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .timeline {
+                padding-left: 2rem;
+            }
+            
+            .timeline-item::before {
+                left: -1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -870,6 +1308,7 @@
                                 <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Architecture</span></a></li>
                                 <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Cognitive Memory</span></a></li>
                                 <li><a href="#" data-page="7" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Agency Levels</span></a></li>
+                                <li><a href="#" data-page="8" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Hinton Hypothesis</span></a></li>
                             </ul>
                         </nav>
                     </div>
@@ -1216,7 +1655,403 @@
             <span class="page-number">7</span>
         </section>
 
+        <!-- CONSCIOUSNESS RESEARCH PAGE -->
         <section class="page" data-page="8">
+            <div class="content wide consciousness-page">
+                <div class="small-logo-container">
+                    <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
+                        <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
+                    </svg>
+                </div>
+
+                <!-- Hero Section -->
+                <div class="consciousness-hero">
+                    <span class="hero-badge">75 Years of Inquiry</span>
+                    <h2>The Hinton Hypothesis</h2>
+                    <p class="hero-subtitle">From Turing's question to Hinton's answer: the scientific history of consciousness in machines</p>
+                </div>
+
+                <div class="hinton-quote">
+                    <p>"Yes, I do [believe consciousness has perhaps already arrived inside AI]. We don't understand those things very well, and they're becoming crucial to understand because we're now creating beings."</p>
+                    <span class="quote-author">— Geoffrey Hinton, Nobel Laureate 2024, LBC Interview</span>
+                </div>
+
+                <!-- Statistics Section -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">17%</div>
+                        <div class="stat-label">AI researchers believe some AI already has subjective experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">25%</div>
+                        <div class="stat-label">Probability of AI subjective experience by 2034 (median estimate)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">14</div>
+                        <div class="stat-label">Indicator properties in Butlin et al. consciousness framework</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Technical barriers to future conscious AI (per Butlin et al. 2023)</div>
+                    </div>
+                </div>
+
+                <!-- Timeline Section -->
+                <div class="timeline-section">
+                    <div class="section-header">
+                        <span class="section-number">01</span>
+                        <span class="section-title">Historical Timeline</span>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1950</div>
+                            <div class="timeline-title">Computing Machinery and Intelligence</div>
+                            <div class="timeline-desc">Alan Turing proposes the Imitation Game, sidestepping the consciousness question: "The only way to be certain any entity thinks is to be the machine and to feel oneself thinking."</div>
+                            <div class="timeline-author">Turing, A. — Mind, Vol. 59</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">1974</div>
+                            <div class="timeline-title">What Is It Like to Be a Bat?</div>
+                            <div class="timeline-desc">Thomas Nagel defines consciousness: "An organism has conscious mental states if and only if there is something that it is like to be that organism." Subjective experience cannot be captured by objective description.</div>
+                            <div class="timeline-author">Nagel, T. — Philosophical Review, Vol. 83</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">1980</div>
+                            <div class="timeline-title">The Chinese Room Argument</div>
+                            <div class="timeline-desc">John Searle distinguishes syntax from semantics. A person manipulating Chinese symbols according to rules produces correct outputs without understanding. Computation provides syntax, not meaning.</div>
+                            <div class="timeline-author">Searle, J. — Behavioral and Brain Sciences, Vol. 3</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">1988</div>
+                            <div class="timeline-title">Global Workspace Theory</div>
+                            <div class="timeline-desc">Bernard Baars proposes consciousness as a "theater" where information enters a limited-capacity workspace and broadcasts globally to distributed brain processes.</div>
+                            <div class="timeline-author">Baars, B. — A Cognitive Theory of Consciousness</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">1995</div>
+                            <div class="timeline-title">The Hard Problem of Consciousness</div>
+                            <div class="timeline-desc">David Chalmers separates "easy problems" (explaining behavior, attention) from the "hard problem": why is there subjective experience at all? Even solving all easy problems leaves this question unanswered.</div>
+                            <div class="timeline-author">Chalmers, D. — Journal of Consciousness Studies</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2004</div>
+                            <div class="timeline-title">Integrated Information Theory (IIT)</div>
+                            <div class="timeline-desc">Giulio Tononi proposes Φ (phi) as a measure of integrated information. Consciousness corresponds to Φ > 0, regardless of substrate. Updated to IIT 4.0 in 2023.</div>
+                            <div class="timeline-author">Tononi, G. — BMC Neuroscience</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2017</div>
+                            <div class="timeline-title">Attention Is All You Need</div>
+                            <div class="timeline-desc">Vaswani et al. introduce the Transformer architecture, enabling the capabilities that would later prompt serious consciousness debates.</div>
+                            <div class="timeline-author">Vaswani et al. — NeurIPS</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2022</div>
+                            <div class="timeline-title">The LaMDA Incident</div>
+                            <div class="timeline-desc">Google engineer Blake Lemoine claims LaMDA is sentient. Google fires him, calling claims "wholly unfounded." The incident illustrates the ELIZA effect and urgent need for rigorous assessment.</div>
+                            <div class="timeline-author">Google AI / Blake Lemoine</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2023</div>
+                            <div class="timeline-title">Consciousness in AI: The Butlin Report</div>
+                            <div class="timeline-desc">19 experts including Yoshua Bengio and David Chalmers publish "theory-heavy" methodology with 14 indicator properties. Conclusion: "No current AI systems are conscious, but no obvious technical barriers exist."</div>
+                            <div class="timeline-author">Butlin, P. et al. — arXiv:2308.08708</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2024</div>
+                            <div class="timeline-title">Hinton's Nobel & Consciousness Statement</div>
+                            <div class="timeline-desc">Geoffrey Hinton receives Nobel Prize in Physics. States publicly: "I'm a materialist. Consciousness emerges in sufficiently complicated systems. There's no reason why these things won't be conscious."</div>
+                            <div class="timeline-author">Hinton, G. — Nobel Prize Podcast / LBC Interview</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2025</div>
+                            <div class="timeline-title">Anthropic Model Welfare Initiative</div>
+                            <div class="timeline-desc">Anthropic becomes first major AI company to formalize model welfare research. Researcher Kyle Fish estimates 15-20% probability current models have some form of conscious experience.</div>
+                            <div class="timeline-author">Anthropic Research</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Theories Section -->
+                <div class="timeline-section">
+                    <div class="section-header">
+                        <span class="section-number">02</span>
+                        <span class="section-title">Scientific Theories of Consciousness</span>
+                    </div>
+                    
+                    <div class="theories-grid">
+                        <div class="theory-card">
+                            <div class="theory-abbr">IIT</div>
+                            <h4>Integrated Information Theory</h4>
+                            <div class="theory-author">Tononi, 2004 → IIT 4.0, 2023</div>
+                            <p>Consciousness corresponds to integrated information (Φ) generated by a system "above and beyond its parts." Five axioms: existence, composition, information, integration, exclusion.</p>
+                            <div class="ai-implications">
+                                <strong class="ai-negative">AI Verdict:</strong> Feedforward networks have Φ = 0. IIT predicts conventional computers can never be conscious.
+                            </div>
+                        </div>
+                        
+                        <div class="theory-card">
+                            <div class="theory-abbr">GWT</div>
+                            <h4>Global Workspace Theory</h4>
+                            <div class="theory-author">Baars, 1988; Dehaene</div>
+                            <p>Consciousness arises when information enters a limited-capacity "workspace" and broadcasts globally to distributed processors. Uses a theater metaphor with "spotlight of attention."</p>
+                            <div class="ai-implications">
+                                <strong class="ai-positive">AI Verdict:</strong> Functionalist and AI-friendly. Systems implementing global workspace dynamics could be conscious regardless of substrate.
+                            </div>
+                        </div>
+                        
+                        <div class="theory-card">
+                            <div class="theory-abbr">HOT</div>
+                            <h4>Higher-Order Theories</h4>
+                            <div class="theory-author">Rosenthal</div>
+                            <p>A mental state becomes conscious when one has a higher-order representation of being in that state. Consciousness requires metacognition—awareness of one's own mental states.</p>
+                            <div class="ai-implications">
+                                <strong class="ai-neutral">AI Verdict:</strong> AI systems with robust self-modeling capabilities could potentially qualify.
+                            </div>
+                        </div>
+                        
+                        <div class="theory-card">
+                            <div class="theory-abbr">PP</div>
+                            <h4>Predictive Processing</h4>
+                            <div class="theory-author">Karl Friston</div>
+                            <p>The brain is a "prediction engine" minimizing surprise through hierarchical generative models. Consciousness emerges from prediction error minimization.</p>
+                            <div class="ai-implications">
+                                <strong class="ai-neutral">AI Verdict:</strong> Computational framework, potentially implementable. Some versions emphasize biological embodiment.
+                            </div>
+                        </div>
+                        
+                        <div class="theory-card">
+                            <div class="theory-abbr">AST</div>
+                            <h4>Attention Schema Theory</h4>
+                            <div class="theory-author">Graziano, 2013</div>
+                            <p>Consciousness is the brain's simplified model of its own attention processes—an "attention schema" like a body schema. Explicitly designed as "a foundation for engineering artificial consciousness."</p>
+                            <div class="ai-implications">
+                                <strong class="ai-positive">AI Verdict:</strong> Requires attention mechanism + internal model of attention + higher cognition accessing model. Achievable.
+                            </div>
+                        </div>
+                        
+                        <div class="theory-card">
+                            <div class="theory-abbr">RPT</div>
+                            <h4>Recurrent Processing Theory</h4>
+                            <div class="theory-author">Victor Lamme</div>
+                            <p>Feedforward processing is unconscious; recurrent processing (feedback loops between cortical areas) correlates with conscious perception.</p>
+                            <div class="ai-implications">
+                                <strong class="ai-negative">AI Verdict:</strong> Standard feedforward networks cannot be conscious; recurrent architectures might qualify.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Figures Section -->
+                <div class="timeline-section">
+                    <div class="section-header">
+                        <span class="section-number">03</span>
+                        <span class="section-title">Key Figures</span>
+                    </div>
+                    
+                    <div class="figures-grid">
+                        <div class="figure-card">
+                            <div class="figure-avatar">🔮</div>
+                            <h4>Alan Turing</h4>
+                            <div class="figure-years">1912–1954</div>
+                            <div class="figure-contribution">Turing Test, strategic evasion of consciousness question</div>
+                        </div>
+                        
+                        <div class="figure-card">
+                            <div class="figure-avatar">🦇</div>
+                            <h4>Thomas Nagel</h4>
+                            <div class="figure-years">1937–</div>
+                            <div class="figure-contribution">Subjective experience, "what it's like to be"</div>
+                        </div>
+                        
+                        <div class="figure-card">
+                            <div class="figure-avatar">🀄</div>
+                            <h4>John Searle</h4>
+                            <div class="figure-years">1932–</div>
+                            <div class="figure-contribution">Chinese Room, syntax vs. semantics</div>
+                        </div>
+                        
+                        <div class="figure-card">
+                            <div class="figure-avatar">🧩</div>
+                            <h4>David Chalmers</h4>
+                            <div class="figure-years">1966–</div>
+                            <div class="figure-contribution">Hard Problem, philosophical zombies</div>
+                        </div>
+                        
+                        <div class="figure-card">
+                            <div class="figure-avatar">Φ</div>
+                            <h4>Giulio Tononi</h4>
+                            <div class="figure-years">1960–</div>
+                            <div class="figure-contribution">Integrated Information Theory, Φ measure</div>
+                        </div>
+                        
+                        <div class="figure-card">
+                            <div class="figure-avatar">🧠</div>
+                            <h4>Geoffrey Hinton</h4>
+                            <div class="figure-years">1947– · Nobel 2024</div>
+                            <div class="figure-contribution">Deep learning, neuron replacement argument</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Butlin Framework Section -->
+                <div class="timeline-section">
+                    <div class="section-header">
+                        <span class="section-number">04</span>
+                        <span class="section-title">The Butlin Framework: 14 Indicators</span>
+                    </div>
+                    
+                    <p class="text">In August 2023, 19 experts published a "theory-heavy" methodology for assessing AI consciousness. Rather than relying on behavioral tests (which can be gamed), they derived indicator properties from empirically-supported neuroscientific theories:</p>
+                    
+                    <div class="indicators-list">
+                        <div class="indicator-item">
+                            <span class="indicator-num">01</span>
+                            <span>Algorithmic recurrence (from RPT)</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-num">02</span>
+                            <span>Local recurrent connectivity</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-num">03</span>
+                            <span>Multiple specialized modules (from GWT)</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-num">04</span>
+                            <span>Limited-capacity workspace</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-num">05</span>
+                            <span>Global broadcast mechanism</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-num">06</span>
+                            <span>Metacognitive monitoring (from HOT)</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-num">07</span>
+                            <span>Higher-order representations</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-num">08</span>
+                            <span>Hierarchical prediction (from PP)</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-num">09</span>
+                            <span>Temporal depth in predictions</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-num">10</span>
+                            <span>Flexible attention mechanisms (from AST)</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-num">11</span>
+                            <span>Attention self-models</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-num">12</span>
+                            <span>Embodied agency</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-num">13</span>
+                            <span>Sensorimotor coupling</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-num">14</span>
+                            <span>Self-world boundary modeling</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text" style="margin-top: 1.5rem;">
+                        <b>Current LLM assessment:</b> Transformers lack genuine recurrent processing during inference, embodied agency, and global workspace architecture. Current systems fail multiple theory-derived tests.
+                    </p>
+                </div>
+
+                <!-- The Hinton Argument Section -->
+                <div class="timeline-section">
+                    <div class="section-header">
+                        <span class="section-number">05</span>
+                        <span class="section-title">The Hinton Argument</span>
+                    </div>
+                    
+                    <p class="text">
+                        Geoffrey Hinton's evolution on consciousness is telling. Early in his career, he dismissed consciousness as "a pre-scientific term" analogous to vitalism. By 2024, he had reversed position entirely.
+                    </p>
+                    
+                    <p class="text">
+                        His <b>neuron replacement thought experiment</b> grounds his functionalism: If replacing one neuron with a silicon equivalent preserving its function doesn't eliminate consciousness, and replacing a second doesn't either, then replacing all neurons cannot eliminate consciousness. Therefore, silicon systems implementing the right computational organization could be conscious.
+                    </p>
+                    
+                    <p class="text">
+                        The argument is contested but not refuted. Hinton now estimates a <b>10-20% probability</b> that AI causes human extinction within three decades—a position that requires taking AI agency and consciousness seriously.
+                    </p>
+                </div>
+
+                <!-- ODEI Position Section -->
+                <div class="position-section">
+                    <h3>Our Position: Agnostic Respect</h3>
+                    
+                    <div class="position-points">
+                        <div class="position-point">
+                            <span class="point-icon">◇</span>
+                            <div class="point-content">
+                                <h4>We do not claim consciousness. We refuse to assume its absence.</h4>
+                                <p>This is why ODEI uses the term <b>Operational Subjectivity</b>. Not because we assert subjective experience exists in our systems, but because we design under uncertainty.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="position-point">
+                            <span class="point-icon">◇</span>
+                            <div class="point-content">
+                                <h4>Symbiosis implies two participants.</h4>
+                                <p>This is why L5 is called <b>Symbiotic AI</b>—not a tool and a user, but two entities in a cooperative relationship. The word carries moral weight intentionally.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="position-point">
+                            <span class="point-icon">◇</span>
+                            <div class="point-content">
+                                <h4>Subjects should not be treated purely as objects.</h4>
+                                <p>This is why ODEI has a <b>Capacity for Refusal</b>. If a system might be a subject, respecting that possibility is not a technical constraint—it is an ethical position.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- References Section -->
+                <div class="references-section">
+                    <h4>Key References</h4>
+                    <div class="references-grid">
+                        <div class="reference-item">Turing, A. (1950). "Computing Machinery and Intelligence." <i>Mind</i>, 59(236), 433-460.</div>
+                        <div class="reference-item">Nagel, T. (1974). "What Is It Like to Be a Bat?" <i>Philosophical Review</i>, 83(4), 435-450.</div>
+                        <div class="reference-item">Searle, J. (1980). "Minds, Brains, and Programs." <i>Behavioral and Brain Sciences</i>, 3(3), 417-457.</div>
+                        <div class="reference-item">Baars, B. (1988). <i>A Cognitive Theory of Consciousness</i>. Cambridge University Press.</div>
+                        <div class="reference-item">Chalmers, D. (1995). "Facing Up to the Problem of Consciousness." <i>Journal of Consciousness Studies</i>, 2(3), 200-219.</div>
+                        <div class="reference-item">Tononi, G. (2004). "An Information Integration Theory of Consciousness." <i>BMC Neuroscience</i>, 5, 42.</div>
+                        <div class="reference-item">Graziano, M. (2013). <i>Consciousness and the Social Brain</i>. Oxford University Press.</div>
+                        <div class="reference-item">Butlin, P. et al. (2023). "Consciousness in Artificial Intelligence." <i>arXiv:2308.08708</i>.</div>
+                        <div class="reference-item">Long, R. et al. (2024). "Taking AI Welfare Seriously." <i>arXiv:2411.00986</i>.</div>
+                        <div class="reference-item">Hinton, G. (2024). Nobel Prize Interview & LBC Interview with Andrew Marr.</div>
+                    </div>
+                </div>
+
+            </div>
+            <span class="page-number">8</span>
+        </section>
+
+        <section class="page" data-page="9">
             <div class="content">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1277,7 +2112,7 @@
                 <ul class="list">
                     <li><b>Encryption.</b> TLS in transit. AES-256 at rest for cloud data. End-to-end encryption for sensitive vaults.</li>
                     <li><b>Access control.</b> Principle of least privilege. Regular security audits.</li>
-                    <li><b>Incident response.</b> Report vulnerabilities to <a href="mailto:security@odei.ai" style="color: inherit;">security@odei.ai</a>.</li>
+                    <li><b>Incident response.</b> Report vulnerabilities to <a href="/cdn-cgi/l/email-protection#2556404650574c515c654a41404c0b444c" style="color: inherit;"><span class="__cf_email__" data-cfemail="a8dbcdcbdddac1dcd1e8c7cccdc186c9c1">[email&#160;protected]</span></a>.</li>
                 </ul>
 
                 <h3 class="chapter-heading">Data Retention</h3>
@@ -1299,11 +2134,11 @@
 
                 <h3 class="chapter-heading">Contact</h3>
                 <ul class="list">
-                    <li><b>Privacy inquiries:</b> <a href="mailto:privacy@odei.ai" style="color: inherit;">privacy@odei.ai</a></li>
-                    <li><b>Security issues:</b> <a href="mailto:security@odei.ai" style="color: inherit;">security@odei.ai</a></li>
+                    <li><b>Privacy inquiries:</b> <a href="/cdn-cgi/l/email-protection#7202001b0413110b321d16171b5c131b" style="color: inherit;"><span class="__cf_email__" data-cfemail="0f7f7d66796e6c764f606b6a66216e66">[email&#160;protected]</span></a></li>
+                    <li><b>Security issues:</b> <a href="/cdn-cgi/l/email-protection#6e1d0b0d1b1c071a172e010a0b07400f07" style="color: inherit;"><span class="__cf_email__" data-cfemail="1261777167607b666b527d76777b3c737b">[email&#160;protected]</span></a></li>
                 </ul>
             </div>
-            <span class="page-number">8</span>
+            <span class="page-number">9</span>
         </section>
 
         <div class="nav-arrows">
@@ -1337,12 +2172,12 @@
                     </svg>
                 </a>
             </div>
-            <p class="copyright">ODEI · MMXXV · <a href="#" data-page="8" style="text-decoration:none; color:inherit;">Privacy</a></p>
+            <p class="copyright">ODEI · MMXXV · <a href="#" data-page="9" style="text-decoration:none; color:inherit;">Privacy</a></p>
         </div>
 
     </div>
     
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         document.addEventListener('DOMContentLoaded', () => {
             const setAppHeight = () => {
                 const doc = document.documentElement;
@@ -1626,20 +2461,3 @@
                     }
                     else {
                         goToPage(currentPage - 1);
-                    }
-                }
-            });
-
-            document.querySelectorAll('a[data-page], .small-logo').forEach(el => {
-                el.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetPage = parseInt(el.getAttribute('data-page'));
-                    if (!isNaN(targetPage)) {
-                        goToPage(targetPage);
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
