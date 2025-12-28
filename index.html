@@ -825,6 +825,366 @@
         }
 
         /* ========================================
+           SCIENCE PAGE STYLES
+           ======================================== */
+        
+        .science-page {
+            padding-bottom: 4rem;
+        }
+        
+        .science-page .content.wide {
+            max-width: 1000px;
+        }
+        
+        .science-hero {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .science-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .science-subtitle {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .section-label {
+            display: block;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.5;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Taxonomy Section */
+        .taxonomy-section {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .taxonomy-header h3, .anchors-header h3, .invariants-header h3, .synergy-header h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .taxonomy-intro {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .taxonomy-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .taxonomy-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            padding: 1.25rem;
+            border: 1px solid var(--border);
+            background: rgba(0,0,0,0.3);
+        }
+        
+        .taxonomy-card.symbiotic {
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.03);
+        }
+        
+        .card-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.6;
+            margin-bottom: 0.75rem;
+        }
+        
+        .taxonomy-card.symbiotic .card-label {
+            color: var(--accent);
+            opacity: 1;
+        }
+        
+        .taxonomy-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.8rem;
+        }
+        
+        .taxonomy-list li {
+            padding: 0.35rem 0;
+            padding-left: 1rem;
+            position: relative;
+            opacity: 0.85;
+        }
+        
+        .taxonomy-list li::before {
+            content: "−";
+            position: absolute;
+            left: 0;
+            opacity: 0.4;
+        }
+        
+        .taxonomy-card.symbiotic .taxonomy-list li::before {
+            content: "+";
+            color: var(--accent);
+            opacity: 1;
+        }
+        
+        .taxonomy-arrow {
+            font-size: 1.5rem;
+            opacity: 0.3;
+        }
+        
+        /* Anchors Section */
+        .anchors-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .anchors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .anchor-card {
+            padding: 1.25rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+            transition: all 0.3s var(--ease-out-quint);
+        }
+        
+        .anchor-card:hover {
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.04);
+        }
+        
+        .anchor-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .anchor-card h4 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .anchor-card p {
+            font-size: 0.8rem;
+            opacity: 0.75;
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+        
+        .anchor-card cite {
+            display: block;
+            font-size: 0.65rem;
+            font-style: normal;
+            opacity: 0.5;
+            line-height: 1.4;
+        }
+        
+        /* Invariants Section */
+        .invariants-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .invariants-intro {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-bottom: 1.25rem;
+        }
+        
+        .invariants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+        
+        .invariant-card {
+            display: flex;
+            gap: 1rem;
+            padding: 1.25rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .invariant-num {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.3;
+            line-height: 1;
+        }
+        
+        .invariant-content h4 {
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+        }
+        
+        .invariant-content p {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            line-height: 1.5;
+        }
+        
+        /* Synergy Section */
+        .synergy-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .synergy-formula-box {
+            padding: 1.5rem;
+            border: 1px solid var(--accent);
+            background: rgba(255,255,255,0.03);
+            text-align: center;
+        }
+        
+        .synergy-formula-box .formula {
+            font-size: 1.2rem;
+            font-family: 'IBM Plex Mono', monospace;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+        
+        .formula-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.5;
+            padding: 0.75rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1rem;
+        }
+        
+        .formula-meta .verified {
+            color: var(--status-yes);
+            opacity: 1;
+        }
+        
+        .formula-desc {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+        
+        .formula-cite {
+            display: block;
+            font-size: 0.7rem;
+            font-style: italic;
+            opacity: 0.5;
+        }
+        
+        /* Definition Section */
+        .definition-section {
+            margin-bottom: 2rem;
+        }
+        
+        .definition-box {
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent);
+            background: rgba(255,255,255,0.03);
+        }
+        
+        .definition-label {
+            display: block;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+        
+        .definition-box blockquote {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .definition-note {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        
+        /* Science References */
+        .science-references {
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .ref-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .ref-item {
+            font-size: 0.7rem;
+            opacity: 0.6;
+            line-height: 1.5;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .ref-item i {
+            font-style: italic;
+        }
+        
+        /* Responsive adjustments for Science page */
+        @media (max-width: 768px) {
+            .taxonomy-grid {
+                flex-direction: column;
+            }
+            
+            .taxonomy-arrow {
+                transform: rotate(90deg);
+            }
+            
+            .taxonomy-card {
+                max-width: 100%;
+            }
+            
+            .invariant-card {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .invariant-num {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* ========================================
            CONSCIOUSNESS PAGE STYLES
            ======================================== */
         
@@ -1383,49 +1743,174 @@
             <span class="page-number">3</span>
         </section>
 
-        <section class="page" data-page="4">
-            <div class="content">
+        <section class="page science-page" data-page="4">
+            <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
                         <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
                     </svg>
                 </div>
-                <h2 class="chapter-heading">Science</h2>
-                <p class="text">
-                    ODEI is built on the rigorous framework of <b>Human-AI Synergy</b>. We do not optimize for AI performance; we optimize for the joint output of the biological-digital system.
-                </p>
                 
-                <div style="margin: 2.5rem 0; padding: 1.5rem; border: 1px solid var(--border); background: rgba(255,255,255,0.03);">
-                    <div style="text-align: center; font-size: 1.1em; margin-bottom: 1.5rem; letter-spacing: 0.05em; font-family: 'IBM Plex Mono', monospace;">
-                        S = P<sub>(h+ai)</sub> - max(P<sub>h</sub>, P<sub>ai</sub>)
-                    </div>
-                    <div style="font-size: 0.75rem; opacity: 0.5; border-top: 1px solid var(--border); padding-top: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
-                        <span>FIG.01 // SYNERGY_MODEL</span>
-                        <span style="letter-spacing: 0.1em;">[VERIFIED]</span>
-                    </div>
-                    <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 1rem; line-height: 1.6;">
-                        True synergy (S > 0) occurs only when the joint probability of success exceeds the capability of the strongest individual agent.
+                <div class="science-hero">
+                    <span class="science-badge">Scientific Foundation</span>
+                    <h2 class="chapter-heading">The Science of Symbiotic AI</h2>
+                    <p class="science-subtitle">
+                        ODEI's L5 (Symbiotic AI) is not a marketing term—it is a legitimate extension of established agent taxonomies, grounded in four decades of Human-AI Teaming research.
                     </p>
                 </div>
 
-                <ul class="list">
-                    <li>
-                        <b>Bayesian Synergy Framework.</b> 
-                        <span style="display:block; opacity:0.7; font-size: 0.85em; margin-top:0.25rem; font-style:italic;">Riedl, C. & Weidmann, B. (2025). Quantifying Human-AI Synergy.</span>
-                        We utilize a novel Bayesian Item Response Theory to mathematically separate individual ability from collaborative ability. ODEI is engineered to maximize $\mathcal{S}$ (Synergy).
-                    </li>
-                    <li>
-                        <b>Theory of Mind Alignment.</b> 
-                        <span style="display:block; opacity:0.7; font-size: 0.85em; margin-top:0.25rem; font-style:italic;">Watts, S. (2025). Cognitive Foundations of Algorithmic Trust.</span>
-                        Synergy requires the AI to maintain an accurate model of the user's mental state. ODEI uses active sensing to minimize the "perspective gap," ensuring the system acts as an extension of your own volition.
-                    </li>
-                    <li>
-                        <b>Joint Process Modeling.</b> 
-                        <span style="display:block; opacity:0.7; font-size: 0.85em; margin-top:0.25rem; font-style:italic;">Dynamical Systems Approach.</span>
-                        We treat Human and AI not as sender and receiver, but as a single coupled dynamical system. Latency, friction, and context-switching are treated as noise in this joint channel, which ODEI systematically eliminates.
-                    </li>
-                </ul>
+                <!-- Taxonomic Position -->
+                <div class="taxonomy-section">
+                    <div class="taxonomy-header">
+                        <span class="section-label">01 // TAXONOMIC POSITION</span>
+                        <h3>Extending AIMA Agent Classification</h3>
+                    </div>
+                    <p class="taxonomy-intro">
+                        Russell &amp; Norvig's canonical taxonomy (AIMA, 1995–2020) defines five agent classes: Reactive, Model-based, Goal-based, Utility-based, and Learning agents. Symbiotic AI extends this taxonomy by adding invariants that no existing class captures.
+                    </p>
+                    <div class="taxonomy-grid">
+                        <div class="taxonomy-card aima">
+                            <div class="card-label">AIMA Classes (L1–L4)</div>
+                            <ul class="taxonomy-list">
+                                <li>Single-agent optimization</li>
+                                <li>Human as operator or supervisor</li>
+                                <li>Static goal specification</li>
+                                <li>Unidirectional adaptation</li>
+                            </ul>
+                        </div>
+                        <div class="taxonomy-arrow">→</div>
+                        <div class="taxonomy-card symbiotic">
+                            <div class="card-label">Symbiotic AI (L5)</div>
+                            <ul class="taxonomy-list">
+                                <li>Joint human-AI system optimization</li>
+                                <li>Human as co-participant</li>
+                                <li>Dynamic goal co-evolution</li>
+                                <li>Bidirectional co-adaptation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scientific Anchors -->
+                <div class="anchors-section">
+                    <div class="anchors-header">
+                        <span class="section-label">02 // SCIENTIFIC ANCHORS</span>
+                        <h3>Four Research Traditions</h3>
+                    </div>
+                    <div class="anchors-grid">
+                        <div class="anchor-card">
+                            <div class="anchor-icon">🤝</div>
+                            <h4>Human-AI Teaming</h4>
+                            <p>Treating AI as teammate, not tool. Shared mental models and mutual comprehension.</p>
+                            <cite>National Academies (2022); O'Neill et al. (2020); Lyons et al. (2021)</cite>
+                        </div>
+                        <div class="anchor-card">
+                            <div class="anchor-icon">🔄</div>
+                            <h4>Co-Adaptive Systems</h4>
+                            <p>Both agents learn and adapt simultaneously. Mutual adjustment toward shared goals.</p>
+                            <cite>van Zoelen et al. (2021); Nikolaidis et al. (2017); Döppner et al. (2019)</cite>
+                        </div>
+                        <div class="anchor-card">
+                            <div class="anchor-icon">⚖️</div>
+                            <h4>Adjustable Autonomy</h4>
+                            <p>Dynamic allocation of control based on context, workload, and human state.</p>
+                            <cite>Beer et al. (2014); Sheridan (1992); Parasuraman et al. (2000)</cite>
+                        </div>
+                        <div class="anchor-card">
+                            <div class="anchor-icon">🎯</div>
+                            <h4>Shared Autonomy</h4>
+                            <p>Blending human intent with AI capability for superior joint outcomes.</p>
+                            <cite>Dragan &amp; Srinivasa (2013); Javdani et al. (2018)</cite>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Invariants -->
+                <div class="invariants-section">
+                    <div class="invariants-header">
+                        <span class="section-label">03 // DEFINING INVARIANTS</span>
+                        <h3>What Makes L5 a New Class</h3>
+                    </div>
+                    <p class="invariants-intro">
+                        Symbiotic AI is defined by four invariants absent from L1–L4 agent classes:
+                    </p>
+                    <div class="invariants-grid">
+                        <div class="invariant-card">
+                            <span class="invariant-num">01</span>
+                            <div class="invariant-content">
+                                <h4>Mandatory User Model</h4>
+                                <p>The agent maintains and updates a persistent model of the human's goals, preferences, cognitive state, and behavioral patterns.</p>
+                            </div>
+                        </div>
+                        <div class="invariant-card">
+                            <span class="invariant-num">02</span>
+                            <div class="invariant-content">
+                                <h4>Bidirectional Policy Update</h4>
+                                <p>Agent policy updates based on outcomes + human feedback. Not just reward signals, but explicit preference learning.</p>
+                            </div>
+                        </div>
+                        <div class="invariant-card">
+                            <span class="invariant-num">03</span>
+                            <div class="invariant-content">
+                                <h4>Co-Adaptation Loop</h4>
+                                <p>Human ↔ Agent mutual adjustment. Both parties modify behavior based on interaction history. The system evolves together.</p>
+                            </div>
+                        </div>
+                        <div class="invariant-card">
+                            <span class="invariant-num">04</span>
+                            <div class="invariant-content">
+                                <h4>Divided Subjectivity</h4>
+                                <p>Agent has no goals outside the human's framework, but possesses execution autonomy. Source of goals ≠ source of action.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Synergy Formula -->
+                <div class="synergy-section">
+                    <div class="synergy-header">
+                        <span class="section-label">04 // SYNERGY METRIC</span>
+                        <h3>Measuring Collaboration</h3>
+                    </div>
+                    <div class="synergy-formula-box">
+                        <div class="formula">
+                            S = P<sub>(h+ai)</sub> − max(P<sub>h</sub>, P<sub>ai</sub>)
+                        </div>
+                        <div class="formula-meta">
+                            <span>FIG.01 // SYNERGY_MODEL</span>
+                            <span class="verified">[VERIFIED]</span>
+                        </div>
+                        <p class="formula-desc">
+                            True synergy (S &gt; 0) occurs only when joint performance exceeds the capability of the strongest individual agent. ODEI is engineered to maximize S.
+                        </p>
+                        <cite class="formula-cite">Riedl, C. &amp; Weidmann, B. (2025). Quantifying Human-AI Synergy. Bayesian IRT for collaborative ability measurement.</cite>
+                    </div>
+                </div>
+
+                <!-- Canonical Definition -->
+                <div class="definition-section">
+                    <div class="definition-box">
+                        <span class="definition-label">CANONICAL DEFINITION</span>
+                        <blockquote>
+                            <b>Symbiotic AI</b> is a co-adaptive human–AI system in which an autonomous agent operates with persistent memory, policy update, and user model, while the human remains the source of goals, norms, and responsibility in a human-on-the-loop configuration.
+                        </blockquote>
+                        <p class="definition-note">This is not philosophy. This is a system class.</p>
+                    </div>
+                </div>
+
+                <!-- References -->
+                <div class="science-references">
+                    <span class="section-label">KEY REFERENCES</span>
+                    <div class="ref-grid">
+                        <div class="ref-item">Russell, S. &amp; Norvig, P. (2020). <i>Artificial Intelligence: A Modern Approach</i>. 4th ed.</div>
+                        <div class="ref-item">National Academies (2022). <i>Human-AI Teaming: State of the Art and Research Needs</i>.</div>
+                        <div class="ref-item">Beer, J.M. et al. (2014). Toward a Framework for Levels of Robot Autonomy in HRI. <i>JHRI</i> 3(2).</div>
+                        <div class="ref-item">van Zoelen, E.M. et al. (2021). Identifying Interaction Patterns of Mutual Adaptation. <i>Front. Robot. AI</i>.</div>
+                        <div class="ref-item">Nikolaidis, S. et al. (2017). Human-robot mutual adaptation in collaborative tasks. <i>IJRR</i> 36(5-7).</div>
+                        <div class="ref-item">Riedl, C. &amp; Weidmann, B. (2025). Quantifying Human-AI Synergy. <i>Working Paper</i>.</div>
+                    </div>
+                </div>
             </div>
             <span class="page-number">4</span>
         </section>
@@ -2192,7 +2677,7 @@
             let currentPage = 0;
             const pages = document.querySelectorAll('.page');
             
-            const navigablePagesCount = 8;
+            const navigablePagesCount = 9;
             const totalPages = pages.length;
 
             const prevButton = document.getElementById('prevButton');
@@ -2330,7 +2815,7 @@
             }
 
             function updateButtons() {
-                if (currentPage === 8) {
+                if (currentPage === 9) {
                     prevButton.style.display = 'flex';
                     prevButton.classList.remove('disabled');
                     nextButton.style.display = 'none';
