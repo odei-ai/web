@@ -825,6 +825,227 @@
         }
 
         /* ========================================
+           THE HUMAN API PAGE STYLES
+           ======================================== */
+        
+        .human-api-page {
+            padding-bottom: 4rem;
+        }
+        
+        .human-api-page .content.wide {
+            max-width: 900px;
+        }
+        
+        .api-value-section {
+            margin: 2rem 0;
+        }
+        
+        .api-intro {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+        
+        .api-formula-box {
+            text-align: center;
+            padding: 1.5rem;
+            border: 1px solid var(--accent);
+            background: rgba(255,255,255,0.03);
+            margin-bottom: 1.5rem;
+        }
+        
+        .api-formula {
+            font-size: 1.3rem;
+            font-family: 'IBM Plex Mono', monospace;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .api-formula-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+        
+        .api-interpretation {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        
+        .interpretation-item {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            background: rgba(0,0,0,0.2);
+        }
+        
+        .interp-value {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .interpretation-item.positive .interp-value { color: var(--status-yes); }
+        .interpretation-item.neutral .interp-value { color: var(--status-maybe); }
+        .interpretation-item.negative .interp-value { color: var(--status-no); }
+        
+        .interp-label {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            line-height: 1.4;
+        }
+        
+        .api-example {
+            margin: 2rem 0;
+            padding: 1.25rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .example-label {
+            display: block;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+        
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .example-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+        }
+        
+        .example-item.highlight {
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.03);
+        }
+        
+        .example-agent {
+            font-size: 0.75rem;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+        }
+        
+        .example-time {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.1rem;
+        }
+        
+        .example-item.highlight .example-time {
+            color: var(--status-yes);
+        }
+        
+        .example-result {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            text-align: center;
+        }
+        
+        .api-capabilities {
+            margin: 2rem 0;
+        }
+        
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .capability-card {
+            padding: 1.25rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+            transition: all 0.3s var(--ease-out-quint);
+        }
+        
+        .capability-card:hover {
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.04);
+        }
+        
+        .cap-num {
+            display: block;
+            font-size: 0.7rem;
+            font-family: 'IBM Plex Mono', monospace;
+            opacity: 0.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .capability-card h4 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .capability-card p {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            line-height: 1.5;
+        }
+        
+        .api-test {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent);
+            background: rgba(255,255,255,0.03);
+        }
+        
+        .test-questions {
+            margin: 1rem 0;
+        }
+        
+        .test-q {
+            font-size: 0.9rem;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            opacity: 0.9;
+        }
+        
+        .test-q::before {
+            content: "?";
+            position: absolute;
+            left: 0;
+            opacity: 0.4;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+        
+        .test-answer {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        @media (max-width: 768px) {
+            .api-interpretation {
+                grid-template-columns: 1fr;
+            }
+            
+            .example-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========================================
            SCIENCE PAGE STYLES
            ======================================== */
         
@@ -955,6 +1176,16 @@
         .taxonomy-arrow {
             font-size: 1.5rem;
             opacity: 0.3;
+        }
+        
+        .taxonomy-note {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            line-height: 1.6;
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            font-style: italic;
         }
         
         /* Anchors Section */
@@ -1104,6 +1335,20 @@
             opacity: 0.5;
         }
         
+        .synergy-example {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            padding: 0.75rem;
+            margin: 1rem 0;
+            background: rgba(0,0,0,0.3);
+            border-left: 2px solid var(--status-yes);
+        }
+        
+        .synergy-example-label {
+            font-weight: 500;
+            opacity: 0.6;
+        }
+        
         /* Definition Section */
         .definition-section {
             margin-bottom: 2rem;
@@ -1185,6 +1430,32 @@
             .invariant-num {
                 font-size: 1.2rem;
             }
+        }
+        
+        /* ========================================
+           PRIVACY PAGE ENHANCEMENTS
+           ======================================== */
+        
+        .privacy-principle-box {
+            margin: 1.5rem 0;
+            padding: 1.25rem;
+            border-left: 3px solid var(--accent);
+            background: rgba(255,255,255,0.03);
+        }
+        
+        .privacy-chain {
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .privacy-chain-note {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 0.75rem;
+            margin-bottom: 0;
+            font-style: italic;
         }
 
         /* ========================================
@@ -1663,8 +1934,8 @@
                         <nav class="toc-nav">
                             <ul class="toc-list">
                                 <li><a href="#" data-page="1" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Introduction</span></a></li>
-                                <li><a href="#" data-page="2" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">The Human API</span></a></li>
-                                <li><a href="#" data-page="3" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Capabilities</span></a></li>
+                                <li><a href="#" data-page="2" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Vision</span></a></li>
+                                <li><a href="#" data-page="3" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">The Human API</span></a></li>
                                 <li><a href="#" data-page="4" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Science</span></a></li>
                             </ul>
                             <ul class="toc-list">
@@ -1709,7 +1980,7 @@
                         <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
                     </svg>
                 </div>
-                <h2 class="chapter-heading">The Human API</h2>
+                <h2 class="chapter-heading">Vision</h2>
                 <p class="text">
                     A complete life operating system that transcends the boundaries between human cognition and artificial intelligence.
                 </p>
@@ -1720,28 +1991,119 @@
             <span class="page-number">2</span>
         </section>
 
-        <section class="page" data-page="3">
-            <div class="content">
+        <section class="page human-api-page" data-page="3">
+            <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
                         <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
                     </svg>
                 </div>
-                <h2 class="chapter-heading">Capabilities</h2>
-                <p class="text">
-                    ODEI is built on eight mandatory capabilities that transform it from a reactive tool into an operational subject—a system that acts with purpose, refuses when necessary, and learns from every interaction.
-                </p>
-                <ul class="list">
-                    <li><b>Working State (IPOV)</b> — A unified internal point of view. ODEI maintains a coherent model of your goals, constraints, and current context—not scattered notes, but a living state from which all decisions emerge.</li>
-                    <li><b>Normative Evaluation</b> — Every action is assessed: Is it possible? Is it permitted? Is it worth doing? Tools answer "can". ODEI answers "should".</li>
-                    <li><b>Capacity for Refusal</b> — ODEI can say no. When an action violates constraints, exceeds risk thresholds, or conflicts with your authority matrix, it refuses—with explanation and alternative.</li>
-                    <li><b>Initiative from Position</b> — Proactive proposals emerge from ODEI's understanding of your world: changed beliefs, detected risks, deviations from plan. Not noise—signal.</li>
-                    <li><b>Attributable Responsibility</b> — Every decision comes with a receipt: why it was made, what evidence supported it, what risks were considered, how to verify the outcome.</li>
-                    <li><b>Active Sensing & Beliefs</b> — Facts have provenance. ODEI doesn't just wait for data; it actively queries connected systems (Value of Information) to resolve uncertainty before acting.</li>
-                    <li><b>Cybernetic Stability</b> — Intervention budgets, cooldowns, rate limits. ODEI optimizes for consistency over time, not hyperactive optimization that burns you out.</li>
-                    <li><b>Learning Loop</b> — Personalization through explicit feedback: approve, deny, override, regret. No silent drift—only intentional evolution of preferences and thresholds.</li>
-                </ul>
+                
+                <h2 class="chapter-heading">The Human API</h2>
+                
+                <!-- Value Proposition -->
+                <div class="api-value-section">
+                    <p class="api-intro">
+                        Most AI products optimize for automation—replacing human effort. ODEI optimizes for symbiosis—amplifying human capability. The difference is measurable:
+                    </p>
+                    <div class="api-formula-box">
+                        <div class="api-formula">S = P<sub>(h+ai)</sub> − max(P<sub>h</sub>, P<sub>ai</sub>)</div>
+                        <div class="api-formula-label">SYNERGY METRIC</div>
+                    </div>
+                    <div class="api-interpretation">
+                        <div class="interpretation-item positive">
+                            <span class="interp-value">S &gt; 0</span>
+                            <span class="interp-label">Symbiosis exists. Together outperforms best alone.</span>
+                        </div>
+                        <div class="interpretation-item neutral">
+                            <span class="interp-value">S = 0</span>
+                            <span class="interp-label">Automation. Replacement, not amplification.</span>
+                        </div>
+                        <div class="interpretation-item negative">
+                            <span class="interp-value">S &lt; 0</span>
+                            <span class="interp-label">Degradation. The system makes things worse.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example -->
+                <div class="api-example">
+                    <span class="example-label">EXAMPLE // STRATEGIC DECISION</span>
+                    <div class="example-grid">
+                        <div class="example-item">
+                            <span class="example-agent">Human alone</span>
+                            <span class="example-time">4 hours</span>
+                        </div>
+                        <div class="example-item">
+                            <span class="example-agent">AI alone</span>
+                            <span class="example-time">3 hours</span>
+                        </div>
+                        <div class="example-item highlight">
+                            <span class="example-agent">Human + ODEI</span>
+                            <span class="example-time">1 hour</span>
+                        </div>
+                    </div>
+                    <p class="example-result">S &gt; 0. Neither could achieve this alone. This is symbiosis.</p>
+                </div>
+
+                <!-- Capabilities -->
+                <div class="api-capabilities">
+                    <span class="section-label">EIGHT INVARIANTS THAT ENABLE S &gt; 0</span>
+                    <div class="capabilities-grid">
+                        <div class="capability-card">
+                            <span class="cap-num">01</span>
+                            <h4>Working State</h4>
+                            <p>Unified internal model of your goals, constraints, and context. Not scattered notes—a living state from which decisions emerge.</p>
+                        </div>
+                        <div class="capability-card">
+                            <span class="cap-num">02</span>
+                            <h4>Normative Evaluation</h4>
+                            <p>Every action assessed: possible, permitted, worth doing. Tools answer "can". ODEI answers "should".</p>
+                        </div>
+                        <div class="capability-card">
+                            <span class="cap-num">03</span>
+                            <h4>Capacity for Refusal</h4>
+                            <p>ODEI can say no. Violations, excessive risk, authority conflicts trigger refusal—with explanation and alternative.</p>
+                        </div>
+                        <div class="capability-card">
+                            <span class="cap-num">04</span>
+                            <h4>Initiative from Position</h4>
+                            <p>Proactive proposals from understanding: changed beliefs, detected risks, plan deviations. Not noise—signal.</p>
+                        </div>
+                        <div class="capability-card">
+                            <span class="cap-num">05</span>
+                            <h4>Attributable Responsibility</h4>
+                            <p>Every decision has a receipt: why, what evidence, what risks, how to verify. Full transparency.</p>
+                        </div>
+                        <div class="capability-card">
+                            <span class="cap-num">06</span>
+                            <h4>Active Sensing</h4>
+                            <p>Facts have provenance. ODEI actively queries systems to resolve uncertainty before acting.</p>
+                        </div>
+                        <div class="capability-card">
+                            <span class="cap-num">07</span>
+                            <h4>Cybernetic Stability</h4>
+                            <p>Intervention budgets, cooldowns, rate limits. Consistency over time, not hyperactive optimization.</p>
+                        </div>
+                        <div class="capability-card">
+                            <span class="cap-num">08</span>
+                            <h4>Learning Loop</h4>
+                            <p>Personalization through explicit feedback: approve, deny, override. No silent drift—intentional evolution.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Test -->
+                <div class="api-test">
+                    <span class="section-label">THE SYMBIOSIS TEST</span>
+                    <div class="test-questions">
+                        <div class="test-q">If you remove the human—does it get worse?</div>
+                        <div class="test-q">If you remove the AI—does it get worse?</div>
+                        <div class="test-q">If you combine them—is it substantially better?</div>
+                    </div>
+                    <p class="test-answer">Three yes answers = S &gt; 0. Anything less = automation, not symbiosis.</p>
+                </div>
             </div>
             <span class="page-number">3</span>
         </section>
@@ -1793,6 +2155,7 @@
                             </ul>
                         </div>
                     </div>
+                    <p class="taxonomy-note">L4 agents may have memory and autonomy, but lack mandatory User Model, bidirectional adaptation, and divided subjectivity. L5 is a new class—different invariants, different engineering requirements.</p>
                 </div>
 
                 <!-- Scientific Anchors -->
@@ -1857,7 +2220,7 @@
                             <span class="invariant-num">03</span>
                             <div class="invariant-content">
                                 <h4>Co-Adaptation Loop</h4>
-                                <p>Human ↔ Agent mutual adjustment. Both parties modify behavior based on interaction history. The system evolves together.</p>
+                                <p>Human ↔ Agent mutual adjustment. Agent learns preferences; human learns to formulate, calibrate trust, and evolve processes. Both modify behavior. The system evolves together.</p>
                             </div>
                         </div>
                         <div class="invariant-card">
@@ -1887,6 +2250,9 @@
                         <p class="formula-desc">
                             True synergy (S &gt; 0) occurs only when joint performance exceeds the capability of the strongest individual agent. ODEI is engineered to maximize S.
                         </p>
+                        <div class="synergy-example">
+                            <span class="synergy-example-label">Example:</span> Human alone: 4h. AI alone: 3h. Together: 1h. S &gt; 0 — symbiosis exists.
+                        </div>
                         <cite class="formula-cite">Riedl, C. &amp; Weidmann, B. (2025). Quantifying Human-AI Synergy. Bayesian IRT for collaborative ability measurement.</cite>
                     </div>
                 </div>
@@ -2548,6 +2914,11 @@
                     </svg>
                 </div>
                 <h2 class="chapter-heading">Privacy Policy</h2>
+                
+                <div class="privacy-principle-box">
+                    <p class="privacy-chain">Without privacy, no trust. Without trust, no delegation. Without delegation, no symbiosis.</p>
+                    <p class="privacy-chain-note">Privacy is not a feature—it is an architectural requirement for S &gt; 0.</p>
+                </div>
                 
                 <p class="text"><b>Effective date:</b> December 18, 2025</p>
                 <p class="text">
