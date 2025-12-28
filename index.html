@@ -3071,6 +3071,10 @@
                 primaryContainer.style.display = 'none';
 
                 const bootLines = [
+                    "> SYSTEM_INIT: KERNEL v2.5",
+                    "> MOUNTING: MEMORY_GRAPH [OK]",
+                    "> VERIFYING: ACTION_REGISTRY [SECURE]",
+                    "> LOADING: AUTHORITY_MATRIX [USER_DEFINED]",
                     "> ESTABLISHING HUMAN LINK...",
                     "> OPERATIONAL SUBJECTIVITY: ONLINE"
                 ];
@@ -3088,7 +3092,7 @@
                             bootContainer.style.display = 'none';
                             philosophicalContainer.style.display = 'block';
                             typePhilosophical();
-                        }, 300);
+                        }, 500);
                         return;
                     }
 
@@ -3102,10 +3106,10 @@
                         if (charIndex < line.length) {
                             span.innerHTML += line.charAt(charIndex);
                             charIndex++;
-                            typingTimeout = setTimeout(typeChar, 8);
+                            typingTimeout = setTimeout(typeChar, 20);
                         } else {
                             bootLineIndex++;
-                            typingTimeout = setTimeout(typeBootSequence, 80);
+                            typingTimeout = setTimeout(typeBootSequence, 100);
                         }
                     }
                     typeChar();
@@ -3119,7 +3123,7 @@
                         setTimeout(() => {
                             primaryContainer.style.display = 'inline-flex';
                             typePrimary();
-                        }, 200);
+                        }, 300);
                         return;
                     }
 
@@ -3135,11 +3139,11 @@
                     if (philCharIndex < line.length) {
                         currentSpan.innerHTML += line.charAt(philCharIndex);
                         philCharIndex++;
-                        typingTimeout = setTimeout(typePhilosophical, 15);
+                        typingTimeout = setTimeout(typePhilosophical, 60);
                     } else {
                         philLineIndex++;
                         philCharIndex = 0;
-                        typingTimeout = setTimeout(typePhilosophical, 150);
+                        typingTimeout = setTimeout(typePhilosophical, 300);
                     }
                 }
 
@@ -3155,7 +3159,7 @@
                         if (i < primaryText.length) {
                             textSpan.innerHTML += primaryText.charAt(i);
                             i++;
-                            typingTimeout = setTimeout(type, 40);
+                            typingTimeout = setTimeout(type, 85);
                         } else {
                             if (primaryContainer.contains(cursorSpan)) {
                                 primaryContainer.removeChild(cursorSpan);
