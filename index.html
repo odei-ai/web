@@ -3063,57 +3063,17 @@
 
                 sessionStorage.setItem('odei_booted', 'true');
 
-                bootContainer.innerHTML = '';
-                bootContainer.style.display = 'block';
+                bootContainer.style.display = 'none';
                 philosophicalContainer.innerHTML = '';
-                philosophicalContainer.style.display = 'none';
+                philosophicalContainer.style.display = 'block';
                 primaryContainer.innerHTML = '';
                 primaryContainer.style.display = 'none';
 
-                const bootLines = [
-                    "> SYSTEM_INIT: KERNEL v2.5",
-                    "> MOUNTING: MEMORY_GRAPH [OK]",
-                    "> VERIFYING: ACTION_REGISTRY [SECURE]",
-                    "> LOADING: AUTHORITY_MATRIX [USER_DEFINED]",
-                    "> ESTABLISHING HUMAN LINK...",
-                    "> OPERATIONAL SUBJECTIVITY: ONLINE"
-                ];
                 const philosophicalLines = [
                     "> The future is not human or machine.",
                     "> The future is symbiosis."
                 ];
                 const primaryText = "ODEI — The Human API Company";
-
-                let bootLineIndex = 0;
-
-                function typeBootSequence() {
-                    if (bootLineIndex >= bootLines.length) {
-                        setTimeout(() => {
-                            bootContainer.style.display = 'none';
-                            philosophicalContainer.style.display = 'block';
-                            typePhilosophical();
-                        }, 500);
-                        return;
-                    }
-
-                    const line = bootLines[bootLineIndex];
-                    const span = document.createElement('span');
-                    span.style.display = 'block';
-                    bootContainer.appendChild(span);
-                    
-                    let charIndex = 0;
-                    function typeChar() {
-                        if (charIndex < line.length) {
-                            span.innerHTML += line.charAt(charIndex);
-                            charIndex++;
-                            typingTimeout = setTimeout(typeChar, 20);
-                        } else {
-                            bootLineIndex++;
-                            typingTimeout = setTimeout(typeBootSequence, 100);
-                        }
-                    }
-                    typeChar();
-                }
 
                 let philLineIndex = 0;
                 let philCharIndex = 0;
@@ -3169,7 +3129,7 @@
                     type();
                 }
                 
-                typingTimeout = setTimeout(typeBootSequence, 500);
+                typingTimeout = setTimeout(typePhilosophical, 500);
             }
 
             function updateButtons() {
