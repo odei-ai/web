@@ -836,30 +836,41 @@
             max-width: 900px;
         }
         
-        .api-value-section {
-            margin: 2rem 0;
+        /* Opening Statement */
+        .api-statement {
+            text-align: center;
+            margin: 2rem 0 2.5rem;
         }
         
-        .api-intro {
+        .statement-main {
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            margin-bottom: 1rem;
+        }
+        
+        .statement-sub {
             font-size: 0.95rem;
             line-height: 1.7;
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto;
         }
         
+        /* Formula Box */
         .api-formula-box {
             text-align: center;
-            padding: 1.5rem;
+            padding: 2rem;
             border: 1px solid var(--accent);
             background: rgba(255,255,255,0.03);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
         }
         
         .api-formula {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-family: 'IBM Plex Mono', monospace;
             letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
         
         .api-formula-label {
@@ -867,180 +878,171 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             opacity: 0.5;
+            margin-bottom: 1rem;
         }
         
-        .api-interpretation {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-        
-        .interpretation-item {
+        .formula-legend {
             display: flex;
-            flex-direction: column;
-            padding: 1rem;
-            border: 1px solid var(--border);
-            background: rgba(0,0,0,0.2);
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+            padding: 0.75rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
         
-        .interp-value {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .interpretation-item.positive .interp-value { color: var(--status-yes); }
-        .interpretation-item.neutral .interp-value { color: var(--status-maybe); }
-        .interpretation-item.negative .interp-value { color: var(--status-no); }
-        
-        .interp-label {
+        .formula-legend span {
             font-size: 0.75rem;
             opacity: 0.7;
-            line-height: 1.4;
         }
         
-        .api-example {
-            margin: 2rem 0;
-            padding: 1.25rem;
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,0.02);
-        }
-        
-        .example-label {
-            display: block;
-            font-size: 0.65rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            opacity: 0.5;
-            margin-bottom: 1rem;
-        }
-        
-        .example-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .example-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--border);
-        }
-        
-        .example-item.highlight {
-            border-color: var(--accent);
-            background: rgba(255,255,255,0.03);
-        }
-        
-        .example-agent {
-            font-size: 0.75rem;
-            opacity: 0.6;
-            margin-bottom: 0.5rem;
-        }
-        
-        .example-time {
+        .formula-legend b {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 1.1rem;
+            font-weight: 500;
+            opacity: 1;
         }
         
-        .example-item.highlight .example-time {
-            color: var(--status-yes);
-        }
-        
-        .example-result {
+        .formula-explain {
             font-size: 0.85rem;
-            opacity: 0.8;
-            text-align: center;
+            opacity: 0.7;
+            line-height: 1.5;
+            max-width: 500px;
+            margin: 0 auto;
         }
         
-        .api-capabilities {
+        /* Product Section */
+        .product-section {
             margin: 2rem 0;
         }
         
-        .capabilities-grid {
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(5, 1fr);
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 1.25rem;
         }
         
-        .capability-card {
+        .product-card {
             padding: 1.25rem;
             border: 1px solid var(--border);
             background: rgba(255,255,255,0.02);
             transition: all 0.3s var(--ease-out-quint);
+            display: flex;
+            flex-direction: column;
         }
         
-        .capability-card:hover {
+        .product-card:hover {
             border-color: var(--accent);
             background: rgba(255,255,255,0.04);
+            transform: translateY(-2px);
         }
         
-        .cap-num {
+        .product-num {
             display: block;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-family: 'IBM Plex Mono', monospace;
             opacity: 0.4;
             margin-bottom: 0.5rem;
         }
         
-        .capability-card h4 {
-            font-size: 0.9rem;
+        .product-card h4 {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+        }
+        
+        .product-headline {
+            font-size: 0.8rem;
             font-weight: 500;
             margin-bottom: 0.5rem;
+            line-height: 1.4;
         }
         
-        .capability-card p {
-            font-size: 0.75rem;
-            opacity: 0.7;
+        .product-detail {
+            font-size: 0.7rem;
+            opacity: 0.6;
             line-height: 1.5;
+            flex-grow: 1;
         }
         
-        .api-test {
-            margin: 2rem 0;
-            padding: 1.5rem;
-            border-left: 3px solid var(--accent);
-            background: rgba(255,255,255,0.03);
-        }
-        
-        .test-questions {
-            margin: 1rem 0;
-        }
-        
-        .test-q {
-            font-size: 0.9rem;
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            opacity: 0.9;
-        }
-        
-        .test-q::before {
-            content: "?";
-            position: absolute;
-            left: 0;
-            opacity: 0.4;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-        
-        .test-answer {
-            font-size: 0.85rem;
-            opacity: 0.7;
-            margin-top: 1rem;
-            padding-top: 1rem;
+        /* Contrast Section */
+        .api-contrast {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
             border-top: 1px solid var(--border);
         }
         
+        .contrast-them, .contrast-us {
+            padding: 1.5rem;
+        }
+        
+        .contrast-them {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            opacity: 0.7;
+        }
+        
+        .contrast-us {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--accent);
+        }
+        
+        .contrast-label {
+            display: block;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.5;
+            margin-bottom: 0.75rem;
+        }
+        
+        .contrast-them p, .contrast-us p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        .contrast-us .contrast-label {
+            color: var(--accent);
+            opacity: 0.8;
+        }
+        
+        .contrast-us p {
+            font-weight: 500;
+        }
+        
+        @media (max-width: 1000px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
         @media (max-width: 768px) {
-            .api-interpretation {
-                grid-template-columns: 1fr;
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .example-grid {
+            .api-contrast {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .statement-main {
+                font-size: 1.2rem;
+            }
+            
+            .formula-legend {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -2077,107 +2079,71 @@
                 
                 <h2 class="chapter-heading">The Human API</h2>
                 
-                <!-- Value Proposition -->
-                <div class="api-value-section">
-                    <p class="api-intro">
-                        Most AI products optimize for automation—replacing human effort. ODEI optimizes for symbiosis—amplifying human capability. The difference is measurable:
-                    </p>
-                    <div class="api-formula-box">
-                        <div class="api-formula">S = P<sub>(h+ai)</sub> − max(P<sub>h</sub>, P<sub>ai</sub>)</div>
-                        <div class="api-formula-label">SYNERGY METRIC</div>
+                <!-- Opening Statement -->
+                <div class="api-statement">
+                    <p class="statement-main">Their AI executes. Your ODEI governs.</p>
+                    <p class="statement-sub">We don't build another assistant. We build the L5 Symbiotic Layer that turns any model into your personal operating system—with memory, policy, safety, and adaptation that belong to you.</p>
+                </div>
+
+                <!-- Formula -->
+                <div class="api-formula-box">
+                    <div class="api-formula">S = P<sub>(h+ai)</sub> − max(P<sub>h</sub>, P<sub>ai</sub>)</div>
+                    <div class="formula-legend">
+                        <span><b>S</b> — Synergy</span>
+                        <span><b>P<sub>(h+ai)</sub></b> — Performance together</span>
+                        <span><b>max(P<sub>h</sub>, P<sub>ai</sub>)</b> — Best alone</span>
                     </div>
-                    <div class="api-interpretation">
-                        <div class="interpretation-item positive">
-                            <span class="interp-value">S &gt; 0</span>
-                            <span class="interp-label">Symbiosis exists. Together outperforms best alone.</span>
+                    <div class="api-formula-label">THE ONLY METRIC THAT MATTERS</div>
+                    <p class="formula-explain">If S ≤ 0, we don't ship. Every feature must prove: together is better than either alone.</p>
+                </div>
+
+                <!-- 5 Product Promises -->
+                <div class="product-section">
+                    <span class="section-label">WHAT YOU GET</span>
+                    <div class="product-grid">
+                        <div class="product-card">
+                            <span class="product-num">01</span>
+                            <h4>Sovereignty</h4>
+                            <p class="product-headline">Your memory. Your policy. Not theirs.</p>
+                            <p class="product-detail">Memory and rules belong to you. Export, version, rollback. Switch providers without losing your mind.</p>
                         </div>
-                        <div class="interpretation-item neutral">
-                            <span class="interp-value">S = 0</span>
-                            <span class="interp-label">Automation. Replacement, not amplification.</span>
+                        <div class="product-card">
+                            <span class="product-num">02</span>
+                            <h4>Provability</h4>
+                            <p class="product-headline">Every action has a receipt.</p>
+                            <p class="product-detail">Inputs → Decision → Tool → Result → Why. Full chain. No black boxes. You can always ask "why did you do that?" and get a real answer.</p>
                         </div>
-                        <div class="interpretation-item negative">
-                            <span class="interp-value">S &lt; 0</span>
-                            <span class="interp-label">Degradation. The system makes things worse.</span>
+                        <div class="product-card">
+                            <span class="product-num">03</span>
+                            <h4>Portability</h4>
+                            <p class="product-headline">Switch models. Keep everything.</p>
+                            <p class="product-detail">Claude today, GPT tomorrow, open-source next year. Your memory, policies, and history come with you. Models are engines. You own the car.</p>
+                        </div>
+                        <div class="product-card">
+                            <span class="product-num">04</span>
+                            <h4>Co-adaptation</h4>
+                            <p class="product-headline">The system changes for you.</p>
+                            <p class="product-detail">Not just data—behavior. Outcomes change strategy. You approve every evolution. No silent drift—intentional growth.</p>
+                        </div>
+                        <div class="product-card">
+                            <span class="product-num">05</span>
+                            <h4>Measurable Gain</h4>
+                            <p class="product-headline">S &gt; 0 or we don't ship.</p>
+                            <p class="product-detail">Your time back. Provably. We measure symbiosis on real tasks. If we can't prove the gain, the feature doesn't exist.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Example -->
-                <div class="api-example">
-                    <span class="example-label">EXAMPLE // STRATEGIC DECISION</span>
-                    <div class="example-grid">
-                        <div class="example-item">
-                            <span class="example-agent">Human alone</span>
-                            <span class="example-time">4 hours</span>
-                        </div>
-                        <div class="example-item">
-                            <span class="example-agent">AI alone</span>
-                            <span class="example-time">3 hours</span>
-                        </div>
-                        <div class="example-item highlight">
-                            <span class="example-agent">Human + ODEI</span>
-                            <span class="example-time">1 hour</span>
-                        </div>
+                <!-- Contrast -->
+                <div class="api-contrast">
+                    <div class="contrast-them">
+                        <span class="contrast-label">THEY</span>
+                        <p>Build assistants that answer questions.</p>
                     </div>
-                    <p class="example-result">S &gt; 0. Neither could achieve this alone. This is symbiosis.</p>
-                </div>
-
-                <!-- Capabilities -->
-                <div class="api-capabilities">
-                    <span class="section-label">EIGHT INVARIANTS THAT ENABLE S &gt; 0</span>
-                    <div class="capabilities-grid">
-                        <div class="capability-card">
-                            <span class="cap-num">01</span>
-                            <h4>Working State</h4>
-                            <p>Unified internal model of your goals, constraints, and context. Not scattered notes—a living state from which decisions emerge.</p>
-                        </div>
-                        <div class="capability-card">
-                            <span class="cap-num">02</span>
-                            <h4>Normative Evaluation</h4>
-                            <p>Every action assessed: possible, permitted, worth doing. Tools answer "can". ODEI answers "should".</p>
-                        </div>
-                        <div class="capability-card">
-                            <span class="cap-num">03</span>
-                            <h4>Capacity for Refusal</h4>
-                            <p>ODEI can say no. Violations, excessive risk, authority conflicts trigger refusal—with explanation and alternative.</p>
-                        </div>
-                        <div class="capability-card">
-                            <span class="cap-num">04</span>
-                            <h4>Initiative from Position</h4>
-                            <p>Proactive proposals from understanding: changed beliefs, detected risks, plan deviations. Not noise—signal.</p>
-                        </div>
-                        <div class="capability-card">
-                            <span class="cap-num">05</span>
-                            <h4>Attributable Responsibility</h4>
-                            <p>Every decision has a receipt: why, what evidence, what risks, how to verify. Full transparency.</p>
-                        </div>
-                        <div class="capability-card">
-                            <span class="cap-num">06</span>
-                            <h4>Active Sensing</h4>
-                            <p>Facts have provenance. ODEI actively queries systems to resolve uncertainty before acting.</p>
-                        </div>
-                        <div class="capability-card">
-                            <span class="cap-num">07</span>
-                            <h4>Cybernetic Stability</h4>
-                            <p>Intervention budgets, cooldowns, rate limits. Consistency over time, not hyperactive optimization.</p>
-                        </div>
-                        <div class="capability-card">
-                            <span class="cap-num">08</span>
-                            <h4>Learning Loop</h4>
-                            <p>Personalization through explicit feedback: approve, deny, override. No silent drift—intentional evolution.</p>
-                        </div>
+                    <div class="contrast-us">
+                        <span class="contrast-label">WE</span>
+                        <p>Build the layer that makes assistants yours.</p>
                     </div>
-                </div>
-
-                <!-- The Test -->
-                <div class="api-test">
-                    <span class="section-label">THE SYMBIOSIS TEST</span>
-                    <div class="test-questions">
-                        <div class="test-q">If you remove the human—does it get worse?</div>
-                        <div class="test-q">If you remove the AI—does it get worse?</div>
-                        <div class="test-q">If you combine them—is it substantially better?</div>
-                    </div>
-                    <p class="test-answer">Three yes answers = S &gt; 0. Anything less = automation, not symbiosis.</p>
                 </div>
             </div>
             <span class="page-number">2</span>
