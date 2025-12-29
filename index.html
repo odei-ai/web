@@ -738,7 +738,7 @@
             .page { 
                 padding: 2rem 0;
                 padding-top: env(safe-area-inset-top, 2rem);
-                padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 140px);
+                padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 180px);
             }
             
             .page[data-page="0"] {
@@ -1124,6 +1124,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
             margin-top: 2.5rem;
+            margin-bottom: 4rem;
             padding-top: 2rem;
             border-top: 1px solid var(--border);
         }
@@ -1199,6 +1200,18 @@
             .how-step {
                 font-size: 0.75rem;
                 padding: 0.4rem 0.6rem;
+            }
+            
+            .synergy-interpretation {
+                grid-template-columns: 1fr;
+            }
+            
+            .example-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .human-api-page {
+                padding-bottom: 10rem;
             }
         }
         
@@ -2326,7 +2339,42 @@
                         <span><b>P<sub>(h+ai)</sub></b> — Performance together</span>
                         <span><b>max(P<sub>h</sub>, P<sub>ai</sub>)</b> — Best alone</span>
                     </div>
-                    <p class="formula-explain">S &gt; 0 = symbiosis. S ≤ 0 = we don't ship.</p>
+                </div>
+
+                <!-- Interpretation -->
+                <div class="synergy-interpretation">
+                    <div class="synergy-item positive">
+                        <span class="synergy-value">S &gt; 0</span>
+                        <span class="synergy-label">Symbiosis. Together outperforms best alone.</span>
+                    </div>
+                    <div class="synergy-item neutral">
+                        <span class="synergy-value">S = 0</span>
+                        <span class="synergy-label">Automation. Replacement, not amplification.</span>
+                    </div>
+                    <div class="synergy-item negative">
+                        <span class="synergy-value">S &lt; 0</span>
+                        <span class="synergy-label">Degradation. We don't ship.</span>
+                    </div>
+                </div>
+
+                <!-- Example -->
+                <div class="synergy-example">
+                    <span class="example-label">EXAMPLE // STRATEGIC DECISION</span>
+                    <div class="example-grid">
+                        <div class="example-item">
+                            <span class="example-agent">Human alone</span>
+                            <span class="example-time">4 hours</span>
+                        </div>
+                        <div class="example-item">
+                            <span class="example-agent">AI alone</span>
+                            <span class="example-time">3 hours</span>
+                        </div>
+                        <div class="example-item highlight">
+                            <span class="example-agent">Human + ODEI</span>
+                            <span class="example-time">1 hour</span>
+                        </div>
+                    </div>
+                    <p class="example-result">S &gt; 0 — Neither could achieve this alone. This is symbiosis.</p>
                 </div>
 
                 <!-- Contrast -->
