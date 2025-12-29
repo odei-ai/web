@@ -3012,7 +3012,7 @@
                     </svg>
                 </a>
             </div>
-            <p class="copyright">ODEI · MMXXV · <a href="#" data-page="9" style="text-decoration:none; color:inherit;">Privacy</a></p>
+            <p class="copyright"><a href="#" class="home-link" style="text-decoration:none; color:inherit; cursor:pointer;">ODEI</a> · MMXXV · <a href="#privacy" style="text-decoration:none; color:inherit;">Privacy</a></p>
         </div>
 
     </div>
@@ -3168,6 +3168,37 @@
                 }
             }
 
+            // Page hash mapping
+            const pageHashes = {
+                0: '',
+                1: 'intro',
+                2: 'api',
+                3: 'science',
+                4: 'hinton',
+                5: 'architecture',
+                6: 'memory',
+                7: 'levels',
+                8: 'privacy'
+            };
+            
+            const hashToPage = Object.fromEntries(
+                Object.entries(pageHashes).map(([k, v]) => [v, parseInt(k)])
+            );
+
+            function updateHash(pageIndex) {
+                const hash = pageHashes[pageIndex];
+                if (hash) {
+                    history.replaceState(null, '', '#' + hash);
+                } else {
+                    history.replaceState(null, '', window.location.pathname);
+                }
+            }
+
+            function getPageFromHash() {
+                const hash = window.location.hash.slice(1);
+                return hashToPage[hash] !== undefined ? hashToPage[hash] : 0;
+            }
+
             function goToPage(pageIndex) {
                 if (pageIndex < 0 || pageIndex >= totalPages || pageIndex === currentPage) return;
                 
@@ -3197,6 +3228,7 @@
                 
                 updateButtons();
                 updateUI(pageIndex);
+                updateHash(pageIndex);
 
                 if (currentPage === 0 && oldPage !== 0) {
                     startFullTypewriter();
@@ -3204,16 +3236,31 @@
             }
             
             function initialize() {
-                currentPage = 0;
+                const startPage = getPageFromHash();
+                currentPage = startPage;
+                
                 pages.forEach((page, index) => {
                     page.classList.remove('active', 'prev');
+                    if (index < startPage) {
+                        page.classList.add('prev');
+                    }
                 });
-                pages[0].classList.add('active');
+                pages[startPage].classList.add('active');
                 
                 updateButtons();
-                updateUI(0);
-                startFullTypewriter();
+                updateUI(startPage);
+                
+                if (startPage === 0) {
+                    startFullTypewriter();
+                }
             }
+
+            window.addEventListener('hashchange', () => {
+                const pageIndex = getPageFromHash();
+                if (pageIndex !== currentPage) {
+                    goToPage(pageIndex);
+                }
+            });
 
             window.addEventListener('load', () => {
                 setTimeout(() => {
@@ -3284,11 +3331,11 @@
                 logo.style.cursor = 'pointer';
             });
 
-            const privacyLinks = document.querySelectorAll('a[data-page="9"]');
-            privacyLinks.forEach(link => {
+            const homeLinks = document.querySelectorAll('.home-link');
+            homeLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    goToPage(9);
+                    goToPage(0);
                 });
             });
         });
