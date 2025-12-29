@@ -1433,6 +1433,100 @@
         }
         
         /* ========================================
+           ARCHITECTURE PAGE STYLES
+           ======================================== */
+        
+        .architecture-page .content.wide {
+            max-width: 1000px;
+        }
+        
+        .arch-intro {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+        
+        .properties-section {
+            margin: 1.5rem 0;
+        }
+        
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        
+        .property-card {
+            padding: 1rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+            transition: all 0.3s var(--ease-out-quint);
+        }
+        
+        .property-card:hover {
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.04);
+        }
+        
+        .prop-num {
+            display: block;
+            font-size: 0.65rem;
+            font-family: 'IBM Plex Mono', monospace;
+            opacity: 0.4;
+            margin-bottom: 0.4rem;
+        }
+        
+        .property-card h4 {
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        
+        .prop-def {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            line-height: 1.4;
+            margin-bottom: 0.4rem;
+        }
+        
+        .prop-impl {
+            font-size: 0.65rem;
+            font-family: 'IBM Plex Mono', monospace;
+            opacity: 0.5;
+            line-height: 1.3;
+        }
+        
+        .arch-note {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            font-style: italic;
+        }
+        
+        @media (max-width: 900px) {
+            .properties-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 700px) {
+            .properties-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .properties-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ========================================
            PRIVACY PAGE ENHANCEMENTS
            ======================================== */
         
@@ -2659,8 +2753,8 @@
             <span class="page-number">4</span>
         </section>
 
-        <section class="page" data-page="5">
-            <div class="content">
+        <section class="page architecture-page" data-page="5">
+            <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
@@ -2668,20 +2762,90 @@
                     </svg>
                 </div>
                 <h2 class="chapter-heading">Architecture</h2>
-                <p class="text">
-                    Three planes work in concert. Memory holds the world model. Control makes decisions. Execution changes reality—transactionally, verifiably, reversibly when possible.
+                
+                <p class="arch-intro">
+                    Three planes work in concert: <b>Memory</b> holds the world model, <b>Control</b> makes decisions, <b>Execution</b> changes reality. Below are the 12 properties that make ODEI an agent, not a tool.
                 </p>
-                <ul class="list">
-                    <li><b>Memory Plane</b> — Facts with provenance (source, timestamp, confidence). Beliefs derived from evidence. A knowledge graph connecting context, history, and relationships. A mind layer for insights and patterns.</li>
-                    <li><b>Control Plane</b> — The operational subject. Governed by a customizable <b>Authority Matrix</b> (the constitution) and constraints. It manages stability, learning, and decision routing.</li>
-                    <li><b>Execution Plane</b> — A strictly bounded <b>Action Registry</b>—no actions exist outside the defined space. Transaction protocol: prepare → execute → verify → commit. Complete audit log.</li>
-                </ul>
-                <p class="text" style="margin-top: 2rem;">
-                    The main loop: Sense → Update → Decide → Plan → Propose → Execute → Verify → Learn → Audit. Every cycle produces receipts. Every action is traceable. Nothing happens without explanation.
-                </p>
-                <p class="text" style="opacity: 0.7; font-size: 0.95em;">
-                    Seven invariants govern the system: no actions outside the registry, no facts without provenance, no auto-execution without authority check, no "done" without verification, no learning without explicit feedback, no proactivity without stability budgets, every change explainable. Plus an <b>Automatic Circuit Breaker</b> that triggers "Brake Mode" if verification fails repeatedly.
-                </p>
+
+                <div class="properties-section">
+                    <span class="section-label">12 PROPERTIES OF AI AGENCY</span>
+                    <div class="properties-grid">
+                        <div class="property-card">
+                            <span class="prop-num">01</span>
+                            <h4>Closed-loop Control</h4>
+                            <p class="prop-def">System triggers next step without new user prompt</p>
+                            <p class="prop-impl">Commander dispatch loop</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">02</span>
+                            <h4>AI Initiative</h4>
+                            <p class="prop-def">Can initiate actions without being asked</p>
+                            <p class="prop-impl">Scheduled triggers, pattern alerts</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">03</span>
+                            <h4>Goal / Utility</h4>
+                            <p class="prop-def">Explicit success criteria guiding decisions</p>
+                            <p class="prop-impl">Goals, Objectives, Key Results nodes</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">04</span>
+                            <h4>Task-state sₜ</h4>
+                            <p class="prop-def">Structured progress model (pause→resume)</p>
+                            <p class="prop-impl">Execution layer state machines</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">05</span>
+                            <h4>External Execute</h4>
+                            <p class="prop-def">Real actions in external environment</p>
+                            <p class="prop-impl">MCP tools, Telegram, Apple, file I/O</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">06</span>
+                            <h4>Autonomous Loop</h4>
+                            <p class="prop-def">Act → Check → Decide-next cycle</p>
+                            <p class="prop-impl">Commander orchestration</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">07</span>
+                            <h4>Action Space</h4>
+                            <p class="prop-def">Bounded set of permitted actions</p>
+                            <p class="prop-impl">MCP schema, tool definitions</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">08</span>
+                            <h4>Human Control</h4>
+                            <p class="prop-def">Human-on-the-loop with override</p>
+                            <p class="prop-impl">Approval gates, manual intervention</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">09</span>
+                            <h4>Persistent Memory</h4>
+                            <p class="prop-def">Cross-session memory affecting decisions</p>
+                            <p class="prop-impl">Neo4j Memory Atlas + History SQLite</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">10</span>
+                            <h4>User Model</h4>
+                            <p class="prop-def">Persistent user representation</p>
+                            <p class="prop-impl">Human node, Context, preferences</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">11</span>
+                            <h4>Policy Update</h4>
+                            <p class="prop-def">Outcomes change strategy π, not just state</p>
+                            <p class="prop-impl">Insights/Patterns → future behavior</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">12</span>
+                            <h4>Audit &amp; Policies</h4>
+                            <p class="prop-def">Reproducible records + enforceable blocks</p>
+                            <p class="prop-impl">Provenance on writes, Guardrails</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="arch-note">Properties 1–8 define any agentic system. Properties 9–12 define L5 Symbiotic AI.</p>
             </div>
             <span class="page-number">5</span>
         </section>
