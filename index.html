@@ -863,7 +863,7 @@
             padding: 2rem;
             border: 1px solid var(--accent);
             background: rgba(255,255,255,0.03);
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
         }
         
         .api-formula {
@@ -905,25 +905,125 @@
         .formula-explain {
             font-size: 0.85rem;
             opacity: 0.7;
+            margin: 0.75rem 0 0;
+        }
+        
+        /* Synergy Interpretation */
+        .synergy-interpretation {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .synergy-item {
+            display: flex;
+            flex-direction: column;
+            padding: 1.25rem;
+            border: 1px solid var(--border);
+            background: rgba(0,0,0,0.2);
+        }
+        
+        .synergy-value {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .synergy-item.positive .synergy-value { color: var(--status-yes); }
+        .synergy-item.neutral .synergy-value { color: var(--status-maybe); }
+        .synergy-item.negative .synergy-value { color: var(--status-no); }
+        
+        .synergy-label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            line-height: 1.4;
+        }
+        
+        /* Synergy Example */
+        .synergy-example {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+            margin-bottom: 2.5rem;
+        }
+        
+        .example-label {
+            display: block;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+        
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .example-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.25rem;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+        }
+        
+        .example-item.highlight {
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.03);
+        }
+        
+        .example-agent {
+            font-size: 0.75rem;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+        }
+        
+        .example-time {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.2rem;
+        }
+        
+        .example-item.highlight .example-time {
+            color: var(--status-yes);
+        }
+        
+        .example-result {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            text-align: center;
+            margin: 0;
+        }
+        
+        .formula-explain {
+            font-size: 0.85rem;
+            opacity: 0.7;
             line-height: 1.5;
             max-width: 500px;
             margin: 0 auto;
         }
         
         /* Product Section */
-        .product-section {
-            margin: 2rem 0;
+        /* Benefits Section */
+        .benefits-section {
+            margin: 2rem 0 2.5rem;
         }
         
-        .product-grid {
+        .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
             margin-top: 1.25rem;
         }
         
-        .product-card {
-            padding: 1.25rem;
+        .benefit-card {
+            padding: 1.5rem;
             border: 1px solid var(--border);
             background: rgba(255,255,255,0.02);
             transition: all 0.3s var(--ease-out-quint);
@@ -931,39 +1031,91 @@
             flex-direction: column;
         }
         
-        .product-card:hover {
+        .benefit-card:hover {
             border-color: var(--accent);
             background: rgba(255,255,255,0.04);
-            transform: translateY(-2px);
         }
         
-        .product-num {
-            display: block;
+        .benefit-num {
             font-size: 0.65rem;
             font-family: 'IBM Plex Mono', monospace;
             opacity: 0.4;
             margin-bottom: 0.5rem;
         }
         
-        .product-card h4 {
-            font-size: 0.95rem;
+        .benefit-card h4 {
+            font-size: 1rem;
             font-weight: 500;
             margin-bottom: 0.75rem;
             color: var(--accent);
         }
         
-        .product-headline {
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
+        .benefit-desc {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            opacity: 0.85;
+            margin-bottom: 1rem;
+            flex-grow: 1;
         }
         
-        .product-detail {
+        .benefit-proof {
             font-size: 0.7rem;
-            opacity: 0.6;
+            font-family: 'IBM Plex Mono', monospace;
+            opacity: 0.5;
             line-height: 1.5;
-            flex-grow: 1;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border);
+            margin: 0;
+        }
+        
+        /* How It Works Section */
+        .how-section {
+            margin: 2.5rem 0;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .how-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1.25rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .how-step {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+        
+        .how-arrow {
+            opacity: 0.4;
+            font-size: 0.9rem;
+        }
+        
+        .how-steps {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .how-steps p {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin: 0.5rem 0;
+            line-height: 1.5;
+        }
+        
+        .step-num {
+            display: inline-block;
+            width: 1.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            opacity: 0.5;
         }
         
         /* Contrast Section */
@@ -1016,14 +1168,14 @@
         }
         
         @media (max-width: 1000px) {
-            .product-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
         @media (max-width: 768px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .benefits-grid {
+                grid-template-columns: 1fr;
             }
             
             .api-contrast {
@@ -1039,11 +1191,24 @@
                 flex-direction: column;
                 gap: 0.5rem;
             }
+            
+            .how-flow {
+                gap: 0.25rem;
+            }
+            
+            .how-step {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.6rem;
+            }
         }
         
         @media (max-width: 480px) {
-            .product-grid {
-                grid-template-columns: 1fr;
+            .how-flow {
+                flex-direction: column;
+            }
+            
+            .how-arrow {
+                transform: rotate(90deg);
             }
         }
 
@@ -2082,56 +2247,86 @@
                 <!-- Opening Statement -->
                 <div class="api-statement">
                     <p class="statement-main">Their AI executes. Your ODEI governs.</p>
-                    <p class="statement-sub">We don't build another assistant. We build the L5 Symbiotic Layer that turns any model into your personal operating system—with memory, policy, safety, and adaptation that belong to you.</p>
+                    <p class="statement-sub">We don't build another assistant. We build the L5 Symbiotic Layer that turns any model into your personal operating system.</p>
+                </div>
+
+                <!-- 6 L5 Benefits -->
+                <div class="benefits-section">
+                    <span class="section-label">WHAT YOU GET</span>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <span class="benefit-num">01</span>
+                            <h4>Sovereign Memory & Rules</h4>
+                            <p class="benefit-desc">You don't re-explain. You don't get locked in. Your memory and operating rules are your asset—portable, versioned, rollbackable.</p>
+                            <p class="benefit-proof">Proof: Export/Import your Memory + Policy. Roll back versions with diffs.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="benefit-num">02</span>
+                            <h4>Autonomous Planning & Doing</h4>
+                            <p class="benefit-desc">Delegate outcomes, not micro-tasks. ODEI plans, executes, checks results, and returns with finished work.</p>
+                            <p class="benefit-proof">Proof: Multi-step receipts: plan → act → check → decide-next.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="benefit-num">03</span>
+                            <h4>Your AI Writes First</h4>
+                            <p class="benefit-desc">ODEI pings you first—only when it matters. Detects patterns, risks, opportunities. Reaches you in your channel.</p>
+                            <p class="benefit-proof">Proof: Triggered alerts with context + next action + "why now".</p>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="benefit-num">04</span>
+                            <h4>Goal Stewardship</h4>
+                            <p class="benefit-desc">Your goals don't silently decay. ODEI keeps intent, priorities, and reality aligned—flags drift early.</p>
+                            <p class="benefit-proof">Proof: Weekly Drift Report: goal → evidence → divergence → correction.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="benefit-num">05</span>
+                            <h4>Receipts & Safety</h4>
+                            <p class="benefit-desc">Every action is explainable. Unsafe actions are blocked. No "trust me"—reproducible chain from memory to result.</p>
+                            <p class="benefit-proof">Proof: Memory → Policy → Tool → Result → Check → Outcome.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="benefit-num">06</span>
+                            <h4>Compounding Growth</h4>
+                            <p class="benefit-desc">Gets better at being you—behavior, not vibes. Outcomes update strategy over time, only with your approval.</p>
+                            <p class="benefit-proof">Proof: Outcome → proposal → approve → policy update (versioned).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How It Works -->
+                <div class="how-section">
+                    <span class="section-label">HOW IT WORKS</span>
+                    <div class="how-flow">
+                        <span class="how-step">Memory</span>
+                        <span class="how-arrow">→</span>
+                        <span class="how-step">Policy</span>
+                        <span class="how-arrow">→</span>
+                        <span class="how-step">Execute</span>
+                        <span class="how-arrow">→</span>
+                        <span class="how-step">Receipt</span>
+                        <span class="how-arrow">→</span>
+                        <span class="how-step">Outcome</span>
+                        <span class="how-arrow">→</span>
+                        <span class="how-step">Update</span>
+                    </div>
+                    <div class="how-steps">
+                        <p><span class="step-num">1</span> Capture decisions + outcomes into memory (automatic)</p>
+                        <p><span class="step-num">2</span> Retrieve memory + user model before planning</p>
+                        <p><span class="step-num">3</span> Plan & Execute inside your capability boundaries</p>
+                        <p><span class="step-num">4</span> Check → Receipt → Outcome → propose updates for approval</p>
+                    </div>
                 </div>
 
                 <!-- Formula -->
                 <div class="api-formula-box">
+                    <div class="api-formula-label">THE SHIPPING GATE</div>
                     <div class="api-formula">S = P<sub>(h+ai)</sub> − max(P<sub>h</sub>, P<sub>ai</sub>)</div>
                     <div class="formula-legend">
                         <span><b>S</b> — Synergy</span>
                         <span><b>P<sub>(h+ai)</sub></b> — Performance together</span>
                         <span><b>max(P<sub>h</sub>, P<sub>ai</sub>)</b> — Best alone</span>
                     </div>
-                    <div class="api-formula-label">THE ONLY METRIC THAT MATTERS</div>
-                    <p class="formula-explain">If S ≤ 0, we don't ship. Every feature must prove: together is better than either alone.</p>
-                </div>
-
-                <!-- 5 Product Promises -->
-                <div class="product-section">
-                    <span class="section-label">WHAT YOU GET</span>
-                    <div class="product-grid">
-                        <div class="product-card">
-                            <span class="product-num">01</span>
-                            <h4>Sovereignty</h4>
-                            <p class="product-headline">Your memory. Your policy. Not theirs.</p>
-                            <p class="product-detail">Memory and rules belong to you. Export, version, rollback. Switch providers without losing your mind.</p>
-                        </div>
-                        <div class="product-card">
-                            <span class="product-num">02</span>
-                            <h4>Provability</h4>
-                            <p class="product-headline">Every action has a receipt.</p>
-                            <p class="product-detail">Inputs → Decision → Tool → Result → Why. Full chain. No black boxes. You can always ask "why did you do that?" and get a real answer.</p>
-                        </div>
-                        <div class="product-card">
-                            <span class="product-num">03</span>
-                            <h4>Portability</h4>
-                            <p class="product-headline">Switch models. Keep everything.</p>
-                            <p class="product-detail">Claude today, GPT tomorrow, open-source next year. Your memory, policies, and history come with you. Models are engines. You own the car.</p>
-                        </div>
-                        <div class="product-card">
-                            <span class="product-num">04</span>
-                            <h4>Co-adaptation</h4>
-                            <p class="product-headline">The system changes for you.</p>
-                            <p class="product-detail">Not just data—behavior. Outcomes change strategy. You approve every evolution. No silent drift—intentional growth.</p>
-                        </div>
-                        <div class="product-card">
-                            <span class="product-num">05</span>
-                            <h4>Measurable Gain</h4>
-                            <p class="product-headline">S &gt; 0 or we don't ship.</p>
-                            <p class="product-detail">Your time back. Provably. We measure symbiosis on real tasks. If we can't prove the gain, the feature doesn't exist.</p>
-                        </div>
-                    </div>
+                    <p class="formula-explain">S &gt; 0 = symbiosis. S ≤ 0 = we don't ship.</p>
                 </div>
 
                 <!-- Contrast -->
