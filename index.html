@@ -2205,8 +2205,13 @@
                     
                     <div class="quotes-section">
                         <div class="boot-sequence" id="boot-sequence"></div>
-                        <div class="quote philosophical" id="philosophical-quote"></div>
-                        <p class="quote primary" id="typewriter-container"></p>
+                        <div class="quote philosophical" id="philosophical-quote">
+                            <span style="display:block">> The future is not human or machine.</span>
+                            <span style="display:block">> The future is symbiosis.</span>
+                        </div>
+                        <p class="quote primary" id="typewriter-container">
+                            <span>ODEI — The Human API Company</span>
+                        </p>
                     </div>
                     
                     <div class="bottom-section">
@@ -3444,21 +3449,19 @@
                 const hasBooted = sessionStorage.getItem('odei_booted');
 
                 if (hasBooted === 'true') {
+                    // Already booted - show content immediately
                     bootContainer.style.display = 'none';
-                    philosophicalContainer.innerHTML = '<span>> The future is not human or machine.</span><span>> The future is symbiosis.</span>';
-                    philosophicalContainer.style.display = 'block';
+                    philosophicalContainer.innerHTML = '<span style="display:block">> The future is not human or machine.</span><span style="display:block">> The future is symbiosis.</span>';
                     primaryContainer.innerHTML = '<span>ODEI — The Human API Company</span>';
-                    primaryContainer.style.display = 'inline-flex';
                     return;
                 }
 
                 sessionStorage.setItem('odei_booted', 'true');
 
+                // Clear fallback content for animation
                 bootContainer.style.display = 'none';
                 philosophicalContainer.innerHTML = '';
-                philosophicalContainer.style.display = 'block';
                 primaryContainer.innerHTML = '';
-                primaryContainer.style.display = 'none';
 
                 const philosophicalLines = [
                     "> The future is not human or machine.",
@@ -3576,12 +3579,14 @@
                 Object.entries(pageHashes).map(([k, v]) => [v, parseInt(k)])
             );
 
-            function updateHash(pageIndex) {
+            function updateHash(pageIndex, addToHistory = true) {
                 const hash = pageHashes[pageIndex];
-                if (hash) {
-                    history.replaceState(null, '', '#' + hash);
-                } else {
-                    history.replaceState(null, '', window.location.pathname);
+                if (addToHistory) {
+                    if (hash) {
+                        history.pushState({ page: pageIndex }, '', '#' + hash);
+                    } else {
+                        history.pushState({ page: pageIndex }, '', window.location.pathname);
+                    }
                 }
             }
 
@@ -3590,7 +3595,7 @@
                 return hashToPage[hash] !== undefined ? hashToPage[hash] : 0;
             }
 
-            function goToPage(pageIndex) {
+            function goToPage(pageIndex, addToHistory = true) {
                 if (pageIndex < 0 || pageIndex >= totalPages || pageIndex === currentPage) return;
                 
                 const currentActivePage = pages[currentPage];
@@ -3619,7 +3624,7 @@
                 
                 updateButtons();
                 updateUI(pageIndex);
-                updateHash(pageIndex);
+                updateHash(pageIndex, addToHistory);
 
                 if (currentPage === 0 && oldPage !== 0) {
                     startFullTypewriter();
@@ -3641,15 +3646,29 @@
                 updateButtons();
                 updateUI(startPage);
                 
+                // Replace initial state so we have proper history entry
+                const hash = pageHashes[startPage];
+                if (hash) {
+                    history.replaceState({ page: startPage }, '', '#' + hash);
+                } else {
+                    history.replaceState({ page: startPage }, '', window.location.pathname);
+                }
+                
                 if (startPage === 0) {
                     startFullTypewriter();
                 }
             }
 
-            window.addEventListener('hashchange', () => {
-                const pageIndex = getPageFromHash();
+            // Handle browser back/forward buttons
+            window.addEventListener('popstate', (e) => {
+                let pageIndex;
+                if (e.state && typeof e.state.page === 'number') {
+                    pageIndex = e.state.page;
+                } else {
+                    pageIndex = getPageFromHash();
+                }
                 if (pageIndex !== currentPage) {
-                    goToPage(pageIndex);
+                    goToPage(pageIndex, false); // Don't add to history - we're navigating from history
                 }
             });
 
