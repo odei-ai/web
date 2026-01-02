@@ -1242,6 +1242,50 @@
             color: var(--accent);
         }
         
+        /* Drift Report */
+        .ui-drift-report {
+            font-size: 0.65rem;
+            font-family: var(--font-mono);
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .ui-drift-header {
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid var(--border);
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .ui-drift-line {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.4rem 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .ui-drift-line:last-child {
+            border-bottom: none;
+        }
+        
+        .ui-drift-label {
+            opacity: 0.4;
+            min-width: 55px;
+        }
+        
+        .ui-drift-value {
+            opacity: 0.8;
+        }
+        
+        .ui-drift-line.drift-alert {
+            background: rgba(200,100,100,0.1);
+        }
+        
+        .ui-drift-line.drift-alert .ui-drift-value {
+            color: #c88;
+        }
+        
         /* How It Works Section */
         .how-section {
             margin: 2.5rem 0;
@@ -2580,6 +2624,38 @@
                                     <div class="ui-control-item">
                                         <span class="ui-control-label">Changed</span>
                                         <span class="ui-control-value">2 days ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 06 ODEI Tracks -->
+                        <div class="interaction-card">
+                            <div class="interaction-info">
+                                <div class="interaction-header">
+                                    <span class="interaction-num">06</span>
+                                    <h4>ODEI Tracks</h4>
+                                </div>
+                                <p class="interaction-desc">Your goals don't silently decay. ODEI keeps intent, priorities, and reality aligned—flags drift early before it becomes failure.</p>
+                            </div>
+                            <div class="interaction-ui">
+                                <div class="ui-drift-report">
+                                    <div class="ui-drift-header">Weekly Drift Report</div>
+                                    <div class="ui-drift-line">
+                                        <span class="ui-drift-label">Goal:</span>
+                                        <span class="ui-drift-value">Ship MVP by Jan 15</span>
+                                    </div>
+                                    <div class="ui-drift-line">
+                                        <span class="ui-drift-label">Evidence:</span>
+                                        <span class="ui-drift-value">3 blockers, 0 resolved this week</span>
+                                    </div>
+                                    <div class="ui-drift-line drift-alert">
+                                        <span class="ui-drift-label">Drift:</span>
+                                        <span class="ui-drift-value">−4 days vs plan</span>
+                                    </div>
+                                    <div class="ui-drift-line">
+                                        <span class="ui-drift-label">Action:</span>
+                                        <span class="ui-drift-value">Escalate to Alex today</span>
                                     </div>
                                 </div>
                             </div>
