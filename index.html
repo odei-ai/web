@@ -2725,7 +2725,7 @@
                             <ul class="toc-list">
                                 <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Hinton Hypothesis</span></a></li>
                                 <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Architecture</span></a></li>
-                                <li><a href="#" data-page="7" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Cognitive Memory</span></a></li>
+                                <li><a href="#" data-page="7" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Memory</span></a></li>
                                 <li><a href="#" data-page="8" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Agency Levels</span></a></li>
                             </ul>
                         </nav>
@@ -3833,22 +3833,95 @@
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
                 </div>
-                <h2 class="chapter-heading">Cognitive Memory</h2>
+                <h2 class="chapter-heading">Memory</h2>
                 <p class="text">
-                    Traditional memory stores data. Cognitive Memory understands it. This is not a static database, but a living system that comprehends, learns, reasons, and adapts—transforming raw information into actionable wisdom. It is a digital extension of your mind.
+                    Assistants have chat history. ODEI has memory architecture. The difference: chat history is theirs, resets on their terms, and doesn't affect how the system behaves. Memory in ODEI is yours, persistent, and directly shapes every decision.
                 </p>
-                <ul class="list">
-                    <li><b>Comprehends (Semantic Analysis)</b> The system understands not just words, but their deeper meaning. Through advanced vector embeddings and graph-based entity extraction, it grasps context, relationships, and implications—even when unstated. Every memory becomes a node in your personal knowledge graph, connected to people, goals, and insights.</li>
-                    <li><b>Learns (Adaptive Intelligence)</b> The system learns from your success. Using Hebbian principles—"neurons that fire together, wire together"—it strengthens the graph connections that lead to positive outcomes. Your personal formulas for success become encoded in the weighted edges between memories, patterns, and actions.</li>
-                    <li><b>Reasons (Contextual Connections)</b> Intelligence emerges from the graph. Every new memory is instantly woven into your existing neural network through semantic relationships, temporal sequences, and causal chains. The graph structure reveals hidden patterns, forgotten connections, and emergent insights that linear storage could never surface.</li>
-                    <li><b>Adapts (Dynamic Context)</b> The right advice at the right time. The system intelligently filters suggestions based on your current situation—whether you're at home for deep work, commuting with limited time, or wrapping up your day. Context shapes which paths through your knowledge graph are most relevant now.</li>
-                </ul>
-                <p class="text">
-                    The result is an AI that doesn't just serve you—it truly knows you. Your patterns become its instincts. Your success becomes its strategy. Cognitive Memory is what elevates ODEI from an assistant to a true thinking partner that evolves alongside you.
-                </p>
-                <p class="text" style="opacity: 0.6; font-size: 0.9em;">
-                    Powered by Neo4j Enterprise graph database, ensuring every connection in your cognitive architecture is preserved, understood, and instantly accessible.
-                </p>
+                
+                <div class="interactions-section">
+                    <span class="section-label">THREE ARCHITECTURAL PROPERTIES</span>
+                    <p class="text" style="opacity: 0.7; margin-top: 1rem;">
+                        These are properties 9–11 from the Architecture page. They define what separates L5 Symbiotic AI from L4 Agentic systems.
+                    </p>
+                    
+                    <div class="diff-grid" style="margin-top: 1.5rem;">
+                        <div class="diff-card">
+                            <div class="diff-header">
+                                <span class="diff-num">09</span>
+                                <h3>Persistent Memory</h3>
+                            </div>
+                            <p class="text" style="margin-bottom: 0; font-size: 0.9rem;">
+                                Cross-session memory that affects decisions. Not just "remember what we talked about"—but facts, beliefs, patterns, and outcomes that shape how ODEI reasons about your world. Every interaction updates the model. Nothing is lost between sessions.
+                            </p>
+                        </div>
+                        
+                        <div class="diff-card">
+                            <div class="diff-header">
+                                <span class="diff-num">10</span>
+                                <h3>User Model</h3>
+                            </div>
+                            <p class="text" style="margin-bottom: 0; font-size: 0.9rem;">
+                                Persistent representation of you—goals, preferences, constraints, communication style, decision patterns. Not a profile you fill out. A model that emerges from observation and explicit feedback. ODEI doesn't guess who you are. It learns.
+                            </p>
+                        </div>
+                        
+                        <div class="diff-card">
+                            <div class="diff-header">
+                                <span class="diff-num">11</span>
+                                <h3>Policy Update</h3>
+                            </div>
+                            <p class="text" style="margin-bottom: 0; font-size: 0.9rem;">
+                                Outcomes change strategy, not just state. When you approve, deny, or override—ODEI doesn't just record the action. It updates the operating rules. Your corrections become versioned policy. The system gets better at being useful to you specifically.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="interactions-section" style="margin-top: 2.5rem;">
+                    <span class="section-label">THREE OWNERSHIP PRINCIPLES</span>
+                    <p class="text" style="opacity: 0.7; margin-top: 1rem;">
+                        Memory without ownership is surveillance. These principles ensure your memory remains your asset.
+                    </p>
+                    
+                    <div class="diff-grid" style="margin-top: 1.5rem;">
+                        <div class="diff-card">
+                            <div class="diff-header">
+                                <span class="diff-num">P1</span>
+                                <h3>Portable</h3>
+                            </div>
+                            <p class="text" style="margin-bottom: 0; font-size: 0.9rem;">
+                                Your memory is not locked to a model or vendor. Export anytime. Switch providers. Keep your accumulated context. The value you build stays with you, not with the platform.
+                            </p>
+                        </div>
+                        
+                        <div class="diff-card">
+                            <div class="diff-header">
+                                <span class="diff-num">P2</span>
+                                <h3>Versioned</h3>
+                            </div>
+                            <p class="text" style="margin-bottom: 0; font-size: 0.9rem;">
+                                Every change is tracked. Policies have versions. Facts have timestamps. If something goes wrong, roll back. If you want to understand why ODEI behaves a certain way, trace the history.
+                            </p>
+                        </div>
+                        
+                        <div class="diff-card">
+                            <div class="diff-header">
+                                <span class="diff-num">P3</span>
+                                <h3>Provenance</h3>
+                            </div>
+                            <p class="text" style="margin-bottom: 0; font-size: 0.9rem;">
+                                Every fact has a source. Every belief has evidence. Every policy has an origin. No "I just know"—full traceability from memory to decision to action. Audit everything.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="diff-summary" style="margin-top: 2.5rem;">
+                    <span class="section-label">THE BOTTOM LINE</span>
+                    <p class="text" style="margin-top: 1rem; margin-bottom: 0; max-width: 600px; margin-left: auto; margin-right: auto;">
+                        Memory is what makes L5 possible. Without persistent memory, no user model. Without user model, no adaptation. Without adaptation, no symbiosis. Just another stateless assistant pretending to know you.
+                    </p>
+                </div>
             </div>
             <span class="page-number">7</span>
         </section>
@@ -4085,7 +4158,7 @@
                 <ul class="list">
                     <li><b>Encryption.</b> TLS in transit. AES-256 at rest for cloud data. End-to-end encryption for sensitive vaults.</li>
                     <li><b>Access control.</b> Principle of least privilege. Regular security audits.</li>
-                    <li><b>Incident response.</b> Report vulnerabilities to <a href="/cdn-cgi/l/email-protection#2556404650574c515c654a41404c0b444c" style="color: inherit;"><span class="__cf_email__" data-cfemail="a8dbcdcbdddac1dcd1e8c7cccdc186c9c1">[email&#160;protected]</span></a>.</li>
+                    <li><b>Incident response.</b> Report vulnerabilities to <a href="mailto:security@odei.ai" style="color: inherit;">security@odei.ai</a>.</li>
                 </ul>
 
                 <h3 class="chapter-heading">Data Retention</h3>
@@ -4107,9 +4180,37 @@
 
                 <h3 class="chapter-heading">Contact</h3>
                 <ul class="list">
-                    <li><b>Privacy inquiries:</b> <a href="/cdn-cgi/l/email-protection#7202001b0413110b321d16171b5c131b" style="color: inherit;"><span class="__cf_email__" data-cfemail="0f7f7d66796e6c764f606b6a66216e66">[email&#160;protected]</span></a></li>
-                    <li><b>Security issues:</b> <a href="/cdn-cgi/l/email-protection#6e1d0b0d1b1c071a172e010a0b07400f07" style="color: inherit;"><span class="__cf_email__" data-cfemail="1261777167607b666b527d76777b3c737b">[email&#160;protected]</span></a></li>
+                    <li><b>Privacy inquiries:</b> <a href="mailto:privacy@odei.ai" style="color: inherit;">privacy@odei.ai</a></li>
+                    <li><b>Security issues:</b> <a href="mailto:security@odei.ai" style="color: inherit;">security@odei.ai</a></li>
                 </ul>
+            </div>
+            <span class="page-number"></span>
+        </section>
+
+        <!-- Talk Page -->
+        <section class="page" data-page="10">
+            <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                <div class="small-logo-container">
+                    <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
+                </div>
+                <h2 class="chapter-heading" style="margin-bottom: 0.5rem;">Want to talk?</h2>
+                <p class="text" style="opacity: 0.5; font-style: italic; margin-bottom: 2.5rem;">This is not a demo. This is a conversation.</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 280px;">
+                    <a href="mailto:tony@odei.ai" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.5rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; text-decoration: none; color: #fff; font-size: 1rem; transition: all 0.2s ease;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity: 0.7;">
+                            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        tony@odei.ai
+                    </a>
+                    
+                    <a href="https://wa.me/36205368497" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.5rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; text-decoration: none; color: #fff; font-size: 1rem; transition: all 0.2s ease;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity: 0.7;">
+                            <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/>
+                        </svg>
+                        WhatsApp
+                    </a>
+                </div>
             </div>
             <span class="page-number"></span>
         </section>
@@ -4145,7 +4246,7 @@
                     </svg>
                 </a>
             </div>
-            <p class="copyright"><a href="#" class="home-link" style="text-decoration:none; color:inherit; cursor:pointer;">ODEI</a> · MMXXVI · <a href="#privacy" style="text-decoration:none; color:inherit;">Privacy</a> · <a href="mailto:tony@odei.ai" style="text-decoration:none; color:inherit;">Talk</a></p>
+            <p class="copyright"><a href="#" class="home-link" style="text-decoration:none; color:inherit; cursor:pointer;">ODEI</a> · MMXXVI · <a href="#privacy" style="text-decoration:none; color:inherit;">Privacy</a> · <a href="#talk" style="text-decoration:none; color:inherit;">Talk</a></p>
         </div>
 
     </div>
@@ -4165,7 +4266,7 @@
             let currentPage = 0;
             const pages = document.querySelectorAll('.page');
             
-            const navigablePagesCount = 8;
+            const navigablePagesCount = 9;
             const totalPages = pages.length;
 
             const prevButton = document.getElementById('prevButton');
@@ -4310,7 +4411,8 @@
                 6: 'architecture',
                 7: 'memory',
                 8: 'levels',
-                9: 'privacy'
+                9: 'privacy',
+                10: 'talk'
             };
             
             const hashToPage = Object.fromEntries(
@@ -4407,6 +4509,14 @@
                 }
                 if (pageIndex !== currentPage) {
                     goToPage(pageIndex, false); // Don't add to history - we're navigating from history
+                }
+            });
+
+            // Handle hash changes from footer links (#privacy, #talk)
+            window.addEventListener('hashchange', () => {
+                const pageIndex = getPageFromHash();
+                if (pageIndex !== currentPage) {
+                    goToPage(pageIndex, false);
                 }
             });
 
