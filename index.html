@@ -878,6 +878,122 @@
         }
         
         /* Formula Box */
+        /* Comparison Section */
+        .comparison-section {
+            margin: 3rem 0;
+        }
+        
+        .comparison-intro {
+            opacity: 0.7;
+            margin: 1.5rem 0;
+            max-width: 600px;
+        }
+        
+        .comparison-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .comparison-card {
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.01);
+        }
+        
+        .comparison-card h4 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: inline;
+            margin-left: 0.75rem;
+        }
+        
+        .comparison-num {
+            font-size: 0.7rem;
+            opacity: 0.4;
+            display: inline;
+        }
+        
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .comparison-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .comparison-them p,
+        .comparison-us p {
+            font-size: 0.8rem;
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+        
+        .comparison-them {
+            opacity: 0.6;
+        }
+        
+        .comparison-us {
+            border-left: 1px solid var(--accent);
+            padding-left: 1rem;
+        }
+        
+        @media (max-width: 600px) {
+            .comparison-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .comparison-us {
+                border-left: none;
+                border-top: 1px solid var(--accent);
+                padding-left: 0;
+                padding-top: 1rem;
+            }
+        }
+        
+        /* Comparison Teaser */
+        .comparison-teaser {
+            margin: 3rem 0;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+            text-align: center;
+        }
+        
+        .comparison-teaser p {
+            opacity: 0.7;
+            margin: 1rem 0 1.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .teaser-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--text);
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+        }
+        
+        .teaser-link:hover {
+            background: var(--text);
+            color: var(--bg);
+        }
+        
         .api-formula-box {
             text-align: center;
             padding: 2rem;
@@ -1466,6 +1582,152 @@
             }
         }
 
+        /* ========================================
+           DIFFERENCE PAGE STYLES
+           ======================================== */
+        
+        .difference-page {
+            padding-bottom: 4rem;
+        }
+        
+        .difference-page .content.wide {
+            max-width: 950px;
+        }
+        
+        .difference-page .chapter-heading {
+            text-align: center;
+        }
+        
+        .difference-page .text {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .diff-intro {
+            opacity: 0.7;
+            max-width: 600px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .diff-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+        
+        .diff-card {
+            border: 1px solid var(--border);
+            padding: 2rem;
+            background: rgba(255,255,255,0.01);
+        }
+        
+        .diff-header {
+            margin-bottom: 1.25rem;
+        }
+        
+        .diff-num {
+            font-size: 0.7rem;
+            opacity: 0.4;
+        }
+        
+        .diff-card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 0.25rem;
+        }
+        
+        .diff-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .diff-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.4;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+        
+        .diff-them p,
+        .diff-us p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0.85;
+        }
+        
+        .diff-them {
+            opacity: 0.5;
+        }
+        
+        .diff-us {
+            border-left: 1px solid var(--text);
+            padding-left: 1.5rem;
+        }
+        
+        .diff-summary {
+            margin-top: 2.5rem;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+            text-align: center;
+        }
+        
+        .diff-summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .diff-summary-item {
+            font-size: 0.85rem;
+        }
+        
+        .diff-summary-item .them {
+            opacity: 0.4;
+            text-decoration: line-through;
+        }
+        
+        .diff-summary-item .us {
+            opacity: 0.9;
+        }
+        
+        .diff-summary-item .arrow {
+            opacity: 0.3;
+            margin: 0 0.5rem;
+        }
+        
+        @media (max-width: 600px) {
+            .diff-row {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .diff-us {
+                border-left: none;
+                border-top: 1px solid var(--text);
+                padding-left: 0;
+                padding-top: 1.5rem;
+            }
+            
+            .diff-summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .diff-summary-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
         /* ========================================
            SCIENCE PAGE STYLES
            ======================================== */
@@ -2457,13 +2719,14 @@
                             <ul class="toc-list">
                                 <li><a href="#" data-page="1" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Introduction</span></a></li>
                                 <li><a href="#" data-page="2" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">The Human API</span></a></li>
-                                <li><a href="#" data-page="3" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Science</span></a></li>
-                                <li><a href="#" data-page="4" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Hinton Hypothesis</span></a></li>
+                                <li><a href="#" data-page="3" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Assistants vs ODEI</span></a></li>
+                                <li><a href="#" data-page="4" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Science</span></a></li>
                             </ul>
                             <ul class="toc-list">
-                                <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Architecture</span></a></li>
-                                <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Cognitive Memory</span></a></li>
-                                <li><a href="#" data-page="7" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Agency Levels</span></a></li>
+                                <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Hinton Hypothesis</span></a></li>
+                                <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Architecture</span></a></li>
+                                <li><a href="#" data-page="7" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Cognitive Memory</span></a></li>
+                                <li><a href="#" data-page="8" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Agency Levels</span></a></li>
                             </ul>
                         </nav>
                     </div>
@@ -2764,7 +3027,138 @@
             <span class="page-number">2</span>
         </section>
 
-        <section class="page science-page" data-page="3">
+        <!-- Assistants vs ODEI -->
+        <section class="page difference-page" data-page="3">
+            <div class="content wide">
+                <div class="small-logo-container">
+                    <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
+                </div>
+                
+                <h2 class="chapter-heading">Assistants vs ODEI</h2>
+                <p class="text diff-intro">
+                    ChatGPT, Claude, Gemini are powerful. But they're assistants—reactive, stateless, generic. ODEI is your operating system.
+                </p>
+                
+                <div class="diff-grid">
+                    <div class="diff-card">
+                        <div class="diff-header">
+                            <span class="diff-num">01</span>
+                            <h3>Initiative</h3>
+                        </div>
+                        <div class="diff-row">
+                            <div class="diff-them">
+                                <span class="diff-label">Assistants</span>
+                                <p>Wait for your prompt. No context until you provide it. Every conversation starts from zero.</p>
+                            </div>
+                            <div class="diff-us">
+                                <span class="diff-label">ODEI</span>
+                                <p>Pings you first. Detects patterns, risks, opportunities. Reaches you in your channel.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="diff-card">
+                        <div class="diff-header">
+                            <span class="diff-num">02</span>
+                            <h3>Transparency</h3>
+                        </div>
+                        <div class="diff-row">
+                            <div class="diff-them">
+                                <span class="diff-label">Assistants</span>
+                                <p>"Trust me." No reasoning trace. Can't audit why it said what it said.</p>
+                            </div>
+                            <div class="diff-us">
+                                <span class="diff-label">ODEI</span>
+                                <p>Every action explainable. Memory → Policy → Result. One button reveals the full trace.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="diff-card">
+                        <div class="diff-header">
+                            <span class="diff-num">03</span>
+                            <h3>Execution</h3>
+                        </div>
+                        <div class="diff-row">
+                            <div class="diff-them">
+                                <span class="diff-label">Assistants</span>
+                                <p>Generates text. You copy, paste, send, check. Micro-tasks, not outcomes.</p>
+                            </div>
+                            <div class="diff-us">
+                                <span class="diff-label">ODEI</span>
+                                <p>Delegates outcomes. Plans, executes, verifies. Acts within your boundaries.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="diff-card">
+                        <div class="diff-header">
+                            <span class="diff-num">04</span>
+                            <h3>Adaptation</h3>
+                        </div>
+                        <div class="diff-row">
+                            <div class="diff-them">
+                                <span class="diff-label">Assistants</span>
+                                <p>Doesn't learn from you. Same model for everyone. Your corrections vanish.</p>
+                            </div>
+                            <div class="diff-us">
+                                <span class="diff-label">ODEI</span>
+                                <p>Gets better at being you. Every correction becomes versioned policy. With your approval.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="diff-card">
+                        <div class="diff-header">
+                            <span class="diff-num">05</span>
+                            <h3>Control</h3>
+                        </div>
+                        <div class="diff-row">
+                            <div class="diff-them">
+                                <span class="diff-label">Assistants</span>
+                                <p>Their rules. Their memory. Their platform. You're a guest.</p>
+                            </div>
+                            <div class="diff-us">
+                                <span class="diff-label">ODEI</span>
+                                <p>Your memory. Your policies. Portable, versioned, rollbackable. You own it.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="diff-card">
+                        <div class="diff-header">
+                            <span class="diff-num">06</span>
+                            <h3>Continuity</h3>
+                        </div>
+                        <div class="diff-row">
+                            <div class="diff-them">
+                                <span class="diff-label">Assistants</span>
+                                <p>Doesn't know your goals. Can't track progress. You manage everything.</p>
+                            </div>
+                            <div class="diff-us">
+                                <span class="diff-label">ODEI</span>
+                                <p>Tracks intent vs reality. Flags drift early. Your goals don't silently decay.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="diff-summary">
+                    <span class="section-label">THE BOTTOM LINE</span>
+                    <div class="diff-summary-grid">
+                        <div class="diff-summary-item"><span class="them">Reactive</span><span class="arrow">→</span><span class="us">Proactive</span></div>
+                        <div class="diff-summary-item"><span class="them">Stateless</span><span class="arrow">→</span><span class="us">Continuous</span></div>
+                        <div class="diff-summary-item"><span class="them">Generic</span><span class="arrow">→</span><span class="us">Personal</span></div>
+                        <div class="diff-summary-item"><span class="them">Text generator</span><span class="arrow">→</span><span class="us">Operating system</span></div>
+                        <div class="diff-summary-item"><span class="them">Their platform</span><span class="arrow">→</span><span class="us">Your data</span></div>
+                        <div class="diff-summary-item"><span class="them">Black box</span><span class="arrow">→</span><span class="us">Explainable</span></div>
+                    </div>
+                </div>
+            </div>
+            <span class="page-number">3</span>
+        </section>
+
+        <section class="page science-page" data-page="4">
             <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -2946,9 +3340,9 @@
                     </div>
                 </div>
             </div>
-            <span class="page-number">3</span>
+            <span class="page-number">4</span>
         </section>
-        <section class="page" data-page="4">
+        <section class="page" data-page="5">
             <div class="content wide consciousness-page">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -3337,10 +3731,10 @@
                 </div>
 
             </div>
-            <span class="page-number">4</span>
+            <span class="page-number">5</span>
         </section>
 
-        <section class="page architecture-page" data-page="5">
+        <section class="page architecture-page" data-page="6">
             <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -3431,10 +3825,10 @@
 
                 <p class="arch-note">Properties 1–8 define any agentic system. Properties 9–12 define L5 Symbiotic AI.</p>
             </div>
-            <span class="page-number">5</span>
+            <span class="page-number">6</span>
         </section>
 
-        <section class="page" data-page="6">
+        <section class="page" data-page="7">
             <div class="content">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -3456,11 +3850,11 @@
                     Powered by Neo4j Enterprise graph database, ensuring every connection in your cognitive architecture is preserved, understood, and instantly accessible.
                 </p>
             </div>
-            <span class="page-number">6</span>
+            <span class="page-number">7</span>
         </section>
 
         <!-- NEW PAGE: Agency Levels -->
-        <section class="page" data-page="7">
+        <section class="page" data-page="8">
             <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -3623,12 +4017,12 @@
                     Based on AIMA (Russell & Norvig), LORA Framework (Beer et al.), Kim et al. 2024, MOSAAIC 2025
                 </div>
             </div>
-            <span class="page-number">7</span>
+            <span class="page-number">8</span>
         </section>
 
         <!-- CONSCIOUSNESS RESEARCH PAGE -->
 
-        <section class="page" data-page="8">
+        <section class="page" data-page="9">
             <div class="content">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -3910,12 +4304,13 @@
                 0: '',
                 1: 'intro',
                 2: 'product',
-                3: 'science',
-                4: 'hinton',
-                5: 'architecture',
-                6: 'memory',
-                7: 'levels',
-                8: 'privacy'
+                3: 'difference',
+                4: 'science',
+                5: 'hinton',
+                6: 'architecture',
+                7: 'memory',
+                8: 'levels',
+                9: 'privacy'
             };
             
             const hashToPage = Object.fromEntries(
