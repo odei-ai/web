@@ -1002,63 +1002,244 @@
         }
         
         /* Product Section */
-        /* Benefits Section */
-        .benefits-section {
+        /* Interaction Cards */
+        .interactions-section {
             margin: 2rem 0 2.5rem;
         }
         
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
+        .interactions-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
             margin-top: 1.25rem;
         }
         
-        .benefit-card {
+        .interaction-card {
             padding: 1.5rem;
             border: 1px solid var(--border);
             background: rgba(255,255,255,0.02);
             transition: all 0.3s var(--ease-out-quint);
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .interaction-card:hover {
+            border-color: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.03);
+        }
+        
+        .interaction-info {
             display: flex;
             flex-direction: column;
+            gap: 0.5rem;
         }
         
-        .benefit-card:hover {
-            border-color: var(--accent);
-            background: rgba(255,255,255,0.04);
+        .interaction-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
         
-        .benefit-num {
+        .interaction-num {
             font-size: 0.65rem;
             font-family: var(--font-mono);
             opacity: 0.4;
-            margin-bottom: 0.5rem;
         }
         
-        .benefit-card h4 {
-            font-size: 1rem;
+        .interaction-card h4 {
+            font-size: 1.1rem;
             font-weight: 500;
-            margin-bottom: 0.75rem;
             color: var(--accent);
-            line-height: 1.4;
+            margin: 0;
         }
         
-        .benefit-desc {
+        .interaction-desc {
             font-size: 0.85rem;
-            line-height: 1.6;
-            opacity: 0.7;
-            margin-bottom: 1rem;
-            flex-grow: 1;
+            line-height: 1.5;
+            opacity: 0.6;
+            margin: 0;
         }
         
-        .benefit-proof {
+        /* UI Mock Elements */
+        .interaction-ui {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        /* Pills / Tags */
+        .ui-pills {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .ui-pill {
             font-size: 0.7rem;
             font-family: var(--font-mono);
+            padding: 0.35rem 0.75rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.03);
+            color: var(--text);
+            opacity: 0.8;
+        }
+        
+        .ui-pill.active {
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.08);
+            color: var(--accent);
+        }
+        
+        /* Button mock */
+        .ui-button {
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            padding: 0.4rem 0.9rem;
+            border: 1px solid var(--accent);
+            background: transparent;
+            color: var(--accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            width: fit-content;
+        }
+        
+        .ui-button .arrow {
+            font-size: 0.6rem;
+        }
+        
+        /* Drawer preview */
+        .ui-drawer {
+            font-size: 0.65rem;
+            font-family: var(--font-mono);
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+        
+        .ui-drawer-line {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .ui-drawer-label {
             opacity: 0.5;
-            line-height: 1.5;
-            padding-top: 0.75rem;
-            border-top: 1px solid var(--border);
-            margin: 0;
+            min-width: 60px;
+        }
+        
+        /* Progress states */
+        .ui-progress {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+        }
+        
+        .ui-state {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            opacity: 0.5;
+        }
+        
+        .ui-state.active {
+            opacity: 1;
+            color: var(--accent);
+        }
+        
+        .ui-state.done {
+            opacity: 0.7;
+            color: #4a4;
+        }
+        
+        .ui-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1px solid currentColor;
+        }
+        
+        .ui-state.active .ui-dot {
+            background: currentColor;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        .ui-state.done .ui-dot {
+            background: currentColor;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        
+        .ui-arrow {
+            opacity: 0.3;
+            font-size: 0.6rem;
+        }
+        
+        /* Feedback buttons */
+        .ui-feedback {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .ui-feedback-btn {
+            font-size: 0.65rem;
+            font-family: var(--font-mono);
+            padding: 0.3rem 0.6rem;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text);
+            opacity: 0.7;
+        }
+        
+        .ui-feedback-btn.deny {
+            border-color: rgba(200,100,100,0.4);
+            color: #c88;
+        }
+        
+        .ui-feedback-btn.override {
+            border-color: rgba(200,180,100,0.4);
+            color: #cb8;
+        }
+        
+        .ui-feedback-btn.regret {
+            border-color: rgba(100,150,200,0.4);
+            color: #8ac;
+        }
+        
+        /* Control panel */
+        .ui-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            font-size: 0.65rem;
+            font-family: var(--font-mono);
+        }
+        
+        .ui-control-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .ui-control-label {
+            opacity: 0.4;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+        }
+        
+        .ui-control-value {
+            color: var(--accent);
         }
         
         /* How It Works Section */
@@ -1162,13 +1343,22 @@
         }
         
         @media (max-width: 1000px) {
-            .benefits-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .interaction-card {
+                grid-template-columns: 1fr;
+                gap: 1rem;
             }
         }
         
         @media (max-width: 768px) {
-            .benefits-grid {
+            .interaction-card {
+                padding: 1.25rem;
+            }
+            
+            .interaction-card h4 {
+                font-size: 1rem;
+            }
+            
+            .ui-controls {
                 grid-template-columns: 1fr;
             }
             
@@ -2257,46 +2447,144 @@
                     <p class="statement-sub">We don't build another assistant. We build the L5 Symbiotic Layer that turns any model into your personal operating system.</p>
                 </div>
 
-                <!-- 6 L5 Benefits -->
-                <div class="benefits-section">
-                    <span class="section-label">WHAT YOU GET</span>
-                    <div class="benefits-grid">
-                        <div class="benefit-card">
-                            <span class="benefit-num">01</span>
-                            <h4>ODEI Writes First</h4>
-                            <p class="benefit-desc">ODEI pings you first—only when it matters. Detects patterns, risks, opportunities. Reaches you in your channel.</p>
-                            <p class="benefit-proof">Proof: Triggered alerts with context + next action + "why now".</p>
+                <!-- 5 Interaction Patterns -->
+                <div class="interactions-section">
+                    <span class="section-label">HOW ODEI WORKS</span>
+                    <div class="interactions-grid">
+                        
+                        <!-- 01 ODEI Proposes -->
+                        <div class="interaction-card">
+                            <div class="interaction-info">
+                                <div class="interaction-header">
+                                    <span class="interaction-num">01</span>
+                                    <h4>ODEI Proposes</h4>
+                                </div>
+                                <p class="interaction-desc">ODEI pings you first—only when it matters. Detects patterns, risks, opportunities. Reaches you in your channel. You decide what to act on.</p>
+                            </div>
+                            <div class="interaction-ui">
+                                <div class="ui-pills">
+                                    <span class="ui-pill active">Today</span>
+                                    <span class="ui-pill">Actions</span>
+                                    <span class="ui-pill">Alerts</span>
+                                </div>
+                                <div class="ui-drawer">
+                                    <div class="ui-drawer-line"><span class="ui-drawer-label">→</span> Review Q4 goals (drift detected)</div>
+                                    <div class="ui-drawer-line"><span class="ui-drawer-label">→</span> Follow up with Alex (3 days)</div>
+                                    <div class="ui-drawer-line"><span class="ui-drawer-label">→</span> Tax deadline approaching</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="benefit-card">
-                            <span class="benefit-num">02</span>
-                            <h4>Autonomous Planning & Doing</h4>
-                            <p class="benefit-desc">Delegate outcomes, not micro-tasks. ODEI plans, executes, checks results, and returns with finished work.</p>
-                            <p class="benefit-proof">Proof: Multi-step receipts: plan → act → check → decide-next.</p>
+                        
+                        <!-- 02 ODEI Explains -->
+                        <div class="interaction-card">
+                            <div class="interaction-info">
+                                <div class="interaction-header">
+                                    <span class="interaction-num">02</span>
+                                    <h4>ODEI Explains</h4>
+                                </div>
+                                <p class="interaction-desc">Every action is explainable. No "trust me"—reproducible reasoning chain from memory to policy to result. One button reveals the full trace.</p>
+                            </div>
+                            <div class="interaction-ui">
+                                <div class="ui-button">Explain <span class="arrow">▼</span></div>
+                                <div class="ui-drawer">
+                                    <div class="ui-drawer-line"><span class="ui-drawer-label">Why:</span> Goal "Ship MVP" + 2 weeks left</div>
+                                    <div class="ui-drawer-line"><span class="ui-drawer-label">Memory:</span> You said "Alex owns design"</div>
+                                    <div class="ui-drawer-line"><span class="ui-drawer-label">Policy:</span> Notify if blocker > 48h</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="benefit-card">
-                            <span class="benefit-num">03</span>
-                            <h4>Sovereign Memory & Rules</h4>
-                            <p class="benefit-desc">You don't re-explain. You don't get locked in. Your memory and operating rules are your asset—portable, versioned, rollbackable.</p>
-                            <p class="benefit-proof">Proof: Export/Import your Memory + Policy. Roll back versions with diffs.</p>
+                        
+                        <!-- 03 ODEI Executes -->
+                        <div class="interaction-card">
+                            <div class="interaction-info">
+                                <div class="interaction-header">
+                                    <span class="interaction-num">03</span>
+                                    <h4>ODEI Executes</h4>
+                                </div>
+                                <p class="interaction-desc">Delegate outcomes, not micro-tasks. ODEI plans, executes, checks results. Acts within your boundaries—waits for verify when needed.</p>
+                            </div>
+                            <div class="interaction-ui">
+                                <div class="ui-progress">
+                                    <div class="ui-state done">
+                                        <span class="ui-dot"></span>
+                                        <span>Planned</span>
+                                    </div>
+                                    <span class="ui-arrow">→</span>
+                                    <div class="ui-state active">
+                                        <span class="ui-dot"></span>
+                                        <span>Executing</span>
+                                    </div>
+                                    <span class="ui-arrow">→</span>
+                                    <div class="ui-state">
+                                        <span class="ui-dot"></span>
+                                        <span>Pending verify</span>
+                                    </div>
+                                    <span class="ui-arrow">→</span>
+                                    <div class="ui-state">
+                                        <span class="ui-dot"></span>
+                                        <span>Done</span>
+                                    </div>
+                                </div>
+                                <div class="ui-drawer">
+                                    <div class="ui-drawer-line"><span class="ui-drawer-label">Task:</span> Draft follow-up email to Alex</div>
+                                    <div class="ui-drawer-line"><span class="ui-drawer-label">Mode:</span> Supervised (verify before send)</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="benefit-card">
-                            <span class="benefit-num">04</span>
-                            <h4>ODEI Keeps You on Track</h4>
-                            <p class="benefit-desc">Your goals don't silently decay. ODEI keeps intent, priorities, and reality aligned—flags drift early.</p>
-                            <p class="benefit-proof">Proof: Weekly Drift Report: goal → evidence → divergence → correction.</p>
+                        
+                        <!-- 04 ODEI Learns -->
+                        <div class="interaction-card">
+                            <div class="interaction-info">
+                                <div class="interaction-header">
+                                    <span class="interaction-num">04</span>
+                                    <h4>ODEI Learns</h4>
+                                </div>
+                                <p class="interaction-desc">Gets better at being you—behavior, not vibes. Every correction improves future proposals. Your feedback becomes versioned policy, only with your approval.</p>
+                            </div>
+                            <div class="interaction-ui">
+                                <div class="ui-feedback">
+                                    <span class="ui-feedback-btn deny">Deny</span>
+                                    <span class="ui-feedback-btn override">Override</span>
+                                    <span class="ui-feedback-btn regret">Regret</span>
+                                </div>
+                                <div class="ui-drawer">
+                                    <div class="ui-drawer-line"><span class="ui-drawer-label">Signal:</span> "Don't ping me about Alex"</div>
+                                    <div class="ui-drawer-line"><span class="ui-drawer-label">Update:</span> Policy v12 → v13 (pending)</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="benefit-card">
-                            <span class="benefit-num">05</span>
-                            <h4>Every ODEI Action is Auditable</h4>
-                            <p class="benefit-desc">Every action is explainable. Unsafe actions are blocked. No "trust me"—reproducible chain from memory to result.</p>
-                            <p class="benefit-proof">Proof: Memory → Policy → Tool → Result → Check → Outcome.</p>
+                        
+                        <!-- 05 ODEI is Governed -->
+                        <div class="interaction-card">
+                            <div class="interaction-info">
+                                <div class="interaction-header">
+                                    <span class="interaction-num">05</span>
+                                    <h4>ODEI is Governed</h4>
+                                </div>
+                                <p class="interaction-desc">You don't get locked in. Your memory and operating rules are your asset—portable, versioned, rollbackable. Mode, authority, constraints are always yours.</p>
+                            </div>
+                            <div class="interaction-ui">
+                                <div class="ui-controls">
+                                    <div class="ui-control-item">
+                                        <span class="ui-control-label">Mode</span>
+                                        <span class="ui-control-value">Supervised</span>
+                                    </div>
+                                    <div class="ui-control-item">
+                                        <span class="ui-control-label">Authority</span>
+                                        <span class="ui-control-value">Read + Draft</span>
+                                    </div>
+                                    <div class="ui-control-item">
+                                        <span class="ui-control-label">Constraints</span>
+                                        <span class="ui-control-value">No payments</span>
+                                    </div>
+                                    <div class="ui-control-item">
+                                        <span class="ui-control-label">Changed</span>
+                                        <span class="ui-control-value">2 days ago</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="benefit-card">
-                            <span class="benefit-num">06</span>
-                            <h4>ODEI Gets Better Over Time</h4>
-                            <p class="benefit-desc">Gets better at being you—behavior, not vibes. Outcomes update strategy over time, only with your approval.</p>
-                            <p class="benefit-proof">Proof: Outcome → proposal → approve → policy update (versioned).</p>
-                        </div>
+                        
                     </div>
                 </div>
 
