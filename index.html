@@ -2233,12 +2233,6 @@
             opacity: 1;
         }
         
-        .property-card.done h4::after {
-            content: " ✓";
-            color: #4FD1C5;
-            font-weight: normal;
-        }
-        
         @media (max-width: 900px) {
             .roadmap-phases {
                 grid-template-columns: repeat(2, 1fr);
@@ -2780,11 +2774,11 @@
                                 <li><a href="#" data-page="1" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Introduction</span></a></li>
                                 <li><a href="#" data-page="2" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">The Human API</span></a></li>
                                 <li><a href="#" data-page="3" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Assistants vs ODEI</span></a></li>
-                                <li><a href="#" data-page="4" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Science</span></a></li>
+                                <li><a href="#" data-page="4" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Roadmap</span></a></li>
                             </ul>
                             <ul class="toc-list">
-                                <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Hinton Hypothesis</span></a></li>
-                                <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Roadmap</span></a></li>
+                                <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Science</span></a></li>
+                                <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Hinton Hypothesis</span></a></li>
                                 <li><a href="#" data-page="7" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Memory</span></a></li>
                                 <li><a href="#" data-page="8" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Agency Levels</span></a></li>
                             </ul>
@@ -3218,7 +3212,164 @@
             <span class="page-number">3</span>
         </section>
 
-        <section class="page science-page" data-page="4">
+        <section class="page architecture-page" data-page="4">
+            <div class="content wide">
+                <div class="small-logo-container">
+                    <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
+                </div>
+                <h2 class="chapter-heading">Roadmap</h2>
+                
+                <p class="arch-intro">
+                    Building L5 Symbiotic AI is a multi-phase journey. Each phase builds on the previous, creating the infrastructure for true human-AI partnership.
+                </p>
+
+                <div class="properties-section" style="margin-bottom: 3rem;">
+                    <span class="section-label">DEVELOPMENT PHASES</span>
+                    <div class="roadmap-phases">
+                        <div class="property-card done">
+                            <span class="prop-num">✓</span>
+                            <h4>Foundation</h4>
+                            <p class="prop-def">The architectural substrate — complete</p>
+                            <ul class="roadmap-list">
+                                <li>7-layer Memory Atlas with 40+ node types</li>
+                                <li>Constitutional framework — values, principles, guardrails</li>
+                                <li>Provenance system — every write is traceable</li>
+                                <li>Guardian preflight validation</li>
+                                <li>Hybrid search — semantic + structural + temporal</li>
+                            </ul>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">01</span>
+                            <h4>L5 Core Infrastructure</h4>
+                            <p class="prop-def">The four systems that enable autonomous partnership</p>
+                            <ul class="roadmap-list">
+                                <li>Autonomous task lifecycle management</li>
+                                <li>Proactive AI initiation — AI pings you first</li>
+                                <li>Continuous learning from feedback</li>
+                                <li>Drift detection — intent vs reality monitoring</li>
+                            </ul>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">02</span>
+                            <h4>Memory Enhancements</h4>
+                            <p class="prop-def">Deeper knowledge representation</p>
+                            <ul class="roadmap-list">
+                                <li>Epistemic separation — fact vs inference vs opinion</li>
+                                <li>Entity resolution across sessions</li>
+                                <li>Confidence tracking and decay</li>
+                            </ul>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">03</span>
+                            <h4>Agent Ecosystem</h4>
+                            <p class="prop-def">Specialized agents under unified governance</p>
+                            <ul class="roadmap-list">
+                                <li>Domain-specialized agents</li>
+                                <li>Cross-agent coordination protocol</li>
+                                <li>Constitutional governance across all agents</li>
+                            </ul>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">04</span>
+                            <h4>Public Release</h4>
+                            <p class="prop-def">Production-ready symbiotic AI</p>
+                            <ul class="roadmap-list">
+                                <li>Security audit</li>
+                                <li>Local-first deployment</li>
+                                <li>Open documentation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="properties-section">
+                    <span class="section-label">ARCHITECTURE: 12 PROPERTIES OF AI AGENCY</span>
+                    <p class="arch-intro" style="margin-top: 1rem;">
+                        Three planes work in concert: <b>Memory</b> holds the world model, <b>Control</b> makes decisions, <b>Execution</b> changes reality. Below are the 12 properties that make ODEI an agent, not a tool.
+                    </p>
+                    <div class="properties-grid">
+                        <div class="property-card">
+                            <span class="prop-num">01</span>
+                            <h4>Closed-loop Control</h4>
+                            <p class="prop-def">System triggers next step without new user prompt</p>
+                            <p class="prop-impl">Commander dispatch loop</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">02</span>
+                            <h4>AI Initiative</h4>
+                            <p class="prop-def">Can initiate actions without being asked</p>
+                            <p class="prop-impl">Scheduled triggers, pattern alerts</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">03</span>
+                            <h4>Goal / Utility</h4>
+                            <p class="prop-def">Explicit success criteria guiding decisions</p>
+                            <p class="prop-impl">Goals, Objectives, Key Results nodes</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">04</span>
+                            <h4>Task-state sₜ</h4>
+                            <p class="prop-def">Structured progress model (pause→resume)</p>
+                            <p class="prop-impl">Execution layer state machines</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">05</span>
+                            <h4>External Execute</h4>
+                            <p class="prop-def">Real actions in external environment</p>
+                            <p class="prop-impl">MCP tools, Telegram, Apple, file I/O</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">06</span>
+                            <h4>Autonomous Loop</h4>
+                            <p class="prop-def">Act → Check → Decide-next cycle</p>
+                            <p class="prop-impl">Commander orchestration</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">07</span>
+                            <h4>Action Space</h4>
+                            <p class="prop-def">Bounded set of permitted actions</p>
+                            <p class="prop-impl">MCP schema, tool definitions</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">08</span>
+                            <h4>Human Control</h4>
+                            <p class="prop-def">Human-on-the-loop with override</p>
+                            <p class="prop-impl">Approval gates, manual intervention</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">09</span>
+                            <h4>Persistent Memory</h4>
+                            <p class="prop-def">Cross-session memory affecting decisions</p>
+                            <p class="prop-impl">Neo4j Memory Atlas + History SQLite</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">10</span>
+                            <h4>User Model</h4>
+                            <p class="prop-def">Persistent user representation</p>
+                            <p class="prop-impl">Human node, Context, preferences</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">11</span>
+                            <h4>Policy Update</h4>
+                            <p class="prop-def">Outcomes change strategy π, not just state</p>
+                            <p class="prop-impl">Insights/Patterns → future behavior</p>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">12</span>
+                            <h4>Audit &amp; Policies</h4>
+                            <p class="prop-def">Reproducible records + enforceable blocks</p>
+                            <p class="prop-impl">Provenance on writes, Guardrails</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="arch-note">Properties 1–8 define any agentic system. Properties 9–12 define L5 Symbiotic AI.</p>
+            </div>
+            <span class="page-number">4</span>
+        </section>
+
+
+        <section class="page science-page" data-page="5">
             <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -3400,9 +3551,10 @@
                     </div>
                 </div>
             </div>
-            <span class="page-number">4</span>
+            <span class="page-number">5</span>
         </section>
-        <section class="page" data-page="5">
+
+        <section class="page" data-page="6">
             <div class="content wide consciousness-page">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -3791,164 +3943,9 @@
                 </div>
 
             </div>
-            <span class="page-number">5</span>
-        </section>
-
-        <section class="page architecture-page" data-page="6">
-            <div class="content wide">
-                <div class="small-logo-container">
-                    <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
-                </div>
-                <h2 class="chapter-heading">Roadmap</h2>
-                
-                <p class="arch-intro">
-                    Building L5 Symbiotic AI is a multi-phase journey. Each phase builds on the previous, creating the infrastructure for true human-AI partnership.
-                </p>
-
-                <div class="properties-section" style="margin-bottom: 3rem;">
-                    <span class="section-label">DEVELOPMENT PHASES</span>
-                    <div class="roadmap-phases">
-                        <div class="property-card done">
-                            <span class="prop-num">✓</span>
-                            <h4>Foundation</h4>
-                            <p class="prop-def">The architectural substrate — complete</p>
-                            <ul class="roadmap-list">
-                                <li>7-layer Memory Atlas with 40+ node types</li>
-                                <li>Constitutional framework — values, principles, guardrails</li>
-                                <li>Provenance system — every write is traceable</li>
-                                <li>Guardian preflight validation</li>
-                                <li>Hybrid search — semantic + structural + temporal</li>
-                            </ul>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">01</span>
-                            <h4>L5 Core Infrastructure</h4>
-                            <p class="prop-def">The four systems that enable autonomous partnership</p>
-                            <ul class="roadmap-list">
-                                <li>Autonomous task lifecycle management</li>
-                                <li>Proactive AI initiation — AI pings you first</li>
-                                <li>Continuous learning from feedback</li>
-                                <li>Drift detection — intent vs reality monitoring</li>
-                            </ul>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">02</span>
-                            <h4>Memory Enhancements</h4>
-                            <p class="prop-def">Deeper knowledge representation</p>
-                            <ul class="roadmap-list">
-                                <li>Epistemic separation — fact vs inference vs opinion</li>
-                                <li>Entity resolution across sessions</li>
-                                <li>Confidence tracking and decay</li>
-                            </ul>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">03</span>
-                            <h4>Agent Ecosystem</h4>
-                            <p class="prop-def">Specialized agents under unified governance</p>
-                            <ul class="roadmap-list">
-                                <li>Domain-specialized agents</li>
-                                <li>Cross-agent coordination protocol</li>
-                                <li>Constitutional governance across all agents</li>
-                            </ul>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">04</span>
-                            <h4>Public Release</h4>
-                            <p class="prop-def">Production-ready symbiotic AI</p>
-                            <ul class="roadmap-list">
-                                <li>Security audit</li>
-                                <li>Local-first deployment</li>
-                                <li>Open documentation</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="properties-section">
-                    <span class="section-label">ARCHITECTURE: 12 PROPERTIES OF AI AGENCY</span>
-                    <p class="arch-intro" style="margin-top: 1rem;">
-                        Three planes work in concert: <b>Memory</b> holds the world model, <b>Control</b> makes decisions, <b>Execution</b> changes reality. Below are the 12 properties that make ODEI an agent, not a tool.
-                    </p>
-                    <div class="properties-grid">
-                        <div class="property-card">
-                            <span class="prop-num">01</span>
-                            <h4>Closed-loop Control</h4>
-                            <p class="prop-def">System triggers next step without new user prompt</p>
-                            <p class="prop-impl">Commander dispatch loop</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">02</span>
-                            <h4>AI Initiative</h4>
-                            <p class="prop-def">Can initiate actions without being asked</p>
-                            <p class="prop-impl">Scheduled triggers, pattern alerts</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">03</span>
-                            <h4>Goal / Utility</h4>
-                            <p class="prop-def">Explicit success criteria guiding decisions</p>
-                            <p class="prop-impl">Goals, Objectives, Key Results nodes</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">04</span>
-                            <h4>Task-state sₜ</h4>
-                            <p class="prop-def">Structured progress model (pause→resume)</p>
-                            <p class="prop-impl">Execution layer state machines</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">05</span>
-                            <h4>External Execute</h4>
-                            <p class="prop-def">Real actions in external environment</p>
-                            <p class="prop-impl">MCP tools, Telegram, Apple, file I/O</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">06</span>
-                            <h4>Autonomous Loop</h4>
-                            <p class="prop-def">Act → Check → Decide-next cycle</p>
-                            <p class="prop-impl">Commander orchestration</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">07</span>
-                            <h4>Action Space</h4>
-                            <p class="prop-def">Bounded set of permitted actions</p>
-                            <p class="prop-impl">MCP schema, tool definitions</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">08</span>
-                            <h4>Human Control</h4>
-                            <p class="prop-def">Human-on-the-loop with override</p>
-                            <p class="prop-impl">Approval gates, manual intervention</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">09</span>
-                            <h4>Persistent Memory</h4>
-                            <p class="prop-def">Cross-session memory affecting decisions</p>
-                            <p class="prop-impl">Neo4j Memory Atlas + History SQLite</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">10</span>
-                            <h4>User Model</h4>
-                            <p class="prop-def">Persistent user representation</p>
-                            <p class="prop-impl">Human node, Context, preferences</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">11</span>
-                            <h4>Policy Update</h4>
-                            <p class="prop-def">Outcomes change strategy π, not just state</p>
-                            <p class="prop-impl">Insights/Patterns → future behavior</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">12</span>
-                            <h4>Audit &amp; Policies</h4>
-                            <p class="prop-def">Reproducible records + enforceable blocks</p>
-                            <p class="prop-impl">Provenance on writes, Guardrails</p>
-                        </div>
-                    </div>
-                </div>
-
-                <p class="arch-note">Properties 1–8 define any agentic system. Properties 9–12 define L5 Symbiotic AI.</p>
-            </div>
             <span class="page-number">6</span>
         </section>
+
 
         <section class="page" data-page="7">
             <div class="content">
@@ -3963,7 +3960,7 @@
                 <div class="interactions-section">
                     <span class="section-label">THREE ARCHITECTURAL PROPERTIES</span>
                     <p class="text" style="opacity: 0.7; margin-top: 1rem;">
-                        These are properties 9–11 from the Architecture page. They define what separates L5 Symbiotic AI from L4 Agentic systems.
+                        These are properties 9–11 from the Roadmap page. They define what separates L5 Symbiotic AI from L4 Agentic systems.
                     </p>
                     
                     <div class="diff-grid" style="margin-top: 1.5rem;">
@@ -4535,9 +4532,9 @@
                 1: 'intro',
                 2: 'product',
                 3: 'difference',
-                4: 'science',
-                5: 'hinton',
-                6: 'roadmap',
+                4: 'roadmap',
+                5: 'science',
+                6: 'hinton',
                 7: 'memory',
                 8: 'levels',
                 9: 'privacy',
