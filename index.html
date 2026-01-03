@@ -744,6 +744,188 @@
             text-align: center;
         }
         
+        /* 12 Properties Section in Agency Levels */
+        .properties-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .properties-heading {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+        }
+        
+        .properties-intro {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+        
+        .properties-tier {
+            margin-bottom: 2rem;
+        }
+        
+        .tier-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+        }
+        
+        .tier-header.l5-tier {
+            background: rgba(75,200,180,0.05);
+            border-color: rgba(75,200,180,0.3);
+        }
+        
+        .tier-badge {
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+        }
+        
+        .l5-tier .tier-badge {
+            background: rgba(75,200,180,0.2);
+            color: var(--accent);
+        }
+        
+        .tier-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .l5-tier .tier-name {
+            color: var(--accent);
+        }
+        
+        .tier-desc {
+            font-size: 0.75rem;
+            opacity: 0.5;
+            margin-left: auto;
+        }
+        
+        .properties-grid-compact {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+        }
+        
+        .properties-grid-compact.l5-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        
+        .prop-item {
+            display: flex;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .prop-item.l5-prop {
+            background: rgba(75,200,180,0.03);
+            border-color: rgba(75,200,180,0.15);
+        }
+        
+        .prop-number {
+            font-size: 0.65rem;
+            font-family: var(--font-mono);
+            opacity: 0.4;
+            flex-shrink: 0;
+            width: 1.5rem;
+        }
+        
+        .l5-prop .prop-number {
+            color: var(--accent);
+            opacity: 0.7;
+        }
+        
+        .prop-content h4 {
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin: 0 0 0.25rem 0;
+        }
+        
+        .l5-prop .prop-content h4 {
+            color: var(--accent);
+        }
+        
+        .prop-content p {
+            font-size: 0.7rem;
+            line-height: 1.4;
+            opacity: 0.6;
+            margin: 0;
+        }
+        
+        .prop-content .prop-impl {
+            display: block;
+            font-size: 0.6rem;
+            font-family: var(--font-mono);
+            opacity: 0.4;
+            margin-top: 0.35rem;
+        }
+        
+        .l5-prop .prop-content .prop-impl {
+            color: var(--accent);
+            opacity: 0.5;
+        }
+        
+        .properties-summary {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border);
+        }
+        
+        .summary-line {
+            display: flex;
+            gap: 0.75rem;
+            font-size: 0.8rem;
+            padding: 0.35rem 0;
+        }
+        
+        .summary-line.highlight {
+            color: var(--accent);
+        }
+        
+        .summary-level {
+            font-weight: 500;
+            min-width: 80px;
+        }
+        
+        .summary-text {
+            opacity: 0.7;
+        }
+        
+        .summary-line.highlight .summary-text {
+            opacity: 1;
+        }
+        
+        @media (max-width: 1000px) {
+            .properties-grid-compact {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .tier-desc {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .properties-grid-compact {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         /* Assistants Comparison Section */
         .assistants-section {
             margin-top: 3rem;
@@ -3981,89 +4163,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="properties-section">
-                    <span class="section-label">ARCHITECTURE: 12 PROPERTIES OF AI AGENCY</span>
-                    <p class="arch-intro" style="margin-top: 1rem;">
-                        Three planes work in concert: <b>Memory</b> holds the world model, <b>Control</b> makes decisions, <b>Execution</b> changes reality. Below are the 12 properties that make ODEI an agent, not a tool.
-                    </p>
-                    <div class="properties-grid">
-                        <div class="property-card">
-                            <span class="prop-num">01</span>
-                            <h4>Closed-loop Control</h4>
-                            <p class="prop-def">System triggers next step without new user prompt</p>
-                            <p class="prop-impl">Commander dispatch loop</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">02</span>
-                            <h4>AI Initiative</h4>
-                            <p class="prop-def">Can initiate actions without being asked</p>
-                            <p class="prop-impl">Scheduled triggers, pattern alerts</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">03</span>
-                            <h4>Goal / Utility</h4>
-                            <p class="prop-def">Explicit success criteria guiding decisions</p>
-                            <p class="prop-impl">Goals, Objectives, Key Results nodes</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">04</span>
-                            <h4>Task-state sₜ</h4>
-                            <p class="prop-def">Structured progress model (pause→resume)</p>
-                            <p class="prop-impl">Execution layer state machines</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">05</span>
-                            <h4>External Execute</h4>
-                            <p class="prop-def">Real actions in external environment</p>
-                            <p class="prop-impl">MCP tools, Telegram, Apple, file I/O</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">06</span>
-                            <h4>Autonomous Loop</h4>
-                            <p class="prop-def">Act → Check → Decide-next cycle</p>
-                            <p class="prop-impl">Commander orchestration</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">07</span>
-                            <h4>Action Space</h4>
-                            <p class="prop-def">Bounded set of permitted actions</p>
-                            <p class="prop-impl">MCP schema, tool definitions</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">08</span>
-                            <h4>Human Control</h4>
-                            <p class="prop-def">Human-on-the-loop with override</p>
-                            <p class="prop-impl">Approval gates, manual intervention</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">09</span>
-                            <h4>Persistent Memory</h4>
-                            <p class="prop-def">Cross-session memory affecting decisions</p>
-                            <p class="prop-impl">Neo4j Memory Atlas + History SQLite</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">10</span>
-                            <h4>User Model</h4>
-                            <p class="prop-def">Persistent user representation</p>
-                            <p class="prop-impl">Human node, Context, preferences</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">11</span>
-                            <h4>Policy Update</h4>
-                            <p class="prop-def">Outcomes change strategy π, not just state</p>
-                            <p class="prop-impl">Insights/Patterns → future behavior</p>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">12</span>
-                            <h4>Audit &amp; Policies</h4>
-                            <p class="prop-def">Reproducible records + enforceable blocks</p>
-                            <p class="prop-impl">Provenance on writes, Guardrails</p>
-                        </div>
-                    </div>
-                </div>
-
-                <p class="arch-note">Properties 1–8 define any agentic system. Properties 9–12 define L5 Symbiotic AI.</p>
             </div>
             <span class="page-number">3</span>
         </section>
@@ -4570,6 +4669,133 @@
                 
                 <div class="table-footer">
                     Based on AIMA (Russell & Norvig), LORA Framework (Beer et al.), Kim et al. 2024, MOSAAIC 2025
+                </div>
+                
+                <!-- 12 Properties of AI Agency -->
+                <div class="properties-section">
+                    <h3 class="properties-heading">What Defines Each Level</h3>
+                    <p class="properties-intro">
+                        Three planes work in concert: <b>Memory</b> holds the world model, <b>Control</b> makes decisions, <b>Execution</b> changes reality. These 12 properties separate agents from tools—and L5 from everything else.
+                    </p>
+                    
+                    <div class="properties-tier">
+                        <div class="tier-header l4-tier">
+                            <span class="tier-badge">L4</span>
+                            <span class="tier-name">Agentic Foundation</span>
+                            <span class="tier-desc">Properties 1–8 define any autonomous agent</span>
+                        </div>
+                        <div class="properties-grid-compact">
+                            <div class="prop-item">
+                                <span class="prop-number">01</span>
+                                <div class="prop-content">
+                                    <h4>Closed-loop Control</h4>
+                                    <p>System triggers next step without new user prompt</p>
+                                </div>
+                            </div>
+                            <div class="prop-item">
+                                <span class="prop-number">02</span>
+                                <div class="prop-content">
+                                    <h4>AI Initiative</h4>
+                                    <p>Can initiate actions without being asked</p>
+                                </div>
+                            </div>
+                            <div class="prop-item">
+                                <span class="prop-number">03</span>
+                                <div class="prop-content">
+                                    <h4>Goal / Utility</h4>
+                                    <p>Explicit success criteria guiding decisions</p>
+                                </div>
+                            </div>
+                            <div class="prop-item">
+                                <span class="prop-number">04</span>
+                                <div class="prop-content">
+                                    <h4>Task-state s<sub>t</sub></h4>
+                                    <p>Structured progress model (pause→resume)</p>
+                                </div>
+                            </div>
+                            <div class="prop-item">
+                                <span class="prop-number">05</span>
+                                <div class="prop-content">
+                                    <h4>External Execute</h4>
+                                    <p>Real actions in external environment</p>
+                                </div>
+                            </div>
+                            <div class="prop-item">
+                                <span class="prop-number">06</span>
+                                <div class="prop-content">
+                                    <h4>Autonomous Loop</h4>
+                                    <p>Act → Check → Decide-next cycle</p>
+                                </div>
+                            </div>
+                            <div class="prop-item">
+                                <span class="prop-number">07</span>
+                                <div class="prop-content">
+                                    <h4>Action Space</h4>
+                                    <p>Bounded set of permitted actions</p>
+                                </div>
+                            </div>
+                            <div class="prop-item">
+                                <span class="prop-number">08</span>
+                                <div class="prop-content">
+                                    <h4>Human Control</h4>
+                                    <p>Human-on-the-loop with override</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="properties-tier l5">
+                        <div class="tier-header l5-tier">
+                            <span class="tier-badge">L5</span>
+                            <span class="tier-name">Symbiotic Extension</span>
+                            <span class="tier-desc">Properties 9–12 create true partnership</span>
+                        </div>
+                        <div class="properties-grid-compact l5-grid">
+                            <div class="prop-item l5-prop">
+                                <span class="prop-number">09</span>
+                                <div class="prop-content">
+                                    <h4>Persistent Memory</h4>
+                                    <p>Cross-session memory affecting decisions</p>
+                                    <span class="prop-impl">Neo4j Memory Atlas + History SQLite</span>
+                                </div>
+                            </div>
+                            <div class="prop-item l5-prop">
+                                <span class="prop-number">10</span>
+                                <div class="prop-content">
+                                    <h4>User Model</h4>
+                                    <p>Persistent user representation</p>
+                                    <span class="prop-impl">Human node, Context, preferences</span>
+                                </div>
+                            </div>
+                            <div class="prop-item l5-prop">
+                                <span class="prop-number">11</span>
+                                <div class="prop-content">
+                                    <h4>Policy Update</h4>
+                                    <p>Outcomes change strategy π, not just state</p>
+                                    <span class="prop-impl">Insights/Patterns → future behavior</span>
+                                </div>
+                            </div>
+                            <div class="prop-item l5-prop">
+                                <span class="prop-number">12</span>
+                                <div class="prop-content">
+                                    <h4>Audit &amp; Policies</h4>
+                                    <p>Reproducible records + enforceable blocks</p>
+                                    <span class="prop-impl">Provenance on writes, Guardrails</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="properties-summary">
+                        <div class="summary-line">
+                            <span class="summary-level">L4 Agents</span>
+                            <span class="summary-text">have properties 1–8. They execute tasks autonomously.</span>
+                        </div>
+                        <div class="summary-line highlight">
+                            <span class="summary-level">L5 ODEI</span>
+                            <span class="summary-text">has all 12. It remembers, learns, and evolves with you.</span>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Current Assistants Classification -->
