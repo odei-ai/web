@@ -2991,6 +2991,173 @@
         }
         
         /* ========================================
+           MEMORY PAGE STYLES
+           ======================================== */
+        
+        .memory-page .content.wide {
+            max-width: 950px;
+        }
+        
+        .memory-intro {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            opacity: 0.8;
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+        }
+        
+        .memory-section {
+            margin-bottom: 3rem;
+        }
+        
+        .memory-section.ownership {
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .memory-section-header {
+            margin-bottom: 1.5rem;
+        }
+        
+        .memory-section-header h3 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin: 0.5rem 0;
+        }
+        
+        .memory-section-header p {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin: 0;
+        }
+        
+        .memory-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-family: var(--font-mono);
+            font-weight: 600;
+            padding: 0.25rem 0.6rem;
+            background: rgba(75,200,180,0.15);
+            color: var(--accent);
+            letter-spacing: 0.05em;
+        }
+        
+        .memory-badge.ownership-badge {
+            background: rgba(200,180,75,0.15);
+            color: #c8b44b;
+        }
+        
+        .memory-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        
+        .memory-card {
+            padding: 1.25rem;
+            background: rgba(75,200,180,0.03);
+            border: 1px solid rgba(75,200,180,0.15);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .memory-card.principle {
+            background: rgba(200,180,75,0.03);
+            border-color: rgba(200,180,75,0.15);
+        }
+        
+        .memory-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .memory-num {
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            font-weight: 600;
+            padding: 0.2rem 0.4rem;
+            background: rgba(75,200,180,0.2);
+            color: var(--accent);
+        }
+        
+        .memory-num.principle-num {
+            background: rgba(200,180,75,0.2);
+            color: #c8b44b;
+        }
+        
+        .memory-card-header h4 {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin: 0;
+            color: var(--accent);
+        }
+        
+        .memory-card.principle .memory-card-header h4 {
+            color: #c8b44b;
+        }
+        
+        .memory-card-text {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            opacity: 0.75;
+            margin: 0;
+            flex-grow: 1;
+        }
+        
+        .memory-card-impl {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(75,200,180,0.1);
+            font-size: 0.65rem;
+            font-family: var(--font-mono);
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .impl-label {
+            opacity: 0.4;
+        }
+        
+        .impl-value {
+            color: var(--accent);
+            opacity: 0.7;
+        }
+        
+        .memory-bottomline {
+            margin-top: 2.5rem;
+            padding: 1.5rem;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .bottomline-label {
+            display: block;
+            font-size: 0.65rem;
+            font-family: var(--font-mono);
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+            margin-bottom: 0.75rem;
+        }
+        
+        .bottomline-content p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            opacity: 0.8;
+            margin: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 800px) {
+            .memory-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ========================================
            ARCHITECTURE PAGE STYLES
            ======================================== */
         
@@ -4409,99 +4576,104 @@
         </section>
 
 
-        <section class="page" data-page="5">
-            <div class="content">
+        <section class="page memory-page" data-page="5">
+            <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
                 </div>
                 <h2 class="chapter-heading">Memory</h2>
-                <p class="text">
-                    Assistants have chat history. ODEI has memory architecture. The difference: chat history is theirs, resets on their terms, and doesn't affect how the system behaves. Memory in ODEI is yours, persistent, and directly shapes every decision.
+                <p class="memory-intro">
+                    Assistants have chat history. ODEI has memory architecture. The difference: chat history is theirs, resets on their terms, and doesn't affect behavior. Memory in ODEI is yours, persistent, and shapes every decision.
                 </p>
                 
-                <div class="interactions-section">
-                    <span class="section-label">THREE ARCHITECTURAL PROPERTIES</span>
-                    <p class="text" style="opacity: 0.7; margin-top: 1rem;">
-                        These are properties 9–11 from the Roadmap page. They define what separates L5 Symbiotic AI from L4 Agentic systems.
-                    </p>
+                <!-- Three Architectural Properties -->
+                <div class="memory-section">
+                    <div class="memory-section-header">
+                        <span class="memory-badge">L5 CORE</span>
+                        <h3>Three Architectural Properties</h3>
+                        <p>Properties 9–11 from Agency Levels. They define what separates L5 Symbiotic AI from L4 Agentic systems.</p>
+                    </div>
                     
-                    <div class="diff-grid" style="margin-top: 1.5rem;">
-                        <div class="diff-card">
-                            <div class="diff-header">
-                                <span class="diff-num">09</span>
-                                <h3>Persistent Memory</h3>
+                    <div class="memory-cards">
+                        <div class="memory-card">
+                            <div class="memory-card-header">
+                                <span class="memory-num">09</span>
+                                <h4>Persistent Memory</h4>
                             </div>
-                            <p class="text" style="margin-bottom: 0; font-size: 0.9rem;">
-                                Cross-session memory that affects decisions. Not just "remember what we talked about"—but facts, beliefs, patterns, and outcomes that shape how ODEI reasons about your world. Every interaction updates the model. Nothing is lost between sessions.
-                            </p>
+                            <p class="memory-card-text">Cross-session memory that affects decisions. Not just "remember what we talked about"—but facts, beliefs, patterns, and outcomes that shape how ODEI reasons about your world.</p>
+                            <div class="memory-card-impl">
+                                <span class="impl-label">Implementation:</span>
+                                <span class="impl-value">Neo4j Memory Atlas + History SQLite</span>
+                            </div>
                         </div>
                         
-                        <div class="diff-card">
-                            <div class="diff-header">
-                                <span class="diff-num">10</span>
-                                <h3>User Model</h3>
+                        <div class="memory-card">
+                            <div class="memory-card-header">
+                                <span class="memory-num">10</span>
+                                <h4>User Model</h4>
                             </div>
-                            <p class="text" style="margin-bottom: 0; font-size: 0.9rem;">
-                                Persistent representation of you—goals, preferences, constraints, communication style, decision patterns. Not a profile you fill out. A model that emerges from observation and explicit feedback. ODEI doesn't guess who you are. It learns.
-                            </p>
+                            <p class="memory-card-text">Persistent representation of you—goals, preferences, constraints, decision patterns. Not a profile you fill out. A model that emerges from observation and explicit feedback.</p>
+                            <div class="memory-card-impl">
+                                <span class="impl-label">Implementation:</span>
+                                <span class="impl-value">Human node, Context, Preferences graph</span>
+                            </div>
                         </div>
                         
-                        <div class="diff-card">
-                            <div class="diff-header">
-                                <span class="diff-num">11</span>
-                                <h3>Policy Update</h3>
+                        <div class="memory-card">
+                            <div class="memory-card-header">
+                                <span class="memory-num">11</span>
+                                <h4>Policy Update</h4>
                             </div>
-                            <p class="text" style="margin-bottom: 0; font-size: 0.9rem;">
-                                Outcomes change strategy, not just state. When you approve, deny, or override—ODEI doesn't just record the action. It updates the operating rules. Your corrections become versioned policy. The system gets better at being useful to you specifically.
-                            </p>
+                            <p class="memory-card-text">Outcomes change strategy, not just state. When you approve, deny, or override—ODEI updates the operating rules. Your corrections become versioned policy.</p>
+                            <div class="memory-card-impl">
+                                <span class="impl-label">Implementation:</span>
+                                <span class="impl-value">Insights/Patterns → future behavior</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="interactions-section" style="margin-top: 2.5rem;">
-                    <span class="section-label">THREE OWNERSHIP PRINCIPLES</span>
-                    <p class="text" style="opacity: 0.7; margin-top: 1rem;">
-                        Memory without ownership is surveillance. These principles ensure your memory remains your asset.
-                    </p>
+                <!-- Three Ownership Principles -->
+                <div class="memory-section ownership">
+                    <div class="memory-section-header">
+                        <span class="memory-badge ownership-badge">OWNERSHIP</span>
+                        <h3>Three Ownership Principles</h3>
+                        <p>Memory without ownership is surveillance. These principles ensure your memory remains your asset.</p>
+                    </div>
                     
-                    <div class="diff-grid" style="margin-top: 1.5rem;">
-                        <div class="diff-card">
-                            <div class="diff-header">
-                                <span class="diff-num">P1</span>
-                                <h3>Portable</h3>
+                    <div class="memory-cards principles">
+                        <div class="memory-card principle">
+                            <div class="memory-card-header">
+                                <span class="memory-num principle-num">P1</span>
+                                <h4>Portable</h4>
                             </div>
-                            <p class="text" style="margin-bottom: 0; font-size: 0.9rem;">
-                                Your memory is not locked to a model or vendor. Export anytime. Switch providers. Keep your accumulated context. The value you build stays with you, not with the platform.
-                            </p>
+                            <p class="memory-card-text">Your memory is not locked to a model or vendor. Export anytime. Switch providers. Keep your accumulated context. The value you build stays with you.</p>
                         </div>
                         
-                        <div class="diff-card">
-                            <div class="diff-header">
-                                <span class="diff-num">P2</span>
-                                <h3>Versioned</h3>
+                        <div class="memory-card principle">
+                            <div class="memory-card-header">
+                                <span class="memory-num principle-num">P2</span>
+                                <h4>Versioned</h4>
                             </div>
-                            <p class="text" style="margin-bottom: 0; font-size: 0.9rem;">
-                                Every change is tracked. Policies have versions. Facts have timestamps. If something goes wrong, roll back. If you want to understand why ODEI behaves a certain way, trace the history.
-                            </p>
+                            <p class="memory-card-text">Every change is tracked. Policies have versions. Facts have timestamps. If something goes wrong, roll back. Trace the history of any decision.</p>
                         </div>
                         
-                        <div class="diff-card">
-                            <div class="diff-header">
-                                <span class="diff-num">P3</span>
-                                <h3>Provenance</h3>
+                        <div class="memory-card principle">
+                            <div class="memory-card-header">
+                                <span class="memory-num principle-num">P3</span>
+                                <h4>Provenance</h4>
                             </div>
-                            <p class="text" style="margin-bottom: 0; font-size: 0.9rem;">
-                                Every fact has a source. Every belief has evidence. Every policy has an origin. No "I just know"—full traceability from memory to decision to action. Audit everything.
-                            </p>
+                            <p class="memory-card-text">Every fact has a source. Every belief has evidence. Every policy has an origin. No "I just know"—full traceability from memory to action.</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="diff-summary" style="margin-top: 2.5rem;">
-                    <span class="section-label">THE BOTTOM LINE</span>
-                    <p class="text" style="margin-top: 1rem; margin-bottom: 0; max-width: 600px; margin-left: auto; margin-right: auto;">
-                        Memory is what makes L5 possible. Without persistent memory, no user model. Without user model, no adaptation. Without adaptation, no symbiosis. Just another stateless assistant pretending to know you.
-                    </p>
+                <!-- Bottom Line -->
+                <div class="memory-bottomline">
+                    <div class="bottomline-content">
+                        <span class="bottomline-label">THE BOTTOM LINE</span>
+                        <p>Memory is what makes L5 possible. Without persistent memory, no user model. Without user model, no adaptation. Without adaptation, no symbiosis. Just another stateless assistant pretending to know you.</p>
+                    </div>
                 </div>
             </div>
             <span class="page-number">5</span>
@@ -5007,7 +5179,7 @@
                 <ul class="list">
                     <li><b>Encryption.</b> TLS in transit. AES-256 at rest for cloud data. End-to-end encryption for sensitive vaults.</li>
                     <li><b>Access control.</b> Principle of least privilege. Regular security audits.</li>
-                    <li><b>Incident response.</b> Report vulnerabilities to <a href="mailto:security@odei.ai" style="color: inherit;">security@odei.ai</a>.</li>
+                    <li><b>Incident response.</b> Report vulnerabilities to <a href="/cdn-cgi/l/email-protection#d4a7b1b7a1a6bda0ad94bbb0b1bdfab5bd" style="color: inherit;"><span class="__cf_email__" data-cfemail="493a2c2a3c3b203d3009262d2c20672820">[email&#160;protected]</span></a>.</li>
                 </ul>
 
                 <h3 class="chapter-heading">Data Retention</h3>
@@ -5029,8 +5201,8 @@
 
                 <h3 class="chapter-heading">Contact</h3>
                 <ul class="list">
-                    <li><b>Privacy inquiries:</b> <a href="mailto:privacy@odei.ai" style="color: inherit;">privacy@odei.ai</a></li>
-                    <li><b>Security issues:</b> <a href="mailto:security@odei.ai" style="color: inherit;">security@odei.ai</a></li>
+                    <li><b>Privacy inquiries:</b> <a href="/cdn-cgi/l/email-protection#2555574c5344465c654a41404c0b444c" style="color: inherit;"><span class="__cf_email__" data-cfemail="3040425946515349705f5455591e5159">[email&#160;protected]</span></a></li>
+                    <li><b>Security issues:</b> <a href="/cdn-cgi/l/email-protection#3744525442455e434e775853525e19565e" style="color: inherit;"><span class="__cf_email__" data-cfemail="4734222432352e333e072823222e69262e">[email&#160;protected]</span></a></li>
                 </ul>
             </div>
             <span class="page-number"></span>
@@ -5053,11 +5225,11 @@
                         @odei_ai
                     </a>
                     
-                    <a href="mailto:tony@odei.ai" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.5rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; text-decoration: none; color: #fff; font-size: 1rem; transition: all 0.2s ease;">
+                    <a href="/cdn-cgi/l/email-protection#87f3e8e9fec7e8e3e2eea9e6ee" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.5rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; text-decoration: none; color: #fff; font-size: 1rem; transition: all 0.2s ease;">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity: 0.7;">
                             <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
-                        tony@odei.ai
+                        <span class="__cf_email__" data-cfemail="097d66677049666d6c60276860">[email&#160;protected]</span>
                     </a>
                     
                     <a href="https://wa.me/36205368497" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.5rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; text-decoration: none; color: #fff; font-size: 1rem; transition: all 0.2s ease;">
@@ -5107,7 +5279,7 @@
 
     </div>
     
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         document.addEventListener('DOMContentLoaded', () => {
             const setAppHeight = () => {
                 const doc = document.documentElement;
