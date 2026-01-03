@@ -2032,6 +2032,98 @@
             opacity: 0.6;
         }
         
+        /* Sync Metric Styles */
+        .sync-box {
+            border-color: rgba(79, 209, 197, 0.3);
+        }
+        
+        .sync-components {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .sync-component {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1rem 0.5rem;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .component-symbol {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #4FD1C5;
+            margin-bottom: 0.5rem;
+        }
+        
+        .component-name {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+        
+        .component-desc {
+            font-size: 0.65rem;
+            opacity: 0.6;
+        }
+        
+        .formula-note {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            font-style: italic;
+            margin: 1rem 0;
+            padding-left: 1rem;
+            border-left: 2px solid rgba(79, 209, 197, 0.3);
+        }
+        
+        .sync-distinction {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .distinction-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .distinction-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .distinction-type {
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+        
+        .distinction-desc {
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 600px) {
+            .sync-components {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .sync-distinction {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         /* Definition Section */
         .definition-section {
             margin-bottom: 2rem;
@@ -3559,6 +3651,61 @@
                             <span class="synergy-example-label">Example:</span> Human alone: 4h. AI alone: 3h. Together: 1h. S &gt; 0 — symbiosis exists.
                         </div>
                         <cite class="formula-cite">Riedl, C. &amp; Weidmann, B. (2025). Quantifying Human-AI Synergy. Bayesian IRT for collaborative ability measurement.</cite>
+                    </div>
+                </div>
+
+                <!-- Sync Formula -->
+                <div class="synergy-section">
+                    <div class="synergy-header">
+                        <span class="section-label">05 // SYNC METRIC</span>
+                        <h3>Context Integrity</h3>
+                    </div>
+                    <div class="synergy-formula-box sync-box">
+                        <div class="formula">
+                            σ = (C · F · Q · K)<sup>1/4</sup>
+                        </div>
+                        <div class="formula-meta">
+                            <span>FIG.02 // SYNC_MODEL</span>
+                            <span class="verified">[ENGINEERING]</span>
+                        </div>
+                        <p class="formula-desc">
+                            Sync (σ) measures how observable your current world is to ODEI right now. Without visibility, there is no governance. σ = 1.0 means full, fresh, consistent context. σ = 0.0 means blindness — any recommendation is noise.
+                        </p>
+                        <div class="sync-components">
+                            <div class="sync-component">
+                                <span class="component-symbol">C</span>
+                                <span class="component-name">Coverage</span>
+                                <span class="component-desc">Critical sources connected</span>
+                            </div>
+                            <div class="sync-component">
+                                <span class="component-symbol">F</span>
+                                <span class="component-name">Freshness</span>
+                                <span class="component-desc">Data age vs decay rate (τ)</span>
+                            </div>
+                            <div class="sync-component">
+                                <span class="component-symbol">Q</span>
+                                <span class="component-name">Quality</span>
+                                <span class="component-desc">Context completeness</span>
+                            </div>
+                            <div class="sync-component">
+                                <span class="component-symbol">K</span>
+                                <span class="component-name">Consistency</span>
+                                <span class="component-desc">No conflicts or errors</span>
+                            </div>
+                        </div>
+                        <p class="formula-note">Geometric mean ensures one blind spot cuts the entire score. This is intentional — partial observability produces unreliable governance.</p>
+                        <div class="sync-distinction">
+                            <div class="distinction-item">
+                                <span class="distinction-label">Sync (σ)</span>
+                                <span class="distinction-type">process metric</span>
+                                <span class="distinction-desc">"AI sees everything" — real-time</span>
+                            </div>
+                            <div class="distinction-item">
+                                <span class="distinction-label">Synergy (S)</span>
+                                <span class="distinction-type">outcome metric</span>
+                                <span class="distinction-desc">"We outperform best agent" — weekly</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
