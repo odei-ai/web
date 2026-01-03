@@ -2191,6 +2191,66 @@
             font-style: italic;
         }
         
+        .roadmap-phases {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .roadmap-phases .property-card:first-child {
+            grid-column: 1 / -1;
+        }
+        
+        .roadmap-list {
+            list-style: none;
+            padding: 0;
+            margin: 0.75rem 0 0 0;
+        }
+        
+        .roadmap-list li {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            padding: 0.25rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+        
+        .roadmap-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            opacity: 0.5;
+        }
+        
+        .property-card.done {
+            border-color: rgba(79, 209, 197, 0.3);
+            background: rgba(79, 209, 197, 0.05);
+        }
+        
+        .property-card.done .prop-num {
+            color: #4FD1C5;
+            opacity: 1;
+        }
+        
+        .property-card.done h4::after {
+            content: " ✓";
+            color: #4FD1C5;
+            font-weight: normal;
+        }
+        
+        @media (max-width: 900px) {
+            .roadmap-phases {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .roadmap-phases {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         @media (max-width: 900px) {
             .properties-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -2724,7 +2784,7 @@
                             </ul>
                             <ul class="toc-list">
                                 <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Hinton Hypothesis</span></a></li>
-                                <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Architecture</span></a></li>
+                                <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Roadmap</span></a></li>
                                 <li><a href="#" data-page="7" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Memory</span></a></li>
                                 <li><a href="#" data-page="8" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Agency Levels</span></a></li>
                             </ul>
@@ -3739,14 +3799,76 @@
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
                 </div>
-                <h2 class="chapter-heading">Architecture</h2>
+                <h2 class="chapter-heading">Roadmap</h2>
                 
                 <p class="arch-intro">
-                    Three planes work in concert: <b>Memory</b> holds the world model, <b>Control</b> makes decisions, <b>Execution</b> changes reality. Below are the 12 properties that make ODEI an agent, not a tool.
+                    Building L5 Symbiotic AI is a multi-phase journey. Each phase builds on the previous, creating the infrastructure for true human-AI partnership.
                 </p>
 
+                <div class="properties-section" style="margin-bottom: 3rem;">
+                    <span class="section-label">DEVELOPMENT PHASES</span>
+                    <div class="roadmap-phases">
+                        <div class="property-card done">
+                            <span class="prop-num">✓</span>
+                            <h4>Foundation</h4>
+                            <p class="prop-def">The architectural substrate — complete</p>
+                            <ul class="roadmap-list">
+                                <li>7-layer Memory Atlas with 40+ node types</li>
+                                <li>Constitutional framework — values, principles, guardrails</li>
+                                <li>Provenance system — every write is traceable</li>
+                                <li>Guardian preflight validation</li>
+                                <li>Hybrid search — semantic + structural + temporal</li>
+                            </ul>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">01</span>
+                            <h4>L5 Core Infrastructure</h4>
+                            <p class="prop-def">The four systems that enable autonomous partnership</p>
+                            <ul class="roadmap-list">
+                                <li>Autonomous task lifecycle management</li>
+                                <li>Proactive AI initiation — AI pings you first</li>
+                                <li>Continuous learning from feedback</li>
+                                <li>Drift detection — intent vs reality monitoring</li>
+                            </ul>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">02</span>
+                            <h4>Memory Enhancements</h4>
+                            <p class="prop-def">Deeper knowledge representation</p>
+                            <ul class="roadmap-list">
+                                <li>Epistemic separation — fact vs inference vs opinion</li>
+                                <li>Entity resolution across sessions</li>
+                                <li>Confidence tracking and decay</li>
+                            </ul>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">03</span>
+                            <h4>Agent Ecosystem</h4>
+                            <p class="prop-def">Specialized agents under unified governance</p>
+                            <ul class="roadmap-list">
+                                <li>Domain-specialized agents</li>
+                                <li>Cross-agent coordination protocol</li>
+                                <li>Constitutional governance across all agents</li>
+                            </ul>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">04</span>
+                            <h4>Public Release</h4>
+                            <p class="prop-def">Production-ready symbiotic AI</p>
+                            <ul class="roadmap-list">
+                                <li>Security audit</li>
+                                <li>Local-first deployment</li>
+                                <li>Open documentation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="properties-section">
-                    <span class="section-label">12 PROPERTIES OF AI AGENCY</span>
+                    <span class="section-label">ARCHITECTURE: 12 PROPERTIES OF AI AGENCY</span>
+                    <p class="arch-intro" style="margin-top: 1rem;">
+                        Three planes work in concert: <b>Memory</b> holds the world model, <b>Control</b> makes decisions, <b>Execution</b> changes reality. Below are the 12 properties that make ODEI an agent, not a tool.
+                    </p>
                     <div class="properties-grid">
                         <div class="property-card">
                             <span class="prop-num">01</span>
@@ -4187,13 +4309,13 @@
             <span class="page-number"></span>
         </section>
 
-        <!-- Talk Page -->
+        <!-- Connect Page -->
         <section class="page" data-page="10">
             <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
                 </div>
-                <h2 class="chapter-heading" style="margin-bottom: 0.5rem;">Want to talk?</h2>
+                <h2 class="chapter-heading" style="margin-bottom: 0.5rem;">Let's connect</h2>
                 <p class="text" style="opacity: 0.7; margin-bottom: 1.5rem; max-width: 400px; line-height: 1.6;">ODEI is in active development. If you have questions, ideas, or just want to discuss the future of human-AI symbiosis — reach out.</p>
                 
                 <div style="display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 280px;">
@@ -4253,7 +4375,7 @@
                     </svg>
                 </a>
             </div>
-            <p class="copyright"><a href="#" class="home-link" style="text-decoration:none; color:inherit; cursor:pointer;">ODEI</a> · MMXXVI · <a href="#privacy" style="text-decoration:none; color:inherit;">Privacy</a> · <a href="#talk" style="text-decoration:none; color:inherit;">Talk</a></p>
+            <p class="copyright"><a href="#" class="home-link" style="text-decoration:none; color:inherit; cursor:pointer;">ODEI</a> · MMXXVI · <a href="#privacy" style="text-decoration:none; color:inherit;">Privacy</a> · <a href="#connect" style="text-decoration:none; color:inherit;">Connect</a></p>
         </div>
 
     </div>
@@ -4415,11 +4537,11 @@
                 3: 'difference',
                 4: 'science',
                 5: 'hinton',
-                6: 'architecture',
+                6: 'roadmap',
                 7: 'memory',
                 8: 'levels',
                 9: 'privacy',
-                10: 'talk'
+                10: 'connect'
             };
             
             const hashToPage = Object.fromEntries(
@@ -4519,7 +4641,7 @@
                 }
             });
 
-            // Handle hash changes from footer links (#privacy, #talk)
+            // Handle hash changes from footer links (#privacy, #connect)
             window.addEventListener('hashchange', () => {
                 const pageIndex = getPageFromHash();
                 if (pageIndex !== currentPage) {
