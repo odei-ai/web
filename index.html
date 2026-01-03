@@ -565,13 +565,13 @@
             transform: translateY(-50%) scale(1) !important;
         }
 
-        .page[data-page="7"] .list li {
+        .page[data-page="6"] .list li {
             padding: 0.75rem 0 0.75rem 1.5rem;
             font-size: 0.95rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .page[data-page="7"] .chapter-heading {
+        .page[data-page="6"] .chapter-heading {
             margin-top: 2rem;
             margin-bottom: 1rem;
             color: var(--accent);
@@ -744,6 +744,216 @@
             text-align: center;
         }
         
+        /* Assistants Comparison Section */
+        .assistants-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .assistants-heading {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .tier-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+            margin-bottom: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        
+        .tier-label:first-of-type {
+            margin-top: 0;
+        }
+        
+        .assistants-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .assistant-card {
+            padding: 1rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .assistant-card.l4-card {
+            background: rgba(100,200,255,0.05);
+            border-color: rgba(100,200,255,0.2);
+        }
+        
+        .assistant-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        
+        .assistant-name {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .assistant-level {
+            font-size: 0.65rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+        
+        .assistant-level.l23 {
+            background: rgba(244, 201, 93, 0.2);
+            color: #F4C95D;
+        }
+        
+        .assistant-level.l4 {
+            background: rgba(100, 200, 255, 0.2);
+            color: #64C8FF;
+        }
+        
+        .assistant-desc {
+            font-size: 0.7rem;
+            line-height: 1.5;
+            opacity: 0.7;
+            margin: 0;
+        }
+        
+        .l4-vs-l5 {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .l4-vs-l5 h4 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .l4-intro {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin: 0 0 1rem 0;
+        }
+        
+        .diff-table {
+            display: grid;
+            gap: 0;
+        }
+        
+        .diff-row {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.75rem;
+        }
+        
+        .diff-row.diff-header {
+            font-weight: 500;
+            opacity: 0.5;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .diff-row:last-child {
+            border-bottom: none;
+        }
+        
+        .diff-row span:first-child {
+            opacity: 0.7;
+        }
+        
+        .diff-row span:nth-child(2) {
+            opacity: 0.5;
+        }
+        
+        .diff-row span:nth-child(3) {
+            color: var(--accent);
+        }
+        
+        .why-not-l5 {
+            margin-top: 2rem;
+            background: rgba(0,0,0,0.3);
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent);
+        }
+        
+        .why-not-l5 h4 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0 0 1rem 0;
+            color: var(--accent);
+        }
+        
+        .barriers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .barrier-item {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .barrier-icon {
+            font-size: 1.2rem;
+            opacity: 0.5;
+            width: 1.5rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        
+        .barrier-content b {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .barrier-content p {
+            font-size: 0.65rem;
+            line-height: 1.5;
+            opacity: 0.7;
+            margin: 0;
+        }
+        
+        .why-not-conclusion {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            margin: 1rem 0 0 0;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.85;
+        }
+        
+        @media (max-width: 900px) {
+            .assistants-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .barriers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .diff-row {
+                font-size: 0.65rem;
+                gap: 0.5rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav-arrows { display: none; }
             
@@ -877,7 +1087,544 @@
             margin: 0 auto;
         }
         
-        /* Formula Box */
+        /* Compare Section - New WOW Design */
+        .compare-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        .compare-card {
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.01);
+            overflow: hidden;
+        }
+        
+        .compare-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .compare-num {
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            opacity: 0.4;
+        }
+        
+        .compare-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--accent);
+        }
+        
+        .compare-question {
+            font-size: 0.75rem;
+            opacity: 0.5;
+            margin-left: auto;
+            font-style: italic;
+        }
+        
+        .compare-body {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            min-height: 200px;
+        }
+        
+        .compare-side {
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .compare-side.them {
+            background: rgba(100,100,100,0.05);
+            border-right: 1px solid var(--border);
+        }
+        
+        .compare-side.us {
+            background: rgba(75,200,180,0.03);
+        }
+        
+        .side-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+        }
+        
+        .compare-side.them .side-label {
+            opacity: 0.4;
+        }
+        
+        .compare-side.us .side-label {
+            color: var(--accent);
+        }
+        
+        .label-icon {
+            font-size: 0.5rem;
+        }
+        
+        .side-text {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .compare-side.them .side-text {
+            opacity: 0.6;
+        }
+        
+        .compare-side.us .side-text {
+            opacity: 0.85;
+        }
+        
+        .compare-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            background: linear-gradient(180deg, rgba(75,200,180,0.1), rgba(75,200,180,0.05));
+        }
+        
+        .divider-arrow {
+            font-size: 1.5rem;
+            color: var(--accent);
+            opacity: 0.6;
+        }
+        
+        .compare-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: rgba(0,0,0,0.2);
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
+        }
+        
+        .bottom-them {
+            opacity: 0.4;
+            text-decoration: line-through;
+        }
+        
+        .bottom-arrow {
+            color: var(--accent);
+            opacity: 0.6;
+        }
+        
+        .bottom-us {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        /* Dead UI - Assistants Side */
+        .side-ui {
+            margin-top: auto;
+        }
+        
+        .dead-ui {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 0.75rem;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+        }
+        
+        .dead-prompt {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.4;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .dead-cursor {
+            animation: blink 1s infinite;
+            color: #666;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .dead-text {
+            opacity: 0.5;
+        }
+        
+        .dead-status {
+            text-align: center;
+            opacity: 0.3;
+            margin-top: 0.5rem;
+            font-size: 0.6rem;
+        }
+        
+        .dead-output {
+            opacity: 0.5;
+        }
+        
+        .dead-response {
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.02);
+            margin-bottom: 0.5rem;
+        }
+        
+        .dead-no-trace {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.4;
+            color: #a66;
+        }
+        
+        .no-trace-icon {
+            font-size: 0.8rem;
+        }
+        
+        .dead-text-block {
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.02);
+            margin-bottom: 0.5rem;
+            opacity: 0.6;
+        }
+        
+        .dead-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .dead-action {
+            padding: 0.25rem 0.5rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.5;
+        }
+        
+        .dead-you {
+            margin-top: 0.5rem;
+            opacity: 0.3;
+            font-size: 0.6rem;
+            color: #a66;
+        }
+        
+        .dead-memory {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .memory-slot {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.4;
+        }
+        
+        .slot-x {
+            color: #a55;
+        }
+        
+        .dead-reset {
+            margin-top: 0.5rem;
+            text-align: center;
+            opacity: 0.3;
+            color: #a66;
+        }
+        
+        .dead-platform {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .platform-line {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.4;
+        }
+        
+        .lock-icon {
+            font-size: 0.7rem;
+        }
+        
+        .dead-goals {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .goal-line {
+            opacity: 0.3;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .forgotten {
+            color: #a55;
+            font-size: 0.6rem;
+        }
+        
+        /* Live UI - ODEI Side */
+        .live-ui {
+            background: rgba(75,200,180,0.05);
+            border: 1px solid rgba(75,200,180,0.2);
+            padding: 0.75rem;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+        }
+        
+        .live-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .live-pill {
+            padding: 0.25rem 0.5rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.5;
+        }
+        
+        .live-pill.active {
+            background: rgba(75,200,180,0.15);
+            border-color: var(--accent);
+            color: var(--accent);
+            opacity: 1;
+        }
+        
+        .live-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .live-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .live-arrow {
+            color: var(--accent);
+            opacity: 0.7;
+        }
+        
+        .live-tag {
+            font-size: 0.55rem;
+            padding: 0.15rem 0.4rem;
+            background: rgba(75,200,180,0.2);
+            color: var(--accent);
+            margin-left: auto;
+        }
+        
+        .live-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.75rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            width: fit-content;
+            margin-bottom: 0.5rem;
+        }
+        
+        .btn-arrow {
+            font-size: 0.5rem;
+        }
+        
+        .live-trace, .live-task, .live-update {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .trace-line, .task-line, .update-line, .drift-line {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .trace-key {
+            opacity: 0.5;
+            min-width: 55px;
+        }
+        
+        .live-pipeline {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+        
+        .pipe-stage {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            opacity: 0.4;
+        }
+        
+        .pipe-stage.active {
+            opacity: 1;
+            color: var(--accent);
+        }
+        
+        .pipe-stage.done {
+            opacity: 0.7;
+            color: #5a5;
+        }
+        
+        .pipe-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+        
+        .pipe-connector {
+            width: 20px;
+            height: 1px;
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .live-feedback {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feedback-btn {
+            padding: 0.25rem 0.5rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.6;
+        }
+        
+        .feedback-btn.deny { border-color: #a55; color: #a55; }
+        .feedback-btn.override { border-color: #aa5; color: #aa5; }
+        .feedback-btn.regret { border-color: #5aa; color: #5aa; }
+        
+        .update-line.highlight {
+            color: var(--accent);
+        }
+        
+        .pending-badge {
+            font-size: 0.55rem;
+            padding: 0.1rem 0.3rem;
+            background: rgba(75,200,180,0.2);
+            margin-left: 0.5rem;
+        }
+        
+        .live-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .control-row {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .control-label {
+            opacity: 0.5;
+        }
+        
+        .control-value.available {
+            color: var(--accent);
+        }
+        
+        .live-drift {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .drift-header {
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+        
+        .drift-line.alert {
+            color: #d85;
+        }
+        
+        .drift-value {
+            font-weight: 500;
+        }
+        
+        /* Summary Strip */
+        .summary-strip {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.5rem;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border);
+        }
+        
+        .strip-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            text-align: center;
+        }
+        
+        .strip-them {
+            opacity: 0.4;
+            text-decoration: line-through;
+        }
+        
+        .strip-arrow {
+            color: var(--accent);
+            opacity: 0.5;
+        }
+        
+        .strip-us {
+            color: var(--accent);
+        }
+        
+        @media (max-width: 900px) {
+            .compare-body {
+                grid-template-columns: 1fr;
+            }
+            
+            .compare-side.them {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+            
+            .compare-divider {
+                width: 100%;
+                height: 40px;
+            }
+            
+            .compare-question {
+                display: none;
+            }
+            
+            .summary-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
         /* Comparison Section */
         .comparison-section {
             margin: 3rem 0;
@@ -1582,152 +2329,6 @@
             }
         }
 
-        /* ========================================
-           DIFFERENCE PAGE STYLES
-           ======================================== */
-        
-        .difference-page {
-            padding-bottom: 4rem;
-        }
-        
-        .difference-page .content.wide {
-            max-width: 950px;
-        }
-        
-        .difference-page .chapter-heading {
-            text-align: center;
-        }
-        
-        .difference-page .text {
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .diff-intro {
-            opacity: 0.7;
-            max-width: 600px;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
-        
-        .diff-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            margin: 2.5rem 0;
-        }
-        
-        .diff-card {
-            border: 1px solid var(--border);
-            padding: 2rem;
-            background: rgba(255,255,255,0.01);
-        }
-        
-        .diff-header {
-            margin-bottom: 1.25rem;
-        }
-        
-        .diff-num {
-            font-size: 0.7rem;
-            opacity: 0.4;
-        }
-        
-        .diff-card h3 {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-top: 0.25rem;
-        }
-        
-        .diff-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-        
-        .diff-label {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0.4;
-            display: block;
-            margin-bottom: 0.75rem;
-        }
-        
-        .diff-them p,
-        .diff-us p {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            opacity: 0.85;
-        }
-        
-        .diff-them {
-            opacity: 0.5;
-        }
-        
-        .diff-us {
-            border-left: 1px solid var(--text);
-            padding-left: 1.5rem;
-        }
-        
-        .diff-summary {
-            margin-top: 2.5rem;
-            padding: 2rem;
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,0.02);
-            text-align: center;
-        }
-        
-        .diff-summary-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .diff-summary-item {
-            font-size: 0.85rem;
-        }
-        
-        .diff-summary-item .them {
-            opacity: 0.4;
-            text-decoration: line-through;
-        }
-        
-        .diff-summary-item .us {
-            opacity: 0.9;
-        }
-        
-        .diff-summary-item .arrow {
-            opacity: 0.3;
-            margin: 0 0.5rem;
-        }
-        
-        @media (max-width: 600px) {
-            .diff-row {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .diff-us {
-                border-left: none;
-                border-top: 1px solid var(--text);
-                padding-left: 0;
-                padding-top: 1.5rem;
-            }
-            
-            .diff-summary-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 900px) {
-            .diff-summary-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        
         /* ========================================
            SCIENCE PAGE STYLES
            ======================================== */
@@ -2898,13 +3499,12 @@
                             <ul class="toc-list">
                                 <li><a href="#" data-page="1" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Introduction</span></a></li>
                                 <li><a href="#" data-page="2" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">The Human API</span></a></li>
-                                <li><a href="#" data-page="3" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Assistants vs ODEI</span></a></li>
-                                <li><a href="#" data-page="4" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Roadmap</span></a></li>
+                                <li><a href="#" data-page="3" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Roadmap</span></a></li>
                             </ul>
                             <ul class="toc-list">
-                                <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Science</span></a></li>
-                                <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Memory</span></a></li>
-                                <li><a href="#" data-page="7" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Agency Levels</span></a></li>
+                                <li><a href="#" data-page="4" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Science</span></a></li>
+                                <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Memory</span></a></li>
+                                <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Agency Levels</span></a></li>
                             </ul>
                         </nav>
                     </div>
@@ -2946,201 +3546,338 @@
                     <p class="statement-sub">We don't build another assistant. We build the L5 Symbiotic layer that turns any model into your personal operating system.</p>
                 </div>
 
-                <!-- 5 Interaction Patterns -->
-                <div class="interactions-section">
-                    <span class="section-label">HOW ODEI WORKS</span>
-                    <div class="interactions-grid">
-                        
-                        <!-- 01 ODEI Proposes -->
-                        <div class="interaction-card">
-                            <div class="interaction-info">
-                                <div class="interaction-header">
-                                    <span class="interaction-num">01</span>
-                                    <h4>ODEI Proposes</h4>
-                                </div>
-                                <p class="interaction-desc">ODEI pings you first—only when it matters. Detects patterns, risks, opportunities. Reaches you in your channel. You decide what to act on.</p>
-                            </div>
-                            <div class="interaction-ui">
-                                <div class="ui-pills">
-                                    <span class="ui-pill active">Today</span>
-                                    <span class="ui-pill">Actions</span>
-                                    <span class="ui-pill">Alerts</span>
-                                </div>
-                                <div class="ui-drawer">
-                                    <div class="ui-drawer-line"><span class="ui-drawer-label">→</span> Review Q4 goals (drift detected)</div>
-                                    <div class="ui-drawer-line"><span class="ui-drawer-label">→</span> Follow up with Alex (3 days)</div>
-                                    <div class="ui-drawer-line"><span class="ui-drawer-label">→</span> Tax deadline approaching</div>
-                                </div>
-                            </div>
+                <!-- Comparison Cards -->
+                <div class="compare-section">
+                    
+                    <!-- 01 Initiative -->
+                    <div class="compare-card">
+                        <div class="compare-header">
+                            <span class="compare-num">01</span>
+                            <span class="compare-title">Initiative</span>
+                            <span class="compare-question">Who starts the conversation?</span>
                         </div>
-                        
-                        <!-- 02 ODEI Explains -->
-                        <div class="interaction-card">
-                            <div class="interaction-info">
-                                <div class="interaction-header">
-                                    <span class="interaction-num">02</span>
-                                    <h4>ODEI Explains</h4>
+                        <div class="compare-body">
+                            <div class="compare-side them">
+                                <div class="side-label">
+                                    <span class="label-icon">○</span>
+                                    <span>ASSISTANTS</span>
                                 </div>
-                                <p class="interaction-desc">Every action is explainable. No "trust me"—reproducible reasoning chain from memory to policy to result. One button reveals the full trace.</p>
-                            </div>
-                            <div class="interaction-ui">
-                                <div class="ui-button">Explain <span class="arrow">▼</span></div>
-                                <div class="ui-drawer">
-                                    <div class="ui-drawer-line"><span class="ui-drawer-label">Why:</span> Goal "Ship MVP" + 2 weeks left</div>
-                                    <div class="ui-drawer-line"><span class="ui-drawer-label">Memory:</span> You said "Alex owns design"</div>
-                                    <div class="ui-drawer-line"><span class="ui-drawer-label">Policy:</span> Notify if blocker > 48h</div>
+                                <p class="side-text">Wait for your prompt. No context until you provide it. Every conversation starts from zero. You must remember to ask.</p>
+                                <div class="side-ui dead-ui">
+                                    <div class="dead-prompt">
+                                        <span class="dead-cursor">▊</span>
+                                        <span class="dead-text">Message ChatGPT...</span>
+                                    </div>
+                                    <div class="dead-status">Waiting for input</div>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <!-- 03 ODEI Executes -->
-                        <div class="interaction-card">
-                            <div class="interaction-info">
-                                <div class="interaction-header">
-                                    <span class="interaction-num">03</span>
-                                    <h4>ODEI Executes</h4>
-                                </div>
-                                <p class="interaction-desc">Delegate outcomes, not micro-tasks. ODEI plans, executes, checks results. Acts within your boundaries—waits for verify when needed.</p>
+                            <div class="compare-divider">
+                                <span class="divider-arrow">→</span>
                             </div>
-                            <div class="interaction-ui">
-                                <div class="ui-progress">
-                                    <div class="ui-state done">
-                                        <span class="ui-dot"></span>
-                                        <span>Planned</span>
-                                    </div>
-                                    <span class="ui-arrow">→</span>
-                                    <div class="ui-state active">
-                                        <span class="ui-dot"></span>
-                                        <span>Executing</span>
-                                    </div>
-                                    <span class="ui-arrow">→</span>
-                                    <div class="ui-state">
-                                        <span class="ui-dot"></span>
-                                        <span>Pending verify</span>
-                                    </div>
-                                    <span class="ui-arrow">→</span>
-                                    <div class="ui-state">
-                                        <span class="ui-dot"></span>
-                                        <span>Done</span>
-                                    </div>
+                            <div class="compare-side us">
+                                <div class="side-label">
+                                    <span class="label-icon">●</span>
+                                    <span>ODEI</span>
                                 </div>
-                                <div class="ui-drawer">
-                                    <div class="ui-drawer-line"><span class="ui-drawer-label">Task:</span> Draft follow-up email to Alex</div>
-                                    <div class="ui-drawer-line"><span class="ui-drawer-label">Mode:</span> Supervised (verify before send)</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 04 ODEI Learns -->
-                        <div class="interaction-card">
-                            <div class="interaction-info">
-                                <div class="interaction-header">
-                                    <span class="interaction-num">04</span>
-                                    <h4>ODEI Learns</h4>
-                                </div>
-                                <p class="interaction-desc">Gets better at being you—behavior, not vibes. Every correction improves future proposals. Your feedback becomes versioned policy, only with your approval.</p>
-                            </div>
-                            <div class="interaction-ui">
-                                <div class="ui-feedback">
-                                    <span class="ui-feedback-btn deny">Deny</span>
-                                    <span class="ui-feedback-btn override">Override</span>
-                                    <span class="ui-feedback-btn regret">Regret</span>
-                                </div>
-                                <div class="ui-drawer">
-                                    <div class="ui-drawer-line"><span class="ui-drawer-label">Signal:</span> "Don't ping me about Alex"</div>
-                                    <div class="ui-drawer-line"><span class="ui-drawer-label">Update:</span> Policy v12 → v13 (pending)</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 05 ODEI Governs -->
-                        <div class="interaction-card">
-                            <div class="interaction-info">
-                                <div class="interaction-header">
-                                    <span class="interaction-num">05</span>
-                                    <h4>ODEI Governs</h4>
-                                </div>
-                                <p class="interaction-desc">You don't get locked in. Your memory and operating rules are your asset—portable, versioned, rollbackable. Mode, authority, constraints are always yours.</p>
-                            </div>
-                            <div class="interaction-ui">
-                                <div class="ui-controls">
-                                    <div class="ui-control-item">
-                                        <span class="ui-control-label">Mode</span>
-                                        <span class="ui-control-value">Supervised</span>
+                                <p class="side-text">Pings you first—only when it matters. Detects patterns, risks, opportunities. Reaches you in your channel. You decide what to act on.</p>
+                                <div class="side-ui live-ui">
+                                    <div class="live-header">
+                                        <span class="live-pill active">Today</span>
+                                        <span class="live-pill">Actions</span>
+                                        <span class="live-pill">Alerts</span>
                                     </div>
-                                    <div class="ui-control-item">
-                                        <span class="ui-control-label">Authority</span>
-                                        <span class="ui-control-value">Read + Draft</span>
-                                    </div>
-                                    <div class="ui-control-item">
-                                        <span class="ui-control-label">Constraints</span>
-                                        <span class="ui-control-value">No payments</span>
-                                    </div>
-                                    <div class="ui-control-item">
-                                        <span class="ui-control-label">Changed</span>
-                                        <span class="ui-control-value">2 days ago</span>
+                                    <div class="live-items">
+                                        <div class="live-item"><span class="live-arrow">→</span> Review Q4 goals <span class="live-tag">drift detected</span></div>
+                                        <div class="live-item"><span class="live-arrow">→</span> Follow up with Alex <span class="live-tag">3 days</span></div>
+                                        <div class="live-item"><span class="live-arrow">→</span> Tax deadline approaching</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- 06 ODEI Tracks -->
-                        <div class="interaction-card">
-                            <div class="interaction-info">
-                                <div class="interaction-header">
-                                    <span class="interaction-num">06</span>
-                                    <h4>ODEI Tracks</h4>
-                                </div>
-                                <p class="interaction-desc">Your goals don't silently decay. ODEI keeps intent, priorities, and reality aligned—flags drift early before it becomes failure.</p>
-                            </div>
-                            <div class="interaction-ui">
-                                <div class="ui-drift-report">
-                                    <div class="ui-drift-header">Weekly Drift Report</div>
-                                    <div class="ui-drift-line">
-                                        <span class="ui-drift-label">Goal:</span>
-                                        <span class="ui-drift-value">Ship MVP by Jan 15</span>
-                                    </div>
-                                    <div class="ui-drift-line">
-                                        <span class="ui-drift-label">Evidence:</span>
-                                        <span class="ui-drift-value">3 blockers, 0 resolved this week</span>
-                                    </div>
-                                    <div class="ui-drift-line drift-alert">
-                                        <span class="ui-drift-label">Drift:</span>
-                                        <span class="ui-drift-value">−4 days vs plan</span>
-                                    </div>
-                                    <div class="ui-drift-line">
-                                        <span class="ui-drift-label">Action:</span>
-                                        <span class="ui-drift-value">Escalate to Alex today</span>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="compare-bottom">
+                            <span class="bottom-them">Reactive</span>
+                            <span class="bottom-arrow">→</span>
+                            <span class="bottom-us">Proactive</span>
                         </div>
-                        
                     </div>
+                    
+                    <!-- 02 Transparency -->
+                    <div class="compare-card">
+                        <div class="compare-header">
+                            <span class="compare-num">02</span>
+                            <span class="compare-title">Transparency</span>
+                            <span class="compare-question">Why did it do that?</span>
+                        </div>
+                        <div class="compare-body">
+                            <div class="compare-side them">
+                                <div class="side-label">
+                                    <span class="label-icon">○</span>
+                                    <span>ASSISTANTS</span>
+                                </div>
+                                <p class="side-text">"Trust me." No reasoning trace. Can't audit why it said what it said. Black box outputs you can't verify or improve.</p>
+                                <div class="side-ui dead-ui">
+                                    <div class="dead-output">
+                                        <div class="dead-response">Here's my suggestion...</div>
+                                        <div class="dead-no-trace">
+                                            <span class="no-trace-icon">?</span>
+                                            <span>No reasoning available</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="compare-divider">
+                                <span class="divider-arrow">→</span>
+                            </div>
+                            <div class="compare-side us">
+                                <div class="side-label">
+                                    <span class="label-icon">●</span>
+                                    <span>ODEI</span>
+                                </div>
+                                <p class="side-text">Every action is explainable. Reproducible reasoning chain from memory to policy to result. One button reveals the full trace.</p>
+                                <div class="side-ui live-ui">
+                                    <div class="live-button">Explain <span class="btn-arrow">▼</span></div>
+                                    <div class="live-trace">
+                                        <div class="trace-line"><span class="trace-key">Why:</span> Goal "Ship MVP" + 2 weeks left</div>
+                                        <div class="trace-line"><span class="trace-key">Memory:</span> You said "Alex owns design"</div>
+                                        <div class="trace-line"><span class="trace-key">Policy:</span> Notify if blocker > 48h</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="compare-bottom">
+                            <span class="bottom-them">Black box</span>
+                            <span class="bottom-arrow">→</span>
+                            <span class="bottom-us">Explainable</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 03 Execution -->
+                    <div class="compare-card">
+                        <div class="compare-header">
+                            <span class="compare-num">03</span>
+                            <span class="compare-title">Execution</span>
+                            <span class="compare-question">What does it actually do?</span>
+                        </div>
+                        <div class="compare-body">
+                            <div class="compare-side them">
+                                <div class="side-label">
+                                    <span class="label-icon">○</span>
+                                    <span>ASSISTANTS</span>
+                                </div>
+                                <p class="side-text">Generates text. You copy, paste, send, check. Micro-tasks, not outcomes. The work stays with you.</p>
+                                <div class="side-ui dead-ui">
+                                    <div class="dead-output">
+                                        <div class="dead-text-block">Here's a draft email you could send...</div>
+                                        <div class="dead-actions">
+                                            <span class="dead-action">Copy</span>
+                                            <span class="dead-action">Paste</span>
+                                            <span class="dead-action">Send</span>
+                                            <span class="dead-action">Check</span>
+                                        </div>
+                                        <div class="dead-you">← You do this</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="compare-divider">
+                                <span class="divider-arrow">→</span>
+                            </div>
+                            <div class="compare-side us">
+                                <div class="side-label">
+                                    <span class="label-icon">●</span>
+                                    <span>ODEI</span>
+                                </div>
+                                <p class="side-text">Delegates outcomes, not micro-tasks. Plans, executes, checks results. Acts within your boundaries—waits for verify when needed.</p>
+                                <div class="side-ui live-ui">
+                                    <div class="live-pipeline">
+                                        <div class="pipe-stage done"><span class="pipe-dot"></span><span>Planned</span></div>
+                                        <div class="pipe-connector"></div>
+                                        <div class="pipe-stage active"><span class="pipe-dot"></span><span>Executing</span></div>
+                                        <div class="pipe-connector"></div>
+                                        <div class="pipe-stage"><span class="pipe-dot"></span><span>Verify</span></div>
+                                        <div class="pipe-connector"></div>
+                                        <div class="pipe-stage"><span class="pipe-dot"></span><span>Done</span></div>
+                                    </div>
+                                    <div class="live-task">
+                                        <div class="task-line"><span class="trace-key">Task:</span> Send follow-up to Alex</div>
+                                        <div class="task-line"><span class="trace-key">Mode:</span> Supervised</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="compare-bottom">
+                            <span class="bottom-them">Text generator</span>
+                            <span class="bottom-arrow">→</span>
+                            <span class="bottom-us">Executor</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 04 Adaptation -->
+                    <div class="compare-card">
+                        <div class="compare-header">
+                            <span class="compare-num">04</span>
+                            <span class="compare-title">Adaptation</span>
+                            <span class="compare-question">Does it get better at being you?</span>
+                        </div>
+                        <div class="compare-body">
+                            <div class="compare-side them">
+                                <div class="side-label">
+                                    <span class="label-icon">○</span>
+                                    <span>ASSISTANTS</span>
+                                </div>
+                                <p class="side-text">Doesn't learn from you. Same model for everyone. Your corrections vanish. Next session, same mistakes.</p>
+                                <div class="side-ui dead-ui">
+                                    <div class="dead-memory">
+                                        <div class="memory-slot empty"><span class="slot-x">✗</span> No persistent memory</div>
+                                        <div class="memory-slot empty"><span class="slot-x">✗</span> No policy learning</div>
+                                        <div class="memory-slot empty"><span class="slot-x">✗</span> No behavior update</div>
+                                    </div>
+                                    <div class="dead-reset">Session ends → Reset</div>
+                                </div>
+                            </div>
+                            <div class="compare-divider">
+                                <span class="divider-arrow">→</span>
+                            </div>
+                            <div class="compare-side us">
+                                <div class="side-label">
+                                    <span class="label-icon">●</span>
+                                    <span>ODEI</span>
+                                </div>
+                                <p class="side-text">Gets better at being you. Every correction becomes versioned policy. Behavior evolves. Only with your approval.</p>
+                                <div class="side-ui live-ui">
+                                    <div class="live-feedback">
+                                        <span class="feedback-btn deny">Deny</span>
+                                        <span class="feedback-btn override">Override</span>
+                                        <span class="feedback-btn regret">Regret</span>
+                                    </div>
+                                    <div class="live-update">
+                                        <div class="update-line"><span class="trace-key">Signal:</span> "Don't ping me about Alex"</div>
+                                        <div class="update-line highlight"><span class="trace-key">Update:</span> Policy v12 → v13 <span class="pending-badge">pending</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="compare-bottom">
+                            <span class="bottom-them">Static</span>
+                            <span class="bottom-arrow">→</span>
+                            <span class="bottom-us">Co-evolving</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 05 Control -->
+                    <div class="compare-card">
+                        <div class="compare-header">
+                            <span class="compare-num">05</span>
+                            <span class="compare-title">Control</span>
+                            <span class="compare-question">Whose system is it?</span>
+                        </div>
+                        <div class="compare-body">
+                            <div class="compare-side them">
+                                <div class="side-label">
+                                    <span class="label-icon">○</span>
+                                    <span>ASSISTANTS</span>
+                                </div>
+                                <p class="side-text">Their rules. Their memory. Their platform. You're a guest in someone else's system. Data portability? Good luck.</p>
+                                <div class="side-ui dead-ui">
+                                    <div class="dead-platform">
+                                        <div class="platform-line"><span class="lock-icon">🔒</span> Memory: Platform-controlled</div>
+                                        <div class="platform-line"><span class="lock-icon">🔒</span> Rules: Platform-defined</div>
+                                        <div class="platform-line"><span class="lock-icon">🔒</span> Export: Limited/None</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="compare-divider">
+                                <span class="divider-arrow">→</span>
+                            </div>
+                            <div class="compare-side us">
+                                <div class="side-label">
+                                    <span class="label-icon">●</span>
+                                    <span>ODEI</span>
+                                </div>
+                                <p class="side-text">Your memory. Your policies. Portable, versioned, rollbackable. Switch models anytime. You own everything.</p>
+                                <div class="side-ui live-ui">
+                                    <div class="live-controls">
+                                        <div class="control-row">
+                                            <span class="control-label">Mode</span>
+                                            <span class="control-value">Supervised</span>
+                                        </div>
+                                        <div class="control-row">
+                                            <span class="control-label">Authority</span>
+                                            <span class="control-value">L2 (verify before act)</span>
+                                        </div>
+                                        <div class="control-row">
+                                            <span class="control-label">Export</span>
+                                            <span class="control-value available">Full JSON / Portable</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="compare-bottom">
+                            <span class="bottom-them">Their platform</span>
+                            <span class="bottom-arrow">→</span>
+                            <span class="bottom-us">Your system</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 06 Continuity -->
+                    <div class="compare-card">
+                        <div class="compare-header">
+                            <span class="compare-num">06</span>
+                            <span class="compare-title">Continuity</span>
+                            <span class="compare-question">Does it track your goals?</span>
+                        </div>
+                        <div class="compare-body">
+                            <div class="compare-side them">
+                                <div class="side-label">
+                                    <span class="label-icon">○</span>
+                                    <span>ASSISTANTS</span>
+                                </div>
+                                <p class="side-text">Doesn't know your goals. Can't track progress. You manage everything yourself. Drift happens silently.</p>
+                                <div class="side-ui dead-ui">
+                                    <div class="dead-goals">
+                                        <div class="goal-line faded">Q4 goals... <span class="forgotten">forgotten</span></div>
+                                        <div class="goal-line faded">Project deadline... <span class="forgotten">unknown</span></div>
+                                        <div class="goal-line faded">Commitments... <span class="forgotten">untracked</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="compare-divider">
+                                <span class="divider-arrow">→</span>
+                            </div>
+                            <div class="compare-side us">
+                                <div class="side-label">
+                                    <span class="label-icon">●</span>
+                                    <span>ODEI</span>
+                                </div>
+                                <p class="side-text">Your goals don't silently decay. Keeps intent, priorities, reality aligned. Flags drift early before it becomes failure.</p>
+                                <div class="side-ui live-ui">
+                                    <div class="live-drift">
+                                        <div class="drift-header">Weekly Drift Report</div>
+                                        <div class="drift-line"><span class="trace-key">Goal:</span> Ship MVP by Jan 15</div>
+                                        <div class="drift-line"><span class="trace-key">Evidence:</span> 3 blockers, 0 resolved</div>
+                                        <div class="drift-line alert"><span class="trace-key">Drift:</span> <span class="drift-value">−4 days vs plan</span></div>
+                                        <div class="drift-line"><span class="trace-key">Action:</span> Escalate today</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="compare-bottom">
+                            <span class="bottom-them">Stateless</span>
+                            <span class="bottom-arrow">→</span>
+                            <span class="bottom-us">Continuous</span>
+                        </div>
+                    </div>
+                    
                 </div>
 
-                <!-- How It Works -->
-                <div class="how-section">
-                    <span class="section-label">HOW IT WORKS</span>
-                    <div class="how-flow">
-                        <span class="how-step">Memory</span>
-                        <span class="how-arrow">→</span>
-                        <span class="how-step">Policy</span>
-                        <span class="how-arrow">→</span>
-                        <span class="how-step">Execute</span>
-                        <span class="how-arrow">→</span>
-                        <span class="how-step">Receipt</span>
-                        <span class="how-arrow">→</span>
-                        <span class="how-step">Outcome</span>
-                        <span class="how-arrow">→</span>
-                        <span class="how-step">Update</span>
-                    </div>
-                    <div class="how-steps">
-                        <p><span class="step-num">1</span> Capture decisions + outcomes into memory (automatic)</p>
-                        <p><span class="step-num">2</span> Retrieve memory + user model before planning</p>
-                        <p><span class="step-num">3</span> Plan & Execute inside your capability boundaries</p>
-                        <p><span class="step-num">4</span> Check → Receipt → Outcome → propose updates for approval</p>
-                    </div>
+                <!-- Summary Strip -->
+                <div class="summary-strip">
+                    <div class="strip-item"><span class="strip-them">Reactive</span><span class="strip-arrow">→</span><span class="strip-us">Proactive</span></div>
+                    <div class="strip-item"><span class="strip-them">Black box</span><span class="strip-arrow">→</span><span class="strip-us">Explainable</span></div>
+                    <div class="strip-item"><span class="strip-them">Text gen</span><span class="strip-arrow">→</span><span class="strip-us">Executor</span></div>
+                    <div class="strip-item"><span class="strip-them">Static</span><span class="strip-arrow">→</span><span class="strip-us">Evolving</span></div>
+                    <div class="strip-item"><span class="strip-them">Their data</span><span class="strip-arrow">→</span><span class="strip-us">Your data</span></div>
+                    <div class="strip-item"><span class="strip-them">Stateless</span><span class="strip-arrow">→</span><span class="strip-us">Continuous</span></div>
                 </div>
 
                 <!-- Formula -->
@@ -3169,174 +3906,11 @@
                         <span class="synergy-label">Degradation. We don't ship.</span>
                     </div>
                 </div>
-
-                <!-- Example -->
-                <div class="synergy-example">
-                    <span class="example-label">EXAMPLE // STRATEGIC DECISION</span>
-                    <div class="example-grid">
-                        <div class="example-item">
-                            <span class="example-agent">Human alone</span>
-                            <span class="example-time">4 hours</span>
-                        </div>
-                        <div class="example-item">
-                            <span class="example-agent">AI alone</span>
-                            <span class="example-time">3 hours</span>
-                        </div>
-                        <div class="example-item highlight">
-                            <span class="example-agent">Human + ODEI</span>
-                            <span class="example-time">1 hour</span>
-                        </div>
-                    </div>
-                    <p class="example-result">S &gt; 0 — Neither could achieve this alone. This is symbiosis.</p>
-                </div>
-
-                <!-- Contrast -->
-                <div class="api-contrast">
-                    <div class="contrast-them">
-                        <span class="contrast-label">THEY</span>
-                        <p>Build assistants that answer questions.</p>
-                    </div>
-                    <div class="contrast-us">
-                        <span class="contrast-label">WE</span>
-                        <p>Build the layer that makes assistants yours.</p>
-                    </div>
-                </div>
             </div>
             <span class="page-number">2</span>
         </section>
 
-        <!-- Assistants vs ODEI -->
-        <section class="page difference-page" data-page="3">
-            <div class="content wide">
-                <div class="small-logo-container">
-                    <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
-                </div>
-                
-                <h2 class="chapter-heading">Assistants vs ODEI</h2>
-                <p class="text diff-intro">
-                    ChatGPT, Claude, Gemini are powerful. But they're assistants—reactive, stateless, generic. ODEI is your operating system.
-                </p>
-                
-                <div class="diff-grid">
-                    <div class="diff-card">
-                        <div class="diff-header">
-                            <span class="diff-num">01</span>
-                            <h3>Initiative</h3>
-                        </div>
-                        <div class="diff-row">
-                            <div class="diff-them">
-                                <span class="diff-label">Assistants</span>
-                                <p>Wait for your prompt. No context until you provide it. Every conversation starts from zero.</p>
-                            </div>
-                            <div class="diff-us">
-                                <span class="diff-label">ODEI</span>
-                                <p>Pings you first. Detects patterns, risks, opportunities. Reaches you in your channel.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="diff-card">
-                        <div class="diff-header">
-                            <span class="diff-num">02</span>
-                            <h3>Transparency</h3>
-                        </div>
-                        <div class="diff-row">
-                            <div class="diff-them">
-                                <span class="diff-label">Assistants</span>
-                                <p>"Trust me." No reasoning trace. Can't audit why it said what it said.</p>
-                            </div>
-                            <div class="diff-us">
-                                <span class="diff-label">ODEI</span>
-                                <p>Every action explainable. Memory → Policy → Result. One button reveals the full trace.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="diff-card">
-                        <div class="diff-header">
-                            <span class="diff-num">03</span>
-                            <h3>Execution</h3>
-                        </div>
-                        <div class="diff-row">
-                            <div class="diff-them">
-                                <span class="diff-label">Assistants</span>
-                                <p>Generates text. You copy, paste, send, check. Micro-tasks, not outcomes.</p>
-                            </div>
-                            <div class="diff-us">
-                                <span class="diff-label">ODEI</span>
-                                <p>Delegates outcomes. Plans, executes, verifies. Acts within your boundaries.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="diff-card">
-                        <div class="diff-header">
-                            <span class="diff-num">04</span>
-                            <h3>Adaptation</h3>
-                        </div>
-                        <div class="diff-row">
-                            <div class="diff-them">
-                                <span class="diff-label">Assistants</span>
-                                <p>Doesn't learn from you. Same model for everyone. Your corrections vanish.</p>
-                            </div>
-                            <div class="diff-us">
-                                <span class="diff-label">ODEI</span>
-                                <p>Gets better at being you. Every correction becomes versioned policy. With your approval.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="diff-card">
-                        <div class="diff-header">
-                            <span class="diff-num">05</span>
-                            <h3>Control</h3>
-                        </div>
-                        <div class="diff-row">
-                            <div class="diff-them">
-                                <span class="diff-label">Assistants</span>
-                                <p>Their rules. Their memory. Their platform. You're a guest.</p>
-                            </div>
-                            <div class="diff-us">
-                                <span class="diff-label">ODEI</span>
-                                <p>Your memory. Your policies. Portable, versioned, rollbackable. You own it.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="diff-card">
-                        <div class="diff-header">
-                            <span class="diff-num">06</span>
-                            <h3>Continuity</h3>
-                        </div>
-                        <div class="diff-row">
-                            <div class="diff-them">
-                                <span class="diff-label">Assistants</span>
-                                <p>Doesn't know your goals. Can't track progress. You manage everything.</p>
-                            </div>
-                            <div class="diff-us">
-                                <span class="diff-label">ODEI</span>
-                                <p>Tracks intent vs reality. Flags drift early. Your goals don't silently decay.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="diff-summary">
-                    <span class="section-label">THE BOTTOM LINE</span>
-                    <div class="diff-summary-grid">
-                        <div class="diff-summary-item"><span class="them">Reactive</span><span class="arrow">→</span><span class="us">Proactive</span></div>
-                        <div class="diff-summary-item"><span class="them">Stateless</span><span class="arrow">→</span><span class="us">Continuous</span></div>
-                        <div class="diff-summary-item"><span class="them">Generic</span><span class="arrow">→</span><span class="us">Personal</span></div>
-                        <div class="diff-summary-item"><span class="them">Text generator</span><span class="arrow">→</span><span class="us">Operating system</span></div>
-                        <div class="diff-summary-item"><span class="them">Their platform</span><span class="arrow">→</span><span class="us">Your data</span></div>
-                        <div class="diff-summary-item"><span class="them">Black box</span><span class="arrow">→</span><span class="us">Explainable</span></div>
-                    </div>
-                </div>
-            </div>
-            <span class="page-number">3</span>
-        </section>
-
-        <section class="page architecture-page" data-page="4">
+        <section class="page architecture-page" data-page="3">
             <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -3491,11 +4065,11 @@
 
                 <p class="arch-note">Properties 1–8 define any agentic system. Properties 9–12 define L5 Symbiotic AI.</p>
             </div>
-            <span class="page-number">4</span>
+            <span class="page-number">3</span>
         </section>
 
 
-        <section class="page science-page" data-page="5">
+        <section class="page science-page" data-page="4">
             <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -3732,11 +4306,11 @@
                     </div>
                 </div>
             </div>
-            <span class="page-number">5</span>
+            <span class="page-number">4</span>
         </section>
 
 
-        <section class="page" data-page="6">
+        <section class="page" data-page="5">
             <div class="content">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -3831,11 +4405,11 @@
                     </p>
                 </div>
             </div>
-            <span class="page-number">6</span>
+            <span class="page-number">5</span>
         </section>
 
         <!-- NEW PAGE: Agency Levels -->
-        <section class="page" data-page="7">
+        <section class="page" data-page="6">
             <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -3997,13 +4571,154 @@
                 <div class="table-footer">
                     Based on AIMA (Russell & Norvig), LORA Framework (Beer et al.), Kim et al. 2024, MOSAAIC 2025
                 </div>
+                
+                <!-- Current Assistants Classification -->
+                <div class="assistants-section">
+                    <h3 class="assistants-heading">Where Big Tech Stands</h3>
+                    
+                    <div class="tier-label">Consumer Products — L2–L3</div>
+                    <div class="assistants-grid">
+                        <div class="assistant-card">
+                            <div class="assistant-header">
+                                <span class="assistant-name">ChatGPT App</span>
+                                <span class="assistant-level l23">L2–L3</span>
+                            </div>
+                            <p class="assistant-desc">Reactive with optional memory. Tool use when prompted. Human always initiates.</p>
+                        </div>
+                        <div class="assistant-card">
+                            <div class="assistant-header">
+                                <span class="assistant-name">Claude App</span>
+                                <span class="assistant-level l23">L2–L3</span>
+                            </div>
+                            <p class="assistant-desc">Reactive with memory. Strong reasoning, tools on request. No cross-session learning.</p>
+                        </div>
+                        <div class="assistant-card">
+                            <div class="assistant-header">
+                                <span class="assistant-name">Gemini App</span>
+                                <span class="assistant-level l23">L2–L3</span>
+                            </div>
+                            <p class="assistant-desc">Reactive with Google integration. Can access user data. No autonomous initiative.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tier-label">Agentic Products — L4</div>
+                    <div class="assistants-grid">
+                        <div class="assistant-card l4-card">
+                            <div class="assistant-header">
+                                <span class="assistant-name">Operator</span>
+                                <span class="assistant-level l4">L4</span>
+                            </div>
+                            <p class="assistant-desc">Task-bound browser agent. Executes multi-step workflows. Dies when task completes.</p>
+                        </div>
+                        <div class="assistant-card l4-card">
+                            <div class="assistant-header">
+                                <span class="assistant-name">Computer Use</span>
+                                <span class="assistant-level l4">L4</span>
+                            </div>
+                            <p class="assistant-desc">Desktop automation via MCP. Autonomous within task scope. No persistent state.</p>
+                        </div>
+                        <div class="assistant-card l4-card">
+                            <div class="assistant-header">
+                                <span class="assistant-name">Project Astra</span>
+                                <span class="assistant-level l4">L4</span>
+                            </div>
+                            <p class="assistant-desc">Multimodal agent with extensions. Tool orchestration. Task-scoped autonomy.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="l4-vs-l5">
+                        <h4>L4 Is Not L5</h4>
+                        <p class="l4-intro">They have agents. But agents that execute tasks are not agents that share your life.</p>
+                        <div class="diff-table">
+                            <div class="diff-row diff-header">
+                                <span></span>
+                                <span>L4 Agentic</span>
+                                <span>L5 Symbiotic</span>
+                            </div>
+                            <div class="diff-row">
+                                <span>Lifecycle</span>
+                                <span>Task-bound → dies</span>
+                                <span>Persistent → lives</span>
+                            </div>
+                            <div class="diff-row">
+                                <span>Initiative</span>
+                                <span>Within task only</span>
+                                <span>Proactive, cross-context</span>
+                            </div>
+                            <div class="diff-row">
+                                <span>User Model</span>
+                                <span>◊ Optional</span>
+                                <span>✓ Mandatory</span>
+                            </div>
+                            <div class="diff-row">
+                                <span>Policy Update</span>
+                                <span>✗ None</span>
+                                <span>✓ By outcomes</span>
+                            </div>
+                            <div class="diff-row">
+                                <span>Goal Frame</span>
+                                <span>Your task, its execution</span>
+                                <span>Shared goals, co-evolution</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="why-not-l5">
+                        <h4>Structural Barriers to L5</h4>
+                        <div class="barriers-grid">
+                            <div class="barrier-item">
+                                <span class="barrier-icon">⟳</span>
+                                <div class="barrier-content">
+                                    <b>Stateless Architecture</b>
+                                    <p>Optimized for API calls. Each request = new context. L5 needs persistent stateful agents that live between sessions.</p>
+                                </div>
+                            </div>
+                            <div class="barrier-item">
+                                <span class="barrier-icon">☁</span>
+                                <div class="barrier-content">
+                                    <b>Centralized Data = Their Asset</b>
+                                    <p>Your data on their servers = their value. L5 requires user-owned, local-first data. This kills their business model.</p>
+                                </div>
+                            </div>
+                            <div class="barrier-item">
+                                <span class="barrier-icon">⚖</span>
+                                <div class="barrier-content">
+                                    <b>Policy Update = Liability</b>
+                                    <p>If AI learns from your feedback, it might learn "wrong". Public companies avoid this legally.</p>
+                                </div>
+                            </div>
+                            <div class="barrier-item">
+                                <span class="barrier-icon">⊘</span>
+                                <div class="barrier-content">
+                                    <b>Deep User Model = Privacy Risk</b>
+                                    <p>True user model (goals, patterns, decisions) is a regulatory nightmare for public companies.</p>
+                                </div>
+                            </div>
+                            <div class="barrier-item">
+                                <span class="barrier-icon">$</span>
+                                <div class="barrier-content">
+                                    <b>Revenue Model Conflict</b>
+                                    <p>L4 = many API calls per task (good for billing). L5 = efficiency, fewer calls, more value. Economically backwards.</p>
+                                </div>
+                            </div>
+                            <div class="barrier-item">
+                                <span class="barrier-icon">⚡</span>
+                                <div class="barrier-content">
+                                    <b>Scale vs Depth</b>
+                                    <p>Optimized for millions with one model. L5 needs deep per-user personalization. Different architecture entirely.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="why-not-conclusion">L5 isn't a feature they can add. It requires local-first infrastructure, user-owned data, persistent co-adaptation, and aligned incentives. Their architecture and business model are structurally incompatible.</p>
+                    </div>
+                </div>
             </div>
-            <span class="page-number">7</span>
+            <span class="page-number">6</span>
         </section>
 
         <!-- CONSCIOUSNESS RESEARCH PAGE -->
 
-        <section class="page" data-page="8">
+        <section class="page" data-page="7">
             <div class="content">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -4096,7 +4811,7 @@
         </section>
 
         <!-- Connect Page -->
-        <section class="page" data-page="9">
+        <section class="page" data-page="8">
             <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -4181,7 +4896,7 @@
             let currentPage = 0;
             const pages = document.querySelectorAll('.page');
             
-            const navigablePagesCount = 9;
+            const navigablePagesCount = 8;
             const totalPages = pages.length;
 
             const prevButton = document.getElementById('prevButton');
@@ -4320,13 +5035,12 @@
                 0: '',
                 1: 'intro',
                 2: 'product',
-                3: 'difference',
-                4: 'roadmap',
-                5: 'science',
-                6: 'memory',
-                7: 'levels',
-                8: 'privacy',
-                9: 'connect'
+                3: 'roadmap',
+                4: 'science',
+                5: 'memory',
+                6: 'levels',
+                7: 'privacy',
+                8: 'connect'
             };
             
             const hashToPage = Object.fromEntries(
