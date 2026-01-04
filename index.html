@@ -336,23 +336,64 @@
         /* ══════ RESPONSIVE ══════ */
         @media (max-width: 600px) {
             .home-container {
-                gap: 2rem;
-                padding: 1.5rem 1rem;
+                gap: 1.75rem;
+                padding: 1.5rem 1.5rem;
             }
             
             .home-logo-svg {
-                width: 70px;
-                height: 70px;
+                width: 65px;
+                height: 65px;
+            }
+            
+            .manifesto-lines {
+                font-size: 0.9rem;
+            }
+            
+            .home-tagline {
+                min-height: 2rem;
+            }
+            
+            .tagline-text {
+                font-size: 1.1rem;
+                letter-spacing: 0.04em;
+                white-space: nowrap;
             }
             
             .home-nav {
                 flex-direction: column;
                 gap: 0;
                 align-items: center;
+                margin-top: 0.5rem;
             }
             
             .nav-column {
+                width: 100%;
+                max-width: 200px;
                 align-items: flex-start;
+            }
+            
+            .nav-item {
+                padding: 0.35rem 0;
+            }
+            
+            .nav-num {
+                font-size: 0.65rem;
+                min-width: 20px;
+            }
+            
+            .nav-name {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 380px) {
+            .tagline-text {
+                font-size: 0.95rem;
+                white-space: normal;
+            }
+            
+            .manifesto-lines {
+                font-size: 0.8rem;
             }
         }
         
@@ -3579,6 +3620,74 @@
             }
         }
         
+        /* ══════ THE TAX ══════ */
+        .tax-section {
+            margin-bottom: 4rem;
+        }
+        
+        .tax-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .tax-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid rgba(229, 62, 62, 0.4);
+            color: #E53E3E;
+            margin-bottom: 1rem;
+        }
+        
+        .tax-title {
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+        
+        .tax-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .tax-card {
+            padding: 1.5rem;
+            background: rgba(229, 62, 62, 0.03);
+            border: 1px solid rgba(229, 62, 62, 0.15);
+        }
+        
+        .tax-card-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: #E53E3E;
+        }
+        
+        .tax-card-desc {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+        
+        .tax-visual {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            background: rgba(229, 62, 62, 0.1);
+            border-left: 2px solid #E53E3E;
+            color: #E53E3E;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 800px) {
+            .tax-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         /* ══════ THE TRAP ══════ */
         .trap-section {
             margin-bottom: 4rem;
@@ -3740,6 +3849,83 @@
             .trap-grid {
                 grid-template-columns: 1fr;
             }
+        }
+        
+        .trap-hook {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        .trap-hook em {
+            font-style: normal;
+            color: #E53E3E;
+            font-weight: 500;
+        }
+        
+        /* ══════ REALITY CHECK ══════ */
+        .reality-section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .reality-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .reality-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--border);
+            margin-bottom: 1rem;
+            opacity: 0.6;
+        }
+        
+        .reality-title {
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        
+        .reality-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto 1.5rem;
+            max-width: 500px;
+        }
+        
+        .reality-list li {
+            padding: 0.6rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .reality-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .reality-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        .reality-note {
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            font-style: italic;
         }
         
         /* ══════ THE SHIFT ══════ */
@@ -3913,6 +4099,14 @@
             font-size: 1.1rem;
             color: var(--problem-positive);
             font-weight: 400;
+        }
+        
+        .shift-explanation {
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+            opacity: 0.6;
+            font-style: italic;
         }
         
         @media (max-width: 800px) {
@@ -6477,6 +6671,34 @@
                     <p class="cycle-caption">Every session starts from zero. The AI generates text. <em>You are the system.</em></p>
                 </div>
 
+                <!-- THE TAX: What this loop actually costs you -->
+                <div class="tax-section">
+                    <div class="tax-header">
+                        <span class="tax-badge">THE TAX</span>
+                        <h3 class="tax-title">What this loop actually costs you</h3>
+                    </div>
+                    
+                    <div class="tax-grid">
+                        <div class="tax-card">
+                            <h4 class="tax-card-name">Time tax</h4>
+                            <p class="tax-card-desc">You spend hours per week re-explaining, fixing, and following up. None of it compounds.</p>
+                            <div class="tax-visual">+2h / week</div>
+                        </div>
+                        
+                        <div class="tax-card">
+                            <h4 class="tax-card-name">Attention tax</h4>
+                            <p class="tax-card-desc">You stay in the loop as executor, verifier, and reminder. Context switching becomes the job.</p>
+                            <div class="tax-visual">constant interrupts</div>
+                        </div>
+                        
+                        <div class="tax-card">
+                            <h4 class="tax-card-name">Failure tax</h4>
+                            <p class="tax-card-desc">Follow-ups slip. Deadlines drift. You only notice when it's already late.</p>
+                            <div class="tax-visual">missed outcomes</div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- THE TRAP: What You Don't Own -->
                 <div class="trap-section">
                     <div class="trap-header">
@@ -6545,6 +6767,22 @@
                         <span class="warning-icon">⚠</span>
                         <span class="warning-text">If you are the glue, you're the part that gets replaced.</span>
                     </div>
+                    <p class="trap-hook">If your AI needs you to remember, remind, and verify — <em>it's not helping you. It's using you.</em></p>
+                </div>
+
+                <!-- REALITY CHECK: Who this is for -->
+                <div class="reality-section">
+                    <div class="reality-header">
+                        <span class="reality-badge">REALITY CHECK</span>
+                        <h3 class="reality-title">This hurts most if you are:</h3>
+                    </div>
+                    <ul class="reality-list">
+                        <li>Managing multiple projects or people</li>
+                        <li>Relying on follow-ups and deadlines</li>
+                        <li>Forgetting things because your system doesn't remember</li>
+                        <li>Feeling busy but watching outcomes still slip</li>
+                    </ul>
+                    <p class="reality-note">If none of this applies — assistants are enough.</p>
                 </div>
 
                 <!-- THE SHIFT: From Renting to Owning -->
@@ -6629,6 +6867,7 @@
                         <span class="conclusion-old">Assistants are an interface.</span>
                         <span class="conclusion-new">ODEI is infrastructure.</span>
                     </div>
+                    <p class="shift-explanation">Interfaces talk to you. Infrastructure carries responsibility when you forget.</p>
                 </div>
 
                 <!-- CTA Bridge -->
