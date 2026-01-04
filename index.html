@@ -3137,224 +3137,547 @@
         }
         
         /* ═══════════════════════════════════════════════════════ */
-        /* PROBLEM PAGE — Clean & Focused */
+        /* PROBLEM PAGE — MASTERPIECE EDITION */
         /* ═══════════════════════════════════════════════════════ */
         
-        .problem-page .chapter-heading {
+        .problem-page {
+            --problem-negative: #e53e3e;
+            --problem-positive: #4fd1c5;
+            --problem-warning: #ecc94b;
+            --problem-glow-neg: rgba(229, 62, 62, 0.15);
+            --problem-glow-pos: rgba(79, 209, 197, 0.15);
+        }
+        
+        /* ══════ HERO ══════ */
+        .problem-hero-new {
             text-align: center;
-            margin-bottom: 2rem;
+            padding: 0 0 3rem;
         }
         
-        /* Hero */
-        .problem-hero {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding: 1rem 0 2rem;
-        }
-        
-        .problem-headline {
-            font-size: clamp(1.4rem, 3.5vw, 2rem);
-            font-weight: 400;
-            line-height: 1.35;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.01em;
-        }
-        
-        .problem-headline em {
-            color: var(--status-no);
-            font-style: normal;
-        }
-        
-        .problem-subhead {
-            font-size: 0.95rem;
-            opacity: 0.7;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-        
-        /* The Trap Section */
-        .problem-trap {
-            margin-bottom: 3rem;
-        }
-        
-        .trap-label {
-            text-align: center;
-            font-size: 0.65rem;
-            letter-spacing: 0.25em;
+        .hero-badge-problem {
+            display: inline-block;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
-            opacity: 0.4;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--problem-negative);
+            color: var(--problem-negative);
             margin-bottom: 1.5rem;
+            opacity: 0.8;
         }
         
-        .trap-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            margin-bottom: 1.5rem;
-        }
-        
-        .trap-card {
-            background: var(--bg);
-            padding: 2rem 1.5rem;
-            text-align: center;
-        }
-        
-        .trap-x {
-            font-size: 1.8rem;
-            color: var(--status-no);
-            margin-bottom: 1rem;
+        .hero-headline-problem {
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
             font-weight: 300;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
         }
         
-        .trap-name {
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 0.75rem;
-            letter-spacing: 0.02em;
-        }
-        
-        .trap-desc {
-            font-size: 0.8rem;
-            opacity: 0.6;
-            line-height: 1.5;
-        }
-        
-        .trap-bottom {
-            text-align: center;
-            font-size: 0.85rem;
+        .headline-fade {
+            display: block;
             opacity: 0.5;
-            font-style: italic;
         }
         
-        @media (max-width: 700px) {
-            .trap-cards {
-                grid-template-columns: 1fr;
-            }
+        .headline-emphasis {
+            display: block;
+            color: var(--problem-negative);
+            margin-top: 0.25rem;
         }
         
-        /* The Stack Section */
-        .problem-stack {
-            margin-bottom: 2.5rem;
+        /* ══════ THE CYCLE ══════ */
+        .cycle-section {
+            margin-bottom: 4rem;
+        }
+        
+        .cycle-visual {
+            position: relative;
             padding: 2rem;
-            border: 1px solid var(--accent);
-            background: rgba(75, 200, 180, 0.03);
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.3);
         }
         
-        .stack-label {
-            text-align: center;
-            font-size: 0.65rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--accent);
-            opacity: 0.7;
-            margin-bottom: 0.5rem;
+        .cycle-ring-outer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.25rem;
         }
         
-        .stack-title {
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: 400;
-            margin-bottom: 2rem;
-        }
-        
-        .ownership-layers {
+        .cycle-step {
             display: flex;
             flex-direction: column;
-            gap: 0;
-            max-width: 400px;
-            margin: 0 auto 2rem;
-        }
-        
-        .own-layer {
-            display: grid;
-            grid-template-columns: 24px 90px 1fr;
             align-items: center;
-            gap: 1rem;
-            padding: 0.7rem 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            gap: 0.5rem;
+            padding: 0.75rem;
+            min-width: 65px;
         }
         
-        .own-layer:last-child {
-            border-bottom: none;
+        .cycle-icon-wrap {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.3);
         }
         
-        .own-icon {
-            font-size: 0.9rem;
-            color: var(--accent);
-            text-align: center;
-        }
-        
-        .own-name {
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        
-        .own-detail {
-            font-size: 0.75rem;
-            opacity: 0.5;
-        }
-        
-        .swap-layer {
-            margin-top: 0.5rem;
-            padding-top: 1rem;
-            border-top: 1px dashed var(--border);
-            opacity: 0.6;
-        }
-        
-        .swap-layer .own-icon {
+        .cycle-svg {
+            width: 20px;
+            height: 20px;
             color: var(--text);
             opacity: 0.5;
         }
         
-        .stack-conclusion {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
+        .cycle-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.5;
         }
         
-        .conclusion-them {
+        .cycle-arrow {
+            color: var(--problem-negative);
+            opacity: 0.4;
+            font-size: 1rem;
+            padding: 0 0.25rem;
+        }
+        
+        .cycle-arrow.loop-arrow {
+            color: var(--problem-negative);
+            opacity: 0.6;
+            font-size: 1.2rem;
+        }
+        
+        .cycle-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            background: var(--bg);
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--problem-negative);
+            box-shadow: 0 0 40px var(--problem-glow-neg);
+            margin: 1.5rem auto 0;
+            width: fit-content;
+        }
+        
+        .cycle-infinity {
+            font-size: 1.8rem;
+            color: var(--problem-negative);
+            line-height: 1;
+        }
+        
+        .cycle-you {
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            color: var(--problem-negative);
+        }
+        
+        .cycle-caption {
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin-top: 1.5rem;
+            font-style: italic;
+        }
+        
+        .cycle-caption em {
+            color: var(--problem-negative);
+            font-style: normal;
+            opacity: 1;
+        }
+        
+        @media (max-width: 800px) {
+            .cycle-ring-outer {
+                justify-content: center;
+            }
+        }
+        
+        /* ══════ THE TRAP ══════ */
+        .trap-section {
+            margin-bottom: 4rem;
+        }
+        
+        .trap-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .trap-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--border);
+            margin-bottom: 1rem;
+            opacity: 0.6;
+        }
+        
+        .trap-title {
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+        
+        .trap-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+            margin-bottom: 2rem;
+        }
+        
+        .trap-card-new {
+            background: var(--bg);
+            padding: 2rem 1.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .trap-card-new:hover {
+            background: rgba(229, 62, 62, 0.03);
+        }
+        
+        .trap-icon-wrap {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .trap-icon {
+            width: 48px;
+            height: 48px;
+            color: var(--text);
+            opacity: 0.3;
+        }
+        
+        .trap-x-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: var(--problem-negative);
+            font-weight: 300;
+        }
+        
+        .trap-card-name {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .trap-card-desc {
             font-size: 0.8rem;
+            opacity: 0.6;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+        
+        .trap-card-visual {
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            position: relative;
+        }
+        
+        .visual-bar {
+            height: 6px;
+            background: linear-gradient(to right, rgba(255,255,255,0.1), transparent);
+            margin-bottom: 0.5rem;
+            border-radius: 3px;
+        }
+        
+        .visual-fade {
+            position: absolute;
+            top: 1rem;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, var(--bg));
+        }
+        
+        .visual-rule {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text);
+            opacity: 0.4;
+            text-decoration: line-through;
+            text-decoration-color: var(--problem-negative);
+        }
+        
+        .visual-rule.broken {
+            position: relative;
+        }
+        
+        .visual-ignored {
+            font-size: 0.6rem;
+            color: var(--problem-negative);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+        
+        .visual-draft {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            opacity: 0.3;
+            padding: 0.25rem 0;
+        }
+        
+        .visual-draft:last-child {
+            opacity: 0.15;
+        }
+        
+        .trap-warning {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            border: 1px dashed var(--problem-warning);
+            background: rgba(236, 201, 75, 0.05);
+        }
+        
+        .warning-icon {
+            color: var(--problem-warning);
+            font-size: 1rem;
+        }
+        
+        .warning-text {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+        
+        @media (max-width: 800px) {
+            .trap-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ══════ THE SHIFT ══════ */
+        .shift-section {
+            margin-bottom: 4rem;
+        }
+        
+        .shift-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .shift-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--problem-positive);
+            color: var(--problem-positive);
+            margin-bottom: 1rem;
+        }
+        
+        .shift-title {
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+        
+        .shift-comparison {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1.5rem;
+            align-items: stretch;
+        }
+        
+        .shift-side {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .shift-side.renting {
+            opacity: 0.6;
+        }
+        
+        .shift-side.owning {
+            border-color: var(--problem-positive);
+            box-shadow: 0 0 30px var(--problem-glow-pos), inset 0 0 30px var(--problem-glow-pos);
+        }
+        
+        .shift-side-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .shift-icon {
+            font-size: 0.5rem;
+            color: #666;
+        }
+        
+        .shift-icon.pulse-green {
+            color: var(--problem-positive);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        .shift-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+        
+        .shift-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .shift-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.8rem;
+        }
+        
+        .shift-item.negative {
+            opacity: 0.7;
+        }
+        
+        .item-x {
+            color: var(--problem-negative);
+            font-size: 0.9rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .item-text {
+            opacity: 0.7;
+        }
+        
+        .shift-item.positive {
+            display: grid;
+            grid-template-columns: 20px 80px 1fr;
+            gap: 0.75rem;
+        }
+        
+        .item-check {
+            color: var(--problem-positive);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .item-name {
+            font-weight: 500;
+        }
+        
+        .item-detail {
+            opacity: 0.5;
+            font-size: 0.75rem;
+        }
+        
+        .shift-item.swap {
+            margin-top: 0.5rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed var(--border);
+            opacity: 0.6;
+        }
+        
+        .shift-arrow-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        
+        .shift-arrow-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, var(--problem-positive), transparent);
+        }
+        
+        .shift-arrow-badge {
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            color: var(--problem-positive);
+            padding: 0.5rem;
+            border: 1px solid var(--problem-positive);
+        }
+        
+        .shift-conclusion {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .conclusion-old {
+            font-size: 0.85rem;
             opacity: 0.4;
             text-decoration: line-through;
         }
         
-        .conclusion-us {
-            font-size: 0.9rem;
-            color: var(--accent);
+        .conclusion-new {
+            font-size: 1.1rem;
+            color: var(--problem-positive);
+            font-weight: 400;
         }
         
-        /* Bridge CTA */
-        .problem-bridge {
+        @media (max-width: 800px) {
+            .shift-comparison {
+                grid-template-columns: 1fr;
+            }
+            .shift-arrow-container {
+                flex-direction: row;
+                padding: 1rem 0;
+            }
+            .shift-arrow-line {
+                width: 40px;
+                height: 1px;
+            }
+        }
+        
+        /* ══════ CTA SECTION ══════ */
+        .problem-cta-section {
             text-align: center;
+            padding-top: 1rem;
         }
         
-        .bridge-cta {
+        .problem-cta-button {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border: 1px solid var(--accent);
-            color: var(--accent);
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--problem-positive);
             text-decoration: none;
-            font-size: 0.85rem;
-            transition: all 0.2s;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid var(--problem-positive);
         }
         
-        .bridge-cta:hover {
-            background: var(--accent);
+        .problem-cta-button:hover {
+            background: var(--problem-positive);
             color: var(--bg);
+            box-shadow: 0 0 30px var(--problem-glow-pos);
         }
         
-        .bridge-arrow {
-            transition: transform 0.2s;
+        .problem-cta-button .cta-arrow {
+            transition: transform 0.3s ease;
         }
         
-        .bridge-cta:hover .bridge-arrow {
-            transform: translateX(4px);
+        .problem-cta-button:hover .cta-arrow {
+            transform: translateX(5px);
         }
         
         /* Difference Intro (Product page) */
@@ -5768,95 +6091,245 @@
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
                 </div>
 
-                <h2 class="chapter-heading">Problem</h2>
-
-                <!-- Hero -->
-                <div class="problem-hero">
-                    <h3 class="problem-headline">
-                        AI assistants don't compound.<br>
-                        <em>You do all the work.</em>
-                    </h3>
-                    <p class="problem-subhead">
-                        Every session starts from zero. You re-explain context, copy-paste outputs, verify results, track follow-ups. The AI generates text. You are the system.
-                    </p>
+                <!-- HERO: The Pain -->
+                <div class="problem-hero-new">
+                    <div class="hero-badge-problem">THE PROBLEM</div>
+                    <h2 class="hero-headline-problem">
+                        <span class="headline-fade">AI assistants don't compound.</span>
+                        <span class="headline-emphasis">You do all the work.</span>
+                    </h2>
                 </div>
 
-                <!-- The Trap: What You Don't Own -->
-                <div class="problem-trap">
-                    <div class="trap-label">THE TRAP</div>
+                <!-- THE CYCLE: Infinite Loop Visualization -->
+                <div class="cycle-section">
+                    <div class="cycle-visual">
+                        <div class="cycle-ring-outer">
+                            <div class="cycle-step" data-step="1">
+                                <div class="cycle-icon-wrap">
+                                    <svg class="cycle-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                    </svg>
+                                </div>
+                                <span class="cycle-label">Re-explain</span>
+                            </div>
+                            <div class="cycle-arrow">→</div>
+                            <div class="cycle-step" data-step="2">
+                                <div class="cycle-icon-wrap">
+                                    <svg class="cycle-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                                    </svg>
+                                </div>
+                                <span class="cycle-label">Generate</span>
+                            </div>
+                            <div class="cycle-arrow">→</div>
+                            <div class="cycle-step" data-step="3">
+                                <div class="cycle-icon-wrap">
+                                    <svg class="cycle-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                    </svg>
+                                </div>
+                                <span class="cycle-label">Copy</span>
+                            </div>
+                            <div class="cycle-arrow">→</div>
+                            <div class="cycle-step" data-step="4">
+                                <div class="cycle-icon-wrap">
+                                    <svg class="cycle-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                                    </svg>
+                                </div>
+                                <span class="cycle-label">Paste</span>
+                            </div>
+                            <div class="cycle-arrow">→</div>
+                            <div class="cycle-step" data-step="5">
+                                <div class="cycle-icon-wrap">
+                                    <svg class="cycle-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <circle cx="11" cy="11" r="8"/>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                                    </svg>
+                                </div>
+                                <span class="cycle-label">Verify</span>
+                            </div>
+                            <div class="cycle-arrow loop-arrow">↻</div>
+                            <div class="cycle-step" data-step="6">
+                                <div class="cycle-icon-wrap">
+                                    <svg class="cycle-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <polyline points="23 4 23 10 17 10"/>
+                                        <polyline points="1 20 1 14 7 14"/>
+                                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                                    </svg>
+                                </div>
+                                <span class="cycle-label">Repeat</span>
+                            </div>
+                        </div>
+                        <div class="cycle-center">
+                            <span class="cycle-infinity">∞</span>
+                            <span class="cycle-you">YOU</span>
+                        </div>
+                    </div>
+                    <p class="cycle-caption">Every session starts from zero. The AI generates text. <em>You are the system.</em></p>
+                </div>
+
+                <!-- THE TRAP: What You Don't Own -->
+                <div class="trap-section">
+                    <div class="trap-header">
+                        <span class="trap-badge">THE TRAP</span>
+                        <h3 class="trap-title">What you don't own</h3>
+                    </div>
                     
-                    <div class="trap-cards">
-                        <div class="trap-card">
-                            <div class="trap-x">✗</div>
-                            <div class="trap-name">Context</div>
-                            <div class="trap-desc">Your history lives in their UI. Switch vendors — lose everything.</div>
+                    <div class="trap-grid">
+                        <div class="trap-card-new">
+                            <div class="trap-icon-wrap">
+                                <svg class="trap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="12" y1="8" x2="12" y2="12"/>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                </svg>
+                                <div class="trap-x-overlay">✗</div>
+                            </div>
+                            <h4 class="trap-card-name">Context</h4>
+                            <p class="trap-card-desc">Your history lives in their UI. Switch vendors — lose everything.</p>
+                            <div class="trap-card-visual">
+                                <div class="visual-bar" style="width: 80%"></div>
+                                <div class="visual-bar" style="width: 60%"></div>
+                                <div class="visual-bar" style="width: 40%"></div>
+                                <div class="visual-fade"></div>
+                            </div>
                         </div>
-                        <div class="trap-card">
-                            <div class="trap-x">✗</div>
-                            <div class="trap-name">Rules</div>
-                            <div class="trap-desc">No enforceable policies. Every session is a new negotiation.</div>
+                        
+                        <div class="trap-card-new">
+                            <div class="trap-icon-wrap">
+                                <svg class="trap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                    <path d="M2 12l10 5 10-5"/>
+                                </svg>
+                                <div class="trap-x-overlay">✗</div>
+                            </div>
+                            <h4 class="trap-card-name">Rules</h4>
+                            <p class="trap-card-desc">No enforceable policies. Every session is a new negotiation.</p>
+                            <div class="trap-card-visual">
+                                <div class="visual-rule broken">if (amount > $500) → ask</div>
+                                <div class="visual-ignored">ignored</div>
+                            </div>
                         </div>
-                        <div class="trap-card">
-                            <div class="trap-x">✗</div>
-                            <div class="trap-name">Loop</div>
-                            <div class="trap-desc">Drafts aren't results. You copy, paste, send, check, fix.</div>
+                        
+                        <div class="trap-card-new">
+                            <div class="trap-icon-wrap">
+                                <svg class="trap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <polyline points="17 1 21 5 17 9"/>
+                                    <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+                                    <polyline points="7 23 3 19 7 15"/>
+                                    <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+                                </svg>
+                                <div class="trap-x-overlay">✗</div>
+                            </div>
+                            <h4 class="trap-card-name">Loop</h4>
+                            <p class="trap-card-desc">Drafts aren't results. You copy, paste, send, check, fix.</p>
+                            <div class="trap-card-visual">
+                                <div class="visual-draft">Draft v1</div>
+                                <div class="visual-draft">Draft v2</div>
+                                <div class="visual-draft">Draft v3...</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="trap-bottom">
-                        If you are the glue, you're the part that gets replaced.
+                    <div class="trap-warning">
+                        <span class="warning-icon">⚠</span>
+                        <span class="warning-text">If you are the glue, you're the part that gets replaced.</span>
                     </div>
                 </div>
 
-                <!-- The Stack: What You Should Own -->
-                <div class="problem-stack">
-                    <div class="stack-label">THE SOLUTION</div>
-                    <div class="stack-title">Own the infrastructure, not the chatbot</div>
+                <!-- THE SHIFT: From Renting to Owning -->
+                <div class="shift-section">
+                    <div class="shift-header">
+                        <span class="shift-badge">THE SHIFT</span>
+                        <h3 class="shift-title">Own the infrastructure, not the chatbot</h3>
+                    </div>
                     
-                    <div class="ownership-layers">
-                        <div class="own-layer">
-                            <span class="own-icon">✓</span>
-                            <span class="own-name">Memory</span>
-                            <span class="own-detail">portable, versioned, yours</span>
+                    <div class="shift-comparison">
+                        <div class="shift-side renting">
+                            <div class="shift-side-header">
+                                <span class="shift-icon">○</span>
+                                <span class="shift-label">RENTING</span>
+                            </div>
+                            <div class="shift-items">
+                                <div class="shift-item negative">
+                                    <span class="item-x">✗</span>
+                                    <span class="item-text">Context locked in vendor UI</span>
+                                </div>
+                                <div class="shift-item negative">
+                                    <span class="item-x">✗</span>
+                                    <span class="item-text">Rules reset every session</span>
+                                </div>
+                                <div class="shift-item negative">
+                                    <span class="item-x">✗</span>
+                                    <span class="item-text">Manual copy-paste loop</span>
+                                </div>
+                                <div class="shift-item negative">
+                                    <span class="item-x">✗</span>
+                                    <span class="item-text">No audit trail</span>
+                                </div>
+                                <div class="shift-item negative">
+                                    <span class="item-x">✗</span>
+                                    <span class="item-text">Vendor lock-in</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="own-layer">
-                            <span class="own-icon">✓</span>
-                            <span class="own-name">Policy</span>
-                            <span class="own-detail">rules that persist</span>
+                        
+                        <div class="shift-arrow-container">
+                            <div class="shift-arrow-line"></div>
+                            <div class="shift-arrow-badge">ODEI</div>
+                            <div class="shift-arrow-line"></div>
                         </div>
-                        <div class="own-layer">
-                            <span class="own-icon">✓</span>
-                            <span class="own-name">Initiative</span>
-                            <span class="own-detail">AI pings you first</span>
-                        </div>
-                        <div class="own-layer">
-                            <span class="own-icon">✓</span>
-                            <span class="own-name">Execution</span>
-                            <span class="own-detail">actions, not drafts</span>
-                        </div>
-                        <div class="own-layer">
-                            <span class="own-icon">✓</span>
-                            <span class="own-name">Audit</span>
-                            <span class="own-detail">receipts for everything</span>
-                        </div>
-                        <div class="own-layer swap-layer">
-                            <span class="own-icon">↻</span>
-                            <span class="own-name">Model</span>
-                            <span class="own-detail">swap anytime</span>
+                        
+                        <div class="shift-side owning">
+                            <div class="shift-side-header">
+                                <span class="shift-icon pulse-green">●</span>
+                                <span class="shift-label">OWNING</span>
+                            </div>
+                            <div class="shift-items">
+                                <div class="shift-item positive">
+                                    <span class="item-check">✓</span>
+                                    <span class="item-name">Memory</span>
+                                    <span class="item-detail">portable, versioned, yours</span>
+                                </div>
+                                <div class="shift-item positive">
+                                    <span class="item-check">✓</span>
+                                    <span class="item-name">Policy</span>
+                                    <span class="item-detail">rules that persist</span>
+                                </div>
+                                <div class="shift-item positive">
+                                    <span class="item-check">✓</span>
+                                    <span class="item-name">Execution</span>
+                                    <span class="item-detail">actions, not drafts</span>
+                                </div>
+                                <div class="shift-item positive">
+                                    <span class="item-check">✓</span>
+                                    <span class="item-name">Audit</span>
+                                    <span class="item-detail">receipts for everything</span>
+                                </div>
+                                <div class="shift-item positive swap">
+                                    <span class="item-check">↻</span>
+                                    <span class="item-name">Model</span>
+                                    <span class="item-detail">swap anytime</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="stack-conclusion">
-                        <span class="conclusion-them">Assistants are an interface.</span>
-                        <span class="conclusion-us">ODEI is infrastructure.</span>
+                    <div class="shift-conclusion">
+                        <span class="conclusion-old">Assistants are an interface.</span>
+                        <span class="conclusion-new">ODEI is infrastructure.</span>
                     </div>
                 </div>
 
-                <!-- Bridge -->
-                <div class="problem-bridge">
-                    <a href="#" class="bridge-cta" data-page="3">
-                        <span class="bridge-text">See how it works</span>
-                        <span class="bridge-arrow">→</span>
+                <!-- CTA Bridge -->
+                <div class="problem-cta-section">
+                    <a href="#" class="problem-cta-button" data-page="3">
+                        <span class="cta-text">See how it works</span>
+                        <span class="cta-arrow">→</span>
                     </a>
                 </div>
 
@@ -7627,7 +8100,7 @@
             });
 
             // CTA buttons
-            const ctaButtons = document.querySelectorAll('.cta-primary[data-page], .cta-secondary[data-page], .bridge-cta[data-page], .cta-button[data-page]');
+            const ctaButtons = document.querySelectorAll('.cta-primary[data-page], .cta-secondary[data-page], .bridge-cta[data-page], .cta-button[data-page], .problem-cta-button[data-page]');
             ctaButtons.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
