@@ -198,6 +198,168 @@
             position: relative;
         }
         
+        /* ═══════════════════════════════════════════════════════ */
+        /* HOME PAGE — MASTERPIECE EDITION */
+        /* ═══════════════════════════════════════════════════════ */
+        
+        .home-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100%;
+            width: 100%;
+            gap: 2.5rem;
+            padding: 2rem 0;
+        }
+        
+        /* ══════ LOGO ══════ */
+        .home-logo-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .home-logo-svg {
+            width: 90px;
+            height: 90px;
+            color: var(--text);
+            opacity: 0.9;
+        }
+        
+        .home-logo-svg path {
+            fill: currentColor;
+        }
+        
+        /* ══════ MANIFESTO ══════ */
+        .home-manifesto {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .manifesto-lines {
+            font-family: var(--font-mono);
+            font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+            line-height: 1.8;
+            letter-spacing: 0.01em;
+        }
+        
+        .manifesto-line {
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .manifesto-line.dim {
+            opacity: 0.5;
+        }
+        
+        .manifesto-line.bright {
+            opacity: 0.9;
+        }
+        
+        .manifesto-line em {
+            font-style: normal;
+            color: var(--accent);
+        }
+        
+        /* ══════ TAGLINE ══════ */
+        .home-tagline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 2.5rem;
+        }
+        
+        .tagline-text {
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-align: center;
+        }
+        
+        /* ══════ NAVIGATION ══════ */
+        .home-nav {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            margin-top: 1rem;
+        }
+        
+        .nav-column {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+            padding: 0.4rem 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nav-num {
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            opacity: 0.3;
+            letter-spacing: 0.1em;
+            min-width: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-name {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.7;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover .nav-num {
+            opacity: 0.8;
+            color: var(--accent);
+        }
+        
+        .nav-item:hover .nav-name {
+            opacity: 1;
+            color: var(--accent);
+            transform: translateX(0.5rem);
+        }
+        
+        /* ══════ RESPONSIVE ══════ */
+        @media (max-width: 600px) {
+            .home-container {
+                gap: 2rem;
+                padding: 1.5rem 1rem;
+            }
+            
+            .home-logo-svg {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .home-nav {
+                flex-direction: column;
+                gap: 0;
+                align-items: center;
+            }
+            
+            .nav-column {
+                align-items: flex-start;
+            }
+        }
+        
+        /* ═══════════════════════════════════════════════════════ */
+        /* OLD HOME STYLES (kept for compatibility) */
+        /* ═══════════════════════════════════════════════════════ */
+        
         .top-section {
             display: flex;
             justify-content: center;
@@ -231,7 +393,6 @@
             height: 80px;
             color: var(--text);
             opacity: 0.9;
-            text-shadow: 0 0 8px var(--glow);
         }
         
         .logo path {
@@ -1016,6 +1177,128 @@
             line-height: 1.5;
             opacity: 0.7;
             margin: 0;
+        }
+        
+        /* Big Tech Products Grid */
+        .bigtech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .bigtech-card {
+            padding: 1.25rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        
+        .bigtech-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        
+        .bigtech-name {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .bigtech-level {
+            font-size: 0.6rem;
+            padding: 0.2rem 0.5rem;
+            background: rgba(244, 201, 93, 0.15);
+            color: #F4C95D;
+            letter-spacing: 0.05em;
+        }
+        
+        .bigtech-level.l4 {
+            background: rgba(100, 200, 255, 0.15);
+            color: #64C8FF;
+        }
+        
+        .bigtech-card p {
+            font-size: 0.75rem;
+            line-height: 1.5;
+            opacity: 0.6;
+            margin: 0;
+        }
+        
+        .bigtech-timestamp {
+            font-size: 0.65rem;
+            opacity: 0.4;
+            font-style: italic;
+            text-align: right;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 800px) {
+            .bigtech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Structural Barriers */
+        .barriers-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(229, 62, 62, 0.03);
+            border: 1px solid rgba(229, 62, 62, 0.15);
+        }
+        
+        .barriers-section h4 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        
+        .barriers-intro {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .barriers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .barrier-item {
+            display: flex;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .barrier-icon {
+            font-size: 1.1rem;
+            opacity: 0.5;
+            flex-shrink: 0;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .barrier-content h5 {
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 0.35rem;
+        }
+        
+        .barrier-content p {
+            font-size: 0.7rem;
+            opacity: 0.6;
+            line-height: 1.4;
+            margin: 0;
+        }
+        
+        @media (max-width: 800px) {
+            .barriers-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         .l4-vs-l5 {
@@ -6023,39 +6306,62 @@
     <div class="book">
         <section class="page active" data-page="0">
             <div class="content">
-                <div class="main-content">
+                <div class="home-container">
                     
-                    <div class="top-section">
-                        <svg class="logo" id="main-logo"><use href="#odei-logo"/></svg>
+                    <!-- LOGO -->
+                    <div class="home-logo-area">
+                        <svg class="home-logo-svg" id="main-logo"><use href="#odei-logo"/></svg>
                     </div>
                     
-                    <div class="quotes-section">
-                        <div class="boot-sequence" id="boot-sequence"></div>
-                        <div class="quote philosophical" id="philosophical-quote">
-                            <span style="display:block">> The future is not human or machine.</span>
-                            <span style="display:block">> The future is symbiosis.</span>
+                    <!-- MANIFESTO -->
+                    <div class="home-manifesto">
+                        <div class="manifesto-lines" id="manifesto-lines">
+                            <span class="manifesto-line dim">> The future is not human or machine.</span>
+                            <span class="manifesto-line bright">> The future is <em>symbiosis</em>.</span>
                         </div>
-                        <p class="quote primary" id="typewriter-container">
-                            <span>ODEI — The Human API Company</span>
-                        </p>
                     </div>
                     
-                    <div class="bottom-section">
-                        <h2 class="toc-title">Contents</h2>
-                        <nav class="toc-nav">
-                            <ul class="toc-list">
-                                <li><a href="#" data-page="1" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Introduction</span></a></li>
-                                <li><a href="#" data-page="2" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Problem</span></a></li>
-                                <li><a href="#" data-page="3" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Product</span></a></li>
-                                <li><a href="#" data-page="4" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Agency Levels</span></a></li>
-                            </ul>
-                            <ul class="toc-list">
-                                <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Science</span></a></li>
-                                <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Memory</span></a></li>
-                                <li><a href="#" data-page="7" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Roadmap</span></a></li>
-                            </ul>
-                        </nav>
+                    <!-- TAGLINE -->
+                    <div class="home-tagline" id="home-tagline">
+                        <span class="tagline-text">ODEI — The Human API Company</span>
                     </div>
+                    
+                    <!-- NAVIGATION -->
+                    <nav class="home-nav">
+                        <div class="nav-column">
+                            <a href="#" data-page="1" class="nav-item">
+                                <span class="nav-num">01</span>
+                                <span class="nav-name">Introduction</span>
+                            </a>
+                            <a href="#" data-page="2" class="nav-item">
+                                <span class="nav-num">02</span>
+                                <span class="nav-name">Problem</span>
+                            </a>
+                            <a href="#" data-page="3" class="nav-item">
+                                <span class="nav-num">03</span>
+                                <span class="nav-name">Product</span>
+                            </a>
+                            <a href="#" data-page="4" class="nav-item">
+                                <span class="nav-num">04</span>
+                                <span class="nav-name">Agency Levels</span>
+                            </a>
+                        </div>
+                        <div class="nav-column">
+                            <a href="#" data-page="5" class="nav-item">
+                                <span class="nav-num">05</span>
+                                <span class="nav-name">Science</span>
+                            </a>
+                            <a href="#" data-page="6" class="nav-item">
+                                <span class="nav-num">06</span>
+                                <span class="nav-name">Memory</span>
+                            </a>
+                            <a href="#" data-page="7" class="nav-item">
+                                <span class="nav-num">07</span>
+                                <span class="nav-name">Roadmap</span>
+                            </a>
+                        </div>
+                    </nav>
+                    
                 </div>
             </div>
         </section>
@@ -7009,21 +7315,63 @@
                 
                 <!-- Current Market Classification -->
                 <div class="assistants-section">
-                    <h3 class="assistants-heading">Where The Market Stands</h3>
+                    <h3 class="assistants-heading">Where Big Tech Stands</h3>
                     
-                    <div class="tier-label">Consumer Assistants — L2–L3</div>
-                    <div class="market-summary">
-                        <p>Most consumer AI products operate at L2–L3: reactive systems with optional memory, tool use when prompted, human always initiates. Strong reasoning, but no cross-session learning, no persistent state, no autonomous initiative.</p>
+                    <div class="tier-label">Consumer Products — L2–L3</div>
+                    <div class="bigtech-grid">
+                        <div class="bigtech-card">
+                            <div class="bigtech-header">
+                                <span class="bigtech-name">ChatGPT App</span>
+                                <span class="bigtech-level">L2–L3</span>
+                            </div>
+                            <p>Reactive with optional memory. Tool use when prompted. Human always initiates.</p>
+                        </div>
+                        <div class="bigtech-card">
+                            <div class="bigtech-header">
+                                <span class="bigtech-name">Claude App</span>
+                                <span class="bigtech-level">L2–L3</span>
+                            </div>
+                            <p>Reactive with memory. Strong reasoning, tools on request. No cross-session learning.</p>
+                        </div>
+                        <div class="bigtech-card">
+                            <div class="bigtech-header">
+                                <span class="bigtech-name">Gemini App</span>
+                                <span class="bigtech-level">L2–L3</span>
+                            </div>
+                            <p>Reactive with Google integration. Can access user data. No autonomous initiative.</p>
+                        </div>
                     </div>
                     
-                    <div class="tier-label">Task Agents — L4</div>
-                    <div class="market-summary">
-                        <p>Emerging agentic products reach L4: task-bound automation that executes multi-step workflows, then dies when the task completes. Autonomous within task scope, but no persistent state across sessions.</p>
+                    <div class="tier-label">Agentic Products — L4</div>
+                    <div class="bigtech-grid">
+                        <div class="bigtech-card">
+                            <div class="bigtech-header">
+                                <span class="bigtech-name">Operator</span>
+                                <span class="bigtech-level l4">L4</span>
+                            </div>
+                            <p>Task-bound browser agent. Executes multi-step workflows. Dies when task completes.</p>
+                        </div>
+                        <div class="bigtech-card">
+                            <div class="bigtech-header">
+                                <span class="bigtech-name">Computer Use</span>
+                                <span class="bigtech-level l4">L4</span>
+                            </div>
+                            <p>Desktop automation via MCP. Autonomous within task scope. No persistent state.</p>
+                        </div>
+                        <div class="bigtech-card">
+                            <div class="bigtech-header">
+                                <span class="bigtech-name">Project Astra</span>
+                                <span class="bigtech-level l4">L4</span>
+                            </div>
+                            <p>Multimodal agent with extensions. Tool orchestration. Task-scoped autonomy.</p>
+                        </div>
                     </div>
+                    
+                    <p class="bigtech-timestamp">(as of January 2026)</p>
                     
                     <div class="l4-vs-l5">
                         <h4>L4 Is Not L5</h4>
-                        <p class="l4-intro">Agents that execute tasks are not agents that share your life.</p>
+                        <p class="l4-intro">They have agents. But agents that execute tasks are not agents that share your life.</p>
                         <div class="diff-table">
                             <div class="diff-row diff-header">
                                 <span></span>
@@ -7054,6 +7402,56 @@
                                 <span>Goal Frame</span>
                                 <span>Your task, its execution</span>
                                 <span>Shared goals, co-evolution</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Structural Barriers to L5 -->
+                    <div class="barriers-section">
+                        <h4>Structural Barriers to L5</h4>
+                        <p class="barriers-intro">L5 isn't a feature they can add. Their architecture and business model are structurally incompatible.</p>
+                        <div class="barriers-grid">
+                            <div class="barrier-item">
+                                <span class="barrier-icon">⟳</span>
+                                <div class="barrier-content">
+                                    <h5>Stateless Architecture</h5>
+                                    <p>Optimized for API calls. Each request = new context. L5 needs persistent stateful agents.</p>
+                                </div>
+                            </div>
+                            <div class="barrier-item">
+                                <span class="barrier-icon">☁</span>
+                                <div class="barrier-content">
+                                    <h5>Centralized Data = Their Asset</h5>
+                                    <p>Your data on their servers = their value. L5 requires user-owned, local-first data.</p>
+                                </div>
+                            </div>
+                            <div class="barrier-item">
+                                <span class="barrier-icon">⚖</span>
+                                <div class="barrier-content">
+                                    <h5>Policy Update = Liability</h5>
+                                    <p>If AI learns from feedback, it might learn "wrong". Public companies avoid this legally.</p>
+                                </div>
+                            </div>
+                            <div class="barrier-item">
+                                <span class="barrier-icon">⊘</span>
+                                <div class="barrier-content">
+                                    <h5>Deep User Model = Privacy Risk</h5>
+                                    <p>True user model (goals, patterns, decisions) is a regulatory nightmare for public companies.</p>
+                                </div>
+                            </div>
+                            <div class="barrier-item">
+                                <span class="barrier-icon">$</span>
+                                <div class="barrier-content">
+                                    <h5>Revenue Model Conflict</h5>
+                                    <p>L4 = many API calls per task. L5 = efficiency, fewer calls. Economically backwards for them.</p>
+                                </div>
+                            </div>
+                            <div class="barrier-item">
+                                <span class="barrier-icon">⚡</span>
+                                <div class="barrier-content">
+                                    <h5>Scale vs Depth</h5>
+                                    <p>Optimized for millions with one model. L5 needs deep per-user personalization.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -7775,96 +8173,103 @@
             const prevButton = document.getElementById('prevButton');
             const nextButton = document.getElementById('nextButton');
             const progressBar = document.getElementById('progressBar');
-            const tocLinks = document.querySelectorAll('.toc-link');
+            const tocLinks = document.querySelectorAll('.toc-link, .nav-item');
             let typingTimeout;
 
             function startFullTypewriter() {
                 clearTimeout(typingTimeout);
 
-                const bootContainer = document.getElementById('boot-sequence');
-                const philosophicalContainer = document.getElementById('philosophical-quote');
-                const primaryContainer = document.getElementById('typewriter-container');
+                const manifestoContainer = document.getElementById('manifesto-lines');
+                const taglineContainer = document.getElementById('home-tagline');
 
-                if (!bootContainer || !philosophicalContainer || !primaryContainer) return;
+                if (!manifestoContainer || !taglineContainer) return;
 
-                const hasBooted = sessionStorage.getItem('odei_booted');
+                // Clear for fresh animation
+                manifestoContainer.innerHTML = '';
+                taglineContainer.innerHTML = '';
 
-                if (hasBooted === 'true') {
-                    // Already booted - show content immediately
-                    bootContainer.style.display = 'none';
-                    philosophicalContainer.innerHTML = '<span style="display:block">> The future is not human or machine.</span><span style="display:block">> The future is symbiosis.</span>';
-                    primaryContainer.innerHTML = '<span>ODEI — The Human API Company</span>';
-                    return;
-                }
+                const line1 = "> The future is not human or machine.";
+                const line2 = "> The future is ";
+                const line2suffix = "symbiosis.";
+                const tagline = "ODEI — The Human API Company";
 
-                sessionStorage.setItem('odei_booted', 'true');
+                let phase = 0; // 0=line1, 1=line2, 2=symbiosis, 3=tagline
+                let charIndex = 0;
+                let span1, span2, emSpan, taglineSpan, cursor;
 
-                // Clear fallback content for animation
-                bootContainer.style.display = 'none';
-                philosophicalContainer.innerHTML = '';
-                primaryContainer.innerHTML = '';
-
-                const philosophicalLines = [
-                    "> The future is not human or machine.",
-                    "> The future is symbiosis."
-                ];
-                const primaryText = "ODEI — The Human API Company";
-
-                let philLineIndex = 0;
-                let philCharIndex = 0;
-
-                function typePhilosophical() {
-                    if (philLineIndex >= philosophicalLines.length) {
-                        setTimeout(() => {
-                            primaryContainer.style.display = 'inline-flex';
-                            typePrimary();
-                        }, 300);
-                        return;
-                    }
-
-                    const line = philosophicalLines[philLineIndex];
-                    if (philCharIndex === 0) {
-                        const span = document.createElement('span');
-                        span.style.display = 'block';
-                        philosophicalContainer.appendChild(span);
-                    }
-
-                    const currentSpan = philosophicalContainer.children[philLineIndex];
-                    
-                    if (philCharIndex < line.length) {
-                        currentSpan.innerHTML += line.charAt(philCharIndex);
-                        philCharIndex++;
-                        typingTimeout = setTimeout(typePhilosophical, 60);
-                    } else {
-                        philLineIndex++;
-                        philCharIndex = 0;
-                        typingTimeout = setTimeout(typePhilosophical, 300);
-                    }
-                }
-
-                function typePrimary() {
-                    const textSpan = document.createElement('span');
-                    const cursorSpan = document.createElement('span');
-                    cursorSpan.className = 'cursor large';
-                    primaryContainer.appendChild(textSpan);
-                    primaryContainer.appendChild(cursorSpan);
-
-                    let i = 0;
-                    function type() {
-                        if (i < primaryText.length) {
-                            textSpan.innerHTML += primaryText.charAt(i);
-                            i++;
-                            typingTimeout = setTimeout(type, 85);
+                function type() {
+                    if (phase === 0) {
+                        // Phase 0: Type line 1
+                        if (charIndex === 0) {
+                            span1 = document.createElement('span');
+                            span1.className = 'manifesto-line dim';
+                            manifestoContainer.appendChild(span1);
+                        }
+                        if (charIndex < line1.length) {
+                            span1.textContent = line1.substring(0, charIndex + 1);
+                            charIndex++;
+                            typingTimeout = setTimeout(type, 55);
                         } else {
-                            if (primaryContainer.contains(cursorSpan)) {
-                                primaryContainer.removeChild(cursorSpan);
-                            }
+                            phase = 1;
+                            charIndex = 0;
+                            typingTimeout = setTimeout(type, 400);
+                        }
+                    } else if (phase === 1) {
+                        // Phase 1: Type line 2 prefix
+                        if (charIndex === 0) {
+                            span2 = document.createElement('span');
+                            span2.className = 'manifesto-line bright';
+                            manifestoContainer.appendChild(span2);
+                        }
+                        if (charIndex < line2.length) {
+                            span2.textContent = line2.substring(0, charIndex + 1);
+                            charIndex++;
+                            typingTimeout = setTimeout(type, 55);
+                        } else {
+                            // Create em element for "symbiosis."
+                            emSpan = document.createElement('em');
+                            span2.appendChild(emSpan);
+                            phase = 2;
+                            charIndex = 0;
+                            typingTimeout = setTimeout(type, 55);
+                        }
+                    } else if (phase === 2) {
+                        // Phase 2: Type "symbiosis." character by character
+                        if (charIndex < line2suffix.length) {
+                            emSpan.textContent = line2suffix.substring(0, charIndex + 1);
+                            charIndex++;
+                            typingTimeout = setTimeout(type, 55);
+                        } else {
+                            phase = 3;
+                            charIndex = 0;
+                            typingTimeout = setTimeout(type, 500);
+                        }
+                    } else if (phase === 3) {
+                        // Phase 3: Type tagline
+                        if (charIndex === 0) {
+                            taglineSpan = document.createElement('span');
+                            taglineSpan.className = 'tagline-text';
+                            cursor = document.createElement('span');
+                            cursor.className = 'cursor large';
+                            taglineContainer.appendChild(taglineSpan);
+                            taglineContainer.appendChild(cursor);
+                        }
+                        if (charIndex < tagline.length) {
+                            taglineSpan.textContent = tagline.substring(0, charIndex + 1);
+                            charIndex++;
+                            typingTimeout = setTimeout(type, 70);
+                        } else {
+                            // Remove cursor after delay
+                            setTimeout(() => {
+                                if (cursor && cursor.parentNode) {
+                                    cursor.parentNode.removeChild(cursor);
+                                }
+                            }, 1200);
                         }
                     }
-                    type();
                 }
                 
-                typingTimeout = setTimeout(typePhilosophical, 500);
+                typingTimeout = setTimeout(type, 600);
             }
 
             function updateButtons() {
@@ -7923,12 +8328,16 @@
 
             function updateHash(pageIndex, addToHistory = true) {
                 const hash = pageHashes[pageIndex];
-                if (addToHistory) {
-                    if (hash) {
-                        history.pushState({ page: pageIndex }, '', '#' + hash);
-                    } else {
-                        history.pushState({ page: pageIndex }, '', window.location.pathname);
+                try {
+                    if (addToHistory) {
+                        if (hash) {
+                            history.pushState({ page: pageIndex }, '', '#' + hash);
+                        } else {
+                            history.pushState({ page: pageIndex }, '', window.location.pathname);
+                        }
                     }
+                } catch (e) {
+                    // Ignore history errors in restricted contexts (e.g., preview)
                 }
             }
 
@@ -7989,11 +8398,15 @@
                 updateUI(startPage);
                 
                 // Replace initial state so we have proper history entry
-                const hash = pageHashes[startPage];
-                if (hash) {
-                    history.replaceState({ page: startPage }, '', '#' + hash);
-                } else {
-                    history.replaceState({ page: startPage }, '', window.location.pathname);
+                try {
+                    const hash = pageHashes[startPage];
+                    if (hash) {
+                        history.replaceState({ page: startPage }, '', '#' + hash);
+                    } else {
+                        history.replaceState({ page: startPage }, '', window.location.pathname);
+                    }
+                } catch (e) {
+                    // Ignore history errors in restricted contexts
                 }
                 
                 if (startPage === 0) {
