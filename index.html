@@ -10,7 +10,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="The Human API Company">
-    <meta property="og:description" content="Symbiotic layer that turns any AI model into your personal operating system.">
+    <meta property="og:description" content="A governance layer that turns any AI model into your personal operating system.">
     <meta property="og:image" content="https://odei.ai/og-image.png">
     <meta property="og:url" content="https://odei.ai">
     <meta property="og:site_name" content="ODEI">
@@ -18,7 +18,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Human API Company">
-    <meta name="twitter:description" content="Symbiotic layer that turns any AI model into your personal operating system.">
+    <meta name="twitter:description" content="A governance layer that turns any AI model into your personal operating system.">
     <meta name="twitter:image" content="https://odei.ai/og-image.png">
     
     <!-- Favicon -->
@@ -565,13 +565,13 @@
             transform: translateY(-50%) scale(1) !important;
         }
 
-        .page[data-page="6"] .list li {
+        .page[data-page="4"] .list li {
             padding: 0.75rem 0 0.75rem 1.5rem;
             font-size: 0.95rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .page[data-page="6"] .chapter-heading {
+        .page[data-page="4"] .chapter-heading {
             margin-top: 2rem;
             margin-bottom: 1rem;
             color: var(--accent);
@@ -893,6 +893,10 @@
             padding: 0.35rem 0;
         }
         
+        .summary-line.dimmed {
+            opacity: 0.5;
+        }
+        
         .summary-line.highlight {
             color: var(--accent);
         }
@@ -938,6 +942,13 @@
             font-weight: 400;
             margin-bottom: 1.5rem;
             opacity: 0.9;
+        }
+        
+        .as-of {
+            font-size: 0.7rem;
+            font-weight: 400;
+            opacity: 0.5;
+            font-style: italic;
         }
         
         .tier-label {
@@ -1267,6 +1278,83 @@
             opacity: 0.8;
             max-width: 700px;
             margin: 0 auto;
+        }
+        
+        /* Difference Intro */
+        .difference-intro {
+            margin: 2.5rem 0;
+        }
+        
+        .difference-sides {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .difference-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.5rem 2.5rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+            min-width: 180px;
+        }
+        
+        .difference-side.them {
+            opacity: 0.6;
+        }
+        
+        .difference-side.us {
+            border-color: var(--accent);
+            background: rgba(45, 212, 191, 0.05);
+        }
+        
+        .diff-icon {
+            font-size: 1.5rem;
+            opacity: 0.7;
+        }
+        
+        .difference-side.us .diff-icon {
+            color: var(--accent);
+            opacity: 1;
+        }
+        
+        .diff-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+        }
+        
+        .diff-desc {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        .difference-side.us .diff-desc {
+            color: var(--accent);
+            opacity: 1;
+        }
+        
+        .difference-arrow {
+            font-size: 1.5rem;
+            opacity: 0.3;
+        }
+        
+        @media (max-width: 600px) {
+            .difference-sides {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .difference-arrow {
+                transform: rotate(90deg);
+            }
+            .difference-side {
+                min-width: 200px;
+                padding: 1rem 2rem;
+            }
         }
         
         /* Compare Section - New WOW Design */
@@ -2000,6 +2088,1574 @@
             line-height: 1.4;
         }
         
+        /* ═══════════════════════════════════════════════════════ */
+        /* Shipping Gate - Redesigned */
+        /* ═══════════════════════════════════════════════════════ */
+        
+        .shipping-gate {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .gate-header {
+            margin-bottom: 1.5rem;
+        }
+        
+        .gate-label {
+            display: block;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.4;
+            margin-bottom: 0.75rem;
+        }
+        
+        .gate-principle {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .gate-formula {
+            padding: 1.5rem 2rem;
+            margin: 1.5rem auto;
+            max-width: 500px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .formula-main {
+            font-size: 1.3rem;
+            font-family: var(--font-mono);
+            letter-spacing: 0.02em;
+        }
+        
+        .gate-outcomes {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-top: 1.5rem;
+        }
+        
+        .gate-outcome {
+            flex: 1;
+            max-width: 180px;
+            padding: 1.25rem 1rem;
+            border: 1px solid var(--border);
+            border-right: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .gate-outcome:last-child {
+            border-right: 1px solid var(--border);
+        }
+        
+        .gate-outcome.positive {
+            border-color: rgba(72, 187, 120, 0.3);
+            background: rgba(72, 187, 120, 0.05);
+        }
+        
+        .gate-outcome.neutral {
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .gate-outcome.negative {
+            border-color: rgba(245, 101, 101, 0.3);
+            background: rgba(245, 101, 101, 0.05);
+        }
+        
+        .outcome-value {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .gate-outcome.positive .outcome-value { color: var(--status-yes); }
+        .gate-outcome.neutral .outcome-value { color: var(--status-maybe); }
+        .gate-outcome.negative .outcome-value { color: var(--status-no); }
+        
+        .outcome-name {
+            font-size: 0.8rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        
+        .outcome-desc {
+            font-size: 0.7rem;
+            opacity: 0.5;
+        }
+        
+        @media (max-width: 600px) {
+            .gate-outcomes {
+                flex-direction: column;
+                align-items: center;
+            }
+            .gate-outcome {
+                max-width: 280px;
+                width: 100%;
+                border-right: 1px solid var(--border);
+                border-bottom: none;
+            }
+            .gate-outcome:last-child {
+                border-bottom: 1px solid var(--border);
+            }
+        }
+        
+        /* ═══════════════════════════════════════════════════════ */
+        /* PRODUCT PAGE — MASTERPIECE EDITION */
+        /* ═══════════════════════════════════════════════════════ */
+        
+        .product-page {
+            --product-accent: #4fd1c5;
+            --product-glow: rgba(79, 209, 197, 0.15);
+            --product-border: rgba(255, 255, 255, 0.08);
+        }
+        
+        /* ══════ HERO ══════ */
+        .product-hero {
+            text-align: center;
+            padding: 0 0 3rem;
+            position: relative;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--product-border);
+            margin-bottom: 1.5rem;
+            opacity: 0.6;
+        }
+        
+        .hero-title {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-line-1 {
+            display: block;
+            opacity: 0.5;
+        }
+        
+        .hero-line-2 {
+            display: block;
+            color: var(--product-accent);
+        }
+        
+        .hero-subtitle {
+            font-size: 1rem;
+            line-height: 1.7;
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* ══════ CONTRAST SECTION ══════ */
+        .contrast-section {
+            margin-bottom: 4rem;
+        }
+        
+        .contrast-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .contrast-side {
+            padding: 1.5rem;
+            border: 1px solid var(--product-border);
+            background: rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contrast-side.dead {
+            opacity: 0.6;
+        }
+        
+        .contrast-side.live {
+            border-color: var(--product-accent);
+            box-shadow: 0 0 30px var(--product-glow), inset 0 0 30px var(--product-glow);
+        }
+        
+        .contrast-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--product-border);
+        }
+        
+        .contrast-icon {
+            font-size: 0.5rem;
+            color: #666;
+        }
+        
+        .contrast-icon.pulse {
+            color: var(--product-accent);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; text-shadow: 0 0 10px currentColor; }
+            50% { opacity: 0.5; text-shadow: 0 0 5px currentColor; }
+        }
+        
+        .contrast-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+        
+        .contrast-terminal {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            min-height: 80px;
+            margin-bottom: 1rem;
+        }
+        
+        .contrast-terminal.active {
+            background: rgba(79, 209, 197, 0.05);
+        }
+        
+        .term-line {
+            line-height: 1.8;
+        }
+        
+        .term-prompt {
+            color: #666;
+        }
+        
+        .term-cursor {
+            color: var(--product-accent);
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        
+        .term-status {
+            color: #555;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+        
+        .term-time {
+            color: #555;
+            margin-right: 0.5rem;
+        }
+        
+        .term-alert {
+            color: var(--status-maybe);
+        }
+        
+        .term-action {
+            color: var(--product-accent);
+        }
+        
+        .term-ok {
+            color: var(--status-yes);
+        }
+        
+        .contrast-traits {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .trait {
+            font-size: 0.65rem;
+            padding: 0.35rem 0.75rem;
+            border: 1px solid var(--product-border);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .trait.negative {
+            opacity: 0.4;
+        }
+        
+        .trait.positive {
+            border-color: var(--product-accent);
+            color: var(--product-accent);
+        }
+        
+        .contrast-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .arrow-line {
+            width: 1px;
+            height: 30px;
+            background: linear-gradient(to bottom, transparent, var(--product-accent), transparent);
+        }
+        
+        .arrow-text {
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            color: var(--product-accent);
+            padding: 0.5rem;
+            border: 1px solid var(--product-accent);
+        }
+        
+        @media (max-width: 800px) {
+            .contrast-container {
+                grid-template-columns: 1fr;
+            }
+            .contrast-arrow {
+                flex-direction: row;
+                padding: 1rem 0;
+            }
+            .arrow-line {
+                width: 30px;
+                height: 1px;
+            }
+        }
+        
+        /* ══════ STACK SECTION ══════ */
+        .stack-section {
+            margin-bottom: 4rem;
+        }
+        
+        .stack-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .stack-label {
+            display: block;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            opacity: 0.4;
+            margin-bottom: 0.75rem;
+        }
+        
+        .stack-title {
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+        
+        .primitives-showcase {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--product-border);
+        }
+        
+        .primitive-card {
+            background: var(--bg);
+            padding: 2rem 1.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .primitive-card:hover {
+            background: rgba(79, 209, 197, 0.03);
+        }
+        
+        .primitive-card:hover .prim-glow {
+            opacity: 1;
+        }
+        
+        .primitive-visual {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .prim-icon-wrap {
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--product-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .prim-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--product-accent);
+        }
+        
+        .prim-glow {
+            position: absolute;
+            top: 50%;
+            left: 24px;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, var(--product-glow) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .primitive-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .prim-name {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .prim-desc {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .prim-detail {
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--product-border);
+        }
+        
+        .detail-label {
+            display: block;
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.4;
+            margin-bottom: 0.25rem;
+        }
+        
+        .detail-value {
+            font-size: 0.75rem;
+            color: var(--product-accent);
+        }
+        
+        @media (max-width: 900px) {
+            .primitives-showcase {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .primitives-showcase {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ══════ LOOP SECTION ══════ */
+        .loop-section {
+            margin-bottom: 4rem;
+        }
+        
+        .loop-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .loop-label {
+            display: block;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            opacity: 0.4;
+            margin-bottom: 0.75rem;
+        }
+        
+        .loop-title {
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+        
+        .loop-visual {
+            position: relative;
+        }
+        
+        .loop-ring {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0 1rem;
+        }
+        
+        .loop-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-dot {
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--product-accent);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            position: relative;
+            background: var(--bg);
+        }
+        
+        .loop-step[data-step="3"] .step-dot {
+            background: var(--product-accent);
+            box-shadow: 0 0 15px var(--product-accent);
+        }
+        
+        .step-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .loop-step .step-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .loop-step .step-desc {
+            font-size: 0.7rem;
+            opacity: 0.5;
+        }
+        
+        .loop-connector {
+            flex: 0 0 auto;
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(to right, var(--product-accent), rgba(79, 209, 197, 0.2));
+            margin-top: 6px;
+        }
+        
+        @media (max-width: 700px) {
+            .loop-ring {
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+            }
+            .loop-connector {
+                width: 1px;
+                height: 20px;
+                background: linear-gradient(to bottom, var(--product-accent), rgba(79, 209, 197, 0.2));
+                margin: 0;
+            }
+            .loop-step {
+                padding: 0.5rem 0;
+            }
+            .step-dot {
+                margin-bottom: 0.5rem;
+            }
+        }
+        
+        /* ══════ PROOF SECTION ══════ */
+        .proof-section {
+            margin-bottom: 4rem;
+        }
+        
+        .proof-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .proof-label {
+            display: block;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            opacity: 0.4;
+            margin-bottom: 0.75rem;
+        }
+        
+        .proof-title {
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+        
+        .proof-demo {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .demo-task {
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--product-border);
+            border-bottom: none;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .task-prompt {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.4;
+            margin-right: 0.75rem;
+        }
+        
+        .task-text {
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+        
+        .demo-terminal {
+            border: 1px solid var(--product-accent);
+            background: rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+        
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--product-border);
+        }
+        
+        .terminal-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        
+        .terminal-dot.red { background: #ff5f56; }
+        .terminal-dot.yellow { background: #ffbd2e; }
+        .terminal-dot.green { background: #27ca40; }
+        
+        .terminal-title {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            opacity: 0.5;
+            margin-left: auto;
+        }
+        
+        .terminal-body {
+            padding: 1rem 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+        }
+        
+        .term-row {
+            display: flex;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .term-row:last-child {
+            border-bottom: none;
+        }
+        
+        .term-row.highlight {
+            background: rgba(79, 209, 197, 0.05);
+            margin: 0 -1.5rem;
+            padding: 0.6rem 1.5rem;
+        }
+        
+        .term-key {
+            min-width: 70px;
+            color: var(--product-accent);
+            opacity: 0.7;
+        }
+        
+        .term-val {
+            flex: 1;
+            opacity: 0.8;
+        }
+        
+        .term-val.mono {
+            opacity: 0.5;
+        }
+        
+        .term-success {
+            color: var(--status-yes);
+        }
+        
+        .term-source {
+            opacity: 0.4;
+            font-size: 0.65rem;
+        }
+        
+        .term-pending {
+            color: var(--status-maybe);
+            font-size: 0.65rem;
+            border: 1px solid var(--status-maybe);
+            padding: 0.1rem 0.4rem;
+            margin-left: 0.5rem;
+        }
+        
+        .demo-note {
+            font-size: 0.8rem;
+            opacity: 0.5;
+            text-align: center;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        
+        /* ══════ AUTHORITY SECTION NEW ══════ */
+        .authority-section-new {
+            margin-bottom: 4rem;
+        }
+        
+        .authority-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .authority-section-new .authority-label {
+            display: block;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            opacity: 0.4;
+            margin-bottom: 0.75rem;
+        }
+        
+        .authority-title {
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+        
+        .authority-spectrum {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .spectrum-track {
+            height: 4px;
+            background: var(--product-border);
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .spectrum-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 60%;
+            background: linear-gradient(to right, var(--product-accent), rgba(79, 209, 197, 0.3));
+        }
+        
+        .spectrum-marker {
+            position: absolute;
+            top: 50%;
+            width: 16px;
+            height: 16px;
+            background: var(--product-accent);
+            border: 3px solid var(--bg);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 15px var(--product-accent);
+        }
+        
+        .spectrum-levels {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--product-border);
+        }
+        
+        .level-item {
+            background: var(--bg);
+            padding: 1.25rem 1rem;
+            text-align: center;
+        }
+        
+        .level-item.active {
+            background: rgba(79, 209, 197, 0.08);
+        }
+        
+        .level-indicator {
+            width: 8px;
+            height: 8px;
+            border: 1px solid var(--product-border);
+            border-radius: 50%;
+            margin: 0 auto 0.75rem;
+        }
+        
+        .level-item.active .level-indicator {
+            background: var(--product-accent);
+            border-color: var(--product-accent);
+            box-shadow: 0 0 10px var(--product-accent);
+        }
+        
+        .level-name {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .level-desc {
+            font-size: 0.7rem;
+            opacity: 0.5;
+        }
+        
+        .authority-note {
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            margin-top: 1.5rem;
+        }
+        
+        @media (max-width: 600px) {
+            .spectrum-levels {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* ══════ GATE SECTION ══════ */
+        .gate-section {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+        
+        .gate-header {
+            margin-bottom: 2rem;
+        }
+        
+        .gate-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--product-accent);
+            color: var(--product-accent);
+            margin-bottom: 1rem;
+        }
+        
+        .gate-title {
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        
+        .gate-formula-display {
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            padding: 2rem;
+            border: 1px solid var(--product-border);
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .formula-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .formula-symbol {
+            font-size: 2rem;
+            font-family: Georgia, serif;
+            font-style: italic;
+            color: var(--product-accent);
+        }
+        
+        .formula-equals {
+            font-size: 1.5rem;
+            opacity: 0.5;
+        }
+        
+        .formula-expression {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+        }
+        
+        .formula-legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legend-var {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--product-accent);
+        }
+        
+        .legend-def {
+            font-size: 0.75rem;
+            opacity: 0.5;
+        }
+        
+        .gate-outcomes-row {
+            display: flex;
+            justify-content: center;
+            gap: 1px;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            background: var(--product-border);
+        }
+        
+        .outcome-card {
+            flex: 1;
+            padding: 1.5rem 1rem;
+            background: var(--bg);
+            text-align: center;
+        }
+        
+        .outcome-card.positive {
+            border-top: 2px solid var(--status-yes);
+        }
+        
+        .outcome-card.neutral {
+            border-top: 2px solid var(--status-maybe);
+        }
+        
+        .outcome-card.negative {
+            border-top: 2px solid var(--status-no);
+        }
+        
+        .outcome-symbol {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .outcome-card.positive .outcome-symbol { color: var(--status-yes); }
+        .outcome-card.neutral .outcome-symbol { color: var(--status-maybe); }
+        .outcome-card.negative .outcome-symbol { color: var(--status-no); }
+        
+        .outcome-name {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .outcome-action {
+            font-size: 0.7rem;
+            opacity: 0.5;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .gate-metrics {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .metric-label {
+            font-size: 0.75rem;
+            opacity: 0.5;
+            margin-bottom: 0.75rem;
+        }
+        
+        .metric-tags {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .metric-tag {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            padding: 0.4rem 0.75rem;
+            border: 1px solid var(--product-border);
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 500px) {
+            .gate-outcomes-row {
+                flex-direction: column;
+            }
+        }
+        
+        /* ══════ CTA SECTION ══════ */
+        .product-cta-section {
+            padding-top: 2rem;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .cta-headline {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cta-subline {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: var(--product-accent);
+            color: var(--bg);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid var(--product-accent);
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: var(--product-accent);
+            box-shadow: 0 0 30px var(--product-glow);
+        }
+        
+        .cta-arrow {
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-button:hover .cta-arrow {
+            transform: translateX(5px);
+        }
+        
+        /* ═══════════════════════════════════════════════════════ */
+        /* PROBLEM PAGE — Clean & Focused */
+        /* ═══════════════════════════════════════════════════════ */
+        
+        .problem-page .chapter-heading {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        /* Hero */
+        .problem-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 1rem 0 2rem;
+        }
+        
+        .problem-headline {
+            font-size: clamp(1.4rem, 3.5vw, 2rem);
+            font-weight: 400;
+            line-height: 1.35;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .problem-headline em {
+            color: var(--status-no);
+            font-style: normal;
+        }
+        
+        .problem-subhead {
+            font-size: 0.95rem;
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* The Trap Section */
+        .problem-trap {
+            margin-bottom: 3rem;
+        }
+        
+        .trap-label {
+            text-align: center;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            opacity: 0.4;
+            margin-bottom: 1.5rem;
+        }
+        
+        .trap-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        
+        .trap-card {
+            background: var(--bg);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+        
+        .trap-x {
+            font-size: 1.8rem;
+            color: var(--status-no);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+        
+        .trap-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.02em;
+        }
+        
+        .trap-desc {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            line-height: 1.5;
+        }
+        
+        .trap-bottom {
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.5;
+            font-style: italic;
+        }
+        
+        @media (max-width: 700px) {
+            .trap-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* The Stack Section */
+        .problem-stack {
+            margin-bottom: 2.5rem;
+            padding: 2rem;
+            border: 1px solid var(--accent);
+            background: rgba(75, 200, 180, 0.03);
+        }
+        
+        .stack-label {
+            text-align: center;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stack-title {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+        
+        .ownership-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 400px;
+            margin: 0 auto 2rem;
+        }
+        
+        .own-layer {
+            display: grid;
+            grid-template-columns: 24px 90px 1fr;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .own-layer:last-child {
+            border-bottom: none;
+        }
+        
+        .own-icon {
+            font-size: 0.9rem;
+            color: var(--accent);
+            text-align: center;
+        }
+        
+        .own-name {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .own-detail {
+            font-size: 0.75rem;
+            opacity: 0.5;
+        }
+        
+        .swap-layer {
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border);
+            opacity: 0.6;
+        }
+        
+        .swap-layer .own-icon {
+            color: var(--text);
+            opacity: 0.5;
+        }
+        
+        .stack-conclusion {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .conclusion-them {
+            font-size: 0.8rem;
+            opacity: 0.4;
+            text-decoration: line-through;
+        }
+        
+        .conclusion-us {
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+        
+        /* Bridge CTA */
+        .problem-bridge {
+            text-align: center;
+        }
+        
+        .bridge-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        
+        .bridge-cta:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+        
+        .bridge-arrow {
+            transition: transform 0.2s;
+        }
+        
+        .bridge-cta:hover .bridge-arrow {
+            transform: translateX(4px);
+        }
+        
+        /* Difference Intro (Product page) */
+        .difference-intro {
+            margin-bottom: 2.5rem;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .difference-sides {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+        }
+        
+        .difference-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .diff-icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+        
+        .difference-side.them .diff-icon {
+            opacity: 0.4;
+        }
+        
+        .difference-side.us .diff-icon {
+            color: var(--accent);
+        }
+        
+        .diff-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+        
+        .difference-side.us .diff-label {
+            color: var(--accent);
+            opacity: 1;
+        }
+        
+        .diff-desc {
+            font-size: 0.75rem;
+            opacity: 0.5;
+        }
+        
+        .difference-side.us .diff-desc {
+            color: var(--accent);
+            opacity: 0.8;
+        }
+        
+        .difference-arrow {
+            font-size: 1.5rem;
+            opacity: 0.3;
+        }
+        
+        /* Transitions Summary */
+        .transitions-summary {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 2rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .transition-item {
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+        
+        .transition-item s {
+            opacity: 0.4;
+            text-decoration: line-through;
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .difference-sides {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .difference-arrow {
+                transform: rotate(90deg);
+            }
+            
+            .transitions-summary {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+        }
+        
+        /* Ownership Primitives */
+        .primitives-section {
+            margin-bottom: 3rem;
+        }
+        
+        .primitives-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .primitives-header h3 {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+        
+        .primitive-card {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .primitive-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .primitive-num {
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            opacity: 0.4;
+        }
+        
+        .primitive-title {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .primitive-hook {
+            margin-left: auto;
+            font-size: 0.75rem;
+            opacity: 0.5;
+            font-style: italic;
+        }
+        
+        .primitive-body {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+        
+        .primitive-micro {
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-family: var(--font-mono);
+        }
+        
+        /* Receipt/Proof Section */
+        .receipt-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .receipt-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .receipt-header h3 {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.5;
+            margin-bottom: 0.5rem;
+        }
+        
+        .receipt-header p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .receipt-scenario {
+            background: rgba(0,0,0,0.3);
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+        
+        .scenario-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .scenario-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .scenario-step {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.8rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .scenario-step:last-child {
+            border-bottom: none;
+        }
+        
+        .step-label {
+            min-width: 100px;
+            opacity: 0.5;
+        }
+        
+        .step-value {
+            opacity: 0.9;
+        }
+        
+        .scenario-result {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--accent);
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid var(--accent);
+            background: rgba(75,200,180,0.05);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .cta-primary {
+            padding: 0.75rem 2rem;
+            background: var(--accent);
+            color: var(--bg);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .cta-primary:hover {
+            background: #fff;
+        }
+        
+        .cta-secondary {
+            padding: 0.75rem 2rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .cta-secondary:hover {
+            background: rgba(75,200,180,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .trap-grid {
+                grid-template-columns: 1fr;
+            }
+            .replace-bullets {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .primitive-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .primitive-hook {
+                margin-left: 0;
+            }
+        }
+        
         /* Synergy Example */
         .synergy-example {
             padding: 1.5rem;
@@ -2554,6 +4210,7 @@
             text-transform: uppercase;
             opacity: 0.5;
             margin-bottom: 0.5rem;
+            text-align: center;
         }
         
         /* Taxonomy Section */
@@ -3003,7 +4660,8 @@
             line-height: 1.7;
             opacity: 0.8;
             max-width: 700px;
-            margin-bottom: 2.5rem;
+            margin: 0 auto 2.5rem;
+            text-align: center;
         }
         
         .memory-section {
@@ -3157,6 +4815,217 @@
             }
         }
         
+        /* Memory Control Section */
+        .memory-section.control {
+            margin-top: 2rem;
+        }
+        
+        .control-badge {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+        }
+        
+        .control-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        
+        .control-block {
+            background: var(--bg);
+            padding: 1.5rem;
+        }
+        
+        .control-block h4 {
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .control-block.stored h4 {
+            color: var(--status-yes);
+        }
+        
+        .control-block.not-stored h4 {
+            color: var(--status-no);
+        }
+        
+        .control-block ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.8rem;
+        }
+        
+        .control-block li {
+            padding: 0.35rem 0;
+            opacity: 0.7;
+        }
+        
+        .control-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--border);
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+        
+        .action-btn.forget:hover { border-color: var(--status-no); color: var(--status-no); }
+        .action-btn.redact:hover { border-color: var(--status-maybe); color: var(--status-maybe); }
+        .action-btn.lock:hover { border-color: var(--accent); color: var(--accent); }
+        
+        .control-note {
+            text-align: center;
+            font-size: 0.75rem;
+            opacity: 0.5;
+            margin-bottom: 2rem;
+        }
+        
+        .export-example {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            padding: 1rem;
+        }
+        
+        .export-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.4;
+            margin-bottom: 0.75rem;
+        }
+        
+        .export-code {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            line-height: 1.5;
+            opacity: 0.7;
+            white-space: pre-wrap;
+            margin: 0;
+        }
+        
+        @media (max-width: 600px) {
+            .control-grid {
+                grid-template-columns: 1fr;
+            }
+            .control-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* Market Summary (Agency Levels) */
+        .market-summary {
+            padding: 1.25rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+            margin-bottom: 1.5rem;
+        }
+        
+        .market-summary p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            opacity: 0.8;
+            margin: 0;
+        }
+        
+        /* L5 Requirements */
+        .l5-requirements {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border: 1px solid var(--accent);
+            background: rgba(75, 200, 180, 0.03);
+        }
+        
+        .l5-requirements h4 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .req-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .req-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+        }
+        
+        .req-icon {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        /* Roadmap Phase Details */
+        .phase-outcome, .phase-done-when, .phase-artifact {
+            margin-top: 0.75rem;
+            font-size: 0.75rem;
+        }
+        
+        .outcome-label, .done-label, .artifact-label {
+            display: block;
+            font-weight: 500;
+            opacity: 0.6;
+            margin-bottom: 0.25rem;
+        }
+        
+        .done-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .done-list li {
+            padding: 0.2rem 0;
+            padding-left: 1rem;
+            position: relative;
+            opacity: 0.7;
+        }
+        
+        .done-list li::before {
+            content: "–";
+            position: absolute;
+            left: 0;
+            opacity: 0.5;
+        }
+        
+        .phase-artifact {
+            opacity: 0.5;
+            font-family: var(--font-mono);
+        }
+        
+        /* Introduction Definition Block */
+        .definition-block {
+            padding: 1rem 1.5rem;
+            border-left: 3px solid var(--accent);
+            background: rgba(75, 200, 180, 0.05);
+            margin: 1.5rem 0;
+        }
+        
+        .target-audience {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            font-style: italic;
+        }
+        
         /* ========================================
            ARCHITECTURE PAGE STYLES
            ======================================== */
@@ -3170,10 +5039,15 @@
             line-height: 1.7;
             opacity: 0.9;
             margin-bottom: 1.5rem;
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .properties-section {
-            margin: 1.5rem 0;
+            margin: 1.5rem auto;
+            text-align: center;
         }
         
         .properties-grid {
@@ -3189,6 +5063,7 @@
             border: 1px solid var(--border);
             background: rgba(255,255,255,0.02);
             transition: all 0.3s var(--ease-out-quint);
+            text-align: left;
         }
         
         .property-card:hover {
@@ -3847,19 +5722,21 @@
                         <nav class="toc-nav">
                             <ul class="toc-list">
                                 <li><a href="#" data-page="1" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Introduction</span></a></li>
-                                <li><a href="#" data-page="2" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">The Human API</span></a></li>
-                                <li><a href="#" data-page="3" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Roadmap</span></a></li>
+                                <li><a href="#" data-page="2" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Problem</span></a></li>
+                                <li><a href="#" data-page="3" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Product</span></a></li>
+                                <li><a href="#" data-page="4" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Agency Levels</span></a></li>
                             </ul>
                             <ul class="toc-list">
-                                <li><a href="#" data-page="4" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Science</span></a></li>
-                                <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Memory</span></a></li>
-                                <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Agency Levels</span></a></li>
+                                <li><a href="#" data-page="5" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Science</span></a></li>
+                                <li><a href="#" data-page="6" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Memory</span></a></li>
+                                <li><a href="#" data-page="7" class="toc-link"><span class="toc-prefix">></span> <span class="toc-text">Roadmap</span></a></li>
                             </ul>
                         </nav>
                     </div>
                 </div>
             </div>
         </section>
+
 
         <section class="page" data-page="1">
             <div class="content">
@@ -3868,826 +5745,509 @@
                 </div>
                 <h2 class="chapter-heading">Introduction</h2>
                 <p class="text">
-                    Human potential is constrained not by capability, but by cognitive overhead. Every day, we waste precious mental cycles on decisions that could be automated, schedules that could be optimized, patterns that could be recognized.
+                    Human potential is constrained not by capability, but by cognitive overhead. Every day, we lose hours to decisions that could be automated, follow-ups that slip through, patterns we fail to see.
+                </p>
+                <p class="text definition-block">
+                    <strong>ODEI is a local-first governance layer that turns any AI model into a personal operating system — with memory, policies, execution, and receipts.</strong>
                 </p>
                 <p class="text">
-                    ODEI eliminates this waste. It assumes the burden of life's complexity, freeing your mind to focus on creation, connection, and consciousness. This is not about productivity—it's about freedom.
+                    Not a reactive assistant you prompt. A proactive system that owns the loop: detects triggers, checks your rules, acts (or asks), verifies outcomes, and learns from corrections.
                 </p>
-                <p class="text">
-                    ODEI is not an assistant. It is your inner operating system. You don't talk to it. You merge with it. Together, you reclaim your time, your memory, and your destiny.
+                <p class="text target-audience">
+                    Built for founders, operators, and creators with too much context and not enough leverage.
                 </p>
             </div>
             <span class="page-number">1</span>
         </section>
 
 
-        <section class="page human-api-page" data-page="2">
+
+        <section class="page problem-page" data-page="2">
             <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
                 </div>
-                
-                <h2 class="chapter-heading">The Human API</h2>
-                
-                <!-- Opening Statement -->
-                <div class="api-statement">
-                    <p class="statement-main">Their AI executes. Your ODEI governs.</p>
-                    <p class="statement-sub">We don't build another assistant. We build the L5 Symbiotic layer that turns any model into your personal operating system.</p>
+
+                <h2 class="chapter-heading">Problem</h2>
+
+                <!-- Hero -->
+                <div class="problem-hero">
+                    <h3 class="problem-headline">
+                        AI assistants don't compound.<br>
+                        <em>You do all the work.</em>
+                    </h3>
+                    <p class="problem-subhead">
+                        Every session starts from zero. You re-explain context, copy-paste outputs, verify results, track follow-ups. The AI generates text. You are the system.
+                    </p>
                 </div>
 
-                <!-- Comparison Cards -->
-                <div class="compare-section">
+                <!-- The Trap: What You Don't Own -->
+                <div class="problem-trap">
+                    <div class="trap-label">THE TRAP</div>
                     
-                    <!-- 01 Initiative -->
-                    <div class="compare-card">
-                        <div class="compare-header">
-                            <span class="compare-num">01</span>
-                            <span class="compare-title">Initiative</span>
-                            <span class="compare-question">Who starts the conversation?</span>
+                    <div class="trap-cards">
+                        <div class="trap-card">
+                            <div class="trap-x">✗</div>
+                            <div class="trap-name">Context</div>
+                            <div class="trap-desc">Your history lives in their UI. Switch vendors — lose everything.</div>
                         </div>
-                        <div class="compare-body">
-                            <div class="compare-side them">
-                                <div class="side-label">
-                                    <span class="label-icon">○</span>
-                                    <span>ASSISTANTS</span>
-                                </div>
-                                <p class="side-text">Wait for your prompt. No context until you provide it. Every conversation starts from zero. You must remember to ask.</p>
-                                <div class="side-ui dead-ui">
-                                    <div class="dead-prompt">
-                                        <span class="dead-cursor">▊</span>
-                                        <span class="dead-text">Message ChatGPT...</span>
-                                    </div>
-                                    <div class="dead-status">Waiting for input</div>
-                                </div>
-                            </div>
-                            <div class="compare-divider">
-                                <span class="divider-arrow">→</span>
-                            </div>
-                            <div class="compare-side us">
-                                <div class="side-label">
-                                    <span class="label-icon">●</span>
-                                    <span>ODEI</span>
-                                </div>
-                                <p class="side-text">Pings you first—only when it matters. Detects patterns, risks, opportunities. Reaches you in your channel. You decide what to act on.</p>
-                                <div class="side-ui live-ui">
-                                    <div class="live-header">
-                                        <span class="live-pill active">Today</span>
-                                        <span class="live-pill">Actions</span>
-                                        <span class="live-pill">Alerts</span>
-                                    </div>
-                                    <div class="live-items">
-                                        <div class="live-item"><span class="live-arrow">→</span> Review Q4 goals <span class="live-tag">drift detected</span></div>
-                                        <div class="live-item"><span class="live-arrow">→</span> Follow up with Alex <span class="live-tag">3 days</span></div>
-                                        <div class="live-item"><span class="live-arrow">→</span> Tax deadline approaching</div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="trap-card">
+                            <div class="trap-x">✗</div>
+                            <div class="trap-name">Rules</div>
+                            <div class="trap-desc">No enforceable policies. Every session is a new negotiation.</div>
                         </div>
-                        <div class="compare-bottom">
-                            <span class="bottom-them">Reactive</span>
-                            <span class="bottom-arrow">→</span>
-                            <span class="bottom-us">Proactive</span>
+                        <div class="trap-card">
+                            <div class="trap-x">✗</div>
+                            <div class="trap-name">Loop</div>
+                            <div class="trap-desc">Drafts aren't results. You copy, paste, send, check, fix.</div>
                         </div>
                     </div>
                     
-                    <!-- 02 Transparency -->
-                    <div class="compare-card">
-                        <div class="compare-header">
-                            <span class="compare-num">02</span>
-                            <span class="compare-title">Transparency</span>
-                            <span class="compare-question">Why did it do that?</span>
-                        </div>
-                        <div class="compare-body">
-                            <div class="compare-side them">
-                                <div class="side-label">
-                                    <span class="label-icon">○</span>
-                                    <span>ASSISTANTS</span>
-                                </div>
-                                <p class="side-text">"Trust me." No reasoning trace. Can't audit why it said what it said. Black box outputs you can't verify or improve.</p>
-                                <div class="side-ui dead-ui">
-                                    <div class="dead-output">
-                                        <div class="dead-response">Here's my suggestion...</div>
-                                        <div class="dead-no-trace">
-                                            <span class="no-trace-icon">?</span>
-                                            <span>No reasoning available</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="compare-divider">
-                                <span class="divider-arrow">→</span>
-                            </div>
-                            <div class="compare-side us">
-                                <div class="side-label">
-                                    <span class="label-icon">●</span>
-                                    <span>ODEI</span>
-                                </div>
-                                <p class="side-text">Every action is explainable. Reproducible reasoning chain from memory to policy to result. One button reveals the full trace.</p>
-                                <div class="side-ui live-ui">
-                                    <div class="live-button">Explain <span class="btn-arrow">▼</span></div>
-                                    <div class="live-trace">
-                                        <div class="trace-line"><span class="trace-key">Why:</span> Goal "Ship MVP" + 2 weeks left</div>
-                                        <div class="trace-line"><span class="trace-key">Memory:</span> You said "Alex owns design"</div>
-                                        <div class="trace-line"><span class="trace-key">Policy:</span> Notify if blocker > 48h</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="compare-bottom">
-                            <span class="bottom-them">Black box</span>
-                            <span class="bottom-arrow">→</span>
-                            <span class="bottom-us">Explainable</span>
-                        </div>
-                    </div>
-                    
-                    <!-- 03 Execution -->
-                    <div class="compare-card">
-                        <div class="compare-header">
-                            <span class="compare-num">03</span>
-                            <span class="compare-title">Execution</span>
-                            <span class="compare-question">What does it actually do?</span>
-                        </div>
-                        <div class="compare-body">
-                            <div class="compare-side them">
-                                <div class="side-label">
-                                    <span class="label-icon">○</span>
-                                    <span>ASSISTANTS</span>
-                                </div>
-                                <p class="side-text">Generates text. You copy, paste, send, check. Micro-tasks, not outcomes. The work stays with you.</p>
-                                <div class="side-ui dead-ui">
-                                    <div class="dead-output">
-                                        <div class="dead-text-block">Here's a draft email you could send...</div>
-                                        <div class="dead-actions">
-                                            <span class="dead-action">Copy</span>
-                                            <span class="dead-action">Paste</span>
-                                            <span class="dead-action">Send</span>
-                                            <span class="dead-action">Check</span>
-                                        </div>
-                                        <div class="dead-you">← You do this</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="compare-divider">
-                                <span class="divider-arrow">→</span>
-                            </div>
-                            <div class="compare-side us">
-                                <div class="side-label">
-                                    <span class="label-icon">●</span>
-                                    <span>ODEI</span>
-                                </div>
-                                <p class="side-text">Delegates outcomes, not micro-tasks. Plans, executes, checks results. Acts within your boundaries—waits for verify when needed.</p>
-                                <div class="side-ui live-ui">
-                                    <div class="live-pipeline">
-                                        <div class="pipe-stage done"><span class="pipe-dot"></span><span>Planned</span></div>
-                                        <div class="pipe-connector"></div>
-                                        <div class="pipe-stage active"><span class="pipe-dot"></span><span>Executing</span></div>
-                                        <div class="pipe-connector"></div>
-                                        <div class="pipe-stage"><span class="pipe-dot"></span><span>Verify</span></div>
-                                        <div class="pipe-connector"></div>
-                                        <div class="pipe-stage"><span class="pipe-dot"></span><span>Done</span></div>
-                                    </div>
-                                    <div class="live-task">
-                                        <div class="task-line"><span class="trace-key">Task:</span> Send follow-up to Alex</div>
-                                        <div class="task-line"><span class="trace-key">Mode:</span> Supervised</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="compare-bottom">
-                            <span class="bottom-them">Text generator</span>
-                            <span class="bottom-arrow">→</span>
-                            <span class="bottom-us">Executor</span>
-                        </div>
-                    </div>
-                    
-                    <!-- 04 Adaptation -->
-                    <div class="compare-card">
-                        <div class="compare-header">
-                            <span class="compare-num">04</span>
-                            <span class="compare-title">Adaptation</span>
-                            <span class="compare-question">Does it get better at being you?</span>
-                        </div>
-                        <div class="compare-body">
-                            <div class="compare-side them">
-                                <div class="side-label">
-                                    <span class="label-icon">○</span>
-                                    <span>ASSISTANTS</span>
-                                </div>
-                                <p class="side-text">Doesn't learn from you. Same model for everyone. Your corrections vanish. Next session, same mistakes.</p>
-                                <div class="side-ui dead-ui">
-                                    <div class="dead-memory">
-                                        <div class="memory-slot empty"><span class="slot-x">✗</span> No persistent memory</div>
-                                        <div class="memory-slot empty"><span class="slot-x">✗</span> No policy learning</div>
-                                        <div class="memory-slot empty"><span class="slot-x">✗</span> No behavior update</div>
-                                    </div>
-                                    <div class="dead-reset">Session ends → Reset</div>
-                                </div>
-                            </div>
-                            <div class="compare-divider">
-                                <span class="divider-arrow">→</span>
-                            </div>
-                            <div class="compare-side us">
-                                <div class="side-label">
-                                    <span class="label-icon">●</span>
-                                    <span>ODEI</span>
-                                </div>
-                                <p class="side-text">Gets better at being you. Every correction becomes versioned policy. Behavior evolves. Only with your approval.</p>
-                                <div class="side-ui live-ui">
-                                    <div class="live-feedback">
-                                        <span class="feedback-btn deny">Deny</span>
-                                        <span class="feedback-btn override">Override</span>
-                                        <span class="feedback-btn regret">Regret</span>
-                                    </div>
-                                    <div class="live-update">
-                                        <div class="update-line"><span class="trace-key">Signal:</span> "Don't ping me about Alex"</div>
-                                        <div class="update-line highlight"><span class="trace-key">Update:</span> Policy v12 → v13 <span class="pending-badge">pending</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="compare-bottom">
-                            <span class="bottom-them">Static</span>
-                            <span class="bottom-arrow">→</span>
-                            <span class="bottom-us">Co-evolving</span>
-                        </div>
-                    </div>
-                    
-                    <!-- 05 Control -->
-                    <div class="compare-card">
-                        <div class="compare-header">
-                            <span class="compare-num">05</span>
-                            <span class="compare-title">Control</span>
-                            <span class="compare-question">Whose system is it?</span>
-                        </div>
-                        <div class="compare-body">
-                            <div class="compare-side them">
-                                <div class="side-label">
-                                    <span class="label-icon">○</span>
-                                    <span>ASSISTANTS</span>
-                                </div>
-                                <p class="side-text">Their rules. Their memory. Their platform. You're a guest in someone else's system. Data portability? Good luck.</p>
-                                <div class="side-ui dead-ui">
-                                    <div class="dead-platform">
-                                        <div class="platform-line"><span class="lock-icon">🔒</span> Memory: Platform-controlled</div>
-                                        <div class="platform-line"><span class="lock-icon">🔒</span> Rules: Platform-defined</div>
-                                        <div class="platform-line"><span class="lock-icon">🔒</span> Export: Limited/None</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="compare-divider">
-                                <span class="divider-arrow">→</span>
-                            </div>
-                            <div class="compare-side us">
-                                <div class="side-label">
-                                    <span class="label-icon">●</span>
-                                    <span>ODEI</span>
-                                </div>
-                                <p class="side-text">Your memory. Your policies. Portable, versioned, rollbackable. Switch models anytime. You own everything.</p>
-                                <div class="side-ui live-ui">
-                                    <div class="live-controls">
-                                        <div class="control-row">
-                                            <span class="control-label">Mode</span>
-                                            <span class="control-value">Supervised</span>
-                                        </div>
-                                        <div class="control-row">
-                                            <span class="control-label">Authority</span>
-                                            <span class="control-value">L2 (verify before act)</span>
-                                        </div>
-                                        <div class="control-row">
-                                            <span class="control-label">Export</span>
-                                            <span class="control-value available">Full JSON / Portable</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="compare-bottom">
-                            <span class="bottom-them">Their platform</span>
-                            <span class="bottom-arrow">→</span>
-                            <span class="bottom-us">Your system</span>
-                        </div>
-                    </div>
-                    
-                    <!-- 06 Continuity -->
-                    <div class="compare-card">
-                        <div class="compare-header">
-                            <span class="compare-num">06</span>
-                            <span class="compare-title">Continuity</span>
-                            <span class="compare-question">Does it track your goals?</span>
-                        </div>
-                        <div class="compare-body">
-                            <div class="compare-side them">
-                                <div class="side-label">
-                                    <span class="label-icon">○</span>
-                                    <span>ASSISTANTS</span>
-                                </div>
-                                <p class="side-text">Doesn't know your goals. Can't track progress. You manage everything yourself. Drift happens silently.</p>
-                                <div class="side-ui dead-ui">
-                                    <div class="dead-goals">
-                                        <div class="goal-line faded">Q4 goals... <span class="forgotten">forgotten</span></div>
-                                        <div class="goal-line faded">Project deadline... <span class="forgotten">unknown</span></div>
-                                        <div class="goal-line faded">Commitments... <span class="forgotten">untracked</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="compare-divider">
-                                <span class="divider-arrow">→</span>
-                            </div>
-                            <div class="compare-side us">
-                                <div class="side-label">
-                                    <span class="label-icon">●</span>
-                                    <span>ODEI</span>
-                                </div>
-                                <p class="side-text">Your goals don't silently decay. Keeps intent, priorities, reality aligned. Flags drift early before it becomes failure.</p>
-                                <div class="side-ui live-ui">
-                                    <div class="live-drift">
-                                        <div class="drift-header">Weekly Drift Report</div>
-                                        <div class="drift-line"><span class="trace-key">Goal:</span> Ship MVP by Jan 15</div>
-                                        <div class="drift-line"><span class="trace-key">Evidence:</span> 3 blockers, 0 resolved</div>
-                                        <div class="drift-line alert"><span class="trace-key">Drift:</span> <span class="drift-value">−4 days vs plan</span></div>
-                                        <div class="drift-line"><span class="trace-key">Action:</span> Escalate today</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="compare-bottom">
-                            <span class="bottom-them">Stateless</span>
-                            <span class="bottom-arrow">→</span>
-                            <span class="bottom-us">Continuous</span>
-                        </div>
-                    </div>
-                    
-                </div>
-
-                <!-- Summary Strip -->
-                <div class="summary-strip">
-                    <div class="strip-item"><span class="strip-them">Reactive</span><span class="strip-arrow">→</span><span class="strip-us">Proactive</span></div>
-                    <div class="strip-item"><span class="strip-them">Black box</span><span class="strip-arrow">→</span><span class="strip-us">Explainable</span></div>
-                    <div class="strip-item"><span class="strip-them">Text gen</span><span class="strip-arrow">→</span><span class="strip-us">Executor</span></div>
-                    <div class="strip-item"><span class="strip-them">Static</span><span class="strip-arrow">→</span><span class="strip-us">Evolving</span></div>
-                    <div class="strip-item"><span class="strip-them">Their data</span><span class="strip-arrow">→</span><span class="strip-us">Your data</span></div>
-                    <div class="strip-item"><span class="strip-them">Stateless</span><span class="strip-arrow">→</span><span class="strip-us">Continuous</span></div>
-                </div>
-
-                <!-- Formula -->
-                <div class="api-formula-box">
-                    <div class="api-formula-label">THE SHIPPING GATE</div>
-                    <div class="api-formula">S = P<sub>(h+ai)</sub> − max(P<sub>h</sub>, P<sub>ai</sub>)</div>
-                    <div class="formula-legend">
-                        <span><b>S</b> — Synergy</span>
-                        <span><b>P<sub>(h+ai)</sub></b> — Performance together</span>
-                        <span><b>max(P<sub>h</sub>, P<sub>ai</sub>)</b> — Best alone</span>
+                    <div class="trap-bottom">
+                        If you are the glue, you're the part that gets replaced.
                     </div>
                 </div>
 
-                <!-- Interpretation -->
-                <div class="synergy-interpretation">
-                    <div class="synergy-item positive">
-                        <span class="synergy-value">S &gt; 0</span>
-                        <span class="synergy-label">Symbiosis. Together outperforms best alone.</span>
+                <!-- The Stack: What You Should Own -->
+                <div class="problem-stack">
+                    <div class="stack-label">THE SOLUTION</div>
+                    <div class="stack-title">Own the infrastructure, not the chatbot</div>
+                    
+                    <div class="ownership-layers">
+                        <div class="own-layer">
+                            <span class="own-icon">✓</span>
+                            <span class="own-name">Memory</span>
+                            <span class="own-detail">portable, versioned, yours</span>
+                        </div>
+                        <div class="own-layer">
+                            <span class="own-icon">✓</span>
+                            <span class="own-name">Policy</span>
+                            <span class="own-detail">rules that persist</span>
+                        </div>
+                        <div class="own-layer">
+                            <span class="own-icon">✓</span>
+                            <span class="own-name">Initiative</span>
+                            <span class="own-detail">AI pings you first</span>
+                        </div>
+                        <div class="own-layer">
+                            <span class="own-icon">✓</span>
+                            <span class="own-name">Execution</span>
+                            <span class="own-detail">actions, not drafts</span>
+                        </div>
+                        <div class="own-layer">
+                            <span class="own-icon">✓</span>
+                            <span class="own-name">Audit</span>
+                            <span class="own-detail">receipts for everything</span>
+                        </div>
+                        <div class="own-layer swap-layer">
+                            <span class="own-icon">↻</span>
+                            <span class="own-name">Model</span>
+                            <span class="own-detail">swap anytime</span>
+                        </div>
                     </div>
-                    <div class="synergy-item neutral">
-                        <span class="synergy-value">S = 0</span>
-                        <span class="synergy-label">Automation. Replacement, not amplification.</span>
-                    </div>
-                    <div class="synergy-item negative">
-                        <span class="synergy-value">S &lt; 0</span>
-                        <span class="synergy-label">Degradation. We don't ship.</span>
+                    
+                    <div class="stack-conclusion">
+                        <span class="conclusion-them">Assistants are an interface.</span>
+                        <span class="conclusion-us">ODEI is infrastructure.</span>
                     </div>
                 </div>
+
+                <!-- Bridge -->
+                <div class="problem-bridge">
+                    <a href="#" class="bridge-cta" data-page="3">
+                        <span class="bridge-text">See how it works</span>
+                        <span class="bridge-arrow">→</span>
+                    </a>
+                </div>
+
             </div>
             <span class="page-number">2</span>
         </section>
 
-        <section class="page architecture-page" data-page="3">
+
+        <section class="page product-page" data-page="3">
             <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
                 </div>
-                <h2 class="chapter-heading">Roadmap</h2>
                 
-                <p class="arch-intro">
-                    Building L5 Symbiotic AI is a multi-phase journey. Each phase builds on the previous, creating the infrastructure for true human-AI partnership.
-                </p>
+                <!-- HERO: The Shift -->
+                <div class="product-hero">
+                    <div class="hero-badge">PRODUCT</div>
+                    <h2 class="hero-title">
+                        <span class="hero-line-1">From assistant</span>
+                        <span class="hero-line-2">to infrastructure.</span>
+                    </h2>
+                    <p class="hero-subtitle">ODEI is a local-first governance layer that turns any AI model into a personal operating system — with memory, policies, execution, and receipts.</p>
+                </div>
 
-                <div class="properties-section" style="margin-bottom: 3rem;">
-                    <span class="section-label">DEVELOPMENT PHASES</span>
-                    <div class="roadmap-phases">
-                        <div class="property-card done">
-                            <span class="phase-status">DONE</span>
-                            <span class="prop-num">✓</span>
-                            <h4>Foundation</h4>
-                            <p class="prop-def">The architectural substrate — complete</p>
-                            <ul class="roadmap-list">
-                                <li>7-layer Memory Atlas with 40+ node types</li>
-                                <li>Constitutional framework — values, principles, guardrails</li>
-                                <li>Provenance system — every write is traceable</li>
-                                <li>Guardian preflight validation</li>
-                                <li>Hybrid search — semantic + structural + temporal</li>
-                            </ul>
+                <!-- VISUAL CONTRAST: Dead vs Live -->
+                <div class="contrast-section">
+                    <div class="contrast-container">
+                        <div class="contrast-side dead">
+                            <div class="contrast-header">
+                                <span class="contrast-icon">○</span>
+                                <span class="contrast-label">TYPICAL ASSISTANT</span>
+                            </div>
+                            <div class="contrast-terminal">
+                                <div class="term-line"><span class="term-prompt">></span> <span class="term-cursor">▊</span></div>
+                                <div class="term-status">Waiting for input...</div>
+                            </div>
+                            <div class="contrast-traits">
+                                <span class="trait negative">Reactive</span>
+                                <span class="trait negative">Stateless</span>
+                                <span class="trait negative">Generic</span>
+                            </div>
                         </div>
-                        <div class="property-card now">
-                            <span class="phase-status">NOW</span>
-                            <span class="prop-num">01</span>
-                            <h4>L5 Core Infrastructure</h4>
-                            <p class="prop-def">The four systems that enable autonomous partnership</p>
-                            <ul class="roadmap-list">
-                                <li>Autonomous task lifecycle management</li>
-                                <li>Proactive AI initiation — AI pings you first</li>
-                                <li>Continuous learning from feedback</li>
-                                <li>Drift detection — intent vs reality monitoring</li>
-                            </ul>
+                        
+                        <div class="contrast-arrow">
+                            <div class="arrow-line"></div>
+                            <div class="arrow-text">ODEI</div>
+                            <div class="arrow-line"></div>
                         </div>
-                        <div class="property-card">
-                            <span class="prop-num">02</span>
-                            <h4>Memory Enhancements</h4>
-                            <p class="prop-def">Deeper knowledge representation</p>
-                            <ul class="roadmap-list">
-                                <li>Epistemic separation — fact vs inference vs opinion</li>
-                                <li>Entity resolution across sessions</li>
-                                <li>Confidence tracking and decay</li>
-                            </ul>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">03</span>
-                            <h4>Agent Ecosystem</h4>
-                            <p class="prop-def">Specialized agents under unified governance</p>
-                            <ul class="roadmap-list">
-                                <li>Domain-specialized agents</li>
-                                <li>Cross-agent coordination protocol</li>
-                                <li>Constitutional governance across all agents</li>
-                            </ul>
-                        </div>
-                        <div class="property-card">
-                            <span class="prop-num">04</span>
-                            <h4>Public Release</h4>
-                            <p class="prop-def">Production-ready symbiotic AI</p>
-                            <ul class="roadmap-list">
-                                <li>Security audit</li>
-                                <li>Local-first deployment</li>
-                                <li>Open documentation</li>
-                            </ul>
+                        
+                        <div class="contrast-side live">
+                            <div class="contrast-header">
+                                <span class="contrast-icon pulse">●</span>
+                                <span class="contrast-label">ODEI SYSTEM</span>
+                            </div>
+                            <div class="contrast-terminal active">
+                                <div class="term-line"><span class="term-time">09:14</span> <span class="term-alert">→</span> Design review needs rescheduling</div>
+                                <div class="term-line"><span class="term-time">09:14</span> <span class="term-action">⚡</span> Checking Alex's calendar...</div>
+                                <div class="term-line"><span class="term-time">09:15</span> <span class="term-ok">✓</span> Sent invite for Thursday 2pm</div>
+                            </div>
+                            <div class="contrast-traits">
+                                <span class="trait positive">Proactive</span>
+                                <span class="trait positive">Persistent</span>
+                                <span class="trait positive">Personal</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- THE STACK: 4 Primitives -->
+                <div class="stack-section">
+                    <div class="stack-header">
+                        <span class="stack-label">THE STACK</span>
+                        <h3 class="stack-title">Four primitives. One system.</h3>
+                    </div>
+                    
+                    <div class="primitives-showcase">
+                        <div class="primitive-card" data-primitive="memory">
+                            <div class="primitive-visual">
+                                <div class="prim-icon-wrap">
+                                    <svg class="prim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <circle cx="12" cy="12" r="4"/>
+                                        <line x1="12" y1="2" x2="12" y2="6"/>
+                                        <line x1="12" y1="18" x2="12" y2="22"/>
+                                        <line x1="2" y1="12" x2="6" y2="12"/>
+                                        <line x1="18" y1="12" x2="22" y2="12"/>
+                                    </svg>
+                                </div>
+                                <div class="prim-glow"></div>
+                            </div>
+                            <div class="primitive-content">
+                                <h4 class="prim-name">Memory</h4>
+                                <p class="prim-desc">Structured context that persists across sessions, models, and time.</p>
+                                <div class="prim-detail">
+                                    <span class="detail-label">You get:</span>
+                                    <span class="detail-value">Switch models without losing "you"</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="primitive-card" data-primitive="policy">
+                            <div class="primitive-visual">
+                                <div class="prim-icon-wrap">
+                                    <svg class="prim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                        <path d="M2 17l10 5 10-5"/>
+                                        <path d="M2 12l10 5 10-5"/>
+                                    </svg>
+                                </div>
+                                <div class="prim-glow"></div>
+                            </div>
+                            <div class="primitive-content">
+                                <h4 class="prim-name">Policy</h4>
+                                <p class="prim-desc">Versioned rules and thresholds that govern AI behavior.</p>
+                                <div class="prim-detail">
+                                    <span class="detail-label">You get:</span>
+                                    <span class="detail-value">Predictable behavior, not negotiation</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="primitive-card" data-primitive="execution">
+                            <div class="primitive-visual">
+                                <div class="prim-icon-wrap">
+                                    <svg class="prim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <polygon points="5 3 19 12 5 21 5 3"/>
+                                    </svg>
+                                </div>
+                                <div class="prim-glow"></div>
+                            </div>
+                            <div class="primitive-content">
+                                <h4 class="prim-name">Execution</h4>
+                                <p class="prim-desc">Actions, not drafts. Results with verification.</p>
+                                <div class="prim-detail">
+                                    <span class="detail-label">You get:</span>
+                                    <span class="detail-value">Outcomes, not copy-paste busywork</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="primitive-card" data-primitive="audit">
+                            <div class="primitive-visual">
+                                <div class="prim-icon-wrap">
+                                    <svg class="prim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M9 11l3 3L22 4"/>
+                                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                                    </svg>
+                                </div>
+                                <div class="prim-glow"></div>
+                            </div>
+                            <div class="primitive-content">
+                                <h4 class="prim-name">Audit</h4>
+                                <p class="prim-desc">Full trace for every action. WHY / MEMORY / POLICY / RECEIPT.</p>
+                                <div class="prim-detail">
+                                    <span class="detail-label">You get:</span>
+                                    <span class="detail-value">Trust through transparency</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THE LOOP: How It Works -->
+                <div class="loop-section">
+                    <div class="loop-header">
+                        <span class="loop-label">THE LOOP</span>
+                        <h3 class="loop-title">Observe. Decide. Act. Verify. Learn.</h3>
+                    </div>
+                    
+                    <div class="loop-visual">
+                        <div class="loop-ring">
+                            <div class="loop-step" data-step="1">
+                                <div class="step-dot"></div>
+                                <div class="step-content">
+                                    <span class="step-name">Observe</span>
+                                    <span class="step-desc">Detect triggers from context</span>
+                                </div>
+                            </div>
+                            <div class="loop-connector"></div>
+                            <div class="loop-step" data-step="2">
+                                <div class="step-dot"></div>
+                                <div class="step-content">
+                                    <span class="step-name">Decide</span>
+                                    <span class="step-desc">Check policy + authority level</span>
+                                </div>
+                            </div>
+                            <div class="loop-connector"></div>
+                            <div class="loop-step" data-step="3">
+                                <div class="step-dot"></div>
+                                <div class="step-content">
+                                    <span class="step-name">Act</span>
+                                    <span class="step-desc">Execute or request approval</span>
+                                </div>
+                            </div>
+                            <div class="loop-connector"></div>
+                            <div class="loop-step" data-step="4">
+                                <div class="step-dot"></div>
+                                <div class="step-content">
+                                    <span class="step-name">Verify</span>
+                                    <span class="step-desc">Confirm outcome achieved</span>
+                                </div>
+                            </div>
+                            <div class="loop-connector"></div>
+                            <div class="loop-step" data-step="5">
+                                <div class="step-dot"></div>
+                                <div class="step-content">
+                                    <span class="step-name">Learn</span>
+                                    <span class="step-desc">Update memory + policy</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROOF: The Receipt -->
+                <div class="proof-section">
+                    <div class="proof-header">
+                        <span class="proof-label">PROOF</span>
+                        <h3 class="proof-title">Receipts, not vibes.</h3>
+                    </div>
+                    
+                    <div class="proof-demo">
+                        <div class="demo-task">
+                            <span class="task-prompt">Task:</span>
+                            <span class="task-text">"Follow up with Alex and reschedule the design review"</span>
+                        </div>
+                        
+                        <div class="demo-terminal">
+                            <div class="terminal-header">
+                                <span class="terminal-dot red"></span>
+                                <span class="terminal-dot yellow"></span>
+                                <span class="terminal-dot green"></span>
+                                <span class="terminal-title">odei://execution-log</span>
+                            </div>
+                            <div class="terminal-body">
+                                <div class="term-row">
+                                    <span class="term-key">PLAN</span>
+                                    <span class="term-val">3 steps: lookup → propose → send</span>
+                                </div>
+                                <div class="term-row">
+                                    <span class="term-key">EXEC</span>
+                                    <span class="term-val">Calendar API: event updated <span class="term-success">✓</span></span>
+                                </div>
+                                <div class="term-row">
+                                    <span class="term-key">VERIFY</span>
+                                    <span class="term-val">Invite accepted by alex@... <span class="term-success">✓</span></span>
+                                </div>
+                                <div class="term-row">
+                                    <span class="term-key">AUDIT</span>
+                                    <span class="term-val mono">receipt_2026-01-04_0847_7f3a</span>
+                                </div>
+                                <div class="term-row">
+                                    <span class="term-key">MEMORY</span>
+                                    <span class="term-val">"Alex owns design" <span class="term-source">(email:2026-01-02)</span></span>
+                                </div>
+                                <div class="term-row highlight">
+                                    <span class="term-key">POLICY</span>
+                                    <span class="term-val">blocker_notify: v13 → v14 <span class="term-pending">pending approval</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="demo-note">Every action produces a cryptographically signed receipt. Full provenance. Full control.</p>
+                    </div>
+                </div>
+
+                <!-- AUTHORITY: Control Spectrum -->
+                <div class="authority-section-new">
+                    <div class="authority-header">
+                        <span class="authority-label">AUTHORITY</span>
+                        <h3 class="authority-title">You set the boundaries.</h3>
+                    </div>
+                    
+                    <div class="authority-spectrum">
+                        <div class="spectrum-track">
+                            <div class="spectrum-fill"></div>
+                            <div class="spectrum-marker" style="left: 60%"></div>
+                        </div>
+                        
+                        <div class="spectrum-levels">
+                            <div class="level-item">
+                                <div class="level-indicator"></div>
+                                <span class="level-name">Inform</span>
+                                <span class="level-desc">Suggest only</span>
+                            </div>
+                            <div class="level-item">
+                                <div class="level-indicator"></div>
+                                <span class="level-name">Confirm</span>
+                                <span class="level-desc">Ask before acting</span>
+                            </div>
+                            <div class="level-item active">
+                                <div class="level-indicator"></div>
+                                <span class="level-name">Supervised</span>
+                                <span class="level-desc">Act, notify, rollback</span>
+                            </div>
+                            <div class="level-item">
+                                <div class="level-indicator"></div>
+                                <span class="level-name">Autonomous</span>
+                                <span class="level-desc">Act within bounds</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="authority-note">Different tasks, different trust levels. You control the dial.</p>
+                </div>
+
+                <!-- GATE: Symbiosis Threshold -->
+                <div class="gate-section">
+                    <div class="gate-header">
+                        <span class="gate-badge">THE GATE</span>
+                        <h3 class="gate-title">We ship only when you're stronger with ODEI than without it.</h3>
+                    </div>
+                    
+                    <div class="gate-formula-display">
+                        <div class="formula-container">
+                            <span class="formula-symbol">σ</span>
+                            <span class="formula-equals">=</span>
+                            <span class="formula-expression">P<sub>(h+ai)</sub> − max(P<sub>h</sub>, P<sub>ai</sub>)</span>
+                        </div>
+                        
+                        <div class="formula-legend">
+                            <div class="legend-item">
+                                <span class="legend-var">P<sub>h</sub></span>
+                                <span class="legend-def">Human alone</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-var">P<sub>ai</sub></span>
+                                <span class="legend-def">AI alone</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-var">P<sub>(h+ai)</sub></span>
+                                <span class="legend-def">Human + ODEI</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gate-outcomes-row">
+                        <div class="outcome-card positive">
+                            <div class="outcome-symbol">σ &gt; 0</div>
+                            <div class="outcome-name">Symbiosis</div>
+                            <div class="outcome-action">Ship</div>
+                        </div>
+                        <div class="outcome-card neutral">
+                            <div class="outcome-symbol">σ = 0</div>
+                            <div class="outcome-name">Automation</div>
+                            <div class="outcome-action">Skip</div>
+                        </div>
+                        <div class="outcome-card negative">
+                            <div class="outcome-symbol">σ &lt; 0</div>
+                            <div class="outcome-name">Degradation</div>
+                            <div class="outcome-action">Block</div>
+                        </div>
+                    </div>
+                    
+                    <div class="gate-metrics">
+                        <span class="metric-label">Measured by:</span>
+                        <div class="metric-tags">
+                            <span class="metric-tag">time to outcome</span>
+                            <span class="metric-tag">error rate</span>
+                            <span class="metric-tag">retry count</span>
+                            <span class="metric-tag">cognitive load</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA: Get Access -->
+                <div class="product-cta-section">
+                    <div class="cta-content">
+                        <h3 class="cta-headline">Ready to own your AI infrastructure?</h3>
+                        <p class="cta-subline">Built for founders, operators, and creators with too much context.</p>
+                        <a href="#connect" class="cta-button" data-page="9">
+                            <span class="cta-text">Request Early Access</span>
+                            <span class="cta-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+
             </div>
             <span class="page-number">3</span>
         </section>
 
 
-        <section class="page science-page" data-page="4">
-            <div class="content wide">
-                <div class="small-logo-container">
-                    <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
-                </div>
-                
-                <div class="science-hero">
-                    <span class="science-badge">Scientific Foundation</span>
-                    <h2 class="chapter-heading">The Science of Symbiotic AI</h2>
-                    <p class="science-subtitle">
-                        ODEI's L5 (Symbiotic AI) is not a marketing term—it is a legitimate extension of established agent taxonomies, grounded in four decades of Human-AI Teaming research.
-                    </p>
-                </div>
-
-                <!-- Taxonomic Position -->
-                <div class="taxonomy-section">
-                    <div class="taxonomy-header">
-                        <span class="section-label">01 // TAXONOMIC POSITION</span>
-                        <h3>Extending AIMA Agent Classification</h3>
-                    </div>
-                    <p class="taxonomy-intro">
-                        Russell &amp; Norvig's canonical taxonomy (AIMA, 1995–2020) defines five agent classes: Reactive, Model-based, Goal-based, Utility-based, and Learning agents. Symbiotic AI extends this taxonomy by adding invariants that no existing class captures.
-                    </p>
-                    <div class="taxonomy-grid">
-                        <div class="taxonomy-card aima">
-                            <div class="card-label">AIMA Classes (L1–L4)</div>
-                            <ul class="taxonomy-list">
-                                <li>Single-agent optimization</li>
-                                <li>Human as operator or supervisor</li>
-                                <li>Static goal specification</li>
-                                <li>Unidirectional adaptation</li>
-                            </ul>
-                        </div>
-                        <div class="taxonomy-arrow">→</div>
-                        <div class="taxonomy-card symbiotic">
-                            <div class="card-label">Symbiotic AI (L5)</div>
-                            <ul class="taxonomy-list">
-                                <li>Joint human-AI system optimization</li>
-                                <li>Human as co-participant</li>
-                                <li>Dynamic goal co-evolution</li>
-                                <li>Bidirectional co-adaptation</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <p class="taxonomy-note">L4 agents may have memory and autonomy, but lack mandatory User Model, bidirectional adaptation, and divided subjectivity. L5 is a new class—different invariants, different engineering requirements.</p>
-                </div>
-
-                <!-- Scientific Anchors -->
-                <div class="anchors-section">
-                    <div class="anchors-header">
-                        <span class="section-label">02 // SCIENTIFIC ANCHORS</span>
-                        <h3>Six Research Traditions</h3>
-                    </div>
-                    <div class="anchors-grid">
-                        <div class="anchor-card">
-                            <div class="anchor-num">A1</div>
-                            <h4>Human-AI Teaming</h4>
-                            <p>Treating AI as teammate, not tool. Shared mental models and mutual comprehension.</p>
-                            <cite>National Academies (2022); O'Neill et al. (2020); Lyons et al. (2021)</cite>
-                        </div>
-                        <div class="anchor-card">
-                            <div class="anchor-num">A2</div>
-                            <h4>Co-Adaptive Systems</h4>
-                            <p>Both agents learn and adapt simultaneously. Mutual adjustment toward shared goals.</p>
-                            <cite>van Zoelen et al. (2021); Nikolaidis et al. (2017); Döppner et al. (2019)</cite>
-                        </div>
-                        <div class="anchor-card">
-                            <div class="anchor-num">A3</div>
-                            <h4>Adjustable Autonomy</h4>
-                            <p>Dynamic allocation of control based on context, workload, and human state.</p>
-                            <cite>Beer et al. (2014); Sheridan (1992); Parasuraman et al. (2000)</cite>
-                        </div>
-                        <div class="anchor-card">
-                            <div class="anchor-num">A4</div>
-                            <h4>Shared Autonomy</h4>
-                            <p>Blending human intent with AI capability for superior joint outcomes.</p>
-                            <cite>Dragan &amp; Srinivasa (2013); Javdani et al. (2018)</cite>
-                        </div>
-                        <div class="anchor-card">
-                            <div class="anchor-num">A5</div>
-                            <h4>Theory of Mind Alignment</h4>
-                            <p>AI maintains accurate model of user's mental state. Active sensing minimizes the "perspective gap" between human intent and AI action.</p>
-                            <cite>Watts, S. (2025). Cognitive Foundations of Algorithmic Trust.</cite>
-                        </div>
-                        <div class="anchor-card">
-                            <div class="anchor-num">A6</div>
-                            <h4>Joint Process Modeling</h4>
-                            <p>Human and AI as single coupled dynamical system. Latency, friction, and context-switching treated as noise to be systematically eliminated.</p>
-                            <cite>Dynamical Systems Approach to Human-AI Interaction.</cite>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Invariants -->
-                <div class="invariants-section">
-                    <div class="invariants-header">
-                        <span class="section-label">03 // DEFINING INVARIANTS</span>
-                        <h3>What Makes L5 a New Class</h3>
-                    </div>
-                    <p class="invariants-intro">
-                        Symbiotic AI is defined by four invariants absent from L1–L4 agent classes:
-                    </p>
-                    <div class="invariants-grid">
-                        <div class="invariant-card">
-                            <span class="invariant-num">01</span>
-                            <div class="invariant-content">
-                                <h4>Mandatory User Model</h4>
-                                <p>The agent maintains and updates a persistent model of the human's goals, preferences, cognitive state, and behavioral patterns.</p>
-                            </div>
-                        </div>
-                        <div class="invariant-card">
-                            <span class="invariant-num">02</span>
-                            <div class="invariant-content">
-                                <h4>Bidirectional Policy Update</h4>
-                                <p>Agent policy updates based on outcomes + human feedback. Not just reward signals, but explicit preference learning.</p>
-                            </div>
-                        </div>
-                        <div class="invariant-card">
-                            <span class="invariant-num">03</span>
-                            <div class="invariant-content">
-                                <h4>Co-Adaptation Loop</h4>
-                                <p>Human ↔ Agent mutual adjustment. Agent learns preferences; human learns to formulate, calibrate trust, and evolve processes. Both modify behavior. The system evolves together.</p>
-                            </div>
-                        </div>
-                        <div class="invariant-card">
-                            <span class="invariant-num">04</span>
-                            <div class="invariant-content">
-                                <h4>Divided Subjectivity</h4>
-                                <p>Agent has no goals outside the human's framework, but possesses execution autonomy. Source of goals ≠ source of action.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Synergy Formula -->
-                <div class="synergy-section">
-                    <div class="synergy-header">
-                        <span class="section-label">04 // SYNERGY METRIC</span>
-                        <h3>Measuring Collaboration</h3>
-                    </div>
-                    <div class="synergy-formula-box">
-                        <div class="formula">
-                            S = P<sub>(h+ai)</sub> − max(P<sub>h</sub>, P<sub>ai</sub>)
-                        </div>
-                        <div class="formula-meta">
-                            <span>FIG.01 // SYNERGY_MODEL</span>
-                            <span class="verified">[VERIFIED]</span>
-                        </div>
-                        <p class="formula-desc">
-                            True synergy (S &gt; 0) occurs only when joint performance exceeds the capability of the strongest individual agent. ODEI is engineered to maximize S.
-                        </p>
-                        <div class="synergy-example">
-                            <span class="synergy-example-label">Example:</span> Human alone: 4h. AI alone: 3h. Together: 1h. S &gt; 0 — symbiosis exists.
-                        </div>
-                        <cite class="formula-cite">Riedl, C. &amp; Weidmann, B. (2025). Quantifying Human-AI Synergy. Bayesian IRT for collaborative ability measurement.</cite>
-                    </div>
-                </div>
-
-                <!-- Sync Formula -->
-                <div class="synergy-section">
-                    <div class="synergy-header">
-                        <span class="section-label">05 // SYNC METRIC</span>
-                        <h3>Context Integrity</h3>
-                    </div>
-                    <div class="synergy-formula-box sync-box">
-                        <div class="formula">
-                            σ = (C · F · Q · K)<sup>1/4</sup>
-                        </div>
-                        <div class="formula-meta">
-                            <span>FIG.02 // SYNC_MODEL</span>
-                            <span class="verified">[ENGINEERING]</span>
-                        </div>
-                        <p class="formula-desc">
-                            Sync (σ) measures how observable your current world is to ODEI right now. Without visibility, there is no governance. σ = 1.0 means full, fresh, consistent context. σ = 0.0 means blindness — any recommendation is noise.
-                        </p>
-                        <div class="sync-components">
-                            <div class="sync-component">
-                                <span class="component-symbol">C</span>
-                                <span class="component-name">Coverage</span>
-                                <span class="component-desc">Critical sources connected</span>
-                            </div>
-                            <div class="sync-component">
-                                <span class="component-symbol">F</span>
-                                <span class="component-name">Freshness</span>
-                                <span class="component-desc">Data age vs decay rate (τ)</span>
-                            </div>
-                            <div class="sync-component">
-                                <span class="component-symbol">Q</span>
-                                <span class="component-name">Quality</span>
-                                <span class="component-desc">Context completeness</span>
-                            </div>
-                            <div class="sync-component">
-                                <span class="component-symbol">K</span>
-                                <span class="component-name">Consistency</span>
-                                <span class="component-desc">No conflicts or errors</span>
-                            </div>
-                        </div>
-                        <p class="formula-note">Geometric mean ensures one blind spot cuts the entire score. This is intentional — partial observability produces unreliable governance.</p>
-                        <div class="sync-distinction">
-                            <div class="distinction-item">
-                                <span class="distinction-label">Sync (σ)</span>
-                                <span class="distinction-type">process metric</span>
-                                <span class="distinction-desc">"AI sees everything" — real-time</span>
-                            </div>
-                            <div class="distinction-item">
-                                <span class="distinction-label">Synergy (S)</span>
-                                <span class="distinction-type">outcome metric</span>
-                                <span class="distinction-desc">"We outperform best agent" — weekly</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Canonical Definition -->
-                <div class="definition-section">
-                    <div class="definition-box">
-                        <span class="definition-label">CANONICAL DEFINITION</span>
-                        <blockquote>
-                            <b>Symbiotic AI</b> is a co-adaptive human–AI system in which an autonomous agent operates with persistent memory, policy update, and user model, while the human remains the source of goals, norms, and responsibility in a human-on-the-loop configuration.
-                        </blockquote>
-                        <p class="definition-note">This is not philosophy. This is a system class.</p>
-                    </div>
-                </div>
-
-                <!-- References -->
-                <div class="science-references">
-                    <span class="section-label">KEY REFERENCES</span>
-                    <div class="ref-grid">
-                        <div class="ref-item">Russell, S. &amp; Norvig, P. (2020). <i>Artificial Intelligence: A Modern Approach</i>. 4th ed.</div>
-                        <div class="ref-item">National Academies (2022). <i>Human-AI Teaming: State of the Art and Research Needs</i>.</div>
-                        <div class="ref-item">Beer, J.M. et al. (2014). Toward a Framework for Levels of Robot Autonomy in HRI. <i>JHRI</i> 3(2).</div>
-                        <div class="ref-item">van Zoelen, E.M. et al. (2021). Identifying Interaction Patterns of Mutual Adaptation. <i>Front. Robot. AI</i>.</div>
-                        <div class="ref-item">Nikolaidis, S. et al. (2017). Human-robot mutual adaptation in collaborative tasks. <i>IJRR</i> 36(5-7).</div>
-                        <div class="ref-item">Riedl, C. &amp; Weidmann, B. (2025). Quantifying Human-AI Synergy. <i>Working Paper</i>.</div>
-                    </div>
-                </div>
-            </div>
-            <span class="page-number">4</span>
-        </section>
-
-
-        <section class="page memory-page" data-page="5">
-            <div class="content wide">
-                <div class="small-logo-container">
-                    <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
-                </div>
-                <h2 class="chapter-heading">Memory</h2>
-                <p class="memory-intro">
-                    Assistants have chat history. ODEI has memory architecture. The difference: chat history is theirs, resets on their terms, and doesn't affect behavior. Memory in ODEI is yours, persistent, and shapes every decision.
-                </p>
-                
-                <!-- Three Architectural Properties -->
-                <div class="memory-section">
-                    <div class="memory-section-header">
-                        <span class="memory-badge">L5 CORE</span>
-                        <h3>Three Architectural Properties</h3>
-                        <p>Properties 9–11 from Agency Levels. They define what separates L5 Symbiotic AI from L4 Agentic systems.</p>
-                    </div>
-                    
-                    <div class="memory-cards">
-                        <div class="memory-card">
-                            <div class="memory-card-header">
-                                <span class="memory-num">09</span>
-                                <h4>Persistent Memory</h4>
-                            </div>
-                            <p class="memory-card-text">Cross-session memory that affects decisions. Not just "remember what we talked about"—but facts, beliefs, patterns, and outcomes that shape how ODEI reasons about your world.</p>
-                            <div class="memory-card-impl">
-                                <span class="impl-label">Implementation:</span>
-                                <span class="impl-value">Neo4j Memory Atlas + History SQLite</span>
-                            </div>
-                        </div>
-                        
-                        <div class="memory-card">
-                            <div class="memory-card-header">
-                                <span class="memory-num">10</span>
-                                <h4>User Model</h4>
-                            </div>
-                            <p class="memory-card-text">Persistent representation of you—goals, preferences, constraints, decision patterns. Not a profile you fill out. A model that emerges from observation and explicit feedback.</p>
-                            <div class="memory-card-impl">
-                                <span class="impl-label">Implementation:</span>
-                                <span class="impl-value">Human node, Context, Preferences graph</span>
-                            </div>
-                        </div>
-                        
-                        <div class="memory-card">
-                            <div class="memory-card-header">
-                                <span class="memory-num">11</span>
-                                <h4>Policy Update</h4>
-                            </div>
-                            <p class="memory-card-text">Outcomes change strategy, not just state. When you approve, deny, or override—ODEI updates the operating rules. Your corrections become versioned policy.</p>
-                            <div class="memory-card-impl">
-                                <span class="impl-label">Implementation:</span>
-                                <span class="impl-value">Insights/Patterns → future behavior</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Three Ownership Principles -->
-                <div class="memory-section ownership">
-                    <div class="memory-section-header">
-                        <span class="memory-badge ownership-badge">OWNERSHIP</span>
-                        <h3>Three Ownership Principles</h3>
-                        <p>Memory without ownership is surveillance. These principles ensure your memory remains your asset.</p>
-                    </div>
-                    
-                    <div class="memory-cards principles">
-                        <div class="memory-card principle">
-                            <div class="memory-card-header">
-                                <span class="memory-num principle-num">P1</span>
-                                <h4>Portable</h4>
-                            </div>
-                            <p class="memory-card-text">Your memory is not locked to a model or vendor. Export anytime. Switch providers. Keep your accumulated context. The value you build stays with you.</p>
-                        </div>
-                        
-                        <div class="memory-card principle">
-                            <div class="memory-card-header">
-                                <span class="memory-num principle-num">P2</span>
-                                <h4>Versioned</h4>
-                            </div>
-                            <p class="memory-card-text">Every change is tracked. Policies have versions. Facts have timestamps. If something goes wrong, roll back. Trace the history of any decision.</p>
-                        </div>
-                        
-                        <div class="memory-card principle">
-                            <div class="memory-card-header">
-                                <span class="memory-num principle-num">P3</span>
-                                <h4>Provenance</h4>
-                            </div>
-                            <p class="memory-card-text">Every fact has a source. Every belief has evidence. Every policy has an origin. No "I just know"—full traceability from memory to action.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Bottom Line -->
-                <div class="memory-bottomline">
-                    <div class="bottomline-content">
-                        <span class="bottomline-label">THE BOTTOM LINE</span>
-                        <p>Memory is what makes L5 possible. Without persistent memory, no user model. Without user model, no adaptation. Without adaptation, no symbiosis. Just another stateless assistant pretending to know you.</p>
-                    </div>
-                </div>
-            </div>
-            <span class="page-number">5</span>
-        </section>
-
-        <!-- NEW PAGE: Agency Levels -->
-        <section class="page" data-page="6">
+        <!-- Agency Levels -->
+        <section class="page" data-page="4">
             <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
                 </div>
                 <h2 class="chapter-heading">5 Levels of AI Agency</h2>
                 <p class="text">
-                    A scientific taxonomy of AI autonomy levels—from informational systems to symbiotic AI. ODEI operates at Level 5: a co-adaptive system where human and AI evolve together.
+                    An operational taxonomy of AI autonomy levels—from informational systems to symbiotic AI. ODEI operates at Level 5: a co-adaptive system where human and AI evolve together.
                 </p>
                 
                 <div class="legend-box">
@@ -4840,7 +6400,7 @@
                 </div>
                 
                 <div class="table-footer">
-                    Based on AIMA (Russell & Norvig), LORA Framework (Beer et al.), Kim et al. 2024, MOSAAIC 2025
+                    Based on AIMA (Russell & Norvig), Levels of Automation (Parasuraman, Sheridan & Wickens, 2000), LORA Framework (Beer et al., 2014)
                 </div>
                 
                 <!-- 12 Properties of AI Agency -->
@@ -4854,35 +6414,35 @@
                         <div class="tier-header l4-tier">
                             <span class="tier-badge">L4</span>
                             <span class="tier-name">Agentic Foundation</span>
-                            <span class="tier-desc">Properties 1–8 define any autonomous agent</span>
+                            <span class="tier-desc">Properties 1–8 define autonomous agents</span>
                         </div>
                         <div class="properties-grid-compact">
                             <div class="prop-item">
                                 <span class="prop-number">01</span>
                                 <div class="prop-content">
-                                    <h4>Closed-loop Control</h4>
-                                    <p>System triggers next step without new user prompt</p>
+                                    <h4>Closed-loop Autonomy</h4>
+                                    <p>Act → Verify → Decide-next cycle</p>
                                 </div>
                             </div>
                             <div class="prop-item">
                                 <span class="prop-number">02</span>
                                 <div class="prop-content">
-                                    <h4>AI Initiative</h4>
-                                    <p>Can initiate actions without being asked</p>
+                                    <h4>Bounded Initiative</h4>
+                                    <p>Proposals with thresholds, not spam</p>
                                 </div>
                             </div>
                             <div class="prop-item">
                                 <span class="prop-number">03</span>
                                 <div class="prop-content">
-                                    <h4>Goal / Utility</h4>
-                                    <p>Explicit success criteria guiding decisions</p>
+                                    <h4>Goal + Constraints</h4>
+                                    <p>Success criteria with built-in limits</p>
                                 </div>
                             </div>
                             <div class="prop-item">
                                 <span class="prop-number">04</span>
                                 <div class="prop-content">
-                                    <h4>Task-state s<sub>t</sub></h4>
-                                    <p>Structured progress model (pause→resume)</p>
+                                    <h4>State Model s<sub>t</sub></h4>
+                                    <p>Working state + pause/resume + IPOV</p>
                                 </div>
                             </div>
                             <div class="prop-item">
@@ -4895,22 +6455,22 @@
                             <div class="prop-item">
                                 <span class="prop-number">06</span>
                                 <div class="prop-content">
-                                    <h4>Autonomous Loop</h4>
-                                    <p>Act → Check → Decide-next cycle</p>
+                                    <h4>Capability Registry</h4>
+                                    <p>Bounded + enforced action space</p>
                                 </div>
                             </div>
                             <div class="prop-item">
                                 <span class="prop-number">07</span>
                                 <div class="prop-content">
-                                    <h4>Action Space</h4>
-                                    <p>Bounded set of permitted actions</p>
+                                    <h4>Human Governance</h4>
+                                    <p>Authority matrix + veto + escalation</p>
                                 </div>
                             </div>
                             <div class="prop-item">
                                 <span class="prop-number">08</span>
                                 <div class="prop-content">
-                                    <h4>Human Control</h4>
-                                    <p>Human-on-the-loop with override</p>
+                                    <h4>Cybernetic Stability</h4>
+                                    <p>Budgets, cooldowns, rate limits</p>
                                 </div>
                             </div>
                         </div>
@@ -4920,14 +6480,14 @@
                         <div class="tier-header l5-tier">
                             <span class="tier-badge">L5</span>
                             <span class="tier-name">Symbiotic Extension</span>
-                            <span class="tier-desc">Properties 9–12 create true partnership</span>
+                            <span class="tier-desc">Properties 9–12 create sovereign partnership</span>
                         </div>
                         <div class="properties-grid-compact l5-grid">
                             <div class="prop-item l5-prop">
                                 <span class="prop-number">09</span>
                                 <div class="prop-content">
-                                    <h4>Persistent Memory</h4>
-                                    <p>Cross-session memory affecting decisions</p>
+                                    <h4>Sovereign Memory</h4>
+                                    <p>Persistent + provenance + read-before-decide</p>
                                     <span class="prop-impl">Neo4j Memory Atlas + History SQLite</span>
                                 </div>
                             </div>
@@ -4935,98 +6495,62 @@
                                 <span class="prop-number">10</span>
                                 <div class="prop-content">
                                     <h4>User Model</h4>
-                                    <p>Persistent user representation</p>
+                                    <p>Editable + consent + affects decisions</p>
                                     <span class="prop-impl">Human node, Context, preferences</span>
                                 </div>
                             </div>
                             <div class="prop-item l5-prop">
                                 <span class="prop-number">11</span>
                                 <div class="prop-content">
-                                    <h4>Policy Update</h4>
-                                    <p>Outcomes change strategy π, not just state</p>
-                                    <span class="prop-impl">Insights/Patterns → future behavior</span>
+                                    <h4>Policy Evolution</h4>
+                                    <p>Versioned + approval + rollback + drift</p>
+                                    <span class="prop-impl">Patches → diff → human gate</span>
                                 </div>
                             </div>
                             <div class="prop-item l5-prop">
                                 <span class="prop-number">12</span>
                                 <div class="prop-content">
-                                    <h4>Audit &amp; Policies</h4>
-                                    <p>Reproducible records + enforceable blocks</p>
-                                    <span class="prop-impl">Provenance on writes, Guardrails</span>
+                                    <h4>Portability + Audit + Synergy</h4>
+                                    <p>Export/import + receipts + S&gt;0 gate</p>
+                                    <span class="prop-impl">Right to exit, tamper-evident ledger</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="properties-summary">
+                        <div class="summary-line dimmed">
+                            <span class="summary-level">L3 Assistants</span>
+                            <span class="summary-text">(ChatGPT, Claude, Gemini) lack all 12 properties. Reactive, stateless, generic.</span>
+                        </div>
                         <div class="summary-line">
                             <span class="summary-level">L4 Agents</span>
-                            <span class="summary-text">have properties 1–8. They execute tasks autonomously.</span>
+                            <span class="summary-text">(Devin, Operator) have properties 1–8. Autonomous but not adaptive.</span>
                         </div>
                         <div class="summary-line highlight">
                             <span class="summary-level">L5 ODEI</span>
-                            <span class="summary-text">has all 12. It remembers, learns, and evolves with you.</span>
+                            <span class="summary-text">has all 12 — sovereign, governed, portable.</span>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Current Assistants Classification -->
+                <!-- Current Market Classification -->
                 <div class="assistants-section">
-                    <h3 class="assistants-heading">Where Big Tech Stands</h3>
+                    <h3 class="assistants-heading">Where The Market Stands</h3>
                     
-                    <div class="tier-label">Consumer Products — L2–L3</div>
-                    <div class="assistants-grid">
-                        <div class="assistant-card">
-                            <div class="assistant-header">
-                                <span class="assistant-name">ChatGPT App</span>
-                                <span class="assistant-level l23">L2–L3</span>
-                            </div>
-                            <p class="assistant-desc">Reactive with optional memory. Tool use when prompted. Human always initiates.</p>
-                        </div>
-                        <div class="assistant-card">
-                            <div class="assistant-header">
-                                <span class="assistant-name">Claude App</span>
-                                <span class="assistant-level l23">L2–L3</span>
-                            </div>
-                            <p class="assistant-desc">Reactive with memory. Strong reasoning, tools on request. No cross-session learning.</p>
-                        </div>
-                        <div class="assistant-card">
-                            <div class="assistant-header">
-                                <span class="assistant-name">Gemini App</span>
-                                <span class="assistant-level l23">L2–L3</span>
-                            </div>
-                            <p class="assistant-desc">Reactive with Google integration. Can access user data. No autonomous initiative.</p>
-                        </div>
+                    <div class="tier-label">Consumer Assistants — L2–L3</div>
+                    <div class="market-summary">
+                        <p>Most consumer AI products operate at L2–L3: reactive systems with optional memory, tool use when prompted, human always initiates. Strong reasoning, but no cross-session learning, no persistent state, no autonomous initiative.</p>
                     </div>
                     
-                    <div class="tier-label">Agentic Products — L4</div>
-                    <div class="assistants-grid">
-                        <div class="assistant-card l4-card">
-                            <div class="assistant-header">
-                                <span class="assistant-name">Operator</span>
-                                <span class="assistant-level l4">L4</span>
-                            </div>
-                            <p class="assistant-desc">Task-bound browser agent. Executes multi-step workflows. Dies when task completes.</p>
-                        </div>
-                        <div class="assistant-card l4-card">
-                            <div class="assistant-header">
-                                <span class="assistant-name">Computer Use</span>
-                                <span class="assistant-level l4">L4</span>
-                            </div>
-                            <p class="assistant-desc">Desktop automation via MCP. Autonomous within task scope. No persistent state.</p>
-                        </div>
-                        <div class="assistant-card l4-card">
-                            <div class="assistant-header">
-                                <span class="assistant-name">Project Astra</span>
-                                <span class="assistant-level l4">L4</span>
-                            </div>
-                            <p class="assistant-desc">Multimodal agent with extensions. Tool orchestration. Task-scoped autonomy.</p>
-                        </div>
+                    <div class="tier-label">Task Agents — L4</div>
+                    <div class="market-summary">
+                        <p>Emerging agentic products reach L4: task-bound automation that executes multi-step workflows, then dies when the task completes. Autonomous within task scope, but no persistent state across sessions.</p>
                     </div>
                     
                     <div class="l4-vs-l5">
                         <h4>L4 Is Not L5</h4>
-                        <p class="l4-intro">They have agents. But agents that execute tasks are not agents that share your life.</p>
+                        <p class="l4-intro">Agents that execute tasks are not agents that share your life.</p>
                         <div class="diff-table">
                             <div class="diff-row diff-header">
                                 <span></span>
@@ -5061,62 +6585,535 @@
                         </div>
                     </div>
                     
-                    <div class="why-not-l5">
-                        <h4>Structural Barriers to L5</h4>
-                        <div class="barriers-grid">
-                            <div class="barrier-item">
-                                <span class="barrier-icon">⟳</span>
-                                <div class="barrier-content">
-                                    <b>Stateless Architecture</b>
-                                    <p>Optimized for API calls. Each request = new context. L5 needs persistent stateful agents that live between sessions.</p>
-                                </div>
-                            </div>
-                            <div class="barrier-item">
-                                <span class="barrier-icon">☁</span>
-                                <div class="barrier-content">
-                                    <b>Centralized Data = Their Asset</b>
-                                    <p>Your data on their servers = their value. L5 requires user-owned, local-first data. This kills their business model.</p>
-                                </div>
-                            </div>
-                            <div class="barrier-item">
-                                <span class="barrier-icon">⚖</span>
-                                <div class="barrier-content">
-                                    <b>Policy Update = Liability</b>
-                                    <p>If AI learns from your feedback, it might learn "wrong". Public companies avoid this legally.</p>
-                                </div>
-                            </div>
-                            <div class="barrier-item">
-                                <span class="barrier-icon">⊘</span>
-                                <div class="barrier-content">
-                                    <b>Deep User Model = Privacy Risk</b>
-                                    <p>True user model (goals, patterns, decisions) is a regulatory nightmare for public companies.</p>
-                                </div>
-                            </div>
-                            <div class="barrier-item">
-                                <span class="barrier-icon">$</span>
-                                <div class="barrier-content">
-                                    <b>Revenue Model Conflict</b>
-                                    <p>L4 = many API calls per task (good for billing). L5 = efficiency, fewer calls, more value. Economically backwards.</p>
-                                </div>
-                            </div>
-                            <div class="barrier-item">
-                                <span class="barrier-icon">⚡</span>
-                                <div class="barrier-content">
-                                    <b>Scale vs Depth</b>
-                                    <p>Optimized for millions with one model. L5 needs deep per-user personalization. Different architecture entirely.</p>
-                                </div>
+                    <div class="l5-requirements">
+                        <h4>L5 Requirements</h4>
+                        <div class="req-list">
+                            <div class="req-item"><span class="req-icon">✓</span> Sovereign memory (user-owned, portable)</div>
+                            <div class="req-item"><span class="req-icon">✓</span> Persistent user model (goals, patterns, decisions)</div>
+                            <div class="req-item"><span class="req-icon">✓</span> Policy evolution from outcomes</div>
+                            <div class="req-item"><span class="req-icon">✓</span> Full audit trail (WHY / MEMORY / POLICY / RECEIPT)</div>
+                            <div class="req-item"><span class="req-icon">✓</span> Local-first infrastructure</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="page-number">4</span>
+        </section>
+
+
+
+        <section class="page science-page" data-page="5">
+            <div class="content wide">
+                <div class="small-logo-container">
+                    <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
+                </div>
+                
+                <div class="science-hero">
+                    <span class="science-badge">Scientific Foundation</span>
+                    <h2 class="chapter-heading">The Science of Symbiotic AI</h2>
+                    <p class="science-subtitle">
+                        ODEI's L5 (Symbiotic AI) is not a marketing term—it is a legitimate extension of established agent taxonomies, grounded in four decades of Human-AI Teaming research.
+                    </p>
+                </div>
+
+                <!-- Taxonomic Position -->
+                <div class="taxonomy-section">
+                    <div class="taxonomy-header">
+                        <span class="section-label">01 // TAXONOMIC POSITION</span>
+                        <h3>Extending AIMA Agent Classification</h3>
+                    </div>
+                    <p class="taxonomy-intro">
+                        Russell &amp; Norvig's canonical taxonomy (AIMA, 1995–2020) defines five agent classes: Reactive, Model-based, Goal-based, Utility-based, and Learning agents. Symbiotic AI extends this taxonomy by adding invariants that no existing class captures.
+                    </p>
+                    <div class="taxonomy-grid">
+                        <div class="taxonomy-card aima">
+                            <div class="card-label">AIMA Classes (L1–L4)</div>
+                            <ul class="taxonomy-list">
+                                <li>Single-agent optimization</li>
+                                <li>Human as operator or supervisor</li>
+                                <li>Static goal specification</li>
+                                <li>Unidirectional adaptation</li>
+                            </ul>
+                        </div>
+                        <div class="taxonomy-arrow">→</div>
+                        <div class="taxonomy-card symbiotic">
+                            <div class="card-label">Symbiotic AI (L5)</div>
+                            <ul class="taxonomy-list">
+                                <li>Joint human-AI system optimization</li>
+                                <li>Human as co-participant</li>
+                                <li>Dynamic goal co-evolution</li>
+                                <li>Bidirectional co-adaptation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="taxonomy-note">L4 agents may have memory and autonomy, but lack mandatory User Model, bidirectional adaptation, and divided subjectivity. L5 is a new class—different invariants, different engineering requirements.</p>
+                </div>
+
+                <!-- Scientific Anchors -->
+                <div class="anchors-section">
+                    <div class="anchors-header">
+                        <span class="section-label">02 // SCIENTIFIC ANCHORS</span>
+                        <h3>Six Research Traditions</h3>
+                    </div>
+                    <div class="anchors-grid">
+                        <div class="anchor-card">
+                            <div class="anchor-num">A1</div>
+                            <h4>Human-AI Teaming</h4>
+                            <p>Treating AI as teammate, not tool. Shared mental models and mutual comprehension.</p>
+                            <cite>National Academies (2022); O'Neill et al. (2020); Lyons et al. (2021)</cite>
+                        </div>
+                        <div class="anchor-card">
+                            <div class="anchor-num">A2</div>
+                            <h4>Co-Adaptive Systems</h4>
+                            <p>Both agents learn and adapt simultaneously. Mutual adjustment toward shared goals.</p>
+                            <cite>van Zoelen et al. (2021); Nikolaidis et al. (2017); Döppner et al. (2019)</cite>
+                        </div>
+                        <div class="anchor-card">
+                            <div class="anchor-num">A3</div>
+                            <h4>Adjustable Autonomy</h4>
+                            <p>Dynamic allocation of control based on context, workload, and human state.</p>
+                            <cite>Beer et al. (2014); Sheridan (1992); Parasuraman et al. (2000)</cite>
+                        </div>
+                        <div class="anchor-card">
+                            <div class="anchor-num">A4</div>
+                            <h4>Shared Autonomy</h4>
+                            <p>Blending human intent with AI capability for superior joint outcomes.</p>
+                            <cite>Dragan &amp; Srinivasa (2013); Javdani et al. (2018)</cite>
+                        </div>
+                        <div class="anchor-card">
+                            <div class="anchor-num">A5</div>
+                            <h4>Theory of Mind Alignment</h4>
+                            <p>AI maintains accurate model of user's mental state. Active sensing minimizes the "perspective gap" between human intent and AI action.</p>
+                            <cite>Theory of Mind in human-robot interaction literature.</cite>
+                        </div>
+                        <div class="anchor-card">
+                            <div class="anchor-num">A6</div>
+                            <h4>Joint Process Modeling</h4>
+                            <p>Human and AI as single coupled dynamical system. Latency, friction, and context-switching treated as noise to be systematically eliminated.</p>
+                            <cite>Dynamical systems theory applied to human-AI coordination.</cite>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Invariants -->
+                <div class="invariants-section">
+                    <div class="invariants-header">
+                        <span class="section-label">03 // DEFINING INVARIANTS</span>
+                        <h3>What Makes L5 a New Class</h3>
+                    </div>
+                    <p class="invariants-intro">
+                        Symbiotic AI is defined by four invariants absent from L1–L4 agent classes:
+                    </p>
+                    <div class="invariants-grid">
+                        <div class="invariant-card">
+                            <span class="invariant-num">01</span>
+                            <div class="invariant-content">
+                                <h4>Mandatory User Model</h4>
+                                <p>The agent maintains and updates a persistent model of the human's goals, preferences, cognitive state, and behavioral patterns.</p>
                             </div>
                         </div>
-                        <p class="why-not-conclusion">L5 isn't a feature they can add. It requires local-first infrastructure, user-owned data, persistent co-adaptation, and aligned incentives. Their architecture and business model are structurally incompatible.</p>
+                        <div class="invariant-card">
+                            <span class="invariant-num">02</span>
+                            <div class="invariant-content">
+                                <h4>Bidirectional Policy Update</h4>
+                                <p>Agent policy updates based on outcomes + human feedback. Not just reward signals, but explicit preference learning.</p>
+                            </div>
+                        </div>
+                        <div class="invariant-card">
+                            <span class="invariant-num">03</span>
+                            <div class="invariant-content">
+                                <h4>Co-Adaptation Loop</h4>
+                                <p>Human ↔ Agent mutual adjustment. Agent learns preferences; human learns to formulate, calibrate trust, and evolve processes. Both modify behavior. The system evolves together.</p>
+                            </div>
+                        </div>
+                        <div class="invariant-card">
+                            <span class="invariant-num">04</span>
+                            <div class="invariant-content">
+                                <h4>Divided Subjectivity</h4>
+                                <p>Agent has no goals outside the human's framework, but possesses execution autonomy. Source of goals ≠ source of action.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Synergy Formula -->
+                <div class="synergy-section">
+                    <div class="synergy-header">
+                        <span class="section-label">04 // SYNERGY METRIC</span>
+                        <h3>Measuring Collaboration</h3>
+                    </div>
+                    <div class="synergy-formula-box">
+                        <div class="formula">
+                            S = P<sub>(h+ai)</sub> − max(P<sub>h</sub>, P<sub>ai</sub>)
+                        </div>
+                        <div class="formula-meta">
+                            <span>FIG.01 // SYNERGY_MODEL</span>
+                            <span class="verified">[LITERATURE]</span>
+                        </div>
+                        <p class="formula-desc">
+                            True synergy (S &gt; 0) occurs only when joint performance exceeds the capability of the strongest individual agent. ODEI is engineered to maximize S.
+                        </p>
+                        <div class="synergy-example">
+                            <span class="synergy-example-label">Example:</span> Human alone: 4h. AI alone: 3h. Together: 1h. S &gt; 0 — symbiosis exists.
+                        </div>
+                        <cite class="formula-cite">Synergy metric (σ) — internal ODEI framework; inspired by Human-AI collaboration measurement literature.</cite>
+                    </div>
+                </div>
+
+                <!-- Sync Formula -->
+                <div class="synergy-section">
+                    <div class="synergy-header">
+                        <span class="section-label">05 // SYNC METRIC</span>
+                        <h3>Context Integrity</h3>
+                    </div>
+                    <div class="synergy-formula-box sync-box">
+                        <div class="formula">
+                            σ = (C · F · Q · K)<sup>1/4</sup>
+                        </div>
+                        <div class="formula-meta">
+                            <span>FIG.02 // SYNC_MODEL</span>
+                            <span class="verified">[ENGINEERING]</span>
+                        </div>
+                        <p class="formula-desc">
+                            Sync (σ) measures how observable your current world is to ODEI right now. Without visibility, there is no governance. σ = 1.0 means full, fresh, consistent context. σ = 0.0 means blindness — any recommendation is noise.
+                        </p>
+                        <div class="sync-components">
+                            <div class="sync-component">
+                                <span class="component-symbol">C</span>
+                                <span class="component-name">Coverage</span>
+                                <span class="component-desc">Critical sources connected</span>
+                            </div>
+                            <div class="sync-component">
+                                <span class="component-symbol">F</span>
+                                <span class="component-name">Freshness</span>
+                                <span class="component-desc">Data age vs decay rate (τ)</span>
+                            </div>
+                            <div class="sync-component">
+                                <span class="component-symbol">Q</span>
+                                <span class="component-name">Quality</span>
+                                <span class="component-desc">Context completeness</span>
+                            </div>
+                            <div class="sync-component">
+                                <span class="component-symbol">K</span>
+                                <span class="component-name">Consistency</span>
+                                <span class="component-desc">No conflicts or errors</span>
+                            </div>
+                        </div>
+                        <p class="formula-note">Geometric mean ensures one blind spot cuts the entire score. This is intentional — partial observability produces unreliable governance.</p>
+                        <div class="sync-distinction">
+                            <div class="distinction-item">
+                                <span class="distinction-label">Sync (σ)</span>
+                                <span class="distinction-type">process metric</span>
+                                <span class="distinction-desc">"AI sees everything" — real-time</span>
+                            </div>
+                            <div class="distinction-item">
+                                <span class="distinction-label">Synergy (S)</span>
+                                <span class="distinction-type">outcome metric</span>
+                                <span class="distinction-desc">"We outperform best agent" — weekly</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Canonical Definition -->
+                <div class="definition-section">
+                    <div class="definition-box">
+                        <span class="definition-label">CANONICAL DEFINITION</span>
+                        <blockquote>
+                            <b>Symbiotic AI</b> is a co-adaptive human–AI system in which an autonomous agent operates with persistent memory, policy update, and user model, while the human remains the source of goals, norms, and responsibility in a human-on-the-loop configuration.
+                        </blockquote>
+                        <p class="definition-note">This is not philosophy. This is a system class.</p>
+                    </div>
+                </div>
+
+                <!-- References -->
+                <div class="science-references">
+                    <span class="section-label">KEY REFERENCES</span>
+                    <div class="ref-grid">
+                        <div class="ref-item">Russell, S. &amp; Norvig, P. (2020). <i>Artificial Intelligence: A Modern Approach</i>. 4th ed.</div>
+                        <div class="ref-item">National Academies (2022). <i>Human-AI Teaming: State of the Art and Research Needs</i>.</div>
+                        <div class="ref-item">Beer, J.M. et al. (2014). Toward a Framework for Levels of Robot Autonomy in HRI. <i>JHRI</i> 3(2).</div>
+                        <div class="ref-item">van Zoelen, E.M. et al. (2021). Identifying Interaction Patterns of Mutual Adaptation. <i>Front. Robot. AI</i>.</div>
+                        <div class="ref-item">Nikolaidis, S. et al. (2017). Human-robot mutual adaptation in collaborative tasks. <i>IJRR</i> 36(5-7).</div>
+                        <div class="ref-item">Synergy metric (σ) — internal ODEI engineering framework.</div>
+                    </div>
+                </div>
+            </div>
+            <span class="page-number">5</span>
+        </section>
+
+
+
+        <section class="page memory-page" data-page="6">
+            <div class="content wide">
+                <div class="small-logo-container">
+                    <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
+                </div>
+                <h2 class="chapter-heading">Memory</h2>
+                <p class="memory-intro">
+                    Assistants have chat history. ODEI has memory architecture. The difference: chat history is theirs, resets on their terms, and doesn't affect behavior. Memory in ODEI is yours, persistent, and shapes every decision.
+                </p>
+                
+                <!-- Three Architectural Properties -->
+                <div class="memory-section">
+                    <div class="memory-section-header">
+                        <span class="memory-badge">L5 CORE</span>
+                        <h3>Three Architectural Properties</h3>
+                        <p>Properties 9–11 from Agency Levels. They define what separates L5 from L4 Agentic systems.</p>
+                    </div>
+                    
+                    <div class="memory-cards">
+                        <div class="memory-card">
+                            <div class="memory-card-header">
+                                <span class="memory-num">09</span>
+                                <h4>Persistent Memory</h4>
+                            </div>
+                            <p class="memory-card-text">Cross-session memory that affects decisions. Not just "remember what we talked about"—but facts, beliefs, patterns, and outcomes that shape how ODEI reasons about your world.</p>
+                            <div class="memory-card-impl">
+                                <span class="impl-label">Implementation:</span>
+                                <span class="impl-value">Neo4j Memory Atlas + History SQLite</span>
+                            </div>
+                        </div>
+                        
+                        <div class="memory-card">
+                            <div class="memory-card-header">
+                                <span class="memory-num">10</span>
+                                <h4>User Model</h4>
+                            </div>
+                            <p class="memory-card-text">Persistent representation of you—goals, preferences, constraints, decision patterns. Not a profile you fill out. A model that emerges from observation and explicit feedback.</p>
+                            <div class="memory-card-impl">
+                                <span class="impl-label">Implementation:</span>
+                                <span class="impl-value">Human node, Context, Preferences graph</span>
+                            </div>
+                        </div>
+                        
+                        <div class="memory-card">
+                            <div class="memory-card-header">
+                                <span class="memory-num">11</span>
+                                <h4>Policy Update</h4>
+                            </div>
+                            <p class="memory-card-text">Outcomes change strategy, not just state. When you approve, deny, or override—ODEI updates the operating rules. Your corrections become versioned policy.</p>
+                            <div class="memory-card-impl">
+                                <span class="impl-label">Implementation:</span>
+                                <span class="impl-value">Insights/Patterns → future behavior</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Three Ownership Principles -->
+                <div class="memory-section ownership">
+                    <div class="memory-section-header">
+                        <span class="memory-badge ownership-badge">OWNERSHIP</span>
+                        <h3>Three Ownership Principles</h3>
+                        <p>Memory without ownership is surveillance. These principles ensure your memory remains your asset.</p>
+                    </div>
+                    
+                    <div class="memory-cards principles">
+                        <div class="memory-card principle">
+                            <div class="memory-card-header">
+                                <span class="memory-num principle-num">P1</span>
+                                <h4>Portable</h4>
+                            </div>
+                            <p class="memory-card-text">Your memory is not locked to a model or vendor. Export anytime. Switch providers. Keep your accumulated context. The value you build stays with you.</p>
+                        </div>
+                        
+                        <div class="memory-card principle">
+                            <div class="memory-card-header">
+                                <span class="memory-num principle-num">P2</span>
+                                <h4>Versioned</h4>
+                            </div>
+                            <p class="memory-card-text">Every change is tracked. Policies have versions. Facts have timestamps. If something goes wrong, roll back. Trace the history of any decision.</p>
+                        </div>
+                        
+                        <div class="memory-card principle">
+                            <div class="memory-card-header">
+                                <span class="memory-num principle-num">P3</span>
+                                <h4>Provenance</h4>
+                            </div>
+                            <p class="memory-card-text">Every fact has a source. Every belief has evidence. Every policy has an origin. No "I just know"—full traceability from memory to action.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- User Control -->
+                <div class="memory-section control">
+                    <div class="memory-section-header">
+                        <span class="memory-badge control-badge">CONTROL</span>
+                        <h3>Your Data, Your Rules</h3>
+                        <p>Sovereignty means control. You decide what stays, what goes, and who sees it.</p>
+                    </div>
+                    
+                    <div class="control-grid">
+                        <div class="control-block stored">
+                            <h4>What Is Stored</h4>
+                            <ul>
+                                <li>Facts you confirm or correct</li>
+                                <li>Goals and deadlines you set</li>
+                                <li>Decisions and their outcomes</li>
+                                <li>Policies you approve</li>
+                                <li>Patterns detected (with your consent)</li>
+                            </ul>
+                        </div>
+                        <div class="control-block not-stored">
+                            <h4>What Is Not Stored</h4>
+                            <ul>
+                                <li>Raw conversation transcripts</li>
+                                <li>Data you mark as ephemeral</li>
+                                <li>Third-party content without consent</li>
+                                <li>Biometric or health data (unless explicit)</li>
+                                <li>Anything you delete</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="control-actions">
+                        <div class="action-btn forget"><span class="action-icon">⌫</span> Forget</div>
+                        <div class="action-btn redact"><span class="action-icon">█</span> Redact</div>
+                        <div class="action-btn lock"><span class="action-icon">🔒</span> Lock</div>
+                    </div>
+                    <p class="control-note">One click. Immediate effect. No "30-day retention period".</p>
+                    
+                    <div class="export-example">
+                        <div class="export-label">Export Preview (JSON)</div>
+                        <pre class="export-code">{
+  "facts": [
+    {"id": "f_001", "content": "Alex owns design", "source": "email:2026-01-02", "confidence": 0.95}
+  ],
+  "policies": [
+    {"id": "p_013", "rule": "notify_if_blocker > 48h", "version": 14, "status": "active"}
+  ],
+  "goals": [
+    {"id": "g_003", "name": "Ship MVP", "deadline": "2026-01-15", "progress": 0.6}
+  ]
+}</pre>
+                    </div>
+                </div>
+                
+                <!-- Bottom Line -->
+                <div class="memory-bottomline">
+                    <div class="bottomline-content">
+                        <span class="bottomline-label">THE BOTTOM LINE</span>
+                        <p>Memory is what makes L5 possible. Without persistent memory, no user model. Without user model, no adaptation. Without adaptation, no partnership. Just another stateless assistant pretending to know you.</p>
                     </div>
                 </div>
             </div>
             <span class="page-number">6</span>
         </section>
 
+
+        <section class="page architecture-page" data-page="7">
+            <div class="content wide">
+                <div class="small-logo-container">
+                    <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
+                </div>
+                <h2 class="chapter-heading">Roadmap</h2>
+                
+                <p class="arch-intro">
+                    Building L5 is a multi-phase journey. Each phase builds on the previous, creating the infrastructure for true human-AI partnership.
+                </p>
+
+                <div class="properties-section" style="margin-bottom: 3rem;">
+                    <span class="section-label">DEVELOPMENT PHASES</span>
+                    <div class="roadmap-phases">
+                        <div class="property-card done">
+                            <span class="phase-status">DONE</span>
+                            <span class="prop-num">✓</span>
+                            <h4>Foundation</h4>
+                            <p class="prop-def">The architectural substrate</p>
+                            <div class="phase-outcome">
+                                <span class="outcome-label">Outcome:</span> Memory Atlas operational, provenance system live
+                            </div>
+                            <div class="phase-done-when">
+                                <span class="done-label">Done when:</span>
+                                <ul class="done-list">
+                                    <li>7-layer Memory Atlas with 40+ node types</li>
+                                    <li>Provenance — every write is traceable</li>
+                                    <li>Guardian preflight validation</li>
+                                </ul>
+                            </div>
+                            <div class="phase-artifact">
+                                <span class="artifact-label">Artifact:</span> Internal spec v0.9
+                            </div>
+                        </div>
+                        <div class="property-card now">
+                            <span class="phase-status">NOW</span>
+                            <span class="prop-num">01</span>
+                            <h4>L5 Core</h4>
+                            <p class="prop-def">Autonomous partnership infrastructure</p>
+                            <div class="phase-outcome">
+                                <span class="outcome-label">Outcome:</span> Proactive prompts + supervised execution + receipts + policy diff
+                            </div>
+                            <div class="phase-done-when">
+                                <span class="done-label">Done when:</span>
+                                <ul class="done-list">
+                                    <li>Task lifecycle works end-to-end</li>
+                                    <li>Policy versioning shipped</li>
+                                    <li>Export works (JSON/portable)</li>
+                                </ul>
+                            </div>
+                            <div class="phase-artifact">
+                                <span class="artifact-label">Artifact:</span> Public spec v0.1
+                            </div>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">02</span>
+                            <h4>Memory+</h4>
+                            <p class="prop-def">Deeper knowledge representation</p>
+                            <div class="phase-outcome">
+                                <span class="outcome-label">Outcome:</span> Epistemic separation, confidence tracking, entity resolution
+                            </div>
+                            <div class="phase-done-when">
+                                <span class="done-label">Done when:</span>
+                                <ul class="done-list">
+                                    <li>Fact vs inference vs opinion separated</li>
+                                    <li>Confidence decay implemented</li>
+                                    <li>Cross-session entity linking</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">03</span>
+                            <h4>Agent Ecosystem</h4>
+                            <p class="prop-def">Specialized agents under unified governance</p>
+                            <div class="phase-outcome">
+                                <span class="outcome-label">Outcome:</span> Domain agents coordinating under constitutional rules
+                            </div>
+                            <div class="phase-done-when">
+                                <span class="done-label">Done when:</span>
+                                <ul class="done-list">
+                                    <li>3+ domain agents operational</li>
+                                    <li>Cross-agent protocol working</li>
+                                    <li>Constitutional governance enforced</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="property-card">
+                            <span class="prop-num">04</span>
+                            <h4>Public Release</h4>
+                            <p class="prop-def">Production-ready L5 system</p>
+                            <div class="phase-outcome">
+                                <span class="outcome-label">Outcome:</span> Downloadable, audited, documented
+                            </div>
+                            <div class="phase-done-when">
+                                <span class="done-label">Done when:</span>
+                                <ul class="done-list">
+                                    <li>Security audit passed</li>
+                                    <li>Local-first deployment works</li>
+                                    <li>Public documentation live</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="page-number">7</span>
+        </section>
+
+
         <!-- CONSCIOUSNESS RESEARCH PAGE -->
 
-        <section class="page" data-page="7">
+        <section class="page" data-page="8">
             <div class="content">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -5124,7 +7121,7 @@
                 <h2 class="chapter-heading">Privacy Policy</h2>
                 
                 <div class="privacy-principle-box">
-                    <p class="privacy-chain">Without privacy, no trust. Without trust, no delegation. Without delegation, no symbiosis.</p>
+                    <p class="privacy-chain">Without privacy, no trust. Without trust, no delegation. Without delegation, no partnership.</p>
                     <p class="privacy-chain-note">Privacy is not a feature—it is an architectural requirement for S &gt; 0.</p>
                 </div>
                 
@@ -5162,8 +7159,8 @@
                 <h3 class="chapter-heading">AI Model Interactions</h3>
                 <ul class="list">
                     <li><b>Minimal data transmission.</b> When using cloud AI models, we send only what's necessary for the specific task.</li>
-                    <li><b>No training on your data.</b> We configure providers for no-retention, no-training where available.</li>
-                    <li><b>Model-agnostic.</b> You can choose which AI providers to use or run models locally.</li>
+                    <li><b>No training on your data.</b> We configure providers for no-retention, no-training where supported by the provider's API settings.</li>
+                    <li><b>Model-agnostic.</b> You can choose which AI providers to use or run models locally for maximum privacy.</li>
                 </ul>
 
                 <h3 class="chapter-heading">Your Rights</h3>
@@ -5177,9 +7174,9 @@
 
                 <h3 class="chapter-heading">Security</h3>
                 <ul class="list">
-                    <li><b>Encryption.</b> TLS in transit. AES-256 at rest for cloud data. End-to-end encryption for sensitive vaults.</li>
-                    <li><b>Access control.</b> Principle of least privilege. Regular security audits.</li>
-                    <li><b>Incident response.</b> Report vulnerabilities to <a href="/cdn-cgi/l/email-protection#d4a7b1b7a1a6bda0ad94bbb0b1bdfab5bd" style="color: inherit;"><span class="__cf_email__" data-cfemail="493a2c2a3c3b203d3009262d2c20672820">[email&#160;protected]</span></a>.</li>
+                    <li><b>Encryption.</b> TLS in transit. AES-256 at rest for cloud-synced data (when enabled). E2E encryption planned for sensitive vaults.</li>
+                    <li><b>Access control.</b> Principle of least privilege. Security audits scheduled prior to public release.</li>
+                    <li><b>Incident response.</b> Report vulnerabilities to <a href="/cdn-cgi/l/email-protection#e09385839592899499a08f848589ce8189" style="color: inherit;"><span class="__cf_email__" data-cfemail="e596808690978c919ca58a81808ccb848c">[email&#160;protected]</span></a>.</li>
                 </ul>
 
                 <h3 class="chapter-heading">Data Retention</h3>
@@ -5201,39 +7198,44 @@
 
                 <h3 class="chapter-heading">Contact</h3>
                 <ul class="list">
-                    <li><b>Privacy inquiries:</b> <a href="/cdn-cgi/l/email-protection#2555574c5344465c654a41404c0b444c" style="color: inherit;"><span class="__cf_email__" data-cfemail="3040425946515349705f5455591e5159">[email&#160;protected]</span></a></li>
-                    <li><b>Security issues:</b> <a href="/cdn-cgi/l/email-protection#3744525442455e434e775853525e19565e" style="color: inherit;"><span class="__cf_email__" data-cfemail="4734222432352e333e072823222e69262e">[email&#160;protected]</span></a></li>
+                    <li><b>Privacy inquiries:</b> <a href="/cdn-cgi/l/email-protection#9ceceef5eafdffe5dcf3f8f9f5b2fdf5" style="color: inherit;"><span class="__cf_email__" data-cfemail="b7c7c5dec1d6d4cef7d8d3d2de99d6de">[email&#160;protected]</span></a></li>
+                    <li><b>Security issues:</b> <a href="/cdn-cgi/l/email-protection#9deef8fee8eff4e9e4ddf2f9f8f4b3fcf4" style="color: inherit;"><span class="__cf_email__" data-cfemail="1f6c7a7c6a6d766b665f707b7a76317e76">[email&#160;protected]</span></a></li>
                 </ul>
             </div>
             <span class="page-number"></span>
         </section>
 
+
         <!-- Connect Page -->
-        <section class="page" data-page="8">
+        <section class="page" data-page="9">
             <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
                 </div>
-                <h2 class="chapter-heading" style="margin-bottom: 0.5rem;">Let's connect</h2>
-                <p class="text" style="opacity: 0.7; margin-bottom: 1.5rem; max-width: 400px; line-height: 1.6;">ODEI is in active development. If you have questions, ideas, or just want to discuss the future of human-AI symbiosis — reach out.</p>
+                <h2 class="chapter-heading" style="margin-bottom: 0.5rem;">Request Early Access</h2>
+                <p class="text" style="opacity: 0.7; margin-bottom: 1.5rem; max-width: 450px; line-height: 1.6;">ODEI is in active development. We're looking for founders, operators, and creators who want to own their AI infrastructure.</p>
                 
-                <div style="display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 280px;">
-                    <a href="https://x.com/odei_ai" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.5rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; text-decoration: none; color: #fff; font-size: 1rem; transition: all 0.2s ease;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="opacity: 0.7;">
+                <!-- Primary CTA -->
+                <div style="margin-bottom: 2rem; width: 100%; max-width: 320px;">
+                    <a href="/cdn-cgi/l/email-protection#196d76776019767d7c70377876" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 2rem; background: var(--accent); border: none; border-radius: 4px; text-decoration: none; color: #0a0a0a; font-size: 1rem; font-weight: 500; transition: all 0.2s ease;">
+                        <span>Request Access</span>
+                        <span style="opacity: 0.7;">→</span>
+                    </a>
+                    <p style="font-size: 0.75rem; opacity: 0.4; margin-top: 0.75rem;">Email with "Early Access" in subject. We'll respond within 48h.</p>
+                </div>
+                
+                <div style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.3; margin-bottom: 1rem;">Or connect directly</div>
+                
+                <div style="display: flex; flex-direction: column; gap: 0.75rem; width: 100%; max-width: 280px;">
+                    <a href="https://x.com/odei_ai" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.875rem 1.5rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; text-decoration: none; color: #fff; font-size: 0.9rem; transition: all 0.2s ease;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="opacity: 0.6;">
                             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                         </svg>
                         @odei_ai
                     </a>
                     
-                    <a href="/cdn-cgi/l/email-protection#87f3e8e9fec7e8e3e2eea9e6ee" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.5rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; text-decoration: none; color: #fff; font-size: 1rem; transition: all 0.2s ease;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity: 0.7;">
-                            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                        <span class="__cf_email__" data-cfemail="097d66677049666d6c60276860">[email&#160;protected]</span>
-                    </a>
-                    
-                    <a href="https://wa.me/36205368497" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.5rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; text-decoration: none; color: #fff; font-size: 1rem; transition: all 0.2s ease;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity: 0.7;">
+                    <a href="https://wa.me/36205368497" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.875rem 1.5rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; text-decoration: none; color: #fff; font-size: 0.9rem; transition: all 0.2s ease;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity: 0.6;">
                             <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/>
                         </svg>
                         WhatsApp
@@ -5432,13 +7434,14 @@
             const pageHashes = {
                 0: '',
                 1: 'intro',
-                2: 'product',
-                3: 'roadmap',
-                4: 'science',
-                5: 'memory',
-                6: 'levels',
-                7: 'privacy',
-                8: 'connect'
+                2: 'problem',
+                3: 'product',
+                4: 'levels',
+                5: 'science',
+                6: 'memory',
+                7: 'roadmap',
+                8: 'privacy',
+                9: 'connect'
             };
             
             const hashToPage = Object.fromEntries(
@@ -5620,6 +7623,16 @@
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     goToPage(0);
+                });
+            });
+
+            // CTA buttons
+            const ctaButtons = document.querySelectorAll('.cta-primary[data-page], .cta-secondary[data-page], .bridge-cta[data-page], .cta-button[data-page]');
+            ctaButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageIndex = parseInt(btn.getAttribute('data-page'));
+                    goToPage(pageIndex);
                 });
             });
         });
