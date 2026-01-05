@@ -162,6 +162,8 @@
             transform: translateX(100%);
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+            content-visibility: auto;
+            contain-intrinsic-size: 100vh;
         }
         
         .page:not([data-page="0"]) {
@@ -390,6 +392,27 @@
             
             .home-nav {
                 gap: 2rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            #bg-video {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-data: reduce) {
+            #bg-video {
+                display: none;
             }
         }
         
@@ -6557,8 +6580,8 @@
         </symbol>
     </svg>
 
-    <video id="bg-video" autoplay muted loop playsinline poster="https://cdn.pixabay.com/photo/2020/06/07/04/23/smoke-5268897_1280.jpg">
-        <source src="https://cdn.pixabay.com/video/2023/10/22/186115-877660724_large.mp4" type="video/mp4">
+    <video id="bg-video" autoplay muted loop playsinline preload="none" poster="https://cdn.pixabay.com/photo/2020/06/07/04/23/smoke-5268897_1280.jpg">
+        <source data-src="https://cdn.pixabay.com/video/2023/10/22/186115-877660724_large.mp4" type="video/mp4">
     </video>
 
     <div class="progress-bar" id="progressBar"></div>
@@ -8729,6 +8752,33 @@
                 }
             }
 
+            function loadBackgroundVideo() {
+                const video = document.getElementById('bg-video');
+                if (!video) return;
+
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                const prefersReducedData = window.matchMedia('(prefers-reduced-data: reduce)').matches;
+                const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                const saveData = connection && connection.saveData;
+                const isSlowConnection = connection && typeof connection.effectiveType === 'string' && connection.effectiveType.includes('2g');
+
+                if (prefersReducedMotion || prefersReducedData || saveData || isSlowConnection) {
+                    video.pause();
+                    return;
+                }
+
+                const source = video.querySelector('source[data-src]');
+                if (source && !source.src) {
+                    source.src = source.dataset.src;
+                }
+
+                if (video.readyState >= 2) {
+                    return;
+                }
+
+                video.load();
+            }
+
             // Handle browser back/forward buttons
             window.addEventListener('popstate', (e) => {
                 let pageIndex;
@@ -8750,11 +8800,35 @@
                 }
             });
 
+            function scheduleBackgroundVideoLoad() {
+                if ('requestIdleCallback' in window) {
+                    window.requestIdleCallback(loadBackgroundVideo, { timeout: 2000 });
+                } else {
+                    setTimeout(loadBackgroundVideo, 1200);
+                }
+            }
+
             window.addEventListener('load', () => {
                 setTimeout(() => {
                     document.getElementById('loader').classList.add('hidden');
                     initialize();
                 }, 500);
+
+                scheduleBackgroundVideoLoad();
+            });
+
+            document.addEventListener('visibilitychange', () => {
+                const video = document.getElementById('bg-video');
+                if (!video) return;
+                if (document.hidden) {
+                    video.pause();
+                } else {
+                    if (video.readyState < 2) {
+                        scheduleBackgroundVideoLoad();
+                    } else {
+                        video.play().catch(() => {});
+                    }
+                }
             });
 
             prevButton.addEventListener('click', () => {
