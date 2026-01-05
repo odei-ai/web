@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>ODEI · The Human API Company</title>
-    
+
     <meta name="description" content="ODEI is a complete life operating system that transcends the boundaries between human cognition and artificial intelligence. The Human API Company.">
-    
+
+    <!-- SEO -->
+    <link rel="canonical" href="https://odei.ai/">
+    <meta name="theme-color" content="#000000">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="The Human API Company">
@@ -14,16 +18,17 @@
     <meta property="og:image" content="https://odei.ai/og-image.png">
     <meta property="og:url" content="https://odei.ai">
     <meta property="og:site_name" content="ODEI">
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Human API Company">
     <meta name="twitter:description" content="A governance layer that turns any AI model into your personal operating system.">
     <meta name="twitter:image" content="https://odei.ai/og-image.png">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 33' fill='none'%3E%3Cpath d='M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z' fill='white'/%3E%3Cpath d='M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z' fill='white'/%3E%3C/svg%3E">
-    
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500&display=swap" rel="stylesheet">
@@ -68,20 +73,7 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        #bg-video {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            z-index: -2;
-            opacity: 0.35;
-            filter: grayscale(100%) contrast(1.2);
-            pointer-events: none;
-        }
+        /* Video styles removed - using static background */
 
         body::after {
             content: " ";
@@ -154,8 +146,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 4rem 2rem;
-            padding-bottom: 140px;
+            padding: 4rem 2rem 2rem;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.8s var(--ease-out-quint), transform 0.8s var(--ease-out-quint);
@@ -728,10 +719,6 @@
         }
         
         .site-footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
             z-index: 20;
             display: flex;
             flex-direction: column;
@@ -741,6 +728,19 @@
             padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1.5rem);
             background: transparent;
             pointer-events: all;
+            margin-top: auto;
+        }
+
+        .page[data-page="0"] .site-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            margin-top: 0;
+        }
+
+        .page:not([data-page="0"]) .site-footer {
+            margin-top: 3.5rem;
         }
         
         .social-links {
@@ -6546,6 +6546,33 @@
                 left: -1.5rem;
             }
         }
+
+/* ═══════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .loading .logo {
+        animation: none;
+    }
+
+    .cursor {
+        animation: none;
+        opacity: 1;
+    }
+
+    .page {
+        transition: none !important;
+    }
+}
     </style>
 </head>
 <body>
@@ -6557,9 +6584,15 @@
         </symbol>
     </svg>
 
-    <video id="bg-video" autoplay muted loop playsinline poster="https://cdn.pixabay.com/photo/2020/06/07/04/23/smoke-5268897_1280.jpg">
-        <source src="https://cdn.pixabay.com/video/2023/10/22/186115-877660724_large.mp4" type="video/mp4">
-    </video>
+    <!-- No-JS fallback: Site requires JavaScript for full experience -->
+    <noscript>
+        <style>
+            .loading { display: none !important; }
+            .page { display: block !important; opacity: 1 !important; transform: none !important; position: relative !important; }
+            .page:not(.active) { display: none !important; }
+            .nav-arrows { display: none !important; }
+        </style>
+    </noscript>
 
     <div class="progress-bar" id="progressBar"></div>
 
@@ -6568,7 +6601,7 @@
     </div>
 
     <div class="book">
-        <section class="page active" data-page="0">
+        <section class="page active" id="home" data-page="0">
             <div class="content">
                 <div class="home-container">
                     
@@ -6593,33 +6626,33 @@
                     <!-- NAVIGATION -->
                     <nav class="home-nav">
                         <div class="nav-column">
-                            <a href="#" data-page="1" class="nav-item">
+                            <a href="#intro" data-page="1" class="nav-item">
                                 <span class="nav-num">01</span>
                                 <span class="nav-name">Introduction</span>
                             </a>
-                            <a href="#" data-page="2" class="nav-item">
+                            <a href="#problem" data-page="2" class="nav-item">
                                 <span class="nav-num">02</span>
                                 <span class="nav-name">Problem</span>
                             </a>
-                            <a href="#" data-page="3" class="nav-item">
+                            <a href="#product" data-page="3" class="nav-item">
                                 <span class="nav-num">03</span>
                                 <span class="nav-name">Product</span>
                             </a>
-                            <a href="#" data-page="4" class="nav-item">
+                            <a href="#levels" data-page="4" class="nav-item">
                                 <span class="nav-num">04</span>
                                 <span class="nav-name">Agency Levels</span>
                             </a>
                         </div>
                         <div class="nav-column">
-                            <a href="#" data-page="5" class="nav-item">
+                            <a href="#science" data-page="5" class="nav-item">
                                 <span class="nav-num">05</span>
                                 <span class="nav-name">Science</span>
                             </a>
-                            <a href="#" data-page="6" class="nav-item">
+                            <a href="#memory" data-page="6" class="nav-item">
                                 <span class="nav-num">06</span>
                                 <span class="nav-name">Memory</span>
                             </a>
-                            <a href="#" data-page="7" class="nav-item">
+                            <a href="#roadmap" data-page="7" class="nav-item">
                                 <span class="nav-num">07</span>
                                 <span class="nav-name">Roadmap</span>
                             </a>
@@ -6631,7 +6664,7 @@
         </section>
 
 
-        <section class="page intro-page" data-page="1">
+        <section class="page intro-page" id="intro" data-page="1">
             <div class="content">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -6667,7 +6700,7 @@
 
 
 
-        <section class="page problem-page" data-page="2">
+        <section class="page problem-page" id="problem" data-page="2">
             <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -6965,7 +6998,7 @@
         </section>
 
 
-        <section class="page product-page" data-page="3">
+        <section class="page product-page" id="product" data-page="3">
             <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -7340,7 +7373,7 @@
 
 
         <!-- Agency Levels -->
-        <section class="page" data-page="4">
+        <section class="page" id="levels" data-page="4">
             <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -7794,7 +7827,7 @@
 
 
 
-        <section class="page science-page" data-page="5">
+        <section class="page science-page" id="science" data-page="5">
             <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -8036,7 +8069,7 @@
 
 
 
-        <section class="page memory-page" data-page="6">
+        <section class="page memory-page" id="memory" data-page="6">
             <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -8194,7 +8227,7 @@
         </section>
 
 
-        <section class="page architecture-page" data-page="7">
+        <section class="page architecture-page" id="roadmap" data-page="7">
             <div class="content wide">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -8305,7 +8338,7 @@
 
         <!-- CONSCIOUSNESS RESEARCH PAGE -->
 
-        <section class="page" data-page="8">
+        <section class="page" id="privacy" data-page="8">
             <div class="content">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -8368,7 +8401,7 @@
                 <ul class="list">
                     <li><b>Encryption.</b> TLS in transit. AES-256 at rest for cloud-synced data (when enabled). E2E encryption planned for sensitive vaults.</li>
                     <li><b>Access control.</b> Principle of least privilege. Security audits scheduled prior to public release.</li>
-                    <li><b>Incident response.</b> Report vulnerabilities to <a href="/cdn-cgi/l/email-protection#e09385839592899499a08f848589ce8189" style="color: inherit;"><span class="__cf_email__" data-cfemail="e596808690978c919ca58a81808ccb848c">[email&#160;protected]</span></a>.</li>
+                    <li><b>Incident response.</b> Report vulnerabilities to <a href="mailto:tony@odei.ai" style="color: inherit;">tony@odei.ai</a>.</li>
                 </ul>
 
                 <h3 class="chapter-heading">Data Retention</h3>
@@ -8390,8 +8423,8 @@
 
                 <h3 class="chapter-heading">Contact</h3>
                 <ul class="list">
-                    <li><b>Privacy inquiries:</b> <a href="/cdn-cgi/l/email-protection#9ceceef5eafdffe5dcf3f8f9f5b2fdf5" style="color: inherit;"><span class="__cf_email__" data-cfemail="b7c7c5dec1d6d4cef7d8d3d2de99d6de">[email&#160;protected]</span></a></li>
-                    <li><b>Security issues:</b> <a href="/cdn-cgi/l/email-protection#9deef8fee8eff4e9e4ddf2f9f8f4b3fcf4" style="color: inherit;"><span class="__cf_email__" data-cfemail="1f6c7a7c6a6d766b665f707b7a76317e76">[email&#160;protected]</span></a></li>
+                    <li><b>Privacy inquiries:</b> <a href="mailto:tony@odei.ai" style="color: inherit;">tony@odei.ai</a></li>
+                    <li><b>Security issues:</b> <a href="mailto:tony@odei.ai" style="color: inherit;">tony@odei.ai</a></li>
                 </ul>
             </div>
             <span class="page-number"></span>
@@ -8399,7 +8432,7 @@
 
 
         <!-- Connect Page -->
-        <section class="page" data-page="9">
+        <section class="page" id="connect" data-page="9">
             <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
@@ -8409,7 +8442,7 @@
                 
                 <!-- Primary CTA -->
                 <div style="margin-bottom: 2rem; width: 100%; max-width: 320px;">
-                    <a href="/cdn-cgi/l/email-protection#196d76776019767d7c70377876" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 2rem; background: var(--accent); border: none; border-radius: 4px; text-decoration: none; color: #0a0a0a; font-size: 1rem; font-weight: 500; transition: all 0.2s ease;">
+                    <a href="mailto:tony@odei.ai?subject=Early%20Access%20Request" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 2rem; background: var(--accent); border: none; border-radius: 4px; text-decoration: none; color: #0a0a0a; font-size: 1rem; font-weight: 500; transition: all 0.2s ease;">
                         <span>Request Access</span>
                         <span style="opacity: 0.7;">→</span>
                     </a>
@@ -8419,14 +8452,14 @@
                 <div style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.3; margin-bottom: 1rem;">Or connect directly</div>
                 
                 <div style="display: flex; flex-direction: column; gap: 0.75rem; width: 100%; max-width: 280px;">
-                    <a href="https://x.com/odei_ai" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.875rem 1.5rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; text-decoration: none; color: #fff; font-size: 0.9rem; transition: all 0.2s ease;">
+                    <a href="https://x.com/odei_ai" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.875rem 1.5rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; text-decoration: none; color: #fff; font-size: 0.9rem; transition: all 0.2s ease;">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="opacity: 0.6;">
                             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                         </svg>
                         @odei_ai
                     </a>
                     
-                    <a href="https://wa.me/36205368497" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.875rem 1.5rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; text-decoration: none; color: #fff; font-size: 0.9rem; transition: all 0.2s ease;">
+                    <a href="https://wa.me/36205368497" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.875rem 1.5rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; text-decoration: none; color: #fff; font-size: 0.9rem; transition: all 0.2s ease;">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity: 0.6;">
                             <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/>
                         </svg>
@@ -8450,30 +8483,32 @@
             </div>
         </div>
         
-        <div class="site-footer">
-            <div class="social-links">
-                <a href="https://x.com/odei_ai" aria-label="X (Twitter)">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                </a>
-                <a href="https://github.com/odei-ai" aria-label="GitHub">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
-                    </svg>
-                </a>
-                <a href="https://www.instagram.com/odei.ai/" aria-label="Instagram">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.2,5.2 0 0,1 16.2,21.4H7.8C4.6,21.4 2,18.8 2,15.6V7.8C2,4.6 4.6,2 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
-                    </svg>
-                </a>
+        <template id="site-footer-template">
+            <div class="site-footer">
+                <div class="social-links">
+                    <a href="https://x.com/odei_ai" aria-label="X (Twitter)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/odei-ai" aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/odei.ai/" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.2,5.2 0 0,1 16.2,21.4H7.8C4.6,21.4 2,18.8 2,15.6V7.8C2,4.6 4.6,2 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
+                        </svg>
+                    </a>
+                </div>
+                <p class="copyright"><a href="#" class="home-link" style="text-decoration:none; color:inherit; cursor:pointer;">ODEI</a> · MMXXVI · <a href="#privacy" style="text-decoration:none; color:inherit;">Privacy</a> · <a href="#connect" style="text-decoration:none; color:inherit;">Connect</a></p>
             </div>
-            <p class="copyright"><a href="#" class="home-link" style="text-decoration:none; color:inherit; cursor:pointer;">ODEI</a> · MMXXVI · <a href="#privacy" style="text-decoration:none; color:inherit;">Privacy</a> · <a href="#connect" style="text-decoration:none; color:inherit;">Connect</a></p>
-        </div>
+        </template>
 
     </div>
-    
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             const setAppHeight = () => {
                 const doc = document.documentElement;
@@ -8487,7 +8522,15 @@
 
             let currentPage = 0;
             const pages = document.querySelectorAll('.page');
-            
+
+            // Clone footer into each page
+            const footerTemplate = document.getElementById('site-footer-template');
+            if (footerTemplate) {
+                pages.forEach((page) => {
+                    page.appendChild(footerTemplate.content.cloneNode(true));
+                });
+            }
+
             const navigablePagesCount = 8;
             const totalPages = pages.length;
 
@@ -8778,19 +8821,26 @@
 
             let touchStartX = 0;
             let touchStartY = 0;
-            
+            let touchStartTarget = null;
+
             document.addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
                 touchStartY = e.changedTouches[0].screenY;
+                touchStartTarget = e.target;
             }, { passive: true });
 
             document.addEventListener('touchend', (e) => {
+                // Skip page navigation if touch started inside a scrollable container
+                if (touchStartTarget && touchStartTarget.closest('.agency-table-wrapper, .scrollable, [data-no-swipe]')) {
+                    return;
+                }
+
                 const touchEndX = e.changedTouches[0].screenX;
                 const touchEndY = e.changedTouches[0].screenY;
-                
+
                 const diffX = touchStartX - touchEndX;
                 const diffY = touchStartY - touchEndY;
-                
+
                 if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY)) {
                     if (diffX > 0) {
                         if (currentPage < navigablePagesCount - 1) {
@@ -8799,7 +8849,7 @@
                     }
                     else {
                         goToPage(currentPage - 1);
-                                }
+                    }
                 }
             }, { passive: true });
 
