@@ -738,6 +738,18 @@
             pointer-events: all;
             margin-top: auto;
         }
+
+        .page[data-page="0"] .site-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            margin-top: 0;
+        }
+
+        .page:not([data-page="0"]) .site-footer {
+            margin-top: 3.5rem;
+        }
         
         .social-links {
             display: flex;
