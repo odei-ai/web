@@ -41,6 +41,8 @@
             --accent: #FFFFFF;
             --border: rgba(255, 255, 255, 0.2);
             --glow: rgba(255, 255, 255, 0.3);
+            --panel-bg: rgba(8, 8, 8, 0.6);
+            --panel-border: rgba(255, 255, 255, 0.08);
             --max-width: 48rem;
             --font-mono: 'IBM Plex Mono', monospace; 
             --font-size-base: 1.25rem; 
@@ -133,6 +135,7 @@
             z-index: 100;
             transition: width 0.8s var(--ease-out-quint);
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+            border-radius: 999px;
         }
 
         .book {
@@ -162,6 +165,21 @@
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top, rgba(255, 255, 255, 0.03), transparent 55%),
+                linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent 35%, rgba(0, 0, 0, 0.65));
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .page > * {
+            position: relative;
+            z-index: 1;
+        }
         
         .page:not([data-page="0"]) {
             justify-content: flex-start;
@@ -181,6 +199,12 @@
             max-width: var(--max-width);
             width: 100%;
             padding-bottom: 4rem; 
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
         }
         
         .content.wide {
@@ -303,6 +327,12 @@
             transition: all 0.3s ease;
             cursor: pointer;
         }
+
+        .nav-item:focus-visible {
+            outline: 2px solid rgba(255, 255, 255, 0.6);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
         
         .nav-num {
             font-size: 0.7rem;
@@ -330,6 +360,19 @@
             opacity: 1;
             color: var(--accent);
             transform: translateX(0.5rem);
+        }
+
+        .nav-item:focus-visible .nav-name,
+        .nav-item:focus-visible .nav-num {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition-duration: 0.01ms !important;
+            }
         }
         
         /* ══════ RESPONSIVE ══════ */
@@ -359,12 +402,18 @@
             }
             
             .home-nav {
-                gap: 3rem;
+                gap: 1.5rem;
                 margin-top: 0.5rem;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-column {
+                align-items: center;
             }
             
             .nav-item {
-                padding: 0.35rem 0;
+                padding: 0.45rem 0.4rem;
             }
             
             .nav-num {
@@ -572,6 +621,14 @@
             gap: 0.75rem;
             text-shadow: 0 0 5px var(--glow);
         }
+
+        .toc-link:focus-visible {
+            outline: 2px solid rgba(255, 255, 255, 0.6);
+            outline-offset: 6px;
+            border-radius: 4px;
+            opacity: 1;
+            color: var(--accent);
+        }
         
         .toc-prefix {
             opacity: 0.6;
@@ -599,6 +656,26 @@
 
         .toc-link.active-toc .toc-text {
             transform: translateX(0.5rem);
+        }
+
+        .cta-primary:focus-visible,
+        .cta-secondary:focus-visible,
+        .bridge-cta:focus-visible,
+        .cta-button:focus-visible,
+        .problem-cta-button:focus-visible {
+            outline: 2px solid rgba(255, 255, 255, 0.6);
+            outline-offset: 4px;
+        }
+
+        .site-footer a:focus-visible {
+            outline: 2px solid rgba(255, 255, 255, 0.6);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        ::selection {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
         }
 
         /* ═══════════════════════════════════════════════════════ */
@@ -824,6 +901,13 @@
             color: var(--accent);
         }
 
+        .nav-arrow:focus-visible {
+            outline: 2px solid rgba(255, 255, 255, 0.6);
+            outline-offset: 4px;
+            border-radius: 999px;
+            opacity: 0.8;
+        }
+
         .nav-arrow.prev { left: 2rem; transform: translateY(-50%) translateX(-100px); }
         .book:hover .nav-arrow.prev { transform: translateY(-50%) translateX(0); }
 
@@ -840,7 +924,7 @@
         }
 
         .nav-arrow.disabled {
-            opacity: 0.1 !important;
+            opacity: 0.2 !important;
             pointer-events: none;
             transform: translateY(-50%) scale(1) !important;
         }
@@ -8513,6 +8597,7 @@
             const nextButton = document.getElementById('nextButton');
             const progressBar = document.getElementById('progressBar');
             const tocLinks = document.querySelectorAll('.toc-link, .nav-item');
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             let typingTimeout;
 
             function startFullTypewriter() {
@@ -8531,6 +8616,15 @@
                 const line2 = "> The future is ";
                 const line2suffix = "symbiosis.";
                 const tagline = "ODEI — The Human API Company";
+
+                if (prefersReducedMotion) {
+                    manifestoContainer.innerHTML = `
+                        <span class="manifesto-line dim">${line1}</span>
+                        <span class="manifesto-line bright">${line2}<em>${line2suffix}</em></span>
+                    `;
+                    taglineContainer.innerHTML = `<span class="tagline-text">${tagline}</span>`;
+                    return;
+                }
 
                 let phase = 0; // 0=line1, 1=line2, 2=symbiosis, 3=tagline
                 let charIndex = 0;
