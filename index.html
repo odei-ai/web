@@ -41,8 +41,6 @@
             --accent: #FFFFFF;
             --border: rgba(255, 255, 255, 0.2);
             --glow: rgba(255, 255, 255, 0.3);
-            --panel-bg: rgba(8, 8, 8, 0.6);
-            --panel-border: rgba(255, 255, 255, 0.08);
             --max-width: 48rem;
             --font-mono: 'IBM Plex Mono', monospace; 
             --font-size-base: 1.25rem; 
@@ -80,8 +78,8 @@
             height: auto;
             transform: translate(-50%, -50%);
             z-index: -2;
-            opacity: 0;
-            filter: none;
+            opacity: 0.35;
+            filter: grayscale(100%) contrast(1.2);
             pointer-events: none;
         }
 
@@ -93,9 +91,11 @@
             left: 0;
             bottom: 0;
             right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
             z-index: -1;
+            background-size: 100% 3px, 3px 100%;
             pointer-events: none;
-            opacity: 0;
+            opacity: 0.4;
         }
 
         .loading {
@@ -133,7 +133,6 @@
             z-index: 100;
             transition: width 0.8s var(--ease-out-quint);
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
-            border-radius: 999px;
         }
 
         .book {
@@ -155,7 +154,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 4rem 2rem 2rem;
+            padding: 4rem 2rem;
+            padding-bottom: 140px;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.8s var(--ease-out-quint), transform 0.8s var(--ease-out-quint);
@@ -163,27 +163,9 @@
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
-
-        .page::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .page > * {
-            position: relative;
-            z-index: 1;
-        }
         
         .page:not([data-page="0"]) {
             justify-content: flex-start;
-        }
-
-        .page[data-page="0"] {
-            padding-bottom: 0;
-            padding-top: 3rem;
         }
 
         .page.active {
@@ -197,19 +179,13 @@
         }
 
         .content {
-            max-width: 100%;
+            max-width: var(--max-width);
             width: 100%;
-            align-self: stretch;
-            padding: 2.75rem clamp(1.5rem, 4vw, 3.5rem) 4rem;
-            background: #000000;
-            border: none;
-            border-radius: 0;
-            backdrop-filter: none;
-            box-shadow: none;
+            padding-bottom: 4rem; 
         }
         
         .content.wide {
-            max-width: 100%;
+            max-width: 72rem;
         }
 
         .main-content {
@@ -233,8 +209,8 @@
             justify-content: center;
             min-height: 100%;
             width: 100%;
-            gap: clamp(1rem, 2.4vw, 1.75rem);
-            padding: 0.75rem 0 1.25rem;
+            gap: 2.5rem;
+            padding: 2rem 0;
         }
         
         /* ══════ LOGO ══════ */
@@ -245,8 +221,8 @@
         }
         
         .home-logo-svg {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             color: var(--text);
             opacity: 0.9;
         }
@@ -294,7 +270,7 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            min-height: 2rem;
+            min-height: 2.5rem;
         }
         
         .tagline-text {
@@ -306,18 +282,16 @@
         
         /* ══════ NAVIGATION ══════ */
         .home-nav {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            display: flex;
             justify-content: center;
-            gap: 0.35rem clamp(2rem, 7vw, 3.25rem);
-            margin-top: 0.25rem;
+            gap: 5rem;
+            margin-top: 1rem;
         }
         
         .nav-column {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
-            align-items: flex-start;
         }
         
         .nav-item {
@@ -326,15 +300,9 @@
             gap: 1rem;
             text-decoration: none;
             color: inherit;
-            padding: 0.25rem 0;
+            padding: 0.4rem 0;
             transition: all 0.3s ease;
             cursor: pointer;
-        }
-
-        .nav-item:focus-visible {
-            outline: 2px solid rgba(255, 255, 255, 0.6);
-            outline-offset: 4px;
-            border-radius: 4px;
         }
         
         .nav-num {
@@ -364,36 +332,17 @@
             color: var(--accent);
             transform: translateX(0.5rem);
         }
-
-        .nav-item:focus-visible .nav-name,
-        .nav-item:focus-visible .nav-num {
-            opacity: 1;
-            color: var(--accent);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
         
         /* ══════ RESPONSIVE ══════ */
         @media (max-width: 600px) {
-            .page[data-page="0"] {
-                padding-top: calc(env(safe-area-inset-top, 0px) + 1.5rem);
-                padding-bottom: 0;
-            }
-
             .home-container {
-                justify-content: flex-start;
-                gap: 0.75rem;
-                padding: 0.5rem 1.25rem 0.75rem;
+                gap: 1.75rem;
+                padding: 1.5rem 1.5rem;
             }
             
             .home-logo-svg {
-                width: 58px;
-                height: 58px;
+                width: 65px;
+                height: 65px;
             }
             
             .manifesto-lines {
@@ -401,7 +350,7 @@
             }
             
             .home-tagline {
-                min-height: 1.6rem;
+                min-height: 2rem;
             }
             
             .tagline-text {
@@ -411,22 +360,12 @@
             }
             
             .home-nav {
-                gap: 0.35rem 1.6rem;
-                margin-top: 0.1rem;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .page[data-page="0"] .site-footer {
-                padding: 1rem 1.5rem calc(env(safe-area-inset-bottom, 0px) + 1rem);
-                gap: 0.75rem;
-            }
-
-            .nav-column {
-                align-items: flex-start;
+                gap: 3rem;
+                margin-top: 0.5rem;
             }
             
             .nav-item {
-                padding: 0.3rem 0.25rem;
+                padding: 0.35rem 0;
             }
             
             .nav-num {
@@ -435,7 +374,7 @@
             }
             
             .nav-name {
-                font-size: 0.85rem;
+                font-size: 0.9rem;
             }
         }
         
@@ -634,14 +573,6 @@
             gap: 0.75rem;
             text-shadow: 0 0 5px var(--glow);
         }
-
-        .toc-link:focus-visible {
-            outline: 2px solid rgba(255, 255, 255, 0.6);
-            outline-offset: 6px;
-            border-radius: 4px;
-            opacity: 1;
-            color: var(--accent);
-        }
         
         .toc-prefix {
             opacity: 0.6;
@@ -669,26 +600,6 @@
 
         .toc-link.active-toc .toc-text {
             transform: translateX(0.5rem);
-        }
-
-        .cta-primary:focus-visible,
-        .cta-secondary:focus-visible,
-        .bridge-cta:focus-visible,
-        .cta-button:focus-visible,
-        .problem-cta-button:focus-visible {
-            outline: 2px solid rgba(255, 255, 255, 0.6);
-            outline-offset: 4px;
-        }
-
-        .site-footer a:focus-visible {
-            outline: 2px solid rgba(255, 255, 255, 0.6);
-            outline-offset: 4px;
-            border-radius: 4px;
-        }
-
-        ::selection {
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
         }
 
         /* ═══════════════════════════════════════════════════════ */
@@ -817,6 +728,10 @@
         }
         
         .site-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
             z-index: 20;
             display: flex;
             flex-direction: column;
@@ -826,19 +741,6 @@
             padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1.5rem);
             background: transparent;
             pointer-events: all;
-            margin-top: auto;
-        }
-
-        .page[data-page="0"] .site-footer {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            margin-top: 0;
-        }
-
-        .page:not([data-page="0"]) .site-footer {
-            margin-top: 3.5rem;
         }
         
         .social-links {
@@ -914,13 +816,6 @@
             color: var(--accent);
         }
 
-        .nav-arrow:focus-visible {
-            outline: 2px solid rgba(255, 255, 255, 0.6);
-            outline-offset: 4px;
-            border-radius: 999px;
-            opacity: 0.8;
-        }
-
         .nav-arrow.prev { left: 2rem; transform: translateY(-50%) translateX(-100px); }
         .book:hover .nav-arrow.prev { transform: translateY(-50%) translateX(0); }
 
@@ -937,7 +832,7 @@
         }
 
         .nav-arrow.disabled {
-            opacity: 0.2 !important;
+            opacity: 0.1 !important;
             pointer-events: none;
             transform: translateY(-50%) scale(1) !important;
         }
@@ -962,8 +857,6 @@
             border-radius: 8px;
             margin: 2rem 0;
             background: rgba(255, 255, 255, 0.02);
-            touch-action: pan-x;
-            overscroll-behavior-x: contain;
         }
         
         .agency-table {
@@ -8556,29 +8449,27 @@
                 </svg>
             </div>
         </div>
-
-        <template id="site-footer-template">
-            <div class="site-footer">
-                <div class="social-links">
-                    <a href="https://x.com/odei_ai" aria-label="X (Twitter)">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
-                    <a href="https://github.com/odei-ai" aria-label="GitHub">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.instagram.com/odei.ai/" aria-label="Instagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.2,5.2 0 0,1 16.2,21.4H7.8C4.6,21.4 2,18.8 2,15.6V7.8C2,4.6 4.6,2 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
-                        </svg>
-                    </a>
-                </div>
-                <p class="copyright"><a href="#" class="home-link" style="text-decoration:none; color:inherit; cursor:pointer;">ODEI</a> · MMXXVI · <a href="#privacy" style="text-decoration:none; color:inherit;">Privacy</a> · <a href="#connect" style="text-decoration:none; color:inherit;">Connect</a></p>
+        
+        <div class="site-footer">
+            <div class="social-links">
+                <a href="https://x.com/odei_ai" aria-label="X (Twitter)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/odei-ai" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/odei.ai/" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.2,5.2 0 0,1 16.2,21.4H7.8C4.6,21.4 2,18.8 2,15.6V7.8C2,4.6 4.6,2 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
+                    </svg>
+                </a>
             </div>
-        </template>
+            <p class="copyright"><a href="#" class="home-link" style="text-decoration:none; color:inherit; cursor:pointer;">ODEI</a> · MMXXVI · <a href="#privacy" style="text-decoration:none; color:inherit;">Privacy</a> · <a href="#connect" style="text-decoration:none; color:inherit;">Connect</a></p>
+        </div>
 
     </div>
     
@@ -8596,12 +8487,6 @@
 
             let currentPage = 0;
             const pages = document.querySelectorAll('.page');
-            const footerTemplate = document.getElementById('site-footer-template');
-            if (footerTemplate) {
-                pages.forEach((page) => {
-                    page.appendChild(footerTemplate.content.cloneNode(true));
-                });
-            }
             
             const navigablePagesCount = 8;
             const totalPages = pages.length;
@@ -8610,7 +8495,6 @@
             const nextButton = document.getElementById('nextButton');
             const progressBar = document.getElementById('progressBar');
             const tocLinks = document.querySelectorAll('.toc-link, .nav-item');
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             let typingTimeout;
 
             function startFullTypewriter() {
@@ -8629,15 +8513,6 @@
                 const line2 = "> The future is ";
                 const line2suffix = "symbiosis.";
                 const tagline = "ODEI — The Human API Company";
-
-                if (prefersReducedMotion) {
-                    manifestoContainer.innerHTML = `
-                        <span class="manifesto-line dim">${line1}</span>
-                        <span class="manifesto-line bright">${line2}<em>${line2suffix}</em></span>
-                    `;
-                    taglineContainer.innerHTML = `<span class="tagline-text">${tagline}</span>`;
-                    return;
-                }
 
                 let phase = 0; // 0=line1, 1=line2, 2=symbiosis, 3=tagline
                 let charIndex = 0;
@@ -8904,19 +8779,12 @@
             let touchStartX = 0;
             let touchStartY = 0;
             
-            let isTouchingAgencyTable = false;
-
             document.addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
                 touchStartY = e.changedTouches[0].screenY;
-                isTouchingAgencyTable = !!e.target.closest('.agency-table-wrapper');
             }, { passive: true });
 
             document.addEventListener('touchend', (e) => {
-                if (isTouchingAgencyTable) {
-                    isTouchingAgencyTable = false;
-                    return;
-                }
                 const touchEndX = e.changedTouches[0].screenX;
                 const touchEndY = e.changedTouches[0].screenY;
                 
