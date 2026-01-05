@@ -409,6 +409,12 @@
                 display: none;
             }
         }
+
+        @media (prefers-reduced-data: reduce) {
+            #bg-video {
+                display: none;
+            }
+        }
         
         /* ═══════════════════════════════════════════════════════ */
         /* OLD HOME STYLES (kept for compatibility) */
@@ -8753,7 +8759,12 @@
                 if (!video) return;
 
                 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-                if (prefersReducedMotion) {
+                const prefersReducedData = window.matchMedia('(prefers-reduced-data: reduce)').matches;
+                const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                const saveData = connection && connection.saveData;
+                const isSlowConnection = connection && typeof connection.effectiveType === 'string' && connection.effectiveType.includes('2g');
+
+                if (prefersReducedMotion || prefersReducedData || saveData || isSlowConnection) {
                     video.pause();
                     return;
                 }
@@ -8791,16 +8802,34 @@
                 }
             });
 
+            function scheduleBackgroundVideoLoad() {
+                if ('requestIdleCallback' in window) {
+                    window.requestIdleCallback(loadBackgroundVideo, { timeout: 2000 });
+                } else {
+                    setTimeout(loadBackgroundVideo, 1200);
+                }
+            }
+
             window.addEventListener('load', () => {
                 setTimeout(() => {
                     document.getElementById('loader').classList.add('hidden');
                     initialize();
                 }, 500);
 
-                if ('requestIdleCallback' in window) {
-                    window.requestIdleCallback(loadBackgroundVideo, { timeout: 2000 });
+                scheduleBackgroundVideoLoad();
+            });
+
+            document.addEventListener('visibilitychange', () => {
+                const video = document.getElementById('bg-video');
+                if (!video) return;
+                if (document.hidden) {
+                    video.pause();
                 } else {
-                    setTimeout(loadBackgroundVideo, 1200);
+                    if (video.readyState < 2) {
+                        scheduleBackgroundVideoLoad();
+                    } else {
+                        video.play().catch(() => {});
+                    }
                 }
             });
 
