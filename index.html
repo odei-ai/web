@@ -603,17 +603,20 @@
         }
 
         /* ═══════════════════════════════════════════════════════ */
-        /* INTRODUCTION PAGE — MASTERPIECE EDITION */
+        /* INTRODUCTION PAGE — MANIFESTO EDITION */
         /* ═══════════════════════════════════════════════════════ */
         
         .intro-page .content {
-            max-width: 800px;
+            max-width: 650px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         /* ══════ HERO ══════ */
         .intro-hero {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
         
         .intro-badge {
@@ -623,203 +626,51 @@
             text-transform: uppercase;
             padding: 0.5rem 1.5rem;
             border: 1px solid var(--border);
-            margin-bottom: 1.5rem;
             opacity: 0.5;
         }
         
-        .intro-headline {
-            font-size: clamp(1.3rem, 3.5vw, 1.8rem);
-            font-weight: 300;
-            line-height: 1.4;
+        /* ══════ MANIFESTO ══════ */
+        .intro-manifesto {
+            text-align: center;
         }
         
-        .intro-line-1 {
-            display: block;
-            opacity: 0.7;
+        .manifesto-paragraph {
+            font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.85;
         }
         
-        .intro-line-2 {
-            display: block;
-        }
-        
-        .intro-line-2 em {
+        .manifesto-paragraph em {
             font-style: normal;
             color: var(--accent);
         }
         
-        /* ══════ THE COST ══════ */
-        .intro-cost {
-            margin-bottom: 3rem;
-        }
-        
-        .cost-items {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .cost-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            opacity: 0.6;
-        }
-        
-        .cost-icon {
-            font-size: 0.9rem;
-            opacity: 0.5;
-        }
-        
-        /* ══════ DEFINITION ══════ */
-        .intro-definition {
-            margin-bottom: 3rem;
-        }
-        
-        .definition-box {
-            padding: 2rem;
-            border: 1px solid var(--accent);
-            background: rgba(100, 200, 255, 0.03);
-            text-align: center;
-        }
-        
-        .definition-label {
-            font-size: 0.7rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-        
-        .definition-text {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin: 0;
-            opacity: 0.9;
-        }
-        
-        /* ══════ THE STACK ══════ */
-        .intro-stack {
-            margin-bottom: 3rem;
-        }
-        
-        .stack-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-        
-        .stack-item {
-            text-align: center;
-            padding: 1.5rem 1rem;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.06);
-            transition: all 0.3s ease;
-        }
-        
-        .stack-item:hover {
-            border-color: rgba(255,255,255,0.15);
-            background: rgba(255,255,255,0.04);
-        }
-        
-        .stack-icon {
-            width: 32px;
-            height: 32px;
-            margin: 0 auto 1rem;
-            opacity: 0.6;
-        }
-        
-        .stack-icon svg {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .stack-name {
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stack-desc {
-            font-size: 0.75rem;
-            opacity: 0.5;
-            margin: 0;
-        }
-        
-        /* ══════ CONTRAST ══════ */
-        .intro-contrast {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .contrast-line {
-            margin-bottom: 0.5rem;
-        }
-        
-        .contrast-not {
-            font-size: 0.9rem;
-            opacity: 0.4;
-            text-decoration: line-through;
-        }
-        
-        .contrast-is {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        
-        /* ══════ AUDIENCE ══════ */
-        .intro-audience {
-            text-align: center;
-            padding: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-        
-        .audience-text {
-            font-size: 0.95rem;
-            opacity: 0.7;
-            margin: 0;
-        }
-        
-        .audience-highlight {
-            color: var(--accent);
+        .manifesto-paragraph.highlight {
+            font-size: clamp(1.3rem, 3vw, 1.5rem);
+            font-weight: 400;
             opacity: 1;
+            margin: 2.5rem 0;
         }
         
-        /* ══════ RESPONSIVE ══════ */
-        @media (max-width: 700px) {
-            .intro-page .stack-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .cost-items {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.75rem;
-            }
+        .manifesto-closing {
+            font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+            line-height: 1.6;
+            margin-top: 2.5rem;
+            margin-bottom: 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            opacity: 0.9;
         }
         
-        @media (max-width: 500px) {
-            .intro-page .stack-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
-            }
-            
-            .stack-item {
-                padding: 1rem;
-            }
-            
-            .definition-box {
-                padding: 1.5rem;
-            }
-            
-            .definition-text {
-                font-size: 1rem;
-            }
+        .manifesto-closing em {
+            font-style: normal;
+            color: var(--accent);
+            font-weight: 500;
         }
         
         /* ═══════════════════════════════════════════════════════ */
-        /* END INTRODUCTION MASTERPIECE */
+        /* END INTRODUCTION MANIFESTO */
         /* ═══════════════════════════════════════════════════════ */
 
         .chapter-heading {
@@ -6781,7 +6632,7 @@
 
 
         <section class="page intro-page" data-page="1">
-            <div class="content wide">
+            <div class="content">
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
                 </div>
@@ -6789,99 +6640,25 @@
                 <!-- HERO -->
                 <div class="intro-hero">
                     <span class="intro-badge">INTRODUCTION</span>
-                    <h2 class="intro-headline">
-                        <span class="intro-line-1">Human potential is constrained</span>
-                        <span class="intro-line-2">not by capability, but by <em>cognitive overhead</em>.</span>
-                    </h2>
                 </div>
                 
-                <!-- THE COST -->
-                <div class="intro-cost">
-                    <div class="cost-items">
-                        <div class="cost-item">
-                            <span class="cost-icon">↻</span>
-                            <span class="cost-text">Decisions that could be automated</span>
-                        </div>
-                        <div class="cost-item">
-                            <span class="cost-icon">◌</span>
-                            <span class="cost-text">Follow-ups that slip through</span>
-                        </div>
-                        <div class="cost-item">
-                            <span class="cost-icon">◇</span>
-                            <span class="cost-text">Patterns we fail to see</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- DEFINITION -->
-                <div class="intro-definition">
-                    <div class="definition-box">
-                        <div class="definition-label">ODEI</div>
-                        <p class="definition-text">A local-first governance layer that turns any AI model into a personal operating system — with memory, policies, execution, and receipts.</p>
-                    </div>
-                </div>
-                
-                <!-- THE STACK -->
-                <div class="intro-stack">
-                    <div class="stack-grid">
-                        <div class="stack-item">
-                            <div class="stack-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <circle cx="12" cy="12" r="3"/>
-                                </svg>
-                            </div>
-                            <h4 class="stack-name">Memory</h4>
-                            <p class="stack-desc">Persistent context that compounds</p>
-                        </div>
-                        <div class="stack-item">
-                            <div class="stack-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                                    <path d="M2 17l10 5 10-5"/>
-                                    <path d="M2 12l10 5 10-5"/>
-                                </svg>
-                            </div>
-                            <h4 class="stack-name">Policies</h4>
-                            <p class="stack-desc">Your rules, enforced</p>
-                        </div>
-                        <div class="stack-item">
-                            <div class="stack-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                                </svg>
-                            </div>
-                            <h4 class="stack-name">Execution</h4>
-                            <p class="stack-desc">Actions, not just drafts</p>
-                        </div>
-                        <div class="stack-item">
-                            <div class="stack-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                    <polyline points="14 2 14 8 20 8"/>
-                                    <line x1="16" y1="13" x2="8" y2="13"/>
-                                    <line x1="16" y1="17" x2="8" y2="17"/>
-                                </svg>
-                            </div>
-                            <h4 class="stack-name">Receipts</h4>
-                            <p class="stack-desc">Audit trail for everything</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- CONTRAST -->
-                <div class="intro-contrast">
-                    <div class="contrast-line">
-                        <span class="contrast-not">Not a reactive assistant you prompt.</span>
-                    </div>
-                    <div class="contrast-line">
-                        <span class="contrast-is">A proactive system that owns the loop.</span>
-                    </div>
-                </div>
-                
-                <!-- AUDIENCE -->
-                <div class="intro-audience">
-                    <p class="audience-text">Built for <span class="audience-highlight">founders</span>, <span class="audience-highlight">operators</span>, and <span class="audience-highlight">creators</span> with too much context and not enough leverage.</p>
+                <!-- MANIFESTO -->
+                <div class="intro-manifesto">
+                    <p class="manifesto-paragraph">
+                        Human potential is constrained not by capability, but by <em>cognitive overhead</em>. Every day, we waste precious mental cycles on decisions that could be automated, schedules that could be optimized, patterns that could be recognized.
+                    </p>
+                    
+                    <p class="manifesto-paragraph highlight">
+                        ODEI eliminates this waste.
+                    </p>
+                    
+                    <p class="manifesto-paragraph">
+                        It assumes the burden of life's complexity, freeing your mind to focus on creation, connection, and consciousness.
+                    </p>
+                    
+                    <p class="manifesto-closing">
+                        This is not about productivity — it's about <em>freedom</em>.
+                    </p>
                 </div>
                 
             </div>
