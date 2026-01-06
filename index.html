@@ -594,74 +594,198 @@
         }
 
         /* ═══════════════════════════════════════════════════════ */
-        /* INTRODUCTION PAGE — MANIFESTO EDITION */
+        /* INTRODUCTION PAGE — MASTERPIECE EDITION */
         /* ═══════════════════════════════════════════════════════ */
-        
+
+        :root {
+            --intro-accent: #4FD1C5;
+            --intro-glow: rgba(79, 209, 197, 0.15);
+        }
+
         .intro-page .content {
-            max-width: 650px;
+            max-width: 900px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
-        
+
         /* ══════ HERO ══════ */
-        .intro-hero {
+        .intro-hero-new {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
         }
-        
-        .intro-badge {
+
+        .intro-badge-new {
             display: inline-block;
-            font-size: 0.6rem;
-            letter-spacing: 0.3em;
+            font-size: 0.55rem;
+            letter-spacing: 0.35em;
             text-transform: uppercase;
             padding: 0.5rem 1.5rem;
-            border: 1px solid var(--border);
-            opacity: 0.5;
-        }
-        
-        /* ══════ MANIFESTO ══════ */
-        .intro-manifesto {
-            text-align: center;
-        }
-        
-        .manifesto-paragraph {
-            font-size: clamp(1.05rem, 2.5vw, 1.2rem);
-            line-height: 1.8;
+            border: 1px solid rgba(79, 209, 197, 0.3);
+            color: var(--intro-accent);
             margin-bottom: 2rem;
-            opacity: 0.85;
+            background: rgba(79, 209, 197, 0.05);
         }
-        
-        .manifesto-paragraph em {
-            font-style: normal;
-            color: var(--accent);
+
+        .intro-headline {
+            margin: 0;
         }
-        
-        .manifesto-paragraph.highlight {
-            font-size: clamp(1.3rem, 3vw, 1.5rem);
+
+        .intro-headline-fade {
+            display: block;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 300;
+            opacity: 0.6;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+
+        .intro-headline-emphasis {
+            display: block;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
             font-weight: 400;
-            opacity: 1;
-            margin: 2.5rem 0;
+            color: #fff;
+            line-height: 1.2;
         }
-        
-        .manifesto-closing {
-            font-size: clamp(1.1rem, 2.5vw, 1.25rem);
-            line-height: 1.6;
-            margin-top: 2.5rem;
-            margin-bottom: 0;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
+
+        .intro-headline-emphasis em {
+            font-style: normal;
+            color: var(--intro-accent);
+            text-shadow: 0 0 30px var(--intro-glow);
+        }
+
+        /* ══════ THREE PILLARS ══════ */
+        .intro-pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .intro-pillar {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .intro-pillar:hover {
+            border-color: rgba(79, 209, 197, 0.2);
+            background: linear-gradient(180deg, rgba(79, 209, 197, 0.03) 0%, transparent 100%);
+            transform: translateY(-2px);
+        }
+
+        .pillar-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(79, 209, 197, 0.08);
+            border: 1px solid rgba(79, 209, 197, 0.15);
+        }
+
+        .pillar-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--intro-accent);
             opacity: 0.9;
         }
-        
-        .manifesto-closing em {
-            font-style: normal;
-            color: var(--accent);
-            font-weight: 500;
+
+        .pillar-from {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.4;
+            margin-bottom: 0.5rem;
         }
-        
+
+        .pillar-arrow {
+            font-size: 1rem;
+            opacity: 0.3;
+            margin: 0.5rem 0;
+        }
+
+        .pillar-to {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--intro-accent);
+            letter-spacing: 0.05em;
+        }
+
+        /* ══════ MANIFESTO QUOTE ══════ */
+        .intro-manifesto-new {
+            text-align: center;
+            max-width: 700px;
+            margin: 2rem auto 0;
+        }
+
+        .manifesto-text-new {
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            line-height: 1.9;
+            opacity: 0.75;
+            margin-bottom: 2.5rem;
+        }
+
+        .manifesto-text-new em {
+            font-style: normal;
+            color: #fff;
+            opacity: 1;
+        }
+
+        /* ══════ CLOSING STATEMENT ══════ */
+        .intro-closing {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .closing-statement {
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            font-weight: 300;
+            margin: 0;
+        }
+
+        .closing-statement .not {
+            opacity: 0.5;
+        }
+
+        .closing-statement .is {
+            color: var(--intro-accent);
+            font-weight: 400;
+            text-shadow: 0 0 20px var(--intro-glow);
+        }
+
+        /* ══════ MOBILE ══════ */
+        @media (max-width: 768px) {
+            .intro-pillars {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .intro-pillar {
+                padding: 1.5rem 1.25rem;
+            }
+
+            .pillar-icon {
+                width: 40px;
+                height: 40px;
+                margin-bottom: 1rem;
+            }
+
+            .pillar-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
         /* ═══════════════════════════════════════════════════════ */
-        /* END INTRODUCTION MANIFESTO */
+        /* END INTRODUCTION MASTERPIECE */
         /* ═══════════════════════════════════════════════════════ */
 
         .chapter-heading {
@@ -9228,6 +9352,198 @@
         transition: none !important;
     }
 }
+
+/* ═══════════════════════════════════════════════════════ */
+/* PAGE NAVIGATOR — MASTERPIECE EDITION                    */
+/* ═══════════════════════════════════════════════════════ */
+
+:root {
+    --nav-accent: #4FD1C5;
+    --nav-accent-dim: rgba(79, 209, 197, 0.6);
+    --nav-accent-glow: rgba(79, 209, 197, 0.4);
+    --nav-bg: rgba(8, 10, 15, 0.75);
+    --nav-border: rgba(79, 209, 197, 0.15);
+    --nav-border-hover: rgba(79, 209, 197, 0.4);
+}
+
+.page-navigator {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--nav-bg) 0%, rgba(15, 20, 30, 0.8) 100%);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-radius: 100px;
+    z-index: 100;
+    opacity: 0;
+    animation: navFadeIn 0.8s var(--ease-out-quint) 0.8s forwards;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    box-shadow:
+        0 0 0 1px var(--nav-border),
+        0 4px 24px rgba(0, 0, 0, 0.4),
+        0 1px 2px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.page-navigator::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 100px;
+    background: linear-gradient(135deg, var(--nav-accent) 0%, transparent 50%, var(--nav-accent) 100%);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.5s var(--ease-out-quint);
+}
+
+.page-navigator:hover::before {
+    opacity: 0.3;
+}
+
+@keyframes navFadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(30px) scale(0.9); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+.page-navigator.nav-hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateX(-50%) translateY(20px) scale(0.95) !important;
+}
+
+.nav-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    transition: all 0.4s var(--ease-out-quint);
+    position: relative;
+    border: 1.5px solid transparent;
+}
+
+.nav-dot::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 1.5px solid transparent;
+    transition: all 0.4s var(--ease-out-quint);
+}
+
+.nav-dot:hover {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.2);
+}
+
+.nav-dot.active {
+    width: 12px;
+    height: 12px;
+    background: var(--nav-accent);
+    border-color: var(--nav-accent);
+    transform: scale(1);
+    box-shadow:
+        0 0 16px var(--nav-accent-glow),
+        0 0 32px rgba(79, 209, 197, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.nav-dot.active::before {
+    inset: -6px;
+    border-color: var(--nav-accent-dim);
+    animation: ringPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+        border-color: var(--nav-accent-dim);
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0;
+        border-color: var(--nav-accent);
+    }
+}
+
+.nav-dot[data-label]::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    padding: 0.4rem 0.75rem;
+    background: linear-gradient(135deg, rgba(10, 12, 18, 0.95) 0%, rgba(15, 20, 30, 0.95) 100%);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--nav-border);
+    border-radius: 6px;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s var(--ease-out-quint);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --arrow-size: 6px;
+}
+
+.nav-dot:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Mobile adjustments for navigator */
+@media (max-width: 768px) {
+    .page-navigator {
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 0.75rem);
+        padding: 0.6rem 1rem;
+        gap: 0.4rem;
+    }
+
+    .nav-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .nav-dot.active {
+        width: 10px;
+        height: 10px;
+    }
+
+    .nav-dot[data-label]::after {
+        display: none;
+    }
+}
+
+/* Page padding for navigator space */
+.page:not([data-page="0"]) {
+    padding-bottom: 6rem !important;
+}
+
+@media (max-width: 768px) {
+    .page:not([data-page="0"]) {
+        padding-bottom: 5rem !important;
+    }
+}
+
+/* Footer fixes */
+.site-footer .social-links {
+    margin-bottom: 0;
+}
+
+.page[data-page="0"] .site-footer {
+    gap: 0.875rem;
+}
+
     </style>
 </head>
 <body>
@@ -9324,31 +9640,71 @@
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
                 </div>
-                
+
                 <!-- HERO -->
-                <div class="intro-hero">
-                    <span class="intro-badge">INTRODUCTION</span>
+                <div class="intro-hero-new">
+                    <span class="intro-badge-new">The Vision</span>
+                    <h2 class="intro-headline">
+                        <span class="intro-headline-fade">Your mind wasn't designed for endless overhead.</span>
+                        <span class="intro-headline-emphasis"><em>ODEI</em> absorbs it.</span>
+                    </h2>
                 </div>
-                
+
+                <!-- THREE PILLARS -->
+                <div class="intro-pillars">
+                    <div class="intro-pillar">
+                        <div class="pillar-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <div class="pillar-from">Cognitive Load</div>
+                        <div class="pillar-arrow">↓</div>
+                        <div class="pillar-to">Automated</div>
+                    </div>
+                    <div class="intro-pillar">
+                        <div class="pillar-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </div>
+                        <div class="pillar-from">Complexity</div>
+                        <div class="pillar-arrow">↓</div>
+                        <div class="pillar-to">Absorbed</div>
+                    </div>
+                    <div class="intro-pillar">
+                        <div class="pillar-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M8 12l2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <div class="pillar-from">Decisions</div>
+                        <div class="pillar-arrow">↓</div>
+                        <div class="pillar-to">Optimized</div>
+                    </div>
+                </div>
+
                 <!-- MANIFESTO -->
-                <div class="intro-manifesto">
-                    <p class="manifesto-paragraph">
-                        Human potential is constrained not by capability, but by <em>cognitive overhead</em>. Every day, we waste precious mental cycles on decisions that could be automated, schedules that could be optimized, patterns that could be recognized.
-                    </p>
-                    
-                    <p class="manifesto-paragraph highlight">
-                        ODEI eliminates this waste.
-                    </p>
-                    
-                    <p class="manifesto-paragraph">
-                        It assumes the burden of life's complexity, freeing your mind to focus on creation, connection, and consciousness.
-                    </p>
-                    
-                    <p class="manifesto-closing">
-                        This is not about productivity — it's about <em>freedom</em>.
+                <div class="intro-manifesto-new">
+                    <p class="manifesto-text-new">
+                        Every day, precious mental cycles are wasted on decisions that could be automated,
+                        information that could be retrieved instantly, and patterns that could be recognized automatically.
+                        ODEI creates a living layer between your intentions and their execution.
                     </p>
                 </div>
-                
+
+                <!-- CLOSING -->
+                <div class="intro-closing">
+                    <p class="closing-statement">
+                        <span class="not">This is not about productivity.</span><br>
+                        <span class="is">This is about freedom.</span>
+                    </p>
+                </div>
+
             </div>
             <span class="page-number">1</span>
         </section>
@@ -11502,6 +11858,18 @@
             </div>
         </template>
 
+        <!-- Book Navigator — Page Dots (hidden on home by default) -->
+        <!-- Privacy & Connect accessed via footer links, not main navigation -->
+        <nav class="page-navigator nav-hidden" id="pageNavigator" aria-label="Page navigation">
+            <div class="nav-dot active" data-page="0" data-label="Home"></div>
+            <div class="nav-dot" data-page="1" data-label="Problem"></div>
+            <div class="nav-dot" data-page="2" data-label="Solution"></div>
+            <div class="nav-dot" data-page="3" data-label="How"></div>
+            <div class="nav-dot" data-page="4" data-label="Levels"></div>
+            <div class="nav-dot" data-page="5" data-label="Memory"></div>
+            <div class="nav-dot" data-page="6" data-label="Roadmap"></div>
+        </nav>
+
     </div>
 
     <script>
@@ -11518,6 +11886,36 @@
 
             let currentPage = 0;
             const pages = document.querySelectorAll('.page');
+
+            // Navigator elements
+            const navigator = document.getElementById('pageNavigator');
+            const navDots = navigator ? navigator.querySelectorAll('.nav-dot') : [];
+
+            // Update navigator visibility and active dot
+            function updateNavigator(pageIndex) {
+                if (!navigator) return;
+
+                // Hide on: Home (0), Privacy (7+), Connect (8+)
+                const hideNav = pageIndex === 0 || pageIndex >= 7;
+                navigator.classList.toggle('nav-hidden', hideNav);
+
+                // Update active dot
+                navDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === pageIndex);
+                });
+            }
+
+            // Navigator dot click handlers
+            if (navDots.length > 0) {
+                navDots.forEach(dot => {
+                    dot.addEventListener('click', () => {
+                        const targetPage = parseInt(dot.dataset.page, 10);
+                        if (!isNaN(targetPage)) {
+                            goToPage(targetPage);
+                        }
+                    });
+                });
+            }
 
             // Clone footer into each page
             const footerTemplate = document.getElementById('site-footer-template');
@@ -11736,13 +12134,14 @@
 
                 updateButtons();
                 updateUI(pageIndex);
+                updateNavigator(pageIndex);
                 updateHash(pageIndex, addToHistory);
 
                 if (currentPage === 0 && oldPage !== 0) {
                     startFullTypewriter();
                 }
             }
-            
+
             function initialize() {
                 const startPage = getPageFromHash();
                 currentPage = startPage;
@@ -11764,7 +12163,8 @@
 
                 updateButtons();
                 updateUI(startPage);
-                
+                updateNavigator(startPage);
+
                 // Replace initial state so we have proper history entry
                 try {
                     const hash = pageHashes[startPage];
