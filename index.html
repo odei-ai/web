@@ -8516,7 +8516,7 @@
         }
 
         /* ══════ SOCIAL LINKS ══════ */
-        .social-links {
+        .connect-page-new .social-links {
             display: flex;
             gap: 1rem;
             margin-bottom: 2.5rem;
@@ -8565,12 +8565,12 @@
         }
 
         @media (max-width: 480px) {
-            .social-links {
+            .connect-page-new .social-links {
                 flex-direction: column;
                 width: 100%;
             }
 
-            .social-link {
+            .connect-page-new .social-link {
                 width: 100%;
             }
         }
@@ -9368,27 +9368,22 @@
 
 .page-navigator {
     position: fixed;
-    bottom: 1rem;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 0.5rem);
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 1.5rem;
-    background: linear-gradient(135deg, var(--nav-bg) 0%, rgba(15, 20, 30, 0.8) 100%);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    gap: 0.5rem;
+    padding: 0.5rem 0.875rem;
+    background: rgba(8, 10, 15, 0.85);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
     border-radius: 100px;
     z-index: 100;
     opacity: 0;
     animation: navFadeIn 0.8s var(--ease-out-quint) 0.8s forwards;
-    border: 1px solid transparent;
-    background-clip: padding-box;
-    box-shadow:
-        0 0 0 1px var(--nav-border),
-        0 4px 24px rgba(0, 0, 0, 0.4),
-        0 1px 2px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--nav-border);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
 .page-navigator::before {
@@ -9418,14 +9413,14 @@
 }
 
 .nav-dot {
-    width: 10px;
-    height: 10px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.2);
     cursor: pointer;
-    transition: all 0.4s var(--ease-out-quint);
+    transition: all 0.3s var(--ease-out-quint);
     position: relative;
-    border: 1.5px solid transparent;
+    border: 1px solid transparent;
 }
 
 .nav-dot::before {
@@ -9444,15 +9439,14 @@
 }
 
 .nav-dot.active {
-    width: 12px;
-    height: 12px;
+    width: 8px;
+    height: 8px;
     background: var(--nav-accent);
     border-color: var(--nav-accent);
     transform: scale(1);
     box-shadow:
-        0 0 16px var(--nav-accent-glow),
-        0 0 32px rgba(79, 209, 197, 0.2),
-        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+        0 0 8px var(--nav-accent-glow),
+        0 0 16px rgba(79, 209, 197, 0.15);
 }
 
 .nav-dot.active::before {
@@ -9504,19 +9498,18 @@
 /* Mobile adjustments for navigator */
 @media (max-width: 768px) {
     .page-navigator {
-        bottom: calc(env(safe-area-inset-bottom, 0px) + 0.75rem);
-        padding: 0.6rem 1rem;
-        gap: 0.4rem;
+        padding: 0.4rem 0.7rem;
+        gap: 0.35rem;
     }
 
     .nav-dot {
-        width: 8px;
-        height: 8px;
+        width: 6px;
+        height: 6px;
     }
 
     .nav-dot.active {
-        width: 10px;
-        height: 10px;
+        width: 7px;
+        height: 7px;
     }
 
     .nav-dot[data-label]::after {
@@ -9526,12 +9519,12 @@
 
 /* Page padding for navigator space */
 .page:not([data-page="0"]) {
-    padding-bottom: 6rem !important;
+    padding-bottom: 4rem !important;
 }
 
 @media (max-width: 768px) {
     .page:not([data-page="0"]) {
-        padding-bottom: 5rem !important;
+        padding-bottom: 3.5rem !important;
     }
 }
 
