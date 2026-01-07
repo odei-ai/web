@@ -594,74 +594,465 @@
         }
 
         /* ═══════════════════════════════════════════════════════ */
-        /* INTRODUCTION PAGE — MANIFESTO EDITION */
+        /* INTRODUCTION PAGE — MASTERPIECE EDITION */
         /* ═══════════════════════════════════════════════════════ */
-        
+
+        :root {
+            --intro-accent: #4FD1C5;
+            --intro-glow: rgba(79, 209, 197, 0.15);
+        }
+
         .intro-page .content {
-            max-width: 650px;
+            max-width: 900px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
-        
+
         /* ══════ HERO ══════ */
-        .intro-hero {
+        .intro-hero-new {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
         }
-        
-        .intro-badge {
+
+        .intro-badge-new {
             display: inline-block;
-            font-size: 0.6rem;
-            letter-spacing: 0.3em;
+            font-size: 0.55rem;
+            letter-spacing: 0.35em;
             text-transform: uppercase;
             padding: 0.5rem 1.5rem;
-            border: 1px solid var(--border);
-            opacity: 0.5;
-        }
-        
-        /* ══════ MANIFESTO ══════ */
-        .intro-manifesto {
-            text-align: center;
-        }
-        
-        .manifesto-paragraph {
-            font-size: clamp(1.05rem, 2.5vw, 1.2rem);
-            line-height: 1.8;
+            border: 1px solid rgba(79, 209, 197, 0.3);
+            color: var(--intro-accent);
             margin-bottom: 2rem;
-            opacity: 0.85;
+            background: rgba(79, 209, 197, 0.05);
         }
-        
-        .manifesto-paragraph em {
-            font-style: normal;
-            color: var(--accent);
+
+        .intro-headline {
+            margin: 0;
         }
-        
-        .manifesto-paragraph.highlight {
-            font-size: clamp(1.3rem, 3vw, 1.5rem);
+
+        .intro-headline-fade {
+            display: block;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 300;
+            opacity: 0.6;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+
+        .intro-headline-emphasis {
+            display: block;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
             font-weight: 400;
-            opacity: 1;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .intro-headline-emphasis em {
+            font-style: normal;
+            color: var(--intro-accent);
+            text-shadow: 0 0 30px var(--intro-glow);
+        }
+
+        /* ══════ THE PAIN POINT — STUNNING QUOTE BLOCK ══════ */
+        .intro-pain {
+            margin: 2.5rem 0;
+            position: relative;
+            padding: 2rem 2.5rem;
+            background: linear-gradient(135deg, rgba(255, 123, 123, 0.03) 0%, rgba(0, 0, 0, 0.2) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 123, 123, 0.1);
+        }
+
+        /* No decorative quotes - this is original content */
+
+        .intro-pain p {
+            font-size: clamp(1rem, 2.2vw, 1.15rem);
+            line-height: 1.8;
+            opacity: 0.85;
+            margin: 0;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-pain .pain-emphasis {
+            color: #FF7B7B;
+            font-weight: 500;
+            text-shadow: 0 0 20px rgba(255, 123, 123, 0.3);
+        }
+
+        /* ══════ THE GAP — STUNNING CARDS ══════ */
+        .intro-gap {
             margin: 2.5rem 0;
         }
-        
-        .manifesto-closing {
-            font-size: clamp(1.1rem, 2.5vw, 1.25rem);
-            line-height: 1.6;
-            margin-top: 2.5rem;
-            margin-bottom: 0;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            opacity: 0.9;
+
+        .gap-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 0.5rem 1rem;
+            margin-bottom: 0.5rem;
         }
-        
-        .manifesto-closing em {
-            font-style: normal;
-            color: var(--accent);
+
+        .gap-header-left {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.4;
+        }
+
+        .gap-header-right {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--intro-accent);
+            opacity: 0.8;
+        }
+
+        .gap-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .gap-card {
+            position: relative;
+            padding: 1.25rem 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.2) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .gap-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            padding: 1px;
+            background: linear-gradient(135deg, transparent 0%, rgba(79, 209, 197, 0.3) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gap-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(79, 209, 197, 0.2);
+            box-shadow: 0 8px 32px rgba(79, 209, 197, 0.1);
+        }
+
+        .gap-card:hover::before {
+            opacity: 1;
+        }
+
+        .gap-card-main {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .gap-card-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(79, 209, 197, 0.12) 0%, rgba(79, 209, 197, 0.04) 100%);
+            border-radius: 8px;
+            font-size: 0.7rem;
             font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--intro-accent);
+            flex-shrink: 0;
+            border: 1px solid rgba(79, 209, 197, 0.15);
         }
-        
+
+        .gap-card-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+
+        .gap-left {
+            font-size: 0.9rem;
+            opacity: 0.5;
+            text-decoration: line-through;
+            text-decoration-color: rgba(255, 123, 123, 0.4);
+        }
+
+        .gap-arrow {
+            font-size: 1.2rem;
+            color: var(--intro-accent);
+            opacity: 0.6;
+            flex-shrink: 0;
+        }
+
+        .gap-right {
+            font-size: 0.95rem;
+            color: var(--intro-accent);
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .gap-description {
+            font-size: 0.8rem;
+            opacity: 0.55;
+            line-height: 1.5;
+            font-weight: 300;
+            padding-left: calc(40px + 1rem);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ══════ WHY THIS GAP EXISTS — STUNNING ══════ */
+        .intro-why {
+            margin: 2.5rem 0;
+            padding: 2rem 2rem 2rem 2.5rem;
+            position: relative;
+            background: linear-gradient(135deg, rgba(79, 209, 197, 0.03) 0%, rgba(0, 0, 0, 0.15) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(79, 209, 197, 0.1);
+        }
+
+        .intro-why::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 1.5rem;
+            bottom: 1.5rem;
+            width: 3px;
+            background: linear-gradient(180deg, var(--intro-accent) 0%, rgba(79, 209, 197, 0.2) 100%);
+            border-radius: 3px;
+        }
+
+        .intro-why-title {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--intro-accent);
+            opacity: 0.8;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .intro-why-title::before {
+            content: '—';
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        .intro-why p {
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            line-height: 1.8;
+            opacity: 0.8;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .intro-why .why-emphasis {
+            color: var(--intro-accent);
+            font-weight: 500;
+            text-shadow: 0 0 15px var(--intro-glow);
+        }
+
+        /* ══════ INSIGHT STATEMENT — STUNNING ══════ */
+        .intro-insight {
+            text-align: center;
+            margin: 3rem 0 0;
+            padding: 2.5rem 1.5rem;
+            position: relative;
+            background: linear-gradient(180deg, rgba(79, 209, 197, 0.02) 0%, transparent 100%);
+            border-radius: 20px;
+        }
+
+        .intro-insight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(79, 209, 197, 0.3) 50%, transparent 100%);
+        }
+
+        .insight-text {
+            font-size: clamp(1.2rem, 2.8vw, 1.6rem);
+            font-weight: 300;
+            line-height: 1.7;
+            margin: 0 0 2rem;
+        }
+
+        .insight-text .dim {
+            opacity: 0.5;
+        }
+
+        .insight-text .bright {
+            color: var(--intro-accent);
+            font-weight: 400;
+            text-shadow: 0 0 30px var(--intro-glow);
+            position: relative;
+        }
+
+        .insight-text .bright::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, var(--intro-accent) 50%, transparent 100%);
+            opacity: 0.5;
+        }
+
+        /* ══════ THE PROMISE — STUNNING ══════ */
+        .intro-promise {
+            margin-top: 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(79, 209, 197, 0.08) 0%, rgba(79, 209, 197, 0.02) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(79, 209, 197, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-promise::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(79, 209, 197, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .intro-promise-main {
+            font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+            color: #fff;
+            font-weight: 500;
+            margin: 0 0 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-promise-main em {
+            font-style: normal;
+            color: var(--intro-accent);
+            text-shadow: 0 0 25px var(--intro-glow);
+        }
+
+        .intro-promise-sub {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            opacity: 0.7;
+            font-weight: 300;
+            margin: 0;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-promise-sub strong {
+            color: var(--intro-accent);
+            font-weight: 400;
+            opacity: 1;
+        }
+
+        .intro-cta {
+            font-size: 1rem;
+            color: #fff;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .intro-cta em {
+            font-style: normal;
+            color: var(--intro-accent);
+            text-shadow: 0 0 20px var(--intro-glow);
+        }
+
+        /* ══════ MOBILE — STUNNING ══════ */
+        @media (max-width: 768px) {
+            .intro-pain {
+                padding: 1.5rem 1.5rem 1.5rem 1.75rem;
+                margin: 2rem 0;
+            }
+
+            .intro-pain::before {
+                font-size: 3.5rem;
+                top: -0.25rem;
+                left: 1rem;
+            }
+
+            .intro-pain p {
+                font-size: 0.95rem;
+            }
+
+            .gap-header {
+                padding: 0 0.25rem 0.75rem;
+            }
+
+            .gap-card {
+                padding: 1rem 1.25rem;
+            }
+
+            .gap-card-icon {
+                width: 34px;
+                height: 34px;
+                font-size: 0.95rem;
+            }
+
+            .gap-left {
+                font-size: 0.8rem;
+            }
+
+            .gap-right {
+                font-size: 0.85rem;
+            }
+
+            .gap-arrow {
+                font-size: 1rem;
+            }
+
+            .gap-description {
+                font-size: 0.75rem;
+                padding-left: calc(34px + 0.75rem);
+            }
+
+            .intro-why {
+                padding: 1.5rem 1.5rem 1.5rem 1.75rem;
+                margin: 2rem 0;
+            }
+
+            .intro-why::before {
+                top: 1rem;
+                bottom: 1rem;
+            }
+
+            .intro-insight {
+                padding: 2rem 1rem;
+                margin-top: 2rem;
+            }
+
+            .intro-promise {
+                padding: 1.5rem;
+            }
+
+            .intro-promise-sub {
+                font-size: 0.85rem;
+            }
+        }
+
         /* ═══════════════════════════════════════════════════════ */
-        /* END INTRODUCTION MANIFESTO */
+        /* END INTRODUCTION MASTERPIECE */
         /* ═══════════════════════════════════════════════════════ */
 
         .chapter-heading {
@@ -8392,7 +8783,7 @@
         }
 
         /* ══════ SOCIAL LINKS ══════ */
-        .social-links {
+        .connect-page-new .social-links {
             display: flex;
             gap: 1rem;
             margin-bottom: 2.5rem;
@@ -8441,12 +8832,12 @@
         }
 
         @media (max-width: 480px) {
-            .social-links {
+            .connect-page-new .social-links {
                 flex-direction: column;
                 width: 100%;
             }
 
-            .social-link {
+            .connect-page-new .social-link {
                 width: 100%;
             }
         }
@@ -9228,6 +9619,197 @@
         transition: none !important;
     }
 }
+
+/* ═══════════════════════════════════════════════════════ */
+/* PAGE NAVIGATOR — MASTERPIECE EDITION                    */
+/* ═══════════════════════════════════════════════════════ */
+
+:root {
+    --nav-accent: #4FD1C5;
+    --nav-accent-dim: rgba(79, 209, 197, 0.6);
+    --nav-accent-glow: rgba(79, 209, 197, 0.4);
+    --nav-bg: rgba(8, 10, 15, 0.75);
+    --nav-border: rgba(79, 209, 197, 0.15);
+    --nav-border-hover: rgba(79, 209, 197, 0.4);
+}
+
+.page-navigator {
+    position: fixed;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 1.25rem);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.875rem 1.5rem;
+    background: linear-gradient(135deg, var(--nav-bg) 0%, rgba(12, 15, 22, 0.85) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 100px;
+    z-index: 100;
+    opacity: 0;
+    animation: navFadeIn 0.8s var(--ease-out-quint) 0.8s forwards;
+    border: 1px solid var(--nav-border);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.03),
+        0 4px 24px rgba(0, 0, 0, 0.4),
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.page-navigator::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 100px;
+    background: linear-gradient(135deg, var(--nav-accent) 0%, transparent 50%, var(--nav-accent) 100%);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.5s var(--ease-out-quint);
+}
+
+.page-navigator:hover::before {
+    opacity: 0.3;
+}
+
+@keyframes navFadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(30px) scale(0.9); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+.page-navigator.nav-hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateX(-50%) translateY(20px) scale(0.95) !important;
+}
+
+.nav-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    transition: all 0.4s var(--ease-out-quint);
+    position: relative;
+    border: 1.5px solid transparent;
+}
+
+.nav-dot::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 1.5px solid transparent;
+    transition: all 0.4s var(--ease-out-quint);
+}
+
+.nav-dot:hover {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.2);
+}
+
+.nav-dot.active {
+    width: 12px;
+    height: 12px;
+    background: var(--nav-accent);
+    border-color: var(--nav-accent);
+    transform: scale(1);
+    box-shadow:
+        0 0 12px var(--nav-accent-glow),
+        0 0 24px rgba(79, 209, 197, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.nav-dot.active::before {
+    inset: -6px;
+    border-color: var(--nav-accent-dim);
+    animation: ringPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+        border-color: var(--nav-accent-dim);
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0;
+        border-color: var(--nav-accent);
+    }
+}
+
+.nav-dot[data-label]::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    padding: 0.4rem 0.75rem;
+    background: linear-gradient(135deg, rgba(10, 12, 18, 0.95) 0%, rgba(15, 20, 30, 0.95) 100%);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--nav-border);
+    border-radius: 6px;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s var(--ease-out-quint);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --arrow-size: 6px;
+}
+
+.nav-dot:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Mobile adjustments for navigator */
+@media (max-width: 768px) {
+    .page-navigator {
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 0.875rem);
+        padding: 0.625rem 1.125rem;
+        gap: 0.5rem;
+    }
+
+    .nav-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .nav-dot.active {
+        width: 10px;
+        height: 10px;
+    }
+
+    .nav-dot[data-label]::after {
+        display: none;
+    }
+}
+
+/* Page padding for navigator space */
+.page:not([data-page="0"]) {
+    padding-bottom: 5rem !important;
+}
+
+@media (max-width: 768px) {
+    .page:not([data-page="0"]) {
+        padding-bottom: 4.5rem !important;
+    }
+}
+
+/* Footer fixes */
+.site-footer .social-links {
+    margin-bottom: 0;
+}
+
+.page[data-page="0"] .site-footer {
+    gap: 0.875rem;
+}
+
     </style>
 </head>
 <body>
@@ -9324,31 +9906,131 @@
                 <div class="small-logo-container">
                     <svg class="small-logo" data-page="0"><use href="#odei-logo"/></svg>
                 </div>
-                
-                <!-- HERO -->
-                <div class="intro-hero">
-                    <span class="intro-badge">INTRODUCTION</span>
+
+                <!-- HERO: Statement D (Core Insight) -->
+                <div class="intro-hero-new">
+                    <span class="intro-badge-new">The Gap</span>
+                    <h2 class="intro-headline">
+                        <span class="intro-headline-fade">The gap isn't in what AI can do.</span>
+                        <span class="intro-headline-emphasis">It's in what AI is <em>allowed</em> to do.</span>
+                    </h2>
                 </div>
-                
-                <!-- MANIFESTO -->
-                <div class="intro-manifesto">
-                    <p class="manifesto-paragraph">
-                        Human potential is constrained not by capability, but by <em>cognitive overhead</em>. Every day, we waste precious mental cycles on decisions that could be automated, schedules that could be optimized, patterns that could be recognized.
-                    </p>
-                    
-                    <p class="manifesto-paragraph highlight">
-                        ODEI eliminates this waste.
-                    </p>
-                    
-                    <p class="manifesto-paragraph">
-                        It assumes the burden of life's complexity, freeing your mind to focus on creation, connection, and consciousness.
-                    </p>
-                    
-                    <p class="manifesto-closing">
-                        This is not about productivity — it's about <em>freedom</em>.
+
+                <!-- Supporting Context: Statement A -->
+                <div class="intro-pain">
+                    <p>
+                        AI models advance monthly. The way you use them hasn't changed in two years.<br>
+                        You ask. It answers. You forget. It forgets.<br>
+                        The most powerful technology in history, reduced to <span class="pain-emphasis">a glorified search bar</span>.
                     </p>
                 </div>
-                
+
+                <!-- 6 CONTRASTS — STUNNING CARDS -->
+                <div class="intro-gap">
+                    <div class="gap-header">
+                        <span class="gap-header-left">Today's AI</span>
+                        <span class="gap-header-right">What's Possible</span>
+                    </div>
+                    <div class="gap-cards">
+                        <!-- Initiative -->
+                        <div class="gap-card">
+                            <div class="gap-card-main">
+                                <div class="gap-card-icon">01</div>
+                                <div class="gap-card-content">
+                                    <span class="gap-left">Waits for your prompt</span>
+                                    <span class="gap-arrow">→</span>
+                                    <span class="gap-right">Initiates when it matters</span>
+                                </div>
+                            </div>
+                            <div class="gap-description">Sees your calendar, notices patterns, acts before you ask.</div>
+                        </div>
+                        <!-- Transparency -->
+                        <div class="gap-card">
+                            <div class="gap-card-main">
+                                <div class="gap-card-icon">02</div>
+                                <div class="gap-card-content">
+                                    <span class="gap-left">Black box decisions</span>
+                                    <span class="gap-arrow">→</span>
+                                    <span class="gap-right">Fully explainable reasoning</span>
+                                </div>
+                            </div>
+                            <div class="gap-description">Every recommendation is traceable. No magic, just logic you can audit.</div>
+                        </div>
+                        <!-- Execution -->
+                        <div class="gap-card">
+                            <div class="gap-card-main">
+                                <div class="gap-card-icon">03</div>
+                                <div class="gap-card-content">
+                                    <span class="gap-left">Generates text</span>
+                                    <span class="gap-arrow">→</span>
+                                    <span class="gap-right">Executes real outcomes</span>
+                                </div>
+                            </div>
+                            <div class="gap-description">Books the meeting. Sends the email. Moves the task. Done, not drafted.</div>
+                        </div>
+                        <!-- Adaptation -->
+                        <div class="gap-card">
+                            <div class="gap-card-main">
+                                <div class="gap-card-icon">04</div>
+                                <div class="gap-card-content">
+                                    <span class="gap-left">Static responses</span>
+                                    <span class="gap-arrow">→</span>
+                                    <span class="gap-right">Continuous co-evolution</span>
+                                </div>
+                            </div>
+                            <div class="gap-description">Learns your preferences, updates its understanding, grows with you.</div>
+                        </div>
+                        <!-- Control -->
+                        <div class="gap-card">
+                            <div class="gap-card-main">
+                                <div class="gap-card-icon">05</div>
+                                <div class="gap-card-content">
+                                    <span class="gap-left">Their platform, their rules</span>
+                                    <span class="gap-arrow">→</span>
+                                    <span class="gap-right">Your system, your data</span>
+                                </div>
+                            </div>
+                            <div class="gap-description">Runs locally. You own the memory. No corporate surveillance.</div>
+                        </div>
+                        <!-- Continuity -->
+                        <div class="gap-card">
+                            <div class="gap-card-main">
+                                <div class="gap-card-icon">06</div>
+                                <div class="gap-card-content">
+                                    <span class="gap-left">Forgets everything</span>
+                                    <span class="gap-arrow">→</span>
+                                    <span class="gap-right">Remembers what matters</span>
+                                </div>
+                            </div>
+                            <div class="gap-description">Your goals, your context, your history — persistent across sessions.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WHY THIS GAP EXISTS -->
+                <div class="intro-why">
+                    <div class="intro-why-title">Why This Gap Exists</div>
+                    <p>
+                        It's not a technology problem — today's AI models are extraordinary.
+                        The limitation is <span class="why-emphasis">architectural</span>:
+                        they're designed as products you visit, not partners who know you.
+                        They optimize for engagement metrics, not your life outcomes.
+                        You adapt to their interface — they never adapt to your reality.
+                    </p>
+                </div>
+
+                <!-- THE SOLUTION -->
+                <div class="intro-insight">
+                    <div class="intro-promise">
+                        <p class="intro-promise-main"><em>ODEI</em> changes what AI is allowed to do.</p>
+                        <p class="intro-promise-sub">
+                            Not a chatbot. Not an app.<br>
+                            A persistent, private, proactive intelligence layer<br>
+                            that works for you — even when you're not looking.
+                        </p>
+                    </div>
+                </div>
+
             </div>
             <span class="page-number">1</span>
         </section>
@@ -11502,6 +12184,18 @@
             </div>
         </template>
 
+        <!-- Book Navigator — Page Dots (hidden on home by default) -->
+        <!-- Privacy & Connect accessed via footer links, not main navigation -->
+        <nav class="page-navigator nav-hidden" id="pageNavigator" aria-label="Page navigation">
+            <div class="nav-dot active" data-page="0" data-label="Home"></div>
+            <div class="nav-dot" data-page="1" data-label="Problem"></div>
+            <div class="nav-dot" data-page="2" data-label="Solution"></div>
+            <div class="nav-dot" data-page="3" data-label="How"></div>
+            <div class="nav-dot" data-page="4" data-label="Levels"></div>
+            <div class="nav-dot" data-page="5" data-label="Memory"></div>
+            <div class="nav-dot" data-page="6" data-label="Roadmap"></div>
+        </nav>
+
     </div>
 
     <script>
@@ -11518,6 +12212,36 @@
 
             let currentPage = 0;
             const pages = document.querySelectorAll('.page');
+
+            // Navigator elements
+            const navigator = document.getElementById('pageNavigator');
+            const navDots = navigator ? navigator.querySelectorAll('.nav-dot') : [];
+
+            // Update navigator visibility and active dot
+            function updateNavigator(pageIndex) {
+                if (!navigator) return;
+
+                // Hide on: Home (0), Privacy (7+), Connect (8+)
+                const hideNav = pageIndex === 0 || pageIndex >= 7;
+                navigator.classList.toggle('nav-hidden', hideNav);
+
+                // Update active dot
+                navDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === pageIndex);
+                });
+            }
+
+            // Navigator dot click handlers
+            if (navDots.length > 0) {
+                navDots.forEach(dot => {
+                    dot.addEventListener('click', () => {
+                        const targetPage = parseInt(dot.dataset.page, 10);
+                        if (!isNaN(targetPage)) {
+                            goToPage(targetPage);
+                        }
+                    });
+                });
+            }
 
             // Clone footer into each page
             const footerTemplate = document.getElementById('site-footer-template');
@@ -11736,13 +12460,14 @@
 
                 updateButtons();
                 updateUI(pageIndex);
+                updateNavigator(pageIndex);
                 updateHash(pageIndex, addToHistory);
 
                 if (currentPage === 0 && oldPage !== 0) {
                     startFullTypewriter();
                 }
             }
-            
+
             function initialize() {
                 const startPage = getPageFromHash();
                 currentPage = startPage;
@@ -11764,7 +12489,8 @@
 
                 updateButtons();
                 updateUI(startPage);
-                
+                updateNavigator(startPage);
+
                 // Replace initial state so we have proper history entry
                 try {
                     const hash = pageHashes[startPage];
