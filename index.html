@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>ODEI · The Human API Company</title>
 
-    <meta name="description" content="The governance layer that turns any AI into a personal OS.">
+    <meta name="description" content="ODEI is building an infrastructure for personal AI governance.">
 
     <!-- SEO -->
     <link rel="canonical" href="https://odei.ai/">
@@ -14,7 +14,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="The Human API Company">
-    <meta property="og:description" content="The governance layer that turns any AI into a personal OS.">
+    <meta property="og:description" content="ODEI is building an infrastructure for personal AI governance.">
     <meta property="og:image" content="https://odei.ai/og-image.png">
     <meta property="og:url" content="https://odei.ai">
     <meta property="og:site_name" content="ODEI">
@@ -22,7 +22,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Human API Company">
-    <meta name="twitter:description" content="The governance layer that turns any AI into a personal OS.">
+    <meta name="twitter:description" content="ODEI is building an infrastructure for personal AI governance.">
     <meta name="twitter:image" content="https://odei.ai/og-image.png">
 
     <!-- Favicon -->
@@ -8353,10 +8353,10 @@
 
         .roadmap-page-new {
             --road-accent: #4FD1C5;
-            --road-glow: rgba(var(--jade-rgb), 0.15);
+            --road-glow: rgba(var(--jade-rgb), 0.4);
             --road-gold: #F4C95D;
             --road-green: #10B981;
-            --road-green-glow: rgba(16, 185, 129, 0.15);
+            --road-green-glow: rgba(16, 185, 129, 0.3);
             --road-border: rgba(255, 255, 255, 0.1);
             --road-dim: rgba(255, 255, 255, 0.4);
             padding-bottom: 4rem;
@@ -8441,10 +8441,10 @@
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(79, 209, 197, 0.4),
+                rgba(79, 209, 197, 0.7),
                 transparent
             );
-            animation: progressScan 4s ease-in-out infinite;
+            animation: progressScan 3s ease-in-out infinite;
         }
 
         @keyframes progressScan {
@@ -8468,18 +8468,18 @@
 
         .progress-segment.now {
             background: var(--road-accent);
-            box-shadow: 0 0 10px var(--road-accent);
+            box-shadow: 0 0 15px var(--road-accent), 0 0 25px var(--road-glow);
             animation: progressPulse 2s ease-in-out infinite;
         }
 
         @keyframes progressPulse {
             0%, 100% {
-                box-shadow: 0 0 10px var(--road-accent);
+                box-shadow: 0 0 15px var(--road-accent), 0 0 25px var(--road-glow);
                 opacity: 1;
             }
             50% {
-                box-shadow: 0 0 20px var(--road-accent), 0 0 30px var(--road-accent);
-                opacity: 0.85;
+                box-shadow: 0 0 30px var(--road-accent), 0 0 50px var(--road-accent), 0 0 70px var(--road-glow);
+                opacity: 0.9;
             }
         }
 
@@ -8497,12 +8497,12 @@
 
         @keyframes statusGlow {
             0%, 100% {
-                text-shadow: 0 0 5px transparent;
+                text-shadow: 0 0 8px var(--road-glow);
                 opacity: 1;
             }
             50% {
-                text-shadow: 0 0 10px var(--road-accent);
-                opacity: 0.9;
+                text-shadow: 0 0 20px var(--road-accent), 0 0 35px var(--road-glow);
+                opacity: 0.95;
             }
         }
 
@@ -8567,13 +8567,13 @@
         .timeline-marker.done {
             background: var(--road-green);
             color: white;
-            box-shadow: 0 0 15px var(--road-green-glow);
+            box-shadow: 0 0 20px var(--road-green-glow), 0 0 35px var(--road-green-glow);
         }
 
         .timeline-marker.now {
             background: var(--road-accent);
             color: var(--bg);
-            box-shadow: 0 0 20px var(--road-glow), 0 0 40px var(--road-glow);
+            box-shadow: 0 0 25px var(--road-accent), 0 0 50px var(--road-glow);
             animation: pulse-marker 2s ease-in-out infinite;
         }
 
@@ -8584,8 +8584,8 @@
         }
 
         @keyframes pulse-marker {
-            0%, 100% { box-shadow: 0 0 20px var(--road-glow), 0 0 40px var(--road-glow); }
-            50% { box-shadow: 0 0 30px var(--road-glow), 0 0 60px var(--road-glow); }
+            0%, 100% { box-shadow: 0 0 25px var(--road-accent), 0 0 50px var(--road-glow); }
+            50% { box-shadow: 0 0 40px var(--road-accent), 0 0 70px var(--road-glow), 0 0 100px var(--road-glow); }
         }
 
         /* ══════ PHASE CARDS ══════ */
@@ -8604,8 +8604,14 @@
 
         .phase-card-new.now {
             border-color: var(--road-accent);
-            background: rgba(var(--jade-rgb), 0.05);
-            box-shadow: 0 0 40px var(--road-glow), inset 0 0 40px var(--road-glow);
+            background: rgba(var(--jade-rgb), 0.08);
+            box-shadow: 0 0 50px var(--road-glow), 0 0 80px var(--road-glow), inset 0 0 50px var(--road-glow);
+            animation: cardPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes cardPulse {
+            0%, 100% { box-shadow: 0 0 50px var(--road-glow), 0 0 80px var(--road-glow), inset 0 0 50px var(--road-glow); }
+            50% { box-shadow: 0 0 60px var(--road-glow), 0 0 100px var(--road-glow), inset 0 0 60px var(--road-glow); }
         }
 
         .phase-card-new.future {
