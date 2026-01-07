@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>ODEI · The Human API Company</title>
 
-    <meta name="description" content="The governance layer that turns any AI into your personal OS.">
+    <meta name="description" content="The governance layer that turns any AI into a personal OS.">
 
     <!-- SEO -->
     <link rel="canonical" href="https://odei.ai/">
@@ -14,7 +14,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="The Human API Company">
-    <meta property="og:description" content="The governance layer that turns any AI into your personal OS.">
+    <meta property="og:description" content="The governance layer that turns any AI into a personal OS.">
     <meta property="og:image" content="https://odei.ai/og-image.png">
     <meta property="og:url" content="https://odei.ai">
     <meta property="og:site_name" content="ODEI">
@@ -22,7 +22,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Human API Company">
-    <meta name="twitter:description" content="The governance layer that turns any AI into your personal OS.">
+    <meta name="twitter:description" content="The governance layer that turns any AI into a personal OS.">
     <meta name="twitter:image" content="https://odei.ai/og-image.png">
 
     <!-- Favicon -->
@@ -8506,6 +8506,95 @@
             }
         }
 
+        /* ══════ THE GOAL: THE LOOP ══════ */
+        .loop-goal-section {
+            text-align: center;
+            padding: 2rem 0 3rem;
+            margin-bottom: 2rem;
+            border-top: 1px solid var(--road-border);
+        }
+
+        .loop-goal-header {
+            margin-bottom: 1rem;
+        }
+
+        .loop-goal-badge {
+            display: inline-block;
+            font-size: 0.55rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--road-accent);
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .loop-goal-title {
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        .loop-goal-desc {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .loop-visual-simple {
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .loop-item {
+            font-weight: 500;
+        }
+
+        .loop-item.done {
+            color: var(--road-green);
+        }
+
+        .loop-item.now {
+            color: var(--road-accent);
+        }
+
+        .loop-item.future {
+            opacity: 0.4;
+        }
+
+        .loop-sep {
+            margin: 0 0.3rem;
+            opacity: 0.3;
+        }
+
+        .loop-phases-row {
+            font-size: 0.55rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .loop-phase-label {
+            display: inline-block;
+            min-width: 3.5em;
+            text-align: center;
+        }
+
+        .loop-phase-spacer {
+            display: inline-block;
+            width: 1.5em;
+        }
+
+        .loop-goal-note {
+            font-size: 0.75rem;
+            opacity: 0.5;
+            font-style: italic;
+        }
+
         /* ══════ TIMELINE ══════ */
         .timeline-section {
             position: relative;
@@ -12321,12 +12410,11 @@
                 <div class="roadmap-hero-new">
                     <span class="hero-badge-roadmap">The Journey</span>
                     <h2 class="hero-headline-roadmap">
-                        <span style="opacity: 0.4;">Building L5</span><br>
-                        <span style="color: var(--road-accent);">is not a sprint.</span>
+                        <span style="opacity: 0.4;">Building the future</span><br>
+                        <span style="color: var(--road-accent);">takes time.</span>
                     </h2>
                     <p class="hero-subtitle-roadmap">
-                        Each phase builds on the previous. Every milestone is a capability unlock.
-                        This is the path from proof-of-concept to production-ready symbiosis.
+                        Each phase unlocks new capabilities. We ship when it's ready, not when it's rushed.
                     </p>
                 </div>
 
@@ -12345,133 +12433,150 @@
                     </div>
                 </div>
 
+                <!-- ══════ THE GOAL: THE LOOP ══════ -->
+                <div class="loop-goal-section">
+                    <div class="loop-goal-header">
+                        <span class="loop-goal-badge">The Goal</span>
+                        <h3 class="loop-goal-title">The Loop</h3>
+                    </div>
+                    <p class="loop-goal-desc">
+                        This is how you already operate. ODEI makes AI follow the same loop — governed by your rules.
+                    </p>
+                    <div class="loop-visual-simple">
+                        <span class="loop-item done">Observe</span>
+                        <span class="loop-sep">→</span>
+                        <span class="loop-item now">Decide</span>
+                        <span class="loop-sep">→</span>
+                        <span class="loop-item future">Act</span>
+                        <span class="loop-sep">→</span>
+                        <span class="loop-item future">Verify</span>
+                        <span class="loop-sep">→</span>
+                        <span class="loop-item future">Learn</span>
+                    </div>
+                    <p class="loop-goal-note">When all five run continuously, you have a personal OS.</p>
+                </div>
+
                 <!-- ══════ TIMELINE ══════ -->
                 <div class="timeline-section">
                     <div class="timeline-container">
                         <div class="timeline-line"></div>
 
-                        <!-- Phase 0: Foundation (DONE) -->
+                        <!-- Phase 1: OBSERVE (DONE) -->
                         <div class="timeline-phase">
                             <span class="timeline-marker done">✓</span>
                             <div class="phase-card-new done">
                                 <div class="phase-header-new">
                                     <span class="phase-status-new done">Done</span>
-                                    <h3 class="phase-title-new">Foundation</h3>
+                                    <h3 class="phase-title-new">Observe</h3>
                                 </div>
-                                <p class="phase-desc-new">The architectural substrate for everything that follows.</p>
+                                <p class="phase-desc-new">AI that sees your world — memory, health, context, signals.</p>
                                 <div class="phase-outcome-new">
-                                    <div class="phase-outcome-label">Outcome</div>
-                                    <div class="phase-outcome-text">Memory Atlas operational, provenance system live</div>
+                                    <div class="phase-outcome-label">What You Get</div>
+                                    <div class="phase-outcome-text">Your context persists. Your history matters. AI knows you.</div>
                                 </div>
                                 <div class="phase-checklist">
                                     <div class="phase-checklist-label">Delivered</div>
                                     <ul class="phase-checklist-items">
-                                        <li>7-layer Memory Atlas with 40+ node types</li>
-                                        <li>Provenance — every write is traceable</li>
-                                        <li>Guardian preflight validation</li>
+                                        <li>Persistent memory across sessions</li>
+                                        <li>Health data integration</li>
+                                        <li>Source tracking for every fact</li>
                                     </ul>
-                                </div>
-                                <div class="phase-artifact">
-                                    <span class="phase-artifact-label">Artifact:</span> Internal spec v0.9
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Phase 1: L5 Core (NOW) -->
+                        <!-- Phase 2: DECIDE (NOW) -->
                         <div class="timeline-phase">
                             <span class="timeline-marker now">2</span>
                             <div class="phase-card-new now">
                                 <div class="phase-header-new">
                                     <span class="phase-status-new now">In Progress</span>
-                                    <h3 class="phase-title-new">L5 Core</h3>
+                                    <h3 class="phase-title-new">Decide</h3>
                                     <span class="here-indicator">
                                         <span class="here-dot"></span>
                                         You are here
                                     </span>
                                 </div>
-                                <p class="phase-desc-new">Autonomous partnership infrastructure — the engine of symbiosis.</p>
+                                <p class="phase-desc-new">AI that knows what matters — rules, priorities, authority.</p>
                                 <div class="phase-outcome-new">
-                                    <div class="phase-outcome-label">Target Outcome</div>
-                                    <div class="phase-outcome-text">Proactive prompts + supervised execution + receipts + policy diff</div>
+                                    <div class="phase-outcome-label">What You Get</div>
+                                    <div class="phase-outcome-text">Set rules once. Priorities enforced, not suggested.</div>
                                 </div>
                                 <div class="phase-checklist">
                                     <div class="phase-checklist-label">Working On</div>
                                     <ul class="phase-checklist-items">
-                                        <li>Task lifecycle works end-to-end</li>
-                                        <li>Policy versioning shipped</li>
-                                        <li>Export works (JSON/portable)</li>
+                                        <li>Rule-based decision engine</li>
+                                        <li>Priority system</li>
+                                        <li>Authority checks before action</li>
                                     </ul>
-                                </div>
-                                <div class="phase-artifact">
-                                    <span class="phase-artifact-label">Artifact:</span> Public spec v0.1
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Phase 2: Memory+ -->
+                        <!-- Phase 3: ACT -->
                         <div class="timeline-phase">
                             <span class="timeline-marker future">3</span>
                             <div class="phase-card-new future">
                                 <div class="phase-header-new">
-                                    <h3 class="phase-title-new">Memory+</h3>
+                                    <h3 class="phase-title-new">Act</h3>
                                 </div>
-                                <p class="phase-desc-new">Deeper knowledge representation with epistemic rigor.</p>
+                                <p class="phase-desc-new">AI that does, not just suggests — execution with accountability.</p>
                                 <div class="phase-outcome-new">
-                                    <div class="phase-outcome-label">Target Outcome</div>
-                                    <div class="phase-outcome-text">Epistemic separation, confidence tracking, entity resolution</div>
+                                    <div class="phase-outcome-label">What You Get</div>
+                                    <div class="phase-outcome-text">AI acts on your behalf. You approve what matters. Proof of every action.</div>
                                 </div>
                                 <div class="phase-checklist">
                                     <div class="phase-checklist-label">Milestones</div>
                                     <ul class="phase-checklist-items">
-                                        <li>Fact vs inference vs opinion separated</li>
-                                        <li>Confidence decay implemented</li>
-                                        <li>Cross-session entity linking</li>
+                                        <li>Approval workflows</li>
+                                        <li>Action receipts</li>
+                                        <li>Supervised execution</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Phase 3: Agent Ecosystem -->
+                        <!-- Phase 4: VERIFY -->
                         <div class="timeline-phase">
                             <span class="timeline-marker future">4</span>
                             <div class="phase-card-new future">
                                 <div class="phase-header-new">
-                                    <h3 class="phase-title-new">Agent Ecosystem</h3>
+                                    <h3 class="phase-title-new">Verify</h3>
                                 </div>
-                                <p class="phase-desc-new">Specialized agents under unified constitutional governance.</p>
+                                <p class="phase-desc-new">AI that confirms results — outcome tracking, feedback loops.</p>
                                 <div class="phase-outcome-new">
-                                    <div class="phase-outcome-label">Target Outcome</div>
-                                    <div class="phase-outcome-text">Domain agents coordinating under constitutional rules</div>
+                                    <div class="phase-outcome-label">What You Get</div>
+                                    <div class="phase-outcome-text">Know if actions achieved goals. No dropped balls. Automatic follow-up.</div>
                                 </div>
                                 <div class="phase-checklist">
                                     <div class="phase-checklist-label">Milestones</div>
                                     <ul class="phase-checklist-items">
-                                        <li>3+ domain agents operational</li>
-                                        <li>Cross-agent protocol working</li>
-                                        <li>Constitutional governance enforced</li>
+                                        <li>Outcome tracking</li>
+                                        <li>Goal-action linking</li>
+                                        <li>Success/failure detection</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Phase 4: Public Release -->
+                        <!-- Phase 5: LEARN -->
                         <div class="timeline-phase">
                             <span class="timeline-marker future">5</span>
                             <div class="phase-card-new future">
                                 <div class="phase-header-new">
-                                    <h3 class="phase-title-new">Public Release</h3>
+                                    <h3 class="phase-title-new">Learn</h3>
                                 </div>
-                                <p class="phase-desc-new">Production-ready L5 system for the world.</p>
+                                <p class="phase-desc-new">AI that gets better — policy evolution from outcomes.</p>
                                 <div class="phase-outcome-new">
-                                    <div class="phase-outcome-label">Target Outcome</div>
-                                    <div class="phase-outcome-text">Downloadable, audited, documented — L5 for everyone</div>
+                                    <div class="phase-outcome-label">What You Get</div>
+                                    <div class="phase-outcome-text">Rules evolve from results. AI learns what works. Smarter over time.</div>
                                 </div>
                                 <div class="phase-checklist">
                                     <div class="phase-checklist-label">Milestones</div>
                                     <ul class="phase-checklist-items">
-                                        <li>Security audit passed</li>
-                                        <li>Local-first deployment works</li>
-                                        <li>Public documentation live</li>
+                                        <li>Policy evolution from outcomes</li>
+                                        <li>Pattern detection</li>
+                                        <li>Adaptive behavior</li>
                                     </ul>
                                 </div>
                             </div>
@@ -12482,10 +12587,10 @@
                 <!-- ══════ BOTTOM CTA ══════ -->
                 <div class="roadmap-cta">
                     <p class="roadmap-cta-text">
-                        Want to follow the progress? Get notified when we hit <em>Public Release</em>.
+                        Want to follow the journey?
                     </p>
                     <a href="#connect" class="roadmap-cta-button" data-page="9">
-                        Join the waitlist →
+                        Stay connected →
                     </a>
                 </div>
             </div>
