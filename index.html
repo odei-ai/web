@@ -3200,6 +3200,104 @@
             border: 1px solid var(--product-accent);
         }
         
+        /* ══════ 6 SOLUTIONS SECTION ══════ */
+        .solutions-section {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .solutions-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .solutions-label {
+            display: block;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--product-accent);
+            opacity: 0.8;
+            margin-bottom: 0.75rem;
+        }
+
+        .solutions-title {
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .solution-card {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.2) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .solution-card:hover {
+            border-color: rgba(79, 209, 197, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(79, 209, 197, 0.08);
+        }
+
+        .solution-num {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: var(--product-accent);
+            opacity: 0.7;
+            margin-bottom: 0.75rem;
+        }
+
+        .solution-gap {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-from {
+            font-size: 0.85rem;
+            opacity: 0.4;
+            text-decoration: line-through;
+            text-decoration-color: rgba(255, 123, 123, 0.4);
+        }
+
+        .solution-arrow {
+            color: var(--product-accent);
+            opacity: 0.5;
+            font-size: 0.9rem;
+        }
+
+        .solution-to {
+            font-size: 0.9rem;
+            color: var(--product-accent);
+            font-weight: 500;
+        }
+
+        .solution-how {
+            font-size: 0.8rem;
+            opacity: 0.65;
+            line-height: 1.6;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 700px) {
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 800px) {
             .contrast-container {
                 grid-template-columns: 1fr;
@@ -3214,16 +3312,18 @@
             }
         }
         
-        /* ══════ STACK SECTION ══════ */
+        /* ══════ STACK SECTION — VERTICAL ARCHITECTURE ══════ */
         .stack-section {
             margin-bottom: 4rem;
+            padding: 2rem 0;
+            text-align: center;
         }
-        
+
         .stack-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
-        
+
         .stack-label {
             display: block;
             font-size: 0.6rem;
@@ -3232,223 +3332,431 @@
             opacity: 0.4;
             margin-bottom: 0.75rem;
         }
-        
+
         .stack-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 300;
         }
-        
-        .primitives-showcase {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: var(--product-border);
+
+        .architecture-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            max-width: 500px;
+            margin: 0 auto;
         }
-        
-        .primitive-card {
-            background: var(--bg);
-            padding: 2rem 1.5rem;
+
+        .arch-layer {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            background: linear-gradient(135deg, rgba(79, 209, 197, 0.05) 0%, rgba(0, 0, 0, 0.3) 100%);
+            border: 1px solid rgba(79, 209, 197, 0.15);
             position: relative;
             transition: all 0.3s ease;
         }
-        
-        .primitive-card:hover {
-            background: rgba(79, 209, 197, 0.03);
+
+        .arch-layer:first-child {
+            border-radius: 12px 12px 0 0;
         }
-        
-        .primitive-card:hover .prim-glow {
-            opacity: 1;
+
+        .arch-layer:last-child {
+            border-radius: 0 0 12px 12px;
         }
-        
-        .primitive-visual {
-            position: relative;
-            margin-bottom: 1.5rem;
+
+        .arch-layer:not(:last-child) {
+            border-bottom: none;
         }
-        
-        .prim-icon-wrap {
-            width: 48px;
-            height: 48px;
-            border: 1px solid var(--product-accent);
+
+        .arch-layer:hover {
+            background: linear-gradient(135deg, rgba(79, 209, 197, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+            border-color: rgba(79, 209, 197, 0.3);
+        }
+
+        .arch-layer-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .prim-icon {
-            width: 24px;
-            height: 24px;
-            color: var(--product-accent);
-        }
-        
-        .prim-glow {
-            position: absolute;
-            top: 50%;
-            left: 24px;
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle, var(--product-glow) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-        
-        .primitive-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .prim-name {
-            font-size: 1rem;
-            font-weight: 500;
+            gap: 0.75rem;
             margin-bottom: 0.5rem;
         }
-        
-        .prim-desc {
-            font-size: 0.8rem;
-            opacity: 0.6;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
-        
-        .prim-detail {
-            padding-top: 0.75rem;
-            border-top: 1px solid var(--product-border);
-        }
-        
-        .detail-label {
-            display: block;
+
+        .arch-layer-num {
             font-size: 0.6rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            opacity: 0.4;
-            margin-bottom: 0.25rem;
-        }
-        
-        .detail-value {
-            font-size: 0.75rem;
+            font-weight: 600;
             color: var(--product-accent);
+            opacity: 0.6;
         }
-        
-        @media (max-width: 900px) {
-            .primitives-showcase {
-                grid-template-columns: repeat(2, 1fr);
-            }
+
+        .arch-layer-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
         }
-        
+
+        .arch-layer-sub {
+            font-size: 0.7rem;
+            opacity: 0.5;
+            font-weight: 400;
+            margin-left: 0.5rem;
+        }
+
+        .arch-layer-desc {
+            font-size: 0.75rem;
+            opacity: 0.6;
+            padding-left: 1.5rem;
+        }
+
+        .arch-connector {
+            width: 1px;
+            height: 16px;
+            background: linear-gradient(to bottom, rgba(79, 209, 197, 0.4), rgba(79, 209, 197, 0.15));
+            position: relative;
+        }
+
+        .arch-connector::after {
+            content: '↓';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: var(--product-accent);
+            opacity: 0.5;
+        }
+
         @media (max-width: 500px) {
             .primitives-showcase {
                 grid-template-columns: 1fr;
             }
         }
         
-        /* ══════ LOOP SECTION ══════ */
+        /* ══════ LOOP SECTION — PREMIUM ══════ */
         .loop-section {
-            margin-bottom: 4rem;
+            margin: 5rem 0;
+            padding: 4rem 0;
+            background: radial-gradient(ellipse at center, rgba(79, 209, 197, 0.06) 0%, transparent 70%);
+            border-top: 1px solid rgba(79, 209, 197, 0.15);
+            border-bottom: 1px solid rgba(79, 209, 197, 0.15);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
         }
-        
+
         .loop-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
-        
+
         .loop-label {
-            display: block;
-            font-size: 0.6rem;
+            display: inline-block;
+            font-size: 0.65rem;
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            opacity: 0.4;
-            margin-bottom: 0.75rem;
+            color: var(--product-accent);
+            padding: 0.4rem 1rem;
+            border: 1px solid rgba(79, 209, 197, 0.3);
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
         }
-        
+
         .loop-title {
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             font-weight: 300;
+            margin-bottom: 0.5rem;
         }
-        
+
+        .loop-subtitle {
+            font-size: 0.85rem;
+            opacity: 0.5;
+            font-style: italic;
+        }
+
         .loop-visual {
             position: relative;
-        }
-        
-        .loop-ring {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 0 1rem;
+            justify-content: center;
+            padding: 1rem 0;
         }
-        
-        .loop-step {
-            flex: 1;
+
+        .loop-ring-container {
+            position: relative;
+            width: 480px;
+            height: 480px;
+        }
+
+        .loop-ring-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .loop-ring-track {
+            fill: none;
+            stroke: rgba(79, 209, 197, 0.08);
+            stroke-width: 50;
+        }
+
+        .loop-ring-glow {
+            fill: none;
+            stroke: rgba(79, 209, 197, 0.06);
+            stroke-width: 80;
+            filter: blur(15px);
+        }
+
+        .loop-ring-progress {
+            fill: none;
+            stroke: url(#loopGradient);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-dasharray: 20 30;
+            animation: loopFlow 25s linear infinite;
+        }
+
+        .loop-ring-arrows {
+            fill: none;
+            stroke: rgba(79, 209, 197, 0.4);
+            stroke-width: 2;
+            stroke-dasharray: 6 80;
+            animation: loopArrows 4s linear infinite;
+        }
+
+        @keyframes loopFlow {
+            from { stroke-dashoffset: 0; }
+            to { stroke-dashoffset: -1500; }
+        }
+
+        @keyframes loopArrows {
+            from { stroke-dashoffset: 0; }
+            to { stroke-dashoffset: -86; }
+        }
+
+        .loop-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
-            position: relative;
-        }
-        
-        .step-dot {
-            width: 12px;
-            height: 12px;
-            border: 2px solid var(--product-accent);
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            position: relative;
-            background: var(--bg);
-        }
-        
-        .loop-step[data-step="3"] .step-dot {
-            background: var(--product-accent);
-            box-shadow: 0 0 15px var(--product-accent);
-        }
-        
-        .step-content {
+            width: 180px;
+            height: 180px;
             display: flex;
             flex-direction: column;
-            gap: 0.25rem;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, rgba(79, 209, 197, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: centerPulse 4s ease-in-out infinite;
         }
-        
-        .loop-step .step-name {
-            font-size: 0.9rem;
-            font-weight: 500;
+
+        @keyframes centerPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.03); }
         }
-        
-        .loop-step .step-desc {
-            font-size: 0.7rem;
+
+        .loop-center-label {
+            font-size: 0.5rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            opacity: 0.4;
+            margin-bottom: 0.5rem;
+        }
+
+        .loop-center-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--product-accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .loop-center-sub {
+            font-size: 0.65rem;
             opacity: 0.5;
         }
-        
-        .loop-connector {
-            flex: 0 0 auto;
-            width: 40px;
-            height: 1px;
-            background: linear-gradient(to right, var(--product-accent), rgba(79, 209, 197, 0.2));
-            margin-top: 6px;
+
+        .loop-steps-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
-        
+
+        .loop-step {
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
+        .loop-step[data-step="1"] { top: 6%; left: 50%; }
+        .loop-step[data-step="2"] { top: 36%; left: 94%; }
+        .loop-step[data-step="3"] { top: 88%; left: 77%; }
+        .loop-step[data-step="4"] { top: 88%; left: 23%; }
+        .loop-step[data-step="5"] { top: 36%; left: 6%; }
+
+        .step-card {
+            background: linear-gradient(145deg, rgba(79, 209, 197, 0.15) 0%, rgba(5, 6, 10, 0.95) 100%);
+            border: 1px solid rgba(79, 209, 197, 0.3);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            min-width: 130px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .loop-step:hover .step-card {
+            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(79, 209, 197, 0.6);
+            box-shadow: 0 12px 40px rgba(79, 209, 197, 0.25);
+        }
+
+        .step-num {
+            display: block;
+            font-size: 0.5rem;
+            font-weight: 600;
+            color: var(--product-accent);
+            opacity: 0.6;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.12em;
+            white-space: nowrap;
+        }
+
+        .step-card .step-name {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--text);
+        }
+
+        .step-card .step-desc {
+            font-size: 0.7rem;
+            opacity: 0.55;
+            line-height: 1.4;
+        }
+
+        .loop-step[data-step="3"] .step-card {
+            background: linear-gradient(145deg, rgba(79, 209, 197, 0.3) 0%, rgba(5, 6, 10, 0.9) 100%);
+            border-color: rgba(79, 209, 197, 0.6);
+            box-shadow: 0 0 40px rgba(79, 209, 197, 0.2);
+        }
+
+        .loop-footer {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .loop-differentiator {
+            display: inline-block;
+            padding: 0.85rem 1.75rem;
+            background: rgba(79, 209, 197, 0.1);
+            border: 1px solid rgba(79, 209, 197, 0.25);
+            border-radius: 10px;
+            font-size: 0.85rem;
+        }
+
+        .loop-diff-label {
+            opacity: 0.5;
+            margin-right: 0.5rem;
+        }
+
+        .loop-diff-value {
+            color: var(--product-accent);
+            font-weight: 600;
+        }
+
         @media (max-width: 700px) {
-            .loop-ring {
-                flex-direction: column;
-                align-items: center;
-                gap: 0;
+            .loop-section {
+                margin: 3rem 0;
+                padding: 2.5rem 0;
             }
-            .loop-connector {
-                width: 1px;
-                height: 20px;
-                background: linear-gradient(to bottom, var(--product-accent), rgba(79, 209, 197, 0.2));
-                margin: 0;
+            .loop-title {
+                font-size: 1.4rem;
             }
-            .loop-step {
-                padding: 0.5rem 0;
+            .loop-ring-container {
+                width: 340px;
+                height: 340px;
             }
-            .step-dot {
-                margin-bottom: 0.5rem;
+            .loop-step[data-step="1"] { top: 2%; left: 50%; }
+            .loop-step[data-step="2"] { top: 32%; left: 98%; }
+            .loop-step[data-step="3"] { top: 92%; left: 82%; }
+            .loop-step[data-step="4"] { top: 92%; left: 18%; }
+            .loop-step[data-step="5"] { top: 32%; left: 2%; }
+            .step-card {
+                padding: 0.5rem 0.7rem;
+                min-width: 85px;
+            }
+            .step-card .step-name {
+                font-size: 0.75rem;
+            }
+            .step-card .step-desc {
+                display: none;
+            }
+            .loop-center {
+                width: 120px;
+                height: 120px;
+            }
+            .loop-center-title {
+                font-size: 0.9rem;
+            }
+            .loop-center-sub {
+                font-size: 0.55rem;
+            }
+        }
+
+        /* iPhone SE and small phones */
+        @media (max-width: 400px) {
+            .loop-visual {
+                overflow: visible;
+                padding: 2rem 0;
+            }
+            .loop-ring-container {
+                width: 240px;
+                height: 240px;
+            }
+            .loop-step[data-step="1"] { top: -12%; left: 50%; }
+            .loop-step[data-step="2"] { top: 26%; left: 100%; }
+            .loop-step[data-step="3"] { top: 102%; left: 80%; }
+            .loop-step[data-step="4"] { top: 102%; left: 20%; }
+            .loop-step[data-step="5"] { top: 26%; left: 0%; }
+            .step-card {
+                padding: 0.4rem 0.55rem;
+                min-width: 70px;
+            }
+            .step-num {
+                font-size: 0.4rem;
+                margin-bottom: 0.25rem;
+            }
+            .step-card .step-name {
+                font-size: 0.65rem;
+                margin-bottom: 0;
+            }
+            .loop-center {
+                width: 100px;
+                height: 100px;
+            }
+            .loop-center-label {
+                font-size: 0.4rem;
+                margin-bottom: 0.3rem;
+            }
+            .loop-center-title {
+                font-size: 0.75rem;
+            }
+            .loop-center-sub {
+                font-size: 0.5rem;
+            }
+            .loop-differentiator {
+                padding: 0.6rem 1rem;
+                font-size: 0.75rem;
             }
         }
         
         /* ══════ PROOF SECTION ══════ */
         .proof-section {
             margin-bottom: 4rem;
+            text-align: center;
         }
-        
+
         .proof-header {
             text-align: center;
             margin-bottom: 2rem;
@@ -3471,6 +3779,7 @@
         .proof-demo {
             max-width: 700px;
             margin: 0 auto;
+            text-align: left;
         }
         
         .demo-task {
@@ -3564,6 +3873,22 @@
         
         .term-success {
             color: var(--status-yes);
+        }
+        .term-version {
+            font-size: 0.65rem;
+            padding: 0.15rem 0.4rem;
+            background: rgba(79, 209, 197, 0.15);
+            border: 1px solid rgba(79, 209, 197, 0.3);
+            border-radius: 4px;
+            color: var(--product-accent);
+            margin-left: 0.5rem;
+        }
+        .demo-task.proactive {
+            border-left: 3px solid var(--product-accent);
+            background: linear-gradient(90deg, rgba(79, 209, 197, 0.08) 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+        .demo-task.proactive .task-prompt {
+            color: var(--product-accent);
         }
         
         .term-source {
@@ -10346,197 +10671,167 @@
                     <div class="hero-badge">PRODUCT</div>
                     <h2 class="hero-title">
                         <span class="hero-line-1">From assistant</span>
-                        <span class="hero-line-2">to infrastructure.</span>
+                        <span class="hero-line-2">to operating system.</span>
                     </h2>
-                    <p class="hero-subtitle">ODEI is a local-first governance layer that turns any AI model into a personal operating system — with memory, policies, execution, and receipts.</p>
+                    <p class="hero-subtitle">Assistants wait. ODEI governs.<br>You stop managing AI. AI starts managing outcomes.</p>
                 </div>
 
-                <!-- VISUAL CONTRAST: Dead vs Live -->
-                <div class="contrast-section">
-                    <div class="contrast-container">
-                        <div class="contrast-side dead">
-                            <div class="contrast-header">
-                                <span class="contrast-icon">○</span>
-                                <span class="contrast-label">TYPICAL ASSISTANT</span>
-                            </div>
-                            <div class="contrast-terminal">
-                                <div class="term-line"><span class="term-prompt">></span> <span class="term-cursor">▊</span></div>
-                                <div class="term-status">Waiting for input...</div>
-                            </div>
-                            <div class="contrast-traits">
-                                <span class="trait negative">Reactive</span>
-                                <span class="trait negative">Stateless</span>
-                                <span class="trait negative">Generic</span>
-                            </div>
-                        </div>
-                        
-                        <div class="contrast-arrow">
-                            <div class="arrow-line"></div>
-                            <div class="arrow-text">ODEI</div>
-                            <div class="arrow-line"></div>
-                        </div>
-                        
-                        <div class="contrast-side live">
-                            <div class="contrast-header">
-                                <span class="contrast-icon pulse">●</span>
-                                <span class="contrast-label">ODEI SYSTEM</span>
-                            </div>
-                            <div class="contrast-terminal active">
-                                <div class="term-line"><span class="term-time">09:14</span> <span class="term-alert">→</span> Design review needs rescheduling</div>
-                                <div class="term-line"><span class="term-time">09:14</span> <span class="term-action">⚡</span> Checking Alex's calendar...</div>
-                                <div class="term-line"><span class="term-time">09:15</span> <span class="term-ok">✓</span> Sent invite for Thursday 2pm</div>
-                            </div>
-                            <div class="contrast-traits">
-                                <span class="trait positive">Proactive</span>
-                                <span class="trait positive">Persistent</span>
-                                <span class="trait positive">Personal</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- THE STACK: 4 Primitives -->
-                <div class="stack-section">
-                    <div class="stack-header">
-                        <span class="stack-label">THE STACK</span>
-                        <h3 class="stack-title">Four primitives. One system.</h3>
-                    </div>
-                    
-                    <div class="primitives-showcase">
-                        <div class="primitive-card" data-primitive="memory">
-                            <div class="primitive-visual">
-                                <div class="prim-icon-wrap">
-                                    <svg class="prim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <circle cx="12" cy="12" r="10"/>
-                                        <circle cx="12" cy="12" r="4"/>
-                                        <line x1="12" y1="2" x2="12" y2="6"/>
-                                        <line x1="12" y1="18" x2="12" y2="22"/>
-                                        <line x1="2" y1="12" x2="6" y2="12"/>
-                                        <line x1="18" y1="12" x2="22" y2="12"/>
-                                    </svg>
-                                </div>
-                                <div class="prim-glow"></div>
-                            </div>
-                            <div class="primitive-content">
-                                <h4 class="prim-name">Memory</h4>
-                                <p class="prim-desc">Structured context that persists across sessions, models, and time.</p>
-                                <div class="prim-detail">
-                                    <span class="detail-label">You get:</span>
-                                    <span class="detail-value">Switch models without losing "you"</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="primitive-card" data-primitive="policy">
-                            <div class="primitive-visual">
-                                <div class="prim-icon-wrap">
-                                    <svg class="prim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                                        <path d="M2 17l10 5 10-5"/>
-                                        <path d="M2 12l10 5 10-5"/>
-                                    </svg>
-                                </div>
-                                <div class="prim-glow"></div>
-                            </div>
-                            <div class="primitive-content">
-                                <h4 class="prim-name">Policy</h4>
-                                <p class="prim-desc">Versioned rules and thresholds that govern AI behavior.</p>
-                                <div class="prim-detail">
-                                    <span class="detail-label">You get:</span>
-                                    <span class="detail-value">Predictable behavior, not negotiation</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="primitive-card" data-primitive="execution">
-                            <div class="primitive-visual">
-                                <div class="prim-icon-wrap">
-                                    <svg class="prim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <polygon points="5 3 19 12 5 21 5 3"/>
-                                    </svg>
-                                </div>
-                                <div class="prim-glow"></div>
-                            </div>
-                            <div class="primitive-content">
-                                <h4 class="prim-name">Execution</h4>
-                                <p class="prim-desc">Actions, not drafts. Results with verification.</p>
-                                <div class="prim-detail">
-                                    <span class="detail-label">You get:</span>
-                                    <span class="detail-value">Outcomes, not copy-paste busywork</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="primitive-card" data-primitive="audit">
-                            <div class="primitive-visual">
-                                <div class="prim-icon-wrap">
-                                    <svg class="prim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M9 11l3 3L22 4"/>
-                                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-                                    </svg>
-                                </div>
-                                <div class="prim-glow"></div>
-                            </div>
-                            <div class="primitive-content">
-                                <h4 class="prim-name">Audit</h4>
-                                <p class="prim-desc">Full trace for every action. WHY / MEMORY / POLICY / RECEIPT.</p>
-                                <div class="prim-detail">
-                                    <span class="detail-label">You get:</span>
-                                    <span class="detail-value">Trust through transparency</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- THE LOOP: How It Works -->
+                <!-- THE GOVERNANCE LOOP: Central Differentiator -->
                 <div class="loop-section">
                     <div class="loop-header">
-                        <span class="loop-label">THE LOOP</span>
+                        <span class="loop-label">THE GOVERNANCE LOOP</span>
                         <h3 class="loop-title">Observe. Decide. Act. Verify. Learn.</h3>
+                        <p class="loop-subtitle">Not a task loop — a life loop. Continuous. Autonomous.</p>
                     </div>
-                    
+
                     <div class="loop-visual">
-                        <div class="loop-ring">
-                            <div class="loop-step" data-step="1">
-                                <div class="step-dot"></div>
-                                <div class="step-content">
-                                    <span class="step-name">Observe</span>
-                                    <span class="step-desc">Detect triggers from context</span>
+                        <div class="loop-ring-container">
+                            <!-- Premium Ring SVG -->
+                            <svg class="loop-ring-svg" viewBox="0 0 480 480">
+                                <defs>
+                                    <linearGradient id="loopGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#4FD1C5;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#4FD1C5;stop-opacity:0.2" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Glow layer -->
+                                <circle class="loop-ring-glow" cx="240" cy="240" r="175"/>
+                                <!-- Track layer -->
+                                <circle class="loop-ring-track" cx="240" cy="240" r="175"/>
+                                <!-- Animated progress -->
+                                <circle class="loop-ring-progress" cx="240" cy="240" r="175"/>
+                                <!-- Animated arrows showing direction -->
+                                <circle class="loop-ring-arrows" cx="240" cy="240" r="175"/>
+                            </svg>
+
+                            <!-- Center Content -->
+                            <div class="loop-center">
+                                <div class="loop-center-label">Governing</div>
+                                <div class="loop-center-title">Your Outcomes</div>
+                                <div class="loop-center-sub">24/7 · Autonomous</div>
+                            </div>
+
+                            <!-- Step Cards around the ring -->
+                            <div class="loop-steps-ring">
+                                <div class="loop-step" data-step="1">
+                                    <div class="step-card">
+                                        <span class="step-num">STEP 1</span>
+                                        <span class="step-name">Observe</span>
+                                        <span class="step-desc">Calendar, health, memory, signals</span>
+                                    </div>
+                                </div>
+                                <div class="loop-step" data-step="2">
+                                    <div class="step-card">
+                                        <span class="step-num">STEP 2</span>
+                                        <span class="step-name">Decide</span>
+                                        <span class="step-desc">Priority + authority check</span>
+                                    </div>
+                                </div>
+                                <div class="loop-step" data-step="3">
+                                    <div class="step-card">
+                                        <span class="step-num">STEP 3</span>
+                                        <span class="step-name">Act</span>
+                                        <span class="step-desc">Execute or request approval</span>
+                                    </div>
+                                </div>
+                                <div class="loop-step" data-step="4">
+                                    <div class="step-card">
+                                        <span class="step-num">STEP 4</span>
+                                        <span class="step-name">Verify</span>
+                                        <span class="step-desc">Confirm outcome achieved</span>
+                                    </div>
+                                </div>
+                                <div class="loop-step" data-step="5">
+                                    <div class="step-card">
+                                        <span class="step-num">STEP 5</span>
+                                        <span class="step-name">Learn</span>
+                                        <span class="step-desc">Update policy + memory</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="loop-connector"></div>
-                            <div class="loop-step" data-step="2">
-                                <div class="step-dot"></div>
-                                <div class="step-content">
-                                    <span class="step-name">Decide</span>
-                                    <span class="step-desc">Check policy + authority level</span>
-                                </div>
+                        </div>
+                    </div>
+
+                    <div class="loop-footer">
+                        <div class="loop-differentiator">
+                            <span class="loop-diff-label">Key difference:</span>
+                            <span class="loop-diff-value">AI agents do tasks. ODEI governs outcomes.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6 SOLUTIONS: Closing the Gap -->
+                <div class="solutions-section">
+                    <div class="solutions-header">
+                        <span class="solutions-label">HOW ODEI CLOSES THE GAP</span>
+                        <h3 class="solutions-title">Six problems. Six solutions.</h3>
+                    </div>
+
+                    <div class="solutions-grid">
+                        <!-- 01: Initiative -->
+                        <div class="solution-card">
+                            <div class="solution-num">01 INITIATIVE</div>
+                            <div class="solution-gap">
+                                <span class="solution-from">Waits for prompt</span>
+                                <span class="solution-arrow">→</span>
+                                <span class="solution-to">Initiates when it matters</span>
                             </div>
-                            <div class="loop-connector"></div>
-                            <div class="loop-step" data-step="3">
-                                <div class="step-dot"></div>
-                                <div class="step-content">
-                                    <span class="step-name">Act</span>
-                                    <span class="step-desc">Execute or request approval</span>
-                                </div>
+                            <div class="solution-how">Commander agent monitors your calendar, health, and goals. Pings you before you think to ask.</div>
+                        </div>
+
+                        <!-- 02: Transparency -->
+                        <div class="solution-card">
+                            <div class="solution-num">02 TRANSPARENCY</div>
+                            <div class="solution-gap">
+                                <span class="solution-from">Black box</span>
+                                <span class="solution-arrow">→</span>
+                                <span class="solution-to">Fully explainable</span>
                             </div>
-                            <div class="loop-connector"></div>
-                            <div class="loop-step" data-step="4">
-                                <div class="step-dot"></div>
-                                <div class="step-content">
-                                    <span class="step-name">Verify</span>
-                                    <span class="step-desc">Confirm outcome achieved</span>
-                                </div>
+                            <div class="solution-how">Every action generates a receipt: WHY (goal) → CONTEXT (memory) → POLICY (rule) → ACTION (what happened).</div>
+                        </div>
+
+                        <!-- 03: Execution -->
+                        <div class="solution-card">
+                            <div class="solution-num">03 EXECUTION</div>
+                            <div class="solution-gap">
+                                <span class="solution-from">Generates text</span>
+                                <span class="solution-arrow">→</span>
+                                <span class="solution-to">Executes outcomes</span>
                             </div>
-                            <div class="loop-connector"></div>
-                            <div class="loop-step" data-step="5">
-                                <div class="step-dot"></div>
-                                <div class="step-content">
-                                    <span class="step-name">Learn</span>
-                                    <span class="step-desc">Update memory + policy</span>
-                                </div>
+                            <div class="solution-how">Specialized agents (Discuss, Plan, Execute) act on your behalf. Results, not drafts.</div>
+                        </div>
+
+                        <!-- 04: Adaptation -->
+                        <div class="solution-card">
+                            <div class="solution-num">04 ADAPTATION</div>
+                            <div class="solution-gap">
+                                <span class="solution-from">Static responses</span>
+                                <span class="solution-arrow">→</span>
+                                <span class="solution-to">Continuous co-evolution</span>
                             </div>
+                            <div class="solution-how">Policies are versioned. Each feedback loop updates rules. The system learns your preferences.</div>
+                        </div>
+
+                        <!-- 05: Control -->
+                        <div class="solution-card">
+                            <div class="solution-num">05 CONTROL</div>
+                            <div class="solution-gap">
+                                <span class="solution-from">Their platform</span>
+                                <span class="solution-arrow">→</span>
+                                <span class="solution-to">Your system</span>
+                            </div>
+                            <div class="solution-how">Local-first. Your data stays on your machine. Authority levels you control. Export anytime.</div>
+                        </div>
+
+                        <!-- 06: Continuity -->
+                        <div class="solution-card">
+                            <div class="solution-num">06 CONTINUITY</div>
+                            <div class="solution-gap">
+                                <span class="solution-from">Forgets everything</span>
+                                <span class="solution-arrow">→</span>
+                                <span class="solution-to">Remembers what matters</span>
+                            </div>
+                            <div class="solution-how">Constitutional Memory persists goals, context, and history. Drift detection alerts when you're off track.</div>
                         </div>
                     </div>
                 </div>
@@ -10547,49 +10842,49 @@
                         <span class="proof-label">PROOF</span>
                         <h3 class="proof-title">Receipts, not vibes.</h3>
                     </div>
-                    
+
                     <div class="proof-demo">
-                        <div class="demo-task">
-                            <span class="task-prompt">Task:</span>
-                            <span class="task-text">"Follow up with Alex and reschedule the design review"</span>
+                        <div class="demo-task proactive">
+                            <span class="task-prompt">Proactive Alert:</span>
+                            <span class="task-text">"Your goal 'Ship ODEI' has 3 unresolved blockers. Priority drift detected."</span>
                         </div>
-                        
+
                         <div class="demo-terminal">
                             <div class="terminal-header">
                                 <span class="terminal-dot red"></span>
                                 <span class="terminal-dot yellow"></span>
                                 <span class="terminal-dot green"></span>
-                                <span class="terminal-title">odei://execution-log</span>
+                                <span class="terminal-title">RECEIPT #2026-01-04-0847</span>
                             </div>
                             <div class="terminal-body">
                                 <div class="term-row">
-                                    <span class="term-key">PLAN</span>
-                                    <span class="term-val">3 steps: lookup → propose → send</span>
+                                    <span class="term-key">WHY</span>
+                                    <span class="term-val">Goal "Ship ODEI" + 3 blockers unresolved</span>
                                 </div>
                                 <div class="term-row">
-                                    <span class="term-key">EXEC</span>
-                                    <span class="term-val">Calendar API: event updated <span class="term-success">✓</span></span>
-                                </div>
-                                <div class="term-row">
-                                    <span class="term-key">VERIFY</span>
-                                    <span class="term-val">Invite accepted by alex@... <span class="term-success">✓</span></span>
-                                </div>
-                                <div class="term-row">
-                                    <span class="term-key">AUDIT</span>
-                                    <span class="term-val mono">receipt_2026-01-04_0847_7f3a</span>
-                                </div>
-                                <div class="term-row">
-                                    <span class="term-key">MEMORY</span>
-                                    <span class="term-val">"Alex owns design" <span class="term-source">(email:2026-01-02)</span></span>
+                                    <span class="term-key">CONTEXT</span>
+                                    <span class="term-val">Calendar (2 meetings) · Health (HRV 19) · Memory (last session 17d ago)</span>
                                 </div>
                                 <div class="term-row highlight">
                                     <span class="term-key">POLICY</span>
-                                    <span class="term-val">blocker_notify: v13 → v14 <span class="term-pending">pending approval</span></span>
+                                    <span class="term-val">"Alert if goal drift > 3 days" <span class="term-version">v14</span></span>
+                                </div>
+                                <div class="term-row">
+                                    <span class="term-key">ACTION</span>
+                                    <span class="term-val">Pinged user with priority alert <span class="term-success">✓</span></span>
+                                </div>
+                                <div class="term-row">
+                                    <span class="term-key">RESULT</span>
+                                    <span class="term-val">User approved re-prioritization <span class="term-success">✓</span></span>
+                                </div>
+                                <div class="term-row">
+                                    <span class="term-key">SIGNED</span>
+                                    <span class="term-val mono">sha256:7f3a9c...e2b1</span>
                                 </div>
                             </div>
                         </div>
-                        
-                        <p class="demo-note">Every action produces a cryptographically signed receipt. Full provenance. Full control.</p>
+
+                        <p class="demo-note">Every action — proactive or requested — produces a cryptographically signed receipt. Full provenance. Full control.</p>
                     </div>
                 </div>
 
@@ -10688,6 +10983,50 @@
                             <span class="metric-tag">error rate</span>
                             <span class="metric-tag">retry count</span>
                             <span class="metric-tag">cognitive load</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THE STACK: Vertical Architecture -->
+                <div class="stack-section">
+                    <div class="stack-header">
+                        <span class="stack-label">THE ARCHITECTURE</span>
+                        <h3 class="stack-title">How the layers connect.</h3>
+                    </div>
+
+                    <div class="architecture-flow">
+                        <div class="arch-layer">
+                            <div class="arch-layer-header">
+                                <span class="arch-layer-num">01</span>
+                                <span class="arch-layer-name">Constitutional Memory</span>
+                            </div>
+                            <div class="arch-layer-desc">Your goals, values, boundaries — persistent across sessions</div>
+                        </div>
+
+                        <div class="arch-layer">
+                            <div class="arch-layer-header">
+                                <span class="arch-layer-num">02</span>
+                                <span class="arch-layer-name">Governance Engine</span>
+                                <span class="arch-layer-sub">Commander</span>
+                            </div>
+                            <div class="arch-layer-desc">Observe → Decide → Act → Verify → Learn</div>
+                        </div>
+
+                        <div class="arch-layer">
+                            <div class="arch-layer-header">
+                                <span class="arch-layer-num">03</span>
+                                <span class="arch-layer-name">Execution Layer</span>
+                                <span class="arch-layer-sub">Agents</span>
+                            </div>
+                            <div class="arch-layer-desc">Discuss · Plan · Execute — specialized for each task</div>
+                        </div>
+
+                        <div class="arch-layer">
+                            <div class="arch-layer-header">
+                                <span class="arch-layer-num">04</span>
+                                <span class="arch-layer-name">Receipts</span>
+                            </div>
+                            <div class="arch-layer-desc">WHY → CONTEXT → POLICY → ACTION — full provenance</div>
                         </div>
                     </div>
                 </div>
