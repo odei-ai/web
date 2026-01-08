@@ -205,6 +205,28 @@
         /* HOME PAGE — MASTERPIECE EDITION */
         /* ═══════════════════════════════════════════════════════ */
 
+        /* ══════ VIDEO BACKGROUND ══════ */
+        .video-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .video-bg video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            filter: brightness(0.21);
+        }
+
         /* ══════ FLOATING ORBS — CONSCIOUSNESS ══════ */
         .home-orbs {
             position: absolute;
@@ -10957,6 +10979,13 @@
     <main class="book" role="main" id="main-content">
         <section class="page active" id="home" data-page="0">
             <h1 class="visually-hidden">ODEI — The Human API Company</h1>
+
+            <!-- Video Background — Möbius Strip -->
+            <div class="video-bg">
+                <video autoplay muted loop playsinline>
+                    <source src="https://raw.githubusercontent.com/zer0h1ro/agentic/main/src/Site/mobius-bg.mp4" type="video/mp4">
+                </video>
+            </div>
 
             <!-- Floating Ambient Orbs -->
             <div class="home-orbs">
