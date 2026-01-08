@@ -635,25 +635,41 @@
 
         /* OPUS MARK — Living consciousness for headers */
         /* HIDDEN — User requested removal */
-        .opus-mark-container {
-            display: none;
+        /* Page header logo — Möbius Loop */
+        .page-logo-container {
+            position: relative;
+            width: 42px;
+            height: 42px;
+            cursor: pointer;
+            transition: transform 0.4s ease, filter 0.4s ease;
+            color: var(--text);
+            opacity: 0.7;
         }
 
-        .opus-mark-container:hover {
+        .page-logo-container:hover {
             transform: scale(1.1);
-            filter: drop-shadow(0 0 12px rgba(79, 209, 197, 0.6));
+            opacity: 1;
+            filter: drop-shadow(0 0 12px rgba(79, 209, 197, 0.5));
         }
 
-        .opus-mark-container:focus {
+        .page-logo-container:focus {
             outline: 2px solid rgba(79, 209, 197, 0.5);
             outline-offset: 4px;
-            border-radius: 50%;
         }
 
-        .opus-mark-canvas {
+        .page-logo-svg {
             width: 100%;
             height: 100%;
             display: block;
+        }
+
+        .page-logo-svg path {
+            stroke: currentColor;
+        }
+
+        /* Hide old canvas logos */
+        .opus-mark-container {
+            display: none;
         }
 
         .cursor {
@@ -11045,7 +11061,7 @@
         <section class="page intro-page" id="intro" data-page="1">
             <div class="content">
                 <div class="small-logo-container">
-                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
+                    <a href="#home" class="page-logo-container" aria-label="Return to home"><svg class="page-logo-svg" viewBox="0 0 400 400" fill="none"><g stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M 120 200 C 120 120, 200 100, 260 140 C 320 180, 320 220, 280 260 C 240 300, 160 300, 120 260 C 80 220, 100 160, 160 140 C 220 120, 280 140, 280 200"/><path d="M 280 200 C 280 280, 200 300, 140 260 C 80 220, 80 180, 120 140 C 160 100, 240 100, 280 140 C 320 180, 300 240, 240 260 C 180 280, 120 260, 120 200"/></g></svg></a>
                 </div>
 
                 <!-- HERO: Statement D (Core Insight) -->
@@ -11203,7 +11219,7 @@
         <section class="page problem-page" id="problem" data-page="2">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
+                    <a href="#home" class="page-logo-container" aria-label="Return to home"><svg class="page-logo-svg" viewBox="0 0 400 400" fill="none"><g stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M 120 200 C 120 120, 200 100, 260 140 C 320 180, 320 220, 280 260 C 240 300, 160 300, 120 260 C 80 220, 100 160, 160 140 C 220 120, 280 140, 280 200"/><path d="M 280 200 C 280 280, 200 300, 140 260 C 80 220, 80 180, 120 140 C 160 100, 240 100, 280 140 C 320 180, 300 240, 240 260 C 180 280, 120 260, 120 200"/></g></svg></a>
                 </div>
 
                 <!-- HERO: The Pain -->
@@ -11501,7 +11517,7 @@
         <section class="page product-page" id="product" data-page="3">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
+                    <a href="#home" class="page-logo-container" aria-label="Return to home"><svg class="page-logo-svg" viewBox="0 0 400 400" fill="none"><g stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M 120 200 C 120 120, 200 100, 260 140 C 320 180, 320 220, 280 260 C 240 300, 160 300, 120 260 C 80 220, 100 160, 160 140 C 220 120, 280 140, 280 200"/><path d="M 280 200 C 280 280, 200 300, 140 260 C 80 220, 80 180, 120 140 C 160 100, 240 100, 280 140 C 320 180, 300 240, 240 260 C 180 280, 120 260, 120 200"/></g></svg></a>
                 </div>
                 
                 <!-- HERO: The Shift -->
@@ -11951,7 +11967,7 @@
         <section class="page levels-page-new" id="levels" data-page="4">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
+                    <a href="#home" class="page-logo-container" aria-label="Return to home"><svg class="page-logo-svg" viewBox="0 0 400 400" fill="none"><g stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M 120 200 C 120 120, 200 100, 260 140 C 320 180, 320 220, 280 260 C 240 300, 160 300, 120 260 C 80 220, 100 160, 160 140 C 220 120, 280 140, 280 200"/><path d="M 280 200 C 280 280, 200 300, 140 260 C 80 220, 80 180, 120 140 C 160 100, 240 100, 280 140 C 320 180, 300 240, 240 260 C 180 280, 120 260, 120 200"/></g></svg></a>
                 </div>
 
                 <!-- ══════ HERO — The Provocation ══════ -->
@@ -12473,7 +12489,7 @@
         <section class="page science-page" id="science" data-page="5">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
+                    <a href="#home" class="page-logo-container" aria-label="Return to home"><svg class="page-logo-svg" viewBox="0 0 400 400" fill="none"><g stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M 120 200 C 120 120, 200 100, 260 140 C 320 180, 320 220, 280 260 C 240 300, 160 300, 120 260 C 80 220, 100 160, 160 140 C 220 120, 280 140, 280 200"/><path d="M 280 200 C 280 280, 200 300, 140 260 C 80 220, 80 180, 120 140 C 160 100, 240 100, 280 140 C 320 180, 300 240, 240 260 C 180 280, 120 260, 120 200"/></g></svg></a>
                 </div>
 
                 <!-- ══════ HERO — The Question ══════ -->
@@ -12787,7 +12803,7 @@
         <section class="page memory-page memory-page-new" id="memory" data-page="6">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
+                    <a href="#home" class="page-logo-container" aria-label="Return to home"><svg class="page-logo-svg" viewBox="0 0 400 400" fill="none"><g stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M 120 200 C 120 120, 200 100, 260 140 C 320 180, 320 220, 280 260 C 240 300, 160 300, 120 260 C 80 220, 100 160, 160 140 C 220 120, 280 140, 280 200"/><path d="M 280 200 C 280 280, 200 300, 140 260 C 80 220, 80 180, 120 140 C 160 100, 240 100, 280 140 C 320 180, 300 240, 240 260 C 180 280, 120 260, 120 200"/></g></svg></a>
                 </div>
 
                 <!-- ══════ HERO — The Difference ══════ -->
@@ -12957,7 +12973,7 @@
         <section class="page roadmap-page-new" id="roadmap" data-page="7">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
+                    <a href="#home" class="page-logo-container" aria-label="Return to home"><svg class="page-logo-svg" viewBox="0 0 400 400" fill="none"><g stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M 120 200 C 120 120, 200 100, 260 140 C 320 180, 320 220, 280 260 C 240 300, 160 300, 120 260 C 80 220, 100 160, 160 140 C 220 120, 280 140, 280 200"/><path d="M 280 200 C 280 280, 200 300, 140 260 C 80 220, 80 180, 120 140 C 160 100, 240 100, 280 140 C 320 180, 300 240, 240 260 C 180 280, 120 260, 120 200"/></g></svg></a>
                 </div>
 
                 <!-- ══════ HERO — The Journey ══════ -->
@@ -13135,7 +13151,7 @@
         <section class="page privacy-page-new" id="privacy" data-page="8">
             <div class="content">
                 <div class="small-logo-container">
-                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
+                    <a href="#home" class="page-logo-container" aria-label="Return to home"><svg class="page-logo-svg" viewBox="0 0 400 400" fill="none"><g stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M 120 200 C 120 120, 200 100, 260 140 C 320 180, 320 220, 280 260 C 240 300, 160 300, 120 260 C 80 220, 100 160, 160 140 C 220 120, 280 140, 280 200"/><path d="M 280 200 C 280 280, 200 300, 140 260 C 80 220, 80 180, 120 140 C 160 100, 240 100, 280 140 C 320 180, 300 240, 240 260 C 180 280, 120 260, 120 200"/></g></svg></a>
                 </div>
 
                 <!-- ══════ HERO — The Chain ══════ -->
@@ -13327,7 +13343,7 @@
 
             <div class="content">
                 <div class="small-logo-container">
-                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
+                    <a href="#home" class="page-logo-container" aria-label="Return to home"><svg class="page-logo-svg" viewBox="0 0 400 400" fill="none"><g stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M 120 200 C 120 120, 200 100, 260 140 C 320 180, 320 220, 280 260 C 240 300, 160 300, 120 260 C 80 220, 100 160, 160 140 C 220 120, 280 140, 280 200"/><path d="M 280 200 C 280 280, 200 300, 140 260 C 80 220, 80 180, 120 140 C 160 100, 240 100, 280 140 C 320 180, 300 240, 240 260 C 180 280, 120 260, 120 200"/></g></svg></a>
                 </div>
 
                 <!-- ══════ HERO ══════ -->
