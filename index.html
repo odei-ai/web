@@ -25,8 +25,8 @@
     <meta name="twitter:description" content="ODEI is building the governance infrastructure for personal AI. Not another agent — the control layer that governs AI actions across your tools.">
     <meta name="twitter:image" content="https://odei.ai/og-image.png">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 33' fill='none'%3E%3Cpath d='M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z' fill='white'/%3E%3Cpath d='M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z' fill='white'/%3E%3C/svg%3E">
+    <!-- Favicon — ODEI Eye -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0C10'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='white' stroke-width='2'/%3E%3Ccircle cx='19' cy='16' r='3' fill='white'/%3E%3C/svg%3E">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -211,7 +211,8 @@
             inset: 0;
             overflow: hidden;
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
+            opacity: 0.2; /* Very subtle with video background */
         }
 
         .home-orb {
@@ -270,17 +271,10 @@
             padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 3vw, 2rem);
             padding-bottom: clamp(4rem, 12vh, 8rem); /* Shift content upward */
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
-        /* ══════ LOGO — OCULUS DEI ══════ */
-        /* The Eye observes. Still. Confident. Present. */
-        .home-logo-area {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
+        /* ══════ LOGO ══════ */
         .home-logo-svg {
             width: clamp(60px, 12vw, 90px);
             height: clamp(60px, 12vw, 90px);
@@ -302,17 +296,19 @@
             fill: currentColor;
         }
 
-        /* ══════ NEURAL CONSCIOUSNESS CANVAS ══════ */
-        .neural-container {
-            position: relative;
-            width: clamp(140px, 28vw, 200px);
-            height: clamp(140px, 28vw, 200px);
-        }
-
-        .neural-canvas {
+        /* ══════ FULL-PAGE HERO VIDEO ══════ */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 100%;
             height: 100%;
-            display: block;
+            object-fit: contain;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.42;
+            filter: brightness(0.5);
         }
 
         /* ══════ MANIFESTO — STAGGERED REVEAL ══════ */
@@ -437,7 +433,7 @@
             position: absolute;
             left: -1rem;
             opacity: 0;
-            color: #4FD1C5;
+            color: #FFFFFF;
             font-family: var(--font-mono);
             transition: all 0.2s ease;
             transform: translateX(-4px);
@@ -445,12 +441,12 @@
 
         .nav-item:hover .nav-num {
             opacity: 1;
-            color: #4FD1C5;
+            color: #FFFFFF;
         }
 
         .nav-item:hover .nav-name {
             opacity: 1;
-            color: #4FD1C5;
+            color: #FFFFFF;
             transform: translateX(0.5rem);
         }
 
@@ -471,18 +467,23 @@
                 height: 75px;
             }
 
-            .neural-container {
-                width: 160px;
-                height: 160px;
-            }
-
             .home-nav {
                 gap: 4rem;
+            }
+
+            .hero-video {
+                width: 120%;
+                height: 120%;
             }
         }
 
         /* ══════ RESPONSIVE — MOBILE ══════ */
         @media (max-width: 600px) {
+            .hero-video {
+                width: 160%;
+                height: 160%;
+            }
+
             .home-container {
                 gap: 1.75rem;
                 padding: 1.5rem 1.25rem;
@@ -491,11 +492,6 @@
             .home-logo-svg {
                 width: 70px;
                 height: 70px;
-            }
-
-            .neural-container {
-                width: 140px;
-                height: 140px;
             }
 
             .manifesto-lines {
@@ -532,31 +528,27 @@
 
         /* ══════ RESPONSIVE — SMALL MOBILE ══════ */
         @media (max-width: 480px) {
-            .neural-container {
-                width: 120px;
-                height: 120px;
-            }
-
             .home-nav {
-                flex-direction: column;
-                gap: 0;
-                align-items: center;
+                gap: 1.5rem;
+                margin-top: 0.5rem;
             }
 
             .nav-column {
-                width: 100%;
-                max-width: 200px;
-            }
-
-            .nav-column:first-child {
-                border-bottom: 1px solid rgba(255,255,255,0.06);
-                padding-bottom: 0.5rem;
-                margin-bottom: 0.5rem;
+                gap: 0.3rem;
             }
 
             .nav-item {
-                padding: 0.6rem 0; /* 44px+ touch target */
-                justify-content: flex-start;
+                padding: 0.4rem 0;
+                gap: 0.5rem;
+            }
+
+            .nav-num {
+                font-size: 0.6rem;
+                min-width: 18px;
+            }
+
+            .nav-name {
+                font-size: 0.85rem;
             }
 
             .tagline-text {
@@ -570,11 +562,6 @@
             .home-container {
                 padding: 1.25rem 1rem;
                 gap: 1.5rem;
-            }
-
-            .neural-container {
-                width: 100px;
-                height: 100px;
             }
 
             .home-logo-svg {
@@ -10964,6 +10951,11 @@
         <section class="page active" id="home" data-page="0">
             <h1 class="visually-hidden">ODEI — The Human API Company</h1>
 
+            <!-- FULL-PAGE VIDEO BACKGROUND (lazy loaded) -->
+            <video class="hero-video" autoplay loop muted playsinline preload="none" id="hero-video">
+                <source data-src="GxO7JgIb0AAAMcD.mp4" type="video/mp4">
+            </video>
+
             <!-- Floating Ambient Orbs -->
             <div class="home-orbs">
                 <div class="home-orb home-orb-1"></div>
@@ -10974,13 +10966,6 @@
             <div class="content">
                 <div class="home-container">
 
-                    <!-- CONSCIOUSNESS VISUALIZATION -->
-                    <div class="home-logo-area">
-                        <div class="neural-container">
-                            <canvas class="neural-canvas" id="consciousness-canvas"></canvas>
-                        </div>
-                    </div>
-                    
                     <!-- MANIFESTO -->
                     <div class="home-manifesto">
                         <div class="manifesto-lines" id="manifesto-lines">
@@ -13944,8 +13929,17 @@
     </script>
 
     <!-- ═══════════════════════════════════════════════════════════════════
-         OPUS MAGNUM — CONSCIOUSNESS VISUALIZATION
-         Canvas 2D Neural Animation with Perlin Noise
+         THE LIVING COSMOS — Infinite Space, Infinite Beauty
+
+         A multi-layered view into the universe:
+         - Layer 1: Distant stars — galactic clusters across the void
+         - Layer 2: Cosmic filaments — dark matter threads
+         - Layer 3: Nebula clouds — ethereal color atmospheres
+         - Layer 4: Stellar winds — particles flowing through space
+         - Layer 5: Cosmic dust — slow drifting particles
+         - Layer 6: The Heart — breathing central light with rays
+
+         Watch forever. Never the same twice.
          ═══════════════════════════════════════════════════════════════════ -->
     <script>
     (function() {
@@ -13958,21 +13952,84 @@
         const container = canvas.parentElement;
 
         // ═══════════════════════════════════════════════════════════════
-        // PERLIN NOISE — Organic Movement Generator
+        // COLORS — The Palette of Infinity
+        // ═══════════════════════════════════════════════════════════════
+        const C = {
+            white: { r: 255, g: 255, b: 255 },
+            jade: { r: 79, g: 209, b: 197 },
+            gold: { r: 244, g: 201, b: 93 },
+            blue: { r: 120, g: 160, b: 255 },
+            violet: { r: 160, g: 120, b: 200 },
+            dim: { r: 80, g: 100, b: 120 },
+            deepBlue: { r: 60, g: 100, b: 140 }
+        };
+
+        // ═══════════════════════════════════════════════════════════════
+        // CONFIGURATION
+        // ═══════════════════════════════════════════════════════════════
+        const CONFIG = {
+            // Layer 1: Distant stars (galactic distribution)
+            distantStars: 220,
+            starClusters: 5,
+
+            // Layer 2: Cosmic filaments
+            filamentCount: 4,
+            filamentSegments: 12,
+
+            // Layer 3: Nebulae (more complex)
+            nebulaCount: 4,
+            nebulaWisps: 8,
+
+            // Layer 4: Flow particles
+            flowParticles: 500,
+            trailLength: 10,
+
+            // Layer 5: Cosmic dust (slow layer)
+            dustParticles: 150,
+            dustTrailLength: 5,
+
+            // Layer 6: Heart
+            heartBreathSpeed: 0.25,
+            pulseInterval: 20000,
+            heartRays: 6,
+
+            // Flow field
+            noiseScale: 0.006,
+            flowSpeed: 0.35
+        };
+
+        // ═══════════════════════════════════════════════════════════════
+        // STATE
+        // ═══════════════════════════════════════════════════════════════
+        let width, height, cx, cy, baseSize;
+        let dpr = 1;
+        let time = 0;
+        let mouseX = 0.5, mouseY = 0.5;
+        let targetMouseX = 0.5, targetMouseY = 0.5;
+
+        let distantStars = [];
+        let filaments = [];
+        let nebulae = [];
+        let flowParticles = [];
+        let dustParticles = [];
+        let pulses = [];
+        let lastPulse = 0;
+
+        // ═══════════════════════════════════════════════════════════════
+        // PERLIN NOISE — Organic Flow
         // ═══════════════════════════════════════════════════════════════
         class PerlinNoise {
             constructor() {
-                this.permutation = [];
-                for (let i = 0; i < 256; i++) this.permutation[i] = i;
-                for (let i = 255; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [this.permutation[i], this.permutation[j]] = [this.permutation[j], this.permutation[i]];
+                this.perm = [];
+                for (let i = 0; i < 512; i++) {
+                    this.perm[i] = Math.floor(Math.random() * 256);
                 }
-                this.p = [...this.permutation, ...this.permutation];
             }
 
             fade(t) { return t * t * t * (t * (t * 6 - 15) + 10); }
+
             lerp(a, b, t) { return a + t * (b - a); }
+
             grad(hash, x, y) {
                 const h = hash & 3;
                 const u = h < 2 ? x : y;
@@ -13987,36 +14044,599 @@
                 y -= Math.floor(y);
                 const u = this.fade(x);
                 const v = this.fade(y);
-                const A = this.p[X] + Y, B = this.p[X + 1] + Y;
+                const A = this.perm[X] + Y;
+                const B = this.perm[X + 1] + Y;
                 return this.lerp(
-                    this.lerp(this.grad(this.p[A], x, y), this.grad(this.p[B], x - 1, y), u),
-                    this.lerp(this.grad(this.p[A + 1], x, y - 1), this.grad(this.p[B + 1], x - 1, y - 1), u),
+                    this.lerp(this.grad(this.perm[A], x, y), this.grad(this.perm[B], x - 1, y), u),
+                    this.lerp(this.grad(this.perm[A + 1], x, y - 1), this.grad(this.perm[B + 1], x - 1, y - 1), u),
                     v
                 );
             }
         }
-
-        const perlin = new PerlinNoise();
-        let time = 0;
-        let dpr = window.devicePixelRatio || 1;
+        const noise = new PerlinNoise();
 
         // ═══════════════════════════════════════════════════════════════
-        // THEME COLORS
+        // LAYER 1: DISTANT STARS — Galactic Distribution
         // ═══════════════════════════════════════════════════════════════
-        const JADE = { r: 79, g: 209, b: 197 };      // #4FD1C5
-        const GOLD = { r: 244, g: 201, b: 93 };      // #F4C95D
-        const WHITE = { r: 232, g: 236, b: 244 };    // #E8ECF4
+        function initDistantStars() {
+            distantStars = [];
+
+            // Create cluster centers
+            const clusters = [];
+            for (let c = 0; c < CONFIG.starClusters; c++) {
+                clusters.push({
+                    x: 0.15 + Math.random() * 0.7,
+                    y: 0.15 + Math.random() * 0.7,
+                    spread: 0.1 + Math.random() * 0.15,
+                    density: 0.3 + Math.random() * 0.7
+                });
+            }
+
+            // Stars with galactic distribution - clustered + scattered
+            for (let i = 0; i < CONFIG.distantStars; i++) {
+                let x, y;
+
+                // 60% clustered, 40% scattered
+                if (Math.random() < 0.6 && clusters.length > 0) {
+                    const cluster = clusters[Math.floor(Math.random() * clusters.length)];
+                    const angle = Math.random() * Math.PI * 2;
+                    const dist = Math.random() * cluster.spread * Math.random(); // More dense at center
+                    x = cluster.x + Math.cos(angle) * dist;
+                    y = cluster.y + Math.sin(angle) * dist;
+                } else {
+                    x = Math.random();
+                    y = Math.random();
+                }
+
+                // Skip if too close to center (heart area)
+                const toCenterDist = Math.sqrt((x - 0.5) ** 2 + (y - 0.5) ** 2);
+                if (toCenterDist < 0.12) continue;
+
+                distantStars.push({
+                    x: x,
+                    y: y,
+                    size: 0.2 + Math.random() * 0.6,
+                    brightness: 0.15 + Math.random() * 0.35,
+                    twinkleSpeed: 0.3 + Math.random() * 1.2,
+                    twinkleOffset: Math.random() * Math.PI * 2,
+                    color: Math.random() > 0.75 ? C.blue :
+                           Math.random() > 0.6 ? C.jade :
+                           Math.random() > 0.4 ? C.deepBlue : C.dim
+                });
+            }
+        }
+
+        function updateDistantStars() {
+            // Very slow parallax drift
+            const driftX = (mouseX - 0.5) * 0.008;
+            const driftY = (mouseY - 0.5) * 0.008;
+
+            distantStars.forEach(star => {
+                // More natural twinkle - never goes fully dark
+                const twinkleMod = Math.sin(time * star.twinkleSpeed + star.twinkleOffset);
+                star.twinkle = 0.7 + twinkleMod * 0.3;
+                star.drawX = star.x + driftX;
+                star.drawY = star.y + driftY;
+            });
+        }
+
+        function drawDistantStars() {
+            distantStars.forEach(star => {
+                const x = star.drawX * width;
+                const y = star.drawY * height;
+                const alpha = star.brightness * star.twinkle;
+                const size = star.size * (baseSize / 280);
+
+                // Subtle soft glow for larger stars
+                if (star.size > 0.5) {
+                    const glowSize = size * 3;
+                    const glow = ctx.createRadialGradient(x, y, 0, x, y, glowSize);
+                    glow.addColorStop(0, `rgba(${star.color.r}, ${star.color.g}, ${star.color.b}, ${alpha * 0.15})`);
+                    glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                    ctx.fillStyle = glow;
+                    ctx.beginPath();
+                    ctx.arc(x, y, glowSize, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                ctx.fillStyle = `rgba(${star.color.r}, ${star.color.g}, ${star.color.b}, ${alpha})`;
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
 
         // ═══════════════════════════════════════════════════════════════
-        // PARTICLE SYSTEMS
+        // LAYER 2: COSMIC FILAMENTS — Dark Matter Threads
         // ═══════════════════════════════════════════════════════════════
-        const LAYERS = 5;
-        const PARTICLES_PER_LAYER = 25;
-        let particles = [];
-        let sparks = [];
-        let nebulaClouds = [];
-        let synapticFires = [];
+        function initFilaments() {
+            filaments = [];
 
+            for (let f = 0; f < CONFIG.filamentCount; f++) {
+                // Start from edges or corners
+                const startAngle = (f / CONFIG.filamentCount) * Math.PI * 2 + Math.random() * 0.5;
+                const startDist = 0.4 + Math.random() * 0.15;
+
+                const points = [];
+                let px = 0.5 + Math.cos(startAngle) * startDist;
+                let py = 0.5 + Math.sin(startAngle) * startDist;
+
+                // Generate organic curved path toward center
+                for (let i = 0; i < CONFIG.filamentSegments; i++) {
+                    const t = i / CONFIG.filamentSegments;
+                    const towardCenter = 0.015 + t * 0.01;
+                    const wanderAmount = 0.03 * (1 - t * 0.5);
+
+                    // Direction toward center with organic wandering
+                    const toCenterAngle = Math.atan2(0.5 - py, 0.5 - px);
+                    const wander = (Math.random() - 0.5) * Math.PI * 0.8;
+
+                    px += Math.cos(toCenterAngle + wander) * towardCenter;
+                    py += Math.sin(toCenterAngle + wander) * towardCenter;
+
+                    points.push({ x: px, y: py });
+                }
+
+                filaments.push({
+                    points: points,
+                    color: Math.random() > 0.5 ? C.jade : C.blue,
+                    opacity: 0.02 + Math.random() * 0.02,
+                    pulseSpeed: 0.05 + Math.random() * 0.05,
+                    pulseOffset: Math.random() * Math.PI * 2,
+                    width: 0.003 + Math.random() * 0.004
+                });
+            }
+        }
+
+        function updateFilaments() {
+            filaments.forEach(fil => {
+                fil.pulse = 0.7 + Math.sin(time * fil.pulseSpeed + fil.pulseOffset) * 0.3;
+            });
+        }
+
+        function drawFilaments() {
+            filaments.forEach(fil => {
+                if (fil.points.length < 2) return;
+
+                const alpha = fil.opacity * fil.pulse;
+
+                // Draw as soft gradient line
+                ctx.strokeStyle = `rgba(${fil.color.r}, ${fil.color.g}, ${fil.color.b}, ${alpha})`;
+                ctx.lineWidth = fil.width * baseSize;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+
+                ctx.beginPath();
+                ctx.moveTo(fil.points[0].x * width, fil.points[0].y * height);
+
+                // Smooth curve through points
+                for (let i = 1; i < fil.points.length - 1; i++) {
+                    const xc = (fil.points[i].x + fil.points[i + 1].x) / 2 * width;
+                    const yc = (fil.points[i].y + fil.points[i + 1].y) / 2 * height;
+                    ctx.quadraticCurveTo(
+                        fil.points[i].x * width,
+                        fil.points[i].y * height,
+                        xc, yc
+                    );
+                }
+
+                ctx.stroke();
+
+                // Add glow effect
+                ctx.strokeStyle = `rgba(${fil.color.r}, ${fil.color.g}, ${fil.color.b}, ${alpha * 0.3})`;
+                ctx.lineWidth = fil.width * baseSize * 3;
+                ctx.stroke();
+            });
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // LAYER 3: NEBULAE — Ethereal Cosmic Clouds
+        // ═══════════════════════════════════════════════════════════════
+        function initNebulae() {
+            nebulae = [];
+            const colors = [C.jade, C.blue, C.violet, C.deepBlue];
+
+            for (let i = 0; i < CONFIG.nebulaCount; i++) {
+                const angle = (i / CONFIG.nebulaCount) * Math.PI * 2 + Math.random() * 0.5;
+                const dist = 0.12 + Math.random() * 0.18;
+
+                // Create internal wisps for each nebula
+                const wisps = [];
+                for (let w = 0; w < CONFIG.nebulaWisps; w++) {
+                    const wispAngle = Math.random() * Math.PI * 2;
+                    const wispDist = 0.02 + Math.random() * 0.08;
+                    wisps.push({
+                        offsetX: Math.cos(wispAngle) * wispDist,
+                        offsetY: Math.sin(wispAngle) * wispDist,
+                        size: 0.03 + Math.random() * 0.06,
+                        opacity: 0.01 + Math.random() * 0.015,
+                        rotateSpeed: (Math.random() - 0.5) * 0.0001
+                    });
+                }
+
+                nebulae.push({
+                    baseX: 0.5 + Math.cos(angle) * dist,
+                    baseY: 0.5 + Math.sin(angle) * dist,
+                    size: 0.18 + Math.random() * 0.12,
+                    color: colors[i % colors.length],
+                    secondaryColor: colors[(i + 1) % colors.length],
+                    driftSpeed: 0.00001 + Math.random() * 0.00002,
+                    driftAngle: Math.random() * Math.PI * 2,
+                    pulseSpeed: 0.06 + Math.random() * 0.06,
+                    pulseOffset: Math.random() * Math.PI * 2,
+                    wisps: wisps,
+                    rotation: Math.random() * Math.PI * 2,
+                    rotationSpeed: (Math.random() - 0.5) * 0.00005
+                });
+            }
+        }
+
+        function updateNebulae() {
+            nebulae.forEach(neb => {
+                // Slow orbital drift
+                neb.driftAngle += neb.driftSpeed;
+                const drift = 0.015;
+                neb.x = neb.baseX + Math.cos(neb.driftAngle) * drift;
+                neb.y = neb.baseY + Math.sin(neb.driftAngle) * drift;
+
+                // Gentle pulse
+                neb.pulse = 1 + Math.sin(time * neb.pulseSpeed + neb.pulseOffset) * 0.08;
+
+                // Slow rotation
+                neb.rotation += neb.rotationSpeed;
+
+                // Update wisps
+                neb.wisps.forEach(wisp => {
+                    wisp.angle = (wisp.angle || 0) + wisp.rotateSpeed;
+                });
+
+                // Parallax
+                neb.x += (mouseX - 0.5) * 0.015;
+                neb.y += (mouseY - 0.5) * 0.015;
+            });
+        }
+
+        function drawNebulae() {
+            nebulae.forEach(neb => {
+                const x = neb.x * width;
+                const y = neb.y * height;
+                const r = neb.size * baseSize * neb.pulse;
+
+                // Main nebula body - softer, more diffuse
+                const gradient = ctx.createRadialGradient(x, y, 0, x, y, r);
+                gradient.addColorStop(0, `rgba(${neb.color.r}, ${neb.color.g}, ${neb.color.b}, 0.025)`);
+                gradient.addColorStop(0.3, `rgba(${neb.color.r}, ${neb.color.g}, ${neb.color.b}, 0.018)`);
+                gradient.addColorStop(0.6, `rgba(${neb.secondaryColor.r}, ${neb.secondaryColor.g}, ${neb.secondaryColor.b}, 0.008)`);
+                gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(x, y, r, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Draw wisps - internal structure
+                neb.wisps.forEach(wisp => {
+                    const wx = x + (wisp.offsetX * Math.cos(neb.rotation) - wisp.offsetY * Math.sin(neb.rotation)) * baseSize;
+                    const wy = y + (wisp.offsetX * Math.sin(neb.rotation) + wisp.offsetY * Math.cos(neb.rotation)) * baseSize;
+                    const wr = wisp.size * baseSize * neb.pulse;
+
+                    const wispGrad = ctx.createRadialGradient(wx, wy, 0, wx, wy, wr);
+                    wispGrad.addColorStop(0, `rgba(${neb.color.r}, ${neb.color.g}, ${neb.color.b}, ${wisp.opacity * 1.5})`);
+                    wispGrad.addColorStop(0.5, `rgba(${neb.color.r}, ${neb.color.g}, ${neb.color.b}, ${wisp.opacity * 0.5})`);
+                    wispGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+                    ctx.fillStyle = wispGrad;
+                    ctx.beginPath();
+                    ctx.arc(wx, wy, wr, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+            });
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // LAYER 3: FLOW PARTICLES — Stellar Winds
+        // ═══════════════════════════════════════════════════════════════
+        function initFlowParticles() {
+            flowParticles = [];
+            for (let i = 0; i < CONFIG.flowParticles; i++) {
+                flowParticles.push(createFlowParticle(true));
+            }
+        }
+
+        function createFlowParticle(randomAge = false) {
+            const angle = Math.random() * Math.PI * 2;
+            const dist = 0.1 + Math.random() * 0.35;
+            return {
+                x: 0.5 + Math.cos(angle) * dist,
+                y: 0.5 + Math.sin(angle) * dist,
+                trail: [],
+                size: 0.5 + Math.random() * 1,
+                brightness: 0.3 + Math.random() * 0.5,
+                age: randomAge ? Math.random() : 0,
+                maxAge: 0.7 + Math.random() * 0.5,
+                color: Math.random() > 0.6 ? C.jade : (Math.random() > 0.5 ? C.blue : C.white)
+            };
+        }
+
+        function updateFlowParticles() {
+            const noiseTime = time * 0.05;
+
+            flowParticles.forEach((p, index) => {
+                // Store trail
+                if (p.trail.length >= CONFIG.trailLength) p.trail.shift();
+                p.trail.push({ x: p.x, y: p.y });
+
+                // Flow field direction
+                const nx = p.x * CONFIG.noiseScale * 100;
+                const ny = p.y * CONFIG.noiseScale * 100;
+                const angle = noise.noise(nx + noiseTime, ny) * Math.PI * 4;
+
+                // Add gentle pull toward center
+                const toCenterX = (0.5 - p.x) * 0.001;
+                const toCenterY = (0.5 - p.y) * 0.001;
+
+                // Update position
+                const speed = CONFIG.flowSpeed * 0.001 * (baseSize / 200);
+                p.x += Math.cos(angle) * speed + toCenterX;
+                p.y += Math.sin(angle) * speed + toCenterY;
+
+                // Age
+                p.age += 0.002;
+
+                // Respawn if too old or out of bounds
+                if (p.age > p.maxAge || p.x < 0 || p.x > 1 || p.y < 0 || p.y > 1) {
+                    flowParticles[index] = createFlowParticle(false);
+                }
+            });
+        }
+
+        function drawFlowParticles() {
+            flowParticles.forEach(p => {
+                // Life cycle fade
+                const lifeFade = p.age < 0.1 ? p.age / 0.1 :
+                                 p.age > p.maxAge - 0.1 ? (p.maxAge - p.age) / 0.1 : 1;
+
+                // Draw trail
+                if (p.trail.length > 1) {
+                    for (let i = 1; i < p.trail.length; i++) {
+                        const t = i / p.trail.length;
+                        const alpha = p.brightness * t * lifeFade * 0.3;
+                        const x1 = p.trail[i - 1].x * width;
+                        const y1 = p.trail[i - 1].y * height;
+                        const x2 = p.trail[i].x * width;
+                        const y2 = p.trail[i].y * height;
+
+                        ctx.strokeStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${alpha})`;
+                        ctx.lineWidth = p.size * t * (baseSize / 200);
+                        ctx.beginPath();
+                        ctx.moveTo(x1, y1);
+                        ctx.lineTo(x2, y2);
+                        ctx.stroke();
+                    }
+                }
+
+                // Draw head
+                const x = p.x * width;
+                const y = p.y * height;
+                const size = p.size * (baseSize / 180);
+                const alpha = p.brightness * lifeFade;
+
+                ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${alpha})`;
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // LAYER 4: BRIGHT STARS — Foreground Luminaries
+        // ═══════════════════════════════════════════════════════════════
+        function initBrightStars() {
+            brightStars = [];
+            for (let i = 0; i < CONFIG.brightStars; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const dist = 0.08 + Math.random() * 0.38;
+                brightStars.push({
+                    x: 0.5 + Math.cos(angle) * dist,
+                    y: 0.5 + Math.sin(angle) * dist,
+                    size: 1.5 + Math.random() * 2.5,
+                    brightness: 0.5 + Math.random() * 0.5,
+                    twinkleSpeed: 0.3 + Math.random() * 0.8,
+                    twinkleOffset: Math.random() * Math.PI * 2,
+                    color: Math.random() > 0.5 ? C.white : (Math.random() > 0.5 ? C.jade : C.gold),
+                    flare: 0,
+                    flareDecay: 0.97
+                });
+            }
+        }
+
+        function updateBrightStars() {
+            brightStars.forEach(star => {
+                // Twinkle
+                star.twinkle = 0.7 + Math.sin(time * star.twinkleSpeed + star.twinkleOffset) * 0.3;
+
+                // Flare decay
+                star.flare *= star.flareDecay;
+
+                // Random flare chance
+                if (Math.random() < CONFIG.flareChance) {
+                    star.flare = 1;
+                }
+
+                // Parallax
+                star.drawX = star.x + (mouseX - 0.5) * 0.04;
+                star.drawY = star.y + (mouseY - 0.5) * 0.04;
+            });
+        }
+
+        function drawBrightStars() {
+            brightStars.forEach(star => {
+                const x = star.drawX * width;
+                const y = star.drawY * height;
+                const baseBrightness = star.brightness * star.twinkle;
+                const flareBoost = star.flare * 2;
+                const totalBrightness = Math.min(1, baseBrightness + flareBoost);
+                const size = star.size * (1 + star.flare * 1.5) * (baseSize / 160);
+
+                // Glow
+                const glowSize = size * (4 + star.flare * 3);
+                const glowGradient = ctx.createRadialGradient(x, y, 0, x, y, glowSize);
+                glowGradient.addColorStop(0, `rgba(${star.color.r}, ${star.color.g}, ${star.color.b}, ${totalBrightness * 0.4})`);
+                glowGradient.addColorStop(0.3, `rgba(${star.color.r}, ${star.color.g}, ${star.color.b}, ${totalBrightness * 0.15})`);
+                glowGradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+                ctx.fillStyle = glowGradient;
+                ctx.beginPath();
+                ctx.arc(x, y, glowSize, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Core
+                ctx.fillStyle = `rgba(255, 255, 255, ${totalBrightness})`;
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Flare spikes
+                if (star.flare > 0.3) {
+                    ctx.strokeStyle = `rgba(255, 255, 255, ${star.flare * 0.5})`;
+                    ctx.lineWidth = 1;
+                    const spikeLen = size * 4 * star.flare;
+                    for (let a = 0; a < 4; a++) {
+                        const angle = (a / 4) * Math.PI * 2 + Math.PI / 4;
+                        ctx.beginPath();
+                        ctx.moveTo(x, y);
+                        ctx.lineTo(x + Math.cos(angle) * spikeLen, y + Math.sin(angle) * spikeLen);
+                        ctx.stroke();
+                    }
+                }
+            });
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // LAYER 5: THE HEART — Central Light Source
+        // ═══════════════════════════════════════════════════════════════
+        function updateHeart() {
+            // Check for pulse
+            if (time * 1000 - lastPulse > CONFIG.pulseInterval) {
+                pulses.push({
+                    progress: 0,
+                    speed: 0.008 + Math.random() * 0.004,
+                    color: Math.random() > 0.4 ? C.jade : C.gold
+                });
+                lastPulse = time * 1000;
+            }
+
+            // Update pulses
+            pulses = pulses.filter(pulse => {
+                pulse.progress += pulse.speed;
+                return pulse.progress < 1.5;
+            });
+        }
+
+        function drawHeart() {
+            const breathe = 1 + Math.sin(time * CONFIG.heartBreathSpeed) * 0.08;
+            const hx = cx + (mouseX - 0.5) * baseSize * 0.02;
+            const hy = cy + (mouseY - 0.5) * baseSize * 0.02;
+
+            // Outer halo
+            const haloSize = baseSize * 0.25 * breathe;
+            const halo = ctx.createRadialGradient(hx, hy, 0, hx, hy, haloSize);
+            halo.addColorStop(0, `rgba(${C.jade.r}, ${C.jade.g}, ${C.jade.b}, 0.03)`);
+            halo.addColorStop(0.5, `rgba(${C.jade.r}, ${C.jade.g}, ${C.jade.b}, 0.01)`);
+            halo.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = halo;
+            ctx.beginPath();
+            ctx.arc(hx, hy, haloSize, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Middle glow
+            const midSize = baseSize * 0.12 * breathe;
+            const mid = ctx.createRadialGradient(hx, hy, 0, hx, hy, midSize);
+            mid.addColorStop(0, 'rgba(255, 255, 255, 0.15)');
+            mid.addColorStop(0.3, `rgba(${C.jade.r}, ${C.jade.g}, ${C.jade.b}, 0.08)`);
+            mid.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = mid;
+            ctx.beginPath();
+            ctx.arc(hx, hy, midSize, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Inner core
+            const coreSize = baseSize * 0.04 * breathe;
+            const core = ctx.createRadialGradient(hx, hy, 0, hx, hy, coreSize);
+            core.addColorStop(0, 'rgba(255, 255, 255, 0.7)');
+            core.addColorStop(0.5, 'rgba(255, 255, 255, 0.3)');
+            core.addColorStop(1, 'rgba(255, 255, 255, 0)');
+            ctx.fillStyle = core;
+            ctx.beginPath();
+            ctx.arc(hx, hy, coreSize, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Bright center
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.beginPath();
+            ctx.arc(hx, hy, baseSize * 0.008 * breathe, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawPulses() {
+            pulses.forEach(pulse => {
+                const radius = pulse.progress * baseSize * 0.6;
+                const alpha = (1 - pulse.progress) * 0.08;
+
+                if (alpha < 0.005) return;
+
+                const ringWidth = baseSize * 0.02;
+                const gradient = ctx.createRadialGradient(cx, cy,
+                    Math.max(0, radius - ringWidth), cx, cy, radius + ringWidth);
+                gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
+                gradient.addColorStop(0.4, `rgba(${pulse.color.r}, ${pulse.color.g}, ${pulse.color.b}, ${alpha * 0.5})`);
+                gradient.addColorStop(0.5, `rgba(${pulse.color.r}, ${pulse.color.g}, ${pulse.color.b}, ${alpha})`);
+                gradient.addColorStop(0.6, `rgba(${pulse.color.r}, ${pulse.color.g}, ${pulse.color.b}, ${alpha * 0.5})`);
+                gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(cx, cy, radius + ringWidth, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // MAIN LOOP
+        // ═══════════════════════════════════════════════════════════════
+        function update() {
+            time += 0.016;
+
+            // Smooth mouse
+            mouseX += (targetMouseX - mouseX) * 0.05;
+            mouseY += (targetMouseY - mouseY) * 0.05;
+
+            updateDistantStars();
+            updateNebulae();
+            updateFlowParticles();
+            updateBrightStars();
+            updateHeart();
+        }
+
+        function render() {
+            ctx.clearRect(0, 0, width, height);
+
+            update();
+
+            // Draw all layers back to front
+            drawDistantStars();     // Layer 1: Furthest back
+            drawNebulae();          // Layer 2: Cosmic clouds
+            drawPulses();           // Heart pulses (behind flow)
+            drawFlowParticles();    // Layer 3: Stellar winds
+            drawHeart();            // Layer 5: Central light
+            drawBrightStars();      // Layer 4: Foreground stars
+
+            requestAnimationFrame(render);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // SETUP
+        // ═══════════════════════════════════════════════════════════════
         function resize() {
             const rect = container.getBoundingClientRect();
             dpr = window.devicePixelRatio || 1;
@@ -14025,413 +14645,92 @@
             canvas.style.width = rect.width + 'px';
             canvas.style.height = rect.height + 'px';
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            width = rect.width;
+            height = rect.height;
+            cx = width / 2;
+            cy = height / 2;
+            baseSize = Math.min(width, height);
         }
 
-        function initParticles() {
-            const rect = container.getBoundingClientRect();
-            const cx = rect.width / 2;
-            const cy = rect.height / 2;
-            const baseRadius = Math.min(rect.width, rect.height) * 0.35;
-
-            particles = [];
-
-            // Orbital layers
-            for (let layer = 0; layer < LAYERS; layer++) {
-                const layerRadius = baseRadius * (0.3 + layer * 0.18);
-                const count = PARTICLES_PER_LAYER - layer * 3;
-                const layerSpeed = 0.0003 + layer * 0.00015;
-
-                for (let i = 0; i < count; i++) {
-                    const angle = (Math.PI * 2 * i) / count + layer * 0.3;
-                    const isJade = Math.random() > 0.25;
-
-                    particles.push({
-                        layer,
-                        baseAngle: angle,
-                        radius: layerRadius,
-                        speed: layerSpeed * (Math.random() > 0.5 ? 1 : -1),
-                        size: 1.2 + Math.random() * 1.5,
-                        color: isJade ? JADE : GOLD,
-                        brightness: 0.4 + Math.random() * 0.4,
-                        noiseOffset: Math.random() * 1000,
-                        pulsePhase: Math.random() * Math.PI * 2
-                    });
-                }
-            }
-
-            // Free-floating sparks
-            sparks = [];
-            for (let i = 0; i < 20; i++) {
-                sparks.push({
-                    x: Math.random() * rect.width,
-                    y: Math.random() * rect.height,
-                    vx: (Math.random() - 0.5) * 0.3,
-                    vy: (Math.random() - 0.5) * 0.3,
-                    size: 0.5 + Math.random() * 1,
-                    alpha: 0.2 + Math.random() * 0.3,
-                    color: Math.random() > 0.7 ? GOLD : JADE
-                });
-            }
-
-            // Nebula clouds
-            nebulaClouds = [];
-            for (let i = 0; i < 4; i++) {
-                const angle = (Math.PI * 2 * i) / 4;
-                nebulaClouds.push({
-                    angle,
-                    distance: baseRadius * 0.8,
-                    size: 25 + Math.random() * 20,
-                    alpha: 0.04 + Math.random() * 0.03,
-                    color: Math.random() > 0.5 ? JADE : GOLD
-                });
-            }
-
-            // Synaptic fires
-            synapticFires = [];
-            for (let i = 0; i < 8; i++) {
-                synapticFires.push({
-                    angle: Math.random() * Math.PI * 2,
-                    speed: 0.01 + Math.random() * 0.02,
-                    length: 15 + Math.random() * 25,
-                    width: 1 + Math.random() * 1.5,
-                    alpha: 0,
-                    maxAlpha: 0.3 + Math.random() * 0.4,
-                    phase: Math.random() * Math.PI * 2,
-                    color: Math.random() > 0.3 ? JADE : GOLD
-                });
-            }
+        function init() {
+            resize();
+            initDistantStars();
+            initNebulae();
+            initFlowParticles();
+            initBrightStars();
+            render();
         }
 
-        // ═══════════════════════════════════════════════════════════════
-        // RENDER FUNCTIONS
-        // ═══════════════════════════════════════════════════════════════
-
-        function drawCore(cx, cy, baseRadius) {
-            const coreRadius = baseRadius * 0.15;
-
-            // Outer glow layers
-            const glowLayers = [
-                { radius: coreRadius * 3, alpha: 0.03 },
-                { radius: coreRadius * 2.2, alpha: 0.05 },
-                { radius: coreRadius * 1.6, alpha: 0.08 }
-            ];
-
-            glowLayers.forEach(layer => {
-                const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, layer.radius);
-                grad.addColorStop(0, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, ${layer.alpha})`);
-                grad.addColorStop(0.5, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, ${layer.alpha * 0.5})`);
-                grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-                ctx.fillStyle = grad;
-                ctx.beginPath();
-                ctx.arc(cx, cy, layer.radius, 0, Math.PI * 2);
-                ctx.fill();
-            });
-
-            // Pulsing core
-            const pulse = Math.sin(time * 0.8) * 0.15 + 0.85;
-            const coreGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, coreRadius * pulse);
-            coreGrad.addColorStop(0, `rgba(${WHITE.r}, ${WHITE.g}, ${WHITE.b}, 0.9)`);
-            coreGrad.addColorStop(0.4, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0.6)`);
-            coreGrad.addColorStop(0.7, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0.2)`);
-            coreGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
-            ctx.fillStyle = coreGrad;
-            ctx.beginPath();
-            ctx.arc(cx, cy, coreRadius * pulse, 0, Math.PI * 2);
-            ctx.fill();
-
-            // Inner bright point
-            ctx.fillStyle = `rgba(${WHITE.r}, ${WHITE.g}, ${WHITE.b}, 0.95)`;
-            ctx.beginPath();
-            ctx.arc(cx, cy, coreRadius * 0.2, 0, Math.PI * 2);
-            ctx.fill();
-        }
-
-        function drawSacredGeometry(cx, cy, baseRadius) {
-            const hexRadius = baseRadius * 0.55;
-            const rotation = time * 0.05;
-            const pulse = Math.sin(time * 0.3) * 0.05 + 0.95;
-
-            ctx.save();
-            ctx.translate(cx, cy);
-            ctx.rotate(rotation);
-            ctx.scale(pulse, pulse);
-
-            // Hexagram (two triangles)
-            ctx.strokeStyle = `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0.12)`;
-            ctx.lineWidth = 0.8;
-
-            // Triangle 1 (pointing up)
-            ctx.beginPath();
-            for (let i = 0; i < 3; i++) {
-                const angle = (Math.PI * 2 * i) / 3 - Math.PI / 2;
-                const x = Math.cos(angle) * hexRadius;
-                const y = Math.sin(angle) * hexRadius;
-                if (i === 0) ctx.moveTo(x, y);
-                else ctx.lineTo(x, y);
-            }
-            ctx.closePath();
-            ctx.stroke();
-
-            // Triangle 2 (pointing down)
-            ctx.beginPath();
-            for (let i = 0; i < 3; i++) {
-                const angle = (Math.PI * 2 * i) / 3 + Math.PI / 2;
-                const x = Math.cos(angle) * hexRadius;
-                const y = Math.sin(angle) * hexRadius;
-                if (i === 0) ctx.moveTo(x, y);
-                else ctx.lineTo(x, y);
-            }
-            ctx.closePath();
-            ctx.stroke();
-
-            ctx.restore();
-        }
-
-        function drawNebulae(cx, cy) {
-            nebulaClouds.forEach(cloud => {
-                const wobble = perlin.noise(time * 0.1, cloud.angle) * 10;
-                const x = cx + Math.cos(cloud.angle + time * 0.02) * (cloud.distance + wobble);
-                const y = cy + Math.sin(cloud.angle + time * 0.02) * (cloud.distance + wobble);
-
-                const grad = ctx.createRadialGradient(x, y, 0, x, y, cloud.size);
-                grad.addColorStop(0, `rgba(${cloud.color.r}, ${cloud.color.g}, ${cloud.color.b}, ${cloud.alpha})`);
-                grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
-                ctx.fillStyle = grad;
-                ctx.beginPath();
-                ctx.arc(x, y, cloud.size, 0, Math.PI * 2);
-                ctx.fill();
-            });
-        }
-
-        function drawOrbitalParticles(cx, cy) {
-            particles.forEach(p => {
-                const noiseVal = perlin.noise(time * 0.2 + p.noiseOffset, p.layer * 0.5);
-                const radiusOffset = noiseVal * 8;
-                const angleOffset = noiseVal * 0.15;
-
-                const currentAngle = p.baseAngle + time * p.speed + angleOffset;
-                const currentRadius = p.radius + radiusOffset;
-
-                const x = cx + Math.cos(currentAngle) * currentRadius;
-                const y = cy + Math.sin(currentAngle) * currentRadius;
-
-                const pulse = Math.sin(time * 1.5 + p.pulsePhase) * 0.3 + 0.7;
-                const alpha = p.brightness * pulse;
-
-                // Glow
-                const glowGrad = ctx.createRadialGradient(x, y, 0, x, y, p.size * 4);
-                glowGrad.addColorStop(0, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${alpha * 0.3})`);
-                glowGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-                ctx.fillStyle = glowGrad;
-                ctx.beginPath();
-                ctx.arc(x, y, p.size * 4, 0, Math.PI * 2);
-                ctx.fill();
-
-                // Core particle
-                ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${alpha})`;
-                ctx.beginPath();
-                ctx.arc(x, y, p.size, 0, Math.PI * 2);
-                ctx.fill();
-            });
-        }
-
-        function drawSparks(width, height) {
-            sparks.forEach(spark => {
-                // Update position
-                spark.x += spark.vx;
-                spark.y += spark.vy;
-
-                // Wrap around edges
-                if (spark.x < 0) spark.x = width;
-                if (spark.x > width) spark.x = 0;
-                if (spark.y < 0) spark.y = height;
-                if (spark.y > height) spark.y = 0;
-
-                // Wandering behavior
-                spark.vx += (Math.random() - 0.5) * 0.02;
-                spark.vy += (Math.random() - 0.5) * 0.02;
-                spark.vx *= 0.99;
-                spark.vy *= 0.99;
-
-                ctx.fillStyle = `rgba(${spark.color.r}, ${spark.color.g}, ${spark.color.b}, ${spark.alpha})`;
-                ctx.beginPath();
-                ctx.arc(spark.x, spark.y, spark.size, 0, Math.PI * 2);
-                ctx.fill();
-            });
-        }
-
-        function drawSynapticFires(cx, cy, baseRadius) {
-            synapticFires.forEach(fire => {
-                fire.phase += 0.02;
-                fire.alpha = Math.abs(Math.sin(fire.phase)) * fire.maxAlpha;
-
-                if (fire.alpha < 0.01) {
-                    fire.angle = Math.random() * Math.PI * 2;
-                    fire.length = 15 + Math.random() * 25;
-                }
-
-                const startDist = baseRadius * 0.2;
-                const endDist = startDist + fire.length;
-
-                const x1 = cx + Math.cos(fire.angle) * startDist;
-                const y1 = cy + Math.sin(fire.angle) * startDist;
-                const x2 = cx + Math.cos(fire.angle) * endDist;
-                const y2 = cy + Math.sin(fire.angle) * endDist;
-
-                const grad = ctx.createLinearGradient(x1, y1, x2, y2);
-                grad.addColorStop(0, `rgba(${fire.color.r}, ${fire.color.g}, ${fire.color.b}, ${fire.alpha})`);
-                grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
-                ctx.strokeStyle = grad;
-                ctx.lineWidth = fire.width;
-                ctx.lineCap = 'round';
-                ctx.beginPath();
-                ctx.moveTo(x1, y1);
-                ctx.lineTo(x2, y2);
-                ctx.stroke();
-            });
-        }
-
-        function drawEnergyRings(cx, cy, baseRadius) {
-            const ringCount = 3;
-            for (let i = 0; i < ringCount; i++) {
-                const phase = (time * 0.3 + i * 0.5) % 1;
-                const radius = baseRadius * (0.3 + phase * 0.8);
-                const alpha = (1 - phase) * 0.08;
-
-                ctx.strokeStyle = `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, ${alpha})`;
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-                ctx.stroke();
-            }
-        }
-
-        // ═══════════════════════════════════════════════════════════════
-        // ANIMATION LOOP
-        // ═══════════════════════════════════════════════════════════════
-
-        function render() {
-            const rect = container.getBoundingClientRect();
-            const width = rect.width;
-            const height = rect.height;
-            const cx = width / 2;
-            const cy = height / 2;
-            const baseRadius = Math.min(width, height) * 0.35;
-
-            // Clear with transparent background
-            ctx.clearRect(0, 0, width, height);
-
-            // Render layers (back to front)
-            drawNebulae(cx, cy);
-            drawEnergyRings(cx, cy, baseRadius);
-            drawSacredGeometry(cx, cy, baseRadius);
-            drawOrbitalParticles(cx, cy);
-            drawSynapticFires(cx, cy, baseRadius);
-            drawSparks(width, height);
-            drawCore(cx, cy, baseRadius);
-
-            time += 0.016;
-            requestAnimationFrame(render);
-        }
-
-        // ═══════════════════════════════════════════════════════════════
-        // INITIALIZATION
-        // ═══════════════════════════════════════════════════════════════
-
-        resize();
-        initParticles();
-        render();
+        document.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            targetMouseX = (e.clientX - rect.left) / rect.width;
+            targetMouseY = (e.clientY - rect.top) / rect.height;
+        });
 
         window.addEventListener('resize', () => {
             resize();
-            initParticles();
+            initDistantStars();
+            initNebulae();
+            initFlowParticles();
+            initBrightStars();
         });
+
+        init();
 
     })();
     </script>
 
     <!-- ═══════════════════════════════════════════════════════════════════
-         OPUS MARK — LIVING CONSCIOUSNESS (Mini Header Icons)
-         Refined, meditative animation. Breathing. Present. Alive.
+         ODEI LOGO — TWO DOTS (Mini Header Icons)
+         Human & AI. Partners. Breathing together.
          ═══════════════════════════════════════════════════════════════════ -->
     <script>
     (function() {
         'use strict';
 
-        // ═══════════════════════════════════════════════════════════════
-        // THEME COLORS — Same as OPUS MAGNUM
-        // ═══════════════════════════════════════════════════════════════
-        const JADE = { r: 79, g: 209, b: 197 };      // #4FD1C5
-        const GOLD = { r: 244, g: 201, b: 93 };      // #F4C95D
-        const WHITE = { r: 232, g: 236, b: 244 };    // #E8ECF4
-
-        // ═══════════════════════════════════════════════════════════════
-        // CONFIGURATION — Refined, Meditative
-        // ═══════════════════════════════════════════════════════════════
         const CONFIG = {
-            // Rotation — extremely slow, almost imperceptible
-            outerRotationSpeed: 0.0002,   // radians per frame
-            innerRotationSpeed: -0.00015, // counter-rotate
-
-            // Breathing — like MacBook sleep light (4 second cycle)
-            breatheCycle: 4000, // ms for full breath
-            breatheMin: 0.4,    // minimum core opacity
-            breatheMax: 0.9,    // maximum core opacity
-
-            // Particles
-            outerParticles: 4,  // jade particles on outer ring
-            innerParticles: 4,  // gold particles on inner ring
-
-            // Sizes (relative to canvas size)
-            outerRingRadius: 0.38,
-            innerRingRadius: 0.22,
-            coreRadius: 0.12,
-            coreCenterRadius: 0.05,
-            outerParticleSize: 0.045,
-            innerParticleSize: 0.035,
-
-            // Glow
-            coreGlowSize: 0.18,
-            ringOpacity: 0.15
+            breatheCycle: 4000,    // 4 second breath
+            breatheMin: 0.7,
+            breatheMax: 1.0,
+            ringRadius: 0.34,      // outer ring radius
+            ringWidth: 0.04,       // ring stroke width
+            pupilRadius: 0.09,     // pupil radius
+            maxPupilOffset: 0.18,  // max distance pupil can move from center
+            pupilEasing: 0.08      // smoothing factor (0-1, lower = smoother)
         };
 
-        // ═══════════════════════════════════════════════════════════════
-        // ANIMATION STATE
-        // ═══════════════════════════════════════════════════════════════
         let instances = [];
         let time = 0;
         let animationId = null;
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
 
-        // ═══════════════════════════════════════════════════════════════
-        // INITIALIZE ALL CANVASES
-        // ═══════════════════════════════════════════════════════════════
+        // Track mouse globally
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
         function init() {
             const canvases = document.querySelectorAll('.opus-mark-canvas');
             instances = [];
 
-            canvases.forEach((canvas, index) => {
+            canvases.forEach((canvas) => {
                 const ctx = canvas.getContext('2d');
                 const container = canvas.parentElement;
                 const page = container.closest('.page');
 
-                // Get page index
                 let pageIndex = -1;
                 if (page) {
                     pageIndex = parseInt(page.getAttribute('data-page') || '-1');
                 }
 
                 instances.push({
-                    canvas,
-                    ctx,
-                    container,
-                    pageIndex,
-                    outerAngle: 0,
-                    innerAngle: Math.PI / 4 // offset for visual interest
+                    canvas, ctx, container, pageIndex,
+                    pupilX: 0,  // current pupil offset X
+                    pupilY: 0   // current pupil offset Y
                 });
-
                 resize(instances[instances.length - 1]);
             });
 
@@ -14440,9 +14739,6 @@
             }
         }
 
-        // ═══════════════════════════════════════════════════════════════
-        // RESIZE HANDLER
-        // ═══════════════════════════════════════════════════════════════
         function resize(instance) {
             const rect = instance.container.getBoundingClientRect();
             const dpr = window.devicePixelRatio || 1;
@@ -14456,137 +14752,73 @@
             instance.size = size;
         }
 
-        // ═══════════════════════════════════════════════════════════════
-        // RENDER SINGLE INSTANCE
-        // ═══════════════════════════════════════════════════════════════
-        function render(instance, breathePhase) {
-            const { ctx, size, outerAngle, innerAngle } = instance;
+        function render(instance, breatheOpacity) {
+            const { ctx, size } = instance;
             const cx = size / 2;
             const cy = size / 2;
+            const ringRadius = size * CONFIG.ringRadius;
+            const ringWidth = size * CONFIG.ringWidth;
+            const pupilRadius = size * CONFIG.pupilRadius;
+            const maxOffset = size * CONFIG.maxPupilOffset;
 
-            // Clear
+            // Get eye center in screen coordinates
+            const rect = instance.canvas.getBoundingClientRect();
+            const eyeCenterX = rect.left + rect.width / 2;
+            const eyeCenterY = rect.top + rect.height / 2;
+
+            // Direction from eye to mouse
+            const dx = mouseX - eyeCenterX;
+            const dy = mouseY - eyeCenterY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            // Target pupil offset (normalized, scaled to maxOffset)
+            let targetX = 0, targetY = 0;
+            if (dist > 1) {
+                const scale = Math.min(1, dist / 200); // sensitivity
+                targetX = (dx / dist) * maxOffset * scale;
+                targetY = (dy / dist) * maxOffset * scale;
+            }
+
+            // Smooth interpolation (easing)
+            instance.pupilX += (targetX - instance.pupilX) * CONFIG.pupilEasing;
+            instance.pupilY += (targetY - instance.pupilY) * CONFIG.pupilEasing;
+
             ctx.clearRect(0, 0, size, size);
 
-            // Calculate breathing opacity (sine wave)
-            const breatheT = (Math.sin(breathePhase) + 1) / 2;
-            const breatheOpacity = CONFIG.breatheMin + breatheT * (CONFIG.breatheMax - CONFIG.breatheMin);
-
-            // ══════ SUBTLE ORBITAL RING ══════
-            ctx.strokeStyle = `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, ${CONFIG.ringOpacity})`;
-            ctx.lineWidth = 0.5;
+            // Outer ring (the O)
+            ctx.strokeStyle = `rgba(255, 255, 255, ${breatheOpacity})`;
+            ctx.lineWidth = ringWidth;
             ctx.beginPath();
-            ctx.arc(cx, cy, size * CONFIG.outerRingRadius, 0, Math.PI * 2);
+            ctx.arc(cx, cy, ringRadius, 0, Math.PI * 2);
             ctx.stroke();
 
-            // ══════ OUTER PARTICLES (JADE) ══════
-            const outerRadius = size * CONFIG.outerRingRadius;
-            const outerSize = size * CONFIG.outerParticleSize;
-
-            for (let i = 0; i < CONFIG.outerParticles; i++) {
-                const angle = outerAngle + (Math.PI * 2 * i) / CONFIG.outerParticles;
-                const x = cx + Math.cos(angle) * outerRadius;
-                const y = cy + Math.sin(angle) * outerRadius;
-
-                // Subtle glow
-                const gradient = ctx.createRadialGradient(x, y, 0, x, y, outerSize * 2);
-                gradient.addColorStop(0, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0.8)`);
-                gradient.addColorStop(0.5, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0.2)`);
-                gradient.addColorStop(1, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0)`);
-
-                ctx.fillStyle = gradient;
-                ctx.beginPath();
-                ctx.arc(x, y, outerSize * 2, 0, Math.PI * 2);
-                ctx.fill();
-
-                // Core of particle
-                ctx.fillStyle = `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0.9)`;
-                ctx.beginPath();
-                ctx.arc(x, y, outerSize, 0, Math.PI * 2);
-                ctx.fill();
-            }
-
-            // ══════ INNER PARTICLES (GOLD) ══════
-            const innerRadius = size * CONFIG.innerRingRadius;
-            const innerSize = size * CONFIG.innerParticleSize;
-
-            for (let i = 0; i < CONFIG.innerParticles; i++) {
-                const angle = innerAngle + (Math.PI * 2 * i) / CONFIG.innerParticles;
-                const x = cx + Math.cos(angle) * innerRadius;
-                const y = cy + Math.sin(angle) * innerRadius;
-
-                // Subtle glow
-                const gradient = ctx.createRadialGradient(x, y, 0, x, y, innerSize * 2);
-                gradient.addColorStop(0, `rgba(${GOLD.r}, ${GOLD.g}, ${GOLD.b}, 0.85)`);
-                gradient.addColorStop(0.5, `rgba(${GOLD.r}, ${GOLD.g}, ${GOLD.b}, 0.2)`);
-                gradient.addColorStop(1, `rgba(${GOLD.r}, ${GOLD.g}, ${GOLD.b}, 0)`);
-
-                ctx.fillStyle = gradient;
-                ctx.beginPath();
-                ctx.arc(x, y, innerSize * 2, 0, Math.PI * 2);
-                ctx.fill();
-
-                // Core of particle
-                ctx.fillStyle = `rgba(${GOLD.r}, ${GOLD.g}, ${GOLD.b}, 0.9)`;
-                ctx.beginPath();
-                ctx.arc(x, y, innerSize, 0, Math.PI * 2);
-                ctx.fill();
-            }
-
-            // ══════ CORE GLOW — BREATHING ══════
-            const coreGlowRadius = size * CONFIG.coreGlowSize;
-            const coreGlow = ctx.createRadialGradient(cx, cy, 0, cx, cy, coreGlowRadius);
-            coreGlow.addColorStop(0, `rgba(${WHITE.r}, ${WHITE.g}, ${WHITE.b}, ${breatheOpacity})`);
-            coreGlow.addColorStop(0.4, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, ${breatheOpacity * 0.5})`);
-            coreGlow.addColorStop(1, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0)`);
-
-            ctx.fillStyle = coreGlow;
+            // Pupil (follows mouse)
+            ctx.fillStyle = `rgba(255, 255, 255, ${breatheOpacity})`;
             ctx.beginPath();
-            ctx.arc(cx, cy, coreGlowRadius, 0, Math.PI * 2);
-            ctx.fill();
-
-            // ══════ CORE CENTER — WHITE ══════
-            const coreCenterRadius = size * CONFIG.coreCenterRadius;
-            ctx.fillStyle = `rgba(${WHITE.r}, ${WHITE.g}, ${WHITE.b}, ${0.8 + breatheT * 0.2})`;
-            ctx.beginPath();
-            ctx.arc(cx, cy, coreCenterRadius, 0, Math.PI * 2);
+            ctx.arc(cx + instance.pupilX, cy + instance.pupilY, pupilRadius, 0, Math.PI * 2);
             ctx.fill();
         }
 
-        // ═══════════════════════════════════════════════════════════════
-        // ANIMATION LOOP — Performance Optimized
-        // ═══════════════════════════════════════════════════════════════
         function animate() {
-            time += 16; // ~60fps
+            time += 16;
             const breathePhase = (time / CONFIG.breatheCycle) * Math.PI * 2;
+            const breatheT = (Math.sin(breathePhase) + 1) / 2;
+            const breatheOpacity = CONFIG.breatheMin + breatheT * (CONFIG.breatheMax - CONFIG.breatheMin);
 
-            // Get current active page
             const activePage = document.querySelector('.page.active');
             const activePageIndex = activePage ? parseInt(activePage.getAttribute('data-page') || '-1') : -1;
 
             instances.forEach(instance => {
-                // Only animate visible instances (on active page or page 0 for home)
-                // All opus marks should be visible when their page is active
                 if (instance.pageIndex === activePageIndex || instance.pageIndex === -1) {
-                    // Update rotation angles
-                    instance.outerAngle += CONFIG.outerRotationSpeed;
-                    instance.innerAngle += CONFIG.innerRotationSpeed;
-
-                    // Render
-                    render(instance, breathePhase);
+                    render(instance, breatheOpacity);
                 }
             });
 
             animationId = requestAnimationFrame(animate);
         }
 
-        // ═══════════════════════════════════════════════════════════════
-        // EVENT LISTENERS
-        // ═══════════════════════════════════════════════════════════════
-        window.addEventListener('resize', () => {
-            instances.forEach(resize);
-        });
+        window.addEventListener('resize', () => instances.forEach(resize));
 
-        // Initialize when DOM ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', init);
         } else {
@@ -14594,6 +14826,20 @@
         }
 
     })();
+    </script>
+
+    <!-- Lazy load hero video after main content -->
+    <script>
+    window.addEventListener('load', () => {
+        const video = document.getElementById('hero-video');
+        if (video) {
+            const source = video.querySelector('source[data-src]');
+            if (source) {
+                source.src = source.dataset.src;
+                video.load();
+            }
+        }
+    });
     </script>
 </body>
 </html>
