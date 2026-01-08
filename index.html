@@ -120,29 +120,6 @@
             opacity: 0.4;
         }
 
-        .loading {
-            position: fixed;
-            inset: 0;
-            background: var(--bg);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s var(--ease-out-quint);
-        }
-        
-        .loading.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .loading .logo {
-            width: 80px;
-            height: 80px;
-            color: var(--ink);
-            animation: pulse 1.5s infinite;
-        }
-
         @keyframes pulse {
             0%, 100% { opacity: 0.4; transform: scale(0.95); }
             50% { opacity: 0.9; transform: scale(1); }
@@ -291,6 +268,7 @@
             width: 100%;
             gap: clamp(1.5rem, 4vw, 2.5rem);
             padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 3vw, 2rem);
+            padding-bottom: clamp(4rem, 12vh, 8rem); /* Shift content upward */
             position: relative;
             z-index: 1;
         }
@@ -304,8 +282,8 @@
         }
 
         .home-logo-svg {
-            width: clamp(52px, 10vw, 72px);
-            height: clamp(52px, 10vw, 72px);
+            width: clamp(60px, 12vw, 90px);
+            height: clamp(60px, 12vw, 90px);
             color: var(--text);
         }
 
@@ -323,7 +301,20 @@
         .home-logo-svg path {
             fill: currentColor;
         }
-        
+
+        /* ══════ NEURAL CONSCIOUSNESS CANVAS ══════ */
+        .neural-container {
+            position: relative;
+            width: clamp(140px, 28vw, 200px);
+            height: clamp(140px, 28vw, 200px);
+        }
+
+        .neural-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
         /* ══════ MANIFESTO — STAGGERED REVEAL ══════ */
         .home-manifesto {
             display: flex;
@@ -446,6 +437,7 @@
             position: absolute;
             left: -1rem;
             opacity: 0;
+            color: #4FD1C5;
             font-family: var(--font-mono);
             transition: all 0.2s ease;
             transform: translateX(-4px);
@@ -453,10 +445,12 @@
 
         .nav-item:hover .nav-num {
             opacity: 1;
+            color: #4FD1C5;
         }
 
         .nav-item:hover .nav-name {
             opacity: 1;
+            color: #4FD1C5;
             transform: translateX(0.5rem);
         }
 
@@ -472,6 +466,16 @@
                 padding: 2rem 1.5rem;
             }
 
+            .home-logo-svg {
+                width: 75px;
+                height: 75px;
+            }
+
+            .neural-container {
+                width: 160px;
+                height: 160px;
+            }
+
             .home-nav {
                 gap: 4rem;
             }
@@ -482,6 +486,16 @@
             .home-container {
                 gap: 1.75rem;
                 padding: 1.5rem 1.25rem;
+            }
+
+            .home-logo-svg {
+                width: 70px;
+                height: 70px;
+            }
+
+            .neural-container {
+                width: 140px;
+                height: 140px;
             }
 
             .manifesto-lines {
@@ -518,16 +532,31 @@
 
         /* ══════ RESPONSIVE — SMALL MOBILE ══════ */
         @media (max-width: 480px) {
+            .neural-container {
+                width: 120px;
+                height: 120px;
+            }
+
             .home-nav {
-                gap: 1.5rem;
+                flex-direction: column;
+                gap: 0;
+                align-items: center;
             }
 
             .nav-column {
-                gap: 0.25rem;
+                width: 100%;
+                max-width: 200px;
+            }
+
+            .nav-column:first-child {
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+                padding-bottom: 0.5rem;
+                margin-bottom: 0.5rem;
             }
 
             .nav-item {
-                padding: 0.5rem 0;
+                padding: 0.6rem 0; /* 44px+ touch target */
+                justify-content: flex-start;
             }
 
             .tagline-text {
@@ -543,8 +572,14 @@
                 gap: 1.5rem;
             }
 
-            .home-nav {
-                gap: 1rem;
+            .neural-container {
+                width: 100px;
+                height: 100px;
+            }
+
+            .home-logo-svg {
+                width: 60px;
+                height: 60px;
             }
 
             .manifesto-lines {
@@ -555,13 +590,8 @@
                 font-size: 0.9rem;
             }
 
-            .nav-num {
-                font-size: 0.6rem;
-                min-width: 18px;
-            }
-
             .nav-name {
-                font-size: 0.85rem;
+                font-size: 0.9rem;
             }
         }
         
@@ -589,6 +619,25 @@
             height: 48px;
             color: var(--accent);
             cursor: pointer;
+        }
+
+        /* Mini Consciousness Canvas for Headers */
+        .mini-consciousness {
+            width: 48px;
+            height: 48px;
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .mini-consciousness:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 8px rgba(79, 209, 197, 0.5));
+        }
+
+        .mini-consciousness-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
         }
 
         .cursor {
@@ -3685,7 +3734,8 @@
                 margin-bottom: 0.75rem;
                 padding-top: 0;
             }
-            .product-page .small-logo {
+            .product-page .small-logo,
+            .product-page .mini-consciousness {
                 width: 36px;
                 height: 36px;
             }
@@ -3748,7 +3798,8 @@
             .product-page .small-logo-container {
                 margin-bottom: 0.5rem;
             }
-            .product-page .small-logo {
+            .product-page .small-logo,
+            .product-page .mini-consciousness {
                 width: 32px;
                 height: 32px;
             }
@@ -10672,10 +10723,6 @@
         scroll-behavior: auto !important;
     }
 
-    .loading .logo {
-        animation: none;
-    }
-
     .cursor {
         animation: none;
         opacity: 1;
@@ -10885,10 +10932,12 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- SVG Symbol Definition — ODEI -->
+    <!-- SVG Symbol Definition — ODEI Symbiosis Star -->
     <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
-        <symbol id="odei-logo" viewBox="0 0 32 33">
+        <symbol id="odei-logo" viewBox="0 0 32 33" fill="none">
+            <!-- 4-pointed star — symbiosis, convergence -->
             <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
+            <!-- Center circle — the eye, consciousness -->
             <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
         </symbol>
     </svg>
@@ -10896,7 +10945,6 @@
     <!-- No-JS fallback: Site requires JavaScript for full experience -->
     <noscript>
         <style>
-            .loading { display: none !important; }
             .page { display: block !important; opacity: 1 !important; transform: none !important; position: relative !important; }
             .page:not(.active) { display: none !important; }
             .nav-arrows { display: none !important; }
@@ -10904,10 +10952,6 @@
     </noscript>
 
     <div class="progress-bar" id="progressBar"></div>
-
-    <div class="loading" id="loader">
-        <svg class="logo" aria-label="ODEI Logo" role="img"><use href="#odei-logo"/></svg>
-    </div>
 
     <main class="book" role="main" id="main-content">
         <section class="page active" id="home" data-page="0">
@@ -10923,9 +10967,11 @@
             <div class="content">
                 <div class="home-container">
 
-                    <!-- LOGO -->
+                    <!-- CONSCIOUSNESS VISUALIZATION -->
                     <div class="home-logo-area">
-                        <svg class="home-logo-svg" id="main-logo" aria-label="ODEI Logo" role="img"><use href="#odei-logo"/></svg>
+                        <div class="neural-container">
+                            <canvas class="neural-canvas" id="consciousness-canvas"></canvas>
+                        </div>
                     </div>
                     
                     <!-- MANIFESTO -->
@@ -10985,7 +11031,7 @@
         <section class="page intro-page" id="intro" data-page="1">
             <div class="content">
                 <div class="small-logo-container">
-                    <svg class="small-logo" data-page="0" aria-label="ODEI Logo" role="img"><use href="#odei-logo"/></svg>
+                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
                 </div>
 
                 <!-- HERO: Statement D (Core Insight) -->
@@ -11143,7 +11189,7 @@
         <section class="page problem-page" id="problem" data-page="2">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <svg class="small-logo" data-page="0" aria-label="ODEI Logo" role="img"><use href="#odei-logo"/></svg>
+                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
                 </div>
 
                 <!-- HERO: The Pain -->
@@ -11441,7 +11487,7 @@
         <section class="page product-page" id="product" data-page="3">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <svg class="small-logo" data-page="0" aria-label="ODEI Logo" role="img"><use href="#odei-logo"/></svg>
+                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
                 </div>
                 
                 <!-- HERO: The Shift -->
@@ -11891,7 +11937,7 @@
         <section class="page levels-page-new" id="levels" data-page="4">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <svg class="small-logo" data-page="0" aria-label="ODEI Logo" role="img"><use href="#odei-logo"/></svg>
+                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
                 </div>
 
                 <!-- ══════ HERO — The Provocation ══════ -->
@@ -12413,7 +12459,7 @@
         <section class="page science-page" id="science" data-page="5">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <svg class="small-logo" data-page="0" aria-label="ODEI Logo" role="img"><use href="#odei-logo"/></svg>
+                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
                 </div>
 
                 <!-- ══════ HERO — The Question ══════ -->
@@ -12727,7 +12773,7 @@
         <section class="page memory-page memory-page-new" id="memory" data-page="6">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <svg class="small-logo" data-page="0" aria-label="ODEI Logo" role="img"><use href="#odei-logo"/></svg>
+                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
                 </div>
 
                 <!-- ══════ HERO — The Difference ══════ -->
@@ -12897,7 +12943,7 @@
         <section class="page roadmap-page-new" id="roadmap" data-page="7">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <svg class="small-logo" data-page="0" aria-label="ODEI Logo" role="img"><use href="#odei-logo"/></svg>
+                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
                 </div>
 
                 <!-- ══════ HERO — The Journey ══════ -->
@@ -13075,7 +13121,7 @@
         <section class="page privacy-page-new" id="privacy" data-page="8">
             <div class="content">
                 <div class="small-logo-container">
-                    <svg class="small-logo" data-page="0" aria-label="ODEI Logo" role="img"><use href="#odei-logo"/></svg>
+                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
                 </div>
 
                 <!-- ══════ HERO — The Chain ══════ -->
@@ -13267,7 +13313,7 @@
 
             <div class="content">
                 <div class="small-logo-container">
-                    <svg class="small-logo" data-page="0" aria-label="ODEI Logo" role="img"><use href="#odei-logo"/></svg>
+                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
                 </div>
 
                 <!-- ══════ HERO ══════ -->
@@ -13780,12 +13826,8 @@
                 }
             });
 
-            window.addEventListener('load', () => {
-                setTimeout(() => {
-                    document.getElementById('loader').classList.add('hidden');
-                    initialize();
-                }, 500);
-            });
+            // Initialize immediately - no loader delay needed
+            initialize();
 
             prevButton.addEventListener('click', () => {
                 goToPage(currentPage - 1);
@@ -13848,12 +13890,18 @@
                 });
             });
 
-            const smallLogos = document.querySelectorAll('.small-logo');
+            const smallLogos = document.querySelectorAll('.small-logo, .mini-consciousness');
             smallLogos.forEach(logo => {
                 logo.addEventListener('click', () => {
                     goToPage(0);
                 });
-                logo.style.cursor = 'pointer';
+                // Keyboard accessibility
+                logo.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        goToPage(0);
+                    }
+                });
             });
 
             const homeLinks = document.querySelectorAll('.home-link');
@@ -13875,6 +13923,579 @@
             });
 
         });
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         OPUS MAGNUM — CONSCIOUSNESS VISUALIZATION
+         Canvas 2D Neural Animation with Perlin Noise
+         ═══════════════════════════════════════════════════════════════════ -->
+    <script>
+    (function() {
+        'use strict';
+
+        const canvas = document.getElementById('consciousness-canvas');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        const container = canvas.parentElement;
+
+        // ═══════════════════════════════════════════════════════════════
+        // PERLIN NOISE — Organic Movement Generator
+        // ═══════════════════════════════════════════════════════════════
+        class PerlinNoise {
+            constructor() {
+                this.permutation = [];
+                for (let i = 0; i < 256; i++) this.permutation[i] = i;
+                for (let i = 255; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [this.permutation[i], this.permutation[j]] = [this.permutation[j], this.permutation[i]];
+                }
+                this.p = [...this.permutation, ...this.permutation];
+            }
+
+            fade(t) { return t * t * t * (t * (t * 6 - 15) + 10); }
+            lerp(a, b, t) { return a + t * (b - a); }
+            grad(hash, x, y) {
+                const h = hash & 3;
+                const u = h < 2 ? x : y;
+                const v = h < 2 ? y : x;
+                return ((h & 1) ? -u : u) + ((h & 2) ? -v : v);
+            }
+
+            noise(x, y) {
+                const X = Math.floor(x) & 255;
+                const Y = Math.floor(y) & 255;
+                x -= Math.floor(x);
+                y -= Math.floor(y);
+                const u = this.fade(x);
+                const v = this.fade(y);
+                const A = this.p[X] + Y, B = this.p[X + 1] + Y;
+                return this.lerp(
+                    this.lerp(this.grad(this.p[A], x, y), this.grad(this.p[B], x - 1, y), u),
+                    this.lerp(this.grad(this.p[A + 1], x, y - 1), this.grad(this.p[B + 1], x - 1, y - 1), u),
+                    v
+                );
+            }
+        }
+
+        const perlin = new PerlinNoise();
+        let time = 0;
+        let dpr = window.devicePixelRatio || 1;
+
+        // ═══════════════════════════════════════════════════════════════
+        // THEME COLORS
+        // ═══════════════════════════════════════════════════════════════
+        const JADE = { r: 79, g: 209, b: 197 };      // #4FD1C5
+        const GOLD = { r: 244, g: 201, b: 93 };      // #F4C95D
+        const WHITE = { r: 232, g: 236, b: 244 };    // #E8ECF4
+
+        // ═══════════════════════════════════════════════════════════════
+        // PARTICLE SYSTEMS
+        // ═══════════════════════════════════════════════════════════════
+        const LAYERS = 5;
+        const PARTICLES_PER_LAYER = 25;
+        let particles = [];
+        let sparks = [];
+        let nebulaClouds = [];
+        let synapticFires = [];
+
+        function resize() {
+            const rect = container.getBoundingClientRect();
+            dpr = window.devicePixelRatio || 1;
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            canvas.style.width = rect.width + 'px';
+            canvas.style.height = rect.height + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        function initParticles() {
+            const rect = container.getBoundingClientRect();
+            const cx = rect.width / 2;
+            const cy = rect.height / 2;
+            const baseRadius = Math.min(rect.width, rect.height) * 0.35;
+
+            particles = [];
+
+            // Orbital layers
+            for (let layer = 0; layer < LAYERS; layer++) {
+                const layerRadius = baseRadius * (0.3 + layer * 0.18);
+                const count = PARTICLES_PER_LAYER - layer * 3;
+                const layerSpeed = 0.0003 + layer * 0.00015;
+
+                for (let i = 0; i < count; i++) {
+                    const angle = (Math.PI * 2 * i) / count + layer * 0.3;
+                    const isJade = Math.random() > 0.25;
+
+                    particles.push({
+                        layer,
+                        baseAngle: angle,
+                        radius: layerRadius,
+                        speed: layerSpeed * (Math.random() > 0.5 ? 1 : -1),
+                        size: 1.2 + Math.random() * 1.5,
+                        color: isJade ? JADE : GOLD,
+                        brightness: 0.4 + Math.random() * 0.4,
+                        noiseOffset: Math.random() * 1000,
+                        pulsePhase: Math.random() * Math.PI * 2
+                    });
+                }
+            }
+
+            // Free-floating sparks
+            sparks = [];
+            for (let i = 0; i < 20; i++) {
+                sparks.push({
+                    x: Math.random() * rect.width,
+                    y: Math.random() * rect.height,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    size: 0.5 + Math.random() * 1,
+                    alpha: 0.2 + Math.random() * 0.3,
+                    color: Math.random() > 0.7 ? GOLD : JADE
+                });
+            }
+
+            // Nebula clouds
+            nebulaClouds = [];
+            for (let i = 0; i < 4; i++) {
+                const angle = (Math.PI * 2 * i) / 4;
+                nebulaClouds.push({
+                    angle,
+                    distance: baseRadius * 0.8,
+                    size: 25 + Math.random() * 20,
+                    alpha: 0.04 + Math.random() * 0.03,
+                    color: Math.random() > 0.5 ? JADE : GOLD
+                });
+            }
+
+            // Synaptic fires
+            synapticFires = [];
+            for (let i = 0; i < 8; i++) {
+                synapticFires.push({
+                    angle: Math.random() * Math.PI * 2,
+                    speed: 0.01 + Math.random() * 0.02,
+                    length: 15 + Math.random() * 25,
+                    width: 1 + Math.random() * 1.5,
+                    alpha: 0,
+                    maxAlpha: 0.3 + Math.random() * 0.4,
+                    phase: Math.random() * Math.PI * 2,
+                    color: Math.random() > 0.3 ? JADE : GOLD
+                });
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // RENDER FUNCTIONS
+        // ═══════════════════════════════════════════════════════════════
+
+        function drawCore(cx, cy, baseRadius) {
+            const coreRadius = baseRadius * 0.15;
+
+            // Outer glow layers
+            const glowLayers = [
+                { radius: coreRadius * 3, alpha: 0.03 },
+                { radius: coreRadius * 2.2, alpha: 0.05 },
+                { radius: coreRadius * 1.6, alpha: 0.08 }
+            ];
+
+            glowLayers.forEach(layer => {
+                const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, layer.radius);
+                grad.addColorStop(0, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, ${layer.alpha})`);
+                grad.addColorStop(0.5, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, ${layer.alpha * 0.5})`);
+                grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(cx, cy, layer.radius, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // Pulsing core
+            const pulse = Math.sin(time * 0.8) * 0.15 + 0.85;
+            const coreGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, coreRadius * pulse);
+            coreGrad.addColorStop(0, `rgba(${WHITE.r}, ${WHITE.g}, ${WHITE.b}, 0.9)`);
+            coreGrad.addColorStop(0.4, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0.6)`);
+            coreGrad.addColorStop(0.7, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0.2)`);
+            coreGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+            ctx.fillStyle = coreGrad;
+            ctx.beginPath();
+            ctx.arc(cx, cy, coreRadius * pulse, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Inner bright point
+            ctx.fillStyle = `rgba(${WHITE.r}, ${WHITE.g}, ${WHITE.b}, 0.95)`;
+            ctx.beginPath();
+            ctx.arc(cx, cy, coreRadius * 0.2, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawSacredGeometry(cx, cy, baseRadius) {
+            const hexRadius = baseRadius * 0.55;
+            const rotation = time * 0.05;
+            const pulse = Math.sin(time * 0.3) * 0.05 + 0.95;
+
+            ctx.save();
+            ctx.translate(cx, cy);
+            ctx.rotate(rotation);
+            ctx.scale(pulse, pulse);
+
+            // Hexagram (two triangles)
+            ctx.strokeStyle = `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0.12)`;
+            ctx.lineWidth = 0.8;
+
+            // Triangle 1 (pointing up)
+            ctx.beginPath();
+            for (let i = 0; i < 3; i++) {
+                const angle = (Math.PI * 2 * i) / 3 - Math.PI / 2;
+                const x = Math.cos(angle) * hexRadius;
+                const y = Math.sin(angle) * hexRadius;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.stroke();
+
+            // Triangle 2 (pointing down)
+            ctx.beginPath();
+            for (let i = 0; i < 3; i++) {
+                const angle = (Math.PI * 2 * i) / 3 + Math.PI / 2;
+                const x = Math.cos(angle) * hexRadius;
+                const y = Math.sin(angle) * hexRadius;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.stroke();
+
+            ctx.restore();
+        }
+
+        function drawNebulae(cx, cy) {
+            nebulaClouds.forEach(cloud => {
+                const wobble = perlin.noise(time * 0.1, cloud.angle) * 10;
+                const x = cx + Math.cos(cloud.angle + time * 0.02) * (cloud.distance + wobble);
+                const y = cy + Math.sin(cloud.angle + time * 0.02) * (cloud.distance + wobble);
+
+                const grad = ctx.createRadialGradient(x, y, 0, x, y, cloud.size);
+                grad.addColorStop(0, `rgba(${cloud.color.r}, ${cloud.color.g}, ${cloud.color.b}, ${cloud.alpha})`);
+                grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(x, y, cloud.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+
+        function drawOrbitalParticles(cx, cy) {
+            particles.forEach(p => {
+                const noiseVal = perlin.noise(time * 0.2 + p.noiseOffset, p.layer * 0.5);
+                const radiusOffset = noiseVal * 8;
+                const angleOffset = noiseVal * 0.15;
+
+                const currentAngle = p.baseAngle + time * p.speed + angleOffset;
+                const currentRadius = p.radius + radiusOffset;
+
+                const x = cx + Math.cos(currentAngle) * currentRadius;
+                const y = cy + Math.sin(currentAngle) * currentRadius;
+
+                const pulse = Math.sin(time * 1.5 + p.pulsePhase) * 0.3 + 0.7;
+                const alpha = p.brightness * pulse;
+
+                // Glow
+                const glowGrad = ctx.createRadialGradient(x, y, 0, x, y, p.size * 4);
+                glowGrad.addColorStop(0, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${alpha * 0.3})`);
+                glowGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                ctx.fillStyle = glowGrad;
+                ctx.beginPath();
+                ctx.arc(x, y, p.size * 4, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Core particle
+                ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${alpha})`;
+                ctx.beginPath();
+                ctx.arc(x, y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+
+        function drawSparks(width, height) {
+            sparks.forEach(spark => {
+                // Update position
+                spark.x += spark.vx;
+                spark.y += spark.vy;
+
+                // Wrap around edges
+                if (spark.x < 0) spark.x = width;
+                if (spark.x > width) spark.x = 0;
+                if (spark.y < 0) spark.y = height;
+                if (spark.y > height) spark.y = 0;
+
+                // Wandering behavior
+                spark.vx += (Math.random() - 0.5) * 0.02;
+                spark.vy += (Math.random() - 0.5) * 0.02;
+                spark.vx *= 0.99;
+                spark.vy *= 0.99;
+
+                ctx.fillStyle = `rgba(${spark.color.r}, ${spark.color.g}, ${spark.color.b}, ${spark.alpha})`;
+                ctx.beginPath();
+                ctx.arc(spark.x, spark.y, spark.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+
+        function drawSynapticFires(cx, cy, baseRadius) {
+            synapticFires.forEach(fire => {
+                fire.phase += 0.02;
+                fire.alpha = Math.abs(Math.sin(fire.phase)) * fire.maxAlpha;
+
+                if (fire.alpha < 0.01) {
+                    fire.angle = Math.random() * Math.PI * 2;
+                    fire.length = 15 + Math.random() * 25;
+                }
+
+                const startDist = baseRadius * 0.2;
+                const endDist = startDist + fire.length;
+
+                const x1 = cx + Math.cos(fire.angle) * startDist;
+                const y1 = cy + Math.sin(fire.angle) * startDist;
+                const x2 = cx + Math.cos(fire.angle) * endDist;
+                const y2 = cy + Math.sin(fire.angle) * endDist;
+
+                const grad = ctx.createLinearGradient(x1, y1, x2, y2);
+                grad.addColorStop(0, `rgba(${fire.color.r}, ${fire.color.g}, ${fire.color.b}, ${fire.alpha})`);
+                grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+                ctx.strokeStyle = grad;
+                ctx.lineWidth = fire.width;
+                ctx.lineCap = 'round';
+                ctx.beginPath();
+                ctx.moveTo(x1, y1);
+                ctx.lineTo(x2, y2);
+                ctx.stroke();
+            });
+        }
+
+        function drawEnergyRings(cx, cy, baseRadius) {
+            const ringCount = 3;
+            for (let i = 0; i < ringCount; i++) {
+                const phase = (time * 0.3 + i * 0.5) % 1;
+                const radius = baseRadius * (0.3 + phase * 0.8);
+                const alpha = (1 - phase) * 0.08;
+
+                ctx.strokeStyle = `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, ${alpha})`;
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // ANIMATION LOOP
+        // ═══════════════════════════════════════════════════════════════
+
+        function render() {
+            const rect = container.getBoundingClientRect();
+            const width = rect.width;
+            const height = rect.height;
+            const cx = width / 2;
+            const cy = height / 2;
+            const baseRadius = Math.min(width, height) * 0.35;
+
+            // Clear with transparent background
+            ctx.clearRect(0, 0, width, height);
+
+            // Render layers (back to front)
+            drawNebulae(cx, cy);
+            drawEnergyRings(cx, cy, baseRadius);
+            drawSacredGeometry(cx, cy, baseRadius);
+            drawOrbitalParticles(cx, cy);
+            drawSynapticFires(cx, cy, baseRadius);
+            drawSparks(width, height);
+            drawCore(cx, cy, baseRadius);
+
+            time += 0.016;
+            requestAnimationFrame(render);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // INITIALIZATION
+        // ═══════════════════════════════════════════════════════════════
+
+        resize();
+        initParticles();
+        render();
+
+        window.addEventListener('resize', () => {
+            resize();
+            initParticles();
+        });
+
+    })();
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         MINI CONSCIOUSNESS — Header Logo Animation
+         Lightweight version for page headers
+         ═══════════════════════════════════════════════════════════════════ -->
+    <script>
+    (function() {
+        'use strict';
+
+        const canvases = document.querySelectorAll('.mini-consciousness-canvas');
+        if (!canvases.length) return;
+
+        // Theme colors
+        const JADE = { r: 79, g: 209, b: 197 };
+        const GOLD = { r: 244, g: 201, b: 93 };
+        const WHITE = { r: 232, g: 236, b: 244 };
+
+        // Simplified Perlin noise
+        class MiniPerlin {
+            constructor() {
+                this.p = [];
+                for (let i = 0; i < 512; i++) this.p[i] = Math.floor(Math.random() * 256);
+            }
+            noise(x, y) {
+                const xi = Math.floor(x) & 255;
+                const yi = Math.floor(y) & 255;
+                return (Math.sin(xi * 12.9898 + yi * 78.233 + x * 0.1 + y * 0.1) * 43758.5453) % 1;
+            }
+        }
+
+        const perlin = new MiniPerlin();
+
+        // Animation state for each canvas
+        const states = new Map();
+
+        function initCanvas(canvas) {
+            const ctx = canvas.getContext('2d');
+            const container = canvas.parentElement;
+            const rect = container.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            const size = Math.min(rect.width, rect.height);
+            const cx = rect.width / 2;
+            const cy = rect.height / 2;
+            const baseRadius = size * 0.38;
+
+            // Create particles (simplified - just 2 orbital rings)
+            const particles = [];
+            for (let ring = 0; ring < 2; ring++) {
+                const ringRadius = baseRadius * (0.5 + ring * 0.35);
+                const count = 8 + ring * 4;
+                for (let i = 0; i < count; i++) {
+                    particles.push({
+                        angle: (Math.PI * 2 * i) / count,
+                        radius: ringRadius,
+                        speed: (0.008 + ring * 0.004) * (Math.random() > 0.5 ? 1 : -1),
+                        size: 1.2 + Math.random() * 0.8,
+                        color: Math.random() > 0.3 ? JADE : GOLD,
+                        alpha: 0.5 + Math.random() * 0.3,
+                        offset: Math.random() * 1000
+                    });
+                }
+            }
+
+            states.set(canvas, {
+                ctx, particles, cx, cy, baseRadius,
+                width: rect.width, height: rect.height,
+                time: Math.random() * 100
+            });
+        }
+
+        function renderCanvas(canvas) {
+            const state = states.get(canvas);
+            if (!state) return;
+
+            const { ctx, particles, cx, cy, baseRadius, width, height } = state;
+
+            // Clear
+            ctx.clearRect(0, 0, width, height);
+
+            // Core glow
+            const coreRadius = baseRadius * 0.2;
+            const coreGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, coreRadius * 2);
+            coreGrad.addColorStop(0, `rgba(${WHITE.r}, ${WHITE.g}, ${WHITE.b}, 0.8)`);
+            coreGrad.addColorStop(0.3, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0.4)`);
+            coreGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = coreGrad;
+            ctx.beginPath();
+            ctx.arc(cx, cy, coreRadius * 2, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Core center
+            ctx.fillStyle = `rgba(${WHITE.r}, ${WHITE.g}, ${WHITE.b}, 0.9)`;
+            ctx.beginPath();
+            ctx.arc(cx, cy, coreRadius * 0.4, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Particles
+            particles.forEach(p => {
+                const noise = perlin.noise(state.time * 0.3 + p.offset, p.angle);
+                const currentAngle = p.angle + state.time * p.speed;
+                const radiusWobble = 1 + noise * 0.1;
+
+                const x = cx + Math.cos(currentAngle) * p.radius * radiusWobble;
+                const y = cy + Math.sin(currentAngle) * p.radius * radiusWobble;
+
+                const pulse = Math.sin(state.time * 2 + p.offset) * 0.2 + 0.8;
+
+                ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.alpha * pulse})`;
+                ctx.beginPath();
+                ctx.arc(x, y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            state.time += 0.016;
+        }
+
+        // Initialize all canvases
+        canvases.forEach(initCanvas);
+
+        // Animation loop - only animate visible canvases
+        let activePageIndex = 0;
+
+        function getActivePageIndex() {
+            const activePage = document.querySelector('.page.active');
+            if (activePage) {
+                return parseInt(activePage.getAttribute('data-page') || '0');
+            }
+            return 0;
+        }
+
+        function animate() {
+            activePageIndex = getActivePageIndex();
+
+            canvases.forEach((canvas, index) => {
+                // Find which page this canvas belongs to
+                const page = canvas.closest('.page');
+                if (!page) return;
+
+                const pageIndex = parseInt(page.getAttribute('data-page') || '0');
+
+                // Only render if this is the active page (and not home page which has main animation)
+                if (pageIndex === activePageIndex && pageIndex !== 0) {
+                    renderCanvas(canvas);
+                }
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Reinitialize on resize
+        window.addEventListener('resize', () => {
+            canvases.forEach(initCanvas);
+        });
+
+    })();
     </script>
 </body>
 </html>
