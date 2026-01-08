@@ -137,9 +137,12 @@
         }
         
         .loading .logo {
+            width: 80px;
+            height: 80px;
+            color: var(--ink);
             animation: pulse 1.5s infinite;
         }
-        
+
         @keyframes pulse {
             0%, 100% { opacity: 0.4; transform: scale(0.95); }
             50% { opacity: 0.9; transform: scale(1); }
@@ -301,8 +304,8 @@
         }
 
         .home-logo-svg {
-            width: clamp(60px, 12vw, 90px);
-            height: clamp(60px, 12vw, 90px);
+            width: clamp(52px, 10vw, 72px);
+            height: clamp(52px, 10vw, 72px);
             color: var(--text);
         }
 
@@ -472,11 +475,6 @@
                 padding: 2rem 1.5rem;
             }
 
-            .home-logo-svg {
-                width: 75px;
-                height: 75px;
-            }
-
             .home-nav {
                 gap: 4rem;
             }
@@ -487,11 +485,6 @@
             .home-container {
                 gap: 1.75rem;
                 padding: 1.5rem 1.25rem;
-            }
-
-            .home-logo-svg {
-                width: 70px;
-                height: 70px;
             }
 
             .manifesto-lines {
@@ -529,25 +522,15 @@
         /* ══════ RESPONSIVE — SMALL MOBILE ══════ */
         @media (max-width: 480px) {
             .home-nav {
-                flex-direction: column;
-                gap: 0;
-                align-items: center;
+                gap: 1.5rem;
             }
 
             .nav-column {
-                width: 100%;
-                max-width: 200px;
-            }
-
-            .nav-column:first-child {
-                border-bottom: 1px solid rgba(255,255,255,0.06);
-                padding-bottom: 0.5rem;
-                margin-bottom: 0.5rem;
+                gap: 0.25rem;
             }
 
             .nav-item {
-                padding: 0.6rem 0; /* 44px+ touch target */
-                justify-content: flex-start;
+                padding: 0.5rem 0;
             }
 
             .tagline-text {
@@ -563,9 +546,8 @@
                 gap: 1.5rem;
             }
 
-            .home-logo-svg {
-                width: 60px;
-                height: 60px;
+            .home-nav {
+                gap: 1rem;
             }
 
             .manifesto-lines {
@@ -576,8 +558,13 @@
                 font-size: 0.9rem;
             }
 
+            .nav-num {
+                font-size: 0.6rem;
+                min-width: 18px;
+            }
+
             .nav-name {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
         }
         
@@ -10902,20 +10889,10 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- SVG Symbol Definition — ODEI -->
-    <!-- Diamond + Rays + Eye. The one you like. -->
     <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
-        <symbol id="odei-logo" viewBox="0 0 32 32">
-            <!-- Outer diamond — the boundary -->
-            <rect x="6" y="6" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.2" transform="rotate(45 16 16)"/>
-            <!-- 4 rays — expansion, vision reaching outward -->
-            <line x1="16" y1="2" x2="16" y2="8" stroke="currentColor" stroke-width="1.2"/>
-            <line x1="16" y1="24" x2="16" y2="30" stroke="currentColor" stroke-width="1.2"/>
-            <line x1="2" y1="16" x2="8" y2="16" stroke="currentColor" stroke-width="1.2"/>
-            <line x1="24" y1="16" x2="30" y2="16" stroke="currentColor" stroke-width="1.2"/>
-            <!-- Inner ring — the iris, the "O" of ODEI -->
-            <circle cx="16" cy="16" r="4" fill="none" stroke="currentColor" stroke-width="1.2"/>
-            <!-- Center point — the pupil, Oculus Dei -->
-            <circle cx="16" cy="16" r="1.5" fill="currentColor"/>
+        <symbol id="odei-logo" viewBox="0 0 32 33">
+            <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
+            <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
         </symbol>
     </svg>
 
