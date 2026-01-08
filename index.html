@@ -296,21 +296,6 @@
             fill: currentColor;
         }
 
-        /* ══════ FULL-PAGE HERO VIDEO ══════ */
-        .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.42;
-            filter: brightness(0.5);
-        }
-
         /* ══════ MANIFESTO — STAGGERED REVEAL ══════ */
         .home-manifesto {
             display: flex;
@@ -470,20 +455,10 @@
             .home-nav {
                 gap: 4rem;
             }
-
-            .hero-video {
-                width: 120%;
-                height: 120%;
-            }
         }
 
         /* ══════ RESPONSIVE — MOBILE ══════ */
         @media (max-width: 600px) {
-            .hero-video {
-                width: 160%;
-                height: 160%;
-            }
-
             .home-container {
                 gap: 1.75rem;
                 padding: 1.5rem 1.25rem;
@@ -508,47 +483,79 @@
             }
 
             .home-nav {
-                gap: 2.5rem;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.25rem;
                 margin-top: 0.75rem;
             }
 
+            .nav-column {
+                align-items: center;
+                gap: 0.1rem;
+            }
+
             .nav-item {
-                padding: 0.5rem 0; /* Larger touch target */
+                padding: 0.6rem 0;
+                justify-content: center;
             }
 
             .nav-num {
                 font-size: 0.65rem;
                 min-width: 22px;
+                text-align: right;
             }
 
             .nav-name {
                 font-size: 0.95rem;
+            }
+
+            .nav-name::before {
+                display: none;
+            }
+
+            .nav-item:hover .nav-name {
+                transform: none;
             }
         }
 
         /* ══════ RESPONSIVE — SMALL MOBILE ══════ */
         @media (max-width: 480px) {
             .home-nav {
-                gap: 1.5rem;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
                 margin-top: 0.5rem;
             }
 
             .nav-column {
-                gap: 0.3rem;
+                gap: 0;
+                align-items: center;
             }
 
             .nav-item {
-                padding: 0.4rem 0;
-                gap: 0.5rem;
+                padding: 0.6rem 0;
+                gap: 0.75rem;
+                justify-content: center;
             }
 
             .nav-num {
-                font-size: 0.6rem;
-                min-width: 18px;
+                font-size: 0.65rem;
+                min-width: 20px;
+                text-align: right;
             }
 
             .nav-name {
-                font-size: 0.85rem;
+                font-size: 1rem;
+                letter-spacing: 0.08em;
+            }
+
+            /* Disable hover transform on mobile - cleaner look */
+            .nav-item:hover .nav-name {
+                transform: none;
+            }
+
+            .nav-name::before {
+                display: none;
             }
 
             .tagline-text {
@@ -10951,11 +10958,6 @@
         <section class="page active" id="home" data-page="0">
             <h1 class="visually-hidden">ODEI — The Human API Company</h1>
 
-            <!-- FULL-PAGE VIDEO BACKGROUND (lazy loaded) -->
-            <video class="hero-video" autoplay loop muted playsinline preload="none" id="hero-video">
-                <source data-src="GxO7JgIb0AAAMcD.mp4" type="video/mp4">
-            </video>
-
             <!-- Floating Ambient Orbs -->
             <div class="home-orbs">
                 <div class="home-orb home-orb-1"></div>
@@ -14826,20 +14828,6 @@
         }
 
     })();
-    </script>
-
-    <!-- Lazy load hero video after main content -->
-    <script>
-    window.addEventListener('load', () => {
-        const video = document.getElementById('hero-video');
-        if (video) {
-            const source = video.querySelector('source[data-src]');
-            if (source) {
-                source.src = source.dataset.src;
-                video.load();
-            }
-        }
-    });
     </script>
 </body>
 </html>
