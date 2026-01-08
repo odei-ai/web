@@ -360,8 +360,6 @@
 
         .manifesto-line em {
             font-style: normal;
-            color: var(--accent);
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
         }
         
         /* ══════ TAGLINE ══════ */
@@ -387,13 +385,13 @@
             gap: 5rem;
             margin-top: 1rem;
         }
-        
+
         .nav-column {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
         }
-        
+
         .nav-item {
             display: flex;
             align-items: center;
@@ -403,8 +401,32 @@
             padding: 0.4rem 0;
             transition: all 0.3s ease;
             cursor: pointer;
+            /* Hidden until typewriter completes */
+            opacity: 0;
+            transform: translateY(8px);
         }
-        
+
+        /* Staggered entrance animation */
+        .nav-item.revealed {
+            animation: navReveal 0.4s ease-out forwards;
+        }
+
+        @keyframes navReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stagger delays for each item */
+        .nav-item:nth-child(1).revealed { animation-delay: 0ms; }
+        .nav-item:nth-child(2).revealed { animation-delay: 80ms; }
+        .nav-item:nth-child(3).revealed { animation-delay: 160ms; }
+        .nav-item:nth-child(4).revealed { animation-delay: 240ms; }
+        .nav-column:nth-child(2) .nav-item:nth-child(1).revealed { animation-delay: 40ms; }
+        .nav-column:nth-child(2) .nav-item:nth-child(2).revealed { animation-delay: 120ms; }
+        .nav-column:nth-child(2) .nav-item:nth-child(3).revealed { animation-delay: 200ms; }
+
         .nav-num {
             font-size: 0.7rem;
             font-family: var(--font-mono);
@@ -413,24 +435,42 @@
             min-width: 24px;
             transition: all 0.3s ease;
         }
-        
+
         .nav-name {
             font-size: 1rem;
             font-weight: 400;
             opacity: 0.7;
             letter-spacing: 0.05em;
             transition: all 0.3s ease;
+            position: relative;
         }
-        
+
+        /* Hover cursor indicator */
+        .nav-name::before {
+            content: '>';
+            position: absolute;
+            left: -1rem;
+            opacity: 0;
+            color: #4FD1C5;
+            font-family: var(--font-mono);
+            transition: all 0.2s ease;
+            transform: translateX(-4px);
+        }
+
         .nav-item:hover .nav-num {
-            opacity: 0.8;
-            color: var(--accent);
+            opacity: 1;
+            color: #4FD1C5;
         }
 
         .nav-item:hover .nav-name {
             opacity: 1;
-            color: var(--accent);
+            color: #4FD1C5;
             transform: translateX(0.5rem);
+        }
+
+        .nav-item:hover .nav-name::before {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         /* ══════ RESPONSIVE ══════ */
@@ -544,12 +584,87 @@
             box-shadow: 0 0 8px var(--accent);
         }
 
+        /* Typing cursor - thin line style */
+        .cursor.typing {
+            width: 2px;
+            height: 1.1em;
+            margin-left: 1px;
+            vertical-align: text-bottom;
+            animation: blink 0.6s steps(1) infinite;
+        }
+
         @keyframes blink {
             50% {
                 opacity: 0;
             }
         }
-        
+
+        /* ══════ TYPEWRITER ENHANCEMENTS ══════ */
+
+        /* CRT Scan Line Effect */
+        .manifesto-lines {
+            position: relative;
+        }
+
+        .manifesto-lines::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -20px;
+            right: -20px;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.03) 2px,
+                rgba(0, 0, 0, 0.03) 4px
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Character glow on appearance */
+        .char-glow {
+            display: inline;
+            animation: charAppear 0.3s ease-out;
+        }
+
+        @keyframes charAppear {
+            0% {
+                text-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent);
+                opacity: 0.5;
+            }
+            100% {
+                text-shadow: none;
+                opacity: 1;
+            }
+        }
+
+
+        /* Manifesto line with terminal prompt feel */
+        .manifesto-line {
+            display: block;
+            margin: 0;
+            padding: 0;
+            opacity: var(--line-opacity, 0.9);
+            position: relative;
+        }
+
+        /* Terminal flicker on line complete */
+        .line-complete {
+            animation: lineSettle 0.5s ease-out;
+        }
+
+        @keyframes lineSettle {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            }
+            100% {
+                text-shadow: none;
+            }
+        }
+
         .toc-title {
             font-size: 0.875rem; 
             font-weight: 400;
@@ -13285,80 +13400,148 @@
 
                 const line1 = "> The future is not human or machine.";
                 const line2 = "> The future is ";
-                const line2suffix = "symbiosis.";
+                const symbiosis = "symbiosis.";
                 const tagline = "ODEI — The Human API Company";
 
                 let phase = 0; // 0=line1, 1=line2, 2=symbiosis, 3=tagline
                 let charIndex = 0;
                 let span1, span2, emSpan, taglineSpan, cursor;
 
+                // Variable typing speed - more human-like
+                function getTypingDelay(char, isTagline = false) {
+                    const baseDelay = isTagline ? 50 : 45;
+                    const variance = Math.random() * 35; // 0-35ms random variance
+
+                    // Punctuation pauses
+                    if (char === '.' || char === '!' || char === '?') return baseDelay + variance + 180;
+                    if (char === ',') return baseDelay + variance + 100;
+                    if (char === '—' || char === '-') return baseDelay + variance + 80;
+                    if (char === '>') return baseDelay + variance + 60;
+                    if (char === ' ') return baseDelay + variance + 20;
+
+                    return baseDelay + variance;
+                }
+
+                // Create blinking cursor element
+                function createTypingCursor() {
+                    const c = document.createElement('span');
+                    c.className = 'cursor typing';
+                    return c;
+                }
+
                 function type() {
                     if (phase === 0) {
-                        // Phase 0: Type line 1
+                        // Phase 0: Type line 1 with cursor
                         if (charIndex === 0) {
                             span1 = document.createElement('span');
                             span1.className = 'manifesto-line dim';
+                            cursor = createTypingCursor();
+                            span1.appendChild(cursor);
                             manifestoContainer.appendChild(span1);
                         }
                         if (charIndex < line1.length) {
-                            span1.textContent = line1.substring(0, charIndex + 1);
+                            // Insert character before cursor
+                            const charSpan = document.createElement('span');
+                            charSpan.className = 'char-glow';
+                            charSpan.textContent = line1[charIndex];
+                            span1.insertBefore(charSpan, cursor);
+
+                            const delay = getTypingDelay(line1[charIndex]);
                             charIndex++;
-                            typingTimeout = setTimeout(type, 55);
+                            typingTimeout = setTimeout(type, delay);
                         } else {
+                            // Line complete - remove cursor, add settle effect
+                            cursor.remove();
+                            span1.classList.add('line-complete');
                             phase = 1;
                             charIndex = 0;
-                            typingTimeout = setTimeout(type, 400);
+                            typingTimeout = setTimeout(type, 350);
                         }
                     } else if (phase === 1) {
-                        // Phase 1: Type line 2 prefix
+                        // Phase 1: Type line 2 prefix with cursor
                         if (charIndex === 0) {
                             span2 = document.createElement('span');
                             span2.className = 'manifesto-line bright';
+                            cursor = createTypingCursor();
+                            span2.appendChild(cursor);
                             manifestoContainer.appendChild(span2);
                         }
                         if (charIndex < line2.length) {
-                            span2.textContent = line2.substring(0, charIndex + 1);
+                            const charSpan = document.createElement('span');
+                            charSpan.className = 'char-glow';
+                            charSpan.textContent = line2[charIndex];
+                            span2.insertBefore(charSpan, cursor);
+
+                            const delay = getTypingDelay(line2[charIndex]);
                             charIndex++;
-                            typingTimeout = setTimeout(type, 55);
+                            typingTimeout = setTimeout(type, delay);
                         } else {
-                            // Create em element for "symbiosis."
+                            // Remove cursor before symbiosis reveal
+                            // Create em for symbiosis and move cursor into it
                             emSpan = document.createElement('em');
+                            emSpan.appendChild(cursor);
                             span2.appendChild(emSpan);
                             phase = 2;
                             charIndex = 0;
-                            typingTimeout = setTimeout(type, 55);
+                            // Brief pause before typing symbiosis
+                            typingTimeout = setTimeout(type, 250);
                         }
                     } else if (phase === 2) {
                         // Phase 2: Type "symbiosis." character by character
-                        if (charIndex < line2suffix.length) {
-                            emSpan.textContent = line2suffix.substring(0, charIndex + 1);
+                        if (charIndex < symbiosis.length) {
+                            const charSpan = document.createElement('span');
+                            charSpan.className = 'char-glow';
+                            charSpan.textContent = symbiosis[charIndex];
+                            emSpan.insertBefore(charSpan, cursor);
+
+                            const delay = getTypingDelay(symbiosis[charIndex]);
                             charIndex++;
-                            typingTimeout = setTimeout(type, 55);
+                            typingTimeout = setTimeout(type, delay);
                         } else {
+                            // Line complete - remove cursor
+                            cursor.remove();
+                            span2.classList.add('line-complete');
                             phase = 3;
                             charIndex = 0;
-                            typingTimeout = setTimeout(type, 500);
+                            typingTimeout = setTimeout(type, 400);
                         }
                     } else if (phase === 3) {
-                        // Phase 3: Type tagline
+                        // Phase 3: Type tagline with cursor and glow effect
                         if (charIndex === 0) {
                             taglineSpan = document.createElement('span');
                             taglineSpan.className = 'tagline-text';
                             cursor = document.createElement('span');
-                            cursor.className = 'cursor large';
+                            cursor.className = 'cursor typing';
+                            taglineSpan.appendChild(cursor);
                             taglineContainer.appendChild(taglineSpan);
-                            taglineContainer.appendChild(cursor);
                         }
                         if (charIndex < tagline.length) {
-                            taglineSpan.textContent = tagline.substring(0, charIndex + 1);
+                            // Insert character with glow effect before cursor
+                            const charSpan = document.createElement('span');
+                            charSpan.className = 'char-glow';
+                            charSpan.textContent = tagline[charIndex];
+                            taglineSpan.insertBefore(charSpan, cursor);
+
+                            const delay = getTypingDelay(tagline[charIndex], true);
                             charIndex++;
-                            typingTimeout = setTimeout(type, 70);
+                            typingTimeout = setTimeout(type, delay);
+                        } else {
+                            // Replace typing cursor with large blinking cursor
+                            cursor.className = 'cursor large';
+                            // Reveal navigation menu with staggered animation
+                            revealNavigation();
                         }
-                        // Cursor stays blinking — our signature
                     }
                 }
-                
-                typingTimeout = setTimeout(type, 600);
+
+                typingTimeout = setTimeout(type, 500);
+            }
+
+            function revealNavigation() {
+                const navItems = document.querySelectorAll('.home-nav .nav-item');
+                navItems.forEach(item => {
+                    item.classList.add('revealed');
+                });
             }
 
             function updateButtons() {
