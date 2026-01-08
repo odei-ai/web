@@ -621,20 +621,27 @@
             cursor: pointer;
         }
 
-        /* Mini Consciousness Canvas for Headers */
-        .mini-consciousness {
+        /* OPUS MARK — Living consciousness for headers */
+        .opus-mark-container {
+            position: relative;
             width: 48px;
             height: 48px;
             cursor: pointer;
-            transition: transform 0.3s ease, filter 0.3s ease;
+            transition: transform 0.4s ease, filter 0.4s ease;
         }
 
-        .mini-consciousness:hover {
+        .opus-mark-container:hover {
             transform: scale(1.1);
-            filter: drop-shadow(0 0 8px rgba(79, 209, 197, 0.5));
+            filter: drop-shadow(0 0 12px rgba(79, 209, 197, 0.6));
         }
 
-        .mini-consciousness-canvas {
+        .opus-mark-container:focus {
+            outline: 2px solid rgba(79, 209, 197, 0.5);
+            outline-offset: 4px;
+            border-radius: 50%;
+        }
+
+        .opus-mark-canvas {
             width: 100%;
             height: 100%;
             display: block;
@@ -3735,7 +3742,7 @@
                 padding-top: 0;
             }
             .product-page .small-logo,
-            .product-page .mini-consciousness {
+            .product-page .opus-mark-container {
                 width: 36px;
                 height: 36px;
             }
@@ -3799,7 +3806,7 @@
                 margin-bottom: 0.5rem;
             }
             .product-page .small-logo,
-            .product-page .mini-consciousness {
+            .product-page .opus-mark-container {
                 width: 32px;
                 height: 32px;
             }
@@ -10932,14 +10939,14 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- SVG Symbol Definition — ODEI Symbiosis Star -->
+    <!-- SVG Symbol Definitions -->
     <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+        <!-- ODEI Symbiosis Star (original) -->
         <symbol id="odei-logo" viewBox="0 0 32 33" fill="none">
-            <!-- 4-pointed star — symbiosis, convergence -->
             <path d="M17.0714 28.5761C17.6226 27.5248 18.2735 26.5265 19.0177 25.5964C19.8877 24.5084 20.8267 23.4589 21.8367 22.4525L21.8385 22.4507C22.8476 21.4443 23.9006 20.5088 24.9905 19.6425C25.9233 18.9027 26.9243 18.2536 27.9774 17.706C28.7926 17.2823 29.6382 16.9187 30.5082 16.6188C29.6382 16.3163 28.7935 15.95 27.981 15.5236C26.9297 14.9723 25.9314 14.3215 25.0022 13.5781C23.9141 12.7073 22.8637 11.7691 21.8582 10.7591L21.8564 10.7573C20.851 9.74825 19.9146 8.69518 19.0491 7.60529C18.3076 6.67252 17.6594 5.67062 17.1118 4.61754C16.688 3.80327 16.3235 2.95668 16.0246 2.08765C15.7229 2.95668 15.3558 3.80058 14.9311 4.61395C14.3799 5.66523 13.7281 6.66354 12.9839 7.59452C12.1139 8.68261 11.1749 9.73209 10.1649 10.7385L10.1631 10.7403C9.15401 11.7467 8.10094 12.6821 7.01105 13.5485C6.07828 14.2882 5.07727 14.9373 4.0242 15.4849C3.20903 15.9087 2.36334 16.2723 1.49341 16.5721C2.36244 16.8738 3.20634 17.241 4.01971 17.6656C5.07189 18.2177 6.0693 18.8695 6.99938 19.6129C8.08747 20.4837 9.13695 21.4227 10.1433 22.4318L10.1451 22.4336C11.1506 23.4427 12.087 24.4958 12.9524 25.5857C13.694 26.5184 14.3431 27.5203 14.8907 28.5734C15.3145 29.3877 15.6772 30.2325 15.977 31.1015C16.2795 30.2334 16.6458 29.3886 17.0714 28.5761ZM11.2341 21.3482L11.2323 21.3464C9.46733 19.5752 7.59011 17.987 5.62222 16.5793C7.5937 15.1779 9.47721 13.5943 11.2476 11.8293L11.2494 11.8275C13.0198 10.0634 14.6097 8.18525 16.0174 6.21915C17.4188 8.19063 19.0016 10.0732 20.7657 11.8436L20.7675 11.8454C22.5316 13.6158 24.4097 15.2057 26.3767 16.6125C24.4052 18.0139 22.5217 19.5976 20.7522 21.3626L20.7504 21.3644C18.98 23.1285 17.3901 25.0066 15.9824 26.9727C14.581 25.0012 12.9982 23.1186 11.2341 21.3482Z" fill="currentColor"/>
-            <!-- Center circle — the eye, consciousness -->
             <path d="M16.0003 20.0282C17.8964 20.0282 19.4335 18.4911 19.4335 16.595C19.4335 14.6989 17.8964 13.1619 16.0003 13.1619C14.1043 13.1619 12.5672 14.6989 12.5672 16.595C12.5672 18.4911 14.1043 20.0282 16.0003 20.0282Z" fill="currentColor"/>
         </symbol>
+
     </svg>
 
     <!-- No-JS fallback: Site requires JavaScript for full experience -->
@@ -11031,7 +11038,7 @@
         <section class="page intro-page" id="intro" data-page="1">
             <div class="content">
                 <div class="small-logo-container">
-                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
+                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
                 </div>
 
                 <!-- HERO: Statement D (Core Insight) -->
@@ -11189,7 +11196,7 @@
         <section class="page problem-page" id="problem" data-page="2">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
+                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
                 </div>
 
                 <!-- HERO: The Pain -->
@@ -11487,7 +11494,7 @@
         <section class="page product-page" id="product" data-page="3">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
+                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
                 </div>
                 
                 <!-- HERO: The Shift -->
@@ -11937,7 +11944,7 @@
         <section class="page levels-page-new" id="levels" data-page="4">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
+                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
                 </div>
 
                 <!-- ══════ HERO — The Provocation ══════ -->
@@ -12459,7 +12466,7 @@
         <section class="page science-page" id="science" data-page="5">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
+                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
                 </div>
 
                 <!-- ══════ HERO — The Question ══════ -->
@@ -12773,7 +12780,7 @@
         <section class="page memory-page memory-page-new" id="memory" data-page="6">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
+                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
                 </div>
 
                 <!-- ══════ HERO — The Difference ══════ -->
@@ -12943,7 +12950,7 @@
         <section class="page roadmap-page-new" id="roadmap" data-page="7">
             <div class="content wide">
                 <div class="small-logo-container">
-                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
+                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
                 </div>
 
                 <!-- ══════ HERO — The Journey ══════ -->
@@ -13121,7 +13128,7 @@
         <section class="page privacy-page-new" id="privacy" data-page="8">
             <div class="content">
                 <div class="small-logo-container">
-                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
+                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
                 </div>
 
                 <!-- ══════ HERO — The Chain ══════ -->
@@ -13313,7 +13320,7 @@
 
             <div class="content">
                 <div class="small-logo-container">
-                    <div class="mini-consciousness" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="mini-consciousness-canvas"></canvas></div>
+                    <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
                 </div>
 
                 <!-- ══════ HERO ══════ -->
@@ -13890,7 +13897,7 @@
                 });
             });
 
-            const smallLogos = document.querySelectorAll('.small-logo, .mini-consciousness');
+            const smallLogos = document.querySelectorAll('.small-logo, .opus-mark-container');
             smallLogos.forEach(logo => {
                 logo.addEventListener('click', () => {
                     goToPage(0);
@@ -14336,164 +14343,244 @@
     </script>
 
     <!-- ═══════════════════════════════════════════════════════════════════
-         MINI CONSCIOUSNESS — Header Logo Animation
-         Lightweight version for page headers
+         OPUS MARK — LIVING CONSCIOUSNESS (Mini Header Icons)
+         Refined, meditative animation. Breathing. Present. Alive.
          ═══════════════════════════════════════════════════════════════════ -->
     <script>
     (function() {
         'use strict';
 
-        const canvases = document.querySelectorAll('.mini-consciousness-canvas');
-        if (!canvases.length) return;
+        // ═══════════════════════════════════════════════════════════════
+        // THEME COLORS — Same as OPUS MAGNUM
+        // ═══════════════════════════════════════════════════════════════
+        const JADE = { r: 79, g: 209, b: 197 };      // #4FD1C5
+        const GOLD = { r: 244, g: 201, b: 93 };      // #F4C95D
+        const WHITE = { r: 232, g: 236, b: 244 };    // #E8ECF4
 
-        // Theme colors
-        const JADE = { r: 79, g: 209, b: 197 };
-        const GOLD = { r: 244, g: 201, b: 93 };
-        const WHITE = { r: 232, g: 236, b: 244 };
+        // ═══════════════════════════════════════════════════════════════
+        // CONFIGURATION — Refined, Meditative
+        // ═══════════════════════════════════════════════════════════════
+        const CONFIG = {
+            // Rotation — extremely slow, almost imperceptible
+            outerRotationSpeed: 0.0002,   // radians per frame
+            innerRotationSpeed: -0.00015, // counter-rotate
 
-        // Simplified Perlin noise
-        class MiniPerlin {
-            constructor() {
-                this.p = [];
-                for (let i = 0; i < 512; i++) this.p[i] = Math.floor(Math.random() * 256);
-            }
-            noise(x, y) {
-                const xi = Math.floor(x) & 255;
-                const yi = Math.floor(y) & 255;
-                return (Math.sin(xi * 12.9898 + yi * 78.233 + x * 0.1 + y * 0.1) * 43758.5453) % 1;
-            }
-        }
-
-        const perlin = new MiniPerlin();
-
-        // Animation state for each canvas
-        const states = new Map();
-
-        function initCanvas(canvas) {
-            const ctx = canvas.getContext('2d');
-            const container = canvas.parentElement;
-            const rect = container.getBoundingClientRect();
-            const dpr = window.devicePixelRatio || 1;
-
-            canvas.width = rect.width * dpr;
-            canvas.height = rect.height * dpr;
-            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-            const size = Math.min(rect.width, rect.height);
-            const cx = rect.width / 2;
-            const cy = rect.height / 2;
-            const baseRadius = size * 0.38;
-
-            // Create particles (simplified - just 2 orbital rings)
-            const particles = [];
-            for (let ring = 0; ring < 2; ring++) {
-                const ringRadius = baseRadius * (0.5 + ring * 0.35);
-                const count = 8 + ring * 4;
-                for (let i = 0; i < count; i++) {
-                    particles.push({
-                        angle: (Math.PI * 2 * i) / count,
-                        radius: ringRadius,
-                        speed: (0.008 + ring * 0.004) * (Math.random() > 0.5 ? 1 : -1),
-                        size: 1.2 + Math.random() * 0.8,
-                        color: Math.random() > 0.3 ? JADE : GOLD,
-                        alpha: 0.5 + Math.random() * 0.3,
-                        offset: Math.random() * 1000
-                    });
-                }
-            }
-
-            states.set(canvas, {
-                ctx, particles, cx, cy, baseRadius,
-                width: rect.width, height: rect.height,
-                time: Math.random() * 100
-            });
-        }
-
-        function renderCanvas(canvas) {
-            const state = states.get(canvas);
-            if (!state) return;
-
-            const { ctx, particles, cx, cy, baseRadius, width, height } = state;
-
-            // Clear
-            ctx.clearRect(0, 0, width, height);
-
-            // Core glow
-            const coreRadius = baseRadius * 0.2;
-            const coreGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, coreRadius * 2);
-            coreGrad.addColorStop(0, `rgba(${WHITE.r}, ${WHITE.g}, ${WHITE.b}, 0.8)`);
-            coreGrad.addColorStop(0.3, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0.4)`);
-            coreGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-            ctx.fillStyle = coreGrad;
-            ctx.beginPath();
-            ctx.arc(cx, cy, coreRadius * 2, 0, Math.PI * 2);
-            ctx.fill();
-
-            // Core center
-            ctx.fillStyle = `rgba(${WHITE.r}, ${WHITE.g}, ${WHITE.b}, 0.9)`;
-            ctx.beginPath();
-            ctx.arc(cx, cy, coreRadius * 0.4, 0, Math.PI * 2);
-            ctx.fill();
+            // Breathing — like MacBook sleep light (4 second cycle)
+            breatheCycle: 4000, // ms for full breath
+            breatheMin: 0.4,    // minimum core opacity
+            breatheMax: 0.9,    // maximum core opacity
 
             // Particles
-            particles.forEach(p => {
-                const noise = perlin.noise(state.time * 0.3 + p.offset, p.angle);
-                const currentAngle = p.angle + state.time * p.speed;
-                const radiusWobble = 1 + noise * 0.1;
+            outerParticles: 4,  // jade particles on outer ring
+            innerParticles: 4,  // gold particles on inner ring
 
-                const x = cx + Math.cos(currentAngle) * p.radius * radiusWobble;
-                const y = cy + Math.sin(currentAngle) * p.radius * radiusWobble;
+            // Sizes (relative to canvas size)
+            outerRingRadius: 0.38,
+            innerRingRadius: 0.22,
+            coreRadius: 0.12,
+            coreCenterRadius: 0.05,
+            outerParticleSize: 0.045,
+            innerParticleSize: 0.035,
 
-                const pulse = Math.sin(state.time * 2 + p.offset) * 0.2 + 0.8;
+            // Glow
+            coreGlowSize: 0.18,
+            ringOpacity: 0.15
+        };
 
-                ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.alpha * pulse})`;
-                ctx.beginPath();
-                ctx.arc(x, y, p.size, 0, Math.PI * 2);
-                ctx.fill();
-            });
+        // ═══════════════════════════════════════════════════════════════
+        // ANIMATION STATE
+        // ═══════════════════════════════════════════════════════════════
+        let instances = [];
+        let time = 0;
+        let animationId = null;
 
-            state.time += 0.016;
-        }
-
-        // Initialize all canvases
-        canvases.forEach(initCanvas);
-
-        // Animation loop - only animate visible canvases
-        let activePageIndex = 0;
-
-        function getActivePageIndex() {
-            const activePage = document.querySelector('.page.active');
-            if (activePage) {
-                return parseInt(activePage.getAttribute('data-page') || '0');
-            }
-            return 0;
-        }
-
-        function animate() {
-            activePageIndex = getActivePageIndex();
+        // ═══════════════════════════════════════════════════════════════
+        // INITIALIZE ALL CANVASES
+        // ═══════════════════════════════════════════════════════════════
+        function init() {
+            const canvases = document.querySelectorAll('.opus-mark-canvas');
+            instances = [];
 
             canvases.forEach((canvas, index) => {
-                // Find which page this canvas belongs to
-                const page = canvas.closest('.page');
-                if (!page) return;
+                const ctx = canvas.getContext('2d');
+                const container = canvas.parentElement;
+                const page = container.closest('.page');
 
-                const pageIndex = parseInt(page.getAttribute('data-page') || '0');
+                // Get page index
+                let pageIndex = -1;
+                if (page) {
+                    pageIndex = parseInt(page.getAttribute('data-page') || '-1');
+                }
 
-                // Only render if this is the active page (and not home page which has main animation)
-                if (pageIndex === activePageIndex && pageIndex !== 0) {
-                    renderCanvas(canvas);
+                instances.push({
+                    canvas,
+                    ctx,
+                    container,
+                    pageIndex,
+                    outerAngle: 0,
+                    innerAngle: Math.PI / 4 // offset for visual interest
+                });
+
+                resize(instances[instances.length - 1]);
+            });
+
+            if (instances.length > 0 && !animationId) {
+                animate();
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // RESIZE HANDLER
+        // ═══════════════════════════════════════════════════════════════
+        function resize(instance) {
+            const rect = instance.container.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            const size = Math.max(rect.width, rect.height);
+
+            instance.canvas.width = size * dpr;
+            instance.canvas.height = size * dpr;
+            instance.canvas.style.width = size + 'px';
+            instance.canvas.style.height = size + 'px';
+            instance.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            instance.size = size;
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // RENDER SINGLE INSTANCE
+        // ═══════════════════════════════════════════════════════════════
+        function render(instance, breathePhase) {
+            const { ctx, size, outerAngle, innerAngle } = instance;
+            const cx = size / 2;
+            const cy = size / 2;
+
+            // Clear
+            ctx.clearRect(0, 0, size, size);
+
+            // Calculate breathing opacity (sine wave)
+            const breatheT = (Math.sin(breathePhase) + 1) / 2;
+            const breatheOpacity = CONFIG.breatheMin + breatheT * (CONFIG.breatheMax - CONFIG.breatheMin);
+
+            // ══════ SUBTLE ORBITAL RING ══════
+            ctx.strokeStyle = `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, ${CONFIG.ringOpacity})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.arc(cx, cy, size * CONFIG.outerRingRadius, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // ══════ OUTER PARTICLES (JADE) ══════
+            const outerRadius = size * CONFIG.outerRingRadius;
+            const outerSize = size * CONFIG.outerParticleSize;
+
+            for (let i = 0; i < CONFIG.outerParticles; i++) {
+                const angle = outerAngle + (Math.PI * 2 * i) / CONFIG.outerParticles;
+                const x = cx + Math.cos(angle) * outerRadius;
+                const y = cy + Math.sin(angle) * outerRadius;
+
+                // Subtle glow
+                const gradient = ctx.createRadialGradient(x, y, 0, x, y, outerSize * 2);
+                gradient.addColorStop(0, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0.8)`);
+                gradient.addColorStop(0.5, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0.2)`);
+                gradient.addColorStop(1, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0)`);
+
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(x, y, outerSize * 2, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Core of particle
+                ctx.fillStyle = `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0.9)`;
+                ctx.beginPath();
+                ctx.arc(x, y, outerSize, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // ══════ INNER PARTICLES (GOLD) ══════
+            const innerRadius = size * CONFIG.innerRingRadius;
+            const innerSize = size * CONFIG.innerParticleSize;
+
+            for (let i = 0; i < CONFIG.innerParticles; i++) {
+                const angle = innerAngle + (Math.PI * 2 * i) / CONFIG.innerParticles;
+                const x = cx + Math.cos(angle) * innerRadius;
+                const y = cy + Math.sin(angle) * innerRadius;
+
+                // Subtle glow
+                const gradient = ctx.createRadialGradient(x, y, 0, x, y, innerSize * 2);
+                gradient.addColorStop(0, `rgba(${GOLD.r}, ${GOLD.g}, ${GOLD.b}, 0.85)`);
+                gradient.addColorStop(0.5, `rgba(${GOLD.r}, ${GOLD.g}, ${GOLD.b}, 0.2)`);
+                gradient.addColorStop(1, `rgba(${GOLD.r}, ${GOLD.g}, ${GOLD.b}, 0)`);
+
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(x, y, innerSize * 2, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Core of particle
+                ctx.fillStyle = `rgba(${GOLD.r}, ${GOLD.g}, ${GOLD.b}, 0.9)`;
+                ctx.beginPath();
+                ctx.arc(x, y, innerSize, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // ══════ CORE GLOW — BREATHING ══════
+            const coreGlowRadius = size * CONFIG.coreGlowSize;
+            const coreGlow = ctx.createRadialGradient(cx, cy, 0, cx, cy, coreGlowRadius);
+            coreGlow.addColorStop(0, `rgba(${WHITE.r}, ${WHITE.g}, ${WHITE.b}, ${breatheOpacity})`);
+            coreGlow.addColorStop(0.4, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, ${breatheOpacity * 0.5})`);
+            coreGlow.addColorStop(1, `rgba(${JADE.r}, ${JADE.g}, ${JADE.b}, 0)`);
+
+            ctx.fillStyle = coreGlow;
+            ctx.beginPath();
+            ctx.arc(cx, cy, coreGlowRadius, 0, Math.PI * 2);
+            ctx.fill();
+
+            // ══════ CORE CENTER — WHITE ══════
+            const coreCenterRadius = size * CONFIG.coreCenterRadius;
+            ctx.fillStyle = `rgba(${WHITE.r}, ${WHITE.g}, ${WHITE.b}, ${0.8 + breatheT * 0.2})`;
+            ctx.beginPath();
+            ctx.arc(cx, cy, coreCenterRadius, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // ANIMATION LOOP — Performance Optimized
+        // ═══════════════════════════════════════════════════════════════
+        function animate() {
+            time += 16; // ~60fps
+            const breathePhase = (time / CONFIG.breatheCycle) * Math.PI * 2;
+
+            // Get current active page
+            const activePage = document.querySelector('.page.active');
+            const activePageIndex = activePage ? parseInt(activePage.getAttribute('data-page') || '-1') : -1;
+
+            instances.forEach(instance => {
+                // Only animate visible instances (on active page or page 0 for home)
+                // All opus marks should be visible when their page is active
+                if (instance.pageIndex === activePageIndex || instance.pageIndex === -1) {
+                    // Update rotation angles
+                    instance.outerAngle += CONFIG.outerRotationSpeed;
+                    instance.innerAngle += CONFIG.innerRotationSpeed;
+
+                    // Render
+                    render(instance, breathePhase);
                 }
             });
 
-            requestAnimationFrame(animate);
+            animationId = requestAnimationFrame(animate);
         }
 
-        animate();
-
-        // Reinitialize on resize
+        // ═══════════════════════════════════════════════════════════════
+        // EVENT LISTENERS
+        // ═══════════════════════════════════════════════════════════════
         window.addEventListener('resize', () => {
-            canvases.forEach(initCanvas);
+            instances.forEach(resize);
         });
+
+        // Initialize when DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
 
     })();
     </script>
