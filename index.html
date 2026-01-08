@@ -224,7 +224,61 @@
         /* ═══════════════════════════════════════════════════════ */
         /* HOME PAGE — MASTERPIECE EDITION */
         /* ═══════════════════════════════════════════════════════ */
-        
+
+        /* ══════ FLOATING ORBS — CONSCIOUSNESS ══════ */
+        .home-orbs {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .home-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.07;
+            animation: orbFloat 60s ease-in-out infinite;
+        }
+
+        .home-orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--jade) 0%, transparent 70%);
+            top: -20%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+
+        .home-orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #4FD1C5 0%, transparent 70%);
+            bottom: -25%;
+            right: -15%;
+            animation-delay: -20s;
+            animation-duration: 75s;
+        }
+
+        .home-orb-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #F4C95D 0%, transparent 70%);
+            top: 40%;
+            right: 10%;
+            opacity: 0.04;
+            animation-delay: -40s;
+            animation-duration: 90s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -20px) scale(1.05); }
+            50% { transform: translate(-20px, 30px) scale(0.95); }
+            75% { transform: translate(-30px, -10px) scale(1.02); }
+        }
+
         .home-container {
             display: flex;
             flex-direction: column;
@@ -237,56 +291,77 @@
             position: relative;
             z-index: 1;
         }
-        
-        /* ══════ LOGO ══════ */
+
+        /* ══════ LOGO — BREATHING ══════ */
         .home-logo-area {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        
+
         .home-logo-svg {
             width: 90px;
             height: 90px;
             color: var(--text);
             opacity: 0.9;
+            animation: logoBreathe 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 0px transparent);
+            transition: all 0.5s ease;
         }
-        
+
+        .home-logo-svg:hover {
+            filter: drop-shadow(0 0 30px rgba(79, 209, 197, 0.5));
+            transform: scale(1.05);
+        }
+
+        @keyframes logoBreathe {
+            0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 10px rgba(79, 209, 197, 0.1));
+            }
+            50% {
+                transform: scale(1.02);
+                filter: drop-shadow(0 0 25px rgba(79, 209, 197, 0.25));
+            }
+        }
+
         .home-logo-svg path {
             fill: currentColor;
         }
         
-        /* ══════ MANIFESTO ══════ */
+        /* ══════ MANIFESTO — STAGGERED REVEAL ══════ */
         .home-manifesto {
             display: flex;
             justify-content: center;
             width: 100%;
         }
-        
+
         .manifesto-lines {
             font-family: var(--font-mono);
             font-size: clamp(1rem, 2.5vw, 1.2rem);
             line-height: 1.8;
             letter-spacing: 0.01em;
         }
-        
+
         .manifesto-line {
             display: block;
             margin: 0;
             padding: 0;
+            opacity: var(--line-opacity, 0.9);
         }
-        
+
         .manifesto-line.dim {
-            opacity: 0.5;
+            --line-opacity: 0.5;
         }
-        
+
         .manifesto-line.bright {
-            opacity: 0.9;
+            --line-opacity: 0.9;
         }
-        
+
         .manifesto-line em {
             font-style: normal;
             color: var(--accent);
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
         }
         
         /* ══════ TAGLINE ══════ */
@@ -351,13 +426,13 @@
             opacity: 0.8;
             color: var(--accent);
         }
-        
+
         .nav-item:hover .nav-name {
             opacity: 1;
             color: var(--accent);
             transform: translateX(0.5rem);
         }
-        
+
         /* ══════ RESPONSIVE ══════ */
         @media (max-width: 600px) {
             .home-container {
@@ -3248,7 +3323,38 @@
         .contrast-terminal.active {
             background: rgba(var(--jade-rgb), 0.05);
         }
-        
+
+        .contrast-terminal.empty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.3;
+        }
+
+        .contrast-log {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 1rem;
+            background: rgba(var(--jade-rgb), 0.05);
+            min-height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .log-line {
+            line-height: 1.8;
+            color: var(--text-secondary);
+            padding-left: 0.5rem;
+            border-left: 1px solid rgba(var(--jade-rgb), 0.2);
+            margin-bottom: 0.25rem;
+        }
+
+        .log-line::before {
+            content: "✓";
+            color: var(--jade);
+            margin-right: 0.5rem;
+            font-size: 0.65rem;
+        }
+
         .term-line {
             line-height: 1.8;
         }
@@ -3567,9 +3673,47 @@
             font-weight: 500;
         }
 
+        .solution-problem {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .problem-label {
+            opacity: 0.4;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .problem-text {
+            opacity: 0.5;
+            font-style: italic;
+        }
+
+        .solution-solved {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .solved-label {
+            opacity: 0.6;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--product-accent);
+        }
+
+        .solved-text {
+            color: var(--product-accent);
+            font-weight: 500;
+        }
+
         .solution-how {
             font-size: 0.8rem;
-            opacity: 0.65;
+            opacity: 0.8;
             line-height: 1.6;
             padding-top: 0.75rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -10596,6 +10740,14 @@
     <main class="book" role="main" id="main-content">
         <section class="page active" id="home" data-page="0">
             <h1 class="visually-hidden">ODEI — The Human API Company</h1>
+
+            <!-- Floating Ambient Orbs -->
+            <div class="home-orbs">
+                <div class="home-orb home-orb-1"></div>
+                <div class="home-orb home-orb-2"></div>
+                <div class="home-orb home-orb-3"></div>
+            </div>
+
             <div class="content">
                 <div class="home-container">
 
@@ -11124,54 +11276,53 @@
                 <div class="product-hero">
                     <div class="hero-badge">PRODUCT</div>
                     <h2 class="hero-title">
-                        <span class="hero-line-1">From tool</span>
-                        <span class="hero-line-2">to partner.</span>
+                        <span class="hero-line-1">The governance layer</span>
+                        <span class="hero-line-2">for personal AI.</span>
                     </h2>
-                    <p class="hero-subtitle">Other AIs forget. ODEI remembers.<br>Your context. Your goals. Your rules.</p>
+                    <p class="hero-subtitle">Policy-controlled actions. Persistent context. Auditable outcomes.</p>
                 </div>
 
                 <!-- CONTRAST: Assistant vs System -->
                 <div class="contrast-section">
                     <div class="contrast-container">
-                        <!-- Left: Dead Assistant -->
+                        <!-- Left: Typical Assistant -->
                         <div class="contrast-side dead">
                             <div class="contrast-header">
                                 <span class="contrast-icon">○</span>
-                                <span class="contrast-label">Typical Assistant</span>
+                                <span class="contrast-label">TYPICAL ASSISTANT</span>
                             </div>
-                            <div class="contrast-terminal">
-                                <div class="term-line"><span class="term-prompt">&gt;</span> <span class="term-cursor">▋</span></div>
-                                <div class="term-status">Waiting for input...</div>
-                            </div>
+                            <div class="contrast-terminal empty"></div>
                             <div class="contrast-traits">
-                                <span class="trait negative">Reactive</span>
-                                <span class="trait negative">Stateless</span>
-                                <span class="trait negative">Generic</span>
+                                <span class="trait negative">PROMPT-DRIVEN</span>
+                                <span class="trait negative">SESSION-BASED CONTEXT</span>
+                                <span class="trait negative">SUGGESTS TEXT, NOT OUTCOMES</span>
                             </div>
                         </div>
 
                         <!-- Center Arrow -->
                         <div class="contrast-arrow">
                             <div class="arrow-line"></div>
-                            <div class="arrow-text">ODEI</div>
+                            <div class="arrow-text">→</div>
                             <div class="arrow-line"></div>
                         </div>
 
-                        <!-- Right: Live ODEI -->
+                        <!-- Right: ODEI System -->
                         <div class="contrast-side live">
                             <div class="contrast-header">
                                 <span class="contrast-icon pulse">●</span>
-                                <span class="contrast-label">ODEI System</span>
+                                <span class="contrast-label">ODEI SYSTEM</span>
                             </div>
                             <div class="contrast-terminal active">
-                                <div class="term-line"><span class="term-time">09:14</span> <span class="term-alert">→</span> Design review needs rescheduling</div>
-                                <div class="term-line"><span class="term-time">09:14</span> <span class="term-action">⚡</span> Checking Alex's calendar...</div>
-                                <div class="term-line"><span class="term-time">09:15</span> <span class="term-ok">✓</span> Sent invite for Thursday 2pm</div>
+                                <div class="term-line"><span class="term-ok">✓</span> Checked calendar</div>
+                                <div class="term-line"><span class="term-ok">✓</span> Proposed reschedule</div>
+                                <div class="term-line"><span class="term-ok">✓</span> Requested approval</div>
+                                <div class="term-line"><span class="term-ok">✓</span> Sent invite</div>
+                                <div class="term-line"><span class="term-ok">✓</span> Logged receipt</div>
                             </div>
                             <div class="contrast-traits">
-                                <span class="trait positive">Proactive</span>
-                                <span class="trait positive">Persistent</span>
-                                <span class="trait positive">Personal</span>
+                                <span class="trait positive">EVENT-DRIVEN</span>
+                                <span class="trait positive">PERSISTENT STATE AND MEMORY</span>
+                                <span class="trait positive">EXECUTES WITH VERIFICATION</span>
                             </div>
                         </div>
                     </div>
@@ -11182,7 +11333,7 @@
                     <div class="loop-header">
                         <span class="loop-label">THE GOVERNANCE LOOP</span>
                         <h3 class="loop-title">Observe. Decide. Act. Verify. Learn.</h3>
-                        <p class="loop-subtitle">Not a task loop — a life loop. Continuous. Autonomous.</p>
+                        <p class="loop-subtitle">Outcome governance for personal workflows. Policy-bound. Measurable. Reviewable.</p>
                     </div>
 
                     <div class="loop-visual">
@@ -11264,75 +11415,87 @@
                 <!-- 6 SOLUTIONS: Closing the Gap -->
                 <div class="solutions-section">
                     <div class="solutions-header">
-                        <span class="solutions-label">HOW ODEI CLOSES THE GAP</span>
-                        <h3 class="solutions-title">Six problems. Six solutions.</h3>
+                        <span class="solutions-label">SIX PROBLEMS SOLVED</span>
+                        <h3 class="solutions-title">What ODEI addresses.</h3>
                     </div>
 
                     <div class="solutions-grid">
                         <!-- 01: Initiative -->
                         <div class="solution-card">
                             <div class="solution-num">01 INITIATIVE</div>
-                            <div class="solution-gap">
-                                <span class="solution-from">Waits for prompt</span>
-                                <span class="solution-arrow">→</span>
-                                <span class="solution-to">Initiates when it matters</span>
+                            <div class="solution-problem">
+                                <span class="problem-label">Problem:</span>
+                                <span class="problem-text">AI waits for prompts</span>
                             </div>
-                            <div class="solution-how">Commander agent monitors your calendar, health, and goals. Pings you before you think to ask.</div>
+                            <div class="solution-solved">
+                                <span class="solved-label">Solved:</span>
+                                <span class="solved-text">Goal-triggered actions (within policy)</span>
+                            </div>
                         </div>
 
                         <!-- 02: Transparency -->
                         <div class="solution-card">
                             <div class="solution-num">02 TRANSPARENCY</div>
-                            <div class="solution-gap">
-                                <span class="solution-from">Black box</span>
-                                <span class="solution-arrow">→</span>
-                                <span class="solution-to">Fully explainable</span>
+                            <div class="solution-problem">
+                                <span class="problem-label">Problem:</span>
+                                <span class="problem-text">Black box decisions</span>
                             </div>
-                            <div class="solution-how">Every action generates a receipt: WHY (goal) → CONTEXT (memory) → POLICY (rule) → ACTION (what happened).</div>
+                            <div class="solution-solved">
+                                <span class="solved-label">Solved:</span>
+                                <span class="solved-text">Intent + Context + Policy → Action (auditable)</span>
+                            </div>
                         </div>
 
                         <!-- 03: Execution -->
                         <div class="solution-card">
                             <div class="solution-num">03 EXECUTION</div>
-                            <div class="solution-gap">
-                                <span class="solution-from">Generates text</span>
-                                <span class="solution-arrow">→</span>
-                                <span class="solution-to">Executes outcomes</span>
+                            <div class="solution-problem">
+                                <span class="problem-label">Problem:</span>
+                                <span class="problem-text">Text suggestions only</span>
                             </div>
-                            <div class="solution-how">Specialized agents (Discuss, Plan, Execute) act on your behalf. Results, not drafts.</div>
+                            <div class="solution-solved">
+                                <span class="solved-label">Solved:</span>
+                                <span class="solved-text">Outcome execution with verification</span>
+                            </div>
                         </div>
 
                         <!-- 04: Adaptation -->
                         <div class="solution-card">
                             <div class="solution-num">04 ADAPTATION</div>
-                            <div class="solution-gap">
-                                <span class="solution-from">Static responses</span>
-                                <span class="solution-arrow">→</span>
-                                <span class="solution-to">Continuous co-evolution</span>
+                            <div class="solution-problem">
+                                <span class="problem-label">Problem:</span>
+                                <span class="problem-text">Static configuration</span>
                             </div>
-                            <div class="solution-how">Policies are versioned. Each feedback loop updates rules. The system learns your preferences.</div>
+                            <div class="solution-solved">
+                                <span class="solved-label">Solved:</span>
+                                <span class="solved-text">Versioned policies with feedback loops</span>
+                            </div>
                         </div>
 
                         <!-- 05: Control -->
                         <div class="solution-card">
                             <div class="solution-num">05 CONTROL</div>
-                            <div class="solution-gap">
-                                <span class="solution-from">Their platform</span>
-                                <span class="solution-arrow">→</span>
-                                <span class="solution-to">Your system</span>
+                            <div class="solution-problem">
+                                <span class="problem-label">Problem:</span>
+                                <span class="problem-text">Platform lock-in</span>
                             </div>
-                            <div class="solution-how">Local-first. Your data stays on your machine. Authority levels you control. Export anytime.</div>
+                            <div class="solution-solved">
+                                <span class="solved-label">Solved:</span>
+                                <span class="solved-text">Local-first, exportable, authority tiers</span>
+                            </div>
                         </div>
 
                         <!-- 06: Continuity -->
                         <div class="solution-card">
                             <div class="solution-num">06 CONTINUITY</div>
-                            <div class="solution-gap">
-                                <span class="solution-from">Forgets everything</span>
-                                <span class="solution-arrow">→</span>
-                                <span class="solution-to">Remembers what matters</span>
+                            <div class="solution-problem">
+                                <span class="problem-label">Problem:</span>
+                                <span class="problem-text">Session amnesia</span>
                             </div>
-                            <div class="solution-how">Constitutional Memory persists goals, context, and history. Drift detection alerts when you're off track.</div>
+                            <div class="solution-solved">
+                                <span class="solved-label">Solved:</span>
+                                <span class="solved-text">Constitutional Memory with drift detection</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -11340,14 +11503,14 @@
                 <!-- PROOF: The Receipt -->
                 <div class="proof-section">
                     <div class="proof-header">
-                        <span class="proof-label">PROOF</span>
-                        <h3 class="proof-title">Receipts, not vibes.</h3>
+                        <span class="proof-label">AUDITABILITY</span>
+                        <h3 class="proof-title">Every action is reviewable.</h3>
                     </div>
 
                     <div class="proof-demo">
                         <div class="demo-task proactive">
-                            <span class="task-prompt">Proactive Alert:</span>
-                            <span class="task-text">"Your goal 'Ship ODEI' has 3 unresolved blockers. Priority drift detected."</span>
+                            <span class="task-prompt">Action triggered:</span>
+                            <span class="task-text">Goal drift detected → Priority alert sent</span>
                         </div>
 
                         <div class="demo-terminal">
@@ -11359,33 +11522,33 @@
                             </div>
                             <div class="terminal-body">
                                 <div class="term-row">
-                                    <span class="term-key">WHY</span>
-                                    <span class="term-val">Goal "Ship ODEI" + 3 blockers unresolved</span>
+                                    <span class="term-key">INTENT</span>
+                                    <span class="term-val">Notify user of goal drift</span>
                                 </div>
                                 <div class="term-row">
                                     <span class="term-key">CONTEXT</span>
-                                    <span class="term-val">Calendar (2 meetings) · Health (HRV 19) · Memory (last session 17d ago)</span>
+                                    <span class="term-val">Goal "Ship ODEI" · 3 blockers · Last session 17d ago</span>
                                 </div>
                                 <div class="term-row highlight">
                                     <span class="term-key">POLICY</span>
-                                    <span class="term-val">"Alert if goal drift > 3 days" <span class="term-version">v14</span></span>
+                                    <span class="term-val">Alert if goal drift > 3 days <span class="term-version">v14</span></span>
                                 </div>
                                 <div class="term-row">
                                     <span class="term-key">ACTION</span>
-                                    <span class="term-val">Pinged user with priority alert <span class="term-success">✓</span></span>
+                                    <span class="term-val">Priority alert sent <span class="term-success">✓</span></span>
                                 </div>
                                 <div class="term-row">
-                                    <span class="term-key">RESULT</span>
-                                    <span class="term-val">User approved re-prioritization <span class="term-success">✓</span></span>
+                                    <span class="term-key">APPROVAL</span>
+                                    <span class="term-val">User confirmed re-prioritization</span>
                                 </div>
                                 <div class="term-row">
-                                    <span class="term-key">SIGNED</span>
-                                    <span class="term-val mono">sha256:7f3a9c...e2b1</span>
+                                    <span class="term-key">ROLLBACK</span>
+                                    <span class="term-val">Available</span>
                                 </div>
                             </div>
                         </div>
 
-                        <p class="demo-note">Every action — proactive or requested — produces a cryptographically signed receipt. Full provenance. Full control.</p>
+                        <p class="demo-note">Receipts are designed to be tamper-evident and exportable. Intent, context, policy, action, result — all reviewable.</p>
                     </div>
                 </div>
 
@@ -11393,20 +11556,25 @@
                 <div class="authority-section-new">
                     <div class="authority-header">
                         <span class="authority-label">AUTHORITY</span>
-                        <h3 class="authority-title">You set the boundaries.</h3>
+                        <h3 class="authority-title">Set permission tiers per workflow.</h3>
                     </div>
-                    
+
                     <div class="authority-spectrum">
                         <div class="spectrum-track">
                             <div class="spectrum-fill"></div>
-                            <div class="spectrum-marker" style="left: 60%"></div>
+                            <div class="spectrum-marker" style="left: 70%"></div>
                         </div>
-                        
+
                         <div class="spectrum-levels">
                             <div class="level-item">
                                 <div class="level-indicator"></div>
-                                <span class="level-name">Inform</span>
-                                <span class="level-desc">Suggest only</span>
+                                <span class="level-name">Observe</span>
+                                <span class="level-desc">Log activity only</span>
+                            </div>
+                            <div class="level-item">
+                                <div class="level-indicator"></div>
+                                <span class="level-name">Suggest</span>
+                                <span class="level-desc">Recommendations only</span>
                             </div>
                             <div class="level-item">
                                 <div class="level-indicator"></div>
@@ -11421,68 +11589,65 @@
                             <div class="level-item">
                                 <div class="level-indicator"></div>
                                 <span class="level-name">Autonomous</span>
-                                <span class="level-desc">Act within bounds</span>
+                                <span class="level-desc">Act within policy</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <p class="authority-note">Different tasks, different trust levels. You control the dial.</p>
+
+                    <p class="authority-note">Different workflows require different risk profiles.</p>
                 </div>
 
                 <!-- GATE: Symbiosis Threshold -->
                 <div class="gate-section">
                     <div class="gate-header">
                         <span class="gate-badge">THE GATE</span>
-                        <h3 class="gate-title">We ship only when you're stronger with ODEI than without it.</h3>
+                        <h3 class="gate-title">Automation ships only when performance improves.</h3>
                     </div>
-                    
+
                     <div class="gate-formula-display">
                         <div class="formula-container">
                             <span class="formula-symbol">σ</span>
                             <span class="formula-equals">=</span>
-                            <span class="formula-expression">P<sub>(h+ai)</sub> − max(P<sub>h</sub>, P<sub>ai</sub>)</span>
+                            <span class="formula-expression">P<sub>(h+ODEI)</sub> − max(P<sub>h</sub>, P<sub>AI</sub>)</span>
                         </div>
-                        
+
                         <div class="formula-legend">
                             <div class="legend-item">
                                 <span class="legend-var">P<sub>h</sub></span>
                                 <span class="legend-def">Human alone</span>
                             </div>
                             <div class="legend-item">
-                                <span class="legend-var">P<sub>ai</sub></span>
+                                <span class="legend-var">P<sub>AI</sub></span>
                                 <span class="legend-def">AI alone</span>
                             </div>
                             <div class="legend-item">
-                                <span class="legend-var">P<sub>(h+ai)</sub></span>
+                                <span class="legend-var">P<sub>(h+ODEI)</sub></span>
                                 <span class="legend-def">Human + ODEI</span>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="gate-outcomes-row">
                         <div class="outcome-card positive">
                             <div class="outcome-symbol">σ &gt; 0</div>
-                            <div class="outcome-name">Symbiosis</div>
                             <div class="outcome-action">Ship</div>
                         </div>
                         <div class="outcome-card neutral">
                             <div class="outcome-symbol">σ = 0</div>
-                            <div class="outcome-name">Automation</div>
-                            <div class="outcome-action">Skip</div>
+                            <div class="outcome-action">Keep manual</div>
                         </div>
                         <div class="outcome-card negative">
                             <div class="outcome-symbol">σ &lt; 0</div>
-                            <div class="outcome-name">Degradation</div>
                             <div class="outcome-action">Block</div>
                         </div>
                     </div>
-                    
+
                     <div class="gate-metrics">
                         <span class="metric-label">Measured by:</span>
                         <div class="metric-tags">
-                            <span class="metric-tag">time to outcome</span>
+                            <span class="metric-tag">time-to-outcome</span>
                             <span class="metric-tag">error rate</span>
-                            <span class="metric-tag">retry count</span>
+                            <span class="metric-tag">retries</span>
                             <span class="metric-tag">cognitive load</span>
                         </div>
                     </div>
@@ -11492,7 +11657,7 @@
                 <div class="stack-section">
                     <div class="stack-header">
                         <span class="stack-label">THE ARCHITECTURE</span>
-                        <h3 class="stack-title">How the layers connect.</h3>
+                        <h3 class="stack-title">Four primitives that connect the system.</h3>
                     </div>
 
                     <div class="architecture-flow">
@@ -11501,25 +11666,23 @@
                                 <span class="arch-layer-num">01</span>
                                 <span class="arch-layer-name">Constitutional Memory</span>
                             </div>
-                            <div class="arch-layer-desc">Your goals, values, boundaries — persistent across sessions</div>
+                            <div class="arch-layer-desc">Goals, constraints, and history with provenance.</div>
                         </div>
 
                         <div class="arch-layer">
                             <div class="arch-layer-header">
                                 <span class="arch-layer-num">02</span>
                                 <span class="arch-layer-name">Governance Engine</span>
-                                <span class="arch-layer-sub">Commander</span>
                             </div>
-                            <div class="arch-layer-desc">Observe → Decide → Act → Verify → Learn</div>
+                            <div class="arch-layer-desc">Observe, decide, approve, act, verify, learn.</div>
                         </div>
 
                         <div class="arch-layer">
                             <div class="arch-layer-header">
                                 <span class="arch-layer-num">03</span>
                                 <span class="arch-layer-name">Execution Layer</span>
-                                <span class="arch-layer-sub">Agents</span>
                             </div>
-                            <div class="arch-layer-desc">Discuss · Plan · Execute — specialized for each task</div>
+                            <div class="arch-layer-desc">Tool actions via scoped permissions and workflow policies.</div>
                         </div>
 
                         <div class="arch-layer">
@@ -11527,7 +11690,7 @@
                                 <span class="arch-layer-num">04</span>
                                 <span class="arch-layer-name">Receipts</span>
                             </div>
-                            <div class="arch-layer-desc">WHY → CONTEXT → POLICY → ACTION — full provenance</div>
+                            <div class="arch-layer-desc">Intent, context, policy, action, result. Exportable and reviewable.</div>
                         </div>
                     </div>
                 </div>
