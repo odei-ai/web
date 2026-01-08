@@ -480,13 +480,14 @@
         /* ══════ RESPONSIVE — MOBILE ══════ */
         @media (max-width: 600px) {
             .hero-video {
-                width: 160%;
-                height: 160%;
+                width: 100%;
+                height: 100%;
+                object-fit: contain; /* Show full Möbius */
             }
 
             .home-container {
-                gap: 1.75rem;
-                padding: 1.5rem 1.25rem;
+                gap: 1.5rem;
+                padding: 1.25rem 1rem;
             }
 
             .home-logo-svg {
@@ -560,8 +561,8 @@
         /* ══════ RESPONSIVE — TINY ══════ */
         @media (max-width: 360px) {
             .home-container {
-                padding: 1.25rem 1rem;
-                gap: 1.5rem;
+                padding: 1rem 0.75rem;
+                gap: 1.25rem;
             }
 
             .home-logo-svg {
@@ -570,15 +571,33 @@
             }
 
             .manifesto-lines {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
 
             .tagline-text {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
+            }
+
+            .home-nav {
+                gap: 1rem;
+            }
+
+            .nav-column {
+                gap: 0.2rem;
+            }
+
+            .nav-item {
+                padding: 0.3rem 0;
+                gap: 0.4rem;
+            }
+
+            .nav-num {
+                font-size: 0.55rem;
+                min-width: 16px;
             }
 
             .nav-name {
-                font-size: 0.9rem;
+                font-size: 0.8rem;
             }
         }
         
