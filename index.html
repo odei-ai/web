@@ -635,6 +635,37 @@
             text-shadow: 0 0 20px rgba(255, 123, 123, 0.3);
         }
 
+        /* ══════ THE COST ══════ */
+        .intro-cost {
+            margin: 2rem 0;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .intro-cost p {
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            line-height: 1.8;
+            opacity: 0.7;
+            margin: 0 0 1.5rem 0;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .intro-cost-solution {
+            font-size: clamp(1rem, 2.2vw, 1.15rem) !important;
+            opacity: 0.9 !important;
+            font-weight: 400 !important;
+        }
+
+        .intro-cost-solution em {
+            font-style: normal;
+            color: var(--intro-accent);
+            font-weight: 500;
+            text-shadow: 0 0 25px var(--intro-glow);
+        }
+
         /* ══════ THE VOID — GAP VISUALIZATION ══════ */
         .void-visual {
             position: relative;
@@ -3301,7 +3332,157 @@
             padding: 0.5rem;
             border: 1px solid var(--product-accent);
         }
-        
+
+        /* Mobile: Contrast Section */
+        @media (max-width: 700px) {
+            .contrast-section {
+                margin-bottom: 2rem;
+            }
+            .contrast-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .contrast-arrow {
+                flex-direction: row;
+                padding: 0.5rem 0;
+            }
+            .arrow-line {
+                width: 40px;
+                height: 1px;
+                background: linear-gradient(to right, transparent, var(--product-accent), transparent);
+            }
+            .contrast-side {
+                padding: 1.25rem;
+            }
+            .contrast-terminal {
+                min-height: 60px;
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .contrast-section {
+                margin-bottom: 1rem;
+            }
+            .contrast-terminal {
+                min-height: 50px;
+                font-size: 0.65rem;
+                padding: 0.75rem;
+            }
+            .trait {
+                font-size: 0.55rem;
+                padding: 0.3rem 0.5rem;
+            }
+        }
+
+        /* Product page mobile - push loop higher */
+        @media (max-width: 700px) {
+            .product-page {
+                padding-top: 2.5rem;
+            }
+            .product-page .small-logo-container {
+                margin-bottom: 1rem;
+                padding-top: 0.5rem;
+            }
+            .product-hero {
+                padding: 0 0 1.5rem;
+            }
+            .hero-badge {
+                margin-bottom: 1rem;
+                padding: 0.4rem 1rem;
+            }
+            .hero-title {
+                margin-bottom: 1rem;
+            }
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .product-page {
+                padding-top: 1.5rem;
+            }
+            .product-page .small-logo-container {
+                margin-bottom: 0.75rem;
+                padding-top: 0;
+            }
+            .product-page .small-logo {
+                width: 36px;
+                height: 36px;
+            }
+            .product-hero {
+                padding: 0 0 1rem;
+            }
+            .hero-badge {
+                margin-bottom: 0.75rem;
+                font-size: 0.5rem;
+                padding: 0.35rem 0.8rem;
+            }
+            .hero-title {
+                margin-bottom: 0.75rem;
+                font-size: 1.5rem;
+            }
+            .hero-subtitle {
+                font-size: 0.8rem;
+                line-height: 1.5;
+            }
+            .contrast-section {
+                margin-bottom: 0.75rem;
+            }
+            .contrast-side {
+                padding: 0.75rem;
+            }
+            .contrast-header {
+                margin-bottom: 0.5rem;
+                padding-bottom: 0.4rem;
+            }
+            .contrast-terminal {
+                min-height: 45px;
+                padding: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+            .loop-section {
+                margin: 0.5rem 0;
+                padding: 1rem 0;
+            }
+            .loop-header {
+                margin-bottom: 0.75rem;
+            }
+            .loop-label {
+                font-size: 0.55rem;
+                padding: 0.3rem 0.7rem;
+                margin-bottom: 0.75rem;
+            }
+            .loop-title {
+                font-size: 1.1rem;
+                margin-bottom: 0.3rem;
+            }
+            .loop-subtitle {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .product-page {
+                padding-top: 1rem;
+            }
+            .product-page .small-logo-container {
+                margin-bottom: 0.5rem;
+            }
+            .product-page .small-logo {
+                width: 32px;
+                height: 32px;
+            }
+            .hero-title {
+                font-size: 1.4rem;
+            }
+            .loop-ring-container {
+                width: 280px;
+                height: 280px;
+            }
+        }
+
         /* ══════ 6 SOLUTIONS SECTION ══════ */
         .solutions-section {
             margin-bottom: 4rem;
@@ -3808,13 +3989,20 @@
 
         /* iPhone SE and small phones */
         @media (max-width: 400px) {
+            .loop-section {
+                margin: 1rem 0;
+                padding: 1.5rem 0;
+            }
+            .loop-header {
+                margin-bottom: 1rem;
+            }
             .loop-visual {
                 overflow: visible;
-                padding: 2rem 0;
+                padding: 1rem 0;
             }
             .loop-ring-container {
-                width: 240px;
-                height: 240px;
+                width: 260px;
+                height: 260px;
             }
             .loop-step[data-step="1"] { top: -12%; left: 50%; }
             .loop-step[data-step="2"] { top: 26%; left: 100%; }
@@ -10940,6 +11128,53 @@
                         <span class="hero-line-2">to partner.</span>
                     </h2>
                     <p class="hero-subtitle">Other AIs forget. ODEI remembers.<br>Your context. Your goals. Your rules.</p>
+                </div>
+
+                <!-- CONTRAST: Assistant vs System -->
+                <div class="contrast-section">
+                    <div class="contrast-container">
+                        <!-- Left: Dead Assistant -->
+                        <div class="contrast-side dead">
+                            <div class="contrast-header">
+                                <span class="contrast-icon">○</span>
+                                <span class="contrast-label">Typical Assistant</span>
+                            </div>
+                            <div class="contrast-terminal">
+                                <div class="term-line"><span class="term-prompt">&gt;</span> <span class="term-cursor">▋</span></div>
+                                <div class="term-status">Waiting for input...</div>
+                            </div>
+                            <div class="contrast-traits">
+                                <span class="trait negative">Reactive</span>
+                                <span class="trait negative">Stateless</span>
+                                <span class="trait negative">Generic</span>
+                            </div>
+                        </div>
+
+                        <!-- Center Arrow -->
+                        <div class="contrast-arrow">
+                            <div class="arrow-line"></div>
+                            <div class="arrow-text">ODEI</div>
+                            <div class="arrow-line"></div>
+                        </div>
+
+                        <!-- Right: Live ODEI -->
+                        <div class="contrast-side live">
+                            <div class="contrast-header">
+                                <span class="contrast-icon pulse">●</span>
+                                <span class="contrast-label">ODEI System</span>
+                            </div>
+                            <div class="contrast-terminal active">
+                                <div class="term-line"><span class="term-time">09:14</span> <span class="term-alert">→</span> Design review needs rescheduling</div>
+                                <div class="term-line"><span class="term-time">09:14</span> <span class="term-action">⚡</span> Checking Alex's calendar...</div>
+                                <div class="term-line"><span class="term-time">09:15</span> <span class="term-ok">✓</span> Sent invite for Thursday 2pm</div>
+                            </div>
+                            <div class="contrast-traits">
+                                <span class="trait positive">Proactive</span>
+                                <span class="trait positive">Persistent</span>
+                                <span class="trait positive">Personal</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- THE GOVERNANCE LOOP: Central Differentiator -->
