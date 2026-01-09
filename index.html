@@ -14276,10 +14276,10 @@
                     if (ctaContainer) {
                         ctaContainer.classList.remove('visible');
                     }
-                    // Reset interaction prompt text
+                    // Reset interaction prompt text to original
                     const prompt = interactionContainer?.querySelector('.interaction-prompt');
                     if (prompt) {
-                        prompt.textContent = "> Is that what you're looking for?";
+                        prompt.innerHTML = '> Do you agree? <span class="prompt-cursor">_</span>';
                         prompt.style.color = ''; // Reset color
                     }
 
