@@ -14312,14 +14312,48 @@
                         // Remove old handlers and classes
                         btnYes.classList.remove('pulse', 'selected');
                         btnYes.onclick = () => {
-                            // Switch to screen 2 with value text shown instantly
+                            // Switch to screen 2
                             if (screen1) screen1.classList.add('hidden');
                             if (screen2) screen2.classList.add('visible');
+
+                            // Type the brand, then show value instantly
+                            const brand = "ODEI — Your Personal AI Operating System";
                             if (brandContainer) {
                                 brandContainer.classList.add('visible');
-                                brandContainer.innerHTML = '<span class="brand-statement">ODEI — Your Personal AI Operating System</span>';
-                            }
-                            if (valueContainer) {
+                                const brandSpan = document.createElement('span');
+                                brandSpan.className = 'brand-statement';
+                                const cursor = document.createElement('span');
+                                cursor.className = 'cursor typing-glow';
+                                brandSpan.appendChild(cursor);
+                                brandContainer.innerHTML = '';
+                                brandContainer.appendChild(brandSpan);
+
+                                let brandIdx = 0;
+                                function typeBrandReload() {
+                                    if (brandIdx < brand.length) {
+                                        const char = brand[brandIdx];
+                                        const charSpan = document.createElement('span');
+                                        charSpan.className = 'brand-char';
+                                        charSpan.textContent = char;
+                                        brandSpan.insertBefore(charSpan, cursor);
+                                        brandIdx++;
+                                        // Typing delay with variance
+                                        const baseDelay = 52;
+                                        const variance = (Math.random() - 0.5) * 24;
+                                        let delay = baseDelay + variance;
+                                        if (char === '—') delay += 260;
+                                        else if (char === ' ') delay += 35;
+                                        setTimeout(typeBrandReload, delay);
+                                    } else {
+                                        cursor.remove();
+                                        if (valueContainer) {
+                                            valueContainer.classList.add('visible');
+                                            valueContainer.querySelector('.value-text').textContent = value;
+                                        }
+                                    }
+                                }
+                                setTimeout(typeBrandReload, 400);
+                            } else if (valueContainer) {
                                 valueContainer.classList.add('visible');
                                 valueContainer.querySelector('.value-text').textContent = value;
                             }
@@ -14456,17 +14490,48 @@
                     if (screen2) {
                         screen2.classList.add('visible');
                     }
-                    // Show brand and value INSTANTLY (no typing animation)
+
+                    // Type the brand, then show value instantly
                     if (brandContainer) {
                         brandContainer.classList.add('visible');
-                        brandContainer.innerHTML = '<span class="brand-statement">' + brand + '</span>';
+                        const brandSpan = document.createElement('span');
+                        brandSpan.className = 'brand-statement';
+                        const cursor = createTypingCursor(true);
+                        brandSpan.appendChild(cursor);
+                        brandContainer.innerHTML = '';
+                        brandContainer.appendChild(brandSpan);
+
+                        let brandIdx = 0;
+                        function typeBrand() {
+                            if (brandIdx < brand.length) {
+                                const char = brand[brandIdx];
+                                const charSpan = document.createElement('span');
+                                charSpan.className = 'brand-char';
+                                charSpan.textContent = char;
+                                brandSpan.insertBefore(charSpan, cursor);
+                                brandIdx++;
+                                setTimeout(typeBrand, getTypingDelay(char, true));
+                            } else {
+                                // Brand typing done — show value INSTANTLY
+                                cursor.remove();
+                                if (valueContainer) {
+                                    valueContainer.classList.add('visible');
+                                    valueContainer.querySelector('.value-text').textContent = value;
+                                }
+                                // Reveal navigation
+                                setTimeout(revealNavigation, 400);
+                            }
+                        }
+                        // Start typing after brief pause
+                        setTimeout(typeBrand, 400);
+                    } else {
+                        // No brand container — just show value
+                        if (valueContainer) {
+                            valueContainer.classList.add('visible');
+                            valueContainer.querySelector('.value-text').textContent = value;
+                        }
+                        setTimeout(revealNavigation, 400);
                     }
-                    if (valueContainer) {
-                        valueContainer.classList.add('visible');
-                        valueContainer.querySelector('.value-text').textContent = value;
-                    }
-                    // Reveal navigation
-                    setTimeout(revealNavigation, 400);
                 }
 
                 function handleNoClick() {
