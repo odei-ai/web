@@ -783,6 +783,175 @@
             }
         }
 
+        /* ══════ MASTERPIECE ANIMATION STYLES ══════ */
+
+        /* Initialization cursor - larger, more prominent glow */
+        .cursor.init {
+            width: 12px;
+            height: 1.4rem;
+            background-color: #FFFFFF;
+            margin-left: 0;
+            box-shadow: 0 0 15px rgba(79, 209, 197, 0.8), 0 0 30px rgba(79, 209, 197, 0.4);
+            animation: initBlink 0.5s steps(1) infinite;
+        }
+
+        @keyframes initBlink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        /* Brand statement - GLOWING reveal */
+        .brand-statement {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-align: center;
+            color: #FFFFFF;
+            text-shadow:
+                0 0 20px rgba(79, 209, 197, 0.6),
+                0 0 40px rgba(79, 209, 197, 0.3),
+                0 0 60px rgba(79, 209, 197, 0.2);
+            animation: brandGlow 2s ease-out;
+        }
+
+        @keyframes brandGlow {
+            0% {
+                text-shadow:
+                    0 0 40px rgba(79, 209, 197, 1),
+                    0 0 80px rgba(79, 209, 197, 0.8),
+                    0 0 120px rgba(79, 209, 197, 0.6);
+                opacity: 0.7;
+            }
+            50% {
+                text-shadow:
+                    0 0 30px rgba(79, 209, 197, 0.8),
+                    0 0 60px rgba(79, 209, 197, 0.5),
+                    0 0 90px rgba(79, 209, 197, 0.3);
+            }
+            100% {
+                text-shadow:
+                    0 0 20px rgba(79, 209, 197, 0.6),
+                    0 0 40px rgba(79, 209, 197, 0.3),
+                    0 0 60px rgba(79, 209, 197, 0.2);
+                opacity: 1;
+            }
+        }
+
+        /* Brand character glow - more intense than regular */
+        .brand-char {
+            display: inline;
+            animation: brandCharAppear 0.4s ease-out;
+        }
+
+        @keyframes brandCharAppear {
+            0% {
+                text-shadow:
+                    0 0 30px rgba(79, 209, 197, 1),
+                    0 0 60px rgba(79, 209, 197, 0.8);
+                opacity: 0.3;
+            }
+            100% {
+                text-shadow: inherit;
+                opacity: 1;
+            }
+        }
+
+        /* Value proposition - medium brightness */
+        .value-text {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            text-align: center;
+            opacity: 0.85;
+            line-height: 1.5;
+        }
+
+        /* Mechanism text - subtle, professional */
+        .mechanism-text {
+            font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            text-align: center;
+            opacity: 0.65;
+            line-height: 1.7;
+        }
+
+        /* Prompt character special styling */
+        .prompt-char {
+            color: rgba(79, 209, 197, 0.8);
+            animation: promptFlash 0.3s ease-out;
+        }
+
+        @keyframes promptFlash {
+            0% {
+                color: rgba(79, 209, 197, 1);
+                text-shadow: 0 0 20px rgba(79, 209, 197, 0.8);
+            }
+            100% {
+                color: rgba(79, 209, 197, 0.8);
+                text-shadow: none;
+            }
+        }
+
+        /* Enhanced cursor glow while typing */
+        .cursor.typing-glow {
+            width: 2px;
+            height: 1.1em;
+            margin-left: 1px;
+            vertical-align: text-bottom;
+            animation: blinkGlow 0.6s steps(1) infinite;
+            box-shadow: 0 0 8px rgba(79, 209, 197, 0.6);
+        }
+
+        @keyframes blinkGlow {
+            0%, 49% {
+                opacity: 1;
+                box-shadow: 0 0 8px rgba(79, 209, 197, 0.6);
+            }
+            50%, 100% {
+                opacity: 0;
+                box-shadow: none;
+            }
+        }
+
+        /* Mobile adjustments for brand statement */
+        @media (max-width: 600px) {
+            .brand-statement {
+                font-size: 1.35rem;
+                letter-spacing: 0.06em;
+            }
+            .value-text {
+                font-size: 1.15rem;
+            }
+            .mechanism-text {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand-statement {
+                font-size: 1.2rem;
+            }
+            .value-text {
+                font-size: 1.05rem;
+            }
+            .mechanism-text {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .brand-statement {
+                font-size: 1.1rem;
+            }
+            .value-text {
+                font-size: 1rem;
+            }
+            .mechanism-text {
+                font-size: 0.85rem;
+            }
+        }
+
         .toc-title {
             font-size: 0.875rem; 
             font-weight: 400;
@@ -11024,15 +11193,20 @@
                             <span class="manifesto-line bright">> The future is <em>symbiosis</em>.</span>
                         </div>
                     </div>
-                    
-                    <!-- TAGLINE -->
-                    <div class="home-tagline" id="home-tagline">
-                        <span class="tagline-text">Turn any AI model into your personal operating system.</span>
+
+                    <!-- BRAND STATEMENT -->
+                    <div class="home-tagline" id="home-brand">
+                        <span class="brand-statement">ODEI — Your Personal AI Operating System</span>
                     </div>
 
-                    <!-- SUBHEADLINE -->
-                    <div class="home-subheadline" id="home-subheadline">
-                        <span class="subheadline-text">ODEI gives you a control layer that adds memory + rules + autonomous execution — so your AI can plan, act, and learn continuously on your behalf.</span>
+                    <!-- VALUE PROPOSITION -->
+                    <div class="home-subheadline" id="home-value">
+                        <span class="value-text">Turn the AI model you choose into a governed system with memory, rules, and accountable execution.</span>
+                    </div>
+
+                    <!-- MECHANISM -->
+                    <div class="home-subheadline" id="home-mechanism" style="margin-top: 0.5rem;">
+                        <span class="mechanism-text">ODEI is the control layer that makes AI continuous. It can plan, act, and learn over time under your constraints, not prompts.</span>
                     </div>
 
                     <!-- NAVIGATION -->
@@ -13551,80 +13725,149 @@
             function startFullTypewriter() {
                 clearTimeout(typingTimeout);
 
+                // Get all containers
                 const manifestoContainer = document.getElementById('manifesto-lines');
-                const taglineContainer = document.getElementById('home-tagline');
-                const subheadlineContainer = document.getElementById('home-subheadline');
+                const brandContainer = document.getElementById('home-brand');
+                const valueContainer = document.getElementById('home-value');
+                const mechanismContainer = document.getElementById('home-mechanism');
 
-                if (!manifestoContainer || !taglineContainer) return;
+                if (!manifestoContainer) return;
 
-                // Clear for fresh animation
+                // Clear all containers for fresh animation
                 manifestoContainer.innerHTML = '';
-                taglineContainer.innerHTML = '';
-                if (subheadlineContainer) subheadlineContainer.innerHTML = '';
+                if (brandContainer) brandContainer.innerHTML = '';
+                if (valueContainer) valueContainer.innerHTML = '';
+                if (mechanismContainer) mechanismContainer.innerHTML = '';
 
-                const line1 = "> The future is not human or machine.";
-                const line2 = "> The future is ";
+                // ═══════════════════════════════════════════════════════════════
+                // TEXT CONTENT — THE MASTERPIECE
+                // ═══════════════════════════════════════════════════════════════
+                const manifesto1 = "> The future is not human or machine.";
+                const manifesto2Prefix = "> The future is ";
                 const symbiosis = "symbiosis.";
-                const tagline = "Turn any AI model into your personal operating system.";
-                const subheadline = "ODEI gives you a control layer that adds memory + rules + autonomous execution — so your AI can plan, act, and learn continuously on your behalf.";
+                const brand = "ODEI — Your Personal AI Operating System";
+                const value = "Turn the AI model you choose into a governed system with memory, rules, and accountable execution.";
+                const mechanism = "ODEI is the control layer that makes AI continuous. It can plan, act, and learn over time under your constraints, not prompts.";
 
-                let phase = 0; // 0=line1, 1=line2, 2=symbiosis, 3=tagline, 4=subheadline
+                // ═══════════════════════════════════════════════════════════════
+                // PHASE CONTROL
+                // ═══════════════════════════════════════════════════════════════
+                // Phase -1: Initialization (cursor blinks)
+                // Phase 0: Manifesto line 1
+                // Phase 1: Manifesto line 2 prefix
+                // Phase 2: "symbiosis."
+                // Phase 3: Brand statement (GLOWING)
+                // Phase 4: Value proposition
+                // Phase 5: Mechanism
+                // Phase 6: Navigation reveal
+                let phase = -1;
                 let charIndex = 0;
-                let span1, span2, emSpan, taglineSpan, subheadlineSpan, cursor;
+                let initBlinkCount = 0;
+                let span1, span2, emSpan, brandSpan, valueSpan, mechanismSpan, cursor;
 
-                // Uniform typing speed - readable pace for all text
-                function getTypingDelay(char) {
-                    const baseDelay = 50;
-                    const variance = Math.random() * 30; // 0-30ms random variance
+                // ═══════════════════════════════════════════════════════════════
+                // TIMING ENGINE — DRAMATIC PACING
+                // ═══════════════════════════════════════════════════════════════
+                function getTypingDelay(char, isBrand = false) {
+                    const baseDelay = isBrand ? 55 : 45; // Slightly slower for brand
+                    const variance = Math.random() * 25;
 
-                    // Punctuation pauses - give reader time to process
-                    if (char === '.' || char === '!' || char === '?') return baseDelay + variance + 200;
-                    if (char === ',') return baseDelay + variance + 120;
-                    if (char === '—' || char === '-') return baseDelay + variance + 100;
-                    if (char === '+') return baseDelay + variance + 80;
-                    if (char === '>') return baseDelay + variance + 60;
-                    if (char === ' ') return baseDelay + variance + 25;
+                    // Dramatic punctuation pauses
+                    if (char === '.' || char === '!' || char === '?') return baseDelay + variance + 250;
+                    if (char === ',') return baseDelay + variance + 140;
+                    if (char === '—') return baseDelay + variance + 180; // Em dash - extra dramatic
+                    if (char === ':') return baseDelay + variance + 120;
+                    if (char === '>') return baseDelay + variance + 80; // Prompt character
+                    if (char === ' ') return baseDelay + variance + 20;
 
                     return baseDelay + variance;
                 }
 
-                // Create blinking cursor element
-                function createTypingCursor() {
+                // Create initialization cursor (large, glowing)
+                function createInitCursor() {
                     const c = document.createElement('span');
-                    c.className = 'cursor typing';
+                    c.className = 'cursor init';
                     return c;
                 }
 
-                function type() {
-                    if (phase === 0) {
-                        // Phase 0: Type line 1 with cursor
-                        if (charIndex === 0) {
+                // Create typing cursor (thin, follows text)
+                function createTypingCursor(glowing = false) {
+                    const c = document.createElement('span');
+                    c.className = glowing ? 'cursor typing-glow' : 'cursor typing';
+                    return c;
+                }
+
+                // ═══════════════════════════════════════════════════════════════
+                // THE MASTERPIECE ANIMATION
+                // ═══════════════════════════════════════════════════════════════
+                function animate() {
+                    // ─────────────────────────────────────────────────────────
+                    // PHASE -1: INITIALIZATION — Build anticipation
+                    // Cursor appears and blinks 3 times before typing begins
+                    // ─────────────────────────────────────────────────────────
+                    if (phase === -1) {
+                        if (initBlinkCount === 0) {
+                            // Create and show initialization cursor
                             span1 = document.createElement('span');
                             span1.className = 'manifesto-line dim';
-                            cursor = createTypingCursor();
+                            cursor = createInitCursor();
                             span1.appendChild(cursor);
                             manifestoContainer.appendChild(span1);
                         }
-                        if (charIndex < line1.length) {
-                            // Insert character before cursor
+
+                        initBlinkCount++;
+
+                        if (initBlinkCount >= 3) {
+                            // Transition: swap init cursor for typing cursor
+                            cursor.remove();
+                            cursor = createTypingCursor();
+                            span1.appendChild(cursor);
+                            phase = 0;
+                            charIndex = 0;
+                            typingTimeout = setTimeout(animate, 300);
+                        } else {
+                            // Continue blinking (each blink cycle = 500ms)
+                            typingTimeout = setTimeout(animate, 500);
+                        }
+                        return;
+                    }
+
+                    // ─────────────────────────────────────────────────────────
+                    // PHASE 0: MANIFESTO LINE 1 — "> The future is not human or machine."
+                    // ─────────────────────────────────────────────────────────
+                    if (phase === 0) {
+                        if (charIndex < manifesto1.length) {
+                            const char = manifesto1[charIndex];
                             const charSpan = document.createElement('span');
-                            charSpan.className = 'char-glow';
-                            charSpan.textContent = line1[charIndex];
+
+                            // Special styling for prompt character
+                            if (char === '>' && charIndex === 0) {
+                                charSpan.className = 'prompt-char';
+                            } else {
+                                charSpan.className = 'char-glow';
+                            }
+
+                            charSpan.textContent = char;
                             span1.insertBefore(charSpan, cursor);
 
-                            const delay = getTypingDelay(line1[charIndex]);
                             charIndex++;
-                            typingTimeout = setTimeout(type, delay);
+                            typingTimeout = setTimeout(animate, getTypingDelay(char));
                         } else {
-                            // Line complete - remove cursor, add settle effect
+                            // Line complete
                             cursor.remove();
                             span1.classList.add('line-complete');
                             phase = 1;
                             charIndex = 0;
-                            typingTimeout = setTimeout(type, 350);
+                            // Dramatic pause before next line
+                            typingTimeout = setTimeout(animate, 600);
                         }
-                    } else if (phase === 1) {
-                        // Phase 1: Type line 2 prefix with cursor
+                        return;
+                    }
+
+                    // ─────────────────────────────────────────────────────────
+                    // PHASE 1: MANIFESTO LINE 2 PREFIX — "> The future is "
+                    // ─────────────────────────────────────────────────────────
+                    if (phase === 1) {
                         if (charIndex === 0) {
                             span2 = document.createElement('span');
                             span2.className = 'manifesto-line bright';
@@ -13632,102 +13875,176 @@
                             span2.appendChild(cursor);
                             manifestoContainer.appendChild(span2);
                         }
-                        if (charIndex < line2.length) {
+
+                        if (charIndex < manifesto2Prefix.length) {
+                            const char = manifesto2Prefix[charIndex];
                             const charSpan = document.createElement('span');
-                            charSpan.className = 'char-glow';
-                            charSpan.textContent = line2[charIndex];
+
+                            if (char === '>' && charIndex === 0) {
+                                charSpan.className = 'prompt-char';
+                            } else {
+                                charSpan.className = 'char-glow';
+                            }
+
+                            charSpan.textContent = char;
                             span2.insertBefore(charSpan, cursor);
 
-                            const delay = getTypingDelay(line2[charIndex]);
                             charIndex++;
-                            typingTimeout = setTimeout(type, delay);
+                            typingTimeout = setTimeout(animate, getTypingDelay(char));
                         } else {
-                            // Remove cursor before symbiosis reveal
                             // Create em for symbiosis and move cursor into it
                             emSpan = document.createElement('em');
                             emSpan.appendChild(cursor);
                             span2.appendChild(emSpan);
                             phase = 2;
                             charIndex = 0;
-                            // Brief pause before typing symbiosis
-                            typingTimeout = setTimeout(type, 250);
+                            // Brief pause for emphasis
+                            typingTimeout = setTimeout(animate, 350);
                         }
-                    } else if (phase === 2) {
-                        // Phase 2: Type "symbiosis." character by character
+                        return;
+                    }
+
+                    // ─────────────────────────────────────────────────────────
+                    // PHASE 2: SYMBIOSIS — The key word, emphasized
+                    // ─────────────────────────────────────────────────────────
+                    if (phase === 2) {
                         if (charIndex < symbiosis.length) {
+                            const char = symbiosis[charIndex];
                             const charSpan = document.createElement('span');
                             charSpan.className = 'char-glow';
-                            charSpan.textContent = symbiosis[charIndex];
+                            charSpan.textContent = char;
                             emSpan.insertBefore(charSpan, cursor);
 
-                            const delay = getTypingDelay(symbiosis[charIndex]);
                             charIndex++;
-                            typingTimeout = setTimeout(type, delay);
+                            typingTimeout = setTimeout(animate, getTypingDelay(char));
                         } else {
-                            // Line complete - remove cursor
                             cursor.remove();
                             span2.classList.add('line-complete');
                             phase = 3;
                             charIndex = 0;
-                            typingTimeout = setTimeout(type, 400);
+                            // DRAMATIC PAUSE before brand reveal
+                            typingTimeout = setTimeout(animate, 900);
                         }
-                    } else if (phase === 3) {
-                        // Phase 3: Type tagline with cursor and glow effect
-                        if (charIndex === 0) {
-                            taglineSpan = document.createElement('span');
-                            taglineSpan.className = 'tagline-text';
-                            cursor = document.createElement('span');
-                            cursor.className = 'cursor typing';
-                            taglineSpan.appendChild(cursor);
-                            taglineContainer.appendChild(taglineSpan);
-                        }
-                        if (charIndex < tagline.length) {
-                            // Insert character with glow effect before cursor
-                            const charSpan = document.createElement('span');
-                            charSpan.className = 'char-glow';
-                            charSpan.textContent = tagline[charIndex];
-                            taglineSpan.insertBefore(charSpan, cursor);
+                        return;
+                    }
 
-                            const delay = getTypingDelay(tagline[charIndex]);
+                    // ─────────────────────────────────────────────────────────
+                    // PHASE 3: BRAND STATEMENT — THE BIG REVEAL
+                    // "ODEI — Your Personal AI Operating System"
+                    // Glowing, dramatic, the centerpiece
+                    // ─────────────────────────────────────────────────────────
+                    if (phase === 3) {
+                        if (!brandContainer) {
+                            phase = 4;
+                            typingTimeout = setTimeout(animate, 100);
+                            return;
+                        }
+
+                        if (charIndex === 0) {
+                            brandSpan = document.createElement('span');
+                            brandSpan.className = 'brand-statement';
+                            cursor = createTypingCursor(true); // Glowing cursor
+                            brandSpan.appendChild(cursor);
+                            brandContainer.appendChild(brandSpan);
+                        }
+
+                        if (charIndex < brand.length) {
+                            const char = brand[charIndex];
+                            const charSpan = document.createElement('span');
+                            charSpan.className = 'brand-char';
+                            charSpan.textContent = char;
+                            brandSpan.insertBefore(charSpan, cursor);
+
                             charIndex++;
-                            typingTimeout = setTimeout(type, delay);
+                            typingTimeout = setTimeout(animate, getTypingDelay(char, true));
                         } else {
-                            // Tagline complete - remove cursor, transition to subheadline
                             cursor.remove();
                             phase = 4;
                             charIndex = 0;
-                            typingTimeout = setTimeout(type, 400);
+                            // Pause to let brand glow settle
+                            typingTimeout = setTimeout(animate, 800);
                         }
-                    } else if (phase === 4) {
-                        // Phase 4: Type subheadline
-                        if (charIndex === 0 && subheadlineContainer) {
-                            subheadlineSpan = document.createElement('span');
-                            subheadlineSpan.className = 'subheadline-text';
-                            cursor = document.createElement('span');
-                            cursor.className = 'cursor typing';
-                            subheadlineSpan.appendChild(cursor);
-                            subheadlineContainer.appendChild(subheadlineSpan);
+                        return;
+                    }
+
+                    // ─────────────────────────────────────────────────────────
+                    // PHASE 4: VALUE PROPOSITION
+                    // "Turn the AI model you choose into a governed system..."
+                    // ─────────────────────────────────────────────────────────
+                    if (phase === 4) {
+                        if (!valueContainer) {
+                            phase = 5;
+                            typingTimeout = setTimeout(animate, 100);
+                            return;
                         }
-                        if (charIndex < subheadline.length) {
+
+                        if (charIndex === 0) {
+                            valueSpan = document.createElement('span');
+                            valueSpan.className = 'value-text';
+                            cursor = createTypingCursor();
+                            valueSpan.appendChild(cursor);
+                            valueContainer.appendChild(valueSpan);
+                        }
+
+                        if (charIndex < value.length) {
+                            const char = value[charIndex];
                             const charSpan = document.createElement('span');
                             charSpan.className = 'char-glow';
-                            charSpan.textContent = subheadline[charIndex];
-                            subheadlineSpan.insertBefore(charSpan, cursor);
+                            charSpan.textContent = char;
+                            valueSpan.insertBefore(charSpan, cursor);
 
-                            // Same readable pace as all other text
-                            const delay = getTypingDelay(subheadline[charIndex]);
                             charIndex++;
-                            typingTimeout = setTimeout(type, delay);
+                            typingTimeout = setTimeout(animate, getTypingDelay(char));
                         } else {
-                            // Replace typing cursor with large blinking cursor
-                            cursor.className = 'cursor large';
-                            // Reveal navigation menu with staggered animation
-                            revealNavigation();
+                            cursor.remove();
+                            phase = 5;
+                            charIndex = 0;
+                            typingTimeout = setTimeout(animate, 600);
                         }
+                        return;
+                    }
+
+                    // ─────────────────────────────────────────────────────────
+                    // PHASE 5: MECHANISM
+                    // "ODEI is the control layer that makes AI continuous..."
+                    // ─────────────────────────────────────────────────────────
+                    if (phase === 5) {
+                        if (!mechanismContainer) {
+                            phase = 6;
+                            typingTimeout = setTimeout(animate, 100);
+                            return;
+                        }
+
+                        if (charIndex === 0) {
+                            mechanismSpan = document.createElement('span');
+                            mechanismSpan.className = 'mechanism-text';
+                            cursor = createTypingCursor();
+                            mechanismSpan.appendChild(cursor);
+                            mechanismContainer.appendChild(mechanismSpan);
+                        }
+
+                        if (charIndex < mechanism.length) {
+                            const char = mechanism[charIndex];
+                            const charSpan = document.createElement('span');
+                            charSpan.className = 'char-glow';
+                            charSpan.textContent = char;
+                            mechanismSpan.insertBefore(charSpan, cursor);
+
+                            charIndex++;
+                            typingTimeout = setTimeout(animate, getTypingDelay(char));
+                        } else {
+                            // Final cursor - large and glowing
+                            cursor.className = 'cursor large';
+                            phase = 6;
+                            // Reveal navigation
+                            typingTimeout = setTimeout(revealNavigation, 400);
+                        }
+                        return;
                     }
                 }
 
-                typingTimeout = setTimeout(type, 500);
+                // Start the masterpiece with initial delay
+                typingTimeout = setTimeout(animate, 800);
             }
 
             function revealNavigation() {
