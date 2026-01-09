@@ -33,6 +33,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500&display=swap" rel="stylesheet">
 
+    <!-- PERFORMANCE: Preload video for faster start -->
+    <link rel="preload" href="GxO7JgIb0AAAMcD.mp4" as="video" type="video/mp4">
+
     <style>
         * {
             margin: 0;
@@ -163,6 +166,8 @@
             transform: translateX(100%);
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+            content-visibility: auto; /* PERF: Skip rendering non-visible pages */
+            contain-intrinsic-size: 100vw 100vh;
         }
         
         .page:not([data-page="0"]) {
@@ -212,15 +217,20 @@
             overflow: hidden;
             pointer-events: none;
             z-index: 1;
-            opacity: 0.2; /* Very subtle with video background */
+            opacity: 0; /* Start hidden, reveal after content loads */
+            transition: opacity 2s ease-out;
+        }
+        .home-orbs.active {
+            opacity: 0.2;
         }
 
         .home-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
+            filter: blur(40px); /* PERFORMANCE: Reduced from 80px */
             opacity: 0.07;
             animation: orbFloat 60s ease-in-out infinite;
+            will-change: transform; /* GPU acceleration hint */
         }
 
         .home-orb-1 {
@@ -301,7 +311,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%) translateZ(0); /* GPU acceleration */
             width: 100%;
             height: 100%;
             object-fit: contain;
@@ -309,6 +319,8 @@
             pointer-events: none;
             opacity: 0.42;
             filter: brightness(0.5);
+            will-change: transform; /* GPU hint */
+            backface-visibility: hidden; /* Prevent flicker */
         }
 
         /* ══════ MANIFESTO — STAGGERED REVEAL ══════ */
@@ -416,16 +428,17 @@
             text-decoration: none;
             color: inherit;
             padding: 0.4rem 0;
-            transition: all 0.3s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease;
             cursor: pointer;
-            /* Visible by default for usability */
-            opacity: 0.7;
-            transform: translateY(0);
+            /* Hidden initially, revealed after main content */
+            opacity: 0;
+            transform: translateY(15px);
         }
 
         /* Full visibility on reveal */
         .nav-item.revealed {
             opacity: 1;
+            transform: translateY(0);
         }
 
         @keyframes navReveal {
@@ -11517,7 +11530,7 @@
             <h1 class="visually-hidden">ODEI — Your Personal AI Operating System</h1>
 
             <!-- FULL-PAGE VIDEO BACKGROUND -->
-            <video class="hero-video" autoplay loop muted playsinline>
+            <video class="hero-video" autoplay loop muted playsinline preload="auto">
                 <source src="GxO7JgIb0AAAMcD.mp4" type="video/mp4">
             </video>
 
@@ -14036,6 +14049,9 @@
             let currentPage = 0;
             const pages = document.querySelectorAll('.page');
 
+            // Navigation history stack for proper "back" behavior
+            const navigationHistory = [];
+
             // Navigator elements
             const navigator = document.getElementById('pageNavigator');
             const navDots = navigator ? navigator.querySelectorAll('.nav-dot') : [];
@@ -14156,14 +14172,15 @@
                 // TIMING ENGINE — DRAMATIC PACING
                 // ═══════════════════════════════════════════════════════════════
                 function getTypingDelay(char, isBrand = false) {
-                    const baseDelay = isBrand ? 55 : 45;
-                    const variance = Math.random() * 25;
+                    // PERFORMANCE: Faster typing for snappier feel
+                    const baseDelay = isBrand ? 35 : 25;
+                    const variance = Math.random() * 15;
 
-                    if (char === '.' || char === '!' || char === '?') return baseDelay + variance + 250;
-                    if (char === ',') return baseDelay + variance + 140;
-                    if (char === '—') return baseDelay + variance + 180;
-                    if (char === ':') return baseDelay + variance + 120;
-                    if (char === '>') return baseDelay + variance + 80;
+                    if (char === '.' || char === '!' || char === '?') return baseDelay + variance + 120;
+                    if (char === ',') return baseDelay + variance + 70;
+                    if (char === '—') return baseDelay + variance + 90;
+                    if (char === ':') return baseDelay + variance + 60;
+                    if (char === '>') return baseDelay + variance + 40;
                     if (char === ' ') return baseDelay + variance + 20;
 
                     return baseDelay + variance;
@@ -14198,24 +14215,16 @@
                 }
 
                 function handleNoClick() {
-                    // Fun response - change prompt text briefly
+                    // Show brief response then navigate to Problem page
                     const prompt = interactionContainer.querySelector('.interaction-prompt');
                     if (prompt) {
-                        prompt.textContent = "> Interesting. Let me show you why...";
+                        prompt.textContent = "> Let me show you why...";
                         prompt.style.color = 'rgba(244, 201, 93, 0.9)'; // Champagne color
                     }
                     setTimeout(() => {
-                        // Switch from screen 1 to screen 2
-                        if (screen1) {
-                            screen1.classList.add('hidden');
-                        }
-                        if (screen2) {
-                            screen2.classList.add('visible');
-                        }
-                        phase = 5;
-                        charIndex = 0;
-                        typingTimeout = setTimeout(animate, 400);
-                    }, 1500);
+                        // Navigate to Problem page (page 2)
+                        goToPage(2);
+                    }, 1000);
                 }
 
                 // Attach button handlers
@@ -14285,12 +14294,16 @@
 
                         initBlinkCount++;
 
-                        if (initBlinkCount >= 3) {
+                        // PERF: Reduced from 3 blinks to 2 for faster start
+                        if (initBlinkCount >= 2) {
                             cursor.remove();
                             cursor = createTypingCursor();
                             span1.appendChild(cursor);
                             phase = 0;
                             charIndex = 0;
+                            // PERF: Activate orbs after content starts loading
+                            const orbs = document.querySelector('.home-orbs');
+                            if (orbs) orbs.classList.add('active');
                             typingTimeout = setTimeout(animate, 300);
                         } else {
                             typingTimeout = setTimeout(animate, 500);
@@ -14315,7 +14328,7 @@
                             span1.classList.add('line-complete');
                             phase = 1;
                             charIndex = 0;
-                            typingTimeout = setTimeout(animate, 600);
+                            typingTimeout = setTimeout(animate, 300); // PERF: 600→300
                         }
                         return;
                     }
@@ -14346,7 +14359,7 @@
                             span2.appendChild(emSpan);
                             phase = 2;
                             charIndex = 0;
-                            typingTimeout = setTimeout(animate, 350);
+                            typingTimeout = setTimeout(animate, 150); // PERF: 350→150
                         }
                         return;
                     }
@@ -14368,7 +14381,7 @@
                             span2.classList.add('line-complete');
                             phase = 3;
                             charIndex = 0;
-                            typingTimeout = setTimeout(animate, 900);
+                            typingTimeout = setTimeout(animate, 400); // PERF: 900→400
                         }
                         return;
                     }
@@ -14405,7 +14418,7 @@
                             cursor.remove();
                             phase = 4;
                             charIndex = 0;
-                            typingTimeout = setTimeout(animate, 800);
+                            typingTimeout = setTimeout(animate, 350); // PERF: 800→350
                         }
                         return;
                     }
@@ -14425,6 +14438,8 @@
                                 }, 500);
                             }
                         }
+                        // Reveal navigation after buttons appear
+                        setTimeout(revealNavigation, 800); // PERF: 1500→800
                         // STOP HERE — wait for button click
                         return;
                     }
@@ -14500,8 +14515,8 @@
                     }
                 }
 
-                // Start the masterpiece with initial delay
-                typingTimeout = setTimeout(animate, 800);
+                // Start the masterpiece with minimal delay
+                typingTimeout = setTimeout(animate, 300); // PERF: 800→300
             }
 
             function revealNavigation() {
@@ -14511,13 +14526,14 @@
                     ctaContainer.classList.add('visible');
                 }
 
-                // Reveal navigation with delay
-                setTimeout(() => {
-                    const navItems = document.querySelectorAll('.home-nav .nav-item');
-                    navItems.forEach(item => {
+                // Reveal navigation with staggered animation
+                const navItems = document.querySelectorAll('.home-nav .nav-item');
+                navItems.forEach((item, index) => {
+                    // Staggered reveal: each item appears 100ms after previous
+                    setTimeout(() => {
                         item.classList.add('revealed');
-                    });
-                }, 600);
+                    }, index * 100);
+                });
             }
 
             function updateButtons() {
@@ -14601,9 +14617,16 @@
                 return hashToPage[hash] !== undefined ? hashToPage[hash] : 0;
             }
 
-            function goToPage(pageIndex, addToHistory = true) {
+            function goToPage(pageIndex, addToHistory = true, trackNavHistory = true) {
                 if (pageIndex < 0 || pageIndex >= totalPages || pageIndex === currentPage) return;
-                
+
+                // Track navigation history for "back" button
+                if (trackNavHistory && addToHistory) {
+                    navigationHistory.push(currentPage);
+                    // Limit history size to prevent memory issues
+                    if (navigationHistory.length > 50) navigationHistory.shift();
+                }
+
                 const currentActivePage = pages[currentPage];
                 const newActivePage = pages[pageIndex];
 
@@ -14612,7 +14635,7 @@
                 } else {
                     currentActivePage.classList.remove('prev');
                 }
-                
+
                 currentActivePage.classList.remove('active');
 
                 pages.forEach((page, index) => {
@@ -14622,7 +14645,7 @@
                         page.classList.remove('prev');
                     }
                 });
-                
+
                 newActivePage.classList.add('active');
 
                 // Reset scroll position to prevent browser anchor scrolling issues
@@ -14642,6 +14665,17 @@
 
                 if (currentPage === 0 && oldPage !== 0) {
                     startFullTypewriter();
+                }
+            }
+
+            // Go back to previous page in navigation history
+            function goBack() {
+                if (navigationHistory.length > 0) {
+                    const prevPage = navigationHistory.pop();
+                    goToPage(prevPage, true, false); // Don't track this navigation
+                } else if (currentPage > 0) {
+                    // Fallback: go to previous sequential page
+                    goToPage(currentPage - 1, true, false);
                 }
             }
 
@@ -14710,7 +14744,7 @@
             initialize();
 
             prevButton.addEventListener('click', () => {
-                goToPage(currentPage - 1);
+                goBack(); // Use history-based navigation
             });
 
             nextButton.addEventListener('click', () => {
@@ -14720,7 +14754,7 @@
             });
 
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') goToPage(currentPage - 1);
+                if (e.key === 'ArrowLeft') goBack(); // Use history-based navigation
                 else if (e.key === 'ArrowRight') {
                     if (currentPage < navigablePagesCount - 1) {
                         goToPage(currentPage + 1);
@@ -14757,7 +14791,7 @@
                         }
                     }
                     else {
-                        goToPage(currentPage - 1);
+                        goBack(); // Use history-based navigation
                     }
                 }
             }, { passive: true });
