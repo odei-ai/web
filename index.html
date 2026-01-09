@@ -344,15 +344,22 @@
             font-style: normal;
         }
         
-        /* ══════ TAGLINE ══════ */
+        /* ══════ TAGLINE / BRAND ══════ */
         .home-tagline {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
-            min-height: 2.5rem;
+            text-align: center;
+            margin: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
-        
+
+        .home-tagline.visible {
+            opacity: 1;
+        }
+
         .tagline-text {
             font-size: clamp(1.4rem, 3.5vw, 1.75rem);
             font-weight: 400;
@@ -360,16 +367,23 @@
             text-align: center;
         }
 
-        /* ══════ SUBHEADLINE ══════ */
+        /* ══════ SUBHEADLINE / VALUE ══════ */
         .home-subheadline {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.25rem;
+            justify-content: center;
             width: 100%;
-            max-width: 800px;
-            margin-top: 0.75rem;
+            margin: 0;
+            max-width: 850px;
             padding: 0 1rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .home-subheadline.visible {
+            opacity: 1;
         }
 
         .subheadline-text {
@@ -404,14 +418,14 @@
             padding: 0.4rem 0;
             transition: all 0.3s ease;
             cursor: pointer;
-            /* Hidden until typewriter completes */
-            opacity: 0;
-            transform: translateY(8px);
+            /* Visible by default for usability */
+            opacity: 0.7;
+            transform: translateY(0);
         }
 
-        /* Staggered entrance animation */
+        /* Full visibility on reveal */
         .nav-item.revealed {
-            animation: navReveal 0.4s ease-out forwards;
+            opacity: 1;
         }
 
         @keyframes navReveal {
@@ -800,44 +814,41 @@
             50%, 100% { opacity: 0; }
         }
 
-        /* Brand statement - GLOWING reveal */
+        /* Brand statement - subtle jade glow */
         .brand-statement {
-            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-size: clamp(1.4rem, 3.5vw, 1.9rem);
             font-weight: 500;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             text-align: center;
             color: #FFFFFF;
+            margin-bottom: 0.5rem;
             text-shadow:
-                0 0 20px rgba(79, 209, 197, 0.6),
-                0 0 40px rgba(79, 209, 197, 0.3),
-                0 0 60px rgba(79, 209, 197, 0.2);
+                0 0 15px rgba(79, 209, 197, 0.4),
+                0 0 30px rgba(79, 209, 197, 0.2);
             animation: brandGlow 2s ease-out;
         }
 
         @keyframes brandGlow {
             0% {
                 text-shadow:
-                    0 0 40px rgba(79, 209, 197, 1),
-                    0 0 80px rgba(79, 209, 197, 0.8),
-                    0 0 120px rgba(79, 209, 197, 0.6);
+                    0 0 25px rgba(79, 209, 197, 0.8),
+                    0 0 50px rgba(79, 209, 197, 0.4);
                 opacity: 0.7;
             }
             50% {
                 text-shadow:
-                    0 0 30px rgba(79, 209, 197, 0.8),
-                    0 0 60px rgba(79, 209, 197, 0.5),
-                    0 0 90px rgba(79, 209, 197, 0.3);
+                    0 0 20px rgba(79, 209, 197, 0.6),
+                    0 0 40px rgba(79, 209, 197, 0.3);
             }
             100% {
                 text-shadow:
-                    0 0 20px rgba(79, 209, 197, 0.6),
-                    0 0 40px rgba(79, 209, 197, 0.3),
-                    0 0 60px rgba(79, 209, 197, 0.2);
+                    0 0 15px rgba(79, 209, 197, 0.4),
+                    0 0 30px rgba(79, 209, 197, 0.2);
                 opacity: 1;
             }
         }
 
-        /* Brand character glow - more intense than regular */
+        /* Brand character glow - subtle appearance */
         .brand-char {
             display: inline;
             animation: brandCharAppear 0.4s ease-out;
@@ -846,8 +857,8 @@
         @keyframes brandCharAppear {
             0% {
                 text-shadow:
-                    0 0 30px rgba(79, 209, 197, 1),
-                    0 0 60px rgba(79, 209, 197, 0.8);
+                    0 0 20px rgba(79, 209, 197, 0.8),
+                    0 0 40px rgba(79, 209, 197, 0.4);
                 opacity: 0.3;
             }
             100% {
@@ -856,14 +867,15 @@
             }
         }
 
-        /* Value proposition - medium brightness */
+        /* Value proposition - medium brightness, compact */
         .value-text {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
             font-weight: 400;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.04em;
             text-align: center;
-            opacity: 0.85;
+            opacity: 0.8;
             line-height: 1.5;
+            max-width: 750px;
         }
 
         /* Mechanism text - subtle, professional */
@@ -949,6 +961,339 @@
             }
             .mechanism-text {
                 font-size: 0.85rem;
+            }
+        }
+
+        /* ══════ TERMINAL ZONE - FIXED POSITION FOR BOTH SCREENS ══════ */
+        .terminal-zone {
+            display: grid;
+            grid-template-areas: "content";
+            width: 100%;
+            max-width: 900px;
+            /* Fixed minimum height to maintain consistent terminal boundaries */
+            min-height: 180px;
+        }
+
+        .screen-1, .screen-2 {
+            grid-area: content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .screen-1 {
+            opacity: 1;
+            transition: opacity 0.4s ease;
+        }
+
+        .screen-1.hidden {
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+        }
+
+        .screen-2 {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            position: relative;
+            z-index: 20;
+        }
+
+        .screen-2.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ══════ CORE STATEMENT STYLES ══════ */
+        .home-statement {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .home-statement.visible {
+            opacity: 1;
+        }
+
+        .statement-text {
+            font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-align: center;
+            color: #FFFFFF;
+            line-height: 1.5;
+            display: block;
+            text-shadow:
+                0 0 20px rgba(79, 209, 197, 0.6),
+                0 0 40px rgba(79, 209, 197, 0.3),
+                0 0 60px rgba(79, 209, 197, 0.2);
+        }
+
+        /* Statement character glow */
+        .statement-char {
+            display: inline;
+            animation: statementCharAppear 0.4s ease-out;
+        }
+
+        @keyframes statementCharAppear {
+            0% {
+                text-shadow:
+                    0 0 30px rgba(79, 209, 197, 1),
+                    0 0 60px rgba(79, 209, 197, 0.8);
+                opacity: 0.3;
+            }
+            100% {
+                text-shadow: inherit;
+                opacity: 1;
+            }
+        }
+
+        /* ══════ TERMINAL INTERACTION STYLES ══════ */
+        .home-interaction {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease, transform 0.5s ease, height 0.5s ease, margin 0.5s ease;
+            text-align: center;
+            width: 100%;
+        }
+
+        .home-interaction.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .home-interaction.chosen {
+            opacity: 0;
+            height: 0;
+            margin: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .interaction-prompt {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(79, 209, 197, 0.9);
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .prompt-cursor {
+            color: rgba(79, 209, 197, 1);
+            animation: cursorBlink 1s steps(1) infinite;
+            text-shadow: 0 0 8px rgba(79, 209, 197, 0.6);
+        }
+
+        @keyframes cursorBlink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .interaction-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .terminal-btn {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            padding: 0.6rem 1.2rem;
+            border: 1px solid rgba(79, 209, 197, 0.5);
+            border-radius: 0;
+            background: transparent;
+            color: rgba(79, 209, 197, 0.9);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+        }
+
+        .terminal-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(79, 209, 197, 0.1);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .terminal-btn:hover::before {
+            transform: scaleX(1);
+        }
+
+        .terminal-btn-yes {
+            border-color: rgba(79, 209, 197, 0.7);
+            color: rgba(79, 209, 197, 1);
+            text-shadow: 0 0 10px rgba(79, 209, 197, 0.5);
+        }
+
+        .terminal-btn-yes:hover {
+            border-color: rgba(79, 209, 197, 1);
+            background: rgba(79, 209, 197, 0.15);
+            box-shadow: 0 0 20px rgba(79, 209, 197, 0.3);
+            color: #FFFFFF;
+        }
+
+        .terminal-btn-no {
+            border-color: rgba(255, 255, 255, 0.25);
+            background: transparent;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .terminal-btn-no:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Subtle pulse for Yes button */
+        @keyframes btnPulse {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(79, 209, 197, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(79, 209, 197, 0.8);
+            }
+        }
+
+        .terminal-btn-yes.pulse {
+            animation: btnPulse 2s ease-in-out infinite;
+        }
+
+        /* Selected state for keyboard navigation */
+        .terminal-btn-yes.selected {
+            border-color: rgba(79, 209, 197, 1);
+            background: rgba(79, 209, 197, 0.15);
+            box-shadow: 0 0 20px rgba(79, 209, 197, 0.3);
+        }
+
+        .terminal-btn-no.selected {
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Brand reveal animation */
+        .home-tagline.reveal-animate {
+            animation: brandReveal 1s ease-out forwards;
+        }
+
+        @keyframes brandReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile adjustments for terminal buttons */
+        @media (max-width: 480px) {
+            .interaction-buttons {
+                gap: 1.5rem;
+            }
+            .terminal-btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* ══════ CTA BUTTONS STYLES ══════ */
+        .home-cta {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            padding: 1rem 2rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            position: relative;
+        }
+
+        .home-cta.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CTA buttons - terminal style */
+        .cta-btn {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            border: 1px solid;
+            border-radius: 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .btn-text {
+            display: inline-block;
+        }
+
+        /* Terminal CTA buttons - IDENTICAL jade style like YES/NO */
+        .terminal-cta {
+            font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+            font-size: 1rem;
+            font-weight: 400;
+            padding: 0.8rem 1.8rem;
+            text-decoration: none;
+            border: 1px solid rgba(79, 209, 197, 0.7);
+            border-radius: 0;
+            background: transparent;
+            color: rgba(79, 209, 197, 1);
+            text-shadow: 0 0 10px rgba(79, 209, 197, 0.5);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .terminal-cta:hover {
+            border-color: rgba(79, 209, 197, 1);
+            background: rgba(79, 209, 197, 0.15);
+            box-shadow: 0 0 20px rgba(79, 209, 197, 0.3);
+            color: #FFFFFF;
+            text-shadow: none;
+        }
+
+        /* Selected state for keyboard navigation */
+        .terminal-cta.selected {
+            border-color: rgba(79, 209, 197, 1);
+            background: rgba(79, 209, 197, 0.15);
+            box-shadow: 0 0 20px rgba(79, 209, 197, 0.3);
+        }
+
+        /* Mobile adjustments for terminal CTA buttons */
+        @media (max-width: 600px) {
+            .home-cta {
+                gap: 1.5rem;
+            }
+            .terminal-cta {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
             }
         }
 
@@ -11194,14 +11539,35 @@
                         </div>
                     </div>
 
-                    <!-- BRAND STATEMENT -->
-                    <div class="home-tagline" id="home-brand">
-                        <span class="brand-statement">ODEI — Your Personal AI Operating System</span>
-                    </div>
+                    <!-- TERMINAL CONTENT ZONE - fixed position for both screens -->
+                    <div class="terminal-zone" id="terminal-zone">
+                        <!-- SCREEN 1: Statement + Interaction -->
+                        <div class="screen-1" id="screen-1">
+                            <div class="home-statement" id="home-statement">
+                                <span class="statement-text"></span>
+                            </div>
+                            <div class="home-interaction" id="home-interaction">
+                                <span class="interaction-prompt">> Do you agree? <span class="prompt-cursor">_</span></span>
+                                <div class="interaction-buttons">
+                                    <button class="terminal-btn terminal-btn-yes" id="btn-yes">[ YES ]</button>
+                                    <button class="terminal-btn terminal-btn-no" id="btn-no">[ NO ]</button>
+                                </div>
+                            </div>
+                        </div>
 
-                    <!-- VALUE PROPOSITION -->
-                    <div class="home-subheadline" id="home-value">
-                        <span class="value-text">Add a control layer with memory, rules, and accountable execution so the model you choose can plan, act, and learn continuously under your constraints, not prompts.</span>
+                        <!-- SCREEN 2: Brand + Value + CTA -->
+                        <div class="screen-2" id="screen-2">
+                            <div class="home-tagline" id="home-brand">
+                                <span class="brand-statement">ODEI — Your Personal AI Operating System</span>
+                            </div>
+                            <div class="home-subheadline" id="home-value">
+                                <span class="value-text"></span>
+                            </div>
+                            <div class="home-cta" id="home-cta">
+                                <a href="#intro" data-page="1" class="terminal-cta" data-cta="primary"><span class="btn-text">[ Read Docs ]</span></a>
+                                <a href="#connect" data-page="9" class="terminal-cta" data-cta="secondary"><span class="btn-text">[ Request Access ]</span></a>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- NAVIGATION -->
@@ -13722,15 +14088,43 @@
 
                 // Get all containers
                 const manifestoContainer = document.getElementById('manifesto-lines');
+                const statementContainer = document.getElementById('home-statement');
+                const interactionContainer = document.getElementById('home-interaction');
                 const brandContainer = document.getElementById('home-brand');
                 const valueContainer = document.getElementById('home-value');
+                const ctaContainer = document.getElementById('home-cta');
+                const screen1 = document.getElementById('screen-1');
+                const screen2 = document.getElementById('screen-2');
 
                 if (!manifestoContainer) return;
 
                 // Clear all containers for fresh animation
                 manifestoContainer.innerHTML = '';
-                if (brandContainer) brandContainer.innerHTML = '';
-                if (valueContainer) valueContainer.innerHTML = '';
+                if (statementContainer) {
+                    statementContainer.querySelector('.statement-text').innerHTML = '';
+                    statementContainer.classList.remove('visible');
+                }
+                if (interactionContainer) {
+                    interactionContainer.classList.remove('visible', 'chosen');
+                }
+                if (brandContainer) {
+                    brandContainer.innerHTML = '';
+                    brandContainer.classList.remove('visible');
+                }
+                if (valueContainer) {
+                    valueContainer.querySelector('.value-text').innerHTML = '';
+                    valueContainer.classList.remove('visible');
+                }
+                if (ctaContainer) {
+                    ctaContainer.classList.remove('visible');
+                }
+                // Reset screen states
+                if (screen1) {
+                    screen1.classList.remove('hidden');
+                }
+                if (screen2) {
+                    screen2.classList.remove('visible');
+                }
 
                 // ═══════════════════════════════════════════════════════════════
                 // TEXT CONTENT — THE MASTERPIECE
@@ -13738,8 +14132,9 @@
                 const manifesto1 = "> The future is not human or machine.";
                 const manifesto2Prefix = "> The future is ";
                 const symbiosis = "symbiosis.";
+                const statement = "Your AI must work continuously, governed by your rules — not prompts.";
                 const brand = "ODEI — Your Personal AI Operating System";
-                const value = "Add a control layer with memory, rules, and accountable execution so the model you choose can plan, act, and learn continuously under your constraints, not prompts.";
+                const value = "A control layer that gives your AI memory, rules, and accountable execution — so it can plan, act, and evolve under your governance.";
 
                 // ═══════════════════════════════════════════════════════════════
                 // PHASE CONTROL
@@ -13748,39 +14143,38 @@
                 // Phase 0: Manifesto line 1
                 // Phase 1: Manifesto line 2 prefix
                 // Phase 2: "symbiosis."
-                // Phase 3: Brand statement (GLOWING)
-                // Phase 4: Value proposition → Navigation reveal
+                // Phase 3: Core statement (typed)
+                // Phase 4: Show interaction buttons → WAIT FOR USER
+                // Phase 5: Brand reveal (after Yes)
+                // Phase 6: Value expansion → Navigation reveal
                 let phase = -1;
                 let charIndex = 0;
                 let initBlinkCount = 0;
-                let span1, span2, emSpan, brandSpan, valueSpan, cursor;
+                let span1, span2, emSpan, statementSpan, brandSpan, valueSpan, cursor;
 
                 // ═══════════════════════════════════════════════════════════════
                 // TIMING ENGINE — DRAMATIC PACING
                 // ═══════════════════════════════════════════════════════════════
                 function getTypingDelay(char, isBrand = false) {
-                    const baseDelay = isBrand ? 55 : 45; // Slightly slower for brand
+                    const baseDelay = isBrand ? 55 : 45;
                     const variance = Math.random() * 25;
 
-                    // Dramatic punctuation pauses
                     if (char === '.' || char === '!' || char === '?') return baseDelay + variance + 250;
                     if (char === ',') return baseDelay + variance + 140;
-                    if (char === '—') return baseDelay + variance + 180; // Em dash - extra dramatic
+                    if (char === '—') return baseDelay + variance + 180;
                     if (char === ':') return baseDelay + variance + 120;
-                    if (char === '>') return baseDelay + variance + 80; // Prompt character
+                    if (char === '>') return baseDelay + variance + 80;
                     if (char === ' ') return baseDelay + variance + 20;
 
                     return baseDelay + variance;
                 }
 
-                // Create initialization cursor (large, glowing)
                 function createInitCursor() {
                     const c = document.createElement('span');
                     c.className = 'cursor init';
                     return c;
                 }
 
-                // Create typing cursor (thin, follows text)
                 function createTypingCursor(glowing = false) {
                     const c = document.createElement('span');
                     c.className = glowing ? 'cursor typing-glow' : 'cursor typing';
@@ -13788,16 +14182,100 @@
                 }
 
                 // ═══════════════════════════════════════════════════════════════
+                // BUTTON CLICK HANDLERS
+                // ═══════════════════════════════════════════════════════════════
+                function handleYesClick() {
+                    // Switch from screen 1 to screen 2
+                    if (screen1) {
+                        screen1.classList.add('hidden');
+                    }
+                    if (screen2) {
+                        screen2.classList.add('visible');
+                    }
+                    phase = 5;
+                    charIndex = 0;
+                    typingTimeout = setTimeout(animate, 600);
+                }
+
+                function handleNoClick() {
+                    // Fun response - change prompt text briefly
+                    const prompt = interactionContainer.querySelector('.interaction-prompt');
+                    if (prompt) {
+                        prompt.textContent = "> Interesting. Let me show you why...";
+                        prompt.style.color = 'rgba(244, 201, 93, 0.9)'; // Champagne color
+                    }
+                    setTimeout(() => {
+                        // Switch from screen 1 to screen 2
+                        if (screen1) {
+                            screen1.classList.add('hidden');
+                        }
+                        if (screen2) {
+                            screen2.classList.add('visible');
+                        }
+                        phase = 5;
+                        charIndex = 0;
+                        typingTimeout = setTimeout(animate, 400);
+                    }, 1500);
+                }
+
+                // Attach button handlers
+                const btnYes = document.getElementById('btn-yes');
+                const btnNo = document.getElementById('btn-no');
+                if (btnYes) {
+                    btnYes.onclick = handleYesClick;
+                }
+                if (btnNo) {
+                    btnNo.onclick = handleNoClick;
+                }
+
+                // ═══════════════════════════════════════════════════════════════
+                // KEYBOARD NAVIGATION FOR YES/NO
+                // Arrow keys toggle selection, Enter confirms YES
+                // ═══════════════════════════════════════════════════════════════
+                let selectedButton = 'yes'; // Default to YES
+
+                function updateButtonSelection() {
+                    if (btnYes && btnNo) {
+                        btnYes.classList.toggle('selected', selectedButton === 'yes');
+                        btnNo.classList.toggle('selected', selectedButton === 'no');
+                    }
+                }
+
+                document.addEventListener('keydown', (e) => {
+                    // Only handle keys when YES/NO buttons are visible (phase 4)
+                    if (phase !== 4 || !btnYes || !btnNo) return;
+
+                    // Check if buttons are visible
+                    const yesVisible = btnYes.offsetParent !== null;
+                    if (!yesVisible) return;
+
+                    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                        selectedButton = 'yes';
+                        updateButtonSelection();
+                        e.preventDefault();
+                    } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                        selectedButton = 'no';
+                        updateButtonSelection();
+                        e.preventDefault();
+                    } else if (e.key === 'Enter') {
+                        if (selectedButton === 'yes') {
+                            handleYesClick();
+                        } else {
+                            handleNoClick();
+                        }
+                        e.preventDefault();
+                    }
+                });
+
+                // ═══════════════════════════════════════════════════════════════
                 // THE MASTERPIECE ANIMATION
                 // ═══════════════════════════════════════════════════════════════
                 function animate() {
                     // ─────────────────────────────────────────────────────────
-                    // PHASE -1: INITIALIZATION — Build anticipation
-                    // Cursor appears and blinks 3 times before typing begins
+                    // PHASE -1: INITIALIZATION
                     // ─────────────────────────────────────────────────────────
                     if (phase === -1) {
                         if (initBlinkCount === 0) {
-                            // Create and show initialization cursor
                             span1 = document.createElement('span');
                             span1.className = 'manifesto-line dim';
                             cursor = createInitCursor();
@@ -13808,7 +14286,6 @@
                         initBlinkCount++;
 
                         if (initBlinkCount >= 3) {
-                            // Transition: swap init cursor for typing cursor
                             cursor.remove();
                             cursor = createTypingCursor();
                             span1.appendChild(cursor);
@@ -13816,46 +14293,35 @@
                             charIndex = 0;
                             typingTimeout = setTimeout(animate, 300);
                         } else {
-                            // Continue blinking (each blink cycle = 500ms)
                             typingTimeout = setTimeout(animate, 500);
                         }
                         return;
                     }
 
                     // ─────────────────────────────────────────────────────────
-                    // PHASE 0: MANIFESTO LINE 1 — "> The future is not human or machine."
+                    // PHASE 0: MANIFESTO LINE 1
                     // ─────────────────────────────────────────────────────────
                     if (phase === 0) {
                         if (charIndex < manifesto1.length) {
                             const char = manifesto1[charIndex];
                             const charSpan = document.createElement('span');
-
-                            // Special styling for prompt character
-                            if (char === '>' && charIndex === 0) {
-                                charSpan.className = 'prompt-char';
-                            } else {
-                                charSpan.className = 'char-glow';
-                            }
-
+                            charSpan.className = (char === '>' && charIndex === 0) ? 'prompt-char' : 'char-glow';
                             charSpan.textContent = char;
                             span1.insertBefore(charSpan, cursor);
-
                             charIndex++;
                             typingTimeout = setTimeout(animate, getTypingDelay(char));
                         } else {
-                            // Line complete
                             cursor.remove();
                             span1.classList.add('line-complete');
                             phase = 1;
                             charIndex = 0;
-                            // Dramatic pause before next line
                             typingTimeout = setTimeout(animate, 600);
                         }
                         return;
                     }
 
                     // ─────────────────────────────────────────────────────────
-                    // PHASE 1: MANIFESTO LINE 2 PREFIX — "> The future is "
+                    // PHASE 1: MANIFESTO LINE 2 PREFIX
                     // ─────────────────────────────────────────────────────────
                     if (phase === 1) {
                         if (charIndex === 0) {
@@ -13869,33 +14335,24 @@
                         if (charIndex < manifesto2Prefix.length) {
                             const char = manifesto2Prefix[charIndex];
                             const charSpan = document.createElement('span');
-
-                            if (char === '>' && charIndex === 0) {
-                                charSpan.className = 'prompt-char';
-                            } else {
-                                charSpan.className = 'char-glow';
-                            }
-
+                            charSpan.className = (char === '>' && charIndex === 0) ? 'prompt-char' : 'char-glow';
                             charSpan.textContent = char;
                             span2.insertBefore(charSpan, cursor);
-
                             charIndex++;
                             typingTimeout = setTimeout(animate, getTypingDelay(char));
                         } else {
-                            // Create em for symbiosis and move cursor into it
                             emSpan = document.createElement('em');
                             emSpan.appendChild(cursor);
                             span2.appendChild(emSpan);
                             phase = 2;
                             charIndex = 0;
-                            // Brief pause for emphasis
                             typingTimeout = setTimeout(animate, 350);
                         }
                         return;
                     }
 
                     // ─────────────────────────────────────────────────────────
-                    // PHASE 2: SYMBIOSIS — The key word, emphasized
+                    // PHASE 2: SYMBIOSIS
                     // ─────────────────────────────────────────────────────────
                     if (phase === 2) {
                         if (charIndex < symbiosis.length) {
@@ -13904,7 +14361,6 @@
                             charSpan.className = 'char-glow';
                             charSpan.textContent = char;
                             emSpan.insertBefore(charSpan, cursor);
-
                             charIndex++;
                             typingTimeout = setTimeout(animate, getTypingDelay(char));
                         } else {
@@ -13912,30 +14368,85 @@
                             span2.classList.add('line-complete');
                             phase = 3;
                             charIndex = 0;
-                            // DRAMATIC PAUSE before brand reveal
                             typingTimeout = setTimeout(animate, 900);
                         }
                         return;
                     }
 
                     // ─────────────────────────────────────────────────────────
-                    // PHASE 3: BRAND STATEMENT — THE BIG REVEAL
-                    // "ODEI — Your Personal AI Operating System"
-                    // Glowing, dramatic, the centerpiece
+                    // PHASE 3: CORE STATEMENT
+                    // "Your AI must work continuously..."
                     // ─────────────────────────────────────────────────────────
                     if (phase === 3) {
-                        if (!brandContainer) {
+                        if (!statementContainer) {
                             phase = 4;
                             typingTimeout = setTimeout(animate, 100);
                             return;
                         }
 
+                        const statementTextEl = statementContainer.querySelector('.statement-text');
+
                         if (charIndex === 0) {
+                            statementContainer.classList.add('visible');
+                            statementSpan = statementTextEl;
+                            cursor = createTypingCursor(true);
+                            statementSpan.appendChild(cursor);
+                        }
+
+                        if (charIndex < statement.length) {
+                            const char = statement[charIndex];
+                            const charSpan = document.createElement('span');
+                            charSpan.className = 'statement-char';
+                            charSpan.textContent = char;
+                            statementSpan.insertBefore(charSpan, cursor);
+                            charIndex++;
+                            typingTimeout = setTimeout(animate, getTypingDelay(char, true));
+                        } else {
+                            cursor.remove();
+                            phase = 4;
+                            charIndex = 0;
+                            typingTimeout = setTimeout(animate, 800);
+                        }
+                        return;
+                    }
+
+                    // ─────────────────────────────────────────────────────────
+                    // PHASE 4: SHOW INTERACTION — WAIT FOR USER
+                    // ─────────────────────────────────────────────────────────
+                    if (phase === 4) {
+                        if (interactionContainer) {
+                            interactionContainer.classList.add('visible');
+                            // Add pulse and selected state to Yes button (default for keyboard nav)
+                            const yesBtn = document.getElementById('btn-yes');
+                            if (yesBtn) {
+                                setTimeout(() => {
+                                    yesBtn.classList.add('pulse');
+                                    yesBtn.classList.add('selected');
+                                }, 500);
+                            }
+                        }
+                        // STOP HERE — wait for button click
+                        return;
+                    }
+
+                    // ─────────────────────────────────────────────────────────
+                    // PHASE 5: BRAND REVEAL
+                    // ─────────────────────────────────────────────────────────
+                    if (phase === 5) {
+                        if (!brandContainer) {
+                            phase = 6;
+                            typingTimeout = setTimeout(animate, 100);
+                            return;
+                        }
+
+                        if (charIndex === 0) {
+                            brandContainer.classList.add('visible');
                             brandSpan = document.createElement('span');
                             brandSpan.className = 'brand-statement';
-                            cursor = createTypingCursor(true); // Glowing cursor
+                            cursor = createTypingCursor(true);
                             brandSpan.appendChild(cursor);
                             brandContainer.appendChild(brandSpan);
+                            brandContainer.classList.add('reveal-animate');
                         }
 
                         if (charIndex < brand.length) {
@@ -13944,36 +14455,33 @@
                             charSpan.className = 'brand-char';
                             charSpan.textContent = char;
                             brandSpan.insertBefore(charSpan, cursor);
-
                             charIndex++;
                             typingTimeout = setTimeout(animate, getTypingDelay(char, true));
                         } else {
                             cursor.remove();
-                            phase = 4;
+                            phase = 6;
                             charIndex = 0;
-                            // Pause to let brand glow settle
                             typingTimeout = setTimeout(animate, 800);
                         }
                         return;
                     }
 
                     // ─────────────────────────────────────────────────────────
-                    // PHASE 4: VALUE PROPOSITION → NAVIGATION REVEAL
-                    // "Add a control layer with memory, rules..."
+                    // PHASE 6: VALUE EXPANSION → NAVIGATION
                     // ─────────────────────────────────────────────────────────
-                    if (phase === 4) {
+                    if (phase === 6) {
                         if (!valueContainer) {
-                            // Skip to navigation reveal
                             typingTimeout = setTimeout(revealNavigation, 400);
                             return;
                         }
 
+                        const valueTextEl = valueContainer.querySelector('.value-text');
+
                         if (charIndex === 0) {
-                            valueSpan = document.createElement('span');
-                            valueSpan.className = 'value-text';
+                            valueContainer.classList.add('visible');
+                            valueSpan = valueTextEl;
                             cursor = createTypingCursor();
                             valueSpan.appendChild(cursor);
-                            valueContainer.appendChild(valueSpan);
                         }
 
                         if (charIndex < value.length) {
@@ -13982,13 +14490,10 @@
                             charSpan.className = 'char-glow';
                             charSpan.textContent = char;
                             valueSpan.insertBefore(charSpan, cursor);
-
                             charIndex++;
                             typingTimeout = setTimeout(animate, getTypingDelay(char));
                         } else {
-                            // Final cursor - large and glowing
                             cursor.className = 'cursor large';
-                            // Reveal navigation
                             typingTimeout = setTimeout(revealNavigation, 400);
                         }
                         return;
@@ -14000,13 +14505,29 @@
             }
 
             function revealNavigation() {
-                const navItems = document.querySelectorAll('.home-nav .nav-item');
-                navItems.forEach(item => {
-                    item.classList.add('revealed');
-                });
+                // Reveal CTA buttons
+                const ctaContainer = document.getElementById('home-cta');
+                if (ctaContainer) {
+                    ctaContainer.classList.add('visible');
+                }
+
+                // Reveal navigation with delay
+                setTimeout(() => {
+                    const navItems = document.querySelectorAll('.home-nav .nav-item');
+                    navItems.forEach(item => {
+                        item.classList.add('revealed');
+                    });
+                }, 600);
             }
 
             function updateButtons() {
+                // Hide nav arrows completely on home page (page 0)
+                if (currentPage === 0) {
+                    prevButton.style.display = 'none';
+                    nextButton.style.display = 'none';
+                    return;
+                }
+
                 if (currentPage === 8) {
                     prevButton.style.display = 'flex';
                     prevButton.classList.remove('disabled');
@@ -14271,8 +14792,8 @@
                 });
             });
 
-            // CTA buttons
-            const ctaButtons = document.querySelectorAll('.cta-primary[data-page], .cta-secondary[data-page], .bridge-cta[data-page], .cta-button[data-page], .problem-cta-button[data-page]');
+            // CTA buttons (including terminal-cta for home page)
+            const ctaButtons = document.querySelectorAll('.terminal-cta[data-page], .cta-primary[data-page], .cta-secondary[data-page], .bridge-cta[data-page], .cta-button[data-page], .problem-cta-button[data-page]');
             ctaButtons.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
