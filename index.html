@@ -14072,63 +14072,103 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // ═══════════════════════════════════════════════════════════════
-            // iOS VIDEO AUTOPLAY FIX — AGGRESSIVE MODE
+            // iOS VIDEO AUTOPLAY FIX — MAXIMUM AGGRESSIVE MODE
             // ═══════════════════════════════════════════════════════════════
             const heroVideo = document.querySelector('.hero-video');
             if (heroVideo) {
-                // Force attributes via JS (some iOS versions ignore HTML attributes)
+                // Force ALL attributes via JS (iOS often ignores HTML attributes)
                 heroVideo.muted = true;
+                heroVideo.defaultMuted = true;
                 heroVideo.playsInline = true;
                 heroVideo.setAttribute('playsinline', '');
                 heroVideo.setAttribute('webkit-playsinline', '');
+                heroVideo.setAttribute('x-webkit-airplay', 'allow');
                 heroVideo.autoplay = true;
                 heroVideo.loop = true;
+                heroVideo.preload = 'auto';
 
-                // Remove native controls that might appear
+                // Remove native controls completely
                 heroVideo.controls = false;
                 heroVideo.removeAttribute('controls');
+                heroVideo.disablePictureInPicture = true;
+                heroVideo.disableRemotePlayback = true;
+
+                // Volume must be 0 for iOS autoplay
+                heroVideo.volume = 0;
 
                 // Aggressive play function with retry
+                let playAttempts = 0;
+                const maxAttempts = 20;
+
                 const playVideo = () => {
-                    // Ensure muted (required for iOS autoplay)
+                    if (playAttempts >= maxAttempts) return;
+                    playAttempts++;
+
+                    // Ensure muted (absolutely required for iOS autoplay)
                     heroVideo.muted = true;
+                    heroVideo.volume = 0;
 
                     const playPromise = heroVideo.play();
                     if (playPromise !== undefined) {
-                        playPromise.catch((error) => {
-                            console.log('Video autoplay blocked, waiting for interaction');
-                            // If autoplay fails, try on first user interaction
-                            const startOnInteraction = () => {
-                                heroVideo.muted = true;
-                                heroVideo.play().catch(() => {});
-                                document.removeEventListener('touchstart', startOnInteraction);
-                                document.removeEventListener('click', startOnInteraction);
-                                document.removeEventListener('scroll', startOnInteraction);
-                            };
-                            document.addEventListener('touchstart', startOnInteraction, { passive: true });
-                            document.addEventListener('click', startOnInteraction, { passive: true });
-                            document.addEventListener('scroll', startOnInteraction, { passive: true, once: true });
+                        playPromise.then(() => {
+                            // Success - video is playing
+                            playAttempts = maxAttempts; // Stop retrying
+                        }).catch((error) => {
+                            // Autoplay was prevented
+                            if (playAttempts === 1) {
+                                // Only set up interaction listeners once
+                                const startOnInteraction = () => {
+                                    heroVideo.muted = true;
+                                    heroVideo.volume = 0;
+                                    heroVideo.play().catch(() => {});
+                                };
+                                // Listen on multiple events
+                                ['touchstart', 'touchend', 'click', 'scroll', 'keydown'].forEach(evt => {
+                                    document.addEventListener(evt, startOnInteraction, { passive: true, once: true });
+                                });
+                            }
                         });
                     }
                 };
 
-                // Try play at multiple stages
+                // Try play at ALL possible stages
                 playVideo(); // Immediate
-                heroVideo.addEventListener('loadedmetadata', playVideo, { once: true });
-                heroVideo.addEventListener('canplay', playVideo, { once: true });
-                heroVideo.addEventListener('canplaythrough', playVideo, { once: true });
 
-                // Retry with delays for slow connections
-                setTimeout(playVideo, 100);
-                setTimeout(playVideo, 500);
-                setTimeout(playVideo, 1000);
+                // Video loading events
+                ['loadstart', 'loadeddata', 'loadedmetadata', 'canplay', 'canplaythrough'].forEach(evt => {
+                    heroVideo.addEventListener(evt, playVideo, { once: true });
+                });
 
-                // If video is paused due to visibility, play on visibility change
+                // Retry with aggressive delays
+                [50, 100, 200, 300, 500, 750, 1000, 1500, 2000, 3000].forEach(delay => {
+                    setTimeout(playVideo, delay);
+                });
+
+                // If video is paused for any reason, try to play again
+                heroVideo.addEventListener('pause', () => {
+                    if (!document.hidden) {
+                        setTimeout(playVideo, 100);
+                    }
+                });
+
+                // Visibility change handler
                 document.addEventListener('visibilitychange', () => {
                     if (document.visibilityState === 'visible' && heroVideo.paused) {
                         playVideo();
                     }
                 });
+
+                // iOS specific: try to play when entering fullscreen viewport
+                if ('IntersectionObserver' in window) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting && heroVideo.paused) {
+                                playVideo();
+                            }
+                        });
+                    }, { threshold: 0.1 });
+                    observer.observe(heroVideo);
+                }
             }
 
             const setAppHeight = () => {
@@ -14213,6 +14253,36 @@
                 // SKIP ANIMATION IF ALREADY SEEN — Type only once per session
                 // ═══════════════════════════════════════════════════════════════
                 if (sessionStorage.getItem('odei_home_seen')) {
+                    // ═══════════════════════════════════════════════════════════════
+                    // RESET ALL STATE (crucial for returning from other pages!)
+                    // ═══════════════════════════════════════════════════════════════
+                    // Reset screens to initial state (screen 1 visible, screen 2 hidden)
+                    if (screen1) {
+                        screen1.classList.remove('hidden');
+                    }
+                    if (screen2) {
+                        screen2.classList.remove('visible');
+                    }
+                    // Reset brand and value containers
+                    if (brandContainer) {
+                        brandContainer.classList.remove('visible');
+                        brandContainer.innerHTML = '';
+                    }
+                    if (valueContainer) {
+                        valueContainer.classList.remove('visible');
+                        const valueTextEl = valueContainer.querySelector('.value-text');
+                        if (valueTextEl) valueTextEl.innerHTML = '';
+                    }
+                    if (ctaContainer) {
+                        ctaContainer.classList.remove('visible');
+                    }
+                    // Reset interaction prompt text
+                    const prompt = interactionContainer?.querySelector('.interaction-prompt');
+                    if (prompt) {
+                        prompt.textContent = "> Is that what you're looking for?";
+                        prompt.style.color = ''; // Reset color
+                    }
+
                     // Show final state immediately
                     manifestoContainer.innerHTML = `
                         <span class="manifesto-line dim line-complete">> The future is not human or machine.</span>
@@ -14225,10 +14295,51 @@
                     }
                     if (interactionContainer) {
                         interactionContainer.classList.add('visible');
+                        interactionContainer.classList.remove('chosen');
                     }
                     // Activate orbs
                     const orbs = document.querySelector('.home-orbs');
                     if (orbs) orbs.classList.add('active');
+
+                    // ═══════════════════════════════════════════════════════════════
+                    // ATTACH BUTTON HANDLERS (must work after reload/navigation!)
+                    // ═══════════════════════════════════════════════════════════════
+                    const btnYes = document.getElementById('btn-yes');
+                    const btnNo = document.getElementById('btn-no');
+                    const value = "A control layer that gives your AI memory, rules, and accountable execution — so it can plan, act, and evolve under your governance.";
+
+                    if (btnYes) {
+                        // Remove old handlers and classes
+                        btnYes.classList.remove('pulse', 'selected');
+                        btnYes.onclick = () => {
+                            // Switch to screen 2 with value text shown instantly
+                            if (screen1) screen1.classList.add('hidden');
+                            if (screen2) screen2.classList.add('visible');
+                            if (brandContainer) {
+                                brandContainer.classList.add('visible');
+                                brandContainer.innerHTML = '<span class="brand-statement">ODEI — Your Personal AI Operating System</span>';
+                            }
+                            if (valueContainer) {
+                                valueContainer.classList.add('visible');
+                                valueContainer.querySelector('.value-text').textContent = value;
+                            }
+                        };
+                        // Add pulse effect after brief delay
+                        setTimeout(() => {
+                            btnYes.classList.add('pulse', 'selected');
+                        }, 100);
+                    }
+                    if (btnNo) {
+                        btnNo.onclick = () => {
+                            const promptEl = interactionContainer?.querySelector('.interaction-prompt');
+                            if (promptEl) {
+                                promptEl.textContent = "> Let me show you why...";
+                                promptEl.style.color = 'rgba(244, 201, 93, 0.9)';
+                            }
+                            setTimeout(() => goToPage(2), 1000);
+                        };
+                    }
+
                     // Reveal navigation immediately
                     revealNavigation();
                     return;
@@ -14345,9 +14456,17 @@
                     if (screen2) {
                         screen2.classList.add('visible');
                     }
-                    phase = 5;
-                    charIndex = 0;
-                    typingTimeout = setTimeout(animate, 600);
+                    // Show brand and value INSTANTLY (no typing animation)
+                    if (brandContainer) {
+                        brandContainer.classList.add('visible');
+                        brandContainer.innerHTML = '<span class="brand-statement">' + brand + '</span>';
+                    }
+                    if (valueContainer) {
+                        valueContainer.classList.add('visible');
+                        valueContainer.querySelector('.value-text').textContent = value;
+                    }
+                    // Reveal navigation
+                    setTimeout(revealNavigation, 400);
                 }
 
                 function handleNoClick() {
