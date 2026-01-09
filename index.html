@@ -10556,12 +10556,13 @@
         }
 
         @media (max-width: 480px) {
-            .connect-page-new .social-links {
+            /* Only target page content social links, NOT footer */
+            .connect-page-new .content .social-links {
                 flex-direction: column;
                 width: 100%;
             }
 
-            .connect-page-new .social-link {
+            .connect-page-new .content .social-link {
                 width: 100%;
             }
         }
@@ -11515,6 +11516,8 @@
 /* Footer fixes */
 .site-footer .social-links {
     margin-bottom: 0;
+    flex-direction: row !important; /* Always horizontal in footer */
+    width: auto !important;
 }
 
 .page[data-page="0"] .site-footer {
@@ -14252,7 +14255,7 @@
                 // ═══════════════════════════════════════════════════════════════
                 // SKIP ANIMATION IF ALREADY SEEN — Type only once per session
                 // ═══════════════════════════════════════════════════════════════
-                if (sessionStorage.getItem('odei_home_seen')) {
+                if (localStorage.getItem('odei_home_seen')) {
                     // ═══════════════════════════════════════════════════════════════
                     // RESET ALL STATE (crucial for returning from other pages!)
                     // ═══════════════════════════════════════════════════════════════
@@ -14290,7 +14293,7 @@
                     `;
                     if (statementContainer) {
                         statementContainer.querySelector('.statement-text').textContent =
-                            "Your AI must work continuously, governed by your rules — not prompts.";
+                            "Your AI must work continuously, governed by your rules — not prompts";
                         statementContainer.classList.add('visible');
                     }
                     if (interactionContainer) {
@@ -14367,7 +14370,7 @@
                         btnNo.onclick = () => {
                             const promptEl = interactionContainer?.querySelector('.interaction-prompt');
                             if (promptEl) {
-                                promptEl.textContent = "> Let me show you why...";
+                                promptEl.textContent = "> 99% use GPT, Claude, Gemini this way. See why that's a problem";
                                 promptEl.style.color = 'rgba(244, 201, 93, 0.9)';
                             }
                             setTimeout(() => goToPage(2), 1000);
@@ -14413,7 +14416,7 @@
                 const manifesto1 = "> The future is not human or machine.";
                 const manifesto2Prefix = "> The future is ";
                 const symbiosis = "symbiosis.";
-                const statement = "Your AI must work continuously, governed by your rules — not prompts.";
+                const statement = "Your AI must work continuously, governed by your rules — not prompts";
                 const brand = "ODEI — Your Personal AI Operating System";
                 const value = "A control layer that gives your AI memory, rules, and accountable execution — so it can plan, act, and evolve under your governance.";
 
@@ -14538,7 +14541,7 @@
                     // Show brief response then navigate to Problem page
                     const prompt = interactionContainer.querySelector('.interaction-prompt');
                     if (prompt) {
-                        prompt.textContent = "> Let me show you why...";
+                        prompt.textContent = "> 99% use GPT, Claude, Gemini this way. See why that's a problem";
                         prompt.style.color = 'rgba(244, 201, 93, 0.9)'; // Champagne color
                     }
                     setTimeout(() => {
@@ -14765,7 +14768,7 @@
                             }
                         }
                         // Mark as seen — animation won't replay on reload
-                        sessionStorage.setItem('odei_home_seen', 'true');
+                        localStorage.setItem('odei_home_seen', 'true');
                         // Navigation appears gently after the question
                         setTimeout(revealNavigation, 1000);
                         // STOP HERE — wait for button click
