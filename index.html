@@ -10991,7 +10991,7 @@
 
             <!-- FULL-PAGE VIDEO BACKGROUND -->
             <video class="hero-video" autoplay loop muted playsinline>
-                <source src="mobius-bg.mp4" type="video/mp4">
+                <source src="GxO7JgIb0AAAMcD.mp4" type="video/mp4">
             </video>
 
             <!-- Floating Ambient Orbs -->
@@ -13700,13 +13700,18 @@
                             charSpan.textContent = subheadline[charIndex];
                             subheadlineSpan.insertBefore(charSpan, cursor);
 
-                            // Slightly faster for subheadline
-                            const baseDelay = 30;
-                            const variance = Math.random() * 25;
+                            // Slightly faster for subheadline with human-like pauses
+                            const baseDelay = 28;
+                            const variance = Math.random() * 20;
                             let delay = baseDelay + variance;
-                            if (subheadline[charIndex] === '—') delay += 80;
-                            else if (subheadline[charIndex] === '+') delay += 40;
-                            else if (subheadline[charIndex] === '.') delay += 150;
+                            const char = subheadline[charIndex];
+
+                            // Punctuation pauses
+                            if (char === '.') delay += 180;           // End of sentence
+                            else if (char === ',') delay += 100;      // Comma pause
+                            else if (char === '—') delay += 120;      // Em dash - dramatic pause
+                            else if (char === '+') delay += 60;       // Plus sign emphasis
+                            else if (char === ' ') delay += 15;       // Natural space rhythm
 
                             charIndex++;
                             typingTimeout = setTimeout(type, delay);
