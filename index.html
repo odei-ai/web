@@ -323,6 +323,24 @@
             backface-visibility: hidden; /* Prevent flicker */
         }
 
+        /* Hide native video controls on iOS */
+        .hero-video::-webkit-media-controls,
+        .hero-video::-webkit-media-controls-panel,
+        .hero-video::-webkit-media-controls-play-button,
+        .hero-video::-webkit-media-controls-start-playback-button,
+        .hero-video::-webkit-media-controls-overlay-play-button {
+            display: none !important;
+            -webkit-appearance: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
+
+        /* Firefox and other browsers */
+        .hero-video::-moz-media-controls {
+            display: none !important;
+        }
+
         /* ══════ MANIFESTO — STAGGERED REVEAL ══════ */
         .home-manifesto {
             display: flex;
@@ -11547,7 +11565,7 @@
             <h1 class="visually-hidden">ODEI — Your Personal AI Operating System</h1>
 
             <!-- FULL-PAGE VIDEO BACKGROUND -->
-            <video class="hero-video" autoplay loop muted playsinline preload="auto">
+            <video class="hero-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture>
                 <source src="GxO7JgIb0AAAMcD.mp4" type="video/mp4">
             </video>
 
@@ -14054,26 +14072,63 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // ═══════════════════════════════════════════════════════════════
-            // iOS VIDEO AUTOPLAY FIX
+            // iOS VIDEO AUTOPLAY FIX — AGGRESSIVE MODE
             // ═══════════════════════════════════════════════════════════════
             const heroVideo = document.querySelector('.hero-video');
             if (heroVideo) {
-                // Force play on iOS - try immediately
+                // Force attributes via JS (some iOS versions ignore HTML attributes)
+                heroVideo.muted = true;
+                heroVideo.playsInline = true;
+                heroVideo.setAttribute('playsinline', '');
+                heroVideo.setAttribute('webkit-playsinline', '');
+                heroVideo.autoplay = true;
+                heroVideo.loop = true;
+
+                // Remove native controls that might appear
+                heroVideo.controls = false;
+                heroVideo.removeAttribute('controls');
+
+                // Aggressive play function with retry
                 const playVideo = () => {
-                    heroVideo.play().catch(() => {
-                        // If autoplay fails, try on first user interaction
-                        const startOnInteraction = () => {
-                            heroVideo.play();
-                            document.removeEventListener('touchstart', startOnInteraction);
-                            document.removeEventListener('click', startOnInteraction);
-                        };
-                        document.addEventListener('touchstart', startOnInteraction, { once: true });
-                        document.addEventListener('click', startOnInteraction, { once: true });
-                    });
+                    // Ensure muted (required for iOS autoplay)
+                    heroVideo.muted = true;
+
+                    const playPromise = heroVideo.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch((error) => {
+                            console.log('Video autoplay blocked, waiting for interaction');
+                            // If autoplay fails, try on first user interaction
+                            const startOnInteraction = () => {
+                                heroVideo.muted = true;
+                                heroVideo.play().catch(() => {});
+                                document.removeEventListener('touchstart', startOnInteraction);
+                                document.removeEventListener('click', startOnInteraction);
+                                document.removeEventListener('scroll', startOnInteraction);
+                            };
+                            document.addEventListener('touchstart', startOnInteraction, { passive: true });
+                            document.addEventListener('click', startOnInteraction, { passive: true });
+                            document.addEventListener('scroll', startOnInteraction, { passive: true, once: true });
+                        });
+                    }
                 };
-                // Try immediately and also when video is ready
-                playVideo();
+
+                // Try play at multiple stages
+                playVideo(); // Immediate
+                heroVideo.addEventListener('loadedmetadata', playVideo, { once: true });
                 heroVideo.addEventListener('canplay', playVideo, { once: true });
+                heroVideo.addEventListener('canplaythrough', playVideo, { once: true });
+
+                // Retry with delays for slow connections
+                setTimeout(playVideo, 100);
+                setTimeout(playVideo, 500);
+                setTimeout(playVideo, 1000);
+
+                // If video is paused due to visibility, play on visibility change
+                document.addEventListener('visibilitychange', () => {
+                    if (document.visibilityState === 'visible' && heroVideo.paused) {
+                        playVideo();
+                    }
+                });
             }
 
             const setAppHeight = () => {
@@ -14153,6 +14208,31 @@
                 const screen2 = document.getElementById('screen-2');
 
                 if (!manifestoContainer) return;
+
+                // ═══════════════════════════════════════════════════════════════
+                // SKIP ANIMATION IF ALREADY SEEN — Type only once per session
+                // ═══════════════════════════════════════════════════════════════
+                if (sessionStorage.getItem('odei_home_seen')) {
+                    // Show final state immediately
+                    manifestoContainer.innerHTML = `
+                        <span class="manifesto-line dim line-complete">> The future is not human or machine.</span>
+                        <span class="manifesto-line bright line-complete">> The future is <em>symbiosis.</em></span>
+                    `;
+                    if (statementContainer) {
+                        statementContainer.querySelector('.statement-text').textContent =
+                            "Your AI must work continuously, governed by your rules — not prompts.";
+                        statementContainer.classList.add('visible');
+                    }
+                    if (interactionContainer) {
+                        interactionContainer.classList.add('visible');
+                    }
+                    // Activate orbs
+                    const orbs = document.querySelector('.home-orbs');
+                    if (orbs) orbs.classList.add('active');
+                    // Reveal navigation immediately
+                    revealNavigation();
+                    return;
+                }
 
                 // Clear all containers for fresh animation
                 manifestoContainer.innerHTML = '';
@@ -14500,6 +14580,8 @@
                                 }, 500);
                             }
                         }
+                        // Mark as seen — animation won't replay on reload
+                        sessionStorage.setItem('odei_home_seen', 'true');
                         // Navigation appears gently after the question
                         setTimeout(revealNavigation, 1000);
                         // STOP HERE — wait for button click
@@ -14545,6 +14627,7 @@
 
                     // ─────────────────────────────────────────────────────────
                     // PHASE 6: VALUE EXPANSION → NAVIGATION
+                    // Value text appears instantly (no typing)
                     // ─────────────────────────────────────────────────────────
                     if (phase === 6) {
                         if (!valueContainer) {
@@ -14554,25 +14637,12 @@
 
                         const valueTextEl = valueContainer.querySelector('.value-text');
 
-                        if (charIndex === 0) {
-                            valueContainer.classList.add('visible');
-                            valueSpan = valueTextEl;
-                            cursor = createTypingCursor();
-                            valueSpan.appendChild(cursor);
-                        }
+                        // Show value text instantly — no character-by-character typing
+                        valueContainer.classList.add('visible');
+                        valueTextEl.textContent = value;
 
-                        if (charIndex < value.length) {
-                            const char = value[charIndex];
-                            const charSpan = document.createElement('span');
-                            charSpan.className = 'char-glow';
-                            charSpan.textContent = char;
-                            valueSpan.insertBefore(charSpan, cursor);
-                            charIndex++;
-                            typingTimeout = setTimeout(animate, getTypingDelay(char));
-                        } else {
-                            cursor.className = 'cursor large';
-                            typingTimeout = setTimeout(revealNavigation, 400);
-                        }
+                        // Reveal navigation after brief pause
+                        typingTimeout = setTimeout(revealNavigation, 400);
                         return;
                     }
                 }
