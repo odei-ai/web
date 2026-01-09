@@ -533,94 +533,111 @@
             }
 
             .home-container {
-                gap: 2rem;
-                padding: 1.5rem 1.5rem;
+                gap: 1.25rem;
+                padding: 1rem 1rem;
+                padding-bottom: 2rem;
+                justify-content: flex-start;
+                padding-top: env(safe-area-inset-top, 1rem);
             }
 
             .home-logo-svg {
-                width: 70px;
-                height: 70px;
+                width: 50px;
+                height: 50px;
             }
 
             .manifesto-lines {
-                font-size: 1.1rem;
-                line-height: 1.6;
+                font-size: 0.95rem;
+                line-height: 1.5;
             }
 
             .home-tagline {
-                min-height: 2.5rem;
+                min-height: 2rem;
             }
 
             .tagline-text {
-                font-size: 1.35rem;
+                font-size: 1.1rem;
                 letter-spacing: 0.02em;
-                line-height: 1.4;
+                line-height: 1.3;
             }
 
             .home-subheadline {
-                margin-top: 0.75rem;
+                margin-top: 0.5rem;
             }
 
             .subheadline-text {
-                font-size: 1rem;
-                line-height: 1.7;
+                font-size: 0.9rem;
+                line-height: 1.5;
             }
 
+            /* Single column navigation on mobile */
             .home-nav {
-                gap: 2.5rem;
-                margin-top: 1rem;
+                flex-direction: column;
+                gap: 0.25rem;
+                margin-top: 0.75rem;
+                align-items: center;
+            }
+
+            .nav-column {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem 1rem;
             }
 
             .nav-item {
-                padding: 0.6rem 0; /* Larger touch target */
+                padding: 0.4rem 0.5rem;
             }
 
             .nav-num {
-                font-size: 0.7rem;
-                min-width: 24px;
+                display: none; /* Hide numbers on mobile to save space */
             }
 
             .nav-name {
-                font-size: 1.05rem;
+                font-size: 0.85rem;
+            }
+
+            /* Smaller buttons on mobile */
+            .terminal-btn {
+                padding: 0.6rem 1.25rem;
+                font-size: 0.85rem;
+            }
+
+            .interaction-buttons {
+                gap: 0.75rem;
             }
         }
 
         /* ══════ RESPONSIVE — SMALL MOBILE ══════ */
         @media (max-width: 480px) {
             .home-container {
-                gap: 1.75rem;
-                padding: 1.25rem 1.25rem;
+                gap: 1rem;
+                padding: 0.75rem 0.75rem;
+                padding-top: env(safe-area-inset-top, 0.75rem);
             }
 
             .manifesto-lines {
-                font-size: 1.05rem;
+                font-size: 0.9rem;
             }
 
             .home-nav {
-                gap: 2rem;
-                margin-top: 0.75rem;
+                gap: 0.2rem;
+                margin-top: 0.5rem;
             }
 
             .nav-column {
-                gap: 0.4rem;
+                gap: 0.4rem 0.75rem;
             }
 
             .nav-item {
-                padding: 0.5rem 0;
-                gap: 0.6rem;
-            }
-
-            .nav-num {
-                font-size: 0.65rem;
-                min-width: 22px;
+                padding: 0.35rem 0.4rem;
             }
 
             .nav-name {
-                font-size: 1rem;
+                font-size: 0.8rem;
             }
 
             .tagline-text {
-                font-size: 1.25rem;
+                font-size: 1rem;
                 letter-spacing: 0.02em;
             }
 
@@ -14036,6 +14053,29 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // ═══════════════════════════════════════════════════════════════
+            // iOS VIDEO AUTOPLAY FIX
+            // ═══════════════════════════════════════════════════════════════
+            const heroVideo = document.querySelector('.hero-video');
+            if (heroVideo) {
+                // Force play on iOS - try immediately
+                const playVideo = () => {
+                    heroVideo.play().catch(() => {
+                        // If autoplay fails, try on first user interaction
+                        const startOnInteraction = () => {
+                            heroVideo.play();
+                            document.removeEventListener('touchstart', startOnInteraction);
+                            document.removeEventListener('click', startOnInteraction);
+                        };
+                        document.addEventListener('touchstart', startOnInteraction, { once: true });
+                        document.addEventListener('click', startOnInteraction, { once: true });
+                    });
+                };
+                // Try immediately and also when video is ready
+                playVideo();
+                heroVideo.addEventListener('canplay', playVideo, { once: true });
+            }
+
             const setAppHeight = () => {
                 const doc = document.documentElement;
                 doc.style.setProperty('--app-height', `${window.innerHeight}px`);
@@ -14172,15 +14212,15 @@
                 // TIMING ENGINE — DRAMATIC PACING
                 // ═══════════════════════════════════════════════════════════════
                 function getTypingDelay(char, isBrand = false) {
-                    // PERFORMANCE: Faster typing for snappier feel
-                    const baseDelay = isBrand ? 35 : 25;
-                    const variance = Math.random() * 15;
+                    // Balanced typing speed - readable yet engaging
+                    const baseDelay = isBrand ? 45 : 35;
+                    const variance = Math.random() * 20;
 
-                    if (char === '.' || char === '!' || char === '?') return baseDelay + variance + 120;
-                    if (char === ',') return baseDelay + variance + 70;
-                    if (char === '—') return baseDelay + variance + 90;
-                    if (char === ':') return baseDelay + variance + 60;
-                    if (char === '>') return baseDelay + variance + 40;
+                    if (char === '.' || char === '!' || char === '?') return baseDelay + variance + 180;
+                    if (char === ',') return baseDelay + variance + 100;
+                    if (char === '—') return baseDelay + variance + 130;
+                    if (char === ':') return baseDelay + variance + 90;
+                    if (char === '>') return baseDelay + variance + 60;
                     if (char === ' ') return baseDelay + variance + 20;
 
                     return baseDelay + variance;
@@ -14328,7 +14368,7 @@
                             span1.classList.add('line-complete');
                             phase = 1;
                             charIndex = 0;
-                            typingTimeout = setTimeout(animate, 300); // PERF: 600→300
+                            typingTimeout = setTimeout(animate, 450); // Balanced pause
                         }
                         return;
                     }
@@ -14359,7 +14399,7 @@
                             span2.appendChild(emSpan);
                             phase = 2;
                             charIndex = 0;
-                            typingTimeout = setTimeout(animate, 150); // PERF: 350→150
+                            typingTimeout = setTimeout(animate, 250); // Natural pause
                         }
                         return;
                     }
@@ -14381,7 +14421,7 @@
                             span2.classList.add('line-complete');
                             phase = 3;
                             charIndex = 0;
-                            typingTimeout = setTimeout(animate, 400); // PERF: 900→400
+                            typingTimeout = setTimeout(animate, 600); // Dramatic pause after symbiosis
                         }
                         return;
                     }
@@ -14418,7 +14458,7 @@
                             cursor.remove();
                             phase = 4;
                             charIndex = 0;
-                            typingTimeout = setTimeout(animate, 350); // PERF: 800→350
+                            typingTimeout = setTimeout(animate, 500); // Pause before interaction
                         }
                         return;
                     }
@@ -14515,8 +14555,8 @@
                     }
                 }
 
-                // Start the masterpiece with minimal delay
-                typingTimeout = setTimeout(animate, 300); // PERF: 800→300
+                // Start the masterpiece
+                typingTimeout = setTimeout(animate, 500); // Brief pause before typing
             }
 
             function revealNavigation() {
