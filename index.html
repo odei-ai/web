@@ -506,8 +506,8 @@
             }
 
             .home-container {
-                gap: 1.75rem;
-                padding: 1.5rem 1.25rem;
+                gap: 2rem;
+                padding: 1.5rem 1.5rem;
             }
 
             .home-logo-svg {
@@ -516,33 +516,71 @@
             }
 
             .manifesto-lines {
-                font-size: 0.95rem;
+                font-size: 1.1rem;
+                line-height: 1.6;
             }
 
             .home-tagline {
-                min-height: 2rem;
+                min-height: 2.5rem;
             }
 
             .tagline-text {
-                font-size: 1.1rem;
-                letter-spacing: 0.03em;
+                font-size: 1.35rem;
+                letter-spacing: 0.02em;
+                line-height: 1.4;
             }
 
             .home-subheadline {
-                margin-top: 0.5rem;
+                margin-top: 0.75rem;
             }
 
             .subheadline-text {
-                font-size: 0.85rem;
+                font-size: 1rem;
+                line-height: 1.7;
             }
 
             .home-nav {
                 gap: 2.5rem;
-                margin-top: 0.75rem;
+                margin-top: 1rem;
             }
 
             .nav-item {
-                padding: 0.5rem 0; /* Larger touch target */
+                padding: 0.6rem 0; /* Larger touch target */
+            }
+
+            .nav-num {
+                font-size: 0.7rem;
+                min-width: 24px;
+            }
+
+            .nav-name {
+                font-size: 1.05rem;
+            }
+        }
+
+        /* ══════ RESPONSIVE — SMALL MOBILE ══════ */
+        @media (max-width: 480px) {
+            .home-container {
+                gap: 1.75rem;
+                padding: 1.25rem 1.25rem;
+            }
+
+            .manifesto-lines {
+                font-size: 1.05rem;
+            }
+
+            .home-nav {
+                gap: 2rem;
+                margin-top: 0.75rem;
+            }
+
+            .nav-column {
+                gap: 0.4rem;
+            }
+
+            .nav-item {
+                padding: 0.5rem 0;
+                gap: 0.6rem;
             }
 
             .nav-num {
@@ -551,49 +589,24 @@
             }
 
             .nav-name {
-                font-size: 0.95rem;
-            }
-        }
-
-        /* ══════ RESPONSIVE — SMALL MOBILE ══════ */
-        @media (max-width: 480px) {
-            .home-nav {
-                gap: 1.5rem;
-                margin-top: 0.5rem;
-            }
-
-            .nav-column {
-                gap: 0.3rem;
-            }
-
-            .nav-item {
-                padding: 0.4rem 0;
-                gap: 0.5rem;
-            }
-
-            .nav-num {
-                font-size: 0.6rem;
-                min-width: 18px;
-            }
-
-            .nav-name {
-                font-size: 0.85rem;
+                font-size: 1rem;
             }
 
             .tagline-text {
-                font-size: 1rem;
+                font-size: 1.25rem;
                 letter-spacing: 0.02em;
             }
 
             .subheadline-text {
-                font-size: 0.8rem;
+                font-size: 0.95rem;
+                line-height: 1.7;
             }
         }
 
         /* ══════ RESPONSIVE — TINY ══════ */
         @media (max-width: 360px) {
             .home-container {
-                padding: 1.25rem 1rem;
+                padding: 1rem 1rem;
                 gap: 1.5rem;
             }
 
@@ -603,20 +616,20 @@
             }
 
             .manifesto-lines {
-                font-size: 0.85rem;
+                font-size: 0.95rem;
             }
 
             .tagline-text {
-                font-size: 0.9rem;
+                font-size: 1.1rem;
             }
 
             .subheadline-text {
-                font-size: 0.75rem;
+                font-size: 0.9rem;
                 line-height: 1.7;
             }
 
             .nav-name {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
             }
         }
 
