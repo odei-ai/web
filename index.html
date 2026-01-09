@@ -13559,17 +13559,18 @@
                 let charIndex = 0;
                 let span1, span2, emSpan, taglineSpan, subheadlineSpan, cursor;
 
-                // Variable typing speed - more human-like
-                function getTypingDelay(char, isTagline = false) {
-                    const baseDelay = isTagline ? 50 : 45;
-                    const variance = Math.random() * 35; // 0-35ms random variance
+                // Uniform typing speed - readable pace for all text
+                function getTypingDelay(char) {
+                    const baseDelay = 50;
+                    const variance = Math.random() * 30; // 0-30ms random variance
 
-                    // Punctuation pauses
-                    if (char === '.' || char === '!' || char === '?') return baseDelay + variance + 180;
-                    if (char === ',') return baseDelay + variance + 100;
-                    if (char === '—' || char === '-') return baseDelay + variance + 80;
+                    // Punctuation pauses - give reader time to process
+                    if (char === '.' || char === '!' || char === '?') return baseDelay + variance + 200;
+                    if (char === ',') return baseDelay + variance + 120;
+                    if (char === '—' || char === '-') return baseDelay + variance + 100;
+                    if (char === '+') return baseDelay + variance + 80;
                     if (char === '>') return baseDelay + variance + 60;
-                    if (char === ' ') return baseDelay + variance + 20;
+                    if (char === ' ') return baseDelay + variance + 25;
 
                     return baseDelay + variance;
                 }
@@ -13674,7 +13675,7 @@
                             charSpan.textContent = tagline[charIndex];
                             taglineSpan.insertBefore(charSpan, cursor);
 
-                            const delay = getTypingDelay(tagline[charIndex], true);
+                            const delay = getTypingDelay(tagline[charIndex]);
                             charIndex++;
                             typingTimeout = setTimeout(type, delay);
                         } else {
@@ -13700,19 +13701,8 @@
                             charSpan.textContent = subheadline[charIndex];
                             subheadlineSpan.insertBefore(charSpan, cursor);
 
-                            // Slightly faster for subheadline with human-like pauses
-                            const baseDelay = 28;
-                            const variance = Math.random() * 20;
-                            let delay = baseDelay + variance;
-                            const char = subheadline[charIndex];
-
-                            // Punctuation pauses
-                            if (char === '.') delay += 180;           // End of sentence
-                            else if (char === ',') delay += 100;      // Comma pause
-                            else if (char === '—') delay += 120;      // Em dash - dramatic pause
-                            else if (char === '+') delay += 60;       // Plus sign emphasis
-                            else if (char === ' ') delay += 15;       // Natural space rhythm
-
+                            // Same readable pace as all other text
+                            const delay = getTypingDelay(subheadline[charIndex]);
                             charIndex++;
                             typingTimeout = setTimeout(type, delay);
                         } else {
