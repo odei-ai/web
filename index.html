@@ -11201,12 +11201,7 @@
 
                     <!-- VALUE PROPOSITION -->
                     <div class="home-subheadline" id="home-value">
-                        <span class="value-text">Turn the AI model you choose into a governed system with memory, rules, and accountable execution.</span>
-                    </div>
-
-                    <!-- MECHANISM -->
-                    <div class="home-subheadline" id="home-mechanism" style="margin-top: 0.5rem;">
-                        <span class="mechanism-text">ODEI is the control layer that makes AI continuous. It can plan, act, and learn over time under your constraints, not prompts.</span>
+                        <span class="value-text">Add a control layer with memory, rules, and accountable execution so the model you choose can plan, act, and learn continuously under your constraints, not prompts.</span>
                     </div>
 
                     <!-- NAVIGATION -->
@@ -13729,7 +13724,6 @@
                 const manifestoContainer = document.getElementById('manifesto-lines');
                 const brandContainer = document.getElementById('home-brand');
                 const valueContainer = document.getElementById('home-value');
-                const mechanismContainer = document.getElementById('home-mechanism');
 
                 if (!manifestoContainer) return;
 
@@ -13737,7 +13731,6 @@
                 manifestoContainer.innerHTML = '';
                 if (brandContainer) brandContainer.innerHTML = '';
                 if (valueContainer) valueContainer.innerHTML = '';
-                if (mechanismContainer) mechanismContainer.innerHTML = '';
 
                 // ═══════════════════════════════════════════════════════════════
                 // TEXT CONTENT — THE MASTERPIECE
@@ -13746,8 +13739,7 @@
                 const manifesto2Prefix = "> The future is ";
                 const symbiosis = "symbiosis.";
                 const brand = "ODEI — Your Personal AI Operating System";
-                const value = "Turn the AI model you choose into a governed system with memory, rules, and accountable execution.";
-                const mechanism = "ODEI is the control layer that makes AI continuous. It can plan, act, and learn over time under your constraints, not prompts.";
+                const value = "Add a control layer with memory, rules, and accountable execution so the model you choose can plan, act, and learn continuously under your constraints, not prompts.";
 
                 // ═══════════════════════════════════════════════════════════════
                 // PHASE CONTROL
@@ -13757,13 +13749,11 @@
                 // Phase 1: Manifesto line 2 prefix
                 // Phase 2: "symbiosis."
                 // Phase 3: Brand statement (GLOWING)
-                // Phase 4: Value proposition
-                // Phase 5: Mechanism
-                // Phase 6: Navigation reveal
+                // Phase 4: Value proposition → Navigation reveal
                 let phase = -1;
                 let charIndex = 0;
                 let initBlinkCount = 0;
-                let span1, span2, emSpan, brandSpan, valueSpan, mechanismSpan, cursor;
+                let span1, span2, emSpan, brandSpan, valueSpan, cursor;
 
                 // ═══════════════════════════════════════════════════════════════
                 // TIMING ENGINE — DRAMATIC PACING
@@ -13968,13 +13958,13 @@
                     }
 
                     // ─────────────────────────────────────────────────────────
-                    // PHASE 4: VALUE PROPOSITION
-                    // "Turn the AI model you choose into a governed system..."
+                    // PHASE 4: VALUE PROPOSITION → NAVIGATION REVEAL
+                    // "Add a control layer with memory, rules..."
                     // ─────────────────────────────────────────────────────────
                     if (phase === 4) {
                         if (!valueContainer) {
-                            phase = 5;
-                            typingTimeout = setTimeout(animate, 100);
+                            // Skip to navigation reveal
+                            typingTimeout = setTimeout(revealNavigation, 400);
                             return;
                         }
 
@@ -13996,46 +13986,8 @@
                             charIndex++;
                             typingTimeout = setTimeout(animate, getTypingDelay(char));
                         } else {
-                            cursor.remove();
-                            phase = 5;
-                            charIndex = 0;
-                            typingTimeout = setTimeout(animate, 600);
-                        }
-                        return;
-                    }
-
-                    // ─────────────────────────────────────────────────────────
-                    // PHASE 5: MECHANISM
-                    // "ODEI is the control layer that makes AI continuous..."
-                    // ─────────────────────────────────────────────────────────
-                    if (phase === 5) {
-                        if (!mechanismContainer) {
-                            phase = 6;
-                            typingTimeout = setTimeout(animate, 100);
-                            return;
-                        }
-
-                        if (charIndex === 0) {
-                            mechanismSpan = document.createElement('span');
-                            mechanismSpan.className = 'mechanism-text';
-                            cursor = createTypingCursor();
-                            mechanismSpan.appendChild(cursor);
-                            mechanismContainer.appendChild(mechanismSpan);
-                        }
-
-                        if (charIndex < mechanism.length) {
-                            const char = mechanism[charIndex];
-                            const charSpan = document.createElement('span');
-                            charSpan.className = 'char-glow';
-                            charSpan.textContent = char;
-                            mechanismSpan.insertBefore(charSpan, cursor);
-
-                            charIndex++;
-                            typingTimeout = setTimeout(animate, getTypingDelay(char));
-                        } else {
                             // Final cursor - large and glowing
                             cursor.className = 'cursor large';
-                            phase = 6;
                             // Reveal navigation
                             typingTimeout = setTimeout(revealNavigation, 400);
                         }
