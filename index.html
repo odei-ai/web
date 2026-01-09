@@ -14209,19 +14209,35 @@
                 let span1, span2, emSpan, statementSpan, brandSpan, valueSpan, cursor;
 
                 // ═══════════════════════════════════════════════════════════════
-                // TIMING ENGINE — DRAMATIC PACING
+                // TIMING ENGINE — CRAFTED FOR THE HUMAN EYE
+                // ═══════════════════════════════════════════════════════════════
+                // Philosophy: Reading is breathing. Each pause is a breath.
+                // The eye needs rhythm — not speed, not slowness, but flow.
                 // ═══════════════════════════════════════════════════════════════
                 function getTypingDelay(char, isBrand = false) {
-                    // Balanced typing speed - readable yet engaging
-                    const baseDelay = isBrand ? 45 : 35;
-                    const variance = Math.random() * 20;
+                    // Base: 42ms regular, 52ms for brand text (golden ratio ~1.24)
+                    // This matches comfortable reading pace (~250 WPM watching)
+                    const baseDelay = isBrand ? 52 : 42;
+                    // Human variance: ±12ms creates organic feel without chaos
+                    const variance = (Math.random() - 0.5) * 24;
 
-                    if (char === '.' || char === '!' || char === '?') return baseDelay + variance + 180;
-                    if (char === ',') return baseDelay + variance + 100;
-                    if (char === '—') return baseDelay + variance + 130;
-                    if (char === ':') return baseDelay + variance + 90;
-                    if (char === '>') return baseDelay + variance + 60;
-                    if (char === ' ') return baseDelay + variance + 20;
+                    // Full stops: Complete breath — let the thought land
+                    if (char === '.' || char === '!' || char === '?') return baseDelay + 380 + variance;
+
+                    // Comma: Half breath — brief pause, thought continues
+                    if (char === ',') return baseDelay + 180 + variance;
+
+                    // Em-dash: Dramatic shift — the mind pivots
+                    if (char === '—') return baseDelay + 260 + variance;
+
+                    // Colon: Introduction — "here comes something"
+                    if (char === ':') return baseDelay + 160 + variance;
+
+                    // Terminal prompt: Quick, technical feel
+                    if (char === '>') return baseDelay + 90 + variance;
+
+                    // Space: Word boundary — micro-pause for word recognition
+                    if (char === ' ') return baseDelay + 35 + variance;
 
                     return baseDelay + variance;
                 }
@@ -14334,19 +14350,21 @@
 
                         initBlinkCount++;
 
-                        // PERF: Reduced from 3 blinks to 2 for faster start
-                        if (initBlinkCount >= 2) {
+                        // 3 blinks: cursor "gathering thoughts" before speaking
+                        if (initBlinkCount >= 3) {
                             cursor.remove();
                             cursor = createTypingCursor();
                             span1.appendChild(cursor);
                             phase = 0;
                             charIndex = 0;
-                            // PERF: Activate orbs after content starts loading
+                            // Activate ambient orbs as content begins
                             const orbs = document.querySelector('.home-orbs');
                             if (orbs) orbs.classList.add('active');
-                            typingTimeout = setTimeout(animate, 300);
+                            // Brief pause, then begin typing
+                            typingTimeout = setTimeout(animate, 280);
                         } else {
-                            typingTimeout = setTimeout(animate, 500);
+                            // Each blink: 480ms feels like a heartbeat
+                            typingTimeout = setTimeout(animate, 480);
                         }
                         return;
                     }
@@ -14368,7 +14386,8 @@
                             span1.classList.add('line-complete');
                             phase = 1;
                             charIndex = 0;
-                            typingTimeout = setTimeout(animate, 450); // Balanced pause
+                            // Let "not human or machine" land in the mind
+                            typingTimeout = setTimeout(animate, 580);
                         }
                         return;
                     }
@@ -14399,7 +14418,8 @@
                             span2.appendChild(emSpan);
                             phase = 2;
                             charIndex = 0;
-                            typingTimeout = setTimeout(animate, 250); // Natural pause
+                            // Build anticipation before the key word
+                            typingTimeout = setTimeout(animate, 320);
                         }
                         return;
                     }
@@ -14421,7 +14441,8 @@
                             span2.classList.add('line-complete');
                             phase = 3;
                             charIndex = 0;
-                            typingTimeout = setTimeout(animate, 600); // Dramatic pause after symbiosis
+                            // "Symbiosis" — let the word resonate deeply
+                            typingTimeout = setTimeout(animate, 850);
                         }
                         return;
                     }
@@ -14458,7 +14479,8 @@
                             cursor.remove();
                             phase = 4;
                             charIndex = 0;
-                            typingTimeout = setTimeout(animate, 500); // Pause before interaction
+                            // Moment of reflection before asking the question
+                            typingTimeout = setTimeout(animate, 650);
                         }
                         return;
                     }
@@ -14478,8 +14500,8 @@
                                 }, 500);
                             }
                         }
-                        // Reveal navigation after buttons appear
-                        setTimeout(revealNavigation, 800); // PERF: 1500→800
+                        // Navigation appears gently after the question
+                        setTimeout(revealNavigation, 1000);
                         // STOP HERE — wait for button click
                         return;
                     }
@@ -14555,8 +14577,8 @@
                     }
                 }
 
-                // Start the masterpiece
-                typingTimeout = setTimeout(animate, 500); // Brief pause before typing
+                // The opening breath — settle into the experience
+                typingTimeout = setTimeout(animate, 700);
             }
 
             function revealNavigation() {
