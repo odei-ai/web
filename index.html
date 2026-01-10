@@ -552,11 +552,164 @@
             }
 
             .home-container {
-                gap: 1.25rem;
-                padding: 0.75rem 1.25rem;
+                gap: 2rem;
+                padding: 1.5rem 1.5rem;
                 padding-bottom: 5rem;
                 justify-content: center;
-                padding-top: env(safe-area-inset-top, 0.75rem);
+                padding-top: env(safe-area-inset-top, 1.5rem);
+            }
+
+            .home-logo-svg {
+                width: 72px;
+                height: 72px;
+            }
+
+            .manifesto-lines {
+                font-size: 1.25rem;
+                line-height: 1.75;
+            }
+
+            .home-tagline {
+                min-height: 3rem;
+                margin-top: 0.75rem;
+            }
+
+            .tagline-text {
+                font-size: 1.75rem;
+                letter-spacing: 0.04em;
+                line-height: 1.25;
+            }
+
+            .home-subheadline {
+                margin-top: 0.5rem;
+                padding: 0 0.5rem;
+            }
+
+            .subheadline-text {
+                font-size: 1.15rem;
+                line-height: 1.5;
+            }
+
+            /* Beautiful 2-column navigation on mobile */
+            .home-nav {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem 1.5rem;
+                margin-top: 1.75rem;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                max-width: 340px;
+            }
+
+            .nav-column {
+                display: contents;
+            }
+
+            .nav-item {
+                padding: 0.875rem 1rem;
+                min-height: 52px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 6px;
+                background: rgba(255, 255, 255, 0.03);
+                transition: all 0.2s ease;
+            }
+
+            .nav-item:active {
+                background: rgba(79, 209, 197, 0.15);
+                border-color: rgba(79, 209, 197, 0.4);
+                transform: scale(0.97);
+            }
+
+            .nav-num {
+                display: none;
+            }
+
+            .nav-name {
+                font-size: 1.05rem;
+                opacity: 0.9;
+                font-weight: 400;
+            }
+
+            /* Larger buttons on mobile */
+            .terminal-btn {
+                padding: 1rem 2.5rem;
+                font-size: 1.2rem;
+                min-height: 58px;
+            }
+
+            .terminal-btn:active {
+                transform: scale(0.95);
+                background: rgba(79, 209, 197, 0.2);
+            }
+
+            .interaction-buttons {
+                gap: 1.5rem;
+                margin-top: 0.75rem;
+            }
+        }
+
+        /* ══════ RESPONSIVE — SMALL MOBILE (iPhone standard) ══════ */
+        @media (max-width: 480px) {
+            .home-container {
+                gap: 1.75rem;
+                padding: 1.25rem 1.25rem;
+                padding-bottom: 4.5rem;
+                padding-top: env(safe-area-inset-top, 1.25rem);
+            }
+
+            .home-logo-svg {
+                width: 64px;
+                height: 64px;
+            }
+
+            .manifesto-lines {
+                font-size: 1.15rem;
+                line-height: 1.7;
+            }
+
+            .home-nav {
+                gap: 0.625rem 1.25rem;
+                margin-top: 1.5rem;
+                max-width: 300px;
+            }
+
+            .nav-item {
+                padding: 0.75rem 0.875rem;
+                min-height: 48px;
+            }
+
+            .nav-name {
+                font-size: 0.975rem;
+            }
+
+            .terminal-btn {
+                padding: 0.875rem 2rem;
+                font-size: 1.1rem;
+                min-height: 54px;
+            }
+
+            .tagline-text {
+                font-size: 1.5rem;
+                letter-spacing: 0.03em;
+            }
+
+            .subheadline-text {
+                font-size: 1.05rem;
+                line-height: 1.5;
+            }
+        }
+
+        /* ══════ RESPONSIVE — TINY (375px - iPhone mini) ══════ */
+        @media (max-width: 375px) {
+            .home-container {
+                gap: 1.5rem;
+                padding: 1rem 1rem;
+                padding-bottom: 4rem;
+                padding-top: env(safe-area-inset-top, 1rem);
             }
 
             .home-logo-svg {
@@ -566,138 +719,50 @@
 
             .manifesto-lines {
                 font-size: 1.05rem;
-                line-height: 1.6;
+                line-height: 1.65;
             }
 
-            .home-tagline {
-                min-height: 2.5rem;
-            }
-
-            .tagline-text {
-                font-size: 1.35rem;
-                letter-spacing: 0.03em;
-                line-height: 1.35;
-            }
-
-            .home-subheadline {
-                margin-top: 0.25rem;
-                padding: 0 0.5rem;
-            }
-
-            .subheadline-text {
-                font-size: 1rem;
-                line-height: 1.5;
-            }
-
-            /* Compact 2-row navigation on mobile */
             .home-nav {
-                display: grid;
-                grid-template-columns: repeat(4, auto);
-                gap: 0.4rem 0.6rem;
-                margin-top: 0.75rem;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .nav-column {
-                display: contents; /* Flatten into grid */
+                gap: 0.5rem 1rem;
+                margin-top: 1.25rem;
+                max-width: 280px;
             }
 
             .nav-item {
-                padding: 0.5rem 0.6rem;
+                padding: 0.625rem 0.75rem;
                 min-height: 44px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .nav-item:active {
-                background: rgba(79, 209, 197, 0.15);
-                transform: scale(0.97);
-            }
-
-            .nav-num {
-                display: none; /* Hide numbers on mobile to save space */
             }
 
             .nav-name {
                 font-size: 0.9rem;
             }
 
-            /* Better touch targets for buttons on mobile */
             .terminal-btn {
                 padding: 0.75rem 1.75rem;
-                font-size: 1.05rem;
+                font-size: 1rem;
                 min-height: 50px;
-            }
-
-            .terminal-btn:active {
-                transform: scale(0.95);
-                background: rgba(79, 209, 197, 0.2);
             }
 
             .interaction-buttons {
                 gap: 1.25rem;
             }
-        }
-
-        /* ══════ RESPONSIVE — SMALL MOBILE ══════ */
-        @media (max-width: 480px) {
-            .home-container {
-                gap: 1rem;
-                padding: 0.5rem 1rem;
-                padding-bottom: 4.5rem;
-                padding-top: env(safe-area-inset-top, 0.5rem);
-            }
-
-            .home-logo-svg {
-                width: 52px;
-                height: 52px;
-            }
-
-            .manifesto-lines {
-                font-size: 1rem;
-                line-height: 1.55;
-            }
-
-            .home-nav {
-                grid-template-columns: repeat(4, auto);
-                gap: 0.35rem 0.5rem;
-                margin-top: 0.5rem;
-            }
-
-            .nav-item {
-                padding: 0.45rem 0.5rem;
-                min-height: 42px;
-            }
-
-            .nav-name {
-                font-size: 0.85rem;
-            }
-
-            .terminal-btn {
-                padding: 0.7rem 1.5rem;
-                font-size: 1rem;
-                min-height: 48px;
-            }
 
             .tagline-text {
-                font-size: 1.25rem;
-                letter-spacing: 0.02em;
+                font-size: 1.35rem;
             }
 
             .subheadline-text {
                 font-size: 0.95rem;
-                line-height: 1.5;
+                line-height: 1.45;
             }
         }
 
-        /* ══════ RESPONSIVE — TINY (360px) ══════ */
-        @media (max-width: 360px) {
+        /* ══════ RESPONSIVE — VERY TINY (320px - iPhone SE) ══════ */
+        @media (max-width: 320px) {
             .home-container {
-                padding: 0.5rem 0.75rem;
-                padding-bottom: 4rem;
-                gap: 0.85rem;
+                padding: 0.75rem 0.75rem;
+                padding-bottom: 3.5rem;
+                gap: 1.25rem;
             }
 
             .home-logo-svg {
@@ -707,27 +772,27 @@
 
             .manifesto-lines {
                 font-size: 0.95rem;
-                line-height: 1.5;
+                line-height: 1.6;
             }
 
             .home-nav {
-                grid-template-columns: repeat(4, auto);
-                gap: 0.3rem 0.35rem;
+                gap: 0.4rem 0.75rem;
+                max-width: 260px;
             }
 
             .nav-item {
-                padding: 0.4rem 0.4rem;
-                min-height: 40px;
+                padding: 0.5rem 0.625rem;
+                min-height: 42px;
             }
 
             .nav-name {
-                font-size: 0.78rem;
+                font-size: 0.825rem;
             }
 
             .terminal-btn {
-                padding: 0.65rem 1.25rem;
+                padding: 0.7rem 1.5rem;
                 font-size: 0.95rem;
-                min-height: 46px;
+                min-height: 48px;
             }
 
             .interaction-buttons {
@@ -735,59 +800,7 @@
             }
 
             .tagline-text {
-                font-size: 1.15rem;
-            }
-
-            .subheadline-text {
-                font-size: 0.9rem;
-                line-height: 1.45;
-            }
-        }
-
-        /* ══════ RESPONSIVE — VERY TINY (320px - iPhone SE) ══════ */
-        @media (max-width: 320px) {
-            .home-container {
-                padding: 0.4rem 0.5rem;
-                padding-bottom: 3.5rem;
-                gap: 0.75rem;
-            }
-
-            .home-logo-svg {
-                width: 44px;
-                height: 44px;
-            }
-
-            .manifesto-lines {
-                font-size: 0.88rem;
-                line-height: 1.45;
-            }
-
-            .home-nav {
-                grid-template-columns: repeat(3, auto);
-                gap: 0.25rem 0.3rem;
-            }
-
-            .nav-item {
-                padding: 0.35rem 0.35rem;
-                min-height: 38px;
-            }
-
-            .nav-name {
-                font-size: 0.72rem;
-            }
-
-            .terminal-btn {
-                padding: 0.6rem 1rem;
-                font-size: 0.9rem;
-                min-height: 44px;
-            }
-
-            .interaction-buttons {
-                gap: 0.75rem;
-            }
-
-            .tagline-text {
-                font-size: 1.05rem;
+                font-size: 1.2rem;
             }
 
             .subheadline-text {
