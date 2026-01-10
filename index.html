@@ -11609,7 +11609,7 @@
                         <!-- SCREEN 2: Brand + Value + CTA -->
                         <div class="screen-2" id="screen-2">
                             <div class="home-tagline" id="home-brand">
-                                <span class="brand-statement">ODEI — Your Personal AI Operating System</span>
+                                <span class="brand-statement">Stop prompt-chasing. Own the control layer.</span>
                             </div>
                             <div class="home-subheadline" id="home-value">
                                 <span class="value-text"></span>
@@ -14278,12 +14278,23 @@
                     }
                     if (ctaContainer) {
                         ctaContainer.classList.remove('visible');
+                        // Reset to original CTA buttons (in case NO was clicked before)
+                        ctaContainer.innerHTML = `
+                            <a href="#intro" data-page="1" class="terminal-cta" data-cta="primary"><span class="btn-text">[ Read Docs ]</span></a>
+                            <a href="#connect" data-page="9" class="terminal-cta" data-cta="secondary"><span class="btn-text">[ Request Access ]</span></a>
+                        `;
                     }
-                    // Reset interaction prompt text to original
-                    const prompt = interactionContainer?.querySelector('.interaction-prompt');
-                    if (prompt) {
-                        prompt.innerHTML = '> Do you agree? <span class="prompt-cursor">_</span>';
-                        prompt.style.color = ''; // Reset color
+                    // Reset interaction container fully (in case NO was clicked and content was replaced)
+                    if (interactionContainer) {
+                        interactionContainer.style.display = '';
+                        // Restore original Yes/No buttons structure
+                        interactionContainer.innerHTML = `
+                            <span class="interaction-prompt">> Do you agree? <span class="prompt-cursor">_</span></span>
+                            <div class="interaction-buttons">
+                                <button class="terminal-btn terminal-btn-yes" id="btn-yes">[ YES ]</button>
+                                <button class="terminal-btn terminal-btn-no" id="btn-no">[ NO ]</button>
+                            </div>
+                        `;
                     }
 
                     // Show final state immediately
@@ -14309,7 +14320,7 @@
                     // ═══════════════════════════════════════════════════════════════
                     const btnYes = document.getElementById('btn-yes');
                     const btnNo = document.getElementById('btn-no');
-                    const value = "A control layer that gives your AI memory, rules, and accountable execution — so it can plan, act, and evolve under your governance.";
+                    const value = "ODEI adds memory, rules, and controlled execution — under your constraints, not prompts.";
 
                     if (btnYes) {
                         // Remove old handlers and classes
@@ -14320,7 +14331,7 @@
                             if (screen2) screen2.classList.add('visible');
 
                             // Type the brand, then show value instantly
-                            const brand = "ODEI — Your Personal AI Operating System";
+                            const brand = "Stop prompt-chasing. Own the control layer.";
                             if (brandContainer) {
                                 brandContainer.classList.add('visible');
                                 const brandSpan = document.createElement('span');
@@ -14367,14 +14378,7 @@
                         }, 100);
                     }
                     if (btnNo) {
-                        btnNo.onclick = () => {
-                            const promptEl = interactionContainer?.querySelector('.interaction-prompt');
-                            if (promptEl) {
-                                promptEl.textContent = "> 99% use GPT, Claude, Gemini this way. See why that's a problem";
-                                promptEl.style.color = 'rgba(244, 201, 93, 0.9)';
-                            }
-                            setTimeout(() => goToPage(2), 1000);
-                        };
+                        btnNo.onclick = handleNoClick;
                     }
 
                     // Reveal navigation immediately
@@ -14390,6 +14394,15 @@
                 }
                 if (interactionContainer) {
                     interactionContainer.classList.remove('visible', 'chosen');
+                    interactionContainer.style.display = '';
+                    // Restore original Yes/No buttons structure (in case NO was clicked before)
+                    interactionContainer.innerHTML = `
+                        <span class="interaction-prompt">> Do you agree? <span class="prompt-cursor">_</span></span>
+                        <div class="interaction-buttons">
+                            <button class="terminal-btn terminal-btn-yes" id="btn-yes">[ YES ]</button>
+                            <button class="terminal-btn terminal-btn-no" id="btn-no">[ NO ]</button>
+                        </div>
+                    `;
                 }
                 if (brandContainer) {
                     brandContainer.innerHTML = '';
@@ -14401,6 +14414,11 @@
                 }
                 if (ctaContainer) {
                     ctaContainer.classList.remove('visible');
+                    // Reset to original CTA buttons (in case NO was clicked before)
+                    ctaContainer.innerHTML = `
+                        <a href="#intro" data-page="1" class="terminal-cta" data-cta="primary"><span class="btn-text">[ Read Docs ]</span></a>
+                        <a href="#connect" data-page="9" class="terminal-cta" data-cta="secondary"><span class="btn-text">[ Request Access ]</span></a>
+                    `;
                 }
                 // Reset screen states
                 if (screen1) {
@@ -14417,8 +14435,8 @@
                 const manifesto2Prefix = "> The future is ";
                 const symbiosis = "symbiosis.";
                 const statement = "Your AI must work continuously, governed by your rules — not prompts";
-                const brand = "ODEI — Your Personal AI Operating System";
-                const value = "A control layer that gives your AI memory, rules, and accountable execution — so it can plan, act, and evolve under your governance.";
+                const brand = "Stop prompt-chasing. Own the control layer.";
+                const value = "ODEI adds memory, rules, and controlled execution — under your constraints, not prompts.";
 
                 // ═══════════════════════════════════════════════════════════════
                 // PHASE CONTROL
@@ -14538,16 +14556,177 @@
                 }
 
                 function handleNoClick() {
-                    // Show brief response then navigate to Problem page
-                    const prompt = interactionContainer.querySelector('.interaction-prompt');
-                    if (prompt) {
-                        prompt.textContent = "> 99% use GPT, Claude, Gemini this way. See why that's a problem";
-                        prompt.style.color = 'rgba(244, 201, 93, 0.9)'; // Champagne color
+                    // ═══════════════════════════════════════════════════════════════
+                    // FEAR SCREEN — Type the harsh reality with animation
+                    // ═══════════════════════════════════════════════════════════════
+
+                    const fearLine1 = '> AI generates text. You do all the work.';
+                    const fearLine2 = '> Prompt, copy, paste, verify — ';
+                    const fearLine2Italic = 'forever';
+                    const fearStatement = "If you don't own your architecture, you're ";
+                    const fearStatementRed = 'replaceable';
+
+                    // Hide interaction prompt
+                    if (interactionContainer) {
+                        interactionContainer.style.display = 'none';
                     }
-                    setTimeout(() => {
-                        // Navigate to Problem page (page 2)
-                        goToPage(2);
-                    }, 1000);
+
+                    // Clear manifesto for typing
+                    if (manifestoContainer) {
+                        manifestoContainer.innerHTML = '';
+                    }
+
+                    // Clear and hide statement
+                    if (statementContainer) {
+                        const stText = statementContainer.querySelector('.statement-text');
+                        if (stText) stText.innerHTML = '';
+                        statementContainer.classList.remove('visible');
+                    }
+
+                    // Create first fear line span
+                    const fearSpan1 = document.createElement('span');
+                    fearSpan1.className = 'manifesto-line dim';
+                    const fearCursor1 = createTypingCursor();
+                    fearSpan1.appendChild(fearCursor1);
+                    manifestoContainer.appendChild(fearSpan1);
+
+                    let fearIdx1 = 0;
+
+                    function typeFearLine1() {
+                        if (fearIdx1 < fearLine1.length) {
+                            const char = fearLine1[fearIdx1];
+                            const charSpan = document.createElement('span');
+                            charSpan.className = 'manifesto-char';
+                            charSpan.textContent = char;
+                            fearSpan1.insertBefore(charSpan, fearCursor1);
+                            fearIdx1++;
+                            setTimeout(typeFearLine1, getTypingDelay(char));
+                        } else {
+                            // Line 1 done - mark complete, start line 2
+                            fearSpan1.classList.add('line-complete');
+                            fearCursor1.remove();
+                            setTimeout(startFearLine2, 350);
+                        }
+                    }
+
+                    function startFearLine2() {
+                        const fearSpan2 = document.createElement('span');
+                        fearSpan2.className = 'manifesto-line bright';
+                        const fearCursor2 = createTypingCursor();
+                        fearSpan2.appendChild(fearCursor2);
+                        manifestoContainer.appendChild(fearSpan2);
+
+                        let fearIdx2 = 0;
+
+                        function typeFearLine2() {
+                            if (fearIdx2 < fearLine2.length) {
+                                const char = fearLine2[fearIdx2];
+                                const charSpan = document.createElement('span');
+                                charSpan.className = 'manifesto-char';
+                                charSpan.textContent = char;
+                                fearSpan2.insertBefore(charSpan, fearCursor2);
+                                fearIdx2++;
+                                setTimeout(typeFearLine2, getTypingDelay(char));
+                            } else {
+                                // Type the italic "forever"
+                                let italicIdx = 0;
+                                const italicEl = document.createElement('em');
+                                fearSpan2.insertBefore(italicEl, fearCursor2);
+
+                                function typeItalic() {
+                                    if (italicIdx < fearLine2Italic.length) {
+                                        italicEl.textContent += fearLine2Italic[italicIdx];
+                                        italicIdx++;
+                                        setTimeout(typeItalic, getTypingDelay(fearLine2Italic[italicIdx - 1]));
+                                    } else {
+                                        // Line 2 done - mark complete, start statement
+                                        fearSpan2.classList.add('line-complete');
+                                        fearCursor2.remove();
+                                        setTimeout(typeFearStatement, 450);
+                                    }
+                                }
+                                typeItalic();
+                            }
+                        }
+                        typeFearLine2();
+                    }
+
+                    function typeFearStatement() {
+                        if (!statementContainer) {
+                            showFearButtons();
+                            return;
+                        }
+
+                        statementContainer.classList.add('visible');
+                        const stText = statementContainer.querySelector('.statement-text');
+                        if (!stText) {
+                            showFearButtons();
+                            return;
+                        }
+
+                        stText.innerHTML = '';
+                        const stCursor = createTypingCursor(true);
+                        stText.appendChild(stCursor);
+
+                        let stIdx = 0;
+
+                        function typeStatement() {
+                            if (stIdx < fearStatement.length) {
+                                const char = fearStatement[stIdx];
+                                const charSpan = document.createElement('span');
+                                charSpan.textContent = char;
+                                stText.insertBefore(charSpan, stCursor);
+                                stIdx++;
+                                setTimeout(typeStatement, getTypingDelay(char, true));
+                            } else {
+                                // Type the red "replaceable"
+                                const redSpan = document.createElement('span');
+                                redSpan.style.color = '#e53e3e';
+                                stText.insertBefore(redSpan, stCursor);
+
+                                let redIdx = 0;
+                                function typeRed() {
+                                    if (redIdx < fearStatementRed.length) {
+                                        redSpan.textContent += fearStatementRed[redIdx];
+                                        redIdx++;
+                                        setTimeout(typeRed, getTypingDelay(fearStatementRed[redIdx - 1], true));
+                                    } else {
+                                        stCursor.remove();
+                                        setTimeout(showFearButtons, 400);
+                                    }
+                                }
+                                typeRed();
+                            }
+                        }
+                        setTimeout(typeStatement, 300);
+                    }
+
+                    function showFearButtons() {
+                        // Use interactionContainer for buttons (it's in screen-1, visible)
+                        if (interactionContainer) {
+                            interactionContainer.style.display = ''; // Show it
+                            interactionContainer.innerHTML = `
+                                <div class="home-cta visible" style="opacity: 1; transform: none;">
+                                    <a href="#problem" class="terminal-cta" id="fear-btn-read"><span class="btn-text">[ Read More ]</span></a>
+                                    <a href="#connect" class="terminal-cta" id="fear-btn-access"><span class="btn-text">[ Request Access ]</span></a>
+                                </div>
+                            `;
+                            // Attach handlers (no data-page to avoid conflict with general handler)
+                            document.getElementById('fear-btn-read')?.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                goToPage(2);
+                            });
+                            document.getElementById('fear-btn-access')?.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                goToPage(9);
+                            });
+                        }
+                        // Reveal navigation
+                        revealNavigation();
+                    }
+
+                    // Start typing fear content after brief pause
+                    setTimeout(typeFearLine1, 300);
                 }
 
                 // Attach button handlers
