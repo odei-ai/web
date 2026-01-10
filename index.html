@@ -1340,28 +1340,31 @@
             box-shadow: 0 0 20px rgba(79, 209, 197, 0.3);
         }
 
-        /* Primary CTA - filled, more prominent */
+        /* Primary CTA - filled, prominent (like YES button) */
         .terminal-cta[data-cta="primary"] {
-            background: rgba(79, 209, 197, 0.15);
-            border-color: rgba(79, 209, 197, 0.9);
-            box-shadow: 0 0 15px rgba(79, 209, 197, 0.2);
+            background: rgba(79, 209, 197, 0.25);
+            border-color: rgba(79, 209, 197, 1);
+            box-shadow: 0 0 20px rgba(79, 209, 197, 0.4), inset 0 0 20px rgba(79, 209, 197, 0.1);
+            color: rgba(79, 209, 197, 1);
+            text-shadow: 0 0 10px rgba(79, 209, 197, 0.5);
         }
         .terminal-cta[data-cta="primary"]:hover {
-            background: rgba(79, 209, 197, 0.25);
-            box-shadow: 0 0 25px rgba(79, 209, 197, 0.4);
+            background: rgba(79, 209, 197, 0.35);
+            box-shadow: 0 0 30px rgba(79, 209, 197, 0.5), inset 0 0 25px rgba(79, 209, 197, 0.15);
         }
 
-        /* Secondary CTA - outline only, subtle */
+        /* Secondary CTA - muted outline (like NO button) */
         .terminal-cta[data-cta="secondary"] {
             background: transparent;
-            border-color: rgba(79, 209, 197, 0.5);
-            color: rgba(79, 209, 197, 0.85);
+            border-color: rgba(79, 209, 197, 0.35);
+            color: rgba(79, 209, 197, 0.6);
             text-shadow: none;
+            box-shadow: none;
         }
         .terminal-cta[data-cta="secondary"]:hover {
-            border-color: rgba(79, 209, 197, 0.8);
-            background: rgba(79, 209, 197, 0.1);
-            color: rgba(79, 209, 197, 1);
+            border-color: rgba(79, 209, 197, 0.7);
+            background: rgba(79, 209, 197, 0.08);
+            color: rgba(79, 209, 197, 0.9);
         }
 
         /* Mobile adjustments for terminal CTA buttons */
@@ -11657,8 +11660,8 @@
                                 <span class="value-text"></span>
                             </div>
                             <div class="home-cta" id="home-cta">
-                                <a href="#intro" data-page="1" class="terminal-cta" data-cta="primary"><span class="btn-text">[ Read Docs ]</span></a>
-                                <a href="#connect" data-page="9" class="terminal-cta" data-cta="secondary"><span class="btn-text">[ Request Access ]</span></a>
+                                <a href="#intro" data-page="1" class="terminal-cta" data-cta="secondary"><span class="btn-text">[ Read Docs ]</span></a>
+                                <a href="#connect" data-page="9" class="terminal-cta" data-cta="primary"><span class="btn-text">[ Request Access ]</span></a>
                             </div>
                         </div>
                     </div>
@@ -14336,8 +14339,8 @@
                         ctaContainer.classList.remove('visible');
                         // Reset to original CTA buttons (in case NO was clicked before)
                         ctaContainer.innerHTML = `
-                            <a href="#intro" data-page="1" class="terminal-cta" data-cta="primary"><span class="btn-text">[ Read Docs ]</span></a>
-                            <a href="#connect" data-page="9" class="terminal-cta" data-cta="secondary"><span class="btn-text">[ Request Access ]</span></a>
+                            <a href="#intro" data-page="1" class="terminal-cta" data-cta="secondary"><span class="btn-text">[ Read Docs ]</span></a>
+                            <a href="#connect" data-page="9" class="terminal-cta" data-cta="primary"><span class="btn-text">[ Request Access ]</span></a>
                         `;
                     }
                     // Reset interaction container fully (in case NO was clicked and content was replaced)
@@ -14426,8 +14429,8 @@
                     ctaContainer.classList.remove('visible');
                     // Reset to original CTA buttons (in case NO was clicked before)
                     ctaContainer.innerHTML = `
-                        <a href="#intro" data-page="1" class="terminal-cta" data-cta="primary"><span class="btn-text">[ Read Docs ]</span></a>
-                        <a href="#connect" data-page="9" class="terminal-cta" data-cta="secondary"><span class="btn-text">[ Request Access ]</span></a>
+                        <a href="#intro" data-page="1" class="terminal-cta" data-cta="secondary"><span class="btn-text">[ Read Docs ]</span></a>
+                        <a href="#connect" data-page="9" class="terminal-cta" data-cta="primary"><span class="btn-text">[ Request Access ]</span></a>
                     `;
                 }
                 // Reset screen states
@@ -15411,8 +15414,8 @@
                 if (cContainer) {
                     cContainer.classList.remove('visible');
                     cContainer.innerHTML = `
-                        <a href="#intro" data-page="1" class="terminal-cta" data-cta="primary"><span class="btn-text">[ Read Docs ]</span></a>
-                        <a href="#connect" data-page="9" class="terminal-cta" data-cta="secondary"><span class="btn-text">[ Request Access ]</span></a>
+                        <a href="#intro" data-page="1" class="terminal-cta" data-cta="secondary"><span class="btn-text">[ Read Docs ]</span></a>
+                        <a href="#connect" data-page="9" class="terminal-cta" data-cta="primary"><span class="btn-text">[ Request Access ]</span></a>
                     `;
                 }
 
