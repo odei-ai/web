@@ -1340,6 +1340,30 @@
             box-shadow: 0 0 20px rgba(79, 209, 197, 0.3);
         }
 
+        /* Primary CTA - filled, more prominent */
+        .terminal-cta[data-cta="primary"] {
+            background: rgba(79, 209, 197, 0.15);
+            border-color: rgba(79, 209, 197, 0.9);
+            box-shadow: 0 0 15px rgba(79, 209, 197, 0.2);
+        }
+        .terminal-cta[data-cta="primary"]:hover {
+            background: rgba(79, 209, 197, 0.25);
+            box-shadow: 0 0 25px rgba(79, 209, 197, 0.4);
+        }
+
+        /* Secondary CTA - outline only, subtle */
+        .terminal-cta[data-cta="secondary"] {
+            background: transparent;
+            border-color: rgba(79, 209, 197, 0.5);
+            color: rgba(79, 209, 197, 0.85);
+            text-shadow: none;
+        }
+        .terminal-cta[data-cta="secondary"]:hover {
+            border-color: rgba(79, 209, 197, 0.8);
+            background: rgba(79, 209, 197, 0.1);
+            color: rgba(79, 209, 197, 1);
+        }
+
         /* Mobile adjustments for terminal CTA buttons */
         @media (max-width: 600px) {
             .home-cta {
@@ -14836,8 +14860,8 @@
                             interactionContainer.classList.add('visible'); // Make it visible (opacity 1)
                             interactionContainer.innerHTML = `
                                 <div class="home-cta visible" style="opacity: 1; transform: none;">
-                                    <a href="#problem" class="terminal-cta" id="fear-btn-read"><span class="btn-text">[ Show me why ]</span></a>
-                                    <a href="#connect" class="terminal-cta" id="fear-btn-access"><span class="btn-text">[ I want control ]</span></a>
+                                    <a href="#problem" class="terminal-cta" data-cta="secondary" id="fear-btn-read"><span class="btn-text">[ Show me why ]</span></a>
+                                    <a href="#connect" class="terminal-cta" data-cta="primary" id="fear-btn-access"><span class="btn-text">[ I want control ]</span></a>
                                 </div>
                             `;
                             // Attach handlers (no data-page to avoid conflict with general handler)
