@@ -347,6 +347,24 @@
             display: flex;
             justify-content: center;
             width: 100%;
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+        }
+
+        /* Initial centered state for mobile */
+        .home-manifesto.centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        /* Lifted state - moves to normal flow */
+        .home-manifesto.lifted {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
         }
 
         .manifesto-lines {
@@ -607,21 +625,30 @@
             }
 
             .nav-item {
-                padding: 0.875rem 1rem;
-                min-height: 52px;
+                padding: 0.75rem 0.5rem;
+                min-height: 48px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                border: 1px solid rgba(255, 255, 255, 0.12);
-                border-radius: 6px;
-                background: rgba(255, 255, 255, 0.03);
+                border: none;
+                border-radius: 0;
+                background: transparent;
                 transition: all 0.2s ease;
             }
 
             .nav-item:active {
-                background: rgba(79, 209, 197, 0.15);
-                border-color: rgba(79, 209, 197, 0.4);
+                background: rgba(79, 209, 197, 0.1);
                 transform: scale(0.97);
+            }
+
+            /* Centered manifesto animation for mobile */
+            .home-manifesto.centered {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 10;
+                padding: 0 1.5rem;
             }
 
             .nav-num {
@@ -1195,6 +1222,22 @@
         }
 
         /* ══════ TERMINAL ZONE - FIXED POSITION FOR BOTH SCREENS ══════ */
+        /* Hidden state for content below manifesto */
+        .terminal-zone.initially-hidden,
+        .home-nav.initially-hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+        }
+
+        .terminal-zone.revealed,
+        .home-nav.revealed {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
         .terminal-zone {
             display: grid;
             grid-template-areas: "content";
@@ -15205,6 +15248,23 @@
                     // ═══════════════════════════════════════════════════════════════
                     // RESET ALL STATE (crucial for returning from other pages!)
                     // ═══════════════════════════════════════════════════════════════
+                    // Ensure manifesto is NOT centered for returning users
+                    const homeManifestoSeen = document.querySelector('.home-manifesto');
+                    const terminalZoneSeen = document.querySelector('.terminal-zone');
+                    const homeNavSeen = document.querySelector('.home-nav');
+                    if (homeManifestoSeen) {
+                        homeManifestoSeen.classList.remove('centered');
+                        homeManifestoSeen.classList.add('lifted');
+                    }
+                    if (terminalZoneSeen) {
+                        terminalZoneSeen.classList.remove('initially-hidden');
+                        terminalZoneSeen.classList.add('revealed');
+                    }
+                    if (homeNavSeen) {
+                        homeNavSeen.classList.remove('initially-hidden');
+                        homeNavSeen.classList.add('revealed');
+                    }
+
                     // Reset screens to initial state (screen 1 visible, screen 2 hidden)
                     if (screen1) {
                         screen1.classList.remove('hidden');
@@ -15326,6 +15386,28 @@
                 }
                 if (screen2) {
                     screen2.classList.remove('visible');
+                }
+
+                // ═══════════════════════════════════════════════════════════════
+                // MOBILE CENTERED MANIFESTO ANIMATION
+                // Start with manifesto centered, then lift after typing completes
+                // ═══════════════════════════════════════════════════════════════
+                const isMobile = window.innerWidth <= 600;
+                const homeManifesto = document.querySelector('.home-manifesto');
+                const terminalZone = document.querySelector('.terminal-zone');
+                const homeNav = document.querySelector('.home-nav');
+
+                if (isMobile && homeManifesto) {
+                    homeManifesto.classList.add('centered');
+                    homeManifesto.classList.remove('lifted');
+                    if (terminalZone) {
+                        terminalZone.classList.add('initially-hidden');
+                        terminalZone.classList.remove('revealed');
+                    }
+                    if (homeNav) {
+                        homeNav.classList.add('initially-hidden');
+                        homeNav.classList.remove('revealed');
+                    }
                 }
 
                 // ═══════════════════════════════════════════════════════════════
@@ -15928,6 +16010,25 @@
                         } else {
                             cursor.remove();
                             span2.classList.add('line-complete');
+
+                            // ═══════════════════════════════════════════════════
+                            // LIFT MANIFESTO — Reveal rest of content on mobile
+                            // ═══════════════════════════════════════════════════
+                            if (isMobile && homeManifesto) {
+                                setTimeout(() => {
+                                    homeManifesto.classList.remove('centered');
+                                    homeManifesto.classList.add('lifted');
+                                    if (terminalZone) {
+                                        terminalZone.classList.remove('initially-hidden');
+                                        terminalZone.classList.add('revealed');
+                                    }
+                                    if (homeNav) {
+                                        homeNav.classList.remove('initially-hidden');
+                                        homeNav.classList.add('revealed');
+                                    }
+                                }, 400);
+                            }
+
                             phase = 3;
                             charIndex = 0;
                             // "Symbiosis" — let the word resonate deeply
