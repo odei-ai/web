@@ -552,10 +552,10 @@
             }
 
             .home-container {
-                gap: 1.25rem;
+                gap: 1.5rem;
                 padding: 1rem 1rem;
-                padding-bottom: 2rem;
-                justify-content: flex-start;
+                padding-bottom: 6rem; /* Space for footer */
+                justify-content: center;
                 padding-top: env(safe-area-inset-top, 1rem);
             }
 
@@ -588,26 +588,26 @@
                 line-height: 1.5;
             }
 
-            /* Single column navigation on mobile */
+            /* Compact 2-row navigation on mobile */
             .home-nav {
-                flex-direction: column;
-                gap: 0.25rem;
-                margin-top: 0.75rem;
+                display: grid;
+                grid-template-columns: repeat(4, auto);
+                gap: 0.5rem 0.75rem;
+                margin-top: 1rem;
+                justify-content: center;
                 align-items: center;
             }
 
             .nav-column {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.75rem 1.25rem;
+                display: contents; /* Flatten into grid */
             }
 
             .nav-item {
-                padding: 0.75rem 1rem;
+                padding: 0.6rem 0.75rem;
                 min-height: 44px;
                 display: flex;
                 align-items: center;
+                justify-content: center;
             }
 
             .nav-item:active {
@@ -620,7 +620,7 @@
             }
 
             .nav-name {
-                font-size: 0.9rem;
+                font-size: 0.8rem;
             }
 
             /* Better touch targets for buttons on mobile */
@@ -643,31 +643,29 @@
         /* ══════ RESPONSIVE — SMALL MOBILE ══════ */
         @media (max-width: 480px) {
             .home-container {
-                gap: 0.875rem;
-                padding: 0.75rem 0.75rem;
+                gap: 1.25rem;
+                padding: 0.75rem 0.5rem;
+                padding-bottom: 5.5rem;
                 padding-top: env(safe-area-inset-top, 0.75rem);
             }
 
             .manifesto-lines {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
 
             .home-nav {
-                gap: 0.5rem;
-                margin-top: 0.5rem;
-            }
-
-            .nav-column {
-                gap: 0.5rem 0.875rem;
+                grid-template-columns: repeat(4, auto);
+                gap: 0.4rem 0.5rem;
+                margin-top: 0.75rem;
             }
 
             .nav-item {
-                padding: 0.625rem 0.875rem;
-                min-height: 44px;
+                padding: 0.5rem 0.6rem;
+                min-height: 42px;
             }
 
             .nav-name {
-                font-size: 0.85rem;
+                font-size: 0.75rem;
             }
 
             .terminal-btn {
@@ -681,57 +679,55 @@
             }
 
             .subheadline-text {
-                font-size: 0.95rem;
-                line-height: 1.7;
+                font-size: 0.9rem;
+                line-height: 1.6;
             }
         }
 
         /* ══════ RESPONSIVE — TINY ══════ */
         @media (max-width: 360px) {
             .home-container {
-                padding: 0.875rem 0.875rem;
+                padding: 0.5rem 0.375rem;
+                padding-bottom: 5rem;
                 gap: 1rem;
             }
 
             .home-logo-svg {
-                width: 60px;
-                height: 60px;
+                width: 50px;
+                height: 50px;
             }
 
             .manifesto-lines {
-                font-size: 0.9rem;
-            }
-
-            .home-nav {
-                gap: 0.375rem;
-            }
-
-            .nav-column {
-                gap: 0.375rem 0.625rem;
-            }
-
-            .nav-item {
-                padding: 0.5rem 0.75rem;
-                min-height: 42px;
-            }
-
-            .nav-name {
                 font-size: 0.8rem;
             }
 
+            .home-nav {
+                grid-template-columns: repeat(3, auto);
+                gap: 0.35rem 0.4rem;
+            }
+
+            .nav-item {
+                padding: 0.45rem 0.5rem;
+                min-height: 40px;
+            }
+
+            .nav-name {
+                font-size: 0.7rem;
+            }
+
             .terminal-btn {
-                padding: 0.625rem 1rem;
-                font-size: 0.85rem;
-                min-height: 44px;
+                padding: 0.6rem 0.9rem;
+                font-size: 0.8rem;
+                min-height: 42px;
             }
 
             .tagline-text {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
 
             .subheadline-text {
-                font-size: 0.85rem;
-                line-height: 1.6;
+                font-size: 0.8rem;
+                line-height: 1.5;
             }
         }
 
