@@ -371,7 +371,7 @@
         }
 
         .manifesto-line em {
-            font-style: normal;
+            font-style: italic;
         }
         
         /* ══════ TAGLINE / BRAND ══════ */
@@ -806,6 +806,11 @@
 
         /* Character glow on appearance */
         .char-glow {
+            display: inline;
+            animation: charAppear 0.3s ease-out;
+        }
+
+        .manifesto-char {
             display: inline;
             animation: charAppear 0.3s ease-out;
         }
@@ -11585,8 +11590,8 @@
                     <!-- MANIFESTO -->
                     <div class="home-manifesto">
                         <div class="manifesto-lines" id="manifesto-lines">
-                            <span class="manifesto-line dim">> The future is not human or machine.</span>
-                            <span class="manifesto-line bright">> The future is <em>symbiosis</em>.</span>
+                            <span class="manifesto-line dim">> AI generates text. You do all the work.</span>
+                            <span class="manifesto-line bright">> Prompt, copy, paste, verify — <em>forever.</em></span>
                         </div>
                     </div>
 
@@ -14299,12 +14304,12 @@
 
                     // Show final state immediately
                     manifestoContainer.innerHTML = `
-                        <span class="manifesto-line dim line-complete">> The future is not human or machine.</span>
-                        <span class="manifesto-line bright line-complete">> The future is <em>symbiosis.</em></span>
+                        <span class="manifesto-line dim line-complete">> AI generates text. You do all the work.</span>
+                        <span class="manifesto-line bright line-complete">> Prompt, copy, paste, verify — <em>forever.</em></span>
                     `;
                     if (statementContainer) {
                         statementContainer.querySelector('.statement-text').textContent =
-                            "Your AI must work continuously, governed by your rules — not prompts";
+                            "Your AI must work continuously, governed by your rules, not prompts";
                         statementContainer.classList.add('visible');
                     }
                     if (interactionContainer) {
@@ -14325,53 +14330,7 @@
                     if (btnYes) {
                         // Remove old handlers and classes
                         btnYes.classList.remove('pulse', 'selected');
-                        btnYes.onclick = () => {
-                            // Switch to screen 2
-                            if (screen1) screen1.classList.add('hidden');
-                            if (screen2) screen2.classList.add('visible');
-
-                            // Type the brand, then show value instantly
-                            const brand = "Stop prompt-chasing. Own the control layer.";
-                            if (brandContainer) {
-                                brandContainer.classList.add('visible');
-                                const brandSpan = document.createElement('span');
-                                brandSpan.className = 'brand-statement';
-                                const cursor = document.createElement('span');
-                                cursor.className = 'cursor typing-glow';
-                                brandSpan.appendChild(cursor);
-                                brandContainer.innerHTML = '';
-                                brandContainer.appendChild(brandSpan);
-
-                                let brandIdx = 0;
-                                function typeBrandReload() {
-                                    if (brandIdx < brand.length) {
-                                        const char = brand[brandIdx];
-                                        const charSpan = document.createElement('span');
-                                        charSpan.className = 'brand-char';
-                                        charSpan.textContent = char;
-                                        brandSpan.insertBefore(charSpan, cursor);
-                                        brandIdx++;
-                                        // Typing delay with variance
-                                        const baseDelay = 52;
-                                        const variance = (Math.random() - 0.5) * 24;
-                                        let delay = baseDelay + variance;
-                                        if (char === '—') delay += 260;
-                                        else if (char === ' ') delay += 35;
-                                        setTimeout(typeBrandReload, delay);
-                                    } else {
-                                        cursor.remove();
-                                        if (valueContainer) {
-                                            valueContainer.classList.add('visible');
-                                            valueContainer.querySelector('.value-text').textContent = value;
-                                        }
-                                    }
-                                }
-                                setTimeout(typeBrandReload, 400);
-                            } else if (valueContainer) {
-                                valueContainer.classList.add('visible');
-                                valueContainer.querySelector('.value-text').textContent = value;
-                            }
-                        };
+                        btnYes.onclick = handleYesClick;
                         // Add pulse effect after brief delay
                         setTimeout(() => {
                             btnYes.classList.add('pulse', 'selected');
@@ -14431,10 +14390,10 @@
                 // ═══════════════════════════════════════════════════════════════
                 // TEXT CONTENT — THE MASTERPIECE
                 // ═══════════════════════════════════════════════════════════════
-                const manifesto1 = "> The future is not human or machine.";
-                const manifesto2Prefix = "> The future is ";
-                const symbiosis = "symbiosis.";
-                const statement = "Your AI must work continuously, governed by your rules — not prompts";
+                const manifesto1 = "> AI generates text. You do all the work.";
+                const manifesto2Prefix = "> Prompt, copy, paste, verify — ";
+                const symbiosis = "forever.";
+                const statement = "Your AI must work continuously, governed by your rules, not prompts";
                 const brand = "Stop prompt-chasing. Own the control layer.";
                 const value = "ODEI adds memory, rules, and controlled execution — under your constraints, not prompts.";
 
@@ -14504,211 +14463,342 @@
                 // BUTTON CLICK HANDLERS
                 // ═══════════════════════════════════════════════════════════════
                 function handleYesClick() {
-                    // Switch from screen 1 to screen 2
-                    if (screen1) {
-                        screen1.classList.add('hidden');
-                    }
-                    if (screen2) {
-                        screen2.classList.add('visible');
-                    }
-
-                    // Type the brand, then show value instantly
-                    if (brandContainer) {
-                        brandContainer.classList.add('visible');
-                        const brandSpan = document.createElement('span');
-                        brandSpan.className = 'brand-statement';
-                        const cursor = createTypingCursor(true);
-                        brandSpan.appendChild(cursor);
-                        brandContainer.innerHTML = '';
-                        brandContainer.appendChild(brandSpan);
-
-                        let brandIdx = 0;
-                        function typeBrand() {
-                            if (brandIdx < brand.length) {
-                                const char = brand[brandIdx];
-                                const charSpan = document.createElement('span');
-                                charSpan.className = 'brand-char';
-                                charSpan.textContent = char;
-                                brandSpan.insertBefore(charSpan, cursor);
-                                brandIdx++;
-                                setTimeout(typeBrand, getTypingDelay(char, true));
-                            } else {
-                                // Brand typing done — show value INSTANTLY
-                                cursor.remove();
-                                if (valueContainer) {
-                                    valueContainer.classList.add('visible');
-                                    valueContainer.querySelector('.value-text').textContent = value;
-                                }
-                                // Reveal navigation
-                                setTimeout(revealNavigation, 400);
-                            }
-                        }
-                        // Start typing after brief pause
-                        setTimeout(typeBrand, 400);
-                    } else {
-                        // No brand container — just show value
-                        if (valueContainer) {
-                            valueContainer.classList.add('visible');
-                            valueContainer.querySelector('.value-text').textContent = value;
-                        }
-                        setTimeout(revealNavigation, 400);
-                    }
-                }
-
-                function handleNoClick() {
                     // ═══════════════════════════════════════════════════════════════
-                    // FEAR SCREEN — Type the harsh reality with animation
+                    // YES PATH — Full symbiosis experience
+                    // Flow: Symbiosis manifesto → Brand → Value → CTA → Navigation
                     // ═══════════════════════════════════════════════════════════════
 
-                    const fearLine1 = '> AI generates text. You do all the work.';
-                    const fearLine2 = '> Prompt, copy, paste, verify — ';
-                    const fearLine2Italic = 'forever';
-                    const fearStatement = "If you don't own your architecture, you're ";
-                    const fearStatementRed = 'replaceable';
+                    const yesLine1 = "> The future is not human or machine.";
+                    const yesLine2 = "> The future is symbiosis.";
+                    const brandText = "Stop prompt-chasing. Own the control layer.";
+                    const valueText = "ODEI adds memory, rules, and controlled execution — under your constraints, not prompts.";
+
+                    // Stop any pending animations
+                    clearTimeout(typingTimeout);
 
                     // Hide interaction prompt
                     if (interactionContainer) {
                         interactionContainer.style.display = 'none';
                     }
 
-                    // Clear manifesto for typing
-                    if (manifestoContainer) {
-                        manifestoContainer.innerHTML = '';
+                    // FORCE clear manifesto - ensure no remnants
+                    const mContainer = document.getElementById('manifesto-lines');
+                    if (mContainer) {
+                        mContainer.innerHTML = '';
                     }
 
-                    // Clear and hide statement
-                    if (statementContainer) {
-                        const stText = statementContainer.querySelector('.statement-text');
-                        if (stText) stText.innerHTML = '';
-                        statementContainer.classList.remove('visible');
+                    // FORCE clear and hide statement - ensure fresh state
+                    const sContainer = document.getElementById('home-statement');
+                    if (sContainer) {
+                        sContainer.classList.remove('visible');
+                        sContainer.innerHTML = '<span class="statement-text"></span>';
                     }
 
-                    // Create first fear line span
-                    const fearSpan1 = document.createElement('span');
-                    fearSpan1.className = 'manifesto-line dim';
-                    const fearCursor1 = createTypingCursor();
-                    fearSpan1.appendChild(fearCursor1);
-                    manifestoContainer.appendChild(fearSpan1);
+                    // Create first line span using fresh reference
+                    const yesSpan1 = document.createElement('span');
+                    yesSpan1.className = 'manifesto-line dim';
+                    const yesCursor1 = createTypingCursor();
+                    yesSpan1.appendChild(yesCursor1);
+                    mContainer.appendChild(yesSpan1);
 
-                    let fearIdx1 = 0;
+                    let yesIdx1 = 0;
 
-                    function typeFearLine1() {
-                        if (fearIdx1 < fearLine1.length) {
-                            const char = fearLine1[fearIdx1];
+                    function typeYesLine1() {
+                        if (yesIdx1 < yesLine1.length) {
+                            const char = yesLine1[yesIdx1];
                             const charSpan = document.createElement('span');
                             charSpan.className = 'manifesto-char';
                             charSpan.textContent = char;
-                            fearSpan1.insertBefore(charSpan, fearCursor1);
-                            fearIdx1++;
-                            setTimeout(typeFearLine1, getTypingDelay(char));
+                            yesSpan1.insertBefore(charSpan, yesCursor1);
+                            yesIdx1++;
+                            setTimeout(typeYesLine1, getTypingDelay(char));
                         } else {
-                            // Line 1 done - mark complete, start line 2
-                            fearSpan1.classList.add('line-complete');
-                            fearCursor1.remove();
-                            setTimeout(startFearLine2, 350);
+                            // Line 1 done - start line 2
+                            yesSpan1.classList.add('line-complete');
+                            yesCursor1.remove();
+                            setTimeout(startYesLine2, 350);
                         }
                     }
 
-                    function startFearLine2() {
-                        const fearSpan2 = document.createElement('span');
-                        fearSpan2.className = 'manifesto-line bright';
-                        const fearCursor2 = createTypingCursor();
-                        fearSpan2.appendChild(fearCursor2);
-                        manifestoContainer.appendChild(fearSpan2);
+                    function startYesLine2() {
+                        const yesSpan2 = document.createElement('span');
+                        yesSpan2.className = 'manifesto-line bright';
+                        const yesCursor2 = createTypingCursor();
+                        yesSpan2.appendChild(yesCursor2);
+                        mContainer.appendChild(yesSpan2);
 
-                        let fearIdx2 = 0;
+                        let yesIdx2 = 0;
 
-                        function typeFearLine2() {
-                            if (fearIdx2 < fearLine2.length) {
-                                const char = fearLine2[fearIdx2];
+                        function typeYesLine2() {
+                            if (yesIdx2 < yesLine2.length) {
+                                const char = yesLine2[yesIdx2];
                                 const charSpan = document.createElement('span');
                                 charSpan.className = 'manifesto-char';
                                 charSpan.textContent = char;
-                                fearSpan2.insertBefore(charSpan, fearCursor2);
-                                fearIdx2++;
-                                setTimeout(typeFearLine2, getTypingDelay(char));
+                                yesSpan2.insertBefore(charSpan, yesCursor2);
+                                yesIdx2++;
+                                setTimeout(typeYesLine2, getTypingDelay(char));
                             } else {
-                                // Type the italic "forever"
-                                let italicIdx = 0;
-                                const italicEl = document.createElement('em');
-                                fearSpan2.insertBefore(italicEl, fearCursor2);
-
-                                function typeItalic() {
-                                    if (italicIdx < fearLine2Italic.length) {
-                                        italicEl.textContent += fearLine2Italic[italicIdx];
-                                        italicIdx++;
-                                        setTimeout(typeItalic, getTypingDelay(fearLine2Italic[italicIdx - 1]));
-                                    } else {
-                                        // Line 2 done - mark complete, start statement
-                                        fearSpan2.classList.add('line-complete');
-                                        fearCursor2.remove();
-                                        setTimeout(typeFearStatement, 450);
-                                    }
-                                }
-                                typeItalic();
+                                // Line 2 done - transition to brand
+                                yesSpan2.classList.add('line-complete');
+                                yesCursor2.remove();
+                                setTimeout(transitionToBrand, 600);
                             }
                         }
-                        typeFearLine2();
+                        typeYesLine2();
                     }
 
-                    function typeFearStatement() {
-                        if (!statementContainer) {
-                            showFearButtons();
-                            return;
+                    function transitionToBrand() {
+                        // Dim the manifesto
+                        mContainer.querySelectorAll('.manifesto-line').forEach(line => {
+                            line.classList.remove('bright');
+                            line.classList.add('dim');
+                        });
+
+                        // Switch screens: hide screen-1, show screen-2
+                        if (screen1) {
+                            screen1.classList.add('hidden');
+                        }
+                        if (screen2) {
+                            screen2.classList.add('visible');
                         }
 
-                        statementContainer.classList.add('visible');
-                        const stText = statementContainer.querySelector('.statement-text');
-                        if (!stText) {
-                            showFearButtons();
-                            return;
-                        }
+                        // Prepare brand container for typing
+                        if (brandContainer) {
+                            brandContainer.innerHTML = '';
+                            brandContainer.classList.add('visible');
 
-                        stText.innerHTML = '';
-                        const stCursor = createTypingCursor(true);
-                        stText.appendChild(stCursor);
+                            const brandSpan = document.createElement('span');
+                            brandSpan.className = 'brand-statement';
+                            const brandCursor = createTypingCursor(true);
+                            brandSpan.appendChild(brandCursor);
+                            brandContainer.appendChild(brandSpan);
 
-                        let stIdx = 0;
+                            let brandIdx = 0;
 
-                        function typeStatement() {
-                            if (stIdx < fearStatement.length) {
-                                const char = fearStatement[stIdx];
-                                const charSpan = document.createElement('span');
-                                charSpan.textContent = char;
-                                stText.insertBefore(charSpan, stCursor);
-                                stIdx++;
-                                setTimeout(typeStatement, getTypingDelay(char, true));
-                            } else {
-                                // Type the red "replaceable"
-                                const redSpan = document.createElement('span');
-                                redSpan.style.color = '#e53e3e';
-                                stText.insertBefore(redSpan, stCursor);
-
-                                let redIdx = 0;
-                                function typeRed() {
-                                    if (redIdx < fearStatementRed.length) {
-                                        redSpan.textContent += fearStatementRed[redIdx];
-                                        redIdx++;
-                                        setTimeout(typeRed, getTypingDelay(fearStatementRed[redIdx - 1], true));
-                                    } else {
-                                        stCursor.remove();
-                                        setTimeout(showFearButtons, 400);
-                                    }
+                            function typeBrand() {
+                                if (brandIdx < brandText.length) {
+                                    const char = brandText[brandIdx];
+                                    const charSpan = document.createElement('span');
+                                    charSpan.className = 'brand-char';
+                                    charSpan.textContent = char;
+                                    brandSpan.insertBefore(charSpan, brandCursor);
+                                    brandIdx++;
+                                    setTimeout(typeBrand, getTypingDelay(char, true));
+                                } else {
+                                    // Brand done - show value
+                                    brandCursor.remove();
+                                    setTimeout(showValue, 500);
                                 }
-                                typeRed();
+                            }
+
+                            setTimeout(typeBrand, 400);
+                        } else {
+                            setTimeout(showValue, 400);
+                        }
+                    }
+
+                    function showValue() {
+                        // Show value text instantly (no typing)
+                        if (valueContainer) {
+                            const valueTextEl = valueContainer.querySelector('.value-text');
+                            if (valueTextEl) {
+                                valueTextEl.textContent = valueText;
+                            } else {
+                                valueContainer.innerHTML = `<span class="value-text">${valueText}</span>`;
+                            }
+                            valueContainer.classList.add('visible');
+                        }
+
+                        // Show CTA buttons
+                        setTimeout(showYesCTA, 400);
+                    }
+
+                    function showYesCTA() {
+                        if (ctaContainer) {
+                            ctaContainer.classList.add('visible');
+                            // Re-attach event listeners for CTA buttons
+                            const ctaLinks = ctaContainer.querySelectorAll('.terminal-cta');
+                            ctaLinks.forEach(link => {
+                                link.addEventListener('click', (e) => {
+                                    e.preventDefault();
+                                    const pageNum = parseInt(link.getAttribute('data-page') || '1');
+                                    goToPage(pageNum);
+                                });
+                            });
+                        }
+                        // Reveal navigation
+                        setTimeout(revealNavigation, 300);
+                    }
+
+                    // Start the symbiosis animation
+                    setTimeout(typeYesLine1, 300);
+                }
+
+                function handleNoClick() {
+                    // ═══════════════════════════════════════════════════════════════
+                    // NO PATH — Challenge with reality, then offer value
+                    // ═══════════════════════════════════════════════════════════════
+
+                    const noLine1 = '> If you prefer chat mode, prompts are enough.';
+                    const noLine2 = "> That's fine. Just remember:";
+                    const statementText = "If you don't own your architecture, you're ";
+                    const highlightWord = "replaceable";
+                    const statementEnd = ".";
+
+                    // Stop any pending animations
+                    clearTimeout(typingTimeout);
+
+                    // Hide interaction prompt
+                    if (interactionContainer) {
+                        interactionContainer.style.display = 'none';
+                    }
+
+                    // FORCE clear manifesto - ensure no remnants
+                    const mContainer = document.getElementById('manifesto-lines');
+                    if (mContainer) {
+                        mContainer.innerHTML = '';
+                    }
+
+                    // FORCE clear and hide statement - ensure fresh state
+                    const sContainer = document.getElementById('home-statement');
+                    if (sContainer) {
+                        sContainer.classList.remove('visible');
+                        sContainer.innerHTML = '<span class="statement-text"></span>';
+                    }
+
+                    // Create first line span using fresh reference
+                    const noSpan1 = document.createElement('span');
+                    noSpan1.className = 'manifesto-line dim';
+                    const noCursor1 = createTypingCursor();
+                    noSpan1.appendChild(noCursor1);
+                    mContainer.appendChild(noSpan1);
+
+                    let noIdx1 = 0;
+
+                    function typeNoLine1() {
+                        if (noIdx1 < noLine1.length) {
+                            const char = noLine1[noIdx1];
+                            const charSpan = document.createElement('span');
+                            charSpan.className = 'manifesto-char';
+                            charSpan.textContent = char;
+                            noSpan1.insertBefore(charSpan, noCursor1);
+                            noIdx1++;
+                            setTimeout(typeNoLine1, getTypingDelay(char));
+                        } else {
+                            // Line 1 done - start line 2
+                            noSpan1.classList.add('line-complete');
+                            noCursor1.remove();
+                            setTimeout(startNoLine2, 350);
+                        }
+                    }
+
+                    function startNoLine2() {
+                        const noSpan2 = document.createElement('span');
+                        noSpan2.className = 'manifesto-line bright';
+                        const noCursor2 = createTypingCursor();
+                        noSpan2.appendChild(noCursor2);
+                        mContainer.appendChild(noSpan2);
+
+                        let noIdx2 = 0;
+
+                        function typeNoLine2() {
+                            if (noIdx2 < noLine2.length) {
+                                const char = noLine2[noIdx2];
+                                const charSpan = document.createElement('span');
+                                charSpan.className = 'manifesto-char';
+                                charSpan.textContent = char;
+                                noSpan2.insertBefore(charSpan, noCursor2);
+                                noIdx2++;
+                                setTimeout(typeNoLine2, getTypingDelay(char));
+                            } else {
+                                // Line 2 done - show statement
+                                noSpan2.classList.add('line-complete');
+                                noCursor2.remove();
+                                setTimeout(showNoStatement, 500);
                             }
                         }
-                        setTimeout(typeStatement, 300);
+                        typeNoLine2();
+                    }
+
+                    function showNoStatement() {
+                        // Show statement container and type the fear statement
+                        // Use fresh reference to avoid stale closure
+                        const stmtContainer = document.getElementById('home-statement');
+                        if (stmtContainer) {
+                            stmtContainer.classList.add('visible');
+                            // Get the statement-text span we created during cleanup
+                            let statementSpan = stmtContainer.querySelector('.statement-text');
+                            if (!statementSpan) {
+                                statementSpan = document.createElement('span');
+                                statementSpan.className = 'statement-text';
+                                stmtContainer.appendChild(statementSpan);
+                            }
+                            statementSpan.innerHTML = ''; // Clear any remnants
+                            const statementCursor = createTypingCursor();
+                            statementSpan.appendChild(statementCursor);
+
+                            let statementIdx = 0;
+
+                            function typeStatement() {
+                                if (statementIdx < statementText.length) {
+                                    const char = statementText[statementIdx];
+                                    const charSpan = document.createElement('span');
+                                    charSpan.className = 'manifesto-char';
+                                    charSpan.textContent = char;
+                                    statementSpan.insertBefore(charSpan, statementCursor);
+                                    statementIdx++;
+                                    setTimeout(typeStatement, getTypingDelay(char));
+                                } else {
+                                    // Statement done - type highlight word
+                                    setTimeout(typeHighlight, 100);
+                                }
+                            }
+
+                            let highlightIdx = 0;
+
+                            function typeHighlight() {
+                                if (highlightIdx < highlightWord.length) {
+                                    const char = highlightWord[highlightIdx];
+                                    const charSpan = document.createElement('span');
+                                    charSpan.className = 'manifesto-char';
+                                    charSpan.style.color = '#FF7B7B'; // Danger red from theme
+                                    charSpan.style.fontWeight = '600';
+                                    charSpan.textContent = char;
+                                    statementSpan.insertBefore(charSpan, statementCursor);
+                                    highlightIdx++;
+                                    setTimeout(typeHighlight, getTypingDelay(char));
+                                } else {
+                                    // Add period
+                                    const periodSpan = document.createElement('span');
+                                    periodSpan.className = 'manifesto-char';
+                                    periodSpan.textContent = statementEnd;
+                                    statementSpan.insertBefore(periodSpan, statementCursor);
+                                    statementCursor.remove();
+                                    // Show buttons after statement
+                                    setTimeout(showNoButtons, 600);
+                                }
+                            }
+
+                            typeStatement();
+                        } else {
+                            showNoButtons();
+                        }
+                    }
+
+                    function showNoButtons() {
+                        showFearButtons();
                     }
 
                     function showFearButtons() {
                         // Use interactionContainer for buttons (it's in screen-1, visible)
                         if (interactionContainer) {
                             interactionContainer.style.display = ''; // Show it
+                            interactionContainer.classList.add('visible'); // Make it visible (opacity 1)
                             interactionContainer.innerHTML = `
                                 <div class="home-cta visible" style="opacity: 1; transform: none;">
-                                    <a href="#problem" class="terminal-cta" id="fear-btn-read"><span class="btn-text">[ Read More ]</span></a>
-                                    <a href="#connect" class="terminal-cta" id="fear-btn-access"><span class="btn-text">[ Request Access ]</span></a>
+                                    <a href="#problem" class="terminal-cta" id="fear-btn-read"><span class="btn-text">[ Show me why ]</span></a>
+                                    <a href="#connect" class="terminal-cta" id="fear-btn-access"><span class="btn-text">[ I want control ]</span></a>
                                 </div>
                             `;
                             // Attach handlers (no data-page to avoid conflict with general handler)
@@ -14725,8 +14815,8 @@
                         revealNavigation();
                     }
 
-                    // Start typing fear content after brief pause
-                    setTimeout(typeFearLine1, 300);
+                    // Start typing NO content after brief pause
+                    setTimeout(typeNoLine1, 300);
                 }
 
                 // Attach button handlers
