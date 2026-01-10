@@ -349,6 +349,43 @@
             width: 100%;
         }
 
+        /* Mobile: Initially only manifesto visible, centered */
+        @media (max-width: 600px) {
+            .home-container.manifesto-only {
+                justify-content: center;
+                min-height: 100vh;
+                min-height: 100dvh;
+            }
+
+            .home-container.manifesto-only .terminal-zone,
+            .home-container.manifesto-only .home-nav {
+                opacity: 0;
+                pointer-events: none;
+                position: absolute;
+                visibility: hidden;
+            }
+
+            .home-container.content-revealed .terminal-zone,
+            .home-container.content-revealed .home-nav {
+                opacity: 1;
+                pointer-events: auto;
+                position: relative;
+                visibility: visible;
+                animation: fadeInUp 0.6s ease forwards;
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+
         .manifesto-lines {
             font-family: var(--font-mono);
             font-size: clamp(1rem, 2.5vw, 1.2rem);
@@ -594,12 +631,13 @@
             .home-nav {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                gap: 0.75rem 1.5rem;
-                margin-top: 1.75rem;
+                gap: 0.625rem 1rem;
+                margin-top: 1.5rem;
+                margin-bottom: 1rem;
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                max-width: 340px;
+                max-width: 320px;
             }
 
             .nav-column {
@@ -607,19 +645,20 @@
             }
 
             .nav-item {
-                padding: 0.75rem 0.5rem;
-                min-height: 48px;
+                padding: 0.625rem 0.5rem;
+                min-height: 44px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                border: none;
-                border-radius: 0;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                border-radius: 4px;
                 background: transparent;
                 transition: all 0.2s ease;
             }
 
             .nav-item:active {
-                background: rgba(79, 209, 197, 0.1);
+                background: rgba(79, 209, 197, 0.08);
+                border-color: rgba(79, 209, 197, 0.2);
                 transform: scale(0.97);
             }
 
@@ -12423,7 +12462,7 @@
                     <div class="home-manifesto">
                         <div class="manifesto-lines" id="manifesto-lines">
                             <span class="manifesto-line dim">> AI generates text. You do all the work.</span>
-                            <span class="manifesto-line bright">> Prompt, copy, paste, verify — <em>forever.</em></span>
+                            <span class="manifesto-line bright">> Prompt, copy, paste, verify — forever.</span>
                         </div>
                     </div>
 
@@ -15245,7 +15284,7 @@
                     // Show final state immediately
                     manifestoContainer.innerHTML = `
                         <span class="manifesto-line dim line-complete">> AI generates text. You do all the work.</span>
-                        <span class="manifesto-line bright line-complete">> Prompt, copy, paste, verify — <em>forever.</em></span>
+                        <span class="manifesto-line bright line-complete">> Prompt, copy, paste, verify — forever.</span>
                     `;
                     if (statementContainer) {
                         statementContainer.querySelector('.statement-text').textContent =
@@ -15328,11 +15367,20 @@
                 }
 
                 // ═══════════════════════════════════════════════════════════════
+                // MOBILE: Show only manifesto centered initially
+                // ═══════════════════════════════════════════════════════════════
+                const isMobile = window.innerWidth <= 600;
+                const homeContainer = document.querySelector('.home-container');
+                if (isMobile && homeContainer) {
+                    homeContainer.classList.add('manifesto-only');
+                    homeContainer.classList.remove('content-revealed');
+                }
+
+                // ═══════════════════════════════════════════════════════════════
                 // TEXT CONTENT — THE MASTERPIECE
                 // ═══════════════════════════════════════════════════════════════
                 const manifesto1 = "> AI generates text. You do all the work.";
-                const manifesto2Prefix = "> Prompt, copy, paste, verify — ";
-                const symbiosis = "forever.";
+                const manifesto2 = "> Prompt, copy, paste, verify — forever.";
                 const statement = "Your AI must work continuously, governed by your rules, not prompts";
                 const brand = "Stop prompt-chasing. Own the control layer.";
                 const value = "ODEI turns AI into a system that works with you — on your terms.";
@@ -15342,12 +15390,9 @@
                 // ═══════════════════════════════════════════════════════════════
                 // Phase -1: Initialization (cursor blinks)
                 // Phase 0: Manifesto line 1
-                // Phase 1: Manifesto line 2 prefix
-                // Phase 2: "symbiosis."
-                // Phase 3: Core statement (typed)
-                // Phase 4: Show interaction buttons → WAIT FOR USER
-                // Phase 5: Brand reveal (after Yes)
-                // Phase 6: Value expansion → Navigation reveal
+                // Phase 1: Manifesto line 2
+                // Phase 2: Core statement (typed)
+                // Phase 3: Show interaction buttons → WAIT FOR USER
                 let phase = -1;
                 let charIndex = 0;
                 let initBlinkCount = 0;
@@ -15796,7 +15841,7 @@
 
                 document.addEventListener('keydown', (e) => {
                     // Only handle keys when YES/NO buttons are visible (phase 4)
-                    if (phase !== 4 || !btnYes || !btnNo) return;
+                    if (phase !== 3 || !btnYes || !btnNo) return;
 
                     // Check if buttons are visible
                     const yesVisible = btnYes.offsetParent !== null;
@@ -15881,7 +15926,7 @@
                     }
 
                     // ─────────────────────────────────────────────────────────
-                    // PHASE 1: MANIFESTO LINE 2 PREFIX
+                    // PHASE 1: MANIFESTO LINE 2
                     // ─────────────────────────────────────────────────────────
                     if (phase === 1) {
                         if (charIndex === 0) {
@@ -15892,8 +15937,8 @@
                             manifestoContainer.appendChild(span2);
                         }
 
-                        if (charIndex < manifesto2Prefix.length) {
-                            const char = manifesto2Prefix[charIndex];
+                        if (charIndex < manifesto2.length) {
+                            const char = manifesto2[charIndex];
                             const charSpan = document.createElement('span');
                             charSpan.className = (char === '>' && charIndex === 0) ? 'prompt-char' : 'char-glow';
                             charSpan.textContent = char;
@@ -15901,47 +15946,30 @@
                             charIndex++;
                             typingTimeout = setTimeout(animate, getTypingDelay(char));
                         } else {
-                            emSpan = document.createElement('em');
-                            emSpan.appendChild(cursor);
-                            span2.appendChild(emSpan);
-                            phase = 2;
-                            charIndex = 0;
-                            // Build anticipation before the key word
-                            typingTimeout = setTimeout(animate, 320);
-                        }
-                        return;
-                    }
-
-                    // ─────────────────────────────────────────────────────────
-                    // PHASE 2: SYMBIOSIS
-                    // ─────────────────────────────────────────────────────────
-                    if (phase === 2) {
-                        if (charIndex < symbiosis.length) {
-                            const char = symbiosis[charIndex];
-                            const charSpan = document.createElement('span');
-                            charSpan.className = 'char-glow';
-                            charSpan.textContent = char;
-                            emSpan.insertBefore(charSpan, cursor);
-                            charIndex++;
-                            typingTimeout = setTimeout(animate, getTypingDelay(char));
-                        } else {
                             cursor.remove();
                             span2.classList.add('line-complete');
-                            phase = 3;
+
+                            // MOBILE: Reveal rest of content after manifesto completes
+                            if (isMobile && homeContainer) {
+                                homeContainer.classList.remove('manifesto-only');
+                                homeContainer.classList.add('content-revealed');
+                            }
+
+                            phase = 2;
                             charIndex = 0;
-                            // "Symbiosis" — let the word resonate deeply
+                            // Let the manifesto land
                             typingTimeout = setTimeout(animate, 850);
                         }
                         return;
                     }
 
                     // ─────────────────────────────────────────────────────────
-                    // PHASE 3: CORE STATEMENT
+                    // PHASE 2: CORE STATEMENT
                     // "Your AI must work continuously..."
                     // ─────────────────────────────────────────────────────────
-                    if (phase === 3) {
+                    if (phase === 2) {
                         if (!statementContainer) {
-                            phase = 4;
+                            phase = 3;
                             typingTimeout = setTimeout(animate, 100);
                             return;
                         }
@@ -15965,7 +15993,7 @@
                             typingTimeout = setTimeout(animate, getTypingDelay(char, true));
                         } else {
                             cursor.remove();
-                            phase = 4;
+                            phase = 3;
                             charIndex = 0;
                             // Moment of reflection before asking the question
                             typingTimeout = setTimeout(animate, 650);
@@ -15974,9 +16002,9 @@
                     }
 
                     // ─────────────────────────────────────────────────────────
-                    // PHASE 4: SHOW INTERACTION — WAIT FOR USER
+                    // PHASE 3: SHOW INTERACTION — WAIT FOR USER
                     // ─────────────────────────────────────────────────────────
-                    if (phase === 4) {
+                    if (phase === 3) {
                         if (interactionContainer) {
                             interactionContainer.classList.add('visible');
                             // Add pulse and selected state to Yes button (default for keyboard nav)
@@ -16309,7 +16337,7 @@
                 if (mContainer) {
                     mContainer.innerHTML = `
                         <span class="manifesto-line dim line-complete">> AI generates text. You do all the work.</span>
-                        <span class="manifesto-line bright line-complete">> Prompt, copy, paste, verify — <em>forever.</em></span>
+                        <span class="manifesto-line bright line-complete">> Prompt, copy, paste, verify — forever.</span>
                     `;
                 }
 
