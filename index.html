@@ -347,24 +347,6 @@
             display: flex;
             justify-content: center;
             width: 100%;
-            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
-        }
-
-        /* Initial centered state for mobile */
-        .home-manifesto.centered {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-        }
-
-        /* Lifted state - moves to normal flow */
-        .home-manifesto.lifted {
-            position: relative;
-            top: auto;
-            left: auto;
-            transform: none;
         }
 
         .manifesto-lines {
@@ -639,16 +621,6 @@
             .nav-item:active {
                 background: rgba(79, 209, 197, 0.1);
                 transform: scale(0.97);
-            }
-
-            /* Centered manifesto animation for mobile */
-            .home-manifesto.centered {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: 10;
-                padding: 0 1.5rem;
             }
 
             .nav-num {
@@ -15232,13 +15204,6 @@
                     // ═══════════════════════════════════════════════════════════════
                     // RESET ALL STATE (crucial for returning from other pages!)
                     // ═══════════════════════════════════════════════════════════════
-                    // Ensure manifesto is NOT centered for returning users
-                    const homeManifestoSeen = document.querySelector('.home-manifesto');
-                    if (homeManifestoSeen) {
-                        homeManifestoSeen.classList.remove('centered');
-                        homeManifestoSeen.classList.add('lifted');
-                    }
-
                     // Reset screens to initial state (screen 1 visible, screen 2 hidden)
                     if (screen1) {
                         screen1.classList.remove('hidden');
@@ -15360,18 +15325,6 @@
                 }
                 if (screen2) {
                     screen2.classList.remove('visible');
-                }
-
-                // ═══════════════════════════════════════════════════════════════
-                // MOBILE CENTERED MANIFESTO ANIMATION
-                // Start with manifesto centered, then lift after typing completes
-                // ═══════════════════════════════════════════════════════════════
-                const isMobile = window.innerWidth <= 600;
-                const homeManifesto = document.querySelector('.home-manifesto');
-
-                if (isMobile && homeManifesto) {
-                    homeManifesto.classList.add('centered');
-                    homeManifesto.classList.remove('lifted');
                 }
 
                 // ═══════════════════════════════════════════════════════════════
@@ -15974,17 +15927,6 @@
                         } else {
                             cursor.remove();
                             span2.classList.add('line-complete');
-
-                            // ═══════════════════════════════════════════════════
-                            // LIFT MANIFESTO — Move to top on mobile
-                            // ═══════════════════════════════════════════════════
-                            if (isMobile && homeManifesto) {
-                                setTimeout(() => {
-                                    homeManifesto.classList.remove('centered');
-                                    homeManifesto.classList.add('lifted');
-                                }, 400);
-                            }
-
                             phase = 3;
                             charIndex = 0;
                             // "Symbiosis" — let the word resonate deeply
