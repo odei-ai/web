@@ -6234,7 +6234,557 @@
                 height: 1px;
             }
         }
-        
+
+        /* ══════ THE MATH SECTION ══════ */
+        .math-section {
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        .math-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(229, 62, 62, 0.3), transparent);
+        }
+
+        .math-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .math-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            border: 1px solid rgba(229, 62, 62, 0.5);
+            color: #E53E3E;
+            margin-bottom: 1rem;
+            background: rgba(229, 62, 62, 0.08);
+            box-shadow: 0 0 20px rgba(229, 62, 62, 0.15), inset 0 0 20px rgba(229, 62, 62, 0.05);
+        }
+
+        .math-title {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: var(--ink-high);
+            margin: 0;
+            letter-spacing: 0.02em;
+        }
+
+        .math-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .math-column {
+            background: linear-gradient(135deg, rgba(10, 12, 18, 0.8), rgba(5, 6, 10, 0.9));
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 1.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Left column - neutral/gray */
+        .math-column:first-child {
+            border-color: rgba(255,255,255,0.08);
+        }
+
+        .math-column:first-child::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(124, 136, 154, 0.4), transparent);
+        }
+
+        /* Right column - danger/red glow */
+        .math-column:last-child {
+            border-color: rgba(229, 62, 62, 0.25);
+            box-shadow: 0 0 30px rgba(229, 62, 62, 0.08), inset 0 0 30px rgba(229, 62, 62, 0.03);
+        }
+
+        .math-column:last-child::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(229, 62, 62, 0.6), transparent);
+        }
+
+        .math-column:last-child::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at top right, rgba(229, 62, 62, 0.1), transparent 70%);
+            pointer-events: none;
+        }
+
+        .math-column-title {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin: 0 0 1.2rem 0;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .math-column:last-child .math-column-title {
+            color: rgba(229, 62, 62, 0.7);
+            border-bottom-color: rgba(229, 62, 62, 0.15);
+        }
+
+        .math-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            transition: all 0.2s ease;
+        }
+
+        .math-item:hover {
+            background: rgba(255,255,255,0.02);
+            margin: 0 -0.5rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+
+        .math-item:last-child {
+            border-bottom: none;
+        }
+
+        .math-label {
+            font-size: 0.85rem;
+            color: var(--ink-med);
+            flex: 1;
+            padding-right: 1rem;
+        }
+
+        .math-value {
+            font-size: 0.7rem;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 0.3rem 0.6rem;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            border-radius: 2px;
+        }
+
+        .math-item.zero .math-value {
+            color: rgba(124, 136, 154, 0.8);
+            background: rgba(124, 136, 154, 0.1);
+            border: 1px solid rgba(124, 136, 154, 0.2);
+        }
+
+        .math-item.negative .math-value {
+            color: #E53E3E;
+            background: rgba(229, 62, 62, 0.15);
+            border: 1px solid rgba(229, 62, 62, 0.3);
+            box-shadow: 0 0 10px rgba(229, 62, 62, 0.2);
+            animation: pulse-danger 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-danger {
+            0%, 100% { box-shadow: 0 0 10px rgba(229, 62, 62, 0.2); }
+            50% { box-shadow: 0 0 15px rgba(229, 62, 62, 0.35); }
+        }
+
+        .math-conclusion {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding: 1.5rem 2rem;
+            background: linear-gradient(135deg, rgba(229, 62, 62, 0.08), rgba(229, 62, 62, 0.03));
+            border: 1px solid rgba(229, 62, 62, 0.25);
+            box-shadow: 0 0 40px rgba(229, 62, 62, 0.1), inset 0 0 30px rgba(229, 62, 62, 0.05);
+            position: relative;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .math-conclusion::before {
+            content: '>';
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            color: rgba(229, 62, 62, 0.5);
+            font-size: 1rem;
+        }
+
+        .math-result {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-right: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .math-verdict {
+            font-size: 1.15rem;
+            color: #E53E3E;
+            font-weight: 500;
+            text-shadow: 0 0 20px rgba(229, 62, 62, 0.4);
+            letter-spacing: 0.02em;
+        }
+
+        @media (max-width: 600px) {
+            .math-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .math-column {
+                padding: 1.5rem;
+            }
+            .math-conclusion {
+                padding: 1.2rem 1.5rem 1.2rem 2.5rem;
+            }
+        }
+
+        /* ══════ THE ESCAPE SECTION ══════ */
+        .escape-section {
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        .escape-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(79, 209, 197, 0.3), transparent);
+        }
+
+        .escape-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .escape-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            border: 1px solid rgba(79, 209, 197, 0.5);
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            background: rgba(79, 209, 197, 0.08);
+            box-shadow: 0 0 20px rgba(79, 209, 197, 0.15), inset 0 0 20px rgba(79, 209, 197, 0.05);
+        }
+
+        .escape-title {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: var(--ink-high);
+            margin: 0;
+            letter-spacing: 0.02em;
+        }
+
+        .escape-comparison {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .escape-side {
+            flex: 1;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(10, 12, 18, 0.8), rgba(5, 6, 10, 0.9));
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .escape-side.replaceable {
+            border-color: rgba(229, 62, 62, 0.25);
+        }
+
+        .escape-side.replaceable::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(229, 62, 62, 0.6), transparent);
+        }
+
+        .escape-side.replaceable::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at top left, rgba(229, 62, 62, 0.08), transparent 70%);
+            pointer-events: none;
+        }
+
+        .escape-side.irreplaceable {
+            border-color: rgba(79, 209, 197, 0.35);
+            background: linear-gradient(135deg, rgba(79, 209, 197, 0.05), rgba(5, 6, 10, 0.9));
+            box-shadow: 0 0 40px rgba(79, 209, 197, 0.08), inset 0 0 30px rgba(79, 209, 197, 0.03);
+        }
+
+        .escape-side.irreplaceable::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(79, 209, 197, 0.8));
+        }
+
+        .escape-side.irreplaceable::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle at top right, rgba(79, 209, 197, 0.1), transparent 70%);
+            pointer-events: none;
+        }
+
+        .escape-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 0.3rem 0.6rem;
+            display: inline-block;
+        }
+
+        .escape-side.replaceable .escape-label {
+            color: #E53E3E;
+            background: rgba(229, 62, 62, 0.1);
+            border: 1px solid rgba(229, 62, 62, 0.25);
+        }
+
+        .escape-side.irreplaceable .escape-label {
+            color: var(--accent-primary);
+            background: rgba(79, 209, 197, 0.1);
+            border: 1px solid rgba(79, 209, 197, 0.25);
+        }
+
+        .escape-desc {
+            font-size: 1.15rem;
+            color: var(--ink-high);
+            margin: 0.5rem 0 1.5rem 0;
+            font-weight: 300;
+        }
+
+        .escape-desc em {
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        .escape-side.replaceable .escape-desc em {
+            color: #E53E3E;
+            text-shadow: 0 0 15px rgba(229, 62, 62, 0.3);
+        }
+
+        .escape-side.irreplaceable .escape-desc em {
+            color: var(--accent-primary);
+            text-shadow: 0 0 15px rgba(79, 209, 197, 0.3);
+        }
+
+        .escape-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .escape-list li {
+            font-size: 0.85rem;
+            color: var(--ink-med);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            transition: all 0.2s ease;
+        }
+
+        .escape-list li:last-child {
+            border-bottom: none;
+        }
+
+        .escape-list li:hover {
+            background: rgba(255,255,255,0.02);
+            margin: 0 -0.5rem;
+            padding-left: 2rem;
+            padding-right: 0.5rem;
+        }
+
+        .escape-side.replaceable .escape-list li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: rgba(229, 62, 62, 0.7);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .escape-side.irreplaceable .escape-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(79, 209, 197, 0.5);
+        }
+
+        .escape-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            background: linear-gradient(180deg, rgba(229, 62, 62, 0.1), rgba(79, 209, 197, 0.1));
+            width: 60px;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .escape-divider::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            background: linear-gradient(180deg, rgba(229, 62, 62, 0.4), rgba(79, 209, 197, 0.4));
+        }
+
+        .escape-arrow {
+            font-size: 1.8rem;
+            color: var(--accent-primary);
+            animation: escape-pulse 2s ease-in-out infinite;
+            background: rgba(5, 6, 10, 0.9);
+            padding: 0.5rem;
+            border-radius: 50%;
+            border: 1px solid rgba(79, 209, 197, 0.3);
+            box-shadow: 0 0 20px rgba(79, 209, 197, 0.2);
+            z-index: 1;
+        }
+
+        @keyframes escape-pulse {
+            0%, 100% {
+                opacity: 0.7;
+                transform: translateX(0);
+                box-shadow: 0 0 20px rgba(79, 209, 197, 0.2);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(3px);
+                box-shadow: 0 0 30px rgba(79, 209, 197, 0.4);
+            }
+        }
+
+        .escape-conclusion {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .escape-conclusion::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(79, 209, 197, 0.4), transparent);
+        }
+
+        .escape-insight {
+            font-size: 0.95rem;
+            color: var(--ink-med);
+            margin: 0.5rem 0;
+            font-style: italic;
+        }
+
+        .escape-final {
+            font-size: 1.2rem;
+            color: var(--accent-primary);
+            margin-top: 1.5rem;
+            font-weight: 500;
+            text-shadow: 0 0 25px rgba(79, 209, 197, 0.4);
+            letter-spacing: 0.02em;
+            padding: 1rem 1.5rem;
+            border: 1px solid rgba(79, 209, 197, 0.3);
+            background: rgba(79, 209, 197, 0.05);
+            display: inline-block;
+        }
+
+        @media (max-width: 700px) {
+            .escape-comparison {
+                flex-direction: column;
+            }
+            .escape-divider {
+                width: 100%;
+                height: 50px;
+                background: linear-gradient(90deg, rgba(229, 62, 62, 0.1), rgba(79, 209, 197, 0.1));
+            }
+            .escape-divider::before {
+                top: 50%;
+                bottom: auto;
+                left: 0;
+                right: 0;
+                width: auto;
+                height: 1px;
+                background: linear-gradient(90deg, rgba(229, 62, 62, 0.4), rgba(79, 209, 197, 0.4));
+            }
+            .escape-arrow {
+                transform: rotate(90deg);
+            }
+            @keyframes escape-pulse {
+                0%, 100% {
+                    opacity: 0.7;
+                    transform: rotate(90deg) translateX(0);
+                    box-shadow: 0 0 20px rgba(79, 209, 197, 0.2);
+                }
+                50% {
+                    opacity: 1;
+                    transform: rotate(90deg) translateX(3px);
+                    box-shadow: 0 0 30px rgba(79, 209, 197, 0.4);
+                }
+            }
+        }
+
         /* ══════ CTA SECTION ══════ */
         .problem-cta-section {
             text-align: center;
@@ -11875,9 +12425,56 @@
                 <div class="problem-hero-new">
                     <div class="hero-badge-problem">THE PROBLEM</div>
                     <h2 class="hero-headline-problem">
-                        <span class="headline-fade">AI assistants don't compound.</span>
-                        <span class="headline-emphasis">You do all the work.</span>
+                        <span class="headline-fade">Everyone has the same AI.</span>
+                        <span class="headline-emphasis">If your value is prompting — you're competing with everyone.</span>
                     </h2>
+                </div>
+
+                <!-- THE MATH: Why you have no moat -->
+                <div class="math-section">
+                    <div class="math-header">
+                        <span class="math-badge">THE MATH</span>
+                        <h3 class="math-title">Why you have no moat</h3>
+                    </div>
+
+                    <div class="math-grid">
+                        <div class="math-column">
+                            <h4 class="math-column-title">Your "AI advantage"</h4>
+                            <div class="math-item zero">
+                                <span class="math-label">Same models as everyone</span>
+                                <span class="math-value">0 moat</span>
+                            </div>
+                            <div class="math-item zero">
+                                <span class="math-label">Prompts anyone can learn</span>
+                                <span class="math-value">0 moat</span>
+                            </div>
+                            <div class="math-item zero">
+                                <span class="math-label">Context in your head, not a system</span>
+                                <span class="math-value">0 moat</span>
+                            </div>
+                        </div>
+
+                        <div class="math-column">
+                            <h4 class="math-column-title">Your labor</h4>
+                            <div class="math-item negative">
+                                <span class="math-label">Re-explaining every session</span>
+                                <span class="math-value">replaceable</span>
+                            </div>
+                            <div class="math-item negative">
+                                <span class="math-label">Copy-paste-verify loop</span>
+                                <span class="math-value">replaceable</span>
+                            </div>
+                            <div class="math-item negative">
+                                <span class="math-label">Manual follow-ups</span>
+                                <span class="math-value">replaceable</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="math-conclusion">
+                        <span class="math-result">Net position:</span>
+                        <span class="math-verdict">You're overhead, not an asset.</span>
+                    </div>
                 </div>
 
                 <!-- THE CYCLE: Infinite Loop Visualization -->
@@ -11948,7 +12545,7 @@
                             <span class="cycle-you">YOU</span>
                         </div>
                     </div>
-                    <p class="cycle-caption">Every session starts from zero. The AI generates text. <em>You are the system.</em></p>
+                    <p class="cycle-caption">Every hour in this loop is an hour anyone else could do. <em>No compounding. No leverage. Just labor.</em></p>
                 </div>
 
                 <!-- THE TAX: What this loop actually costs you -->
@@ -12045,9 +12642,9 @@
                     
                     <div class="trap-warning">
                         <span class="warning-icon">⚠</span>
-                        <span class="warning-text">If you are the glue, you're the part that gets replaced.</span>
+                        <span class="warning-text">A junior with the same prompts produces the same output. A template could replace your "process".</span>
                     </div>
-                    <p class="trap-hook">If your AI needs you to remember, remind, and verify — <em>it's not helping you. It's using you.</em></p>
+                    <p class="trap-hook">If you are the glue — <em>you're the part that gets replaced.</em></p>
                 </div>
 
                 <!-- REALITY CHECK: Who this is for -->
@@ -12148,6 +12745,48 @@
                         <span class="conclusion-new">ODEI is infrastructure.</span>
                     </div>
                     <p class="shift-explanation">Interfaces talk to you. Infrastructure carries responsibility when you forget.</p>
+                </div>
+
+                <!-- THE ESCAPE: The core message -->
+                <div class="escape-section">
+                    <div class="escape-header">
+                        <span class="escape-badge">THE ESCAPE</span>
+                        <h3 class="escape-title">From replaceable to irreplaceable</h3>
+                    </div>
+
+                    <div class="escape-comparison">
+                        <div class="escape-side replaceable">
+                            <div class="escape-label">REPLACEABLE</div>
+                            <p class="escape-desc">You <em>are</em> the system</p>
+                            <ul class="escape-list">
+                                <li>Memory lives in your head</li>
+                                <li>Rules reset every session</li>
+                                <li>Execution is manual labor</li>
+                                <li>Anyone with prompts = same output</li>
+                            </ul>
+                        </div>
+
+                        <div class="escape-divider">
+                            <span class="escape-arrow">→</span>
+                        </div>
+
+                        <div class="escape-side irreplaceable">
+                            <div class="escape-label">IRREPLACEABLE</div>
+                            <p class="escape-desc">You <em>own</em> the system</p>
+                            <ul class="escape-list">
+                                <li>Memory compounds over time</li>
+                                <li>Rules persist and enforce</li>
+                                <li>AI does the labor</li>
+                                <li>Your architecture is unique</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="escape-conclusion">
+                        <p class="escape-insight">Models are interchangeable — your system isn't.</p>
+                        <p class="escape-insight">Others can prompt — they can't replicate your compound memory.</p>
+                        <p class="escape-final">That's the difference between renting and owning.</p>
+                    </div>
                 </div>
 
                 <!-- CTA Bridge -->
