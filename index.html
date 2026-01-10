@@ -398,14 +398,17 @@
             margin: 0;
             padding: 0;
             opacity: var(--line-opacity, 0.9);
+            color: #ffffff;
         }
 
         .manifesto-line.dim {
-            --line-opacity: 0.5;
+            --line-opacity: 0.75;
+            color: #ffffff;
         }
 
         .manifesto-line.bright {
-            --line-opacity: 0.9;
+            --line-opacity: 1;
+            color: #ffffff;
         }
 
         .manifesto-line em {
@@ -632,12 +635,12 @@
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 0.5rem 0.75rem;
+                gap: 0.6rem 0.9rem;
                 margin-top: 1.25rem;
                 margin-bottom: 0;
                 width: 100%;
-                max-width: 360px;
-                padding: 0 0.5rem;
+                max-width: 380px;
+                padding: 0 0.75rem;
             }
 
             .nav-column {
@@ -645,13 +648,13 @@
             }
 
             .nav-item {
-                padding: 0.4rem 0.65rem;
+                padding: 0.5rem 0.85rem;
                 min-height: unset;
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
                 border: 1px solid rgba(255, 255, 255, 0.08);
-                border-radius: 3px;
+                border-radius: 4px;
                 background: transparent;
                 transition: all 0.2s ease;
             }
@@ -666,8 +669,8 @@
             }
 
             .nav-name {
-                font-size: 0.8rem;
-                opacity: 0.75;
+                font-size: 0.9rem;
+                opacity: 0.8;
                 font-weight: 400;
                 letter-spacing: 0.02em;
             }
@@ -15100,22 +15103,56 @@
                 // If video is paused for any reason, try to play again
                 heroVideo.addEventListener('pause', () => {
                     if (!document.hidden) {
+                        playAttempts = 0; // Reset attempts for new play cycle
                         setTimeout(playVideo, 100);
                     }
+                });
+
+                // Handle ended event (sometimes loop breaks on mobile)
+                heroVideo.addEventListener('ended', () => {
+                    heroVideo.currentTime = 0;
+                    playAttempts = 0;
+                    playVideo();
                 });
 
                 // Visibility change handler
                 document.addEventListener('visibilitychange', () => {
                     if (document.visibilityState === 'visible' && heroVideo.paused) {
+                        playAttempts = 0; // Reset for visibility change
                         playVideo();
                     }
                 });
+
+                // Page show event (for back/forward cache)
+                window.addEventListener('pageshow', (event) => {
+                    if (heroVideo.paused) {
+                        playAttempts = 0;
+                        playVideo();
+                    }
+                });
+
+                // Focus event (when returning to tab/app)
+                window.addEventListener('focus', () => {
+                    if (heroVideo.paused) {
+                        playAttempts = 0;
+                        playVideo();
+                    }
+                });
+
+                // Periodic check to ensure video keeps playing (mobile can be aggressive)
+                setInterval(() => {
+                    if (!document.hidden && heroVideo.paused) {
+                        playAttempts = 0;
+                        playVideo();
+                    }
+                }, 3000);
 
                 // iOS specific: try to play when entering fullscreen viewport
                 if ('IntersectionObserver' in window) {
                     const observer = new IntersectionObserver((entries) => {
                         entries.forEach(entry => {
                             if (entry.isIntersecting && heroVideo.paused) {
+                                playAttempts = 0;
                                 playVideo();
                             }
                         });
