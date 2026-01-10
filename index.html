@@ -401,11 +401,13 @@
         }
 
         .manifesto-line.dim {
-            --line-opacity: 0.5;
+            --line-opacity: 0.75;
+            color: #ffffff;
         }
 
         .manifesto-line.bright {
-            --line-opacity: 0.9;
+            --line-opacity: 1;
+            color: #ffffff;
         }
 
         .manifesto-line em {
@@ -15100,22 +15102,56 @@
                 // If video is paused for any reason, try to play again
                 heroVideo.addEventListener('pause', () => {
                     if (!document.hidden) {
+                        playAttempts = 0; // Reset attempts for new play cycle
                         setTimeout(playVideo, 100);
                     }
+                });
+
+                // Handle ended event (sometimes loop breaks on mobile)
+                heroVideo.addEventListener('ended', () => {
+                    heroVideo.currentTime = 0;
+                    playAttempts = 0;
+                    playVideo();
                 });
 
                 // Visibility change handler
                 document.addEventListener('visibilitychange', () => {
                     if (document.visibilityState === 'visible' && heroVideo.paused) {
+                        playAttempts = 0; // Reset for visibility change
                         playVideo();
                     }
                 });
+
+                // Page show event (for back/forward cache)
+                window.addEventListener('pageshow', (event) => {
+                    if (heroVideo.paused) {
+                        playAttempts = 0;
+                        playVideo();
+                    }
+                });
+
+                // Focus event (when returning to tab/app)
+                window.addEventListener('focus', () => {
+                    if (heroVideo.paused) {
+                        playAttempts = 0;
+                        playVideo();
+                    }
+                });
+
+                // Periodic check to ensure video keeps playing (mobile can be aggressive)
+                setInterval(() => {
+                    if (!document.hidden && heroVideo.paused) {
+                        playAttempts = 0;
+                        playVideo();
+                    }
+                }, 3000);
 
                 // iOS specific: try to play when entering fullscreen viewport
                 if ('IntersectionObserver' in window) {
                     const observer = new IntersectionObserver((entries) => {
                         entries.forEach(entry => {
                             if (entry.isIntersecting && heroVideo.paused) {
+                                playAttempts = 0;
                                 playVideo();
                             }
                         });
