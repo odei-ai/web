@@ -1322,6 +1322,7 @@
             cursor: pointer;
             transition: all 0.2s ease;
             display: inline-block;
+            white-space: nowrap;
         }
 
         .terminal-cta:hover {
@@ -1342,11 +1343,23 @@
         /* Mobile adjustments for terminal CTA buttons */
         @media (max-width: 600px) {
             .home-cta {
-                gap: 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
             }
             .terminal-cta {
                 padding: 0.7rem 1.5rem;
                 font-size: 0.9rem;
+                min-width: 180px;
+                text-align: center;
+            }
+        }
+
+        /* Very small screens */
+        @media (max-width: 380px) {
+            .terminal-cta {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+                min-width: 160px;
             }
         }
 
@@ -14263,19 +14276,6 @@
                 const screen2 = document.getElementById('screen-2');
 
                 if (!manifestoContainer) return;
-
-                // ═══════════════════════════════════════════════════════════════
-                // HARD REFRESH DETECTION — Clear localStorage on Cmd+Shift+R
-                // ═══════════════════════════════════════════════════════════════
-                try {
-                    const navEntry = performance.getEntriesByType('navigation')[0];
-                    if (navEntry && navEntry.type === 'reload') {
-                        // Hard refresh detected - clear the flag to replay animation
-                        localStorage.removeItem('odei_home_seen');
-                    }
-                } catch (e) {
-                    // Ignore if performance API not available
-                }
 
                 // ═══════════════════════════════════════════════════════════════
                 // STORE HANDLER REFERENCES (hoisted functions, available here)
