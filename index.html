@@ -14245,6 +14245,10 @@
             // Track if user made YES/NO choice (for back button handling)
             let homeChoiceMade = false;
 
+            // Store handler references for resetHomeToChoiceState
+            let storedHandleYesClick = null;
+            let storedHandleNoClick = null;
+
             function startFullTypewriter() {
                 clearTimeout(typingTimeout);
 
@@ -14272,6 +14276,13 @@
                 } catch (e) {
                     // Ignore if performance API not available
                 }
+
+                // ═══════════════════════════════════════════════════════════════
+                // STORE HANDLER REFERENCES (hoisted functions, available here)
+                // Needed for resetHomeToChoiceState to re-attach handlers
+                // ═══════════════════════════════════════════════════════════════
+                storedHandleYesClick = handleYesClick;
+                storedHandleNoClick = handleNoClick;
 
                 // ═══════════════════════════════════════════════════════════════
                 // SKIP ANIMATION IF ALREADY SEEN — Type only once per session
@@ -14341,7 +14352,7 @@
                     // ═══════════════════════════════════════════════════════════════
                     const btnYes = document.getElementById('btn-yes');
                     const btnNo = document.getElementById('btn-no');
-                    const value = "ODEI adds memory, rules, and controlled execution — under your constraints, not prompts.";
+                    const value = "ODEI turns AI into a system that works with you, not for prompts.";
 
                     if (btnYes) {
                         // Remove old handlers and classes
@@ -14411,7 +14422,7 @@
                 const symbiosis = "forever.";
                 const statement = "Your AI must work continuously, governed by your rules, not prompts";
                 const brand = "Stop prompt-chasing. Own the control layer.";
-                const value = "ODEI adds memory, rules, and controlled execution — under your constraints, not prompts.";
+                const value = "ODEI turns AI into a system that works with you, not for prompts.";
 
                 // ═══════════════════════════════════════════════════════════════
                 // PHASE CONTROL
@@ -14484,10 +14495,10 @@
                     // Flow: Symbiosis manifesto → Brand → Value → CTA → Navigation
                     // ═══════════════════════════════════════════════════════════════
 
-                    const yesLine1 = "> The future is not human or machine.";
-                    const yesLine2 = "> The future is symbiosis.";
+                    const yesLine1 = "> You see what most don't.";
+                    const yesLine2 = "> The power isn't in prompts. It's in architecture.";
                     const brandText = "Stop prompt-chasing. Own the control layer.";
-                    const valueText = "ODEI adds memory, rules, and controlled execution — under your constraints, not prompts.";
+                    const valueText = "ODEI turns AI into a system that works with you, not for prompts.";
 
                     // Stop any pending animations
                     clearTimeout(typingTimeout);
@@ -15409,18 +15420,18 @@
                         </div>
                     `;
 
-                    // Re-attach handlers
+                    // Re-attach handlers using stored references
                     const btnYes = document.getElementById('btn-yes');
                     const btnNo = document.getElementById('btn-no');
-                    if (btnYes) {
+                    if (btnYes && storedHandleYesClick) {
                         btnYes.classList.remove('pulse', 'selected');
-                        btnYes.onclick = handleYesClick;
+                        btnYes.onclick = storedHandleYesClick;
                         setTimeout(() => {
                             btnYes.classList.add('pulse', 'selected');
                         }, 100);
                     }
-                    if (btnNo) {
-                        btnNo.onclick = handleNoClick;
+                    if (btnNo && storedHandleNoClick) {
+                        btnNo.onclick = storedHandleNoClick;
                     }
                 }
 
