@@ -14242,6 +14242,9 @@
             const tocLinks = document.querySelectorAll('.toc-link, .nav-item');
             let typingTimeout;
 
+            // Track if user made YES/NO choice (for back button handling)
+            let homeChoiceMade = false;
+
             function startFullTypewriter() {
                 clearTimeout(typingTimeout);
 
@@ -14256,6 +14259,19 @@
                 const screen2 = document.getElementById('screen-2');
 
                 if (!manifestoContainer) return;
+
+                // ═══════════════════════════════════════════════════════════════
+                // HARD REFRESH DETECTION — Clear localStorage on Cmd+Shift+R
+                // ═══════════════════════════════════════════════════════════════
+                try {
+                    const navEntry = performance.getEntriesByType('navigation')[0];
+                    if (navEntry && navEntry.type === 'reload') {
+                        // Hard refresh detected - clear the flag to replay animation
+                        localStorage.removeItem('odei_home_seen');
+                    }
+                } catch (e) {
+                    // Ignore if performance API not available
+                }
 
                 // ═══════════════════════════════════════════════════════════════
                 // SKIP ANIMATION IF ALREADY SEEN — Type only once per session
@@ -14476,6 +14492,12 @@
                     // Stop any pending animations
                     clearTimeout(typingTimeout);
 
+                    // Push history state for back button navigation
+                    homeChoiceMade = true;
+                    try {
+                        history.pushState({ page: 0, homeChoice: 'yes' }, '', '#home-yes');
+                    } catch (e) {}
+
                     // Hide interaction prompt
                     if (interactionContainer) {
                         interactionContainer.style.display = 'none';
@@ -14648,6 +14670,12 @@
 
                     // Stop any pending animations
                     clearTimeout(typingTimeout);
+
+                    // Push history state for back button navigation
+                    homeChoiceMade = true;
+                    try {
+                        history.pushState({ page: 0, homeChoice: 'no' }, '', '#home-no');
+                    } catch (e) {}
 
                     // Hide interaction prompt
                     if (interactionContainer) {
@@ -15184,6 +15212,9 @@
             const hashToPage = Object.fromEntries(
                 Object.entries(pageHashes).map(([k, v]) => [v, parseInt(k)])
             );
+            // Add home YES/NO hashes (map to page 0)
+            hashToPage['home-yes'] = 0;
+            hashToPage['home-no'] = 0;
 
             function updateHash(pageIndex, addToHistory = true) {
                 const hash = pageHashes[pageIndex];
@@ -15307,8 +15338,108 @@
                 }
             }
 
+            // Reset home page to YES/NO choice state (for back button navigation)
+            function resetHomeToChoiceState() {
+                // Stop any pending animations
+                clearTimeout(typingTimeout);
+                homeChoiceMade = false;
+
+                // Reset URL hash to home (remove #home-yes or #home-no)
+                try {
+                    history.replaceState({ page: 0 }, '', window.location.pathname);
+                } catch (e) {}
+
+                // Get fresh references
+                const mContainer = document.getElementById('manifesto-lines');
+                const sContainer = document.getElementById('home-statement');
+                const iContainer = document.getElementById('home-interaction');
+                const bContainer = document.getElementById('home-brand');
+                const vContainer = document.getElementById('home-value');
+                const cContainer = document.getElementById('home-cta');
+                const s1 = document.getElementById('screen-1');
+                const s2 = document.getElementById('screen-2');
+
+                // Reset to screen 1 (hide screen 2)
+                if (s1) s1.classList.remove('hidden');
+                if (s2) s2.classList.remove('visible');
+
+                // Reset brand and value containers
+                if (bContainer) {
+                    bContainer.classList.remove('visible');
+                    bContainer.innerHTML = '';
+                }
+                if (vContainer) {
+                    vContainer.classList.remove('visible');
+                    const valueTextEl = vContainer.querySelector('.value-text');
+                    if (valueTextEl) valueTextEl.innerHTML = '';
+                }
+                if (cContainer) {
+                    cContainer.classList.remove('visible');
+                    cContainer.innerHTML = `
+                        <a href="#intro" data-page="1" class="terminal-cta" data-cta="primary"><span class="btn-text">[ Read Docs ]</span></a>
+                        <a href="#connect" data-page="9" class="terminal-cta" data-cta="secondary"><span class="btn-text">[ Request Access ]</span></a>
+                    `;
+                }
+
+                // Restore manifesto to final state
+                if (mContainer) {
+                    mContainer.innerHTML = `
+                        <span class="manifesto-line dim line-complete">> AI generates text. You do all the work.</span>
+                        <span class="manifesto-line bright line-complete">> Prompt, copy, paste, verify — <em>forever.</em></span>
+                    `;
+                }
+
+                // Reset statement
+                if (sContainer) {
+                    sContainer.querySelector('.statement-text').textContent =
+                        "Your AI must work continuously, governed by your rules, not prompts";
+                    sContainer.classList.add('visible');
+                }
+
+                // Restore YES/NO buttons
+                if (iContainer) {
+                    iContainer.style.display = '';
+                    iContainer.classList.add('visible');
+                    iContainer.classList.remove('chosen');
+                    iContainer.innerHTML = `
+                        <span class="interaction-prompt">> Do you agree? <span class="prompt-cursor">_</span></span>
+                        <div class="interaction-buttons">
+                            <button class="terminal-btn terminal-btn-yes" id="btn-yes">[ YES ]</button>
+                            <button class="terminal-btn terminal-btn-no" id="btn-no">[ NO ]</button>
+                        </div>
+                    `;
+
+                    // Re-attach handlers
+                    const btnYes = document.getElementById('btn-yes');
+                    const btnNo = document.getElementById('btn-no');
+                    if (btnYes) {
+                        btnYes.classList.remove('pulse', 'selected');
+                        btnYes.onclick = handleYesClick;
+                        setTimeout(() => {
+                            btnYes.classList.add('pulse', 'selected');
+                        }, 100);
+                    }
+                    if (btnNo) {
+                        btnNo.onclick = handleNoClick;
+                    }
+                }
+
+                // Activate orbs
+                const orbs = document.querySelector('.home-orbs');
+                if (orbs) orbs.classList.add('active');
+            }
+
             // Handle browser back/forward buttons
             window.addEventListener('popstate', (e) => {
+                // Check if navigating back from a YES/NO choice on home page
+                const currentHash = window.location.hash;
+                if (homeChoiceMade && currentPage === 0 &&
+                    !currentHash.includes('home-yes') && !currentHash.includes('home-no')) {
+                    // User pressed back from YES/NO path - reset to choice state
+                    resetHomeToChoiceState();
+                    return;
+                }
+
                 let pageIndex;
                 if (e.state && typeof e.state.page === 'number') {
                     pageIndex = e.state.page;
