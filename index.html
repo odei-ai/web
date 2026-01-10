@@ -1222,22 +1222,6 @@
         }
 
         /* ══════ TERMINAL ZONE - FIXED POSITION FOR BOTH SCREENS ══════ */
-        /* Hidden state for content below manifesto */
-        .terminal-zone.initially-hidden,
-        .home-nav.initially-hidden {
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
-        }
-
-        .terminal-zone.revealed,
-        .home-nav.revealed {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0);
-        }
-
         .terminal-zone {
             display: grid;
             grid-template-areas: "content";
@@ -15250,19 +15234,9 @@
                     // ═══════════════════════════════════════════════════════════════
                     // Ensure manifesto is NOT centered for returning users
                     const homeManifestoSeen = document.querySelector('.home-manifesto');
-                    const terminalZoneSeen = document.querySelector('.terminal-zone');
-                    const homeNavSeen = document.querySelector('.home-nav');
                     if (homeManifestoSeen) {
                         homeManifestoSeen.classList.remove('centered');
                         homeManifestoSeen.classList.add('lifted');
-                    }
-                    if (terminalZoneSeen) {
-                        terminalZoneSeen.classList.remove('initially-hidden');
-                        terminalZoneSeen.classList.add('revealed');
-                    }
-                    if (homeNavSeen) {
-                        homeNavSeen.classList.remove('initially-hidden');
-                        homeNavSeen.classList.add('revealed');
                     }
 
                     // Reset screens to initial state (screen 1 visible, screen 2 hidden)
@@ -15394,20 +15368,10 @@
                 // ═══════════════════════════════════════════════════════════════
                 const isMobile = window.innerWidth <= 600;
                 const homeManifesto = document.querySelector('.home-manifesto');
-                const terminalZone = document.querySelector('.terminal-zone');
-                const homeNav = document.querySelector('.home-nav');
 
                 if (isMobile && homeManifesto) {
                     homeManifesto.classList.add('centered');
                     homeManifesto.classList.remove('lifted');
-                    if (terminalZone) {
-                        terminalZone.classList.add('initially-hidden');
-                        terminalZone.classList.remove('revealed');
-                    }
-                    if (homeNav) {
-                        homeNav.classList.add('initially-hidden');
-                        homeNav.classList.remove('revealed');
-                    }
                 }
 
                 // ═══════════════════════════════════════════════════════════════
@@ -16012,20 +15976,12 @@
                             span2.classList.add('line-complete');
 
                             // ═══════════════════════════════════════════════════
-                            // LIFT MANIFESTO — Reveal rest of content on mobile
+                            // LIFT MANIFESTO — Move to top on mobile
                             // ═══════════════════════════════════════════════════
                             if (isMobile && homeManifesto) {
                                 setTimeout(() => {
                                     homeManifesto.classList.remove('centered');
                                     homeManifesto.classList.add('lifted');
-                                    if (terminalZone) {
-                                        terminalZone.classList.remove('initially-hidden');
-                                        terminalZone.classList.add('revealed');
-                                    }
-                                    if (homeNav) {
-                                        homeNav.classList.remove('initially-hidden');
-                                        homeNav.classList.add('revealed');
-                                    }
                                 }, 400);
                             }
 
