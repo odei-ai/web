@@ -595,8 +595,9 @@
                 gap: 2rem;
                 padding: 1.5rem 1.5rem;
                 padding-bottom: 8rem;
-                justify-content: center;
-                padding-top: calc(env(safe-area-inset-top, 0px) + 3.5rem);
+                justify-content: flex-start;
+                /* Universal formula: safe-area + max(5rem, 8vh) for all small phones */
+                padding-top: calc(env(safe-area-inset-top, 0px) + max(5rem, 8svh));
             }
 
             .home-logo-svg {
@@ -699,8 +700,9 @@
                 gap: 1.5rem;
                 padding: 1rem 1rem;
                 padding-bottom: 7.5rem;
-                justify-content: center;
-                padding-top: calc(env(safe-area-inset-top, 0px) + 3rem);
+                justify-content: flex-start;
+                /* Aggressive top padding for small phones */
+                padding-top: calc(env(safe-area-inset-top, 0px) + max(4.5rem, 7svh));
             }
 
             .home-logo-svg {
@@ -745,8 +747,9 @@
                 gap: 1.25rem;
                 padding: 0.75rem 0.75rem;
                 padding-bottom: 7rem;
-                justify-content: center;
-                padding-top: calc(env(safe-area-inset-top, 0px) + 2.5rem);
+                justify-content: flex-start;
+                /* Consistent top spacing for tiny phones */
+                padding-top: calc(env(safe-area-inset-top, 0px) + max(4rem, 6svh));
             }
 
             .home-logo-svg {
@@ -797,8 +800,9 @@
             .home-container {
                 padding: 0.5rem 0.5rem;
                 padding-bottom: 6.5rem;
-                padding-top: calc(env(safe-area-inset-top, 0px) + 2rem);
-                justify-content: center;
+                /* Even on tiny phones, maintain visual spacing */
+                padding-top: calc(env(safe-area-inset-top, 0px) + max(3.5rem, 5svh));
+                justify-content: flex-start;
                 gap: 1rem;
             }
 
@@ -903,6 +907,146 @@
             }
 
             .subheadline-text {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* ══════ HEIGHT-BASED: Small height phones (portrait) ══════ */
+        /* For phones with small viewport height in portrait mode */
+        @media (max-height: 700px) and (orientation: portrait) and (max-width: 600px) {
+            .home-container {
+                padding-top: calc(env(safe-area-inset-top, 0px) + 6svh);
+                gap: 1.25rem;
+            }
+
+            .manifesto-lines {
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+
+            .terminal-btn {
+                min-height: 48px;
+                padding: 0.7rem 1.5rem;
+            }
+
+            .home-nav {
+                margin-top: 0.75rem;
+            }
+        }
+
+        /* ══════ HEIGHT-BASED: Very small height (iPhone SE, old Android) ══════ */
+        @media (max-height: 600px) and (orientation: portrait) and (max-width: 600px) {
+            .home-container {
+                padding-top: calc(env(safe-area-inset-top, 0px) + 5svh);
+                padding-bottom: 6rem;
+                gap: 1rem;
+            }
+
+            .home-logo-svg {
+                width: 48px;
+                height: 48px;
+            }
+
+            .manifesto-lines {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+
+            .terminal-btn {
+                min-height: 44px;
+                padding: 0.6rem 1.25rem;
+                font-size: 0.95rem;
+            }
+
+            .interaction-buttons {
+                gap: 0.75rem;
+            }
+
+            .home-nav {
+                margin-top: 0.5rem;
+                gap: 0.35rem 0.5rem;
+            }
+
+            .nav-item {
+                padding: 0.3rem 0.45rem;
+            }
+
+            .nav-name {
+                font-size: 0.7rem;
+            }
+        }
+
+        /* ══════ COMBINED: Small width AND small height ══════ */
+        /* Ultra-compact mode for very small phones */
+        @media (max-width: 375px) and (max-height: 667px) {
+            .home-container {
+                padding-top: calc(env(safe-area-inset-top, 0px) + 5svh);
+                padding-bottom: 5.5rem;
+                gap: 0.9rem;
+            }
+
+            .home-logo-svg {
+                width: 44px;
+                height: 44px;
+            }
+
+            .manifesto-lines {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            .tagline-text {
+                font-size: 1.15rem;
+            }
+
+            .subheadline-text {
+                font-size: 0.85rem;
+            }
+
+            .terminal-btn {
+                min-height: 42px;
+                padding: 0.55rem 1.1rem;
+                font-size: 0.9rem;
+            }
+
+            .interaction-buttons {
+                gap: 0.6rem;
+            }
+        }
+
+        /* ══════ ULTRA-SMALL: iPhone SE first gen / tiny Android ══════ */
+        @media (max-width: 320px) and (max-height: 568px) {
+            .home-container {
+                padding-top: calc(env(safe-area-inset-top, 0px) + 4svh);
+                padding-bottom: 5rem;
+                gap: 0.75rem;
+            }
+
+            .home-logo-svg {
+                width: 36px;
+                height: 36px;
+            }
+
+            .manifesto-lines {
+                font-size: 0.85rem;
+                line-height: 1.45;
+            }
+
+            .home-nav {
+                gap: 0.25rem 0.35rem;
+            }
+
+            .nav-item {
+                padding: 0.25rem 0.35rem;
+            }
+
+            .nav-name {
+                font-size: 0.6rem;
+            }
+
+            .terminal-btn {
+                min-height: 40px;
+                padding: 0.5rem 1rem;
                 font-size: 0.85rem;
             }
         }
