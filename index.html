@@ -35,7 +35,8 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500&display=swap" rel="stylesheet">
 
     <!-- PERFORMANCE: Preload video for faster start -->
-    <link rel="preload" href="GxO7JgIb0AAAMcD.mp4" as="video" type="video/mp4">
+    <!-- Note: Using prefetch instead of preload as 'as=video' is not supported -->
+    <link rel="prefetch" href="GxO7JgIb0AAAMcD.mp4" as="fetch">
 
     <style>
         * {
@@ -2577,6 +2578,33 @@
             width: 100%;
             text-align: center;
             text-shadow: 0 0 5px var(--glow);
+        }
+
+        /* Footer links styling */
+        .copyright a {
+            cursor: pointer;
+            transition: color 0.3s ease, opacity 0.3s ease;
+            position: relative;
+        }
+
+        .copyright a:hover {
+            color: var(--accent) !important;
+            opacity: 1;
+        }
+
+        .copyright a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .copyright a:hover::after {
+            width: 100%;
         }
 
         /* Footer responsive */
@@ -11021,6 +11049,81 @@
         }
 
         /* ═══════════════════════════════════════════════════════
+           PAGE ENTRY HEADER — Visible immediately on navigation
+           Prevents "black hole" effect on Privacy/Connect pages
+           ═══════════════════════════════════════════════════════ */
+
+        .page-entry-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+            z-index: 10;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+            animation: pageHeaderFadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes pageHeaderFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-entry-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent);
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-entry-title {
+            font-size: clamp(1.25rem, 4vw, 1.75rem);
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .page-entry-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 1rem auto 0;
+            opacity: 0.6;
+        }
+
+        /* Adjust content for pages with entry header */
+        .privacy-page-new .content,
+        .connect-page-new .content {
+            padding-top: 5rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-entry-header {
+                padding: 1.5rem 1rem 1rem;
+            }
+
+            .page-entry-title {
+                font-size: 1.1rem;
+            }
+
+            .privacy-page-new .content,
+            .connect-page-new .content {
+                padding-top: 4rem;
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════════
            PRIVACY PAGE — MASTERPIECE REDESIGN
            The Trust Architecture
            ═══════════════════════════════════════════════════════ */
@@ -14855,6 +14958,13 @@
         <!-- CONSCIOUSNESS RESEARCH PAGE -->
 
         <section class="page privacy-page-new" id="privacy" data-page="8">
+            <!-- Page Header - Visible immediately on entry -->
+            <div class="page-entry-header">
+                <span class="page-entry-badge">// LEGAL</span>
+                <h1 class="page-entry-title">Privacy Policy</h1>
+                <div class="page-entry-line"></div>
+            </div>
+
             <div class="content">
                 <div class="small-logo-container">
                     <div class="opus-mark-container" data-page="0" role="button" aria-label="Return to home" tabindex="0"><canvas class="opus-mark-canvas"></canvas></div>
@@ -15033,6 +15143,13 @@
 
         <!-- Connect Page -->
         <section class="page connect-page-new" id="connect" data-page="9">
+            <!-- Page Header - Visible immediately on entry -->
+            <div class="page-entry-header">
+                <span class="page-entry-badge">// GET STARTED</span>
+                <h1 class="page-entry-title">Connect</h1>
+                <div class="page-entry-line"></div>
+            </div>
+
             <!-- CONNECTION PULSE BACKGROUND -->
             <div class="connect-bg">
                 <div class="pulse-ring"></div>
