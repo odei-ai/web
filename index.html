@@ -51,7 +51,7 @@
             --accent: #FFFFFF;
             --border: rgba(255, 255, 255, 0.2);
             --glow: rgba(255, 255, 255, 0.3);
-            --max-width: 48rem;
+            --max-width: clamp(48rem, 85vw, 80rem);
             --font-mono: 'IBM Plex Mono', monospace;
             --font-size-base: 1.25rem;
             --line-height: 1.8;
@@ -191,7 +191,7 @@
         }
 
         .content.wide {
-            max-width: 72rem;
+            max-width: clamp(72rem, 90vw, 100rem);
             margin: 0 auto;
         }
 
@@ -444,7 +444,7 @@
             justify-content: center;
             width: 100%;
             margin: 0;
-            max-width: 850px;
+            max-width: clamp(650px, 75vw, 1000px);
             padding: 0 1rem;
             text-align: center;
             opacity: 0;
@@ -1283,7 +1283,7 @@
             text-align: center;
             opacity: 0.8;
             line-height: 1.5;
-            max-width: 750px;
+            max-width: clamp(600px, 70vw, 900px);
         }
 
         /* Mechanism text - subtle, professional */
@@ -1377,7 +1377,7 @@
             display: grid;
             grid-template-areas: "content";
             width: 100%;
-            max-width: 900px;
+            max-width: clamp(700px, 80vw, 1100px);
             /* Fixed minimum height to maintain consistent terminal boundaries */
             min-height: 180px;
         }
@@ -1836,7 +1836,7 @@
         /* ═══════════════════════════════════════════════════════ */
 
         .intro-page .content {
-            max-width: 900px;
+            max-width: clamp(700px, 80vw, 1100px);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -1928,7 +1928,7 @@
             opacity: 0.7;
             margin: 0 0 1.5rem 0;
             font-weight: 300;
-            max-width: 700px;
+            max-width: clamp(550px, 65vw, 850px);
             margin-left: auto;
             margin-right: auto;
         }
@@ -2958,7 +2958,7 @@
             line-height: 1.6;
             opacity: 0.7;
             margin-bottom: 2rem;
-            max-width: 700px;
+            max-width: clamp(550px, 65vw, 850px);
         }
         
         .properties-tier {
@@ -3556,7 +3556,7 @@
         }
         
         .human-api-page .content.wide {
-            max-width: 900px;
+            max-width: clamp(700px, 80vw, 1100px);
         }
         
         /* Opening Statement */
@@ -3580,7 +3580,7 @@
             font-size: 0.95rem;
             line-height: 1.7;
             opacity: 0.8;
-            max-width: 700px;
+            max-width: clamp(550px, 65vw, 850px);
             margin: 0 auto;
         }
         
@@ -4207,7 +4207,7 @@
         .comparison-intro {
             opacity: 0.7;
             margin: 1.5rem 0;
-            max-width: 600px;
+            max-width: clamp(480px, 60vw, 750px);
         }
         
         .comparison-grid {
@@ -4295,7 +4295,7 @@
         .comparison-teaser p {
             opacity: 0.7;
             margin: 1rem 0 1.5rem;
-            max-width: 500px;
+            max-width: clamp(400px, 55vw, 650px);
             margin-left: auto;
             margin-right: auto;
         }
@@ -4417,14 +4417,14 @@
         .gate-principle {
             font-size: 0.95rem;
             opacity: 0.8;
-            max-width: 500px;
+            max-width: clamp(400px, 55vw, 650px);
             margin: 0 auto;
         }
         
         .gate-formula {
             padding: 1.5rem 2rem;
             margin: 1.5rem auto;
-            max-width: 500px;
+            max-width: clamp(400px, 55vw, 650px);
             border: 1px solid var(--border);
             background: rgba(255,255,255,0.02);
         }
@@ -4558,7 +4558,7 @@
             font-size: 1rem;
             line-height: 1.7;
             opacity: 0.7;
-            max-width: 600px;
+            max-width: clamp(480px, 60vw, 750px);
             margin: 0 auto;
         }
 
