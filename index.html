@@ -165,6 +165,7 @@
             visibility: hidden;
             transition: opacity 0.8s var(--ease-out-quint), transform 0.8s var(--ease-out-quint);
             transform: translateX(100%);
+            overflow-x: hidden; /* Prevent horizontal scroll */
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             content-visibility: auto; /* PERF: Skip rendering non-visible pages */
@@ -16396,6 +16397,13 @@
                     book.scrollTop = 0;
                 }
 
+                // Reset scroll on the new active page to ensure centered view
+                newActivePage.scrollLeft = 0;
+                newActivePage.scrollTop = 0;
+
+                // Reset window scroll for mobile browsers
+                window.scrollTo(0, 0);
+
                 const oldPage = currentPage;
                 currentPage = pageIndex;
 
@@ -16438,6 +16446,15 @@
                     book.scrollLeft = 0;
                     book.scrollTop = 0;
                 }
+
+                // Reset scroll on all pages to ensure centered view
+                pages.forEach(page => {
+                    page.scrollLeft = 0;
+                    page.scrollTop = 0;
+                });
+
+                // Reset window scroll for mobile browsers
+                window.scrollTo(0, 0);
 
                 updateButtons();
                 updateUI(startPage);
