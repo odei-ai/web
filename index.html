@@ -1017,8 +1017,8 @@
         /* ══════ RESPONSIVE — LANDSCAPE (Generic Mobile) ══════ */
         @media (max-height: 500px) and (orientation: landscape) {
             .home-container {
-                padding-top: calc(env(safe-area-inset-top, 0px) + 0.5rem);
-                padding-bottom: 2rem;
+                padding-top: calc(env(safe-area-inset-top, 0px) + 0.25rem);
+                padding-bottom: 0.5rem;
                 justify-content: center;
                 gap: 1rem;
                 min-height: 100vh;
@@ -1047,8 +1047,8 @@
 
             /* Buttons tight */
             .interaction-buttons {
-                margin-top: 0.5rem;
-                gap: 2rem;
+                margin-top: 0;
+                gap: 1rem;
             }
 
             .terminal-btn {
@@ -3202,6 +3202,19 @@
             min-width: 1200px;
             border-collapse: collapse;
             font-size: 0.8rem;
+        }
+
+        @media (max-width: 900px) {
+            .agency-table-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin: 0 -1rem;
+                padding: 0 1rem;
+            }
+
+            .agency-table {
+                /* Keep min-width to force scroll */
+            }
         }
 
         .agency-table th {
@@ -16500,7 +16513,7 @@
                 // TEXT CONTENT — THE MASTERPIECE
                 // ═══════════════════════════════════════════════════════════════
                 const manifesto1 = "> AI generates text. You do all the work.";
-                const manifesto2 = "> Prompt. Copy. Paste. Verify. Repeat.";
+                const manifesto2 = "> Prompt, copy, paste, verify — forever.";
                 const statement = "Your AI must work continuously, governed by your rules, not prompts";
                 const brand = "Stop prompt-chasing. Own the control layer.";
                 const value = "ODEI turns AI into a system that works with you — on your terms.";
