@@ -286,6 +286,13 @@
             animation-duration: 90s;
         }
 
+        @media (max-width: 600px) {
+            .home-orb {
+                max-width: 80vw;
+                max-height: 80vw;
+            }
+        }
+
         @keyframes orbFloat {
 
             0%,
@@ -640,7 +647,7 @@
             .home-container {
                 gap: 2rem;
                 padding: 1.5rem 1.5rem;
-                padding-bottom: 130px;
+                padding-bottom: 170px;
                 justify-content: flex-start;
                 /* Universal formula: safe-area + max(5rem, 8vh) for all small phones */
                 padding-top: calc(env(safe-area-inset-top, 0px) + max(5rem, 8svh));
@@ -685,7 +692,7 @@
                 align-items: center;
                 gap: 0.6rem 0.9rem;
                 margin-top: 1.25rem;
-                margin-bottom: calc(env(safe-area-inset-bottom, 0px) + 105px);
+                margin-bottom: calc(env(safe-area-inset-bottom, 0px) + 160px);
                 /* Clearance above fixed footer + safe area */
                 width: 100%;
                 max-width: 380px;
@@ -857,7 +864,7 @@
         }
 
         /* ══════ RESPONSIVE — LANDSCAPE (Generic Mobile) ══════ */
-        @media (max-height: 500px) and (orientation: landscape) {
+        @media (max-height: 1px) and (orientation: landscape) {
             .home-container {
                 padding-top: calc(env(safe-area-inset-top, 0px) + 1rem);
                 padding-bottom: 3rem;
@@ -1025,7 +1032,7 @@
 
             /* Minimalist Mode: Hide Subheadline, Keep Tagline */
             .home-subheadline {
-                display: none;
+                display: none !important;
             }
 
             .tagline-text {
@@ -1051,16 +1058,17 @@
 
             /* Compact Side Nav */
             .home-nav {
-                position: fixed;
-                right: 1.5rem;
-                top: 50%;
-                transform: translateY(-50%);
-                flex-direction: column;
-                width: auto;
-                margin: 0;
-                gap: 0.5rem;
-                padding: 0;
-                z-index: 10002;
+                position: fixed !important;
+                right: 1.5rem !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                flex-direction: column !important;
+                width: auto !important;
+                margin: 0 !important;
+                gap: 0.5rem !important;
+                padding: 0 !important;
+                z-index: 10005 !important;
+                left: auto !important;
             }
 
             .nav-item {
@@ -1076,11 +1084,11 @@
             }
 
             .nav-name {
-                display: none;
+                display: none !important;
             }
 
             .nav-num {
-                display: block;
+                display: block !important;
                 font-size: 0.7rem;
                 margin: 0;
                 color: var(--accent);
@@ -1088,13 +1096,7 @@
 
             /* Footer: Move to corners or hide? */
             .site-footer {
-                position: fixed;
-                bottom: 0.5rem;
-                width: 100%;
-                padding: 0 2rem;
-                display: flex;
-                justify-content: space-between;
-                pointer-events: none;
+                display: none !important;
             }
 
             .site-footer>* {
@@ -1145,7 +1147,7 @@
         @media (max-height: 600px) and (orientation: portrait) and (max-width: 600px) {
             .home-container {
                 padding-top: calc(env(safe-area-inset-top, 0px) + 3svh);
-                padding-bottom: 0.4rem;
+                padding-bottom: 160px;
                 gap: 0.75rem;
             }
 
