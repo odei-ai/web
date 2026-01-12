@@ -19,7 +19,7 @@
     <meta property="og:title" content="Your Personal AI Operating System">
     <meta property="og:description"
         content="ODEI is building the governance infrastructure for personal AI. Not another agent — the control layer that governs AI actions across your tools.">
-    <meta property="og:image" content="https://odei.ai/og-image.png">
+    <meta property="og:image" content="https://odei.ai/og-image-v2.png">
     <meta property="og:url" content="https://odei.ai">
     <meta property="og:site_name" content="ODEI">
 
@@ -28,7 +28,7 @@
     <meta name="twitter:title" content="Your Personal AI Operating System">
     <meta name="twitter:description"
         content="ODEI is building the governance infrastructure for personal AI. Not another agent — the control layer that governs AI actions across your tools.">
-    <meta name="twitter:image" content="https://odei.ai/og-image.png">
+    <meta name="twitter:image" content="https://odei.ai/og-image-v2.png">
 
     <!-- Favicon — ODEI Star (transparent background) -->
     <link rel="icon" type="image/svg+xml"
@@ -798,8 +798,21 @@
                 gap: 1rem;
                 padding: 0.5rem 0.5rem;
                 padding-bottom: 130px;
+                /* Universal formula for small phones */
                 justify-content: flex-start;
-                padding-top: calc(env(safe-area-inset-top, 0px) + max(3rem, 4svh));
+                padding-top: calc(env(safe-area-inset-top, 0px) + max(2rem, 4svh));
+            }
+
+            .hero-video {
+                width: 180%;
+                height: 180%;
+            }
+
+            .home-nav {
+                max-width: 300px;
+                gap: 0.3rem 0.5rem;
+                margin-top: 0.5rem;
+                margin-bottom: 0px;
             }
 
             .home-logo-svg {
@@ -807,16 +820,19 @@
                 height: 44px;
             }
 
+            .tagline-text {
+                font-size: 1.1rem;
+                letter-spacing: 0.02em;
+            }
+
+            .subheadline-text {
+                font-size: 0.85rem;
+                line-height: 1.4;
+            }
+
             .manifesto-lines {
                 font-size: 0.95rem;
                 line-height: 1.55;
-            }
-
-            .home-nav {
-                gap: 0.3rem 0.5rem;
-                margin-top: 0.5rem;
-                margin-bottom: 0px;
-                /* Clearance handled by container padding */
             }
 
             .nav-item {
@@ -838,16 +854,101 @@
             .interaction-buttons {
                 gap: 0.75rem;
             }
+        }
+
+        /* ══════ RESPONSIVE — LANDSCAPE (Generic Mobile) ══════ */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .home-container {
+                padding-top: calc(env(safe-area-inset-top, 0px) + 1rem);
+                padding-bottom: 3rem;
+                /* Reduce bottom space */
+                justify-content: center;
+                /* Center vertically if possible */
+                gap: 1rem;
+                min-height: 100vh;
+            }
+
+            .home-logo-svg {
+                width: 40px;
+                height: 40px;
+                margin-top: 0.5rem;
+            }
+
+            /* Hide the main Tagline to save space, keep the detailed subheadline or vice versa */
+            /* Decision: Keep Tagline (Brand), Hide Subheadline (Fluff), Keep Buttons */
+            .home-tagline {
+                min-height: auto;
+                margin-top: 0.5rem;
+            }
 
             .tagline-text {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
 
-            .subheadline-text {
-                font-size: 0.85rem;
+            .home-subheadline {
+                display: none;
+                /* Hide subheadline to save vertical space */
+            }
+
+            .manifesto-lines {
+                font-size: 0.9rem;
                 line-height: 1.4;
             }
+
+            /* Re-layout Interaction Buttons */
+            .interaction-buttons {
+                margin-top: 0.5rem;
+                gap: 2rem;
+            }
+
+            /* Compact Navigation logic */
+            .home-nav {
+                position: fixed;
+                right: 2rem;
+                top: 50%;
+                transform: translateY(-50%);
+                flex-direction: column;
+                width: auto;
+                margin: 0;
+                gap: 0.5rem;
+                padding: 0;
+            }
+
+            .nav-item {
+                padding: 0.5rem;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                background: rgba(0, 0, 0, 0.8);
+            }
+
+            .nav-name {
+                display: none;
+                /* Hide text, just keep dots */
+            }
+
+            .nav-num {
+                display: block;
+                /* Show numbers */
+                font-size: 0.8rem;
+                min-width: unset;
+                opacity: 0.8;
+                color: var(--accent);
+            }
+
+            /* Footer collision fix */
+            .footer {
+                position: static !important;
+                /* Unstick footer */
+                margin-top: 1rem;
+                padding: 0.5rem;
+                flex-direction: row;
+                gap: 1rem;
+                background: transparent;
+                backdrop-filter: none;
+                border: none;
+            }
         }
+
+
 
         /* ══════ RESPONSIVE — VERY TINY (320px - iPhone SE) ══════ */
         @media (max-width: 320px) {
@@ -906,75 +1007,100 @@
         }
 
         /* ══════ RESPONSIVE — LANDSCAPE MOBILE ══════ */
+        /* ══════ RESPONSIVE — LANDSCAPE (Generic Mobile) ══════ */
         @media (max-height: 500px) and (orientation: landscape) {
             .home-container {
-                padding: 0.4rem 2rem;
-                gap: 0.4rem;
-                justify-content: flex-start;
-                padding-top: 1rem;
-                padding-bottom: 150px !important;
+                padding-top: calc(env(safe-area-inset-top, 0px) + 0.5rem);
+                padding-bottom: 2rem;
+                justify-content: center;
+                gap: 1rem;
+                min-height: 100vh;
             }
 
             .home-logo-svg {
                 width: 40px;
                 height: 40px;
+                margin-top: 0;
+            }
+
+            /* Minimalist Mode: Hide Subheadline, Keep Tagline */
+            .home-subheadline {
+                display: none;
+            }
+
+            .tagline-text {
+                font-size: 1.2rem;
+                margin-bottom: 0;
             }
 
             .manifesto-lines {
                 font-size: 0.9rem;
-                line-height: 1.35;
+                line-height: 1.4;
             }
 
-            .home-nav {
-                flex-direction: row;
-                gap: 1.5rem;
-                margin-top: 0.2rem;
-                margin-bottom: 0px;
-                /* Clearance handled by container padding */
-            }
-
-            .nav-column {
-                flex-direction: row;
-                gap: 0.5rem;
-            }
-
-            .nav-item {
-                padding: 0.4rem 0.6rem;
-                min-height: 36px;
-            }
-
-            .nav-name {
-                font-size: 0.8rem;
+            /* Buttons tight */
+            .interaction-buttons {
+                margin-top: 0.5rem;
+                gap: 2rem;
             }
 
             .terminal-btn {
-                padding: 0.45rem 1rem;
-                font-size: 0.85rem;
-                min-height: 38px;
+                min-height: 40px;
+                padding: 0.5rem 1.5rem;
             }
 
-            .interaction-buttons {
-                gap: 0.75rem;
+            /* Compact Side Nav */
+            .home-nav {
+                position: fixed;
+                right: 1.5rem;
+                top: 50%;
+                transform: translateY(-50%);
+                flex-direction: column;
+                width: auto;
+                margin: 0;
+                gap: 0.5rem;
+                padding: 0;
+                z-index: 10002;
             }
 
+            .nav-item {
+                padding: 0.5rem;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                background: rgba(0, 0, 0, 0.85);
+                border-radius: 50%;
+                width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav-name {
+                display: none;
+            }
+
+            .nav-num {
+                display: block;
+                font-size: 0.7rem;
+                margin: 0;
+                color: var(--accent);
+            }
+
+            /* Footer: Move to corners or hide? */
             .site-footer {
-                padding: 0.4rem 1rem;
-                gap: 0.35rem;
+                position: fixed;
+                bottom: 0.5rem;
+                width: 100%;
+                padding: 0 2rem;
+                display: flex;
+                justify-content: space-between;
+                pointer-events: none;
             }
 
-            .tagline-text {
-                font-size: 1rem;
+            .site-footer>* {
+                pointer-events: auto;
             }
 
-            .subheadline-text {
-                font-size: 0.85rem;
-            }
-
-            .page {
-                padding-bottom: 150px !important;
-            }
-
-            /* Optimize footer space in landscape */
             #global-fixed-footer .social-links {
                 display: none !important;
             }
