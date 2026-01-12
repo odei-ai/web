@@ -621,7 +621,7 @@
                 align-items: center;
                 gap: 0.6rem 0.9rem;
                 margin-top: 1.25rem;
-                margin-bottom: calc(110px + env(safe-area-inset-bottom, 0px)); /* Clearance above fixed footer with safe-area */
+                margin-bottom: calc(env(safe-area-inset-bottom, 0px) + 105px); /* Clearance above fixed footer + safe area */
                 width: 100%;
                 max-width: 380px;
                 padding: 0 0.75rem;
@@ -702,7 +702,7 @@
             .home-nav {
                 gap: 0.4rem 0.6rem;
                 margin-top: 1rem;
-                margin-bottom: calc(105px + env(safe-area-inset-bottom, 0px)); /* Clearance above fixed footer with safe-area */
+                margin-bottom: calc(env(safe-area-inset-bottom, 0px) + 100px); /* Clearance above fixed footer + safe area */
             }
 
             .nav-name {
@@ -749,7 +749,7 @@
             .home-nav {
                 gap: 0.3rem 0.5rem;
                 margin-top: 0.5rem;
-                margin-bottom: calc(100px + env(safe-area-inset-bottom, 0px)); /* Clearance above fixed footer with safe-area */
+                margin-bottom: calc(env(safe-area-inset-bottom, 0px) + 90px); /* Clearance above fixed footer + safe area */
             }
 
             .nav-item {
@@ -804,7 +804,7 @@
 
             .home-nav {
                 gap: 0.25rem 0.4rem;
-                margin-bottom: calc(95px + env(safe-area-inset-bottom, 0px)); /* Clearance above fixed footer with safe-area */
+                margin-bottom: 80px; /* Clearance above fixed footer */
             }
 
             .nav-item {
@@ -861,7 +861,7 @@
                 flex-direction: row;
                 gap: 1.5rem;
                 margin-top: 0.2rem;
-                margin-bottom: calc(70px + env(safe-area-inset-bottom, 0px)); /* Clearance above fixed footer in landscape */
+                margin-bottom: 60px; /* Clearance above fixed footer in landscape */
             }
 
             .nav-column {
@@ -923,7 +923,7 @@
 
             .home-nav {
                 margin-top: 0.5rem;
-                margin-bottom: calc(105px + env(safe-area-inset-bottom, 0px)); /* Clearance above fixed footer with safe-area */
+                margin-bottom: 90px; /* Clearance above fixed footer */
             }
 
             .nav-item {
@@ -967,7 +967,7 @@
             .home-nav {
                 margin-top: 0.4rem;
                 gap: 0.25rem 0.4rem;
-                margin-bottom: calc(95px + env(safe-area-inset-bottom, 0px)); /* Clearance above fixed footer with safe-area */
+                margin-bottom: 80px; /* Clearance above fixed footer */
             }
 
             .nav-item {
@@ -1027,7 +1027,7 @@
             }
 
             .home-nav {
-                margin-bottom: calc(95px + env(safe-area-inset-bottom, 0px)); /* Clearance above fixed footer with safe-area */
+                margin-bottom: 80px; /* Clearance above fixed footer */
             }
         }
 
@@ -1051,7 +1051,7 @@
 
             .home-nav {
                 gap: 0.2rem 0.3rem;
-                margin-bottom: calc(90px + env(safe-area-inset-bottom, 0px)); /* Clearance above fixed footer with safe-area */
+                margin-bottom: 75px; /* Clearance above fixed footer */
             }
 
             .nav-item {
@@ -12687,7 +12687,7 @@
                     <div class="home-manifesto">
                         <div class="manifesto-lines" id="manifesto-lines">
                             <span class="manifesto-line dim">> AI generates text. You do all the work.</span>
-                            <span class="manifesto-line bright">> Prompt. Copy. Paste. Verify. Repeat.</span>
+                            <span class="manifesto-line bright">> Prompt, copy, paste, verify — forever.</span>
                         </div>
                     </div>
 
@@ -15548,7 +15548,7 @@
                     // Show final state immediately
                     manifestoContainer.innerHTML = `
                         <span class="manifesto-line dim line-complete">> AI generates text. You do all the work.</span>
-                        <span class="manifesto-line bright line-complete">> Prompt. Copy. Paste. Verify. Repeat.</span>
+                        <span class="manifesto-line bright line-complete">> Prompt, copy, paste, verify — forever.</span>
                     `;
                     if (statementContainer) {
                         statementContainer.querySelector('.statement-text').textContent =
@@ -15644,7 +15644,7 @@
                 // TEXT CONTENT — THE MASTERPIECE
                 // ═══════════════════════════════════════════════════════════════
                 const manifesto1 = "> AI generates text. You do all the work.";
-                const manifesto2 = "> Prompt. Copy. Paste. Verify. Repeat.";
+                const manifesto2 = "> Prompt, copy, paste, verify — forever.";
                 const statement = "Your AI must work continuously, governed by your rules, not prompts";
                 const brand = "Stop prompt-chasing. Own the control layer.";
                 const value = "ODEI turns AI into a system that works with you — on your terms.";
@@ -16633,7 +16633,7 @@
                 if (mContainer) {
                     mContainer.innerHTML = `
                         <span class="manifesto-line dim line-complete">> AI generates text. You do all the work.</span>
-                        <span class="manifesto-line bright line-complete">> Prompt. Copy. Paste. Verify. Repeat.</span>
+                        <span class="manifesto-line bright line-complete">> Prompt, copy, paste, verify — forever.</span>
                     `;
                 }
 
