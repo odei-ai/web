@@ -7,8 +7,6 @@
   **The Human Kernel. A local-first Operating System for AI Symbiosis.**
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-  [![Status: Patient Zero](https://img.shields.io/badge/Status-Patient%20Zero-red)](https://odei.ai)
-  [![Platform: macOS](https://img.shields.io/badge/Platform-macOS-lightgrey)](https://odei.ai)
 </div>
 
 ---
