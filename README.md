@@ -87,6 +87,5 @@ We want you to *have* your data.
 
 ## 🔗 Connect
 *   **Website:** [odei.ai](https://odei.ai)
-*   **Founder:** [Anton Illarionov](https://twitter.com/anton_odei)
 
 > "The gap isn't in what AI can do. It's in what AI is allowed to do."
