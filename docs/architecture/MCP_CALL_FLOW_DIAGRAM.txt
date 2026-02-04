@@ -1,0 +1,363 @@
+================================================================================
+                    ODEI MCP CALL FLOW - COMPLETE DIAGRAM
+================================================================================
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          RENDERER PROCESS (Browser)                         │
+│                                                                             │
+│  src/renderer.js  src/conversation-manager.js  src/index.html              │
+│  ┌──────────────────────────────────────────────────────────────────────┐  │
+│  │ Call #1: Load Recent Conversations                                   │  │
+│  │ ─────────────────────────────────────────────────────────────────   │  │
+│  │                                                                      │  │
+│  │  await window.odei.data.get(                                        │  │
+│  │    'odei-history',                                                  │  │
+│  │    'odei.history.threads.list.v1',                                  │  │
+│  │    { limit: 100 }                                                   │  │
+│  │  );                                                                 │  │
+│  │                                                                      │  │
+│  │  [src/conversation-manager.js:36, 201]                             │  │
+│  └──────────────────────────────────────────────────────────────────┘  │
+│                                │                                         │
+│                                │ ipcRenderer.invoke()                    │
+│                                ▼                                         │
+│  ┌──────────────────────────────────────────────────────────────────┐  │
+│  │ window.odei.companion API (for Companion Terminal)               │  │
+│  │ ─────────────────────────────────────────────────────────────   │  │
+│  │                                                                  │  │
+│  │  window.odei.companion.start(agent, provider)                   │  │
+│  │  window.odei.companion.write(agent, data)                       │  │
+│  │  window.odei.companion.resize(agent, cols, rows)                │  │
+│  │  window.odei.companion.kill(agent)                              │  │
+│  │                                                                  │  │
+│  │  window.odei.companion.onOutput(callback) ← event listener      │  │
+│  │  window.odei.companion.onExit(callback)   ← event listener      │  │
+│  │                                                                  │  │
+│  │  [electron/preload.js:92-108]                                   │  │
+│  └──────────────────────────────────────────────────────────────┘  │
+│                                │                                         │
+│                                │ ipcRenderer.invoke()                    │
+│                                │ ipcRenderer.on()                        │
+└────────────────────────────────┼─────────────────────────────────────────┘
+                                 │
+                    ┌────────────┴────────────┐
+                    │                         │
+                    ▼                         ▼
+      ┌──────────────────────┐    ┌──────────────────────┐
+      │ 'mcp:call-tool'      │    │ 'companion:*'        │
+      │ (IPC Channel)        │    │ (IPC Channels)       │
+      │                      │    │                      │
+      │ ├─ serverName        │    │ ├─ start             │
+      │ ├─ toolName          │    │ ├─ write             │
+      │ └─ params            │    │ ├─ resize            │
+      │                      │    │ └─ kill              │
+      │ [main.js:724]        │    │ [main.js:479-538]    │
+      └────────┬─────────────┘    └────────┬─────────────┘
+               │                           │
+               └────────────────┬──────────┘
+                                │
+┌────────────────────────────────▼──────────────────────────────────────────┐
+│                      ELECTRON MAIN PROCESS (Node.js)                      │
+│                                                                           │
+│  electron/main.js  electron/ipc-handlers.js  electron/health-probes.js   │
+│  ┌─────────────────────────────────────────────────────────────────┐   │
+│  │                                                                 │   │
+│  │  ipcMain.handle('mcp:call-tool', async (event, payload) => {  │   │
+│  │    validateIPC('mcp:call-tool', payload);      ← Zod schema   │   │
+│  │                                                                 │   │
+│  │    const result = await healthProbes.callTool(               │   │
+│  │      payload.serverName,                                     │   │
+│  │      payload.toolName,                                       │   │
+│  │      payload.params                                          │   │
+│  │    );                                                         │   │
+│  │    return result;                                             │   │
+│  │  });                                                          │   │
+│  │                                                                 │   │
+│  │  [main.js:724-728]                                            │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                │                                       │
+│                                ▼                                       │
+│  ┌─────────────────────────────────────────────────────────────┐     │
+│  │ HEALTH PROBES: callTool(serverName, toolName, params)      │     │
+│  │ ─────────────────────────────────────────────────────────── │     │
+│  │                                                             │     │
+│  │  1. Get or spawn MCP server process                        │     │
+│  │     ├─ Check if process running in persistentProcs        │     │
+│  │     └─ If not, spawn: node dist/index.js                 │     │
+│  │        with environment from serverConfig.env             │     │
+│  │                                                             │     │
+│  │  2. Build JSON-RPC request                                │     │
+│  │     {                                                       │     │
+│  │       "jsonrpc": "2.0",                                    │     │
+│  │       "id": <random>,                                      │     │
+│  │       "method": "tools/call",                             │     │
+│  │       "params": {                                          │     │
+│  │         "name": toolName,                                 │     │
+│  │         "arguments": params                               │     │
+│  │       }                                                     │     │
+│  │     }                                                       │     │
+│  │                                                             │     │
+│  │  3. Send to MCP server stdin                              │     │
+│  │     proc.stdin.write(JSON.stringify(request) + '\n')      │     │
+│  │                                                             │     │
+│  │  4. Listen for response on stdout (JSON-RPC)              │     │
+│  │     ├─ Parse newline-delimited JSON                       │     │
+│  │     ├─ Match by ID                                         │     │
+│  │     └─ Resolve/reject promise                             │     │
+│  │                                                             │     │
+│  │  [health-probes.js:255-335]                               │     │
+│  └─────────────────────────────────────────────────────────┘     │
+│                                │                                       │
+│                                │ Returns Promise<result>              │
+└────────────────────────────────┼───────────────────────────────────────┘
+                                 │
+                  ┌──────────────┴──────────────┐
+                  │                             │
+                  ▼                             ▼
+      ┌─────────────────────────┐    ┌─────────────────────────┐
+      │ MCP Server Process      │    │ Companion Manager       │
+      │ (Subprocess)            │    │ (within Main Process)   │
+      │                         │    │                         │
+      │ ├─ odei-neo4j           │    │ ├─ spawn PTY            │
+      │ │  (Neo4j queries)      │    │ │  (for agent + AI)     │
+      │ │                       │    │ │                       │
+      │ ├─ odei-history         │    │ ├─ forward i/o          │
+      │ │  (conversation DB)    │    │ │  (send events)        │
+      │ │                       │    │ │                       │
+      │ └─ notion               │    │ └─ manage PTY lifecycle │
+      │    (Notion API)         │    │                         │
+      │                         │    │ [main.js:479-538]      │
+      │ [standalone Node.js     │    └─────────────────────────┘
+      │  processes]             │              │
+      └────────────┬────────────┘              │
+                   │                          │
+        ┌──────────▼──────────┐               │
+        │ JSON-RPC Response   │ Return event  │
+        │ on stdout           │ 'companion:*' │
+        │                     │               │
+        │ {                   │               │
+        │   "jsonrpc": "2.0",  │ 'companion:output'
+        │   "id": <same>,     │ 'companion:exit'
+        │   "result": {...}   │
+        │ }                   │
+        └──────────┬──────────┘               │
+                   │                          │
+                   │ Back to Main Process     │
+                   └──────────┬───────────────┘
+                              │
+┌─────────────────────────────▼──────────────────────────────────────┐
+│              ELECTRON MAIN → RENDERER (Response)                   │
+│                                                                   │
+│  ipcMain.handle() returns → ipcRenderer.invoke() resolves       │
+│  ipcMain.send() event    → ipcRenderer.on() listener fires      │
+│                                                                   │
+│  Response travels back to Promise<result> in renderer           │
+└─────────────────────────────┬──────────────────────────────────────┘
+                              │
+┌─────────────────────────────▼──────────────────────────────────────┐
+│                      RENDERER RECEIVES DATA                        │
+│                                                                   │
+│  const rawResult = await window.odei.data.get(...);             │
+│  // rawResult now contains MCP server response                  │
+│  // Typically: { content: [{type: "text", text: "..."}] }      │
+│                                                                   │
+│  // Parse MCP response wrapper                                  │
+│  const threadsResult = this._parseMCPResponse(rawResult);       │
+│  // Now: { items: [{id, module, title, ...}] }                 │
+│                                                                   │
+│  // Update UI                                                    │
+│  updateRecentConversationsUI();                                 │
+│  // Re-render DOM with conversation rows                        │
+│                                                                   │
+│  [src/conversation-manager.js:15-21]                            │
+│  [src/renderer.js:2784-3257]                                    │
+└─────────────────────────────────────────────────────────────────┘
+
+
+================================================================================
+                            DETAILED: RECENT CONVERSATIONS
+================================================================================
+
+REQUEST CHAIN:
+─────────────
+
+1. USER INTERACTION
+   ├─ App starts
+   └─ conversationManager.initialize() called
+      └─ window.odei.data.get('odei-history', 'odei.history.threads.list.v1', {limit:100})
+         ├─ Preload converts to IPC
+         └─ ipcRenderer.invoke('mcp:call-tool', {serverName, toolName, params})
+
+2. MAIN PROCESS HANDLER (main.js:724-728)
+   ├─ Validates with Zod schema
+   ├─ Calls healthProbes.callTool('odei-history', 'odei.history.threads.list.v1', {limit:100})
+   └─ Returns Promise<result>
+
+3. HEALTH PROBES (health-probes.js:255-335)
+   ├─ Get or spawn odei-history subprocess
+   │  ├─ Check persistentProcs.get('odei-history')
+   │  └─ If not running: spawn('node', ['servers/odei-history/dist/index.js'], {...})
+   │
+   ├─ Build JSON-RPC request
+   │  {
+   │    "jsonrpc": "2.0",
+   │    "id": 123456789,
+   │    "method": "tools/call",
+   │    "params": {
+   │      "name": "odei.history.threads.list.v1",
+   │      "arguments": { "limit": 100 }
+   │    }
+   │  }
+   │
+   ├─ Write to stdin
+   │  proc.stdin.write(JSON.stringify(request) + '\n')
+   │
+   └─ Listen on stdout for matching JSON-RPC response with same ID
+
+4. MCP SERVER (odei-history subprocess)
+   ├─ Receives JSON-RPC on stdin
+   ├─ Calls tool: odei_history_threads_list({limit: 100})
+   │  └─ Queries: SELECT * FROM threads WHERE ... LIMIT 100
+   │
+   └─ Sends JSON-RPC response on stdout
+      {
+        "jsonrpc": "2.0",
+        "id": 123456789,
+        "result": {
+          "content": [{
+            "type": "text",
+            "text": "{\"items\": [{\"id\": \"...\", \"module\": \"discuss\", ...}]}"
+          }]
+        }
+      }
+
+5. BACK TO HEALTH PROBES
+   ├─ Parses stdout line by line
+   ├─ Matches JSON by ID
+   └─ Resolves promise with result.result
+
+6. BACK TO MAIN PROCESS
+   ├─ Returns result to ipcMain.handle()
+   └─ Sends via IPC back to renderer
+
+7. BACK TO RENDERER
+   ├─ Promise resolves with: {content: [{type: "text", text: "..."}]}
+   ├─ ConversationManager._parseMCPResponse() extracts JSON
+   │  └─ Returns: {items: [{...thread objects...}]}
+   │
+   ├─ Filters/sorts conversations
+   └─ Updates DOM: document.getElementById('recent-conversations-list').innerHTML = ...
+
+
+================================================================================
+                       DETAILED: COMPANION TERMINAL
+================================================================================
+
+STARTUP SEQUENCE:
+─────────────────
+
+1. USER CLICKS "Start" Button
+   ├─ Get current agent: appState.activeModule
+   ├─ Get provider: document.getElementById('companion-provider').value
+   └─ Call: window.odei.companion.start(agent, provider)
+      └─ ipcRenderer.invoke('companion:start', agent, provider)
+
+2. MAIN PROCESS (main.js:479-530)
+   ├─ Handle 'companion:start' IPC
+   ├─ Call companionManager.spawn(agent, provider, {cols, rows})
+   │  └─ Spawns PTY with: node <companion-script>
+   │
+   ├─ Subscribe to companionManager events
+   │  ├─ companionManager.on('output', (agent, data) => {
+   │  │    mainWindow.webContents.send('companion:output', agent, data);
+   │  │  })
+   │  │
+   │  └─ companionManager.on('exit', (agent, {code, signal}) => {
+   │     mainWindow.webContents.send('companion:exit', agent, {code, signal});
+   │   })
+   │
+   └─ Return: {success: true}
+
+3. RENDERER RECEIVES RESPONSE
+   ├─ Promise resolves with {success: true}
+   ├─ Set companionState: {running: true, provider: '...'}
+   ├─ Update UI buttons: hide Start, show Kill
+   └─ Initialize terminal: initCompanionTerminal(agent)
+      ├─ Create xterm.js Terminal instance
+      ├─ Create div container
+      ├─ term.open(element)
+      ├─ Mount to DOM: #companion-terminal
+      └─ Setup input handler: term.onData((data) => {
+         window.odei.companion.write(agent, data);
+      })
+
+4. LISTEN FOR OUTPUT (renderer.js:9402-9410)
+   ├─ window.odei.companion.onOutput((agent, data) => {
+   │   if (appState.activeModule === agent) {
+   │     const formatter = companionFormatters.get(agent);
+   │     const formatted = formatter.format(data);  ← ANSI processing
+   │     companionTerminals.get(agent).term.write(formatted);
+   │   }
+   │ })
+   │
+   └─ Whenever Main sends 'companion:output' event, callback fires
+      └─ Writes formatted output to xterm.js terminal
+
+5. USER TYPES IN TERMINAL
+   ├─ xterm.js captures keypress: term.onData()
+   ├─ Sends to Main: window.odei.companion.write(agent, 'user input')
+   │  └─ ipcRenderer.invoke('companion:write', agent, data)
+   │
+   ├─ Main forwards to PTY stdin
+   │  └─ companionManager.write(agent, data)
+   │     └─ pty.write(data)
+   │
+   └─ Companion AI responds, outputs data
+      ├─ Main captures PTY output
+      ├─ Main sends event: mainWindow.webContents.send('companion:output', agent, data)
+      └─ Renderer displays in terminal [cycle back to step 4]
+
+6. USER CLICKS "Stop" / Process Exits
+   ├─ Click handler: window.odei.companion.kill(agent)
+   │  └─ ipcRenderer.invoke('companion:kill', agent)
+   │
+   ├─ Main kills PTY
+   │  └─ companionManager.kill(agent)
+   │
+   ├─ Companion exits
+   └─ Main sends event: mainWindow.webContents.send('companion:exit', agent, {code, signal})
+      └─ Renderer:
+         ├─ companionState.set(agent, {running: false})
+         ├─ Update UI: show Start, hide Kill
+         └─ Clear terminal: term.clear()
+
+
+================================================================================
+                        PROCESS LIFECYCLE SUMMARY
+================================================================================
+
+ELECTRON STARTUP:
+─────────────────
+1. Main process starts (main.js)
+2. HealthProbes instantiated with MCP config
+3. Main window created, preload injected
+4. Renderer process starts (renderer.js)
+5. ConversationManager initializes (loads existing threads)
+6. Health monitoring starts (periodic MCP pings)
+
+PER-MCP-CALL SEQUENCE:
+──────────────────────
+Renderer → Preload → IPC → Main → Validation → HealthProbes → 
+Spawn (if needed) → JSON-RPC → MCP Server → Database → 
+JSON-RPC Response → HealthProbes → Main → IPC → Preload → Renderer
+
+COMPANION LIFETIME:
+───────────────────
+1. Main process has CompanionManager ready
+2. User clicks Start
+3. CompanionManager spawns PTY + AI subprocess
+4. Main forwards I/O events to Renderer
+5. Renderer displays in xterm.js
+6. User provides input via terminal
+7. Loop until user clicks Stop or process exits
+
