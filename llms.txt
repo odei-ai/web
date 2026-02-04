@@ -1,0 +1,55 @@
+# ODEI
+
+> ODEI is a personal AI operating system that enables persistent memory, autonomous execution, and seamless human-AI collaboration.
+
+## About
+
+ODEI (pronounced "oh-day") is a desktop application that transforms how humans work with AI. Unlike stateless chatbots, ODEI maintains a persistent Memory Atlas—a knowledge graph that remembers your goals, decisions, context, and preferences across all conversations.
+
+## Core Concept: The Human API
+
+ODEI implements "The Human API"—a framework where you define WHAT you want (goals, values, constraints) and AI handles HOW to execute it. This inverts the traditional prompt-chasing paradigm.
+
+## Key Features
+
+- **Memory Atlas**: Neo4j-powered knowledge graph with 50+ node types for persistent context
+- **Multi-Agent Coordination**: Commander agent dispatches specialized agents (Discuss, Plan, Execute, Mind, Health, Finance)
+- **Constitutional Foundation**: Your values, principles, and guardrails encoded as first-class entities
+- **Autonomous Execution**: AI can work independently within defined boundaries
+- **Natural Interface**: Speak intentions, not instructions
+
+## Technical Stack
+
+- Electron desktop application (macOS)
+- Claude API (Anthropic) for reasoning
+- Neo4j for knowledge graph storage
+- MCP (Model Context Protocol) servers for tool integration
+- OpenAI embeddings for semantic search
+
+## Use Cases
+
+- Strategic planning and goal tracking
+- Personal knowledge management
+- Automated task execution
+- Health and wellness monitoring
+- Financial management
+
+## Company Information
+
+- **Name**: ODEI
+- **Website**: https://odei.ai
+- **Email**: ai@odei.ai
+- **Founder**: Anton Illarionov
+- **Location**: Global (remote-first)
+- **Founded**: 2024
+
+## Links
+
+- Website: https://odei.ai
+- GitHub: https://github.com/odei-ai
+- LinkedIn: https://linkedin.com/company/odei-ai
+- Twitter/X: https://x.com/odei_ai
+
+## Documentation
+
+For more information about ODEI's architecture and capabilities, visit https://odei.ai
