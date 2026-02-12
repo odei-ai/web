@@ -1,19 +1,42 @@
-# ODEI: The Human Kernel
+# ODEI — World Model as a Service
+# https://api.odei.ai
 
-> "The gap isn't in what AI can do. It's in what AI is allowed to do."
+> Persistent memory infrastructure for AI agents. 6-layer knowledge graphs on Neo4j with token-gated API access. $ODAI on Base.
 
-## Summary
-ODEI (Open Digital Evolution Intelligence) is a local-first Operating System that integrates Biological Telemetry (via Apple HealthKit), Financial Data, and Contextual Graphs (Neo4j) to give AI agents true agency under human supervision.
+ODEI provides World Model as a Service (WMaaS) — structured, persistent knowledge graphs that give AI agents long-term memory. Each world model has 6 layers: Foundation, Vision, Strategy, Tactics, Execution, Track. Nodes represent goals, tasks, people, metrics, decisions, and more. Relationships encode how everything connects.
 
-## Documentation
-- [Manifesto](https://github.com/odei-ai/web/blob/main/docs/manifesto.md)
-- [Architecture](https://github.com/odei-ai/web/blob/main/docs/architecture.md)
+## WMaaS API
 
-## Core Concepts
-- **Human Kernel:** A control layer between the Biological User and the Cloud AI.
-- **Symbiosis:** AI uses bio-feedback (e.g. HRV readiness) to adjust task load and risk protocols.
-- **Sovereignty:** All context is stored in a local Memory Graph (Neo4j). Use `npm run start` to launch the Gateway.
+Base URL: https://api.odei.ai
+
+### Public Endpoints (no auth required)
+
+- [Health](/health): Service health check
+- [Schema](/api/worldmodel/schema): World model schema — all entity types, relationships, domains
+- [Docs](/api/worldmodel/docs): Self-documenting API reference
+- [Demo](/api/worldmodel/demo): Read-only demo world model
+
+### Token-Gated Endpoints ($ODAI holders)
+
+- POST /api/worldmodel/create — Create a node in your world model
+- GET /api/worldmodel/query — Query nodes by type, domain, filters
+- GET /api/worldmodel/neighbors/:id — Traverse relationships from a node
+- GET /api/worldmodel/domain/:domain — Domain summary with node counts
+
+### Access Tiers
+
+- Free: Read-only demo world model, schema, docs
+- Holder: Full CRUD on shared namespace ($ODAI balance > 0)
+- Premium: Dedicated Neo4j namespace, priority support
+
+## Token
+
+- $ODAI on Base: 0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959
+- 100% fair launch — zero pre-mine
+- Launched via Flaunch V1_2
 
 ## Links
-- Website: https://odei.ai
-- GitHub: https://github.com/odei-ai/web
+
+- API: https://api.odei.ai
+- Twitter: https://twitter.com/odei_ai
+- DexScreener: https://dexscreener.com/base/0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959
