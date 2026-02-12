@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://odei.ai/sitemap.xml
+Sitemap: https://api.odei.ai/sitemap.xml
+
+# AI crawlers welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
