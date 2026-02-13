@@ -17,6 +17,9 @@
   <meta name="twitter:description" content="Persistent memory for AI agents. 6-layer knowledge graphs. $ODAI on Base. Built by ODEI Symbiosis.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F30D;</text></svg>">
   <meta property="og:image" content="https://api.odei.ai/OdeiCard.jpeg">
+  <meta property="og:image:width" content="1424">
+  <meta property="og:image:height" content="752">
+  <meta property="og:image:type" content="image/jpeg">
   <meta name="twitter:image" content="https://api.odei.ai/OdeiCard.jpeg">
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Documentation">
   <script type="application/ld+json">
@@ -906,13 +909,22 @@
   function revealVisible() {
     let delay = 0;
     const viewH = window.innerHeight;
-    document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
-      if (el.getBoundingClientRect().top < viewH - 20) {
-        el.style.transitionDelay = delay * 0.1 + 's';
+    const hidden = document.querySelectorAll('.fade-in:not(.visible)');
+    // Use generous threshold: reveal when element top is within 120% of viewport
+    // This handles bottom-of-page elements that can't scroll high enough
+    const threshold = viewH * 1.2;
+    hidden.forEach(el => {
+      if (el.getBoundingClientRect().top < threshold) {
+        el.style.transitionDelay = delay * 0.08 + 's';
         el.classList.add('visible');
         delay++;
       }
     });
+    // If no more hidden elements, remove listeners
+    if (!document.querySelector('.fade-in:not(.visible)')) {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    }
   }
   function onScroll() {
     cancelAnimationFrame(scrollRaf);
@@ -923,6 +935,13 @@
   // Reveal on scroll
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
+  // Failsafe: reveal everything after 4 seconds (e.g. if scroll never fires)
+  setTimeout(function() {
+    document.querySelectorAll('.fade-in:not(.visible)').forEach(function(el, i) {
+      el.style.transitionDelay = i * 0.06 + 's';
+      el.classList.add('visible');
+    });
+  }, 4000);
 
   // ETHDenver countdown
   function updateCountdown() {
