@@ -16,8 +16,8 @@
   <meta name="twitter:title" content="ODEI — World Model as a Service">
   <meta name="twitter:description" content="Persistent memory for AI agents. 6-layer knowledge graphs. $ODAI on Base. Built by ODEI Symbiosis.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F30D;</text></svg>">
-  <meta property="og:image" content="https://api.odei.ai/og-image-v2.png">
-  <meta name="twitter:image" content="https://api.odei.ai/og-image-v2.png">
+  <meta property="og:image" content="https://api.odei.ai/OdeiCard.jpeg">
+  <meta name="twitter:image" content="https://api.odei.ai/OdeiCard.jpeg">
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Documentation">
   <script type="application/ld+json">
   {
@@ -901,24 +901,24 @@
     });
   });
 
-  // Scroll fade-in with staggered reveal
-  const fadeEls = document.querySelectorAll('.fade-in');
-  if ('IntersectionObserver' in window) {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          // Stagger siblings slightly for cascade effect
-          const delay = i * 80;
-          setTimeout(() => entry.target.classList.add('visible'), delay);
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
-    fadeEls.forEach(el => obs.observe(el));
-  } else {
-    // Fallback: show everything immediately
-    fadeEls.forEach(el => el.classList.add('visible'));
+  // Scroll fade-in — bulletproof scroll listener approach
+  let revealQueue = 0;
+  function revealOnScroll() {
+    const viewH = window.innerHeight;
+    document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
+      const top = el.getBoundingClientRect().top;
+      if (top < viewH - 40) {
+        setTimeout(() => el.classList.add('visible'), revealQueue * 100);
+        revealQueue++;
+      }
+    });
+    // Reset queue for next scroll batch
+    setTimeout(() => { revealQueue = 0; }, 600);
   }
+  // Reveal above-fold immediately
+  revealOnScroll();
+  // Reveal on scroll (passive for performance)
+  window.addEventListener('scroll', revealOnScroll, { passive: true });
 
   // ETHDenver countdown
   function updateCountdown() {
