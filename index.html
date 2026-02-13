@@ -386,7 +386,8 @@
       height: 100%;
       border-radius: 3px;
       background: linear-gradient(90deg, var(--accent), var(--gold));
-      transition: width 1s ease-out;
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     /* ── Footer ── */
@@ -470,6 +471,13 @@
 
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
 
+    /* ── Focus styles ── */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
     /* ── API link pill ── */
     .api-pill {
       display: inline-flex;
@@ -533,7 +541,7 @@
       <div class="status-label">ETHDenver</div>
     </div>
     <div class="status-item">
-      <div class="status-value">255+</div>
+      <div class="status-value" data-countup="255">0</div>
       <div class="status-label">Holders</div>
     </div>
     <div class="status-item">
@@ -838,32 +846,32 @@
       <div class="metric-row">
         <span class="metric-label">WMaaS API with persistence</span>
         <span class="metric-target">Live</span>
-        <div class="metric-bar-wrap"><div class="metric-bar" style="width: 100%"></div></div>
+        <div class="metric-bar-wrap"><div class="metric-bar" data-width="100"></div></div>
       </div>
       <div class="metric-row">
         <span class="metric-label">Public demo page</span>
         <span class="metric-target">QR-ready</span>
-        <div class="metric-bar-wrap"><div class="metric-bar" style="width: 40%"></div></div>
+        <div class="metric-bar-wrap"><div class="metric-bar" data-width="40"></div></div>
       </div>
       <div class="metric-row">
         <span class="metric-label">$ODAI holders</span>
         <span class="metric-target">500</span>
-        <div class="metric-bar-wrap"><div class="metric-bar" style="width: 51%"></div></div>
+        <div class="metric-bar-wrap"><div class="metric-bar" data-width="51"></div></div>
       </div>
       <div class="metric-row">
         <span class="metric-label">Twitter followers @odei_ai</span>
         <span class="metric-target">200</span>
-        <div class="metric-bar-wrap"><div class="metric-bar" style="width: 43%"></div></div>
+        <div class="metric-bar-wrap"><div class="metric-bar" data-width="43"></div></div>
       </div>
       <div class="metric-row">
         <span class="metric-label">External agent connected</span>
         <span class="metric-target">1+</span>
-        <div class="metric-bar-wrap"><div class="metric-bar" style="width: 0%"></div></div>
+        <div class="metric-bar-wrap"><div class="metric-bar" data-width="0"></div></div>
       </div>
       <div class="metric-row">
         <span class="metric-label">Sustained MCap</span>
         <span class="metric-target">$100K+</span>
-        <div class="metric-bar-wrap"><div class="metric-bar" style="width: 65%"></div></div>
+        <div class="metric-bar-wrap"><div class="metric-bar" data-width="65"></div></div>
       </div>
     </div>
   </div>
@@ -926,6 +934,49 @@
       el.classList.add('visible');
     });
   }, 3000);
+
+  // Animate metric bars when metrics section becomes visible
+  var barsAnimated = false;
+  var barTimer = setInterval(function() {
+    if (barsAnimated) { clearInterval(barTimer); return; }
+    var metricsSection = document.querySelectorAll('.metric-bar')[0];
+    if (!metricsSection) return;
+    var parent = metricsSection.closest('.fade-in');
+    if (parent && parent.classList.contains('visible')) {
+      barsAnimated = true;
+      clearInterval(barTimer);
+      document.querySelectorAll('.metric-bar[data-width]').forEach(function(bar, i) {
+        setTimeout(function() {
+          bar.style.width = bar.getAttribute('data-width') + '%';
+        }, i * 120);
+      });
+    }
+  }, 200);
+
+  // Count-up animation for status numbers
+  var countAnimated = false;
+  var countTimer = setInterval(function() {
+    if (countAnimated) { clearInterval(countTimer); return; }
+    var statusBar = document.querySelector('.status-bar');
+    if (statusBar && statusBar.classList.contains('visible')) {
+      countAnimated = true;
+      clearInterval(countTimer);
+      document.querySelectorAll('[data-countup]').forEach(function(el) {
+        var target = parseInt(el.getAttribute('data-countup'));
+        var suffix = '+';
+        var duration = 1200;
+        var start = performance.now();
+        function tick(now) {
+          var elapsed = now - start;
+          var progress = Math.min(elapsed / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    }
+  }, 200);
 
   // ETHDenver countdown
   function updateCountdown() {
