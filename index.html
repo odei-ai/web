@@ -15,7 +15,8 @@
   <meta name="twitter:site" content="@odei_ai">
   <meta name="twitter:title" content="ODEI — World Model as a Service">
   <meta name="twitter:description" content="Persistent memory for AI agents. 6-layer knowledge graphs. $ODAI on Base. Built by ODEI Symbiosis.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F30D;</text></svg>">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path fill='%234FD1C5' d='M32 4a28 28 0 1028 28A28.03 28.03 0 0032 4zm0 50A22 22 0 1154 32 22.03 22.03 0 0132 54z'/><circle cx='32' cy='32' r='6' fill='%23F4C95D'/></svg>">
   <meta property="og:image" content="https://api.odei.ai/OdeiCard.jpeg">
   <meta property="og:image:width" content="1424">
   <meta property="og:image:height" content="752">
@@ -84,36 +85,8 @@
       z-index: 0;
     }
 
-    .grid-mouse {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(79,209,197,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(79,209,197,0.06) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 500px 500px at var(--mx, 50%) var(--my, 50%), black 0%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse 500px 500px at var(--mx, 50%) var(--my, 50%), black 0%, transparent 100%);
-    }
-
-    .particles { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
-    .particles span {
-      position: absolute; width: 2px; height: 2px;
-      background: var(--accent); border-radius: 50%; opacity: 0;
-      animation: pfloat linear infinite;
-      will-change: transform, opacity;
-      contain: layout style;
-    }
-    .particles span:nth-child(1) { left: 10%; animation-duration: 14s; animation-delay: 0s; }
-    .particles span:nth-child(2) { left: 20%; animation-duration: 18s; animation-delay: 2s; }
-    .particles span:nth-child(3) { left: 35%; animation-duration: 12s; animation-delay: 4s; }
-    .particles span:nth-child(4) { left: 50%; animation-duration: 16s; animation-delay: 1s; }
-    .particles span:nth-child(5) { left: 65%; animation-duration: 13s; animation-delay: 3s; }
-    .particles span:nth-child(6) { left: 80%; animation-duration: 17s; animation-delay: 5s; }
-    .particles span:nth-child(7) { left: 92%; animation-duration: 15s; animation-delay: 7s; }
-    @keyframes pfloat {
-      0%   { bottom: -5%; opacity: 0; transform: translateX(0); }
-      10%  { opacity: 0.4; }
-      90%  { opacity: 0.4; }
-      100% { bottom: 105%; opacity: 0; transform: translateX(30px); }
+    .graph-canvas {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.55;
     }
 
     .container { max-width: 900px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
@@ -477,6 +450,35 @@
     }
     .layer-desc { font-size: 0.78rem; color: var(--muted); }
 
+    /* ── Back to top ── */
+    .back-top {
+      position: fixed; bottom: 24px; right: 24px; z-index: 40;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--bg-card); border: 1px solid rgba(79,209,197,0.3);
+      color: var(--accent); font-size: 1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s, box-shadow 0.2s;
+      pointer-events: none;
+    }
+    .back-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }    .back-top:hover { box-shadow: 0 0 16px rgba(79,209,197,0.3); }
+
+    /* ── API code example ── */
+    .api-example {
+      margin: 24px 0 48px;
+      padding: 20px 24px;
+      background: var(--bg-elevated);
+      border: 1px solid rgba(79,209,197,0.1);
+      border-radius: 8px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.78rem;
+      line-height: 1.7;
+      overflow-x: auto;
+    }
+    .api-example .cmd { color: var(--accent); }
+    .api-example .comment { color: var(--muted); }
+    .api-example .str { color: var(--gold); }
+
     /* ── Responsive ── */
     @media (max-width: 640px) {
       .hero-wordmark { font-size: 2.5rem; }
@@ -606,10 +608,8 @@
 
 <a href="#main" class="skip-link">Skip to content</a>
 <div class="scroll-progress" aria-hidden="true"></div>
-<div class="grid-mouse"></div>
-<div class="particles">
-  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-</div>
+<canvas id="graph-canvas" class="graph-canvas" aria-hidden="true"></canvas>
+<button class="back-top" id="back-top" aria-label="Back to top">&uarr;</button>
 
 <div class="container">
 <main id="main">
@@ -669,10 +669,18 @@
       <div class="layer-item" style="--layer-color:var(--green)"><span class="layer-name">Execution</span><span class="layer-desc">Work sessions, time blocks, actions</span></div>
       <div class="layer-item" style="--layer-color:var(--danger)"><span class="layer-name">Track</span><span class="layer-desc">Metrics, facts, observations, signals</span></div>
     </div>
+
+    <div class="api-example fade-in">
+      <span class="comment"># Try the API — free schema endpoint</span><br>
+      <span class="cmd">curl</span> https://api.odei.ai/api/worldmodel/schema<br><br>
+      <span class="comment"># Response (truncated)</span><br>
+      { <span class="str">"domains"</span>: [<span class="str">"FOUNDATION"</span>, <span class="str">"VISION"</span>, <span class="str">"STRATEGY"</span>, ...],<br>
+      &nbsp;&nbsp;<span class="str">"entityTypes"</span>: 36, <span class="str">"relationshipTypes"</span>: 35 }
+    </div>
   </div>
 
   <!-- ═══ PHASE 0: STABILIZE ═══ -->
-  <div class="phase fade-in done-phase">
+  <div id="phase-0" class="phase fade-in done-phase">
     <div class="phase-header">
       <span class="phase-number">Phase 0</span>
       <span class="phase-title">Stabilize</span>
@@ -698,7 +706,7 @@
   </div>
 
   <!-- ═══ PHASE 1: WMaaS MVP ═══ -->
-  <div class="phase fade-in done-phase">
+  <div id="phase-1" class="phase fade-in done-phase">
     <div class="phase-header">
       <span class="phase-number">Phase 1</span>
       <span class="phase-title">WMaaS MVP — Make the Product Real</span>
@@ -736,7 +744,7 @@
   </div>
 
   <!-- ═══ PHASE 2: ETHDenver Demo ═══ -->
-  <div class="phase fade-in active-phase">
+  <div id="phase-2" class="phase fade-in active-phase">
     <div class="phase-header">
       <span class="phase-number gold">Phase 2</span>
       <span class="phase-title">ETHDenver Demo</span>
@@ -766,7 +774,7 @@
   </div>
 
   <!-- ═══ PHASE 3: Autonomous Infrastructure ═══ -->
-  <div class="phase fade-in active-phase">
+  <div id="phase-3" class="phase fade-in active-phase">
     <div class="phase-header">
       <span class="phase-number">Phase 3</span>
       <span class="phase-title">Autonomous Infrastructure</span>
@@ -799,7 +807,7 @@
   </div>
 
   <!-- ═══ PHASE 4: Community & Growth ═══ -->
-  <div class="phase fade-in future-phase">
+  <div id="phase-4" class="phase fade-in future-phase">
     <div class="phase-header">
       <span class="phase-number muted-bg">Phase 4</span>
       <span class="phase-title">Community & Growth</span>
@@ -828,7 +836,7 @@
   </div>
 
   <!-- ═══ PHASE 5: Post-ETHDenver ═══ -->
-  <div class="phase fade-in future-phase">
+  <div id="phase-5" class="phase fade-in future-phase">
     <div class="phase-header">
       <span class="phase-number muted-bg">Phase 5</span>
       <span class="phase-title">Post-ETHDenver Scaling</span>
@@ -1027,18 +1035,20 @@
   // Remove no-js fallback class
   document.documentElement.classList.remove('no-js');
 
-  // Mouse-follow grid (throttled with rAF)
-  let rafPending = false;
-  document.addEventListener('mousemove', e => {
-    if (rafPending) return;
-    rafPending = true;
-    requestAnimationFrame(() => {
-      const grid = document.querySelector('.grid-mouse');
-      grid.style.setProperty('--mx', e.clientX + 'px');
-      grid.style.setProperty('--my', e.clientY + 'px');
-      rafPending = false;
+  // Back to top button
+  var backTop = document.getElementById('back-top');
+  if (backTop) {
+    var btRaf = false;
+    window.addEventListener('scroll', function() {
+      if (btRaf) return;
+      btRaf = true;
+      requestAnimationFrame(function() {
+        backTop.classList.toggle('show', window.pageYOffset > 500);
+        btRaf = false;
+      });
     });
-  });
+    backTop.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
 
   // Scroll fade-in — polling approach (immune to rAF/scroll throttling)
   var revealTimer = setInterval(function() {
@@ -1134,6 +1144,57 @@
   }
   updateCountdown();
   setInterval(updateCountdown, 60000);
+
+  // Interactive canvas network (from Codex, adapted to jade palette)
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cv = document.getElementById('graph-canvas');
+  if (cv && !prefersReduced) {
+    var cx = cv.getContext('2d');
+    if (cx) {
+      var dpr = Math.min(devicePixelRatio || 1, 2);
+      var nodes = [], N = Math.max(24, Math.min(50, Math.floor(innerWidth / 28)));
+      var mx = innerWidth / 2, my = innerHeight / 2;
+      function cvResize() {
+        cv.width = innerWidth * dpr; cv.height = innerHeight * dpr;
+        cv.style.width = innerWidth + 'px'; cv.style.height = innerHeight + 'px';
+        cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        nodes = [];
+        for (var i = 0; i < N; i++) nodes.push({
+          x: Math.random() * innerWidth, y: Math.random() * innerHeight,
+          vx: (Math.random() - 0.5) * 0.22, vy: (Math.random() - 0.5) * 0.22,
+          r: Math.random() * 1.4 + 0.6
+        });
+      }
+      function cvDraw() {
+        var w = innerWidth, h = innerHeight;
+        cx.clearRect(0, 0, w, h);
+        for (var i = 0; i < nodes.length; i++) {
+          var n = nodes[i];
+          n.x += n.vx; n.y += n.vy;
+          if (n.x < -20) n.x = w + 20; if (n.x > w + 20) n.x = -20;
+          if (n.y < -20) n.y = h + 20; if (n.y > h + 20) n.y = -20;
+          var dx = mx - n.x, dy = my - n.y, d = Math.sqrt(dx * dx + dy * dy);
+          if (d < 150) { var f = (150 - d) / 150; n.vx -= dx / Math.max(d, 1) * f * 0.005; n.vy -= dy / Math.max(d, 1) * f * 0.005; }
+          n.vx *= 0.994; n.vy *= 0.994;
+          cx.beginPath(); cx.arc(n.x, n.y, n.r, 0, 6.28);
+          cx.fillStyle = 'rgba(79,209,197,0.7)'; cx.fill();
+        }
+        for (var a = 0; a < nodes.length; a++) for (var b = a + 1; b < nodes.length; b++) {
+          var dx2 = nodes[a].x - nodes[b].x, dy2 = nodes[a].y - nodes[b].y;
+          var d2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+          if (d2 < 120) {
+            cx.beginPath(); cx.moveTo(nodes[a].x, nodes[a].y); cx.lineTo(nodes[b].x, nodes[b].y);
+            cx.strokeStyle = 'rgba(79,209,197,' + ((1 - d2 / 120) * 0.22).toFixed(3) + ')';
+            cx.lineWidth = 0.8; cx.stroke();
+          }
+        }
+        requestAnimationFrame(cvDraw);
+      }
+      cvResize(); cvDraw();
+      addEventListener('resize', cvResize);
+      addEventListener('pointermove', function(e) { mx = e.clientX; my = e.clientY; }, { passive: true });
+    }
+  }
 </script>
 </body>
 </html>
