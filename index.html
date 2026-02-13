@@ -410,6 +410,14 @@
       text-decoration: none;
     }
     .footer-token a:hover { text-decoration: underline; }
+    .copy-btn {
+      background: var(--accent-dim); color: var(--accent);
+      border: 1px solid rgba(79,209,197,0.2); border-radius: 4px;
+      padding: 2px 10px; font-size: 0.65rem; font-weight: 600;
+      cursor: pointer; margin-left: 8px; letter-spacing: 0.04em;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .copy-btn:hover { background: rgba(79,209,197,0.25); border-color: var(--accent); }
     .footer-links {
       display: flex;
       justify-content: center;
@@ -932,6 +940,7 @@
   <footer class="footer fade-in">
     <div class="footer-token">
       $ODAI on Base: <a href="https://basescan.org/token/0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959" target="_blank" rel="noopener">0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959</a>
+      <button class="copy-btn" onclick="navigator.clipboard.writeText('0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959').then(function(){var b=document.querySelector('.copy-btn');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy CA'},1500)})" aria-label="Copy contract address">Copy CA</button>
     </div>
     <div class="footer-links">
       <a href="https://twitter.com/odei_ai" target="_blank" rel="noopener">Twitter</a>
