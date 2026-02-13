@@ -461,6 +461,22 @@
       border-left: 3px solid var(--accent);
     }
 
+    /* ── Layer stack ── */
+    .layer-stack { display: flex; flex-direction: column; gap: 2px; }
+    .layer-item {
+      display: flex; align-items: center; gap: 16px;
+      padding: 10px 16px;
+      background: var(--bg-card);
+      border-left: 3px solid var(--layer-color, var(--accent));
+      transition: background 0.2s, transform 0.2s;
+    }
+    .layer-item:hover { background: var(--bg-elevated); transform: translateX(4px); }
+    .layer-name {
+      font-size: 0.82rem; font-weight: 700; color: var(--layer-color, var(--accent));
+      min-width: 90px;
+    }
+    .layer-desc { font-size: 0.78rem; color: var(--muted); }
+
     /* ── Responsive ── */
     @media (max-width: 640px) {
       .hero-wordmark { font-size: 2.5rem; }
@@ -638,6 +654,20 @@
     <div class="status-item">
       <div class="status-value">100%</div>
       <div class="status-label">Fair Launch</div>
+    </div>
+  </div>
+
+  <!-- ═══ 6-LAYER ARCHITECTURE ═══ -->
+  <div class="fade-in" style="margin-bottom:48px">
+    <h2 class="section-title" style="margin-top:0">The 6-Layer World Model</h2>
+    <p style="font-size:0.85rem;color:var(--ink-med);margin-bottom:20px;padding-left:16px">Every AI agent gets a persistent knowledge graph with 6 semantic layers — from identity to real-time tracking.</p>
+    <div class="layer-stack">
+      <div class="layer-item" style="--layer-color:var(--muted)"><span class="layer-name">Foundation</span><span class="layer-desc">Identity, values, governance</span></div>
+      <div class="layer-item" style="--layer-color:var(--gold)"><span class="layer-name">Vision</span><span class="layer-desc">Goals, objectives, key results</span></div>
+      <div class="layer-item" style="--layer-color:var(--accent)"><span class="layer-name">Strategy</span><span class="layer-desc">Initiatives, milestones, decisions</span></div>
+      <div class="layer-item" style="--layer-color:var(--accent)"><span class="layer-name">Tactics</span><span class="layer-desc">Tasks, processes, routines</span></div>
+      <div class="layer-item" style="--layer-color:var(--green)"><span class="layer-name">Execution</span><span class="layer-desc">Work sessions, time blocks, actions</span></div>
+      <div class="layer-item" style="--layer-color:var(--danger)"><span class="layer-name">Track</span><span class="layer-desc">Metrics, facts, observations, signals</span></div>
     </div>
   </div>
 
