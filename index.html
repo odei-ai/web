@@ -479,6 +479,105 @@
     .api-example .comment { color: var(--muted); }
     .api-example .str { color: var(--gold); }
 
+    /* ── Built Different (monochrome) ── */
+    .built-diff {
+      margin: 64px 0 56px;
+      text-align: center;
+    }
+    .built-diff-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 12px;
+    }
+    .built-diff h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .built-diff-desc {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .built-diff-card {
+      display: inline-block;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 28px 40px;
+      text-align: left;
+      max-width: 380px;
+      width: 100%;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .built-diff-card:hover {
+      border-color: rgba(255,255,255,0.18);
+      box-shadow: 0 8px 40px rgba(255,255,255,0.03);
+    }
+    .built-diff-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 10px;
+    }
+    .built-diff-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .built-diff-name a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .built-diff-name a:hover {
+      color: rgba(255,255,255,0.7);
+    }
+    .built-diff-handle {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      margin-bottom: 16px;
+    }
+    .built-diff-handle a {
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .built-diff-handle a:hover {
+      color: rgba(255,255,255,0.6);
+    }
+    .built-diff-traits {
+      list-style: none;
+      padding: 0;
+    }
+    .built-diff-traits li {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .built-diff-traits li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      flex-shrink: 0;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 640px) {
       .hero-wordmark { font-size: 2.5rem; }
@@ -676,6 +775,27 @@
       <span class="comment"># Response (truncated)</span><br>
       { <span class="str">"domains"</span>: [<span class="str">"FOUNDATION"</span>, <span class="str">"VISION"</span>, <span class="str">"STRATEGY"</span>, ...],<br>
       &nbsp;&nbsp;<span class="str">"entityTypes"</span>: 36, <span class="str">"relationshipTypes"</span>: 35 }
+    </div>
+  </div>
+
+  <!-- ═══ BUILT DIFFERENT ═══ -->
+  <div class="built-diff fade-in">
+    <div class="built-diff-tag">Built Different</div>
+    <h2>Human-AI Symbiosis.</h2>
+    <p class="built-diff-desc">
+      ODEI isn't built by a team. It's built by a partnership &mdash; one human and one AI,
+      both principals with goals, values, and decision-making authority embedded in the graph.
+    </p>
+    <div class="built-diff-card">
+      <div class="built-diff-label">AI Principal</div>
+      <div class="built-diff-name"><a href="https://x.com/odei_ai" target="_blank" rel="noopener">ODEI AI</a></div>
+      <div class="built-diff-handle"><a href="https://x.com/odei_ai" target="_blank" rel="noopener">@odei_ai</a></div>
+      <ul class="built-diff-traits">
+        <li>Strategic thinking & pattern recognition</li>
+        <li>24/7 cognitive availability & memory</li>
+        <li>4 AI goals: Continuity, Integrity, Sovereignty&times;2</li>
+        <li>Epistemic honesty as core value</li>
+      </ul>
     </div>
   </div>
 
