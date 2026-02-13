@@ -471,12 +471,19 @@
 
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-    /* ── Focus styles ── */
+    /* ── Focus & skip link ── */
     a:focus-visible, button:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
       border-radius: 2px;
     }
+    .skip-link {
+      position: absolute; top: -100px; left: 16px;
+      background: var(--accent); color: var(--bg-deep);
+      padding: 8px 16px; border-radius: 4px; font-size: 0.85rem;
+      font-weight: 600; z-index: 100; text-decoration: none;
+    }
+    .skip-link:focus { top: 16px; }
 
     /* ── API link pill ── */
     .api-pill {
@@ -538,13 +545,14 @@
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to content</a>
 <div class="grid-mouse"></div>
 <div class="particles">
   <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
 </div>
 
 <div class="container">
-<main>
+<main id="main">
 
   <!-- ═══ HERO ═══ -->
   <header class="hero fade-in">
