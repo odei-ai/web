@@ -184,6 +184,7 @@
       border-color: rgba(79,209,197,0.2);
     }
     .phase.done-phase { border-left: 3px solid var(--green); }
+    .phase.done-phase .phase-title { color: var(--green); }
     .phase.active-phase { border-left: 3px solid var(--accent); }
     .phase.future-phase { border-left: 3px solid var(--muted); }
     .phase-header {
@@ -468,6 +469,15 @@
     }
     /* Fallback: if JS fails, show everything */
     .no-js .fade-in { opacity: 1; transform: none; }
+
+    /* Respect reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .fade-in { opacity: 1; transform: none; }
+    }
+
+    /* Smooth scroll for anchor links */
+    html { scroll-behavior: smooth; }
 
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
 
