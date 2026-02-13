@@ -99,6 +99,8 @@
       position: absolute; width: 2px; height: 2px;
       background: var(--accent); border-radius: 50%; opacity: 0;
       animation: pfloat linear infinite;
+      will-change: transform, opacity;
+      contain: layout style;
     }
     .particles span:nth-child(1) { left: 10%; animation-duration: 14s; animation-delay: 0s; }
     .particles span:nth-child(2) { left: 20%; animation-duration: 18s; animation-delay: 2s; }
@@ -218,6 +220,17 @@
       color: var(--muted);
       white-space: nowrap;
     }
+    .phase-status-tag {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-left: 8px;
+      text-transform: uppercase;
+    }
+    .phase-status-tag.complete { background: rgba(104,211,145,0.12); color: var(--green); }
+    .phase-status-tag.active { background: rgba(79,209,197,0.12); color: var(--accent); animation: pulse 2s infinite; }
     .phase-body {
       padding: 20px 24px;
     }
@@ -548,6 +561,8 @@
     .hero-sphere .ring:nth-child(1) { animation: ring-a 10s linear infinite; }
     .hero-sphere .ring:nth-child(2) { animation: ring-b 14s linear infinite; border-color: rgba(244,201,93,0.2); }
     .hero-sphere .ring:nth-child(3) { animation: ring-c 18s linear infinite; }
+    .hero-sphere .ring:nth-child(4) { animation: ring-d 22s linear infinite; border-color: rgba(79,209,197,0.15); width: 80%; height: 80%; top: 10%; left: 10%; }
+    .hero-sphere .ring:nth-child(5) { animation: ring-e 16s linear infinite; border-color: rgba(244,201,93,0.12); width: 60%; height: 60%; top: 20%; left: 20%; }
     .hero-sphere .core {
       position: absolute;
       top: 50%; left: 50%;
@@ -560,6 +575,8 @@
     @keyframes ring-a { from { transform: rotateX(70deg) rotateY(0deg); } to { transform: rotateX(70deg) rotateY(360deg); } }
     @keyframes ring-b { from { transform: rotateX(30deg) rotateY(0deg); } to { transform: rotateX(30deg) rotateY(360deg); } }
     @keyframes ring-c { from { transform: rotateX(50deg) rotateZ(0deg); } to { transform: rotateX(50deg) rotateZ(360deg); } }
+    @keyframes ring-d { from { transform: rotateY(65deg) rotateZ(0deg); } to { transform: rotateY(65deg) rotateZ(360deg); } }
+    @keyframes ring-e { from { transform: rotateX(85deg) rotateY(0deg); } to { transform: rotateX(85deg) rotateY(360deg); } }
   </style>
 </head>
 <body>
@@ -577,6 +594,7 @@
   <header class="hero fade-in">
     <div class="hero-sphere" aria-hidden="true">
       <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+      <div class="ring"></div><div class="ring"></div>
       <div class="core"></div>
     </div>
     <div class="hero-wordmark">ODEI</div>
@@ -620,7 +638,7 @@
     <div class="phase-header">
       <span class="phase-number">Phase 0</span>
       <span class="phase-title">Stabilize</span>
-      <span class="phase-dates">Feb 12 — DONE</span>
+      <span class="phase-dates">Feb 12<span class="phase-status-tag complete">Complete</span></span>
     </div>
     <div class="phase-body">
       <div class="task-group">
@@ -646,7 +664,7 @@
     <div class="phase-header">
       <span class="phase-number">Phase 1</span>
       <span class="phase-title">WMaaS MVP — Make the Product Real</span>
-      <span class="phase-dates">Feb 12–14</span>
+      <span class="phase-dates">Feb 12–14<span class="phase-status-tag complete">Complete</span></span>
     </div>
     <div class="phase-body">
       <p class="phase-desc">World Model as a Service: persistent knowledge graphs for AI agents. Each customer gets a tenant namespace in Neo4j.</p>
@@ -684,7 +702,7 @@
     <div class="phase-header">
       <span class="phase-number gold">Phase 2</span>
       <span class="phase-title">ETHDenver Demo</span>
-      <span class="phase-dates">Feb 14–16 — IN PROGRESS</span>
+      <span class="phase-dates">Feb 14–16<span class="phase-status-tag active">In Progress</span></span>
     </div>
     <div class="phase-body">
       <p class="phase-desc">A public page where anyone can see a World Model, understand the architecture, and want to hold $ODAI.</p>
@@ -714,7 +732,7 @@
     <div class="phase-header">
       <span class="phase-number">Phase 3</span>
       <span class="phase-title">Autonomous Infrastructure</span>
-      <span class="phase-dates">Parallel — Feb 12–14</span>
+      <span class="phase-dates">Parallel — Feb 12–14<span class="phase-status-tag active">In Progress</span></span>
     </div>
     <div class="phase-body">
       <div class="task-group">
@@ -815,6 +833,7 @@
           <th>Task</th>
           <th>Deadline</th>
           <th>Impact</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
@@ -823,48 +842,56 @@
           <td>Commit all code</td>
           <td>Feb 12</td>
           <td>Safety</td>
+          <td><span class="badge" style="background:rgba(104,211,145,0.15);color:var(--green)">Done</span></td>
         </tr>
         <tr>
           <td><span class="badge p0">P0</span></td>
           <td>DexScreener listing</td>
           <td>Feb 12</td>
           <td>Credibility</td>
+          <td><span class="badge" style="background:rgba(104,211,145,0.15);color:var(--green)">Done</span></td>
         </tr>
         <tr>
           <td><span class="badge p1">P1</span></td>
           <td>Neo4j persistence</td>
           <td>Feb 14</td>
           <td>Product-market fit</td>
+          <td><span class="badge" style="background:rgba(104,211,145,0.15);color:var(--green)">Done</span></td>
         </tr>
         <tr>
           <td><span class="badge p1">P1</span></td>
           <td>Permanent API (HTTPS)</td>
           <td>Feb 14</td>
           <td>Infrastructure</td>
+          <td><span class="badge" style="background:rgba(104,211,145,0.15);color:var(--green)">Done</span></td>
         </tr>
         <tr>
           <td><span class="badge p2">P2</span></td>
           <td>ETHDenver demo page</td>
           <td>Feb 16</td>
           <td>Showcase</td>
+          <td><span class="badge" style="background:rgba(79,209,197,0.15);color:var(--accent)">WIP</span></td>
         </tr>
         <tr>
           <td><span class="badge p2">P2</span></td>
           <td>API documentation</td>
           <td>Feb 15</td>
           <td>Developer adoption</td>
+          <td><span class="badge" style="background:rgba(104,211,145,0.15);color:var(--green)">Done</span></td>
         </tr>
         <tr>
           <td><span class="badge p3">P3</span></td>
           <td>Process management</td>
           <td>Feb 17</td>
           <td>Reliability</td>
+          <td><span class="badge" style="background:rgba(124,136,154,0.15);color:var(--muted)">Todo</span></td>
         </tr>
         <tr>
           <td><span class="badge p3">P3</span></td>
           <td>Content strategy</td>
           <td>Ongoing</td>
           <td>Growth</td>
+          <td><span class="badge" style="background:rgba(79,209,197,0.15);color:var(--accent)">WIP</span></td>
         </tr>
       </tbody>
     </table>
