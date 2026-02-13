@@ -901,24 +901,28 @@
     });
   });
 
-  // Scroll fade-in — bulletproof scroll listener approach
-  let revealQueue = 0;
-  function revealOnScroll() {
+  // Scroll fade-in — bulletproof approach
+  let scrollRaf = 0;
+  function revealVisible() {
+    let delay = 0;
     const viewH = window.innerHeight;
     document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
-      const top = el.getBoundingClientRect().top;
-      if (top < viewH - 40) {
-        setTimeout(() => el.classList.add('visible'), revealQueue * 100);
-        revealQueue++;
+      if (el.getBoundingClientRect().top < viewH - 20) {
+        el.style.transitionDelay = delay * 0.1 + 's';
+        el.classList.add('visible');
+        delay++;
       }
     });
-    // Reset queue for next scroll batch
-    setTimeout(() => { revealQueue = 0; }, 600);
   }
-  // Reveal above-fold immediately
-  revealOnScroll();
-  // Reveal on scroll (passive for performance)
-  window.addEventListener('scroll', revealOnScroll, { passive: true });
+  function onScroll() {
+    cancelAnimationFrame(scrollRaf);
+    scrollRaf = requestAnimationFrame(revealVisible);
+  }
+  // Reveal above-fold on load
+  revealVisible();
+  // Reveal on scroll
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
 
   // ETHDenver countdown
   function updateCountdown() {
