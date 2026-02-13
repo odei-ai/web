@@ -904,44 +904,28 @@
     });
   });
 
-  // Scroll fade-in — bulletproof approach
-  let scrollRaf = 0;
-  function revealVisible() {
-    let delay = 0;
-    const viewH = window.innerHeight;
-    const hidden = document.querySelectorAll('.fade-in:not(.visible)');
-    // Use generous threshold: reveal when element top is within 120% of viewport
-    // This handles bottom-of-page elements that can't scroll high enough
-    const threshold = viewH * 1.2;
-    hidden.forEach(el => {
+  // Scroll fade-in — polling approach (immune to rAF/scroll throttling)
+  var revealTimer = setInterval(function() {
+    var delay = 0;
+    var threshold = window.innerHeight + 80;
+    var hidden = document.querySelectorAll('.fade-in:not(.visible)');
+    if (!hidden.length) { clearInterval(revealTimer); return; }
+    hidden.forEach(function(el) {
       if (el.getBoundingClientRect().top < threshold) {
         el.style.transitionDelay = delay * 0.08 + 's';
         el.classList.add('visible');
         delay++;
       }
     });
-    // If no more hidden elements, remove listeners
-    if (!document.querySelector('.fade-in:not(.visible)')) {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    }
-  }
-  function onScroll() {
-    cancelAnimationFrame(scrollRaf);
-    scrollRaf = requestAnimationFrame(revealVisible);
-  }
-  // Reveal above-fold on load
-  revealVisible();
-  // Reveal on scroll
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
-  // Failsafe: reveal everything after 4 seconds (e.g. if scroll never fires)
+  }, 150);
+  // Failsafe: reveal everything after 3 seconds
   setTimeout(function() {
+    clearInterval(revealTimer);
     document.querySelectorAll('.fade-in:not(.visible)').forEach(function(el, i) {
-      el.style.transitionDelay = i * 0.06 + 's';
+      el.style.transitionDelay = i * 0.05 + 's';
       el.classList.add('visible');
     });
-  }, 4000);
+  }, 3000);
 
   // ETHDenver countdown
   function updateCountdown() {
