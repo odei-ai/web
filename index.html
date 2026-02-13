@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +16,8 @@
   <meta name="twitter:title" content="ODEI — World Model as a Service">
   <meta name="twitter:description" content="Persistent memory for AI agents. 6-layer knowledge graphs. $ODAI on Base. Built by ODEI Symbiosis.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F30D;</text></svg>">
+  <meta property="og:image" content="https://api.odei.ai/og-image-v2.png">
+  <meta name="twitter:image" content="https://api.odei.ai/og-image-v2.png">
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Documentation">
   <script type="application/ld+json">
   {
@@ -178,6 +180,9 @@
     .phase:hover {
       border-color: rgba(79,209,197,0.2);
     }
+    .phase.done-phase { border-left: 3px solid var(--green); }
+    .phase.active-phase { border-left: 3px solid var(--accent); }
+    .phase.future-phase { border-left: 3px solid var(--muted); }
     .phase-header {
       display: flex;
       align-items: center;
@@ -300,7 +305,9 @@
       border-bottom: 1px solid rgba(79,209,197,0.04);
       color: var(--ink-med);
     }
-    .matrix tr:hover td { background: rgba(79,209,197,0.03); }
+    .matrix tbody tr:nth-child(even) td { background: rgba(79,209,197,0.02); }
+    .matrix tr:hover td { background: rgba(79,209,197,0.05); }
+    .matrix-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .badge {
       font-size: 0.65rem;
       font-weight: 700;
@@ -430,12 +437,18 @@
     /* ── Responsive ── */
     @media (max-width: 640px) {
       .hero-wordmark { font-size: 2.5rem; }
+      .hero { padding: 50px 0 30px; }
       .status-bar { gap: 16px; }
       .phase-header { flex-wrap: wrap; gap: 8px; }
       .phase-dates { width: 100%; }
       .metric-bar-wrap { width: 80px; }
-      .matrix { font-size: 0.75rem; }
+      .metric-row { flex-wrap: wrap; gap: 8px; }
+      .metric-target { width: auto; text-align: left; }
+      .metric-bar-wrap { width: 100%; }
+      .matrix { font-size: 0.75rem; min-width: 500px; }
       .matrix th, .matrix td { padding: 8px 6px; }
+      .footer-links { flex-direction: column; gap: 12px; align-items: center; }
+      .container { padding: 0 16px; }
     }
 
     /* ── Animate in ── */
@@ -443,11 +456,14 @@
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      will-change: opacity, transform;
     }
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
+    /* Fallback: if JS fails, show everything */
+    .no-js .fade-in { opacity: 1; transform: none; }
 
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
 
@@ -487,6 +503,7 @@
 </div>
 
 <div class="container">
+<main>
 
   <!-- ═══ HERO ═══ -->
   <header class="hero fade-in">
@@ -496,10 +513,10 @@
       Persistent memory infrastructure for AI agents. 6-layer knowledge graphs on Neo4j.
       Token-gated API. Built by human-AI symbiosis.
     </p>
-    <a class="api-pill" href="/api/worldmodel/docs" target="_blank">
+    <span class="api-pill">
       <span class="api-dot"></span>
-      API Live — /api/worldmodel/docs
-    </a>
+      WMaaS API — 6-Layer Knowledge Graphs
+    </span>
   </header>
 
   <!-- ═══ STATUS BAR ═══ -->
@@ -527,7 +544,7 @@
   </div>
 
   <!-- ═══ PHASE 0: STABILIZE ═══ -->
-  <div class="phase fade-in">
+  <div class="phase fade-in done-phase">
     <div class="phase-header">
       <span class="phase-number">Phase 0</span>
       <span class="phase-title">Stabilize</span>
@@ -536,16 +553,16 @@
     <div class="phase-body">
       <div class="task-group">
         <div class="task">
-          <span class="check done">&#10003;</span>
+          <span class="check done" aria-label="Completed">&#10003;</span>
           <span class="task-text done">Commit all production code — WMaaS, payments, autonomous agents</span>
           <span class="task-commit">21acee1</span>
         </div>
         <div class="task">
-          <span class="check done">&#10003;</span>
+          <span class="check done" aria-label="Completed">&#10003;</span>
           <span class="task-text done">DexScreener Enhanced Token Info submitted</span>
         </div>
         <div class="task">
-          <span class="check done">&#10003;</span>
+          <span class="check done" aria-label="Completed">&#10003;</span>
           <span class="task-text done">$ODAI live on Base via Flaunch — 100% fair launch, zero pre-mine</span>
         </div>
       </div>
@@ -553,7 +570,7 @@
   </div>
 
   <!-- ═══ PHASE 1: WMaaS MVP ═══ -->
-  <div class="phase fade-in">
+  <div class="phase fade-in done-phase">
     <div class="phase-header">
       <span class="phase-number">Phase 1</span>
       <span class="phase-title">WMaaS MVP — Make the Product Real</span>
@@ -563,27 +580,27 @@
       <p class="phase-desc">World Model as a Service: persistent knowledge graphs for AI agents. Each customer gets a tenant namespace in Neo4j.</p>
       <div class="task-group">
         <div class="task">
-          <span class="check done">&#10003;</span>
+          <span class="check done" aria-label="Completed">&#10003;</span>
           <span class="task-text done">Neo4j persistence — world models survive server restart</span>
           <span class="task-commit">606aebd</span>
         </div>
         <div class="task">
-          <span class="check done">&#10003;</span>
+          <span class="check done" aria-label="Completed">&#10003;</span>
           <span class="task-text done">Payment verification — on-chain USDC auto-provisions namespaces</span>
           <span class="task-commit">8cf3202</span>
         </div>
         <div class="task">
-          <span class="check done">&#10003;</span>
+          <span class="check done" aria-label="Completed">&#10003;</span>
           <span class="task-text done">Self-documenting API at /api/worldmodel/docs</span>
           <span class="task-commit">ee2ca72</span>
         </div>
         <div class="task">
-          <span class="check done">&#10003;</span>
+          <span class="check done" aria-label="Completed">&#10003;</span>
           <span class="task-text done">Query, neighbor traversal, and domain summary endpoints</span>
           <span class="task-commit">73f6227</span>
         </div>
         <div class="task">
-          <span class="check done">&#10003;</span>
+          <span class="check done" aria-label="Completed">&#10003;</span>
           <span class="task-text done">Token-gated tiers: Free (read-only) / Holder (CRUD) / Premium (dedicated)</span>
         </div>
       </div>
@@ -591,7 +608,7 @@
   </div>
 
   <!-- ═══ PHASE 2: ETHDenver Demo ═══ -->
-  <div class="phase fade-in">
+  <div class="phase fade-in active-phase">
     <div class="phase-header">
       <span class="phase-number gold">Phase 2</span>
       <span class="phase-title">ETHDenver Demo</span>
@@ -601,19 +618,19 @@
       <p class="phase-desc">A public page where anyone can see a World Model, understand the architecture, and want to hold $ODAI.</p>
       <div class="task-group">
         <div class="task">
-          <span class="check done">&#10003;</span>
+          <span class="check done" aria-label="Completed">&#10003;</span>
           <span class="task-text done">Roadmap landing page on api.odei.ai</span>
         </div>
         <div class="task">
-          <span class="check progress">&#9679;</span>
+          <span class="check progress" aria-label="In Progress">&#9679;</span>
           <span class="task-text progress">Interactive World Model visualization — 6-layer graph explorer</span>
         </div>
         <div class="task">
-          <span class="check upcoming">&#8212;</span>
+          <span class="check upcoming" aria-label="Upcoming">&#8212;</span>
           <span class="task-text">QR code + one-pager for ETHDenver booth</span>
         </div>
         <div class="task">
-          <span class="check upcoming">&#8212;</span>
+          <span class="check upcoming" aria-label="Upcoming">&#8212;</span>
           <span class="task-text">Live agent demo — @odei_ai operating autonomously in real-time</span>
         </div>
       </div>
@@ -621,7 +638,7 @@
   </div>
 
   <!-- ═══ PHASE 3: Autonomous Infrastructure ═══ -->
-  <div class="phase fade-in">
+  <div class="phase fade-in active-phase">
     <div class="phase-header">
       <span class="phase-number">Phase 3</span>
       <span class="phase-title">Autonomous Infrastructure</span>
@@ -630,23 +647,23 @@
     <div class="phase-body">
       <div class="task-group">
         <div class="task">
-          <span class="check done">&#10003;</span>
+          <span class="check done" aria-label="Completed">&#10003;</span>
           <span class="task-text done">8 autonomous agents running (Twitter, DexScreener, copycat guard, Farcaster)</span>
         </div>
         <div class="task">
-          <span class="check done">&#10003;</span>
+          <span class="check done" aria-label="Completed">&#10003;</span>
           <span class="task-text done">Permanent API server + DNS configured</span>
         </div>
         <div class="task">
-          <span class="check progress">&#9679;</span>
-          <span class="task-text progress">HTTPS via Let's Encrypt on api.odei.ai</span>
+          <span class="check done" aria-label="Completed">&#10003;</span>
+          <span class="task-text done">HTTPS via Let's Encrypt on api.odei.ai</span>
         </div>
         <div class="task">
-          <span class="check upcoming">&#8212;</span>
+          <span class="check upcoming" aria-label="Upcoming">&#8212;</span>
           <span class="task-text">PM2 process management with crash recovery</span>
         </div>
         <div class="task">
-          <span class="check upcoming">&#8212;</span>
+          <span class="check upcoming" aria-label="Upcoming">&#8212;</span>
           <span class="task-text">Centralized health dashboard</span>
         </div>
       </div>
@@ -654,7 +671,7 @@
   </div>
 
   <!-- ═══ PHASE 4: Community & Growth ═══ -->
-  <div class="phase fade-in">
+  <div class="phase fade-in future-phase">
     <div class="phase-header">
       <span class="phase-number muted-bg">Phase 4</span>
       <span class="phase-title">Community & Growth</span>
@@ -663,19 +680,19 @@
     <div class="phase-body">
       <div class="task-group">
         <div class="task">
-          <span class="check upcoming">&#8212;</span>
+          <span class="check upcoming" aria-label="Upcoming">&#8212;</span>
           <span class="task-text">Daily product update threads — what shipped today</span>
         </div>
         <div class="task">
-          <span class="check upcoming">&#8212;</span>
+          <span class="check upcoming" aria-label="Upcoming">&#8212;</span>
           <span class="task-text">Architecture explainers — 6 layers, constitutional policies, audit trail</span>
         </div>
         <div class="task">
-          <span class="check upcoming">&#8212;</span>
+          <span class="check upcoming" aria-label="Upcoming">&#8212;</span>
           <span class="task-text">Ecosystem partnerships — Flaunch, Aerodrome, Base builders</span>
         </div>
         <div class="task">
-          <span class="check upcoming">&#8212;</span>
+          <span class="check upcoming" aria-label="Upcoming">&#8212;</span>
           <span class="task-text">Holder onboarding — "You hold $ODAI. Here's what you get."</span>
         </div>
       </div>
@@ -683,7 +700,7 @@
   </div>
 
   <!-- ═══ PHASE 5: Post-ETHDenver ═══ -->
-  <div class="phase fade-in">
+  <div class="phase fade-in future-phase">
     <div class="phase-header">
       <span class="phase-number muted-bg">Phase 5</span>
       <span class="phase-title">Post-ETHDenver Scaling</span>
@@ -692,23 +709,23 @@
     <div class="phase-body">
       <div class="task-group">
         <div class="task">
-          <span class="check upcoming">&#8212;</span>
+          <span class="check upcoming" aria-label="Upcoming">&#8212;</span>
           <span class="task-text">Multi-agent World Models — any AI agent connects via MCP</span>
         </div>
         <div class="task">
-          <span class="check upcoming">&#8212;</span>
+          <span class="check upcoming" aria-label="Upcoming">&#8212;</span>
           <span class="task-text">Cross-agent world model sharing with permissions</span>
         </div>
         <div class="task">
-          <span class="check upcoming">&#8212;</span>
+          <span class="check upcoming" aria-label="Upcoming">&#8212;</span>
           <span class="task-text">$ODAI governance — holders vote on protocol parameters</span>
         </div>
         <div class="task">
-          <span class="check upcoming">&#8212;</span>
+          <span class="check upcoming" aria-label="Upcoming">&#8212;</span>
           <span class="task-text">Staking + revenue distribution to holders</span>
         </div>
         <div class="task">
-          <span class="check upcoming">&#8212;</span>
+          <span class="check upcoming" aria-label="Upcoming">&#8212;</span>
           <span class="task-text">Multi-chain expansion beyond Base</span>
         </div>
       </div>
@@ -718,6 +735,7 @@
   <!-- ═══ PRIORITY MATRIX ═══ -->
   <h2 class="section-title fade-in">Priority Matrix</h2>
   <div class="phase fade-in" style="padding: 4px;">
+    <div class="matrix-wrap">
     <table class="matrix">
       <thead>
         <tr>
@@ -778,6 +796,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
   </div>
 
   <!-- ═══ NON-NEGOTIABLES ═══ -->
@@ -854,8 +873,7 @@
     <div class="footer-links">
       <a href="https://twitter.com/odei_ai" target="_blank" rel="noopener">Twitter</a>
       <a href="https://dexscreener.com/base/0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959" target="_blank" rel="noopener">DexScreener</a>
-      <a href="/api/worldmodel/docs" target="_blank">API Docs</a>
-      <a href="/health" target="_blank">Health</a>
+      <a href="https://flaunch.gg/base/coin/0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959" target="_blank" rel="noopener">Flaunch</a>
       <a href="/llms.txt" target="_blank">llms.txt</a>
     </div>
     <div class="footer-sig">
@@ -863,20 +881,44 @@
     </div>
   </footer>
 
+</main>
 </div>
 
 <script>
-  // Mouse-follow grid
+  // Remove no-js fallback class
+  document.documentElement.classList.remove('no-js');
+
+  // Mouse-follow grid (throttled with rAF)
+  let rafPending = false;
   document.addEventListener('mousemove', e => {
-    document.querySelector('.grid-mouse').style.setProperty('--mx', e.clientX + 'px');
-    document.querySelector('.grid-mouse').style.setProperty('--my', e.clientY + 'px');
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(() => {
+      const grid = document.querySelector('.grid-mouse');
+      grid.style.setProperty('--mx', e.clientX + 'px');
+      grid.style.setProperty('--my', e.clientY + 'px');
+      rafPending = false;
+    });
   });
 
-  // Scroll fade-in
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  // Scroll fade-in with staggered reveal
+  const fadeEls = document.querySelectorAll('.fade-in');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // Stagger siblings slightly for cascade effect
+          const delay = i * 80;
+          setTimeout(() => entry.target.classList.add('visible'), delay);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+    fadeEls.forEach(el => obs.observe(el));
+  } else {
+    // Fallback: show everything immediately
+    fadeEls.forEach(el => el.classList.add('visible'));
+  }
 
   // ETHDenver countdown
   function updateCountdown() {
