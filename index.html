@@ -683,24 +683,28 @@
   <!-- ═══ STATS ═══ -->
   <div class="stats fade-in">
     <div class="stat">
-      <div class="stat-value">6</div>
-      <div class="stat-label">Graph Layers</div>
+      <div class="stat-value" id="stat-mcap">--</div>
+      <div class="stat-label">Market Cap</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" id="stat-price">--</div>
+      <div class="stat-label">$ODAI Price</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" id="stat-volume">--</div>
+      <div class="stat-label">24h Volume</div>
     </div>
     <div class="stat">
       <div class="stat-value" id="ethdenver-countdown">--</div>
       <div class="stat-label">ETHDenver</div>
     </div>
     <div class="stat">
-      <div class="stat-value">36</div>
+      <div class="stat-value">6</div>
+      <div class="stat-label">Graph Layers</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" id="stat-entities">--</div>
       <div class="stat-label">Entity Types</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value">35</div>
-      <div class="stat-label">Relationships</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value">100%</div>
-      <div class="stat-label">Fair Launch</div>
     </div>
   </div>
 
@@ -748,8 +752,9 @@
       <span class="comment"># Free endpoint — try it now</span><br>
       <span class="prompt">$</span> <span class="cmd">curl</span> <span class="str">https://api.odei.ai/api/worldmodel/schema</span><br><br>
       <span class="comment"># Response</span><br>
-      { <span class="str">"domains"</span>: [<span class="str">"FOUNDATION"</span>, <span class="str">"VISION"</span>, <span class="str">"STRATEGY"</span>, ...],<br>
-      &nbsp;&nbsp;<span class="str">"entityTypes"</span>: 36, <span class="str">"relationshipTypes"</span>: 35 }
+      { <span class="str">"domains"</span>: { <span class="str">"FOUNDATION"</span>: {...}, <span class="str">"VISION"</span>: {...}, ... },<br>
+      &nbsp;&nbsp;<span class="str">"relationships"</span>: [<span class="str">"PURSUES_GOAL"</span>, <span class="str">"SERVES"</span>, ...],<br>
+      &nbsp;&nbsp;<span class="str">"pillars"</span>: [<span class="str">"Health"</span>, <span class="str">"Family"</span>, <span class="str">"Wealth"</span>, <span class="str">"Sovereignty"</span>] }
     </div>
   </section>
 
@@ -1148,6 +1153,58 @@
   }
   updateCountdown();
   setInterval(updateCountdown, 60000);
+
+  // ── Live Data ──
+  function fmt(n) {
+    if (n >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
+    if (n >= 1e3) return '$' + (n / 1e3).toFixed(1) + 'K';
+    return '$' + n.toFixed(0);
+  }
+  function fmtPrice(p) {
+    var n = parseFloat(p);
+    if (n < 0.0001) return '$' + n.toExponential(2);
+    if (n < 1) return '$' + n.toFixed(6);
+    return '$' + n.toFixed(2);
+  }
+
+  // DexScreener — token stats
+  function fetchTokenData() {
+    fetch('https://api.dexscreener.com/latest/dex/tokens/0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959')
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        var p = d.pairs && d.pairs[0];
+        if (!p) return;
+        var mcap = document.getElementById('stat-mcap');
+        var price = document.getElementById('stat-price');
+        var vol = document.getElementById('stat-volume');
+        if (mcap && p.fdv) mcap.textContent = fmt(p.fdv);
+        if (price && p.priceUsd) price.textContent = fmtPrice(p.priceUsd);
+        if (vol && p.volume && p.volume.h24) vol.textContent = fmt(p.volume.h24);
+      })
+      .catch(function() {});
+  }
+  fetchTokenData();
+  setInterval(fetchTokenData, 30000);
+
+  // WMaaS API — schema stats
+  function fetchSchema() {
+    fetch('https://api.odei.ai/api/worldmodel/schema')
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        var types = new Set();
+        var domains = d.domains || {};
+        Object.keys(domains).forEach(function(k) {
+          (domains[k].nodeTypes || []).forEach(function(t) { types.add(t); });
+        });
+        var el = document.getElementById('stat-entities');
+        if (el && types.size > 0) el.textContent = types.size;
+      })
+      .catch(function() {
+        var el = document.getElementById('stat-entities');
+        if (el) el.textContent = '24';
+      });
+  }
+  fetchSchema();
 </script>
 </body>
 </html>
