@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>ODEI — World Model Explorer</title>
+  <meta name="description" content="Interactive 6-domain World Model visualization. See how ODEI structures knowledge for AI agents.">
+  <meta property="og:title" content="ODEI World Model Explorer">
+  <meta property="og:description" content="Interactive 6-domain World Model visualization for AI agents.">
+  <meta property="og:image" content="/OdeiCard.jpeg">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23050A0E' stroke='%234FD1C5' stroke-width='2'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-size='24' font-family='monospace' font-weight='bold' fill='%234FD1C5'%3EO%3C/text%3E%3C/svg%3E">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--bg:#05060A;--bg2:#0B0E14;--bg3:#121622;--bg4:#1D2331;--jade:#4FD1C5;--gold:#F4C95D;--danger:#FF7B7B;--ink:#E8ECF4;--ink2:#B6C0D2;--muted:#7C889A;--r:8px}
+    body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;overflow-x:hidden}
+    a{color:var(--jade);text-decoration:none}a:hover{text-decoration:underline}
+    .header{text-align:center;padding:1.2rem 1rem 0.6rem;border-bottom:1px solid rgba(79,209,197,0.15)}
+    .header h1{font-size:1.3rem;font-weight:700;letter-spacing:0.1em}
+    .header h1 span{color:var(--jade)}
+    .header p{color:var(--ink2);margin-top:0.2rem;font-size:0.8rem}
+    .stats-bar{display:flex;gap:1.2rem;padding:0.4rem 1rem;background:var(--bg2);border-bottom:1px solid rgba(79,209,197,0.1);font-size:0.75rem;justify-content:center;flex-wrap:wrap}
+    .stat{color:var(--muted)}.stat b{color:var(--ink)}
+    .layout{display:flex;gap:0;height:calc(100vh - 88px)}
+    .sidebar{width:170px;background:var(--bg2);border-right:1px solid rgba(79,209,197,0.1);padding:0.4rem 0;flex-shrink:0;overflow-y:auto;display:flex;flex-direction:column}
+    .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+    .domain-btn{display:block;width:100%;text-align:left;padding:0.45rem 0.65rem;background:none;border:none;color:var(--ink2);cursor:pointer;font-size:0.78rem;transition:all 0.15s;border-left:3px solid transparent}
+    .domain-btn:hover{background:var(--bg3);color:var(--ink)}
+    .domain-btn.active{background:var(--bg3);color:var(--jade);border-left-color:var(--jade)}
+    .domain-btn .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:0.4rem;vertical-align:middle}
+    .sep{border:none;border-top:1px solid rgba(79,209,197,0.08);margin:0.3rem 0.5rem}
+    .sidebar-footer{margin-top:auto;padding:0.5rem;border-top:1px solid rgba(79,209,197,0.08)}
+    .try-btn{display:block;width:100%;padding:0.4rem;background:linear-gradient(135deg,rgba(79,209,197,0.15),rgba(79,209,197,0.05));border:1px solid rgba(79,209,197,0.3);border-radius:var(--r);color:var(--jade);cursor:pointer;font-size:0.72rem;text-align:center;transition:all 0.15s}
+    .try-btn:hover{background:linear-gradient(135deg,rgba(79,209,197,0.25),rgba(79,209,197,0.1));border-color:var(--jade)}
+    .graph-wrap{flex:1;position:relative;min-height:0}
+    .graph-wrap canvas{width:100%;height:100%;display:block}
+    .info-strip{background:var(--bg2);border-top:1px solid rgba(79,209,197,0.1);padding:0.5rem 0.8rem;display:flex;gap:0.8rem;align-items:center;flex-wrap:wrap;min-height:42px}
+    .info-strip h3{font-size:0.85rem;margin:0}
+    .info-strip .desc{color:var(--ink2);font-size:0.75rem}
+    .sector-tag{padding:0.1rem 0.4rem;background:var(--bg4);border:1px solid rgba(79,209,197,0.12);border-radius:var(--r);font-size:0.65rem;color:var(--ink2)}
+    .cards{display:flex;gap:0.4rem;padding:0.4rem 0.8rem;overflow-x:auto;background:var(--bg2);border-top:1px solid rgba(79,209,197,0.06);min-height:60px;align-items:stretch}
+    .card{background:var(--bg3);border:1px solid rgba(79,209,197,0.08);border-radius:var(--r);padding:0.35rem 0.6rem;min-width:130px;flex-shrink:0;transition:all 0.15s;cursor:default}
+    .card:hover{border-color:var(--jade);box-shadow:0 2px 8px rgba(79,209,197,0.06)}
+    .card .tp{font-size:0.55rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted)}
+    .card .tt{font-size:0.75rem;font-weight:600;color:var(--ink);margin-top:0.1rem}
+    .card .sc{font-size:0.6rem;color:var(--jade);margin-top:0.15rem}
+    .footer{text-align:center;padding:0.4rem;color:var(--muted);font-size:0.65rem;border-top:1px solid rgba(79,209,197,0.1)}
+    .loading{display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-size:0.85rem}
+    .loading::after{content:'';width:18px;height:18px;border:2px solid var(--jade);border-top-color:transparent;border-radius:50%;animation:spin 0.8s linear infinite;margin-left:0.5rem}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .tooltip{position:absolute;background:var(--bg4);border:1px solid var(--jade);border-radius:var(--r);padding:0.35rem 0.5rem;font-size:0.7rem;pointer-events:none;opacity:0;transition:opacity 0.15s;z-index:10;max-width:200px;box-shadow:0 4px 16px rgba(0,0,0,0.4)}
+    .tooltip.show{opacity:1}
+    .tooltip .ttype{font-size:0.55rem;text-transform:uppercase;color:var(--muted)}
+    .tooltip .tname{font-weight:600}
+    .tooltip .trel{font-size:0.55rem;color:var(--gold);margin-top:0.15rem}
+    /* API panel */
+    .api-panel{display:none;position:absolute;bottom:0;left:0;right:0;background:var(--bg2);border-top:2px solid var(--jade);padding:0.8rem;z-index:20;max-height:50%}
+    .api-panel.show{display:block}
+    .api-panel h4{font-size:0.8rem;color:var(--jade);margin-bottom:0.5rem}
+    .api-panel pre{background:var(--bg);border:1px solid rgba(79,209,197,0.15);border-radius:var(--r);padding:0.5rem;font-size:0.7rem;color:var(--ink2);overflow-x:auto;white-space:pre-wrap;word-break:break-all}
+    .api-panel .close-api{position:absolute;top:0.5rem;right:0.5rem;background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem}
+    @media(max-width:768px){
+      .layout{flex-direction:column;height:auto}
+      .sidebar{width:100%;flex-direction:row;overflow-x:auto;padding:0.2rem;border-right:none;border-bottom:1px solid rgba(79,209,197,0.1)}
+      .domain-btn{white-space:nowrap;border-left:none;border-bottom:2px solid transparent;padding:0.3rem 0.5rem;font-size:0.7rem}
+      .domain-btn.active{border-bottom-color:var(--jade);border-left:none}
+      .graph-wrap{min-height:300px}
+      .sep,.sidebar-footer{display:none}
+      .cards{min-height:50px}
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1><span>ODEI</span> World Model Explorer</h1>
+    <p>6-domain knowledge graph &mdash; <a href="/">Roadmap</a> &middot; <a href="http://34.18.142.79/api/worldmodel/schema">Schema</a> &middot; <a href="http://34.18.142.79/api/worldmodel/docs">API Docs</a></p>
+  </div>
+  <div class="stats-bar" id="stats"><span class="stat">Loading...</span></div>
+  <div class="layout">
+    <nav class="sidebar" id="sidebar"></nav>
+    <div class="main">
+      <div class="graph-wrap" id="graphWrap">
+        <canvas id="gc"></canvas>
+        <div class="tooltip" id="tip"></div>
+        <div class="loading" id="gload">Loading world model</div>
+        <div class="api-panel" id="apiPanel">
+          <button class="close-api" onclick="toggleAPI()">&times;</button>
+          <h4>Try the API</h4>
+          <pre id="apiCode"></pre>
+        </div>
+      </div>
+      <div class="info-strip" id="info"></div>
+      <div class="cards" id="cards"></div>
+    </div>
+  </div>
+  <div class="footer">
+    $ODAI on Base &middot; <a href="https://flaunch.gg/base/coin/0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959" target="_blank">Flaunch</a> &middot;
+    <a href="https://twitter.com/odei_ai" target="_blank">@odei_ai</a> &middot; Built by ODEI Symbiosis
+  </div>
+  <script>
+const DC={FOUNDATION:'#8B5CF6',VISION:'#4FD1C5',STRATEGY:'#3B82F6',TACTICS:'#F4C95D',EXECUTION:'#EF4444',TRACK:'#10B981'};
+const DN={FOUNDATION:'Foundation',VISION:'Vision',STRATEGY:'Strategy',TACTICS:'Tactics',EXECUTION:'Execution',TRACK:'Track'};
+let model=null,active=null,gNodes=[],gEdges=[],hovered=null,animId=0,tick=0,showingAPI=false;
+const canvas=document.getElementById('gc'),ctx=canvas.getContext('2d'),tip=document.getElementById('tip');
+
+function resize(){const w=canvas.parentElement;canvas.width=w.clientWidth*devicePixelRatio;canvas.height=w.clientHeight*devicePixelRatio;canvas.style.width=w.clientWidth+'px';canvas.style.height=w.clientHeight+'px';ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);if(active)selectDomain(active)}
+window.addEventListener('resize',resize);
+
+function toggleAPI(){
+  showingAPI=!showingAPI;
+  document.getElementById('apiPanel').classList.toggle('show',showingAPI);
+  if(showingAPI){
+    const host='http://34.18.142.79';
+    document.getElementById('apiCode').textContent=
+`# Get World Model schema
+curl ${host}/api/worldmodel/schema
+
+# Get demo model with all 6 domains
+curl ${host}/api/worldmodel/demo
+
+# Get API documentation
+curl ${host}/api/worldmodel/docs
+
+# Health check
+curl ${host}/health`;
+  }
+}
+
+async function init(){
+  try{
+    const API='http://34.18.142.79';
+    const r=await fetch(API+'/api/worldmodel/demo');model=await r.json();
+    document.getElementById('gload').style.display='none';
+    renderSidebar();renderStats();
+    selectDomain('ALL');
+  }catch(e){document.getElementById('gload').innerHTML='<span style="color:var(--danger)">Failed to load: '+e.message+'</span>'}
+}
+
+function renderStats(){
+  const tn=model.domains.reduce((s,d)=>s+(d.exampleNodes?.length||0),0);
+  const tt=model.domains.reduce((s,d)=>s+(d.nodeTypes?.length||0),0);
+  const ts=model.domains.reduce((s,d)=>s+(d.sectors?.length||0),0);
+  const ce=model.crossDomainEdges?.length||0;
+  document.getElementById('stats').innerHTML=
+    `<span class="stat"><b>${model.domains.length}</b> domains</span>`+
+    `<span class="stat"><b>${tt}</b> entity types</span>`+
+    `<span class="stat"><b>${ts}</b> sectors</span>`+
+    `<span class="stat"><b>${tn}</b> demo nodes</span>`+
+    `<span class="stat"><b>${model.stats?.totalRelationships||120}</b> relationships</span>`;
+}
+
+function renderSidebar(){
+  let html=`<button class="domain-btn active" data-key="ALL" onclick="selectDomain('ALL')"><span class="dot" style="background:var(--jade)"></span>All Domains</button><hr class="sep">`;
+  html+=model.domains.map(d=>
+    `<button class="domain-btn" data-key="${d.key}" onclick="selectDomain('${d.key}')"><span class="dot" style="background:${DC[d.key]}"></span>${d.name}</button>`
+  ).join('');
+  html+=`<div class="sidebar-footer"><button class="try-btn" onclick="toggleAPI()">Try the API</button></div>`;
+  document.getElementById('sidebar').innerHTML=html;
+}
+
+function selectDomain(key){
+  active=key;
+  document.querySelectorAll('.domain-btn').forEach(b=>b.classList.toggle('active',b.dataset.key===key));
+  if(key==='ALL'){
+    renderAllDomainInfo();
+    buildAllDomainsGraph();
+  }else{
+    const d=model.domains.find(x=>x.key===key);if(!d)return;
+    const c=DC[key]||'#4FD1C5';
+    document.getElementById('info').innerHTML=
+      `<h3 style="color:${c}">${d.name}</h3><span class="desc">${d.description}</span>`+
+      `<span>${d.sectors.map(s=>`<span class="sector-tag">${s}</span>`).join(' ')}</span>`;
+    const nodes=d.exampleNodes||[];
+    document.getElementById('cards').innerHTML=nodes.map(n=>
+      `<div class="card" style="border-left:3px solid ${c}"><div class="tp">${n.type}</div><div class="tt">${n.title}</div>${n.sector?`<div class="sc">${n.sector}</div>`:''}</div>`
+    ).join('')||'<span style="color:var(--muted);padding:0.5rem">No nodes</span>';
+    buildGraph(d);
+  }
+}
+
+function renderAllDomainInfo(){
+  const total=model.domains.reduce((s,d)=>s+(d.exampleNodes?.length||0),0);
+  document.getElementById('info').innerHTML=
+    `<h3 style="color:var(--jade)">Full World Model</h3><span class="desc">${total} entities across 6 domains with ${model.crossDomainEdges?.length||0} cross-domain connections</span>`;
+  document.getElementById('cards').innerHTML=model.domains.map(d=>{
+    const c=DC[d.key];
+    return `<div class="card" style="border-left:3px solid ${c}"><div class="tp" style="color:${c}">${d.name}</div><div class="tt">${d.exampleNodes?.length||0} nodes</div><div class="sc">${d.sectors.join(' / ')}</div></div>`;
+  }).join('');
+}
+
+function buildAllDomainsGraph(){
+  const W=canvas.width/devicePixelRatio,H=canvas.height/devicePixelRatio;
+  const cx=W/2,cy=H/2;
+  gNodes=[];gEdges=[];
+  // Index for cross-domain lookup: "DOMAIN:title" -> node index
+  const nodeIndex={};
+  // Place domain nodes in a ring
+  const domainRadius=Math.min(W,H)*0.28;
+  const keys=Object.keys(DC);
+  keys.forEach((key,i)=>{
+    const a=(i/keys.length)*Math.PI*2-Math.PI/2;
+    const d=model.domains.find(x=>x.key===key);
+    if(!d)return;
+    const idx=gNodes.length;
+    gNodes.push({x:cx+Math.cos(a)*domainRadius,y:cy+Math.sin(a)*domainRadius,vx:0,vy:0,r:24,label:d.name,type:'DOMAIN',color:DC[key],fixed:true,domain:key});
+    // Entity nodes around each domain
+    const nodes=d.exampleNodes||[];
+    const subRadius=Math.min(W,H)*0.14;
+    nodes.forEach((n,ni)=>{
+      const na=a+(ni-nodes.length/2)*0.18;
+      const jx=(Math.random()-0.5)*15,jy=(Math.random()-0.5)*15;
+      const nIdx=gNodes.length;
+      gNodes.push({x:cx+Math.cos(na)*(domainRadius+subRadius)+jx,y:cy+Math.sin(na)*(domainRadius+subRadius)+jy,vx:0,vy:0,r:9,label:n.title,type:n.type,color:DC[key],fixed:false,sector:n.sector,domain:key});
+      gEdges.push({from:idx,to:nIdx,color:DC[key]+'33'});
+      nodeIndex[key+':'+n.title]=nIdx;
+    });
+  });
+  // Domain-to-domain subtle connections (ring)
+  for(let i=0;i<keys.length;i++){
+    const next=(i+1)%keys.length;
+    // Find domain node indices (they're at fixed positions)
+    const di=gNodes.findIndex(n=>n.type==='DOMAIN'&&n.domain===keys[i]);
+    const dn=gNodes.findIndex(n=>n.type==='DOMAIN'&&n.domain===keys[next]);
+    if(di>=0&&dn>=0)gEdges.push({from:di,to:dn,color:'#ffffff11',ring:true});
+  }
+  // Cross-domain edges
+  if(model.crossDomainEdges){
+    model.crossDomainEdges.forEach(e=>{
+      const fi=nodeIndex[e.from],ti=nodeIndex[e.to];
+      if(fi!==undefined&&ti!==undefined){
+        gEdges.push({from:fi,to:ti,color:DC.VISION+'55',cross:true,rel:e.rel});
+      }
+    });
+  }
+  cancelAnimationFrame(animId);tick=0;
+  animate();
+}
+
+function buildGraph(domain){
+  const W=canvas.width/devicePixelRatio,H=canvas.height/devicePixelRatio;
+  const cx=W/2,cy=H/2;
+  const nodes=domain.exampleNodes||[];
+  const color=DC[domain.key]||'#4FD1C5';
+  gNodes=[];gEdges=[];
+  gNodes.push({x:cx,y:cy,vx:0,vy:0,r:30,label:domain.name,type:'DOMAIN',color:color,fixed:true});
+  const secs=domain.sectors;
+  const secRadius=Math.min(W,H)*0.2;
+  secs.forEach((s,i)=>{
+    const a=(i/secs.length)*Math.PI*2-Math.PI/2;
+    gNodes.push({x:cx+Math.cos(a)*secRadius,y:cy+Math.sin(a)*secRadius,vx:0,vy:0,r:18,label:s,type:'SECTOR',color:color+'99',fixed:false});
+    gEdges.push({from:0,to:gNodes.length-1,color:color+'44'});
+  });
+  const nodeRadius=Math.min(W,H)*0.36;
+  nodes.forEach((n,i)=>{
+    const a=(i/nodes.length)*Math.PI*2-Math.PI/2;
+    const jx=(Math.random()-0.5)*20,jy=(Math.random()-0.5)*20;
+    gNodes.push({x:cx+Math.cos(a)*nodeRadius+jx,y:cy+Math.sin(a)*nodeRadius+jy,vx:0,vy:0,r:13,label:n.title,type:n.type,color:color,fixed:false,sector:n.sector});
+    const si=secs.indexOf(n.sector);
+    if(si>=0)gEdges.push({from:si+1,to:gNodes.length-1,color:color+'33'});
+    gEdges.push({from:0,to:gNodes.length-1,color:color+'1a'});
+  });
+  for(let i=secs.length+1;i<gNodes.length-1;i++){
+    if(Math.random()<0.25)gEdges.push({from:i,to:i+1,color:color+'15'});
+  }
+  cancelAnimationFrame(animId);tick=0;
+  animate();
+}
+
+// Parse hex color to {r,g,b}
+function hexRGB(hex){hex=hex.replace('#','');if(hex.length===3)hex=hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];return{r:parseInt(hex.slice(0,2),16),g:parseInt(hex.slice(2,4),16),b:parseInt(hex.slice(4,6),16)};}
+
+function animate(){
+  tick++;
+  const W=canvas.width/devicePixelRatio,H=canvas.height/devicePixelRatio;
+
+  // Background: subtle radial gradient from center
+  const bgGrad=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)*0.7);
+  bgGrad.addColorStop(0,'#0a0e16');bgGrad.addColorStop(1,'#05060A');
+  ctx.fillStyle=bgGrad;ctx.fillRect(0,0,W,H);
+
+  // Subtle grid
+  ctx.strokeStyle='rgba(79,209,197,0.03)';ctx.lineWidth=0.5;
+  const gs=60;
+  for(let x=gs;x<W;x+=gs){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+  for(let y=gs;y<H;y+=gs){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+
+  // Force simulation
+  for(let i=0;i<gNodes.length;i++){
+    if(gNodes[i].fixed)continue;
+    let fx=0,fy=0;
+    for(let j=0;j<gNodes.length;j++){
+      if(i===j)continue;
+      const dx=gNodes[i].x-gNodes[j].x,dy=gNodes[i].y-gNodes[j].y;
+      const d=Math.sqrt(dx*dx+dy*dy)||1;
+      const minDist=active==='ALL'?60:100;
+      if(d<minDist){const f=0.4*(minDist-d)/d;fx+=dx*f;fy+=dy*f;}
+    }
+    for(const e of gEdges){
+      let other=-1;
+      if(e.from===i)other=e.to;else if(e.to===i)other=e.from;
+      if(other<0)continue;
+      const dx=gNodes[other].x-gNodes[i].x,dy=gNodes[other].y-gNodes[i].y;
+      const d=Math.sqrt(dx*dx+dy*dy)||1;
+      const ideal=gNodes[other].type==='DOMAIN'?(active==='ALL'?Math.min(W,H)*0.14:Math.min(W,H)*0.25):60;
+      const f=0.015*(d-ideal)/d;fx+=dx*f;fy+=dy*f;
+    }
+    if(gNodes[i].x<30)fx+=1.5;if(gNodes[i].x>W-30)fx-=1.5;
+    if(gNodes[i].y<30)fy+=1.5;if(gNodes[i].y>H-30)fy-=1.5;
+    gNodes[i].vx=(gNodes[i].vx+fx)*0.82;
+    gNodes[i].vy=(gNodes[i].vy+fy)*0.82;
+    gNodes[i].x+=gNodes[i].vx;gNodes[i].y+=gNodes[i].vy;
+  }
+
+  // Draw edges
+  for(const e of gEdges){
+    const a=gNodes[e.from],b=gNodes[e.to];
+    if(e.cross){
+      // Curved bezier for cross-domain edges
+      const mx=(a.x+b.x)/2,my=(a.y+b.y)/2;
+      const dx=b.x-a.x,dy=b.y-a.y;
+      const cx1=mx-dy*0.15,cy1=my+dx*0.15;
+      ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.quadraticCurveTo(cx1,cy1,b.x,b.y);
+      ctx.strokeStyle=e.color;ctx.lineWidth=1.5;
+      ctx.setLineDash([5,5]);ctx.lineDashOffset=-tick*0.4;
+      ctx.stroke();ctx.setLineDash([]);
+      // Animated particles (2 per edge, different speeds)
+      for(let p=0;p<2;p++){
+        const t=((tick*0.006+p*0.5)%1);
+        const it=1-t;
+        const px=it*it*a.x+2*it*t*cx1+t*t*b.x;
+        const py=it*it*a.y+2*it*t*cy1+t*t*b.y;
+        const rgb=hexRGB(DC.VISION);
+        const pGrad=ctx.createRadialGradient(px,py,0,px,py,5);
+        pGrad.addColorStop(0,`rgba(${rgb.r},${rgb.g},${rgb.b},0.9)`);
+        pGrad.addColorStop(1,`rgba(${rgb.r},${rgb.g},${rgb.b},0)`);
+        ctx.beginPath();ctx.arc(px,py,5,0,Math.PI*2);ctx.fillStyle=pGrad;ctx.fill();
+      }
+    }else if(e.ring){
+      ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle='rgba(255,255,255,0.04)';ctx.lineWidth=0.5;ctx.stroke();
+    }else{
+      // Intra-domain edges with gentle glow
+      ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle=e.color;ctx.lineWidth=1;ctx.stroke();
+    }
+  }
+
+  // Draw nodes (back to front: smaller first, domain nodes last)
+  const sorted=[...gNodes.keys()].sort((a,b)=>{
+    if(gNodes[a].type==='DOMAIN'&&gNodes[b].type!=='DOMAIN')return 1;
+    if(gNodes[b].type==='DOMAIN'&&gNodes[a].type!=='DOMAIN')return -1;
+    return 0;
+  });
+  for(const i of sorted){
+    const n=gNodes[i];
+    const isHov=hovered===i;
+    const isDomain=n.type==='DOMAIN';
+    const isSector=n.type==='SECTOR';
+    const pulse=isDomain?Math.sin(tick*0.025)*2:0;
+    const r=n.r+(isHov?4:0)+pulse*0.3;
+    const rgb=hexRGB(n.color);
+
+    // Outer glow halo (all nodes)
+    if(isDomain||isHov){
+      const glowR=r*(isDomain?2.5:2);
+      const glow=ctx.createRadialGradient(n.x,n.y,r*0.5,n.x,n.y,glowR);
+      glow.addColorStop(0,`rgba(${rgb.r},${rgb.g},${rgb.b},${isHov?0.2:0.1})`);
+      glow.addColorStop(1,`rgba(${rgb.r},${rgb.g},${rgb.b},0)`);
+      ctx.beginPath();ctx.arc(n.x,n.y,glowR,0,Math.PI*2);ctx.fillStyle=glow;ctx.fill();
+    }
+
+    // Node fill: radial gradient (bright center, dark edge)
+    const nGrad=ctx.createRadialGradient(n.x-r*0.3,n.y-r*0.3,0,n.x,n.y,r);
+    if(isDomain){
+      nGrad.addColorStop(0,`rgba(${rgb.r},${rgb.g},${rgb.b},0.6)`);
+      nGrad.addColorStop(0.7,`rgba(${rgb.r},${rgb.g},${rgb.b},0.3)`);
+      nGrad.addColorStop(1,`rgba(${rgb.r},${rgb.g},${rgb.b},0.1)`);
+    }else{
+      const a=isHov?0.35:0.15;
+      nGrad.addColorStop(0,`rgba(${rgb.r},${rgb.g},${rgb.b},${a})`);
+      nGrad.addColorStop(1,`rgba(${rgb.r},${rgb.g},${rgb.b},${a*0.3})`);
+    }
+    ctx.beginPath();ctx.arc(n.x,n.y,r,0,Math.PI*2);ctx.fillStyle=nGrad;ctx.fill();
+
+    // Node stroke
+    ctx.strokeStyle=isHov?n.color:`rgba(${rgb.r},${rgb.g},${rgb.b},${isDomain?0.8:isSector?0.5:0.35})`;
+    ctx.lineWidth=isHov?2.5:isDomain?2:1;ctx.stroke();
+
+    // Label
+    const fs=isDomain?(active==='ALL'?11:13):isSector?10:active==='ALL'?7.5:9;
+    ctx.font=(isDomain||isSector?'600 ':'')+fs+'px -apple-system,BlinkMacSystemFont,sans-serif';
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    const maxLen=active==='ALL'?14:20;
+    const lbl=n.label.length>maxLen?n.label.slice(0,maxLen-1)+'\u2026':n.label;
+    // Text shadow for readability
+    ctx.fillStyle='rgba(5,6,10,0.7)';
+    ctx.fillText(lbl,n.x+0.5,n.y+0.5);
+    ctx.fillStyle=isHov?'#fff':isDomain?'#fff':isSector?'#E8ECF4':'#B6C0D2';
+    ctx.fillText(lbl,n.x,n.y);
+
+    // For small entity nodes in ALL view, show label below
+    if(!isDomain&&!isSector&&active==='ALL'&&n.r<12){
+      ctx.fillStyle='rgba(182,192,210,0.5)';
+      ctx.font='6px -apple-system,sans-serif';
+      const shortLbl=n.label.length>12?n.label.slice(0,11)+'\u2026':n.label;
+      ctx.fillText(shortLbl,n.x,n.y+r+7);
+    }
+  }
+  animId=requestAnimationFrame(animate);
+}
+
+function handlePointer(e){
+  const rect=canvas.getBoundingClientRect();
+  const mx=(e.clientX||e.touches?.[0]?.clientX||0)-rect.left;
+  const my=(e.clientY||e.touches?.[0]?.clientY||0)-rect.top;
+  hovered=null;
+  for(let i=gNodes.length-1;i>=0;i--){
+    const dx=gNodes[i].x-mx,dy=gNodes[i].y-my;
+    if(dx*dx+dy*dy<(gNodes[i].r+6)*(gNodes[i].r+6)){hovered=i;break;}
+  }
+  if(hovered!==null){
+    const n=gNodes[hovered];
+    tip.className='tooltip show';
+    let html=`<div class="ttype">${n.type}${n.domain?' &middot; '+DN[n.domain]:''}</div><div class="tname">${n.label}</div>`;
+    if(n.sector)html+=`<div style="color:var(--jade);font-size:0.6rem">${n.sector}</div>`;
+    // Show connected edges
+    const rels=gEdges.filter(e=>(e.from===hovered||e.to===hovered)&&e.rel);
+    if(rels.length)html+=rels.map(r=>`<div class="trel">${r.rel}</div>`).join('');
+    tip.innerHTML=html;
+    tip.style.left=Math.min(mx+12,rect.width-210)+'px';
+    tip.style.top=Math.max(my-10,5)+'px';
+    canvas.style.cursor='pointer';
+  }else{
+    tip.className='tooltip';canvas.style.cursor='default';
+  }
+}
+
+canvas.addEventListener('mousemove',handlePointer);
+canvas.addEventListener('touchmove',e=>{e.preventDefault();handlePointer(e)},{passive:false});
+canvas.addEventListener('mouseleave',()=>{hovered=null;tip.className='tooltip'});
+canvas.addEventListener('click',()=>{
+  if(hovered!==null){
+    const n=gNodes[hovered];
+    if(n.type==='DOMAIN'&&n.domain&&active==='ALL')selectDomain(n.domain);
+  }
+});
+
+resize();init();
+  </script>
+</body>
+</html>

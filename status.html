@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>ODEI — System Status</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23050A0E' stroke='%234FD1C5' stroke-width='2'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-size='24' font-family='monospace' font-weight='bold' fill='%234FD1C5'%3EO%3C/text%3E%3C/svg%3E">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--bg:#05060A;--bg2:#0B0E14;--bg3:#121622;--bg4:#1D2331;--jade:#4FD1C5;--gold:#F4C95D;--red:#FF7B7B;--green:#68D391;--ink:#E8ECF4;--ink2:#B6C0D2;--muted:#7C889A;--r:8px}
+    body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh}
+    .header{text-align:center;padding:1.2rem;border-bottom:1px solid rgba(79,209,197,0.15)}
+    .header h1{font-size:1.3rem;font-weight:700;letter-spacing:0.08em}
+    .header h1 span{color:var(--jade)}
+    .header p{color:var(--ink2);font-size:0.8rem;margin-top:0.2rem}
+    .header .updated{color:var(--muted);font-size:0.7rem;margin-top:0.3rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1rem;padding:1rem;max-width:1200px;margin:0 auto}
+    .panel{background:var(--bg2);border:1px solid rgba(79,209,197,0.1);border-radius:var(--r);overflow:hidden}
+    .panel-head{padding:0.6rem 0.8rem;border-bottom:1px solid rgba(79,209,197,0.08);display:flex;align-items:center;gap:0.5rem}
+    .panel-head h2{font-size:0.85rem;font-weight:600}
+    .status-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+    .status-dot.ok{background:var(--green);box-shadow:0 0 6px var(--green)}
+    .status-dot.warn{background:var(--gold);box-shadow:0 0 6px var(--gold)}
+    .status-dot.err{background:var(--red);box-shadow:0 0 6px var(--red)}
+    .status-dot.unknown{background:var(--muted)}
+    .panel-body{padding:0.6rem 0.8rem}
+    .row{display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.03);font-size:0.78rem}
+    .row:last-child{border:none}
+    .row .label{color:var(--ink2)}
+    .row .value{font-weight:600;text-align:right}
+    .row .value.ok{color:var(--green)}
+    .row .value.warn{color:var(--gold)}
+    .row .value.err{color:var(--red)}
+    .big-stat{text-align:center;padding:0.8rem}
+    .big-stat .num{font-size:2rem;font-weight:800;color:var(--jade)}
+    .big-stat .lbl{font-size:0.7rem;color:var(--muted);text-transform:uppercase}
+    .footer{text-align:center;padding:0.8rem;color:var(--muted);font-size:0.7rem;border-top:1px solid rgba(79,209,197,0.1);margin-top:1rem}
+    .footer a{color:var(--jade);text-decoration:none}
+    .loading{color:var(--muted);font-size:0.75rem;padding:0.5rem}
+    @media(max-width:600px){.grid{grid-template-columns:1fr;padding:0.5rem}}
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1><span>ODEI</span> System Status</h1>
+    <p>Live infrastructure health &mdash; <a href="/" style="color:var(--jade);text-decoration:none">Roadmap</a> &middot; <a href="/demo.html" style="color:var(--jade);text-decoration:none">Demo</a></p>
+    <div class="updated" id="updated">Checking...</div>
+  </div>
+  <div class="grid">
+    <div class="panel" id="apiPanel">
+      <div class="panel-head"><div class="status-dot unknown" id="apiDot"></div><h2>WMaaS API</h2></div>
+      <div class="panel-body" id="apiBody"><div class="loading">Checking...</div></div>
+    </div>
+    <div class="panel" id="tokenPanel">
+      <div class="panel-head"><div class="status-dot ok"></div><h2>$ODAI Token</h2></div>
+      <div class="panel-body" id="tokenBody">
+        <div class="row"><span class="label">Network</span><span class="value">Base (8453)</span></div>
+        <div class="row"><span class="label">Contract</span><span class="value" style="font-size:0.65rem;font-family:monospace">0x0086...1d959</span></div>
+        <div class="row"><span class="label">Launch</span><span class="value">100% Fair</span></div>
+        <div class="row"><span class="label">Platform</span><span class="value">Flaunch V1.2</span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><div class="status-dot ok"></div><h2>World Model Architecture</h2></div>
+      <div class="panel-body">
+        <div class="row"><span class="label">Domains</span><span class="value ok">6</span></div>
+        <div class="row"><span class="label">Entity Types</span><span class="value">24</span></div>
+        <div class="row"><span class="label">Relationship Types</span><span class="value">36</span></div>
+        <div class="row"><span class="label">Sectors</span><span class="value">19</span></div>
+        <div class="row"><span class="label">Persistence</span><span class="value">Neo4j + In-Memory</span></div>
+      </div>
+    </div>
+    <div class="panel" id="endpointsPanel">
+      <div class="panel-head"><div class="status-dot unknown" id="epDot"></div><h2>API Endpoints</h2></div>
+      <div class="panel-body" id="epBody"><div class="loading">Testing...</div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><div class="status-dot ok"></div><h2>ETHDenver Readiness</h2></div>
+      <div class="panel-body">
+        <div class="row"><span class="label">Roadmap Page</span><span class="value ok">Live</span></div>
+        <div class="row"><span class="label">World Model Demo</span><span class="value ok">Live</span></div>
+        <div class="row"><span class="label">QR Code One-Pager</span><span class="value ok">Ready</span></div>
+        <div class="row"><span class="label">API Documentation</span><span class="value ok">Live</span></div>
+        <div class="row"><span class="label">Autonomous Agents</span><span class="value ok">Running</span></div>
+        <div class="row"><span class="label">Days to ETHDenver</span><span class="value warn" id="countdown">--</span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><div class="status-dot ok"></div><h2>Links</h2></div>
+      <div class="panel-body">
+        <div class="row"><span class="label">Landing Page</span><a href="https://odei.ai" class="value" style="color:var(--jade)">odei.ai</a></div>
+        <div class="row"><span class="label">Twitter</span><a href="https://twitter.com/odei_ai" class="value" style="color:var(--jade)">@odei_ai</a></div>
+        <div class="row"><span class="label">DexScreener</span><a href="https://dexscreener.com/base/0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959" class="value" style="color:var(--jade)">Chart</a></div>
+        <div class="row"><span class="label">Flaunch</span><a href="https://flaunch.gg/base/coin/0x0086cff0c1e5d17b19f5bcd4c8840a5b4251d959" class="value" style="color:var(--jade)">Trade</a></div>
+        <div class="row"><span class="label">Schema</span><a href="http://34.18.142.79/api/worldmodel/schema" class="value" style="color:var(--jade)">JSON</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    Auto-refreshes every 30s &middot; <a href="/">Roadmap</a> &middot; <a href="/demo.html">Demo</a> &middot; Built by ODEI Symbiosis
+  </div>
+  <script>
+// ETHDenver countdown
+const ethdenver = new Date('2026-02-17T09:00:00-07:00');
+function updateCountdown(){
+  const now = new Date();
+  const diff = ethdenver - now;
+  if(diff <= 0){document.getElementById('countdown').textContent = 'NOW';return;}
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  document.getElementById('countdown').textContent = `${days}d ${hours}h`;
+}
+updateCountdown();
+
+const API='http://34.18.142.79';
+async function checkAPI(){
+  const dot = document.getElementById('apiDot');
+  const body = document.getElementById('apiBody');
+  try{
+    const start = Date.now();
+    const r = await fetch(API+'/health');
+    const latency = Date.now() - start;
+    const d = await r.json();
+    dot.className = 'status-dot ok';
+    const uptime = d.uptime ? formatUptime(d.uptime) : 'N/A';
+    body.innerHTML = `
+      <div class="row"><span class="label">Status</span><span class="value ok">${d.status || 'ok'}</span></div>
+      <div class="row"><span class="label">Mode</span><span class="value">${d.mode || 'full'}</span></div>
+      <div class="row"><span class="label">Uptime</span><span class="value">${uptime}</span></div>
+      <div class="row"><span class="label">Latency</span><span class="value ${latency<100?'ok':latency<500?'warn':'err'}">${latency}ms</span></div>
+      <div class="row"><span class="label">Version</span><span class="value">v${d.version || '?'}</span></div>
+    `;
+  }catch(e){
+    dot.className = 'status-dot err';
+    body.innerHTML = `<div class="row"><span class="label">Error</span><span class="value err">${e.message}</span></div>`;
+  }
+}
+
+async function checkEndpoints(){
+  const dot = document.getElementById('epDot');
+  const body = document.getElementById('epBody');
+  const endpoints = [
+    {path: API+'/health', name: 'Health'},
+    {path: API+'/api/worldmodel/schema', name: 'Schema'},
+    {path: API+'/api/worldmodel/demo', name: 'Demo'},
+    {path: API+'/api/worldmodel/docs', name: 'API Docs'},
+  ];
+  let html = '';
+  let allOk = true;
+  for(const ep of endpoints){
+    try{
+      const start = Date.now();
+      const r = await fetch(ep.path, {method: 'HEAD'});
+      const ms = Date.now() - start;
+      const ok = r.ok;
+      if(!ok) allOk = false;
+      html += `<div class="row"><span class="label">${ep.name}</span><span class="value ${ok?'ok':'err'}">${ok?ms+'ms':'ERR '+r.status}</span></div>`;
+    }catch(e){
+      allOk = false;
+      html += `<div class="row"><span class="label">${ep.name}</span><span class="value err">DOWN</span></div>`;
+    }
+  }
+  dot.className = allOk ? 'status-dot ok' : 'status-dot warn';
+  body.innerHTML = html;
+}
+
+function formatUptime(s){
+  if(s < 60) return Math.round(s) + 's';
+  if(s < 3600) return Math.round(s/60) + 'm';
+  if(s < 86400) return Math.round(s/3600) + 'h ' + Math.round((s%3600)/60) + 'm';
+  return Math.floor(s/86400) + 'd ' + Math.round((s%86400)/3600) + 'h';
+}
+
+async function refresh(){
+  document.getElementById('updated').textContent = 'Last checked: ' + new Date().toLocaleTimeString();
+  updateCountdown();
+  await Promise.all([checkAPI(), checkEndpoints()]);
+}
+
+refresh();
+setInterval(refresh, 30000);
+  </script>
+</body>
+</html>
