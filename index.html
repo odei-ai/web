@@ -325,7 +325,7 @@
     }
     .matrix tbody tr:nth-child(even) td { background: rgba(79,209,197,0.02); }
     .matrix tr:hover td { background: rgba(79,209,197,0.05); }
-    .matrix-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .matrix-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; position: relative; }
     .badge {
       font-size: 0.65rem;
       font-weight: 700;
@@ -472,7 +472,7 @@
       .metric-row { flex-wrap: wrap; gap: 8px; }
       .metric-target { width: auto; text-align: left; }
       .metric-bar-wrap { width: 100%; }
-      .matrix { font-size: 0.75rem; min-width: 500px; }
+      .matrix { font-size: 0.75rem; min-width: 580px; }
       .matrix th, .matrix td { padding: 8px 6px; }
       .footer-links { flex-direction: column; gap: 12px; align-items: center; }
       .container { padding: 0 16px; }
@@ -502,6 +502,13 @@
     html { scroll-behavior: smooth; }
 
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    /* ── Scroll progress bar ── */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 2px; z-index: 50;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      width: 0; transition: width 0.1s linear;
+    }
 
     /* ── Focus & skip link ── */
     a:focus-visible, button:focus-visible {
@@ -582,6 +589,7 @@
 <body>
 
 <a href="#main" class="skip-link">Skip to content</a>
+<div class="scroll-progress" aria-hidden="true"></div>
 <div class="grid-mouse"></div>
 <div class="particles">
   <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
@@ -978,6 +986,7 @@
     </div>
     <div class="footer-sig">
       Built by <span>ODEI Symbiosis</span> — Human-AI Partnership
+      <br><span style="font-size:0.65rem;color:var(--muted);margin-top:8px;display:inline-block">Last updated: Feb 13, 2026</span>
     </div>
   </footer>
 
@@ -1066,6 +1075,21 @@
       });
     }
   }, 200);
+
+  // Scroll progress bar
+  var progressBar = document.querySelector('.scroll-progress');
+  var progressRaf = false;
+  window.addEventListener('scroll', function() {
+    if (progressRaf) return;
+    progressRaf = true;
+    requestAnimationFrame(function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = pct + '%';
+      progressRaf = false;
+    });
+  });
 
   // ETHDenver countdown
   function updateCountdown() {
