@@ -504,6 +504,43 @@
       border-radius: 50%;
       animation: pulse 2s infinite;
     }
+
+    /* ── Hero sphere ── */
+    .hero-sphere {
+      position: relative;
+      width: 80px; height: 80px;
+      margin: 0 auto 16px;
+    }
+    .hero-sphere .ring {
+      position: absolute; inset: 0;
+      border: 1.5px solid rgba(79,209,197,0.25);
+      border-radius: 50%;
+    }
+    .hero-sphere .ring:nth-child(1) {
+      transform: rotateX(60deg) rotateZ(0deg);
+      animation: sphere-spin 12s linear infinite;
+    }
+    .hero-sphere .ring:nth-child(2) {
+      transform: rotateX(60deg) rotateZ(60deg);
+      animation: sphere-spin 16s linear infinite reverse;
+      border-color: rgba(244,201,93,0.15);
+    }
+    .hero-sphere .ring:nth-child(3) {
+      transform: rotateX(60deg) rotateZ(120deg);
+      animation: sphere-spin 20s linear infinite;
+    }
+    .hero-sphere .core {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 6px; height: 6px;
+      margin: -3px 0 0 -3px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(79,209,197,0.4);
+    }
+    @keyframes sphere-spin {
+      to { transform: rotateX(60deg) rotateZ(360deg); }
+    }
   </style>
 </head>
 <body>
@@ -518,6 +555,10 @@
 
   <!-- ═══ HERO ═══ -->
   <header class="hero fade-in">
+    <div class="hero-sphere" aria-hidden="true">
+      <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+      <div class="core"></div>
+    </div>
     <div class="hero-wordmark">ODEI</div>
     <p class="hero-sub">World Model as a Service</p>
     <p class="hero-tagline">
