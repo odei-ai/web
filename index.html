@@ -508,27 +508,20 @@
     /* ── Hero sphere ── */
     .hero-sphere {
       position: relative;
-      width: 80px; height: 80px;
-      margin: 0 auto 16px;
+      width: 100px; height: 100px;
+      margin: 0 auto 12px;
+      perspective: 300px;
+      transform-style: preserve-3d;
     }
     .hero-sphere .ring {
       position: absolute; inset: 0;
-      border: 1.5px solid rgba(79,209,197,0.25);
+      border: 1.5px solid rgba(79,209,197,0.3);
       border-radius: 50%;
+      transform-style: preserve-3d;
     }
-    .hero-sphere .ring:nth-child(1) {
-      transform: rotateX(60deg) rotateZ(0deg);
-      animation: sphere-spin 12s linear infinite;
-    }
-    .hero-sphere .ring:nth-child(2) {
-      transform: rotateX(60deg) rotateZ(60deg);
-      animation: sphere-spin 16s linear infinite reverse;
-      border-color: rgba(244,201,93,0.15);
-    }
-    .hero-sphere .ring:nth-child(3) {
-      transform: rotateX(60deg) rotateZ(120deg);
-      animation: sphere-spin 20s linear infinite;
-    }
+    .hero-sphere .ring:nth-child(1) { animation: ring-a 10s linear infinite; }
+    .hero-sphere .ring:nth-child(2) { animation: ring-b 14s linear infinite; border-color: rgba(244,201,93,0.2); }
+    .hero-sphere .ring:nth-child(3) { animation: ring-c 18s linear infinite; }
     .hero-sphere .core {
       position: absolute;
       top: 50%; left: 50%;
@@ -536,11 +529,11 @@
       margin: -3px 0 0 -3px;
       background: var(--accent);
       border-radius: 50%;
-      box-shadow: 0 0 12px rgba(79,209,197,0.4);
+      box-shadow: 0 0 16px rgba(79,209,197,0.5);
     }
-    @keyframes sphere-spin {
-      to { transform: rotateX(60deg) rotateZ(360deg); }
-    }
+    @keyframes ring-a { from { transform: rotateX(70deg) rotateY(0deg); } to { transform: rotateX(70deg) rotateY(360deg); } }
+    @keyframes ring-b { from { transform: rotateX(30deg) rotateY(0deg); } to { transform: rotateX(30deg) rotateY(360deg); } }
+    @keyframes ring-c { from { transform: rotateX(50deg) rotateZ(0deg); } to { transform: rotateX(50deg) rotateZ(360deg); } }
   </style>
 </head>
 <body>
