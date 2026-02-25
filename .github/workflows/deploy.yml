@@ -1,0 +1,151 @@
+name: Deploy to api.odei.ai
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - production
+          - staging
+
+concurrency:
+  group: deploy-${{ github.event.inputs.environment }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check required files
+        run: |
+          required_files=(index.html CNAME llms.txt robots.txt sitemap.xml api-server.js)
+          for f in "${required_files[@]}"; do
+            if [ ! -f "$f" ]; then
+              echo "ERROR: Missing required file: $f"
+              exit 1
+            fi
+          done
+          echo "All required files present."
+
+      - name: Validate social metadata
+        run: |
+          for page in index.html worldmodel.html; do
+            if [ ! -f "$page" ]; then
+              continue
+            fi
+
+            # Check for legacy copy
+            if grep -Eq '\$ODAI on Base| on Base' "$page"; then
+              echo "ERROR: Legacy social copy detected in $page"
+              exit 1
+            fi
+
+            # Check required meta tags
+            for tag in 'property="og:title"' 'property="og:description"' 'name="twitter:title"' 'name="twitter:description"'; do
+              if ! grep -q "$tag" "$page"; then
+                echo "ERROR: Missing meta tag $tag in $page"
+                exit 1
+              fi
+            done
+          done
+          echo "Social metadata validation passed."
+
+      - name: Check theme compliance
+        run: |
+          # Scan for forbidden color tokens in CSS and HTML files
+          violations=$(grep -rn 'indigo-\|purple-\|violet-' --include='*.css' --include='*.html' . || true)
+          if [ -n "$violations" ]; then
+            echo "ERROR: Forbidden color tokens found (use teal-* instead):"
+            echo "$violations"
+            exit 1
+          fi
+          echo "Theme compliance check passed."
+
+  deploy:
+    name: Deploy
+    needs: validate
+    runs-on: ubuntu-latest
+    if: github.event.inputs.environment == 'production'
+    environment:
+      name: production
+      url: https://api.odei.ai
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          cat >> ~/.ssh/config << EOF
+          Host deploy-target
+            HostName ${{ secrets.DEPLOY_HOST }}
+            User ai
+            IdentityFile ~/.ssh/id_deploy
+            StrictHostKeyChecking accept-new
+            ConnectTimeout 20
+            ServerAliveInterval 15
+            ServerAliveCountMax 2
+          EOF
+
+      - name: Upload to staging
+        run: |
+          COPYFILE_DISABLE=1 tar \
+            --format ustar \
+            --exclude '.DS_Store' \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude 'node_modules' \
+            --exclude 'docs/DEPLOYMENT.md' \
+            -cf - . | ssh deploy-target "
+              set -euo pipefail
+              mkdir -p /srv/api.odei.ai/staging
+              find /srv/api.odei.ai/staging -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+              tar -C /srv/api.odei.ai/staging -xf -
+            "
+
+      - name: Atomic release
+        run: |
+          ssh deploy-target "/usr/local/bin/api-site-deploy /srv/api.odei.ai/staging"
+
+      - name: Verify deployment
+        run: |
+          sleep 3
+
+          # Health check
+          status=$(curl -s -o /dev/null -w "%{http_code}" -m 15 https://api.odei.ai/health)
+          if [ "$status" != "200" ]; then
+            echo "ERROR: Health check returned $status"
+            exit 1
+          fi
+
+          # Homepage check
+          status=$(curl -s -o /dev/null -w "%{http_code}" -m 15 https://api.odei.ai/)
+          if [ "$status" != "200" ]; then
+            echo "ERROR: Homepage returned $status"
+            exit 1
+          fi
+
+          echo "Deployment verified successfully."
+
+      - name: Notify success
+        if: success()
+        run: |
+          echo "Deployed to https://api.odei.ai at $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          echo "Commit: ${{ github.sha }}"
+
+      - name: Notify failure
+        if: failure()
+        run: |
+          echo "DEPLOY FAILED at $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          echo "Commit: ${{ github.sha }}"
+          echo "Check the logs above for details."
