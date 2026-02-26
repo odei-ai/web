@@ -11,7 +11,7 @@ Product site, API gateway, and developer hub for ODEI's constitutional world mod
 
 ## What is ODEI?
 
-ODEI is a constitutional AI system built on a persistent knowledge graph. The world model captures entities, relationships, guardrails, and decisions across six architectural domains (Foundation, Vision, Strategy, Tactics, Execution, Track) with 8,100+ nodes in production.
+ODEI is a constitutional AI system built on a persistent knowledge graph. The world model captures entities, relationships, guardrails, and decisions across six architectural domains (Foundation, Vision, Strategy, Tactics, Execution, Track) with 10,665+ nodes in production.
 
 The web platform at **api.odei.ai** serves three roles:
 
@@ -45,7 +45,7 @@ The web platform at **api.odei.ai** serves three roles:
 - **Reverse proxy:** nginx with TLS (Let's Encrypt)
 - **API server:** Node.js (vanilla `http` module, zero framework dependencies)
 - **Static site:** Hand-crafted HTML + Tailwind CSS + premium dark theme (jade `#4FD1C5` / champagne `#F4C95D`)
-- **Graph database:** Neo4j (8,100+ nodes, 36+ relationship types)
+- **Graph database:** Neo4j (10,665+ nodes, 92 relationship types)
 - **Payments:** x402 protocol on Base chain
 - **Hosting:** Google Cloud VM (`34.18.x.x`), managed by systemd (`odei-api.service`)
 
