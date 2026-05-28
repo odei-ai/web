@@ -24,6 +24,6 @@ Not published here:
 
 ## Contact
 
-Security reports: security@odei.ai
+Security reports: ai@odei.ai
 
 Product: https://odei.ai
