@@ -2,7 +2,7 @@
 
 ## Reporting
 
-Report suspected vulnerabilities to security@odei.ai.
+Report suspected vulnerabilities to ai@odei.ai.
 
 Please include the affected repository, a concise technical description, impact, reproduction notes, and any evidence needed for triage. Do not probe live infrastructure, attempt persistence, access third-party data, or disclose details publicly before coordination.
 
